@@ -63,7 +63,7 @@ namespace rassenStruktur
         /// <summary>
         ///  Automatische Nachteile durch die Rasse
         /// </summary>
-        public automatischeNachteile automatischeNachteile;
+        public List<NameWertPaar> automatischeNachteile;
         /// <summary>
         ///  Empfohlene Vorteile für eine Rasse. Kann optisch bei der Generierung in der GUI als grün 
         ///  hervorgehoben werden. Ist nicht bindend.
@@ -244,10 +244,19 @@ namespace rassenStruktur
                             {};
                             automatischeVorteile.wert = new List<int>()
                             {};
+                            /*
                             automatischeNachteile.name = new List<string>()
                             {};
                             automatischeNachteile.wert = new List<int>()
                             {};
+                            */
+                            automatischeNachteile = new List<NameWertPaar>()
+                            {
+                                new NameWertPaar{name="Blind", wert=5},
+                                new NameWertPaar{name="Taub", wert=5}
+                            };
+                            
+                            
 
                             empfohleneVorteile.name = new List<string>()
                             {};
@@ -366,11 +375,12 @@ namespace rassenStruktur
                             {};
                             automatischeVorteile.wert = new List<int>()
                             {};
+                            /*
                             automatischeNachteile.name = new List<string>()
                             {};
                             automatischeNachteile.wert = new List<int>()
                             {};
-
+                            */
                             empfohleneVorteile.name = new List<string>()
                             {};
                             empfohleneNachteile.name = new List<string>()
@@ -449,7 +459,14 @@ namespace rassenStruktur
                                     {
                                         "dunkelbraun", "braun", "grün", "blau", "grau"
                                     };
-
+                                    RangeMap<string> augenMap = new RangeMap<string>()
+                                    {
+                                      {new Range{lower=1, upper=2}, "braun"}
+                                    };
+                                    augenMap.Add(new Range(1, 2), "braun");
+                                    int result = 5;
+                                    augenMap.getValue(result);
+                                    
                                     augenfarbe.werte = new int[5, 2];
                                     augenfarbe.werte[0, 0] = 1;
                                     augenfarbe.werte[0, 1] = 2;
@@ -537,14 +554,14 @@ namespace rassenStruktur
                             {};
                             automatischeVorteile.wert = new List<int>()
                             {};
-                            automatischeNachteile.name = new List<string>()
-                            {
-                                "Jähzorn"
-                            };
-                            automatischeNachteile.wert = new List<int>()
-                            {
-                                6
-                            };
+                            //automatischeNachteile.name = new List<string>()
+                            //{
+                            //    "Jähzorn"
+                            //};
+                            //automatischeNachteile.wert = new List<int>()
+                            //{
+                            //    6
+                            //};
 
                             empfohleneVorteile.name = new List<string>()
                             {
@@ -625,8 +642,10 @@ namespace rassenStruktur
     /// <summary>
     /// Substruktur für die automatischen Nachteile durch eine Rasse
     /// </summary>
+    /**
     public struct automatischeNachteile
     {
+        
         /// <summary>
         /// Ich habe den Namen des Nachteile
         /// </summary>
@@ -635,9 +654,11 @@ namespace rassenStruktur
         /// Und ggfs. einen Wert des Nachteile (z.B. Raumangst 4 => "4")
         /// </summary>
         public List<int> wert;
+        
+        List<Nachteil> nachteile;
     }
-
-
+     */
+    
 
     /// <summary>
     /// Substruktur für die empfohlenen Vorteile durch eine Rasse

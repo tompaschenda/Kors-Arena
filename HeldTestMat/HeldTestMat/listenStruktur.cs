@@ -46,7 +46,6 @@ namespace listenStruktur
                 "Utulu", "Elf", "Halbelf", "Zwerg", "Ork", "Halbork", "Goblin", "Achaz"
             };
 
-
             subrassen = new List<string>()
             {
                 // Achtung: Man kann eine Subrasse haben, muss aber nicht. In diesem Fall hat man die Subrasse "keine"!

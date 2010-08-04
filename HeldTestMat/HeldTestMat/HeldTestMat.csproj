@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="global.cs" />
     <Compile Include="listenStruktur.cs" />
     <Compile Include="heldenStruktur.cs" />
     <Compile Include="wuerfelKlasse.cs" />
