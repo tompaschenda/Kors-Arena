@@ -17,36 +17,92 @@ namespace rassenStruktur
 
         // Wir listen nun auf, welche Attribute eine Rasse hat:
         
-        public int generierungskosten;
-        public haarfarbe haarfarbe;
-        public augenfarbe augenfarbe;
-        public koerpergroesse koerpergroesse;
-        public int gewichtsabzug;
-        public eigenschaftsModifikationen[] eigenschaftsModifikationen;
-        public int leModifikator;
-        public int auModifikator;
-        public int mrModifikator;
-        public string[] automatischeVorteile;
-        public string[] automatischeNachteile;
-        public string[] empfohleneVorteile;
-        public string[] empfohleneNachteile;
-        public string[] ungeeigneteVorteile;
-        public string[] ungeeigneteNachteile;
         /// <summary>
-        /// [Tom] Hier benutzen wir eine Liste statt eines Arrays. Listen sind im Umgang etwas komfortabler (und bieten gleichzeitig den einfach Zugriff über [0], [1], ...
+        ///  Generierungskosten für die jeweilige Rasse in GP
+        /// </summary>
+        public int generierungskosten;
+        /// <summary>
+        /// Substruktur, die die möglichen Haarfarben und die jeweiligen Wahrscheinlichkeiten dafür enthält.
+        /// </summary>
+        public haarfarbe haarfarbe;
+        /// <summary>
+        /// Substruktur, die die möglichen Augenfarben und die jeweiligen Wahrscheinlichkeiten dafür enthält.
+        /// </summary>
+        public augenfarbe augenfarbe;
+        /// <summary>
+        /// Enthält die Basiskörpergröße eines Helden in Schritt sowie die nötigen Würfel-Modifikatoren, um die
+        /// komplette Größe zu bestimmen.
+        /// </summary>
+        public koerpergroesse koerpergroesse;
+        /// <summary>
+        /// Enthält den Abzug (in Stein) vom Grundgewicht des Helden.
+        /// </summary>
+        public int gewichtsabzug;
+        /// <summary>
+        /// Substruktur. Enthält die jeweiligen Eigenschaften, die modifiziert werden, sowie den Modifikator 
+        /// derselben.
+        /// </summary>
+        public eigenschaftsModifikationen eigenschaftsModifikationen;
+        /// <summary>
+        /// Rassen-Modifikator der Lebensenergie
+        /// </summary>
+        public int leModifikator;
+        /// <summary>
+        ///  Rassen-Modifikator der Ausdauer
+        /// </summary>
+        public int auModifikator;
+        /// <summary>
+        /// Rassen-Modifikator der Magieresistenz
+        /// </summary>
+        public int mrModifikator;
+        /// <summary>
+        /// Automatische Vorteile durch die Rasse
+        /// Substruktur enthält den Namen und ggfs. den Wert
+        /// </summary>
+        public automatischeVorteile automatischeVorteile;
+        /// <summary>
+        ///  Automatische Nachteile durch die Rasse
+        /// </summary>
+        public automatischeNachteile automatischeNachteile;
+        /// <summary>
+        ///  Empfohlene Vorteile für eine Rasse. Kann optisch bei der Generierung in der GUI als grün 
+        ///  hervorgehoben werden. Ist nicht bindend.
+        /// </summary>
+        public empfohleneVorteile empfohleneVorteile;
+        /// <summary>
+        ///  Empfohlene Nachteile für eine Rasse. Kann optisch bei der Generierung in der GUI als grün 
+        ///  hervorgehoben werden. Ist nicht bindend.
+        /// </summary>
+        public empfohleneNachteile empfohleneNachteile;
+        /// <summary>
+        ///  Nicht geeignere Vorteile für eine Rasse. Kann optisch bei der Generierung in der GUI
+        ///  als rot hervorgehoben werden. Sollte bindend sein.
+        /// </summary>
+        public ungeeigneteVorteile ungeeigneteVorteile;
+        /// <summary>
+        ///  Nicht geeignere Nachteile für eine Rasse. Kann optisch bei der Generierung in der GUI
+        ///  als rot hervorgehoben werden. Sollte bindend sein.
+        /// </summary>
+        public ungeeigneteNachteile ungeeigneteNachteile;
+        /// <summary>
+        /// Übliche Kulturen für eine Rasse. Kann optisch bei der Generierung in der GUI als grün
+        /// hervorgehoben werden. Ist nicht bindend.
         /// </summary>
         public List<string> ueblicheKulturen;
         /// <summary>
-        /// [Tom] Ebenfalls: Liste statt Array. Dann können wir die Liste auch ganz ohne Indizierung füllen (siehe unten)
+        /// Unübliche Kulturen für eine Rasse. Kann optisch bei der Generierung in der GUI als
+        /// gelb hervorgehoben werden. Ist nicht bindend, sollte aber nur in Absprache mit dem
+        /// Meister verwendet werden.
         /// </summary>
         public List<string> unueblicheKulturen;
         /// <summary>
-        /// Die Talentmodifikatoren dieser Rasse
+        /// Die Talentmodifikatoren dieser Rasse. Enthält sowohl den jeweiligen Talentnamen als
+        /// auch den Modifikator auf das Talent.
         /// </summary>
         public List<talentModifikatoren> talentModifikatoren;
 
         /// <summary>
-        /// [Tom] In dieser privaten Variablen speichern wir den Namen der Rasse. Der Zugriff ist nur über die Property möglich
+        /// Name der Rasse.
         /// </summary>
         private string name;
         /// <summary>
@@ -66,6 +122,10 @@ namespace rassenStruktur
                 {
                     switch (value)
                     {
+
+                        ///////////////////////////////////////
+                        // Mittelreichler
+                        ///////////////////////////////////////
                         case "Mittelreichler":
 
                             /////////////////////////////
@@ -76,13 +136,11 @@ namespace rassenStruktur
                             name = value;
                             generierungskosten = 0;
 
-                            haarfarbe.farben = new string[6];
-                            haarfarbe.farben[0] = "schwarz";
-                            haarfarbe.farben[1] = "braun";
-                            haarfarbe.farben[2] = "dunkelblond";
-                            haarfarbe.farben[3] = "blond";
-                            haarfarbe.farben[4] = "weißblond";
-                            haarfarbe.farben[5] = "rot";
+                            haarfarbe.farben = new List<string>()
+                            {
+                                "schwarz","braun", "dunkelblond", "blond",
+                                "weißblond", "rot"
+                            };
 
                             haarfarbe.werte = new int[6, 2];
                             haarfarbe.werte[0, 0] = 1;
@@ -98,13 +156,11 @@ namespace rassenStruktur
                             haarfarbe.werte[5, 0] = 19;
                             haarfarbe.werte[5, 1] = 20;
 
-                            augenfarbe.farben = new string[6];
-                            augenfarbe.farben[0] = "dunkelbraun";
-                            augenfarbe.farben[1] = "braun";
-                            augenfarbe.farben[2] = "grün";
-                            augenfarbe.farben[3] = "blau";
-                            augenfarbe.farben[4] = "grau";
-                            augenfarbe.farben[5] = "schwarz";
+                            augenfarbe.farben = new List<string>()
+                            {
+                                "dunkelbraun", "braun", "grün", 
+                                "blau", "grau", "schwarz"
+                            };
 
                             augenfarbe.werte = new int[6, 2];
                             augenfarbe.werte[0, 0] = 1;
@@ -129,35 +185,75 @@ namespace rassenStruktur
 
                             gewichtsabzug = 100;
 
-                            eigenschaftsModifikationen = new eigenschaftsModifikationen[1];
-                            eigenschaftsModifikationen[0].name = "";
-                            eigenschaftsModifikationen[0].modifikator = 0;
+                            eigenschaftsModifikationen.name = new List<string>()
+                            {
+                                ""
+                            };
+                            eigenschaftsModifikationen.modifikator = new List<int>()
+                            {
+                                0
+                            };
 
                             leModifikator = 10;
                             auModifikator = 10;
                             mrModifikator = -4;
 
-                            ungeeigneteVorteile = new string[1];
-                            ungeeigneteVorteile[0] = "Herausragende Balance";
-                            ungeeigneteNachteile = new string[1];
-                            ungeeigneteNachteile[0] = "Nahrungsrestriktion";
+                            automatischeVorteile.name = new List<string>()
+                            {
+                                ""
+                            };
+                            automatischeVorteile.wert = new List<int>()
+                            {
+                                0
+                            };
 
-                            //[Tom]: Listenbefüllung Variante 1:
-                            // Wir füllen die Liste mittels der add-Methods der Klasse List
-                            ueblicheKulturen = new List<string>();
-                            ueblicheKulturen.Add("Mittelländische Städte");
-                            ueblicheKulturen.Add("Mittelländische Landbevölkerung");
-                            ueblicheKulturen.Add("Andergast und Nostria");
-                            ueblicheKulturen.Add("Bornland");
-                            ueblicheKulturen.Add("Svelttal");
-                            ueblicheKulturen.Add( "Almada");
-                            ueblicheKulturen.Add("Horasreich");
-                            ueblicheKulturen.Add("Zyklopeninseln");
-                            ueblicheKulturen.Add("Maraskan");
-                            ueblicheKulturen.Add("Südaventurien");
-                            ueblicheKulturen.Add("Bukanier");
 
-                            //[Tom]: Listenbefüllung Variante 2:
+                            empfohleneVorteile.name = new List<string>()
+                            {
+                                ""
+                            };
+                            empfohleneVorteile.wert = new List<int>()
+                            {
+                                0
+                            };
+                            empfohleneNachteile.name = new List<string>()
+                            {
+                                ""
+                            };
+                            empfohleneNachteile.wert = new List<int>()
+                            {
+                                0
+                            };
+
+
+                            ungeeigneteVorteile.name = new List<string>()
+                            {
+                                "Herausragende Balance"
+                            };
+                            ungeeigneteVorteile.wert = new List<int>()
+                            {
+                                0
+                            };
+                            ungeeigneteNachteile.name = new List<string>()
+                            {
+                                "Nahrungsrestriktion"
+                            };
+                            ungeeigneteNachteile.wert = new List<int>()
+                            {
+                                0
+                            };
+
+                           
+                            ueblicheKulturen = new List<string>()
+                            {
+                                "Mittelländische Städte", "Mittelländische Landbevölkerung", "Andergast und Nostria",
+                                "Bornland", "Svelttal", "Almada", "Horasreich", "Zyklopeninseln",
+                                "Maraskan", "Südaventurien", "Bukanier"
+                            };
+                            // [Tom]: oder auch so:
+                            // ueblicheKulturen.Add("Bukanier");
+
+                            //[Tom]: Listenbefüllung:
                             // Wir füllen die Liste mittels eines sogenannten Collection Initializers
                             // siehe http://www.developer.com/net/csharp/article.php/3607421/New-in-C-30-Create-and-Initialize-Collection-Objects-in-One-Step.htm
                             unueblicheKulturen = new List<string> 
@@ -173,6 +269,15 @@ namespace rassenStruktur
                             };
 
                             break;
+
+
+
+                        ///////////////////////////////////////
+                        // Tulamiden
+                        ///////////////////////////////////////
+
+
+
                         default:
                             throw new System.ArgumentOutOfRangeException();
                     }
@@ -193,39 +298,177 @@ namespace rassenStruktur
     //  Substrukturen der Rassen-Struktur. TODO: Auräumen!
     //////////////////////////////////////
 
+    /// <summary>
+    /// Substruktur für die automatischen Vorteile durch eine Rasse
+    /// </summary>
+    public struct automatischeVorteile
+    {       
+       /// <summary>
+       /// Ich habe den Namen des Vorteils
+       /// </summary>
+        public List<string> name;
+        /// <summary>
+        /// Und ggfs. einen Wert des Vorteils (z.B. Raumangst 4 => "4")
+        /// </summary>
+        public List<int> wert;
+    }
+
+    /// <summary>
+    /// Substruktur für die automatischen Nachteile durch eine Rasse
+    /// </summary>
+    public struct automatischeNachteile
+    {
+        /// <summary>
+        /// Ich habe den Namen des Nachteile
+        /// </summary>
+        public List<string> name;
+        /// <summary>
+        /// Und ggfs. einen Wert des Nachteile (z.B. Raumangst 4 => "4")
+        /// </summary>
+        public List<int> wert;
+    }
 
 
+
+    /// <summary>
+    /// Substruktur für die empfohlenen Vorteile durch eine Rasse
+    /// </summary>
+    public struct empfohleneVorteile
+    {
+        /// <summary>
+        /// Ich habe den Namen des Vorteils
+        /// </summary>
+        public List<string> name;
+        /// <summary>
+        /// Und ggfs. einen Wert des Vorteils (z.B. Raumangst 4 => "4")
+        /// </summary>
+        public List<int> wert;
+    }
+
+    /// <summary>
+    /// Substruktur für die empfohlenen Nachteile durch eine Rasse
+    /// </summary>
+    public struct empfohleneNachteile
+    {
+        /// <summary>
+        /// Ich habe den Namen des Nachteile
+        /// </summary>
+        public List<string> name;
+        /// <summary>
+        /// Und ggfs. einen Wert des Nachteile (z.B. Raumangst 4 => "4")
+        /// </summary>
+        public List<int> wert;
+    }
+
+
+
+    /// <summary>
+    /// Substruktur für die ungeeigneten Vorteile durch eine Rasse
+    /// </summary>
+    public struct ungeeigneteVorteile
+    {
+        /// <summary>
+        /// Ich habe den Namen des Vorteils
+        /// </summary>
+        public List<string> name;
+        /// <summary>
+        /// Und ggfs. einen Wert des Vorteils (z.B. Raumangst 4 => "4")
+        /// </summary>
+        public List<int> wert;
+    }
+
+    /// <summary>
+    /// Substruktur für die ungeeigneten Nachteile durch eine Rasse
+    /// </summary>
+    public struct ungeeigneteNachteile
+    {
+        /// <summary>
+        /// Ich habe den Namen des Nachteile
+        /// </summary>
+        public List<string> name;
+        /// <summary>
+        /// Und ggfs. einen Wert des Nachteile (z.B. Raumangst 4 => "4")
+        /// </summary>
+        public List<int> wert;
+    }
+
+
+
+
+
+    /// <summary>
+    /// Substruktur für die Talentmodifikatoren:
+    /// </summary>
     public struct talentModifikatoren
     {
-        // Ich brauche die Namen der Talente:
+        /// <summary>
+        /// Ich brauche den Namen des jeweiligen Talents
+        /// </summary>
         public string name;
-        // und den Modifikator:
+        /// <summary>
+        /// Und ich brauche den Modifiaktor auf das jeweilige Talent:
+        /// </summary>
         public int modifikator;
     }
 
+
+    /// <summary>
+    /// Eigenschaftsmodifikatoren durch eine Rasse
+    /// </summary>
     public struct eigenschaftsModifikationen
     {
-        // Ich brauche den Namen der Eigenschaft:
-        public string name;
-        // Und den Modifikator:
-        public int modifikator;
+        /// <summary>
+        /// Ich brauche den Namen einer Eigenschaft:
+        /// </summary>
+        public List<string> name;
+        /// <summary>
+        /// Und den Modifikator:
+        /// </summary>
+        public List<int> modifikator;
     }
 
+    /// <summary>
+    /// Bestimmt die Körpergrößen-Attribute in Abhängigkeit von der Rasse
+    /// </summary>
     public struct koerpergroesse
     {
+        /// <summary>
+        /// Die Basisgröße in Schritt
+        /// </summary>
         public double basisgroesse;
+        /// <summary>
+        /// Bestimmt mir den Würfel, den ich nutzen muss, um die Größe zu errechnen.
+        /// </summary>
         public int[] wuerfel;
     }
 
+    /// <summary>
+    /// Bestimmt die Haar-Farben-Attribute eines Helden in Abhängigkeit von der Rasse
+    /// </summary>
     public struct haarfarbe
     {
-        public string[] farben;
+        /// <summary>
+        /// Eine Auflistung aller möglichen Farben
+        /// </summary>
+        public List<string> farben;
+        /// <summary>
+        /// Die jeweiligen W-Keiten auf einem W20 für das Auftreten der jewiligen Farbe
+        /// </summary>
         public int[,] werte;
     }
 
+    /// <summary>
+    /// Bestimmt die Augen-Farben-Attribute eines Helden in Abhängigkeit von der Rasse
+    /// </summary>
     public struct augenfarbe
     {
-        public string[] farben;
+        /// <summary>
+        /// Eine Auflistung aller möglichen Farben
+        /// </summary>
+        public List<string> farben;
+        /// <summary>
+        /// Die jeweiligen W-Keiten auf einem W20 für das Auftreten der jeweiligen Farbe
+        /// </summary>
         public int[,] werte;
     }
 

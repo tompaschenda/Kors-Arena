@@ -1,0 +1,6 @@
+C:\Users\Admin\Documents\Projekt\Repo\Ordner\HeldTestMat\HeldTestMat\bin\Debug\HeldTestMat.XML
+C:\Users\Admin\Documents\Projekt\Repo\Ordner\HeldTestMat\HeldTestMat\bin\Debug\HeldTestMat.exe
+C:\Users\Admin\Documents\Projekt\Repo\Ordner\HeldTestMat\HeldTestMat\bin\Debug\HeldTestMat.pdb
+C:\Users\Admin\Documents\Projekt\Repo\Ordner\HeldTestMat\HeldTestMat\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Projekt\Repo\Ordner\HeldTestMat\HeldTestMat\obj\Debug\HeldTestMat.exe
+C:\Users\Admin\Documents\Projekt\Repo\Ordner\HeldTestMat\HeldTestMat\obj\Debug\HeldTestMat.pdb

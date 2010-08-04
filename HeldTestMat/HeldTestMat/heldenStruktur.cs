@@ -16,23 +16,41 @@ namespace heldenStruktur
         //  Grundlegendes
         //////////////////////////////////////
 
-        // Wir definieren zunächst die Grundlegenden Eigenschaften
-        // eines Helden, die einen Helden definieren:
+        /// <summary>
+        /// Grundlegende Eigenschaften eines Helden:
+        /// </summary>
         public string vorname, nachname, titel;
-        public string name; // Wird zusammen gesetzt aus "Vorname + Titel_ + Nachname"
-        public string geschlecht;   // männlich oder weiblich
+        /// <summary>
+        /// Der Name eines Helden. Wird zusammen gesetzt aus "Vorname + Titel_ + Nachname"
+        /// </summary>
+        public string name;
+        /// <summary>
+        /// Das Geschlecht eines Helden. Entweder männlich oder weiblich.
+        /// </summary>
+        public string geschlecht;
+        /// <summary>
+        /// Gibt an, wie viele AP ein Held bereits ausgegeben hat, bzw. wie viele AP
+        /// ein Held noch ausgeben kann.
+        /// </summary>
         public int apAusgegeben, apUebrig;
 
-        // Jeder Held ist von einer bestimmten Art (nicht zu verwechseln mit der Rasse)
-        // Folgende Arten gibt es:
-        // - Mensch (Elf, Zwerg, etc.)
-        // - Tier
-        // - Dämon
-        // - Elementar
+        /// <summary>
+        /// Jeder Held ist von einer bestimmten Art (nicht zu verwechseln mit der Rasse)
+        /// Folgende Arten gibt es:
+        /// - Mensch (Elf, Zwerg, etc.)
+        /// - Tier
+        /// - Dämon
+        /// - Elementar
+        /// </summary>
         public string art;
 
-        // Außerdem hat er oder sie einen Ort, andem er/sie sich aufhält, sowie eine position:
+        /// <summary>
+        /// Jeder Held hat einen Ort, an dem er/sie sich aufhält (x, y, z): 
+        /// </summary>
         public koordinaten ort;
+        /// <summary>
+        /// Jeder Held hat eine Position, in der er sich befindet (stehend, liegend, etc.)
+        /// </summary>
         public string position;
 
 
@@ -40,20 +58,27 @@ namespace heldenStruktur
         //  Rasse
         //////////////////////////////////////
 
-        // Jeder Held verfügt über GENAU eine Rasse.
-        // Wir legen die Rasse hier zunächst auf "Mittelreichler" fest.
-        //  Die Rasse kann Auswirkungen auf die abgeleiteten Grundwerte, etc. haben!
+
+        /// <summary>
+        /// Jeder Held verfügt über GENAU eine Rasse.
+        /// Wir legen die Rasse hier zunächst auf "Mittelreichler" fest.
+        /// Die Rasse kann Auswirkungen auf die abgeleiteten Grundwerte, etc. haben!
+        /// </summary>
         public rassenStruct rasse;
 
-
-        // Jeder Held verfügt über eine Größe - wir gehen hier davon aus, dass ein
-        // Held immer ein Mensch / Zwerg / Elf (etc.) ist und somit "menschengroß" ist.
-        // Nach dem DSA-Vokabular ist er damit in der Kategorie "mittel" einzuordnen.
-        // Allgemein muss diese Größenkategorie durch die Art und die Rasse bestimmt werden.
+        /// <summary>
+        /// Jeder Held verfügt über eine Größe - wir gehen hier davon aus, dass ein
+        /// Held immer ein Mensch / Zwerg / Elf (etc.) ist und somit "menschengroß" ist.
+        /// Nach dem DSA-Vokabular ist er damit in der Kategorie "mittel" einzuordnen.
+        /// Allgemein muss diese Größenkategorie durch die Art und die Rasse bestimmt werden.
+        /// </summary>
         public string groessenkategorie;
 
-        // Jeder Held hat eine Größe in Schritt und ein Gewicht in Stein:
-        // Der genaue Wert ist von der Rasse des Helden abhängig.
+
+        /// <summary>
+        /// Jeder Held hat eine Größe in Schritt und ein Gewicht in Stein:
+        /// Der genaue Wert ist von der Rasse des Helden abhängig.
+        /// </summary>
         public double koerpergroesse, gewicht;
         private double berechneKoerpergroesse()
         {
@@ -69,9 +94,9 @@ namespace heldenStruktur
             return gewicht;
         }
 
-
-        // Nun fehlen noch die Augen- und die Haarfarbe, die beide ebenfalls von der Rasse
-        // abhängig sind:
+        /// <summary>
+        /// Augenfarbe und Haarfarbe des Helden. Hängen beide von der Rasse des Helden ab.
+        /// </summary>
         public string augenfarbe, haarfarbe;
         private string berechneAugenfarbe()
         {
@@ -103,9 +128,18 @@ namespace heldenStruktur
         }
 
 
-        // Hier definieren wir die Koordinaten, an denen sich ein Held aufhalten kann in einer Unterstruktur:
+        /// <summary>
+        /// Hier definieren wir die Koordinaten, an denen sich ein Held aufhalten kann in einer Unterstruktur: 
+        /// </summary>
         public struct koordinaten
         {
+            /// <summary>
+            /// Die drei Koordinatendimensionen x, y und z. Wenn wir von oben auf ein
+            /// Grid schauen, dann ist x die von links nach rechts (horizontal) verlaufende
+            /// Komponente.
+            /// y ist die Komponente, die von unten nach oben (vertikal) verläuft.
+            /// z ist die Höhenkomponente, die von der Fläche aus der Fläche heraus verläuft.
+            /// </summary>
             public int xKoord, yKoord, zKoord;
         }
 

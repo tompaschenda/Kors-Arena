@@ -2,15 +2,21 @@
 
 namespace wuerfelKlasse
 {
-
+    /// <summary>
+    /// Klasse, die alle benötigten Würfel-Kombinatinen definiert und
+    /// geeignete Methoden bereit stellt.
+    /// </summary>
     public class wuerfel
     {
 
-
-        // Würfelt eine beliebige Kombinatin aus x * Wy + z.
-        // ACHTUNG: An dieser Stelle werden Zufallszahlen benötigt.
-        // Der Seed wird hier NICHT von Hand initialisiert!
-        // Negative Ergebnisse sind an dieser Stelle möglich, wenn z negativ ist!
+        /// <summary>
+        /// Würfelt eine beliebige Kombinatin aus x * Wy + z.
+        /// ACHTUNG: An dieser Stelle werden Zufallszahlen benötigt.
+        /// Der Seed wird hier NICHT von Hand initialisiert!
+        /// Negative Ergebnisse sind an dieser Stelle möglich, wenn z negativ ist!
+        /// </summary>
+        /// <param name="wuerfelVek"></param>
+        /// <returns></returns>
         public int wuerfelWurf(int[] wuerfelVek)
         {
             int anzahlWuerfel = wuerfelVek[0];
