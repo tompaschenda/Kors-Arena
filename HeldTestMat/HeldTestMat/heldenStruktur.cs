@@ -103,13 +103,8 @@ namespace heldenStruktur
             // Holen wir uns einen Würfel:
             wuerfel meinWuerfel = new wuerfel();
             int ergebnis = meinWuerfel.wuerfelWurf(new int[] { 1, 20, 0 });
-            for (int i = 0; i < rasse.augenfarbe.werte.GetLength(0); i++)
-            {
-                if (ergebnis >= rasse.augenfarbe.werte[i, 0] && ergebnis <= rasse.augenfarbe.werte[i, 1])
-                {
-                    augenfarbe = rasse.augenfarbe.farben[i];
-                }
-            }
+            // Wert aus der Map auslesen:
+            augenfarbe = rasse.augenfarbe.getValue(ergebnis);
             return augenfarbe;
         }
         private string berechneHaarfarbe()
@@ -117,13 +112,8 @@ namespace heldenStruktur
             // Holen wir uns einen Würfel:
             wuerfel meinWuerfel = new wuerfel();
             int ergebnis = meinWuerfel.wuerfelWurf(new int[] { 1, 20, 0 });
-            for (int i = 0; i < rasse.haarfarbe.werte.GetLength(0); i++)
-            {
-                if (ergebnis >= rasse.haarfarbe.werte[i, 0] && ergebnis <= rasse.haarfarbe.werte[i, 1])
-                {
-                    haarfarbe = rasse.haarfarbe.farben[i];
-                }
-            }
+
+            haarfarbe = rasse.haarfarbe.getValue(ergebnis);
             return haarfarbe;
         }
 
@@ -171,6 +161,7 @@ namespace heldenStruktur
             ort.zKoord = 0;
             //[Tom] Hier benutzen wir jetzt die Property für den Rassennamen
             rasse.Name="Mittelreichler";
+            // TODO: Wähle Subrasse, falls möglich!
             berechneKoerpergroesse();
             berechneGewicht();
             berechneHaarfarbe();

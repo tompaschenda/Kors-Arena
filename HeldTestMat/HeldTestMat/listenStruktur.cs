@@ -113,7 +113,7 @@ namespace listenStruktur
                 // Auelfische Sippe:
                 "Hoher Norden",
                 // Elfische Siedlung:
-                "Südliche Mittellande", "Großstadt", "Firnelfisch beeinflusste Siedlung", "Weldelfisch beeinflusste Siedlung",
+                "Südliche Mittellande", "Großstadt", "Firnelfisch beeinflusste Siedlung", "Waldelfisch beeinflusste Siedlung",
                 // Firnelfische Sippe:
                 "Küste und Inseln",
                 // Orkland:

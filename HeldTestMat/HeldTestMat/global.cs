@@ -1,27 +1,46 @@
 ﻿using System.Collections.Generic;
 /// <summary>
-/// Unser tolles struct.
+/// Struktur eines Name-Werte-Paares:
 /// </summary>
 public struct NameWertPaar
 {
+    /// <summary>
+    /// Name des Name-Werte-Paares
+    /// </summary>
     public string name;
+    /// <summary>
+    /// Wert des Name-Werte-Paares
+    /// </summary>
     public int wert;
+    /// <summary>
+    /// To String-Methode überstreiben für eine vernünftige Anzeige:
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
         return base.ToString();
     }
-    public List<List<int>> myMatrix;
-    public void foo()
-    {
-        myMatrix[0][0] = 5;
-    }
 }
 
+/// <summary>
+/// Erlaubt die Angabe einer Range, also eines Intervalls zwischen zwei Zahlen.
+/// </summary>
 public struct Range
 {
+    /// <summary>
+    /// Untere Grenze des Intervals (der Range)
+    /// </summary>
     public int lower;
+    /// <summary>
+    /// Obere Grenze des Intervals (der Range)
+    /// </summary>
     public int upper;
 
+    /// <summary>
+    /// Das Interval (die Range):
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="p_2"></param>
     public Range(int p, int p_2)
     {
         this.lower = p;
