@@ -62,17 +62,16 @@ public struct Range
 
 public class RangeMap<T> : Dictionary<Range, T>
 {
-    private Dictionary<Range, T> map;
     public T getValue(int result)
     {
-        foreach (Range r in map.Keys)
+        foreach (Range r in this.Keys)
         {
             if (r.contains(result))
             {
-                return map[r];
+                return this[r];
             }
         }
-        throw new System.ArgumentOutOfRangeException();
+        throw new System.ArgumentOutOfRangeException("result", result, "Für den übergebenen Wert ist kein Bereich in der Range Map vorhanden.");
     }
     /*
     public void Add(Range r, T value)
