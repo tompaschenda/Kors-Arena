@@ -2,6 +2,7 @@
 using wuerfelKlasse;
 using System.Text;
 using System.Reflection;
+using kulturenStruktur;
 
 namespace heldenStruktur
 {
@@ -138,6 +139,11 @@ namespace heldenStruktur
             name = (vorname + " " + titel + nachname);
             return true;
         }
+
+        /// <summary>
+        /// Jeder Held verfügt über genau EINE Kultur
+        /// </summary>
+        public kulturenStruct kultur;
 
         
         /// <summary>

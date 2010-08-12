@@ -23,6 +23,38 @@ public struct NameWertPaar
 }
 
 /// <summary>
+/// Struktur, in der sowohl ein Zauber als auch seine Spezialisierung angegeben werden können.
+/// Beispiel: Elementarbann; Eis
+/// </summary>
+public struct ZauberSpezPaar
+{
+    /// <summary>
+    /// Name des Zaubers
+    /// </summary>
+    public string nameZauber;
+    /// <summary>
+    /// Name der Spezialisierung des Zaubers. Wenn es keine Spezialisierung gibt, sollte es "keine" sein.
+    /// </summary>
+    public string nameZaberspezialisierung;
+}
+
+/// <summary>
+/// Struktur, die zwei Ints enthält, die Minimum und Maximum eines Intervals beschreiben.
+/// </summary>
+public struct minMaxPaar
+{
+    /// <summary>
+    /// Minimaler Wert
+    /// </summary>
+    public int min;
+    /// <summary>
+    /// Maximaler Wert
+    /// </summary>
+    public int max;
+}
+
+
+/// <summary>
 /// Erlaubt die Angabe einer Range, also eines Intervalls zwischen zwei Zahlen.
 /// </summary>
 public struct Range
