@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using listenStruktur;
+using Common;
 
 namespace professionenStruktur
 {
@@ -64,7 +65,7 @@ namespace professionenStruktur
         /// nicht überschritten werden darf! Ein Held, der durch die Rasse ein SO-Maximum von 3 hat, kann z.B. kein
         /// "Fähnrich" werden.
         /// </summary>
-        public minMaxPaar soInterval;
+        public Range soInterval;
 
         /// <summary>
         /// Eine Liste der für die Profession üblichen Kulturen. Nicht bindend, aber sollte eingehalten werden.
@@ -187,7 +188,7 @@ namespace professionenStruktur
                             };
                             leModifikator = 1;
                             auModifikator = 3;
-                            soInterval = new minMaxPaar(){ min = 5, max = 10};
+                            soInterval = new Range(){ lower = 5, upper = 10};
                             automatischeVorteile = new List<NameWertPaar>()
                             {
                                 new NameWertPaar () {name = "Akademische Ausbildung", wert = 0},

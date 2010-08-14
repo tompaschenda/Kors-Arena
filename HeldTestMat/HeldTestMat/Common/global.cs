@@ -66,22 +66,6 @@ namespace Common
     }
 
     /// <summary>
-    /// Struktur, die zwei Ints enthält, die Minimum und Maximum eines Intervals beschreiben.
-    /// </summary>
-    public struct minMaxPaar
-    {
-        /// <summary>
-        /// Minimaler Wert
-        /// </summary>
-        public int min;
-        /// <summary>
-        /// Maximaler Wert
-        /// </summary>
-        public int max;
-    }
-
-
-    /// <summary>
     /// Erlaubt die Angabe einer Range, also eines Intervalls zwischen zwei Zahlen.
     /// </summary>
     [Serializable]

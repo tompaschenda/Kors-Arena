@@ -69,7 +69,6 @@
     <Compile Include="professionenStruktur.cs" />
     <Compile Include="sonderfertigkeitenStruktur.cs" />
     <Compile Include="kulturenStruktur.cs" />
-    <Compile Include="global.cs" />
     <Compile Include="listenStruktur.cs" />
     <Compile Include="heldenStruktur.cs" />
     <Compile Include="talentStruktur.cs" />
