@@ -1,0 +1,2120 @@
+///////////////////////////////
+Professionstypen:
+////////////////////////////////
+kämpferisch
+reisend und Wildnis
+gesellschaftlich
+handwerklich und Wissen
+magisch
+geweiht
+
+///////////////////////////////
+Talenttypen:
+////////////////////////////////
+körperlich
+gesellschaftlich
+Natur
+Wissen
+Handwerk
+Berufsfertigkeiten
+Gaben
+Metatalente
+
+///////////////////////////////
+Zauberrepräsentationen:
+////////////////////////////////
+druidisch
+elfisch
+geodisch
+hexisch
+kristallomantisch
+gildenmagisch
+scharlatanisch
+schelmisch
+
+
+///////////////////////////////
+Zaubermerkmale:
+////////////////////////////////
+Antimagie
+Beschwörung
+Dämonisch
+	allgemein
+	einzelne Dämonen
+Eigenschaften
+Einfluss
+Elementar
+	allgemein
+	Eis
+	Erz
+	Feuer
+	Humus
+	Luft
+	Wasser
+Form
+Geisterwesen
+Heilung
+Hellsicht
+Herbeirufung
+Herrschaft
+Illusion
+Kraft
+Limbus
+Metamagie
+Objekt
+Schaden
+Telekinese
+Temporal
+Umwelt
+Verständigung
+
+
+///////////////////////////////
+Zaubersprüche:
+////////////////////////////////
+Abveneum reine Speise
+Accuratum Zaubernadel
+Adamantium Erzstruktur
+Adlerauge Luchsenohr
+Adlerschwinge Wolfsgestalt
+Aeolitus Windgebraus
+Aerofugo Vakuum
+Aerogelo Atemqual
+Alpgestalt 
+Analys Arkanstruktur
+Ängste Lindern
+Animatio stummer Diener
+Applicatus Zauberspeicher
+Arachnea Krabbeltier
+Arcanovi Artefakt
+Armatrutz
+Atemnot
+Attributo
+	je nach Eigenschaft
+Aufgeblasen Abgehoben
+Auge des Limbus
+Aureolus Güldenglanz
+Auris Naus Oculus
+Axxeleratus Blitzgeschwind
+
+Balsam Salabunde
+Band und Fessel
+Bannbaladin
+Bärenruhe Winterschlaf
+Beherrschung brechen
+Beschwörung vereiteln
+Bewegung stören
+Blendwerk
+Blick aufs Wesen
+Blick durch fremde Augen
+Blick in die Gedanken
+Blick in die Vergangenheit
+Blitz dich find
+Böser Blick
+Brenne, toter Stoff!
+
+Caldofrigo heiß und kalt
+Chamaelioni Mimikry
+Chimaeroform Hybridgestalt
+Chronoklassis Urfossil
+Chrononautos Zeitenfahrt
+Claudibus Clavistibor
+Corpofesso Gliederschmerz
+Corpfrigo Kälteschock
+Cryptographo Zauberschrift
+Custodosigil Diebesbann
+
+Dämonenbann
+Delicioso Gaumenschmaus
+Desintegraturs Pulverstaub
+Destructibo Arcanitas
+Dichter und Denker
+Dschinnenruf
+Dunkelheit
+Duplicatus Doppelbild
+
+Ecliptifactus Schattenkraft
+Eigenschaft wiederherstellen
+Eigene Ängste quälen dich!
+Einfluss bannen
+Eins mit der Natur
+Eisenrost und Patina
+Eiseskälte Kämpferherz
+Elementarbann
+	Element!
+Elementarer Diener
+	Element!
+Elfenstimme Flötenton
+Erinnerung verlasse dich!
+Exposami Lebenskraft
+
+Falkenauge Meisterschuss
+Favilludo Funkentanz
+Firnlauf
+Flim Flam Funkel
+Fluch der Pestilenz
+Foramen Foraminor
+Fortifex arkane Wand
+Fulminictus Donnerkeil
+
+Gardianum Zauberschild
+Gedankenbilder Elfenruf
+Gefäß der Jahre
+Gefunden!
+Geisterbann
+Geisterruf
+Granit und Marmor
+Große Gier
+Große Verwirrung
+Halluzination
+Harmlose Gestalt
+Hartes schmelze!
+Haselbusch und Ginsterkraut
+Heilkraft bannen
+Hellsicht trüben
+Herbeirufung vereiteln
+Herr über das Tierreich
+Herzschlag ruhe!
+Hexenblick
+Hexengalle
+Hexenholz
+Hexenknoten
+Hexenkrallen
+Hexenspeichel
+Hilfreiche Tatze, rettende Schwinge
+Höllenpein, zerreiße dich!
+Holterdipolter
+Horriphobus Schreckgestalt
+Ignifaxius Flammenstrahl
+Ignisphaero Feuerball
+Ignorantia Ungesehn
+Illusion auflösen
+Immortalis Lebenszeit
+Imperavi Handlungszwang
+Impersona Maskenbild
+Infinitum Immerdar
+Invercano Spiegeltrick
+Invocatio maior
+Invocatio minor
+Iribaars Hand
+Juckreiz, dämlicher!
+Karnifilo Raserei
+Katzenaugen
+Klarum Purum
+Klickeradomms
+Koboldgeschenk
+Koboldovision
+Komm Kobold Komm
+Körperlose Reise
+Krabbelnder Schrecken
+Kraft des Erzes
+Krähenruf
+Krötensprung
+Kulminatio Kugelblitz
+Kusch!
+Lach dich gesund
+Lachkrampf
+Langer Lulatsch
+Last des Alters
+Leib der Erde
+Leib der Wogen
+Leib des Eises
+Leib des Erzes
+Leib des Feuers
+Leib des Windes
+Leidensbund
+Levthans Feuer
+Limbus versiegeln
+Lockruf und Feenfüße
+Lunge des Leviatan
+Madas Spiegel
+Magischer Raub
+Mahlstrom
+Manifesto Element
+Meister der Elemente
+Meister minderer Geister
+Memorabia Falsifir
+Memorans Gedächtniskraft
+Menetekel Flammenschrift
+Metamagie neutralisieren
+Metamorpho Gletscherform
+Motoricus
+Movimento Dauerlauf
+Murks und Patz
+Nackedei
+Nebelleib
+Nebelwand und Morgendunst
+Nekropathia Seelenreise
+Nihilogravo Schwerelos
+Nuntiovolo Botenvogel
+Objecto Obscuro
+Objectofixo
+Objectovoco
+Objekt entzaubern
+Oculus Astralis
+Odem Arcanum
+Pandaemonium
+Panik überkomme euch!
+Papperlapapp
+Paralysis starr wie Stein
+Pectetondo Zauberhaar
+Penetrizzel Tiefenblick
+Pentagramma Sphärenbann
+Pestilenz erspüren
+Pfeil des
+	Elements
+Planastrale Anderwelt
+Plumbumbarum schwerer Arm
+Projektomago Ebenbild
+Protectionis Kontrabann
+Psychostabilis
+Radau
+Reflectimago Spiegelschein
+Reptilea Natternnest
+Respondami Wahrheitszwang
+Reversalis Revidum
+Ruhe Körper, ruhe Geist
+Salander Mutander
+Sanftmut
+Sapefacta Zauberschwamm
+Satuarias Herrlichkeit
+Schabernack
+Schadenszauber bannen
+Schelmenkleister
+Schelmenlaune
+Schelmenmaske
+Schelmenrausch
+Schleier der Unwissenheit
+Schwarz und Rot
+Schwarzer Schrecken
+Seelentier erkennen
+Seelenwanderung
+Seidenweich Schuppengleich
+Seidenzunge Elfenwort
+Sensattacco Meisterstreich
+Sensibar Empathicus
+Serpentialis Schlangenleib
+Silentium
+Sinesigil unerkannt
+Skelettarius
+Solidirid Weg aus Licht
+Somnigravis tiefer Schlaf
+Spinnenlauf
+Spurlos Trittlos
+Standfest Katzengleich
+Staub wandle!
+Stein wandle!
+Stillstand
+Sumus Elixiere
+Tauschrausch
+Tempus Stasis
+Tiere besprechen
+Tiergedanken
+Tlalucs Odem Pestgestank
+Totes handle!
+Transformatio Formgestalt
+Transmutare Körperform
+Transversalis Teleport
+Traumgestalt
+Uberührt von Satinav
+Unitatio Geistesbund
+Unsichtbarer Jäger
+Veränderung aufheben
+Verschwindibus
+Veständigung stören
+Verwandlung beenden
+Vipernblick
+Visibili Vanitar
+Vocolimbo hohler Klang
+Vogelzwitschern Glockenspiel
+Wand aus Dornen
+Warmes Blut
+Wasseratem
+Weiches erstarre!
+Weihrauchwolke Wohlgeruch
+Weisheit der Bäume
+Weiße Mähn und goldener Huf
+Wellenlauf
+Wettermeisterschaft
+Widerwille Ungemach
+Windhose
+Windstille
+Wipfellauf
+Xenographus Schriftenkunde
+Zagibu Ubigaz
+Zappenduster
+Zaubernahrung Hungerbann
+Zauberwesen der Natur
+Zauberzwang
+Zorn der Elemente
+Zunge lähmen
+Zwingtanz
+
+
+
+///////////////////////////////
+Eigenschaften:
+////////////////////////////////
+Mut
+Klugheit
+Intuition
+Charisma
+Fingerfertigkeit
+Gewandtheit
+Körperkraft
+Konstitution
+Sozialstatus
+
+
+///////////////////////////////
+Abgeleitete Grundwerte:
+////////////////////////////////
+Geschwindigkeit
+Attacke Basiswert
+Parade Basiswert
+Ausweichen Basiswert
+Lebensenergie Basiswert
+Ausdauer Basiswert
+ASP Basiswert
+Magieresistenz
+Initiative Basiswert
+
+
+///////////////////////////////
+Rassen & Subrassen:
+////////////////////////////////
+Subrasse "keine" ist immer möglich!
+
+
+Mittelländer
+
+Tulamide
+
+Thorwaler
+	Fjarninger
+	Gjalskerländer
+	
+
+Nivese
+
+Norbarde
+
+Trollzacker
+	Rochshaz
+
+Waldmensch
+	Tocamuyac
+
+Utulu
+
+Elf
+	Auelf
+	Waldelf
+	Firnelf
+	
+
+Halbelf
+	Halbelf firnelfischer Abstammung
+	Halbelf nivesischer Abstammung
+	Halbelf thorwalscher Abstammung
+
+Zwerg
+	Brilliantzwerg
+	Ambosszwerg
+	Wilder Zwerg	
+
+Ork
+	Orkfrau (automatisch, wenn weiblich!)
+
+Halbork
+
+Goblin
+	Goblinfrau (automatisch, wenn weiblich!)
+
+Achaz
+	Orkland-Achaz
+	Waldinsel-Achaz
+	Maraskan-Achaz
+	
+	
+	
+	
+	
+///////////////////////////////
+Kulturen und Subkulturen
+////////////////////////////////
+Subkultur "keine" ist (fast) immer möglich!
+
+Mittelländische Städte
+	Hafenstädte und Städte an großen Flüssen
+	Städte mit wichtigem Tempel/Pilgerstätte
+	Siedlerstädte des Nordens
+	Städtischer Adel
+	Kannemünde / Mhanerhaven
+	Flüchtlinge aus borbaradianisch besetzten Städten
+	Maraskanische Exilanten
+	
+	
+Mittelländische Landbevölkerung
+	Künstengebiete oder an großen Flüssen
+	An einer wichtigen Handelsroute/Reichsstraße
+	Regionen Weiden und Greifenfurt
+	Gebirge
+	Fern der Zivilisation
+	Landadel
+	Jilaskan
+	Borbaradianisch besetzte Gebiete
+	
+	
+Andergast und Nostria
+	Stadt
+	Landadel
+	Gebirge
+	Küstengebiete
+	Teshkalien
+	
+Bornland
+	Landstädte
+	Küstengebiete
+	Landadel
+	
+Svellttal und Nordlande	
+	Stadt
+	Kleinstädte
+	Küstengebiete oder an großen Flüssen
+	Fern der Zivilisation
+	Flüchtlinge aus Glorania
+	
+Almada
+	Städte am Yaquir
+	Orte mit wichtigem Tempel/Pilgerstätte
+	Städtischer Adel
+	An einer wichtigen Handelsroute
+	Gebirge
+	Landadel
+	
+Horasreich	
+	Hafenstädte und Städte an großen Flüssen
+	Städte mit wichtigem Tempel/Pilgerstätte
+	Städtischer Adel
+	Dörfer an der Küste oder an großen Flüssen
+	An einer wichtigen Handelsroute
+	Fernab der Zivilisation
+	Landadel
+	
+Zyklopeninseln	
+	Landadel
+	
+Amazonenburg
+
+Aranien
+	Stadt
+	Küstengebiete oder am Barun-Ulah
+	Adel
+	
+Mhanadistan
+	An wichtigen Handelsrouten
+	Fernab der Zivilisatio
+	Küstengebiete oder an großen Flüssen
+	Tulamidische Nomadenstämme
+	
+Tulamidische Stadtstaaten
+	See- oder Mhanadihafen
+	Kasimiten
+	
+Novadi
+	Wüstenoase
+	
+Ferkina
+
+Zahori
+
+Thorwal
+	Binnenland
+
+Gjalskerland
+
+Fjarninger
+
+Dschungelstämme
+	Tschopukikuha
+	Bergstämme
+	Haipu
+	Darna
+	
+Verlorene Stämme
+	Shokubunga
+	Chirakha
+
+Waldinsel Utulus
+
+Miniwatu
+
+Tocamuyac
+
+Maraskan
+	Dschungel
+	Küstengebiete
+	Maraskanische Städte
+	
+Südaventurien
+	Südliche Stadtstaaten
+	Kolonialhäfen
+	Dschungeldorf/Plantage
+	Selem
+	Maraskanische Exilanten
+	
+Bukanier
+
+Nivesenstämme
+	Halbsesshafte Küstenstämme
+Nuanaä-Lie
+	Nauoke
+Norbardensippe
+
+Trollzacken
+
+Auelfische Sippe
+	Hoher Norden
+	
+Elfische Siedlung
+	Südliche Mittellande
+	Großstadt
+	Firnelfisch beeinflusste Siedlung
+	Waldelfisch beeinflusste Siedlung
+	
+Steppenelfische Sippe
+
+Waldelfische Sippe
+
+Firnelfische Sippe
+	Küste und Inseln
+
+Ambosszwerge
+
+Erzzwerge
+
+Hügelzwerge
+
+Brillantzwerge
+
+Brobim
+
+Orkland
+	Ergoch	(Kaste)
+		Korogai (Stamm)
+		Molokash (Stamm)
+		Olochtai (Stamm)
+		Orichai (Stamm)
+		Truanzhai (Stamm)
+		Tscharshai (Stamm)
+		Zholochai (Stamm)
+	Grishik	(Kaste)
+		Korogai (Stamm)
+		Molokash (Stamm)
+		Olochtai (Stamm)
+		Orichai (Stamm)
+		Truanzhai (Stamm)
+		Tscharshai (Stamm)
+		Zholochai (Stamm)
+	Drasdech	(Kaste)
+		Korogai (Stamm)
+		Molokash (Stamm)
+		Olochtai (Stamm)
+		Orichai (Stamm)
+		Truanzhai (Stamm)
+		Tscharshai (Stamm)
+		Zholochai (Stamm)
+	Khurkach	(Kaste)
+		Korogai (Stamm)
+		Molokash (Stamm)
+		Olochtai (Stamm)
+		Orichai (Stamm)
+		Truanzhai (Stamm)
+		Tscharshai (Stamm)
+		Zholochai (Stamm)
+	
+Yurach
+
+Svellttal Besatzer
+
+Goblinstamm
+	Ebene
+	Gebirge
+	Schneegoblins
+
+Goblinbande
+
+Festumer Ghetto
+
+Archaische Achaz
+
+Stammes-Achaz
+	Maraskan
+	Orkland
+	Echsensümpfe
+	Loch Harodrol
+	Waldinseln/Südaventurien
+
+
+	
+	
+///////////////////////////////
+Vorteile
+////////////////////////////////
+Adlig
+Adlige Abstammung
+Adliges Erbe
+Amtsadel
+Affinität zu
+	Geistern (je)
+	Elementaren (je)
+	Dämonen (je)
+Akademische Ausbildung
+	Gelehrter
+	Magier
+	Krieger
+Altersresistenz
+Astrale Regeneration
+	I
+	II
+	III
+Astralmacht (je)
+Ausdauernd (je)
+Ausdauernder Zauberer
+Ausrüstungsvorteil (je)
+Balance
+Begabung für
+	Merkmal
+	Ritual
+	Talent
+	Talentgruppe
+	Zauber
+Beidhändig
+Beseelte Knochenkeule (je)
+Besonderer Besitz
+Breitgefächerte Bildung
+Dämmerungssicht
+Eigeboren
+Eisenaffine Aura
+Eisern
+Empathie
+Entfernugssinn
+Ererbte Knochenkeule
+Feenfreund
+Feste Matrix
+Flink
+Gebildet (je)
+Gefahreninstinkt
+Geweiht
+	je nach Gottheit
+Glück
+Glück im Spiel
+Gut Aussehend
+Guter Ruf
+Guter Ruf (je)
+Gutes Gedächtnis
+Halbzauberer
+Herausragende Balance
+Herausragende Eigenschaft
+	je nach Eigenschaften
+Herausragender Sechster Sinn
+Herausragender Sinn
+	je nach Sinn
+Herausragendes Aussehen
+Hitzeresistenz
+Hohe Lebenskraft (je)
+Hohe Magieresistenz (je)
+Immunität gegen Gift
+	je nach Gift
+Immunität gegen Krankheit
+	je nach Krankheit
+Innerer Kompass
+Kälteresistenz
+Kampfrausch
+Koboldfreund
+Kräfteschub
+Talentschub
+Linkshänder
+Machtvoller Vertrauter
+Magiedilettant
+Magiegespür
+Meisterhandwerk
+	je nach Talent
+Nachtsicht
+Natürliche Waffen (je)
+Natürlicher Rüstungsschutz (je)
+Niedrige schlechte Eigenschaft
+	je nach schl. Eigenschaft
+Prophezeien
+Resistenz gegen Gift
+Resistenz gegen Krankheiten
+Richtungssinn
+Schlangenmensch
+Schnelle Heilung
+	I
+	II
+	III
+Schutzgeist
+Schwer zu verzaubern
+Soziale Anpassungsfähigkeit
+Tierempathie
+Tierfreund
+Übernatürliche Begabung
+	je nach Begabung
+Unbeschwertes Zaubern
+Verbindungen (je)
+Verhüllte Aura
+Veteran
+	je nach Profession
+Viertelzauberer
+Vollzauberer
+Vom Schicksal begünstigt
+Wesen der Nacht (je)
+Wohlklang
+Wolfskind
+Zäher Hund
+Zauberhaar
+Zeitgefühl
+Zusätzliche Gliedmaßen (je)
+Zweistimmiger Gesang
+Zwergennase
+
+
+
+
+///////////////////////////////
+Nachteile
+////////////////////////////////
+Aberglaube (je)
+Albino
+Angst vor
+	versch. Varianten
+Animalische Magie (je)
+Arkanophobie (je)
+Arroganz ( je)
+Artefaktgebunden
+Astraler Block
+Autoritätsgläubig
+Behäbig
+Blutdurst (je)
+Blutrausch
+Brünstigkeit (je)
+Dunkelangst (je)
+Einarmig
+Einäugig
+Einbeinig
+Einbildungen
+Eingeschränkte Elementarnähe
+	je Element
+Eingeschränkter Sinn
+	je nach Sinn
+Einhändig
+Eitelkeit (je)
+Elfische Weltsicht
+Feind (je)
+Feste Gewohnheit
+Festgefügtes Denken (je)
+Fettleibig
+Fluch der Finsternis
+Geiz (je)
+Gerechtigkeitswahn (je)
+Gesucht
+	I
+	II
+	III
+Glasknochen
+Goldgier (je)
+Größenwahn (je)
+Heimwehkrank
+Hitzeempfindlichkeit
+Höhenangst (je)
+Impulsiv
+Jähzorn (je)
+Kälteempfindlichkeit
+Kältestarre
+Kein Vertrauter
+Kleinwüchsig
+Körpergebundene Lraft
+Krankhafte Reinlichkeit
+Krankheitsanfällig
+Kristallgebunden
+Kurzatmig (je)
+Lahm
+Lästige Mindergeister
+Lichtempfindlich
+Lichtscheu
+Loyalität
+Madas Fluch (je)
+Medium
+Meeresangst (je)
+Miserable Eigenschaft
+	je nach Eigenschaft
+Mondsüchtig
+Moralkodex (je)
+Nachtblind
+Nahrungsrestriktion
+Neid (je)
+Neugier (je)
+Niedrige Astralkraft (je)
+Niedrige Lebenskraft (je)
+Niedrige Magieresistenz (je)
+Pechmagnet
+Platzangst (je)
+Prinzipientreue (je)
+Rachsucht (je)
+Randgruppe
+Raubtiergeruch
+Raumangst (je)
+Rückschlag
+Schlafstörungen
+	I
+	II
+Schlafwandler
+Schlechte Eigenschaft
+	je nach Eigenschaft
+Schlechte Regeneration
+Schlechter Ruf (je)
+Schneller Alternd
+Schulden (je)
+Schwache Ausstrahlung (je)
+Schwacher Astralkörper (je)
+Schwanzlos
+Seffer Manich
+Selbstgespräche
+Sensibler Geruchssinn (je)
+Sippenlosigkeit
+Sonnensucht (je)
+Speisegebote
+Spielsucht (je)
+Sprachfehler
+Spruchhemmung
+Stigma (je)
+Streitsucht (je)
+Stubenhocker
+Sucht (je)
+Thesisgebunden (je)
+Tollpatsch
+Totenangst (je)
+Übler Geruch
+Unangenehme Stimme
+Unansehnlich
+Unfähigkeit für
+	Merkmal
+	Talent
+	Talentgrupp
+Unfrei
+Ungebildet (je)
+Unstet
+Unverträglichkeit mit verarbeitetem Metall
+Vergesslichkeit
+Verpflichtungen
+Verschwundungssucht (je)
+Verwöhnt (je)
+Vorurteile (je)
+Wahnvorstellungen
+Wahrer Name
+Weltfremd (je)
+Widerwärtiges Aussehen
+Wilde Magie
+Zielschwierigkeiten
+Zögerlicher Zauberer (je)
+Zwergenwuchs
+
+
+
+
+///////////////////////////////
+Sonderfertigkeiten:
+////////////////////////////////
+
+Allgemeine:
+////////////////////////////////
+Akklimatisierung
+	Hitze
+	Kälte
+Berufsgeheimnis
+Fälscher
+Geländekunde
+	dschungelkundig
+	eiskundig
+	gebirgskundig
+	höhlenkundig
+	maraskankundig
+	meereskundig
+	steppenkundig
+	sumpfkundig
+	waldkundig
+	wüstenkundig
+Kulturkunde
+	Mittelreich
+	Almada
+	Andergast und Nostria
+	Bornland
+	Svellttal
+	Nordlande
+	Horasreich
+	Zyklopeninsel
+	Amazonen
+	Aranien
+	Tulamidenlande
+	Novadi
+	Ferkina
+	Zahori
+	Thorwal
+	Gjalskerländer
+	Fjarninger
+	Waldmenschen
+	Tocamuyac
+	Maraskan
+	Südaventurien
+	Bukanier
+	Nivesen
+	Norbarden
+	Trollzacker
+	Schwarze Lande
+	Ambosszwerge
+	Brillantzwerge
+	Erzzwerge
+	Hügelzwerge
+	Brobim
+	Auelfen
+	Waldelfen
+	Firnelfen
+	Steppenelfen
+	Orks
+	Goblins
+	Achaische Achaz
+	Stammes-Achaz
+	Tole
+	Grolme
+Meister der Improvisation
+Nandusgefälliges Wesen
+Ortskenntnis
+Rosstäuscher
+Standfest
+Talentspezialisierung
+	diverse
+
+Arsenal:
+////////////////////////////////
+Waffenmeister (s.u.)
+Festnageln (s.u.)
+
+Kampfsonderfertigkeiten (Reiterei):
+////////////////////////////////
+Reiterkampf
+Turnierreiterei
+Kriegsreiterei
+
+Kampfsonderfertigkeiten  (bewaffneter Nahkampf):
+////////////////////////////////
+Aufmerksamkeit
+Ausfall
+Ausweichen
+	I
+	II
+	III
+Befreiungsschlag
+Beidhändiger Kampf
+	I
+	II
+Betäubungsschlag
+Binden
+Blindkampf
+Defensiver Kampfstil
+Doppelangriff
+Entwaffnen
+Festnageln
+Finte
+Formation  (früher: Formationsparade)
+Gegenhalten
+Gezielter Stich
+Halbschwert
+Hammerschlag
+Improvisierte Waffen
+Kampf im Wasser
+Kampfgespür
+Kampfreflexe
+Klingensturm
+Klingentänzer
+Klingenwand
+Linkhand
+Meisterliches Entwaffen
+Meisterparade
+Niederwerfen
+Parierwaffen
+	I
+	II
+Rüstungsgewöhnung
+	I
+	II
+	III
+Schildkampf
+	I
+	II
+Schildspalter
+Schnellziehen
+Spießgespann
+Sturmangriff
+Tod von links
+Todesstoß
+Umreißen
+Unterwasserkampf
+Waffe zerbrechen
+Waffenmeister
+	Waffe (diverse)
+	Schild (diverse)
+Waffenspezialisierung
+Windmühle
+Wuchtschlag
+
+Kampfsonderfertigkeiten (Fernkampf):
+////////////////////////////////
+Berittener Schütze
+Eisenhagel
+Meisterschütze
+	diverse Waffen
+Scharfschütze
+Schnelladen
+	Bogen
+	Armbrust
+Schnellziehen
+
+Kampfsonderfertigkeiten (Waffenloser Kampf):
+////////////////////////////////
+Bornländisch
+Gladiatorenstil
+Hammerfaust
+Hruruzat
+Mercenario
+Unauer Schule
+Auspendeln
+Beinarbeit
+Biss
+Block
+Doppelschlag
+Eisenarm
+Fußfeger
+Gerade
+Griff
+halten
+Handkante
+Hoher Tritt
+Klammer
+Knaufschlag
+Knie
+Kopfstoß
+Kreuzblock
+Niederringen
+Schmetterschlag
+Schmutzige Tricks
+Schwanzfeger
+Schwanzschlag
+Schwinger
+Schwitzkasten
+Sprung
+Sprungtritt
+Tritt
+Versteckte Klinge
+Würgegriff
+Wurf
+
+Klerikale Sonderfertigkeiten:
+////////////////////////////////
+Akoluth
+Aura der Heiligkeit
+Karmalqueste
+Kontakt zum Großen Geist
+Liturgiekenntnis
+	nach Kirche
+Liturgie
+	siehe dort
+Ritualkenntnis (Schamane)
+Spätweihe
+	je nach Kirche
+
+Magische Sonderfertigkeiten:
+////////////////////////////////
+Apport
+Astrale Meditation
+Aura verhüllen
+Aurapanzer
+Bann- und Schutzkreise
+	versch. Varianten
+Bannschwert
+Blutmagie
+Chimärenmeister
+Dämonenbindung
+	I
+	II
+Druidenrache
+Druidische Dolchrituale
+	versch. Varianten
+Druidische Herrschaftsrituale
+	versch. Varianten
+Eiserner Wille
+	I
+	II
+Elementarharmonisierte Aura
+	je nach Element
+Elfenlieder
+	versch. Varianten
+Exorzist
+Fernzauberei
+Form der Formlosigkeit
+Geber der Gestalt
+Gedankenschutz
+Gefäß der Sterne
+Geodenrituale
+	versch. Varianten.
+Golembauer
+Große Meditation
+Hexenflüche
+	versch. Varianten
+Höhere Dämonenbindung
+Hypervehemenz
+Invocatio Integra
+Keulenrituale
+	versch. Varianten
+Konzentrationsstärke
+Kraftkontrolle
+Kraflinienmagie
+	I
+	II
+Kristallomantische Rituale
+	versch. Varianten
+Kugelzauber
+	Lockeres Zaubern
+Matrixgeber
+Matrixkontrolle
+Matrixregeneration
+	I
+	II
+Matrixverständnis
+Meisterliche Regeneration
+Meisterliche Zauberkontrolle
+	I
+	II
+Merkmalskenntnis
+	je nach Merkmal
+Nekromant
+Odun-Gaben
+	versch. Varianten
+Ottagaldr
+Regeneration
+	I
+	II
+Repräsentation
+	je nach Repräsentation
+Ritualkenntins
+	je nach Repräsentation
+Runenkunde
+Salasandra
+Schalenzauber
+	versch. Varianten
+Schamanistische Rituale
+	versch. Varianten
+Schlangenring Zauber
+	versch. Varianten
+Schuppenbeutel
+	versch. Varianten
+Semipermanenz
+	I
+	II
+Signaturkenntnis
+Simultanzaubern
+Stabzauber
+	versch. Varianten
+Stepeleffekt
+Tanz der Mada
+Tierischer Begleiter
+	versch. Varianten
+Traumgänger
+Trommelzauber
+	versch. Varianten
+Verbotene Pforten
+Vertrautenbindung
+Vielfache Ladungen
+Zauber bereithalten
+Zauber unterbrechen
+Zauber vereinigen
+Zauberkontrolle
+Zauberroutine
+Zauberspezialisierung
+	versch. Zauber
+Zaubertänze
+	versch. Varianten
+Zauberzeichen
+Zibilja-Rituale
+	versch. Varianten
+
+
+
+///////////////////////////////
+Talente:
+////////////////////////////////
+
+Kampftalente:
+////////////////////////////////
+Anderthalbhänder
+Armbrust
+Belagerungswaffen
+Blasrohr
+Bogen
+Diskus
+Dolche
+Fechtwaffen
+Hiebwaffen
+Infanteriewaffen
+Kettenstäbe
+Kettenwaffen
+Lanzenreiten
+Peitsche
+Raufen
+Ringen
+Säbel
+Schleuder
+Schwerter
+Speere
+Stäbe
+Wurfbeile
+Wurfmesser
+Wurfspeere
+Zweihandflegel
+Zweihand-Hiebwaffen
+Zweihandschwerter/-säbel
+
+Körperliche Talente:
+////////////////////////////////
+Akrobatik
+	Balancieren
+	Bodenakrobatik
+	Schwingen
+	Sprünge
+	Winden
+Athletik
+	Hochsprung
+	Kraftakte
+	Langlauf
+	Sprint
+	Weitsprung
+Fliegen
+	Hexenbesen
+	Fliegender Teppich
+	weitere Fluggeräte (je nach Gerät)
+Gaukeleien
+	Bauchreden
+	Feuerkunst
+	Jonglieren
+	Possenreißen
+	Taschenspielereien	
+Klettern
+	Bergsteigen
+	Eisklettern
+	Freiklettern
+	Seilklettern
+Körperbeherrschung
+	Fallen
+	Sprünge
+	Standfestigkeit
+Reiten
+	Pferd
+	Esel
+	Muli
+	Kamel
+	Strauß
+	Reitechse
+	Flugechse
+	Hippogriff
+	goblinisches Reit-Wildschwein
+	weitere Tiere
+Schleichen
+	Eis/Schnee
+	Gebäude
+	Geröll
+	Straßen
+	Wald
+	Dschungel
+Schwimmen
+	Langstreckenschwimmen
+	Schnellschwimmen
+	Tauchen
+	Unterwasserkampf
+Selbstbeherrschung
+	Erschöpfung Ignorieren
+	Schmerz Unterdrücken
+	Störungen Ignorieren
+	Wunden Ignorieren	
+Sich Verstecken
+	Gebäude
+	Gebirge
+	Grasland
+	Eis/Schnee
+	Stadt
+	Wald/Dschungel
+	Wüste
+Singen
+	Balladenvortrag
+	Chorgesang
+	Mehrstimmigkeit
+	Operngesang
+Sinnesschärfe
+	Hören
+	Riechen/Schmecken
+	Sehen
+	Tasten
+Skifahren	
+Stimmen Imitieren
+	Haustiere
+	Jagdwild
+	Menschliche Stimmen
+	Raubtiere
+	Vögel
+Tanzen
+	Ausdruckstänze
+	Formationstänze
+	Höfische Tänze
+	Kulttänze
+	Meditationstänze
+Taschendiebstahl
+Zechen
+
+Gesellschaftliche Talente:
+////////////////////////////////
+Betören
+	je nach Kultur
+Etikette
+	je nach Kultur
+Gassenwissen
+	Beschatten
+	Hehlerei
+	Kontakte
+	Ortseinschätzung
+Lehren
+	nach Talentgruppe:
+	Kampftalente
+	körperliche Talente
+	gesellschaftliche Talente
+	Natur-Talente
+	Wissenstalente
+	Handwerkstalente
+	Sprachen und Schriften
+Menschenkenntnis
+	nach Kultur
+Schauspielerei
+	Komödie
+	Posse
+	Tragödie
+Schriftlicher Ausdruck
+	Schreiber
+	Schriftsteller
+Sich Verkleiden
+	anderer Stand
+	anderes Geschlecht
+	andere Rasse
+	fremde Kultur
+Überreden
+	Aufwiegeln
+	Betteln
+	Einschüchtern
+	Feilschen
+	Lügen
+Überzeugen
+	Öffentliche Rede
+	Einzelgespräch
+	Dikussions-Rhetorik
+	schriftliche Rhetorik
+
+Natur-Talente:
+////////////////////////////////
+Fährtensuchen
+	Eis/Schnee
+	Gebrige
+	Grasland
+	Stadt
+	Sumpf
+	Unterirdisch
+	Wald/Dschungel
+	Wüste
+Fallenstellen
+	Gruben
+	Schlingen
+	Speere
+Fesseln/Entfesseln
+	Entfesseln
+	Fesseln
+	Knotenkunde
+	Taue
+	Spleißen
+	Netze Knüpfen
+Fischen/Angeln
+	Flüsse/Bäche
+	Hochseeangeln
+	Seen/Sumpf/Brackwasser
+	Strand/Riff
+	Seefischerei
+Orientierung
+	Dschungel
+	Eis/Schnee
+	Gebrige
+	Grasland
+	Meer
+	Stadt
+	Unterirdisch
+	Wald
+	Wüste
+Wettervorhersage
+	nach Geländetyp/Region
+Wildnisleben
+	Dschungel
+	Eis/Schnee
+	Gebirge
+	Meer
+	Steppe
+	Sumpf
+	Wald
+	Wüste
+
+Wissenstalente:
+////////////////////////////////
+Anatomie
+	nach Spezies
+Baukunst
+	Hochbau
+	Tiefbau
+	Wehranlagen
+Brett-/Kartenspiel
+	nach Spiel
+Geographie
+	nach Region
+Geschichtswissen
+	nach Kultur oder Thema:
+	Bau und Kunstgeschichte
+	Militärgeschichte
+	Religionsgeschichte
+	Wissenschaftsgeschichte
+Gesteinskunde
+	Baugestein
+	Edelmetalle
+	Edelsteine
+Götter/Kulte
+	je nach Glaubensrichtung
+Heraldik
+	nach Staat
+Hüttenkunde
+	nach Metall/Erz:
+	Edelmetalle
+	Eisen/Stahl
+	Kupfer/Bronze/Zinn
+	Zinn
+	Magische Metalle	
+Kriegskunst
+	Logistik
+	Militärgeschichte
+	Monstren
+	Seegefechte
+	Strategie
+	Taktik	
+Kryptographie
+Magiekunde
+	Artefaktherstellung
+	Dämonologie
+	Elementarismus
+	Magiehistorie
+	Magietheorie
+	Magische Analyse
+	Sphärologie
+	Zauberpraxis
+	Zauberwerkstatt
+Mechanik
+	Belagerungswaffen
+	Kräne/Hebewerke/Mahlwerke
+	Materialkunde
+	Pumpen und Wasserkraft
+	Windkraft
+Pflanzenkunde
+	nach Gelände:
+	Dschungel
+	Gebirge
+	Grasland
+	Meer
+	Steppe
+	Sumpf
+	Tundra
+	Wald
+	Wüste
+Philosophie	
+Rechnen
+	Arithmetik
+	Buchführung
+	Geometrie
+Rechtskunde
+	Gildenrecht
+	Kirchenrecht
+	Strafrecht
+	Staatsrecht
+	je nach Staat
+Sagen/Legenden
+	nach Kultur
+Schätzen
+	Antiquitäten
+	Materialwert
+	Schmuck
+	Handwerksgüter
+Sprachenkunde
+	nach Sprachfamilie
+Staatskunst
+	Diplomatie
+	Intrige
+	Verwaltung
+Sternkunde
+	Himmelskartographie
+	Horoskope
+	Navigation
+	Zeitbestimmung
+Tierkunde
+	Drachen
+	Jagdwild
+	Meeresgetier
+	Monstren
+	Nutztiere
+	Raubtiere
+	Schädlinge
+	Vielbeiner
+	Vögel
+	nach Region
+
+Sprachen und Schriten:
+////////////////////////////////
+Lesen/Schreiben
+Sprachen Kennen
+
+Handwerkstalente:
+////////////////////////////////
+Abrichten
+	Dompteur
+	Echsenbändiger
+	Falkner
+	Hundeführer
+	Zureiter
+Ackerbau
+	nach Frucht
+	nach Klimazone
+	zwergische Pilzzucht
+Alchimie
+	Brandmittel
+	Gifte
+	Laborpraxis
+	Zauber-Elixiere
+	Farben/Lacke
+	Materialveredelung
+	Theoretische Alchimie
+Bergbau
+	Bergwerke
+	Kanalisation
+	natürliche Höhlen
+	Sappeur
+	unterirdische Städte
+Bogenbau
+	Armbrust
+	Bogen
+	Bolzen/Pfeile
+	Torsionswaffen
+Boote-Fahren
+	Einmaster
+	Flöße
+	Kanus/Kajaks
+	Ruderboote
+	Eissegler
+Brauer
+Drucker
+	Buchdruck
+	Druckereitechnik
+	Pamphlete
+	Typographie
+Fahrzeug Lenken
+	Lastkarren
+	Streitwagen
+	Zuggespanne
+	Hunde- und Dachsschlitten
+Falschspiel
+	Würfel
+	Karten
+Feinmechanik
+	Gold- und Silberschmied
+	Gravieren
+	Schlösser
+	Siegelstöcke
+	Trickwaffen/Fallen
+	Uhrwerke
+Feuersteinbearbeitung
+Fleischer
+	Fische
+	Geflügel
+	Reptilien
+	Säugetiere
+Gerber/Kürschner
+	Gerber
+	Kürschner
+	Trophäen
+Glaskunst
+	Fensterscheiben
+	Glasbläserei
+	Linsenschleifen
+	Spiegel
+Grobschmied
+	Drahtzieher/Sarwirker
+	Hufschmied
+	Plättner
+	Schwarzschmied
+	Spengler
+	Waffenschmied
+Handel
+	nach Region
+	oder nach Warengruppe:
+	Korn
+	Metalle
+	Sklaven
+	Geldwechsel
+Hauswirtschaft
+	Bewirtung/Feiern
+	Personal
+	Vorratshaltung
+Heilkunde Gift
+	nach Art:
+	alchimistische/Zaubergifte
+	mineralische Gifte
+	pflanzliche Gifte
+	tierische Gifte
+	ODER nach Wirkung:
+	Atemgifte
+	Einnahmegifte
+	Kontaktgifte
+	Waffengifte
+
+	Tierheilkunde
+
+Heilkunde Krankheiten
+	nach Region
+	Tierheilkunde
+Heilkunde Seele
+Heilkunde Wunden
+	Brüche/Quetschungen
+	Innere Verletzungen
+	Schnitte
+	Tierheilkunde
+	Verbrennungen
+	Zahnleiden
+Holzbearbeitung
+	Beinschnitzerei
+	Holzkunde
+	Holzwaffen
+	Küfer/Wagner
+	Möbelschreinerei/Tischlerei
+	Schnitzen
+Instrumentenbauer
+	Blasinstrumente
+	Saiteninstrumente
+	Tasteninstrumente
+	Trommeln
+Kartographie
+	Gebäude
+	Höhlen/Tunnel
+	Küsten/Meere
+	Landschaften
+	Stadt
+Kochen
+	Backen/Braten
+	Festmahle
+	Haltbarmachen
+	Marschversorgung
+	Tränke
+	Vorkoster
+Kristallzucht
+Lederarbeiten
+	Gurte/Riemen
+	Lederkleidung
+	Lederrüstungen
+	Sättel
+	Schuhwerk
+Malen/Zeichnen
+	Architektur
+	Landschaften
+	Porträt
+	technische Skizze
+Maurer
+	Steinbau
+	Steinguss
+	Ziegelbau
+Metallguss
+	Klangkörper
+	Rohre
+	Reliefplatten/Statuen
+Musizieren 
+	Blechblasinstrumente
+	Flöten
+	Harfen
+	Kapellmeister/Dirigent
+	Lauten
+	Rhythmusinstrumente
+	Streichinstrumente
+	Tasteninstrumente
+Schlösser Knacken
+	Fallen
+	Schlösser
+Schnaps Brennen
+	alchimistische Destillation
+	Beeren-/Obstbrände
+	Kornbrände
+	Kräuterschnäpse
+	Lagerung
+Schneidern
+	Entwurf/Festgewänder
+	Flick-/Gebrauchsschneiderei
+	Maßschneidern
+	Tuchrüstungen
+Seefahrt
+	Ruderschiff
+	Segelschiff
+	Steuermann
+Seiler
+Steinmetz
+	Baugestein
+	Reliefs
+	Statuen
+Steinschneider/Juwelier
+Stellmacher
+	Karren/Wagen
+	Schlitten
+	Streitwagen
+Stoffe Färben
+	alchimistische Farben
+	mineralische Farben
+	pflanzliche Farben
+	tierische Farben
+	nach art des Stoffes
+Tätowieren
+	Naturalistische Darstellungen
+	Ornamente
+	Zaubertätowierungen
+Töpfern
+	Gefäße
+	Statuetten
+	Ziegelei
+Viehzucht
+	nach Tierart:
+	Rind
+	Schaf/Ziege
+	Schwein
+	Pferd
+	Hund
+	etc.
+Webkunst
+	nach Material
+	ODER nach Technik:
+	Häkeln
+	Klöppeln
+	Stricken
+	Teppichknöpfen
+	Weben
+Winzer
+	Wein
+	Fruchtweine
+	Schaumweine
+	Weinkenner
+Zimmermann
+	Dachdecker
+	Holzkonstruktionen
+	Schifszimmermann
+	Schiffbau
+
+
+
+///////////////////////////////
+Waffen:
+////////////////////////////////
+
+Werkzeuge und Gebrauchswaffen:
+////////////////////////////////
+Beil
+Dolch
+Dreschflegel
+Entermesser
+Fleischerbeil
+Geißel
+Haumesser
+Holzfälleraxt
+Knüppel
+Lasso
+Messer
+Neunschwänzige
+Peitsche
+Sense
+Sicherl
+Spitzhacke
+Vorschlaghammer
+Stuhlbein (improvisiert)
+Fackel (improvisiert)
+Stein (improvisiert)
+Flasche (improvisiert)
+
+Jagdwaffen:
+////////////////////////////////
+Balläster
+Dreizack
+Eberfänger
+Holzspeer
+Jagdmesser
+Jagdspieß
+Kurzbogen
+Ogerfänger
+Speer
+Schleuder
+Speerschleuder
+Stoßspeer
+Wurfnetz
+Wurfspeer
+
+Waffen des leichten Fußvolkes:
+////////////////////////////////
+Anderthalbhänder
+Bastardschwert
+Brabakbengel
+Breitschwert
+Kurzschwert
+Langschwert
+Morgenstern
+Ogerschelle
+Ochsenherde
+Panzerstecher
+Steitaxt
+Streitkolben
+Turnierschwert
+
+Waffen des schweren Fußvolkes:
+////////////////////////////////
+Andergaster
+Boronssichel
+Glefe
+Hakenspiel
+Hellebarde
+Kriegsflegel
+Kriegshammer
+Neethaner Langaxt
+Partisane
+Pike
+Schnitter
+Sturmsense
+Zweihänder
+
+Waffen der Reiterei:
+////////////////////////////////
+Amazonen- oder Reitersäbel
+Kriegslanze
+Rabenschnabel oder Reiterhammer
+Säbel
+Turnierlanze
+
+Waffen der Schützenregimenter:
+////////////////////////////////
+Arbalette
+Balestra
+Balestrina
+Gandrasch-Armbrust
+Arbalone
+Granatapfel
+Kriegsbogen
+Kurzbogen
+Langbogen
+Leichte Armbrust
+Stabschleuder
+Windenarmbrust
+
+Geschütze:
+////////////////////////////////
+Ballista
+Drachenzunge
+Hornisse
+Onager
+Rotze
+Skorpion
+Zyklop
+
+
+Ritualwaffen und Standessymbole:
+////////////////////////////////
+Efferbard
+Knochenkeule
+Korspieß
+Magierdegen / Magierrapier
+Magierstab
+	normal
+	mit Kristallkugel
+	kurz
+Rabschnabel
+Richtschwert
+Rondrakamm
+Runaskraja
+Schmiedehammer
+Sonnenszepter
+Vulkanglasdolch
+
+Waffen des Bürgertums:
+////////////////////////////////
+Degen
+Florett
+Hakendolch
+Kampfstab
+Kusliker Säbel
+Linkhand
+Rapier
+Stockdegen
+Zweililien
+
+Waffen des lichtscheuen Gesindels:
+////////////////////////////////
+Kettenstab
+Drei-Glieder-Stab
+Keule
+Langdolch
+Menschenfänger
+Meucheldolch
+Basiliskenzunge
+Mengbilar
+Schlagring
+Orchidee
+Veteranenhand
+Hummerscheere
+Schwerer Dolch
+Drolina
+Wurfmesser
+Wurfdolch
+Borndorn
+Wurfstern/-scheibe/-ring
+Würgeschlinge
+
+Waffen fremder Völker:
+////////////////////////////////
+Barbarenschwert
+Barbarenstreitaxt
+Molokdeschnaja
+Orknase
+Schneidzahn
+Skraja
+Wurfbeil
+Wurfkeule
+Doppelkunchomer
+Dschadra
+Khunchomer
+Kompositbogen
+Kriegsfächer
+Waqqif
+Diskus
+Jagddiskus
+Kampfdiskus
+Nachtwind
+Tuzakmesser
+Baccanaq
+Blasrohr
+Großer Sklaventod
+Sklaventod
+Pailos
+Drachentöter
+Drachenzahn
+Eisenwalder
+Felsspalter
+Fledermaus
+Lindwurmschläger
+Wurmspieß
+Zwergenschlägel
+Zwergenskraja
+Elfenbogen
+Elfisches Jagdmesser
+Robbentöter
+Wolfsmesser
+Arbach
+Byakka
+Gruufhai
+Orkischer Reiterbogen
+Achfawar
+Echsische Axt
+Reißer
+
+Schilde und Parierwaffen:
+////////////////////////////////
+Bock
+Faustschild
+Großschild
+Holzschild
+Lederschild
+Mattenschild
+Panzerarm
+Drachenklaue
+Thorwaler Rundschild
+Turmschild
+
+
+
+////////////////////////////////
+Krankheiten
+////////////////////////////////
+Blutiger Rotz
+Dumpfschädel
+Schlafkrankheit
+Lutanas
+Wundfieber
+Paralyse
+Jahresfieber
+Rascher Wahn
+Blaue Keuche
+Zorgan-Pocken
+Tollwut
+Schwarze Wut
+Efferd- und Kerkersieche
+
+
+////////////////////////////////
+Gifte
+////////////////////////////////
+Angstgift
+Arachnae
+Arax
+Bannstaub
+Boabungaha
+Drachenspeichel
+Feuerzunge
+Goldleim
+Gonede
+Halbgift
+Kelmon
+Kukris
+Mandragora
+Omrais
+Purpurblitz
+Samthauch
+Schlafgift
+Schwarzer Lotos
+Sunsura
+Tinzal
+Tulmadron
+Wuara
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,17 +21,18 @@ namespace DatenmodellTest
         [Test]
         public void SpeichernUndLaden()
         {
+            var filename = "TestRasse.xml";
             //Create
-            var r = new RassenDaten();
-            r.Name = "TestRasse";
+            var r = TestDaten.GetTestRasse();
+            
             //Save
             XmlSerializer serializer = new XmlSerializer(typeof(RassenDaten));
-            TextWriter textWriter = new StreamWriter(@"TestRasse.xml");
+            TextWriter textWriter = new StreamWriter(filename);
             serializer.Serialize(textWriter, r);
             textWriter.Close();
             //Load
             XmlSerializer deserializer = new XmlSerializer(typeof(RassenDaten));
-            TextReader textReader = new StreamReader(@"TestRasse.xml");
+            TextReader textReader = new StreamReader(filename);
             RassenDaten rGeladen;
             rGeladen = (RassenDaten)deserializer.Deserialize(textReader);
             textReader.Close();

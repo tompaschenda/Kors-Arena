@@ -23,7 +23,7 @@ namespace heldenGenerierung
             System.Console.WriteLine("----------------------------------------");
             
             System.Console.WriteLine("----------ToStringGeneric---------------");
-            System.Console.WriteLine(held1.ToStringGeneric());
+            System.Console.WriteLine(held1.ToString());
             System.Console.WriteLine("----------------------------------------");
 
             // Die Konsole so lange offen halten, bis man die

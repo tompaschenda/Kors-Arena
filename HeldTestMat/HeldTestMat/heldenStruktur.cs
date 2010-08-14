@@ -3,6 +3,8 @@ using wuerfelKlasse;
 using System.Text;
 using System.Reflection;
 using kulturenStruktur;
+using Listen;
+using Common;
 
 namespace heldenStruktur
 {
@@ -166,7 +168,7 @@ namespace heldenStruktur
             ort.yKoord = 0;
             ort.zKoord = 0;
             //[Tom] Hier benutzen wir jetzt die Property für den Rassennamen
-            rasse.Name="Mittelreichler";
+            rasse.Rasse=RassenTyp.Mittellaender;
             // TODO: Wähle Subrasse, falls möglich!
             berechneKoerpergroesse();
             berechneGewicht();
@@ -181,7 +183,7 @@ namespace heldenStruktur
         /// <returns>Das Objekt als String</returns>
         public override string ToString()
         {
-            return ToStringGeneric();
+            return ObjectExtentions.ToStringGeneric(this);
         }
 
         /// <summary>
@@ -203,35 +205,6 @@ namespace heldenStruktur
             sb.AppendLine("Größenkategorie: " + groessenkategorie);
             return sb.ToString();
         }
-
-        /// <summary>
-        /// [Tom]: Eine generische Implementierung der ToString Methode, die selbst erkennt, welche Felder die Klasse hat und diese ausgibt.
-        /// Vorteil: Beim Hinzufügen von neuen Feldern muss sie nicht geändert werden. 
-        /// Nachteil: Man ist bei der Formatierung nicht so flexibel wie in ToStringSimple.
-        /// Geklaut von http://www.fincher.org/tips/Languages/csharp.shtml
-        /// </summary>
-        /// <returns>Alle Felder des Objekts in einem String</returns>
-        public string ToStringGeneric()
-        {
-            StringBuilder sb = new StringBuilder();
-            System.Type type = this.GetType();
-            sb.Append("Information for " + type.Name);
-            sb.Append("\r\nFields:");
-            System.Reflection.FieldInfo[] fi = type.GetFields();
-            foreach (FieldInfo f in fi)
-            {
-                sb.Append("\r\n  " + f.ToString() + " = \"" + f.GetValue(this) + "\"");
-            }
-            System.Reflection.PropertyInfo[] pi = type.GetProperties();
-            sb.Append("\r\nProperties:");
-            foreach (PropertyInfo p in pi)
-            {
-                sb.Append("\r\n  " + p.ToString() + " = \"" + p.GetValue(this, null) + "\"");
-            }
-            return sb.ToString();
-        }
-
-
 
     }
 }

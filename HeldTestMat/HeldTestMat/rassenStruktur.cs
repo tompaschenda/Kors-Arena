@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using listenStruktur;
-
+using Listen;
+using Common;
 namespace rassenStruktur
 {
 
@@ -136,9 +137,10 @@ namespace rassenStruktur
         }
 
         /// <summary>
-        /// Name der Rasse.
+        /// Identifier der Rasse
         /// </summary>
-        private string name;
+        private RassenTyp rasse;
+
         /// <summary>
         /// [Tom]: Der Name der Rasse. Beim Setzen des Namens werden die anderen Felder automatisch gefüllt.
         /// Dies ist eine sogenannte Property.
@@ -147,9 +149,19 @@ namespace rassenStruktur
         {
             get
             {
-                return name;
+                return EnumExtentions.GetDescription<RassenTyp>(rasse);
             }
-       
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+        /// <summary>
+        /// Der Identifier dieser Rasse. Der Setter definiert die Attribute der Rasse
+        /// </summary>
+        public RassenTyp Rasse
+        {
             set
             {
 
@@ -170,9 +182,9 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Mittelreichler
                         ///////////////////////////////////////
-                        case "Mittelreichler":
+                        case RassenTyp.Mittellaender :
 
-                            name = value;
+                            rasse = value;
 
                             moeglicheSubrassen = new List<string>(){};
 
@@ -247,9 +259,9 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Tulamiden
                         ///////////////////////////////////////
-                        case "Tulamiden":
+                        case RassenTyp.Tulamiden:
 
-                            name = value;
+                            rasse = value;
 
                             moeglicheSubrassen = new List<string>(){};
 
@@ -315,9 +327,9 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Thorwaler
                         ///////////////////////////////////////
-                        case "Thorwaler":
+                        case RassenTyp.Thorwaler:
 
-                            name = value;
+                            rasse = value;
 
                             moeglicheSubrassen = new List<string>()
                             {
