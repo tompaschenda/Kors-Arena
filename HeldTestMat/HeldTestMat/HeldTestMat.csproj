@@ -101,6 +101,16 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Common\Common.csproj">
+      <Project>{8220FD29-2417-44D3-A6C4-6E97CD813F77}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="Listen\Listen.csproj">
+      <Project>{EB96D371-6B45-4D80-9503-29A7E82B8524}</Project>
+      <Name>Listen</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

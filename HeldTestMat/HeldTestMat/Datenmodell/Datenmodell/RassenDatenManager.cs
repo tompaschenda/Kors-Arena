@@ -63,6 +63,18 @@ namespace Datenmodell
             }
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("---------------Rassendaten---------------");
+            foreach (var r in Rassen.Values)
+            {
+                sb.AppendLine(r.ToString());
+            }
+            sb.AppendLine("-----------------------------------------");
+            return sb.ToString();
+        }
+
         private RassenDatenMap rassen = new RassenDatenMap();
         /// <summary>
         /// Only for unit tests
