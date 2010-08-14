@@ -22,6 +22,24 @@ public struct NameWertPaar
     }
 }
 
+/// <summary>
+/// Struktur, die eine Kombination aus Name, Subname und Wert bildet.
+/// </summary>
+public struct NameSubNameWertPaar
+{
+    /// <summary>
+    /// Namensattribut
+    /// </summary>
+    public string name;
+    /// <summary>
+    /// Subnamensattribut
+    /// </summary>
+    public string subname;
+    /// <summary>
+    /// Wert
+    /// </summary>
+    public string wert;
+}
 
 /// <summary>
 /// Kombination einer Namensliste und einem zugehörigen Wert pro Namensliste.

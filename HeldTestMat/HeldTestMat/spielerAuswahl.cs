@@ -39,7 +39,7 @@ namespace spielerAuswahl
         /// </summary>
         /// <param name="moeglicheWahlen"></param>
         /// <param name="auswahltext"></param>
-        /// <param name="darfAuswahlVonHandHinzugefügtWerten"></param>
+        /// <param name="darfAuswahlVonHandHinzugefügtWerden"></param>
         /// <returns></returns>
         public string spielerListenAuswahl(List<string> moeglicheWahlen, string auswahltext, bool darfAuswahlVonHandHinzugefügtWerden)
         {

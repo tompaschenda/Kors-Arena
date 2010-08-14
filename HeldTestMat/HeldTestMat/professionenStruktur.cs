@@ -167,10 +167,32 @@ namespace professionenStruktur
                     switch (value)
                     {
                         ///////////////////////////////////////
-                        // TestProfession
+                        // Amazone
                         ///////////////////////////////////////
-                        case "TestProfession":
+                        case "Amazone":
                             name = value;
+
+                            generierungskosten = 10;
+                            zeitaufwaendig = true;
+                            voraussetzungen = new professionsVorausssetzungen()
+                            {
+                                geschlechtstyp = "weiblich",
+                                eigenschaften = new List<NameWertPaar>()
+                                {
+                                    new NameWertPaar () {name = "MU", wert = 13},
+                                    new NameWertPaar () {name = "GE", wert = 12},
+                                    new NameWertPaar () {name = "KO", wert = 13},
+                                    new NameWertPaar () {name = "KK", wert = 11},
+                                },
+                            };
+                            leModifikator = 1;
+                            auModifikator = 3;
+                            soInterval = new minMaxPaar(){ min = 5, max = 10};
+                            automatischeVorteile = new List<NameWertPaar>()
+                            {
+                                new NameWertPaar () {name = "Akademische Ausbildung", wert = 0},
+                                new NameWertPaar () {name = "Akademische Ausbildung", wert = 0},
+                            };
 
                             break;
 

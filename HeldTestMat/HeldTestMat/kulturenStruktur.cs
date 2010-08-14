@@ -277,14 +277,157 @@ namespace kulturenStruktur
                                     staedteMoeglich = new List<string>(){"Elenvina", "Ferdok", "Festum", "Harben", "Havena", "Perricum"},
                                     talentBoni = new List<NameWertPaar>()
                                     {
-                                        new NameWertPaar(){},
+                                        new NameWertPaar(){name = "Schwimmen", wert = 1},
+                                        new NameWertPaar(){name = "Menschenkenntnis", wert = 1},
+                                        new NameWertPaar(){name = "Überreden", wert = 1},
+                                        new NameWertPaar(){name = "Fesseln/Entfesseln", wert = 1},
+                                        new NameWertPaar(){name = "Fischen/Angeln", wert = 1},
+                                        new NameWertPaar(){name = "Geographie", wert = 1},
+                                        new NameWertPaar(){name = "Boote Fahren", wert = 1},
+                                        new NameWertPaar(){name = "Seefahrt", wert = 1},
                                     },
                                 },
 
-/*
-                                , "Städte mit wichtigen Tempeln/Pilgerstätte", 
-                                "Siedlerstädte des Nordens", "Städtischer Adel", "Kannemünde/Mhanerhaven", 
-                                "Flüchtlinge aus borbaradianisch besetzten Städten", "Maraskanische Exilanten",*/
+
+                                new subkultur ()
+                                {
+                                    name = "Städte mit wichtigen Tempeln/Pilgerstätte",
+                                    generierungskosten = 2,
+                                    staedteMoeglich = new List<string>(){"Angbar", "Gareth/Neu-Gareth", "Rommilys"},
+                                    talentBoni = new List<NameWertPaar>()
+                                    {
+                                        new NameWertPaar(){name = "Überreden", wert = 2},
+                                        new NameWertPaar(){name = "Geographie", wert = 1},
+                                        new NameWertPaar(){name = "Geschichtswissen", wert = 1},
+                                        new NameWertPaar(){name = "Götter/Kulte", wert = 1},
+                                    },
+
+                                    moeglicheVerkehrssprachen = new List<NameWertPaar>()
+                                    {
+                                        // TODO!
+                                        new NameWertPaar(){ name = "alle", wert = 4},
+                                    },                                   
+
+                                },
+
+
+                                new subkultur ()
+                                {
+                                    name = "Siedlerstädte des Nordens",
+                                    generierungskosten = 1,
+                                    staedteMoeglich = new List<string>(){"Uhlenberg", "Donnerbach", "Riva", "Lowangen", "Norburg"},
+                                    talentBoni = new List<NameWertPaar>()
+                                    {
+                                        new NameWertPaar(){name = "Wildnisleben", wert = 1},
+                                        new NameWertPaar(){name = "Ackerbau", wert = 1},
+                                        new NameWertPaar(){name = "Viehzucht", wert = 1},
+                                        new NameWertPaar(){name = "Wildnisleben", wert = 1},
+                                    },
+
+                                    moeglicheVerkehrssprachen = new List<NameWertPaar>()
+                                    {
+                                        new NameWertPaar() {name = "Nujuka", wert = 3},
+                                        new NameWertPaar() {name = "Alaani", wert = 3},
+                                        new NameWertPaar() {name = "Oloarkh", wert = 3},
+                                    },
+
+                                    verkehrssprachenDerHauptKulturErsetzen = true,
+                                },
+
+                                new subkultur ()
+                                {
+                                    name = "Städtischer Adel",
+                                    generierungskosten = 1,
+                                    voraussetzungen = new subkulturVoraussetzungen()
+                                    {
+                                        eigenschaften = new List<NameWertPaar>(){ new NameWertPaar() {name = "SO", wert = 7}},
+                                        vorteile = new List<NameWertPaar>(){ new NameWertPaar() {name = "adlig", wert = 0}},
+                                    },
+                                    talentBoni = new List<NameWertPaar>()
+                                    {
+                                        new NameWertPaar(){ name = "Etikette", wert = 2},
+                                        new NameWertPaar(){ name = "Heraldik", wert = 2},
+                                    },
+                                    talentWahlBoniMoeglich = new List<NamenslisteWertPaar>()
+                                    {
+                                        new NamenslisteWertPaar() { namensListe = new List<string>(){"Fechtwaffen","Schwerter"} , wert = 1},
+                                    },
+
+                                    schriftBoni = new List<NameWertPaar>()
+                                    {
+                                        new NameWertPaar(){ name = "Kusliker Zeichen", wert = 2},
+                                    },
+
+                                    zuEntfernendeTalentBoni = new List<string>()
+                                    {
+                                        "Infanteriewaffen", "Gassenwissen",
+                                    },
+                                },
+
+                                new subkultur()
+                                {
+                                    name = "Kannemünde/Mhanerhaven",
+                                    generierungskosten = 3,
+                                    talentBoni = new List<NameWertPaar>()
+                                    {
+                                        new NameWertPaar(){name = "Menschenkenntnis", wert = 1},
+                                        new NameWertPaar(){name = "Überreden", wert = 1},
+                                        new NameWertPaar(){name = "Geographie", wert = 1},
+                                        new NameWertPaar(){name = "Rechnen", wert = 1},
+                                    },
+
+                                    talentWahlBoniMoeglich = new List<NamenslisteWertPaar>()
+                                    {
+                                        new NamenslisteWertPaar() { namensListe = new List<string>(){"Boote Fahren","Fischen/Angeln", "Kochen"} , wert = 1},
+                                    },
+
+                                    verbilligteSonderfertigkeiten = new List<nameSubnamePaar>()
+                                    {
+                                        new nameSubnamePaar() {name = "Kulturkunde", nameSubname = "Tulamidenlande"},
+                                    },
+
+                                    zweitsprache = "Tulamidya",
+
+                                    verkehrssprachenDerHauptKulturErsetzen = true,
+
+                                },
+
+                                new subkultur()
+                                {
+                                    name = "Flüchtlinge aus borbaradianisch besetzten Städten",
+                                    generierungskosten = 0,
+                                    staedteMoeglich = new List<string>(){"Ysilia", "Mendena", "Ilsur", "Warunk", "Beilunk"},
+                                    eigenschaften = new List<NameWertPaar>() { new NameWertPaar(){name = "MU", wert = -1}},
+                                    talentBoni = new List<NameWertPaar>()
+                                    {
+                                        new NameWertPaar(){name = "Selbstbeherrschung", wert = 1},
+                                        new NameWertPaar(){name = "Sich Verstecken", wert = 1},
+                                        new NameWertPaar(){name = "Sinnesschärfe", wert = 1},
+                                        new NameWertPaar(){name = "Zechen", wert = 1},
+                                        new NameWertPaar(){name = "Menschenkenntnis", wert = 1},
+                                        new NameWertPaar(){name = "Götter/Kulte", wert = -1},
+                                        new NameWertPaar(){name = "Magiekunde", wert = 1},
+                                    },
+
+
+                                    verkehrssprachenDerHauptKulturErsetzen = true,
+
+                                    moeglicheVerkehrssprachen = new List<NameWertPaar>()
+                                    {
+                                        new NameWertPaar() {name = "Tulamidya", wert = 3},
+                                        new NameWertPaar() {name = "Rogolan", wert = 3},
+                                        new NameWertPaar() {name = "Thorwalsch", wert = 3},
+                                        new NameWertPaar() {name = "Zhayad", wert = 3},
+                                        new NameWertPaar() {name = "Zhulchammaqra", wert = 3}
+                                    },
+
+                                    empfohleneVorteile = new List<string>()
+                                    {"Affinität zu Dämonen", "Gefahreninstinkt", "Glück", "Magiegespür", "Resistenz gegen Krankheiten"},
+                                    empfohleneNachteile = new List<string>()
+                                    {"Aberglaube", "Dunkelangst", "Einbildungen", "Goldgier", "Schlafstörungen", "Stimga", "Unstet", "Wahnvorstellungen"},
+
+                                },
+
                             };
 
 
@@ -364,6 +507,54 @@ namespace kulturenStruktur
         /// Enthält die tatsächlich vom Spieler gewählten flexiblen Talentboni
         /// </summary>
         public List<NameWertPaar> talentWahlBoniGewaehlt;
+
+        /// <summary>
+        /// Enthält eine Liste möglicher Vekehrssprachen, die man durch eine Subkultur zusätzlich erhält
+        /// inklusive des Modifikators, den man darauf bekommt als Start-Talentwert.
+        /// </summary>
+        public List<NameWertPaar> moeglicheVerkehrssprachen;
+
+        /// <summary>
+        /// Eine Zweitsprache, die exklusiv durch die Subkultur festgelegt wird.
+        /// </summary>
+        public string zweitsprache;
+
+        /// <summary>
+        /// Dieser Bool gibt an, ob die Verkehrssprache der Subkultur die Auswahl aus der
+        /// Hauptkultur ersetzt.
+        /// </summary>
+        public bool verkehrssprachenDerHauptKulturErsetzen;
+
+        /// <summary>
+        /// Enthält eine Liste von Talentboni, die aus der Hauptkultur wiederum durch
+        /// die Wahl der Subkultur ENTFERNT werden können!
+        /// </summary>
+        public List<string> zuEntfernendeTalentBoni;
+
+        /// <summary>
+        /// Enthält eine Liste von Boni auf verschiedene Schriften
+        /// </summary>
+        public List<NameWertPaar> schriftBoni;
+
+        /// <summary>
+        /// Eine Liste, die die verbilligten SF inklusive ihrer Ausprägungen enthält.
+        /// </summary>
+        public List<nameSubnamePaar> verbilligteSonderfertigkeiten;
+
+        /// <summary>
+        /// Eine Liste, in der alle Modifikatoren auf die Eigenschaften durch die Subrasse 
+        /// aufgeführt sind
+        /// </summary>
+        public List<NameWertPaar> eigenschaften;
+
+        /// <summary>
+        /// Eine Liste mit allen empfohlenen Vorteilen für eine Subkultur
+        /// </summary>
+        public List<string> empfohleneVorteile;
+        /// <summary>
+        /// Eine Liste mit allen empfohlenen Nachteilen für eine Subkultur
+        /// </summary>
+        public List<string> empfohleneNachteile;
 
     };
 

@@ -156,7 +156,6 @@ namespace rassenStruktur
                 // Wir legen uns zunächst eine Struktur mit allen Listen an. Darauf greifen wird
                 // dann ständig zu:
                 // TODO!!!!! @ Tom: WIE!? :)
-                listenSammlung listen = new listenSammlung();
 
                 // Definition der Maps für die Farben:
                 RangeMap<string> haarfabenMap = new RangeMap<string>();
