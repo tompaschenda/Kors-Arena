@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="spielerAuswahl.cs" />
     <Compile Include="professionenStruktur.cs" />
     <Compile Include="sonderfertigkeitenStruktur.cs" />
     <Compile Include="kulturenStruktur.cs" />

@@ -22,20 +22,38 @@ public struct NameWertPaar
     }
 }
 
+
 /// <summary>
-/// Struktur, in der sowohl ein Zauber als auch seine Spezialisierung angegeben werden können.
-/// Beispiel: Elementarbann; Eis
+/// Kombination einer Namensliste und einem zugehörigen Wert pro Namensliste.
 /// </summary>
-public struct ZauberSpezPaar
+public struct NamenslisteWertPaar
 {
     /// <summary>
-    /// Name des Zaubers
+    /// Enthält eine Liste von STrings
     /// </summary>
-    public string nameZauber;
+    public List<string> namensListe;
+
     /// <summary>
-    /// Name der Spezialisierung des Zaubers. Wenn es keine Spezialisierung gibt, sollte es "keine" sein.
+    /// Enthält für jede Liste von Namen einen Wert
     /// </summary>
-    public string nameZaberspezialisierung;
+    public int wert;
+}
+
+
+/// <summary>
+/// Struktur, in der sowohl ein Name als auch ein Subname angegeben werden können.
+/// Beispiel: "Geländekunde" => "Höhlenkundig"
+/// </summary>
+public struct nameSubnamePaar
+{
+    /// <summary>
+    /// Primärer Name
+    /// </summary>
+    public string name;
+    /// <summary>
+    /// Subname (der Spezialisierung, etc.)
+    /// </summary>
+    public string nameSubname;
 }
 
 /// <summary>

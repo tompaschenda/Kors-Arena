@@ -37,23 +37,14 @@ namespace talentStruktur
         public bool istBasisTalent;
 
         /// <summary>
+        /// Ist das Talent momentan überhaupt nutzbar (sprich: ist es aktiviert UND sind die Voraussetzungen erfüllt?)
+        /// </summary>
+        public bool nutzbar;
+
+        /// <summary>
         /// Von welchem Typ ist das Talent? (Nahkampf, Fernkampf, Körperlich, etc.)
         /// </summary>
         public string talenttyp;
-
-        /// <summary>
-        /// Effektive Behinderung, die bei Nutzung des Talents zum Tragen kommt. Der Wert wird IMMER
-        /// von der Behinderung des Helden abgezogen. "0" entspricht daher eBE = BE. Beim Abzug muss man
-        /// aufpassen, da der Held durch die eBE trotzdem natürlich niemals einen Bonus bekommen kann!
-        /// </summary>
-        public int effektiveBE;
-
-        /// <summary>
-        /// Eine Liste, die alle Fertigkeiten (genauer: "Talente") enthält, die anstelle dieses Talents
-        /// genutzt werden können (z.B., falls der Held dieses Talent nicht aktiviert hat). Außerdem ist 
-        /// jeweils auch der Aufschlagsmodifikator mit enthalten (positiv), der als Erschwernis hinzukommt.
-        /// </summary>
-        public List<NameWertPaar> ersatzweiseFertigkeiten;
 
         /// <summary>
         /// Gibt die Spalte an, nach der das Talent gesteigert wird. Spezielisierungen oder Nachteile können
@@ -75,9 +66,35 @@ namespace talentStruktur
         public talentVorausssetzungen voraussetzungen;
 
         /// <summary>
-        /// Ist das Talent momentan überhaupt nutzbar (sprich: ist es aktiviert UND sind die Voraussetzungen erfüllt?)
+        /// Effektive Behinderung, die bei Nutzung des Talents zum Tragen kommt. Der Wert wird IMMER
+        /// von der Behinderung des Helden abgezogen. "0" entspricht daher eBE = BE. Beim Abzug muss man
+        /// aufpassen, da der Held durch die eBE trotzdem natürlich niemals einen Bonus bekommen kann!
         /// </summary>
-        public bool nutzbar;
+        public int effektiveBEAbzug;
+
+        /// <summary>
+        /// Ein Multiplikator, mit dem die normale BE multipliziert wird, um die eBE zu erhalten.
+        /// </summary>
+        public int effektiveBEMultiplikator;
+
+        /// <summary>
+        /// Eine Liste, die alle möglichen Spezialisierungen eines Talents enthält:
+        /// </summary>
+        public List<string> spezialisierungen;
+
+        /// <summary>
+        /// Eine Liste, die alle Fertigkeiten (genauer: "Talente") enthält, die anstelle dieses Talents
+        /// genutzt werden können (z.B., falls der Held dieses Talent nicht aktiviert hat). Außerdem ist 
+        /// jeweils auch der Aufschlagsmodifikator mit enthalten (positiv), der als Erschwernis hinzukommt.
+        /// </summary>
+        public List<NameWertPaar> ersatzweiseFertigkeiten;
+
+        /// <summary>
+        /// Eine Liste die alle gewählten Spezialisierungen inklusive ihrer Spezielisierunsstufe enthält:
+        /// </summary>
+        public List<NameWertPaar> gewaehlteSpezialisierungen;
+
+
 
         /// <summary>
         /// Name des Talents
@@ -98,10 +115,45 @@ namespace talentStruktur
                     switch (value)
                     {
                         ///////////////////////////////////////
-                        // TestTalent
+                        // Akrobatik
                         ///////////////////////////////////////
-                        case "TestTalent":
+                        case "Akrobatik":
                             name = value;
+
+                            talentwert = 0;
+                            aktiviert = false;
+                            istBasisTalent = false;
+                            nutzbar = false;
+                            talenttyp = "körperlich";
+                            steigerungsspalte = "D";
+
+                            eigenschaften = new List<string>()
+                            {
+                                "Mu", "GE", "KK"
+                            };
+
+                            voraussetzungen = new talentVorausssetzungen();
+                            // @ Tom: TODO: Wie kann ich nun in meiner Sturktur syntaktisch korrekt die
+                            // Liste von Name-Wert-Paaren für Voraussetzungen setzen, z.B.
+                            // "Körperbeherrschung", 4
+                            // "CoolesTalent", 1
+                            // ?
+
+                            effektiveBEAbzug = 0;
+                            effektiveBEMultiplikator = 2;
+
+                            spezialisierungen = new List<string>()
+                            {
+                                "Balancieren", "Bodenakrobatik", "Schwingen", "Sprünge", "Winden"
+                            };
+
+                            ersatzweiseFertigkeiten = new List<NameWertPaar>()
+                            {
+                                new NameWertPaar{ name = "Körperbeherrschung", wert = 5 },
+                                new NameWertPaar{ name = "Athletik", wert = 10 }
+                            };
+
+                            gewaehlteSpezialisierungen = new List<NameWertPaar>() {};
 
                             break;
 

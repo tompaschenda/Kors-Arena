@@ -109,9 +109,9 @@ namespace rassenStruktur
         public List<string> moeglicheSubrassen;
 
         /// <summary>
-        /// Der Name der Subrasse. Wird automatisch gesetzt, wenn der Name der Rasse gewählt wird.
+        /// Der Name der tatsächlich vom Helden gewählten Subrasse.
         /// </summary>
-        public string subrassenName;
+        public string gewaehlteSubrasse;
 
         /// <summary>
         /// Ermöglicht die Auswahl einer der möglichen Subrassen durch den Spieler. 
@@ -130,8 +130,8 @@ namespace rassenStruktur
         /// </summary>
         /// <returns> Gibt momentan immer "true" zurück </returns>
         public bool setzeSubrasse()
-        {           
-            subrassenName = auswahlSubrasse();
+        {
+            gewaehlteSubrasse = auswahlSubrasse();
             return true;
         }
 
@@ -329,7 +329,7 @@ namespace rassenStruktur
 
                             try
                             {
-                                if ( subrassenName == "Thorwaler" || subrassenName == "Fjarninger")
+                                if (gewaehlteSubrasse == "Thorwaler" || gewaehlteSubrasse == "Fjarninger")
                                 {
                                     haarfabenMap.Add(new Range(1, 8), "blond");
                                     haarfabenMap.Add(new Range(9, 13), "rotblond");
@@ -346,7 +346,7 @@ namespace rassenStruktur
                                     augenfarbenMap.Add(new Range(19, 20), "grau");
 
                                 }
-                                else if ( subrassenName == "Gjalskerländer" )
+                                else if (gewaehlteSubrasse == "Gjalskerländer")
                                 {
                                     haarfarbe.Add(new Range(1, 4), "blond");
                                     haarfarbe.Add(new Range(5, 8), "rotblond");
@@ -373,7 +373,7 @@ namespace rassenStruktur
                             koerpergroesse.wuerfel = new int[3];
                             koerpergroesse.wuerfel[0] = 2;
                             koerpergroesse.wuerfel[1] = 20;
-                            if( subrassenName == "Fjarninger" )
+                            if (gewaehlteSubrasse == "Fjarninger")
                                 koerpergroesse.wuerfel[2] = 5;
                             else
                                 koerpergroesse.wuerfel[2] = 0;

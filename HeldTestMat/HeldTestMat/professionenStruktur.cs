@@ -79,6 +79,11 @@ namespace professionenStruktur
         public List<string> moeglicheVarianten;
 
         /// <summary>
+        /// Die vom Helden tatsächlich gewählte Variante.
+        /// </summary>
+        public string gewaehlteVariante;
+
+        /// <summary>
         /// Automatische Vorteile durch die Profession inklusive Wert.
         /// </summary>
         public List<NameWertPaar> automatischeVorteile;
@@ -134,7 +139,7 @@ namespace professionenStruktur
         /// Eine Liste, die alle Zauberfertigkeiten und Spezialisierungen enthält, die durch die Rasse
         /// gegeben werden.
         /// </summary>
-        public List<ZauberSpezPaar> zauberfertigkeiten;
+        public List<nameSubnamePaar> zauberfertigkeiten;
 
         /// <summary>
         /// Eine Liste, die alle möglichen Ausbildungsorte / Akademien, etc. enthält.

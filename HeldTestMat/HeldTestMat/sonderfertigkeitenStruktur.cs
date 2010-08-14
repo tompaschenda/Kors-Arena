@@ -20,10 +20,6 @@ namespace sfStruktur
         public string name;
 
         /// <summary>
-        /// Ausprägung der SF. 
-        /// </summary>
-        public string auspraegung;
-        /// <summary>
         /// Typ der SF. Kann z.B. "allgemein", "Kampf", "klerikal", "magisch" sein, etc.
         /// </summary>
         public string typ;
@@ -35,10 +31,18 @@ namespace sfStruktur
         /// Kosten der SF in GP
         /// </summary>
         public int gpKosten;
+
         /// <summary>
-        ///  Stufe der Spezialisierung (z.B. bei mehrfacher Talentspezialisierung)
+        /// Eine Liste mit allen möglichen Spezialisierungen. Das können z.B. Talente, Zauber oder Merkmale sein (u.v.m.)
         /// </summary>
-        public int spezialisierungsstufe;
+        public List<string> moeglicheSpezialisierungen;
+
+        /// <summary>
+        /// Eine Liste mit allen vom Held tatsächlich gewählten Spezialisierungen, Dazu kommt jeweils (Wert) die
+        /// STUFE der Spezialisierung, denn auf bestimmte Talente kann man sich z.B. mehrmals spezialisieren.
+        /// </summary>
+        public List<NameWertPaar> gewaehlteSpezialisierungen;
+
         /// <summary>
         /// Verbreitung der SF
         /// </summary>
@@ -72,10 +76,31 @@ namespace sfStruktur
                     switch (value)
                     {
                         ///////////////////////////////////////
-                        // TestSF
+                        // Akklimatisierung
                         ///////////////////////////////////////
-                        case "TestSF":
+                        case "Akklimatisierung":
                             name = value;
+
+                            typ = "allgemein";
+
+                            moeglicheSpezialisierungen = new List<string>()
+                            {
+                                "Hitze","Kälte"
+                            };
+
+                            gewaehlteSpezialisierungen = new List<NameWertPaar>(){};
+
+                            voraussetzungen = new sfVorausssetzungen();
+                            // @ Tom: TODO: Wie kann ich nun in meiner Sturktur syntaktisch korrekt die
+                            // Liste von Name-Wert-Paaren für Voraussetzungen setzen, z.B.
+                            // "Körperbeherrschung", 4
+                            // "CoolesTalent", 1
+                            // ?
+
+                            verbreitung = 7;
+                            apKosten = 150;
+                            gpKosten = 999; // Kann nicht zu Spielgewinn genommen werden!
+                            nutzbar = false;                            
                             
                             break;
 
