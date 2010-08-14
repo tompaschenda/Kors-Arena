@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\GitWorking\Kors-Arena\HeldTestMat\HeldTestMat\Datenmodell\Tests\RassenDatenTest\RassenDatenTest\RassenDatenTest.csproj" total="7" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2010-08-13" time="23:40:15">
+  <environment nunit-version="2.5.7.10213" clr-version="4.0.30319.1" os-version="Microsoft Windows NT 5.1.2600 Service Pack 3" platform="Win32NT" cwd="C:\GitWorking\Kors-Arena\HeldTestMat\HeldTestMat\Datenmodell\Tests\RassenDatenTest\RassenDatenTest" machine-name="DUSN0257" user="tpaschen" user-domain="CORP" />
+  <culture-info current-culture="de-DE" current-uiculture="de-DE" />
+  <test-suite type="Project" name="C:\GitWorking\Kors-Arena\HeldTestMat\HeldTestMat\Datenmodell\Tests\RassenDatenTest\RassenDatenTest\RassenDatenTest.csproj" executed="True" result="Success" success="True" time="8.969" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\GitWorking\Kors-Arena\HeldTestMat\HeldTestMat\Datenmodell\Tests\RassenDatenTest\RassenDatenTest\bin\Debug\RassenDatenTest.exe" executed="True" result="Success" success="True" time="8.953" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="DatenmodellTest" executed="True" result="Success" success="True" time="8.953" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="RassenDatenManagerTest" executed="True" result="Success" success="True" time="8.672" asserts="0">
+                <results>
+                  <test-case name="DatenmodellTest.RassenDatenManagerTest.Constructor" executed="True" result="Success" success="True" time="0.047" asserts="0" />
+                  <test-case name="DatenmodellTest.RassenDatenManagerTest.GetRassenDaten" executed="True" result="Success" success="True" time="8.031" asserts="0" />
+                  <test-case name="DatenmodellTest.RassenDatenManagerTest.LadeStammddaten" executed="True" result="Success" success="True" time="0.547" asserts="1" />
+                  <test-case name="DatenmodellTest.RassenDatenManagerTest.SpeichernUndLaden" executed="True" result="Success" success="True" time="0.047" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="RassenDatenTest" executed="True" result="Success" success="True" time="0.281" asserts="0">
+                <results>
+                  <test-case name="DatenmodellTest.RassenDatenTest.Equality" executed="True" result="Success" success="True" time="0.016" asserts="3" />
+                  <test-case name="DatenmodellTest.RassenDatenTest.Konstruktor" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DatenmodellTest.RassenDatenTest.SpeichernUndLaden" executed="True" result="Success" success="True" time="0.266" asserts="1" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
