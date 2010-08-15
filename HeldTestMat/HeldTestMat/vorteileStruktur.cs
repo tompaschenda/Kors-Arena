@@ -321,7 +321,7 @@ namespace vorteileStruktur
                             {
                                 new subVorteil()
                                 {
-                                    ???
+                                    // TODO!!!!???
                                 },
                             };
                             break;
@@ -387,6 +387,9 @@ namespace vorteileStruktur
         /// </summary>
         public int gpKostenMagiebegabter;
 
+        /// <summary>
+        /// Enthält die jeweiligen Voraussetzungen eines Subvorteils:
+        /// </summary>
         public vorteilsVoraussetzungen voraussetzungen;
     }
 
