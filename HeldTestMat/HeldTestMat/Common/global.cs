@@ -5,6 +5,8 @@ using System;
 using System.Xml.Serialization;
 using System.IO;
 using System.ComponentModel;
+using Listen;
+
 
 namespace Common
 {
@@ -30,6 +32,24 @@ namespace Common
             return base.ToString();
         }
     }
+
+
+    /// <summary>
+    /// Struktur mit einem Name aus einer Liste und einem zugehörigen Wert.
+    /// </summary>
+    public struct GenericListenNameWertPaar<T>
+    {
+        /// <summary>
+        /// Name eines Vorteils (aus einer Liste)
+        /// </summary>
+        public T name;
+
+        /// <summary>
+        /// Zugehöriger Wert.
+        /// </summary>
+        public int wert;
+    }
+
 
 
     /// <summary>

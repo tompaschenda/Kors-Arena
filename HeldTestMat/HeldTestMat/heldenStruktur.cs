@@ -83,6 +83,7 @@ namespace heldenStruktur
         /// Der genaue Wert ist von der Rasse des Helden abhängig.
         /// </summary>
         public double koerpergroesse, gewicht;
+        /*
         private double berechneKoerpergroesse()
         {
             // Holen wir uns einen Würfel:
@@ -95,12 +96,13 @@ namespace heldenStruktur
         {
             gewicht = koerpergroesse * 100 - rasse.gewichtsabzug;
             return gewicht;
-        }
+        }*/
 
         /// <summary>
         /// Augenfarbe und Haarfarbe des Helden. Hängen beide von der Rasse des Helden ab.
         /// </summary>
         public string augenfarbe, haarfarbe;
+        /*
         private string berechneAugenfarbe()
         {
             // Holen wir uns einen Würfel:
@@ -118,7 +120,7 @@ namespace heldenStruktur
 
             haarfarbe = rasse.haarfarbe.getValue(ergebnis);
             return haarfarbe;
-        }
+        }*/
 
 
         /// <summary>
@@ -168,12 +170,13 @@ namespace heldenStruktur
             ort.yKoord = 0;
             ort.zKoord = 0;
             //[Tom] Hier benutzen wir jetzt die Property für den Rassennamen
-            rasse.Rasse = SpielerRassenNamen.Mittellaender;
+            rasse.Rasse = SpielerRassenNamen.Nivese;          
             // TODO: Wähle Subrasse, falls möglich!
-            berechneKoerpergroesse();
-            berechneGewicht();
-            berechneHaarfarbe();
-            berechneAugenfarbe();
+            // TODO! Muss an Subrassen gepasst werden!
+            // berechneKoerpergroesse();
+            //berechneGewicht();
+            //berechneHaarfarbe();
+            //berechneAugenfarbe();
             return true;
         }
 

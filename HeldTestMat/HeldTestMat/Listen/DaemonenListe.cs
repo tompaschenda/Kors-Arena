@@ -25,7 +25,7 @@ namespace Listen
         [Description("Belshirash")]
         Belshirash, Nagrach, EisigerJaeger,
         [Description("Asfaloth")]
-        Asfaloth, Calijnaar, Asfaloth, HerzoginDesWimmelndenChaos,
+        Asfaloth, Calijnaar, HerzoginDesWimmelndenChaos,
         [Description("Tasfarelel")]
         Tasfarelel, Zholvar, GierigerFleischer, HerrDesNeides,
         [Description("Belzhorash")]
