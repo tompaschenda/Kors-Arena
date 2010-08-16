@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum RassenTyp
+    public enum SpielerRassenNamen
     {
         [Description("Mittelländer")]
         Mittellaender,
@@ -39,8 +39,11 @@ namespace Listen
 
     }
 
-    public enum SubRassenTyp
+    public enum SpielerSubRassenNamen
     {
+        // Keine Subrasse ist auch manchmal möglich!
+        [Description("keine")]
+        keine,
         [Description("Fjarninger")]
         Fjarninger,
         [Description("Gjalskerländer")]

@@ -6,7 +6,23 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum SFTyp
+    public enum SFKategorien
+    {
+        [Description("Allgemeine Sonderfertigkeiten")]
+        AllgemeineSF,
+        [Description("Kampfsonderfertigkeiten (bewaffneter Nahkampf)")]
+        KampfSFBewaffnet,
+        [Description("Kampfsonderfertigkeiten (waffenlos)")]
+        KampfSFWaffenlos,
+        [Description("Kampfsonderfertigkeiten (Fernkampf)")]
+        KampfSFFernkampf,
+        [Description("Magische Sonderfertigkeiten")]
+        MagischeSF,
+        [Description("Klerikale Sonderfertigkeiten")]
+        KlerikaleSF,
+    }
+
+    public enum SFNamen
     {
         // Allgemeine:
         [Description("Akklimatisierung")]
@@ -391,7 +407,7 @@ namespace Listen
         ZibiljaRituale,
     }
 
-    public enum SFSubTyp
+    public enum SFSubNamen
     {
         // Akklimatisierung:
         [Description("Hitze")]

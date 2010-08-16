@@ -25,6 +25,11 @@ magisch
 geweiht
 
 ///////////////////////////////
+Professionen:
+////////////////////////////////
+
+
+///////////////////////////////
 Talenttypen:
 ////////////////////////////////
 körperlich
@@ -83,6 +88,599 @@ Telekinese
 Temporal
 Umwelt
 Verständigung
+
+///////////////////////////////
+Professionen:
+////////////////////////////////
+
+kämpferisch
+////////////////////////////////
+Amazone
+Fähnrich
+	Al'Anfa
+	Albenhus
+	Festum
+	Gareth
+	Oberfels
+	Honingen
+Fähnrich der Kavallerie
+	Ragath
+Stabsfähnrich
+Fähnrich zur See
+	Harben
+	Al'Anfa
+	Festum
+Gladiator
+	Fasar
+	Al'Anfa
+Schaukämpfer
+Gardist
+	Stadtgardist
+	Dorfbüttel
+	Straßenwächter
+	Schließer
+	Akademiegardist
+	Tempelgardist
+	Ehrengardist
+	Aranischer Sippenkrieger
+Jahrmarktskämpfer
+Krieger
+	Standard-Kriegerakademie
+	Arivor
+	Baburin
+	Baliho
+	Elenvina
+	Eslamsgrund
+	Gareth
+	Havena
+	Hylailos
+	Mengbilla
+	Neersand
+	Prem
+	Punin
+	Rommilys
+	Thorwal
+	Vinsalt
+	Xorlosch
+Ritter
+	Standard
+	Ritter alten Schlags
+	Knappe
+	Knappe des traditionellen Ritters
+Schertgeselle
+	Adersin
+	Uinin
+	Fedorino
+	al-Halan
+	Brilliantzwergischer Schwertgeselle
+	Balayan nach Marwan Sahib
+	Balayan nach Ishannah al'Kira
+	Kunchomer Säbelfechter
+	Rashdul
+	Caballero
+	Buskur-Stil
+Soldat
+	Schweres Fußvolk
+	Leichtes Fußvolk
+	Leichte Reiterei
+	Schwere Reiterei
+	Streitwagenlenker
+	Schütze
+	Berittener Schütze
+	Aufgesessener Schütze
+	Artillerist
+	Sappeur
+	Seesoldat
+	Seeartillerist
+	Soldat (Thinskari)
+Söldner
+	Schweres Fußvolk
+	Leichtes Fußvolk
+	Leichte Reitere
+	Schlechtreiter
+	Schütze
+	Berittener Schütze
+	Artillerist
+	Sappeur
+	Seesöldner
+	Leibwächter
+	Slaven-Aufseher
+Stammeskrieger
+	Waldmenschen
+	Fjarninger
+	Gjalskerländer
+	Ferkina
+	Trollzacker
+	Novadischer Wüstenkrieger
+	Goblin-Stammeskrieger
+	Orkischer Stammeskrieger
+	Achaz-Krieger
+	Achaz-Tempelwache
+	Brobim-Stammeskrieger
+
+reisend
+////////////////////////////////
+Botenreiter
+	Beilunker Reite
+	Blaue Pfeile
+	Silberne Fackeln
+	Kaiserlicher Boten- und Kurierdienst
+	Botenläufer
+	Zwergischer Stafettenläufer
+Entdecker
+	Kartograph
+Fernhändler
+	Kauffahrer
+Fischer
+	Berungstaucher
+	Schwammtaucher
+	Korellantaucher
+	Harpunier
+	Unterwasserjäger
+	Seefischer
+	Perlenfischer
+Fuhrmann
+Grenzjäger
+Großwildjäger
+	Sklavenjäger
+	Kopfgeldjäger
+Hirte
+	Rinderhirte
+	Schäfer
+	Viehdieb
+	Nivesischer Karenhirte
+	Kleintierzüchter
+	Wasserbüffelhirte
+Jäger
+	Stammesjäger
+	Fallensteller
+	Wildhüter
+Karawanenhüter
+	Salzgänger
+Kundschafter
+Prospektor
+	Goldsucher
+	Prospektor
+	Kräutersammler
+	Sammler
+Schiffer
+	Fährmann
+	Flussschiffer
+	Lotse
+	Flößer
+	Flusspirat
+Schmuggler
+	Zöllner
+Seefahrer
+	Matrose
+	Pirat
+	Walfänger
+	Haijäger
+	Robbenjäger
+	Navigator
+Straßenräuber
+	Bandit
+	Kutschenräuber
+	Wegelagerer
+	Thalusicher Wegelagerer
+	Freischärler
+
+gesellschaft
+////////////////////////////////	
+Ausrufer
+Barde
+	Barde
+	Erzähler
+	Skalde
+Bettler
+Dieb
+Einbrecher
+	Grabräuber
+Gaukler
+	Akrobat
+	Dompteur
+	Musikus
+	Possenreißer
+	Schauspieler
+	Schlangenbeschwörer
+	Vagant
+Händler
+	Fahrender Händler
+	Geldwechler
+	Großhändler
+	Hausierer
+	Hehler
+	Krämer
+	Tauschhändler
+Herold
+Hofkünstler
+	Bildhauer
+	Darsteller
+	Hofmusicus
+	Kalligraph
+	Maler
+	Tanzlehrer
+Höfling
+Kurtisane/Gesellschafter
+	Hure/Lustknabe
+Privatlehrer
+Schriftsteller
+	Pamphletist
+Spitzel
+	Informant
+	Geheimagent
+	Nanduriat
+Streuner
+	Hochstapler
+	Schieber
+	Spieler
+	Zuhälter
+Taugenichts
+	Stutzer
+	Dilettant
+Wirt
+
+Handwerk / Wissen:
+////////////////////////////////
+Bader
+Bauer
+	Erntehelfer
+	Feldsklave
+	Freibauer
+	Gärtner
+	Gutsherr
+	Knecht/Magd
+	Leibeigener
+	Müller
+	Pflanzer
+	Viehzüchter
+	Winzer
+Bergmann
+	Pilzzüchter
+	Schachtfeger
+Domestik
+	Hausdiener
+	Hausknecht/-magd
+	Haussklave
+	Kutscher
+	Leibdiener/Zofe
+	Erzieher der Achaz
+Edelhandwerker
+	Apothekarius
+	Baumester
+	Deichmeister
+	Drucker
+	Hüttenkundiger/Bronzegießer/Eisengießer
+	Mechanikus
+	Schiffbauer
+	Tresorbauer
+	Uhrmacher
+Gelehrter
+	Anatom
+	Historiker
+	Mathematixus
+	Mawdli
+	Medicus
+	Philosoph/Metaphysiker
+	Rechtsgelehrter
+	Sprachenkundler
+	Sternkundiger
+	Völkerkundler/Sagenkundler
+	Zahlenmystiker
+Handwerker
+	Bastler
+	Archaische Handwerker Südaventuriens
+	Archaische Handwertker der Achaz
+	Archaische Handwerker der Ferkinas
+	Archaische Handwerker der Orks
+	Archaische Handwerker des Nordens
+Rattenfänger
+	Krokodillero
+Schreiber
+	Amtsschreiberin
+	Kopistin
+	Kontoristin
+	Sesh'shemet
+Tagelöhnerin
+	Bauhelfer
+	Holzfäller
+	Köhler
+	Lastenträger
+	Pamschneider
+	Schauerleute
+Tiebändiger
+	Falkner
+	Hundeführer
+	Zureiter
+Wundarzt
+	Feldscher
+	Hebamme
+	Quacksalber/Zahnreißer
+
+Magisch:
+////////////////////////////////
+Alchimist
+	Magiebegabter Alchimist
+		Bund des Roten Salamanders
+		Gilde der Alchimisten zu Mengbilla
+		Alchimistische Fakultät der Universität von Al'Anfa
+		Chamib al'Chimie der Drachenei-Akademie zu Khunchom
+		Fakultät der Alchimie der Herzog-Eolan-Universität zu Methumis
+			Quadrivium:
+				Arithmetik / Geometrie
+				Musiklehre
+				Astronomie
+		Spagyrischer Zweig der Halle des Lebens zu Norburg
+		Zinnober-Laboratorien der Halle des Quecksilbers zu Festum
+		Zwergischer Alchimist
+		Kammerjäger
+		Alchimist aus Unau
+Derwisch
+Druide
+	Haindruide
+	Hüter der Macht
+	Mehrer der Macht
+	Sumupriester
+	Konzilsdruide
+		Elemente!
+Durro-Dun
+	Bär
+	Feuermolch
+	Fischotter
+	Gebirgsbock
+	Rabe
+	Schneeeule
+	Wildschwein
+	Vielfraß
+	Wolf
+Bewahrer
+Former
+Kämpfer
+	Auelfischer Kämpfer
+	Steppenelfischer Kämpfer
+	Waldelfischer Kämpfer
+	Firnelfischer Kämpfer
+Legendensänger
+	Unterhändler
+Wildnisläufer
+	Auenläufer
+	Steppenreiter
+	Wipfelläufer
+	Schneeläufer
+Zauberweber
+	Beschützer
+Wanderer
+Ferkina-Besessener
+Geode
+	Diener Sumus
+	Herr der Erde
+	Brobim-Geode
+Hexe
+	Tochter der Erde
+	Schöne der Nacht
+	Die Verschwiegene Schwesternschaft
+	Schwester des Wissens
+	Seherinnen von Heute und Morgen
+	Schwester der Fahrenden Gemeinschaft
+	Schwarze Witwe
+Kristallomant
+Magier
+	Standardmagier
+	Universitäten:
+		Universität von Al'Anfa
+			Leibmagier-Zweig
+			Seekriegs-Zweig
+		Kampfseminar Andergast
+		Akademie der Geistreisen zu Belhanka
+		Halle des vollendeten Kampfes zu Bethana
+		Dunkle Halle der Geister zu Brabak
+		Seminar der elfischen Verständigung und natürlichen Heilung zu Donnerbach
+			Verständigungszweig
+			Heilungszweig
+		Konzil der Elemente zu Drakonia
+			Feuerelementarist
+			Humuselementarist
+			Wasserelementarist
+			Luftelementarist
+			Erzelementarist
+			Eiselementarist
+		Akadmie der Herrschaft zu Elenvina
+		Akademie der Geistigen Kraft zu Fasar
+		Bannakademie Fasar
+		Halle des Quecksilbers zu Festum
+		Akademie Schwert und Stab zu Gareth
+		Akademie der Magischen Rüstung zu Gareth
+		Akademie der Magischen Rüstung zu Gareth
+		Schule des direkten Weges zu Gerasim
+		Akademie der Erscheinungen zu Grangor
+		Drachenei-Akademie zu Khunchom
+			Magier der Sulman Al-Nassori
+		Halle der Antimagie zu Kuslik
+		Halle der Metamorphosen zu Kuslik
+		Halle der Macht zu Lowangen
+		Akademie der Verformungen zu Lowangen
+		Akademie des magischen Wissens zu Methumis
+		Zauberschule des Kalifen zu Mherwed
+		Schule der variablen Form zu Mirham
+		Schule der Beherrschuung zu Neersand
+		Halle des Lebens zu Norburg
+		Alademie von Licht und Dunkelheit zu Nostria
+		Halle des Windes zu Olport
+		Schule der Austreibung zu Perricum
+		Akademie der hohen Magie & Arcanes Institut zu Punin
+			Punin I
+			Punin II
+		Pentagramm-Akademie zu Rashdul
+			Elementarer Zweig
+			Dämonischer Zweig
+		Stoerrebrandt-Kolleg zu Riva
+		Informationsinstitut zu Rommilys
+		Schule der vierfachen Verwandlung zu Sinoda
+		Schule der Hellsicht zu Thorwal
+		Anatomische Akademie zu Vinsalt
+		Schule des seienden Scheins
+		Schule der Schmerzen zu Elburum
+		Schule des Wandelbaren zu Tuzak
+		Bannakademie Ysilia
+		Kreis der Einfühlung in den nördlichen Salamandersteinen
+		Schüler der Kiranya von Kutaki
+		Schüler der Sevastana Gevendar
+		Schüler des Rafim Bey
+Scharlatan
+	Jahrmarktszauber
+	Scharlatanischer Seher
+	Magischer Quacksalber
+	Hofscharlatan
+	Theaterzauberer
+	Trickbetrüger
+Schelm
+	Schöpfer
+	Visionär
+	Possenreißer
+	Vagabund
+	Hofnarr
+	Klabauterlehrling
+Tänzer
+	Gaukler-Tänzer
+	Tulamidische Sharisad
+	Novadische Sharisad
+	Zahorischer Hazaqi
+	Aranischer Majuna
+	Zaubertänzer Tulamidische Sharisad
+	Zaubertänzer Novadische Sharisad
+	Zaubertänzer Hazaqi
+	Zaubertänzer Majuna
+Zibilja
+
+Klerikal:
+////////////////////////////////
+Geweihter des Praios
+Bannstrahler
+	Nicht-geweihtes Mitglied
+	Geweihtes Mitglied
+	Ordensgeweihter vom Hüterorden
+Geweihter der Rondra
+	Ordensgeweihter vom Rhodenstein
+Rondrageweihte Amazone
+Geweihter des Efferd
+	Novizitat im Binnenland
+	Novizitat am Rand der Khom
+	Novizitat an der Küste
+	Efferdbruder
+Geweihter der Travia
+	Orden der Badilakaner
+	Gänseritter
+	Dreischwesterorden
+Geweihter des Boron
+	Puniner Ritus
+		Reisender Geweihter
+		Militärbegleiter
+		Diplomat
+	Al'Anfaner Ritus	
+		Militärbegleiter
+		Diplomat
+	Je nach Ritus:
+		Ordenskrieger der Golgariten
+		Nicht geweihtes Mitglied
+		Geweihtes Mitglied
+		Orden der heiligen Noiona von Selem
+		Orden der Sanften Ruhe
+		Der Orden zu Ehren der heiligen Etilia
+		Der Orden des schwarzen Raben
+		Tempelgarde der Stadt des Schweigens
+		Orden des Heiligen Laguan
+Geweihter der Hesinde
+	Pastori
+	Draconiter (Sakraler Zweig)
+	Draconiter (Profaner Zweig)
+Geweihter des Firun
+	Waldläufer
+	Hüter der Jagd
+Geweihter der Tsa
+	Koboldfreund
+	Freiheitskämpfer
+Geweihter des Phex
+	Beutelschneider
+	Fassadenkletterer
+	Betrüger
+	Intrigant
+	Händler
+	Nachrichtenagentur Nanduria
+	Beni Fessiri
+Geweihter der Peraine
+	Novizitat in einem städtischen Tempel
+	Novititat auf dem Land
+	Therbunit
+Geweihter des Ingerimm
+	Traditioneller Kult
+	Ingra-Kult des Nordens
+	Bruderschaft des Lodernden Feuers
+Geweihte der Rahja
+	Güldenländischer ritus
+	Mhanadistanischer Ritus
+	Tempel des Nordens
+	Säbeltänzer
+	Rahja-Kavalier
+Prediger vom Bund des wahren Glaubens
+Geweihter des Aves
+Geweihter des Kor
+Geweihter des Nandus
+	Marktschreiber
+	Volkslehrer
+	Rechtshelfer
+Geweihter der Ifirn
+Horas-Ritter
+Geweihter des Swafnir
+	Hirte der Walwütigen
+Geweihter des Angrosch
+	Hüter der Esse
+	Hüter der Tradition
+	Hüter der Wacht
+Priester der H'Szint
+Priester der Zsahh
+Tempelpriester von Rur und Gror
+Wanderpriester von Rur und Gror
+	Geheimer Priester auf Schwarz-Maraskan
+Stammeskrieger der Beni Dervez
+Hadjinim
+	Tarisharim
+	Al'Drakorhim
+	Beni Uchakani
+Medizinmann
+	Dschungelstämme
+	Verlorene Stämme
+	Waldinsel-Utulus
+	Miniwatu
+	Tocamuyac
+	Darna
+Kaskjua
+Nuranshar
+	Mherech
+	Shai'aian
+	Thalusien
+Brenoch-Dun
+Skuldrun	
+	Heiler
+	Mammut-Seher
+	Zauberschmied
+Shochzul
+Tairach-Priester
+Gravesh-Priester
+Rikai-Priester
+Goblin-Schamanin
+	Stammes-Schamanin
+Schamane der Achaz
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+
 
 
 ///////////////////////////////

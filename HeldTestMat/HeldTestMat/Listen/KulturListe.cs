@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum KulturTyp
+    public enum KulturNamen
     {
         [Description("Mittelländische Städte")]
         MittellaendischeStaedte,
@@ -106,7 +106,7 @@ namespace Listen
         StammesAchaz,
     }
 
-    public enum SubKulturTyp
+    public enum SubKulturNamen
     {
         [Description("Hafenstädte und Städte an großen Flüssen")]
         HafenstaedteUndStaedteAnGroessenFluessen,
@@ -250,7 +250,7 @@ namespace Listen
 
     }							
 
-    public enum Orkstaemme
+    public enum OrkstaemmeNamen
     {
         [Description("Korogai")]
         Korogai,
@@ -268,7 +268,7 @@ namespace Listen
         Zholochai,
     }
 
-    public enum Orkkasten
+    public enum OrkkastenNamen
     {
         [Description("Ergoch")]
         Ergoch,

@@ -6,7 +6,65 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum WaffenTyp
+    public enum WaffenKategorien
+    {
+        [Description("Anderthalbhänder")]
+        Anderthalbhaender,
+        [Description("Armbrust")]
+        Armbrust,
+        [Description("Belagerungswaffen")]
+        Belagerungswaffen,
+        [Description("Blasrohr")]
+        Blasrohr,
+        [Description("Bogen")]
+        Bogen,
+        [Description("Diskus")]
+        Diskus,
+        [Description("Dolche")]
+        Dolche,
+        [Description("Fechtwaffen")]
+        Fechtwaffen,
+        [Description("Hiebwaffen")]
+        Hiebwaffen,
+        [Description("Infanteriewaffen")]
+        Infanteriewaffen,
+        [Description("Kettenstäbe")]
+        Kettenstaebe,
+        [Description("Kettenwaffen")]
+        Kettenwaffen,
+        [Description("Lanzenreiten")]
+        Lanzenreiten,
+        [Description("Peitsche")]
+        Peitsche,
+        [Description("Raufen")]
+        Raufen,
+        [Description("Ringen")]
+        Ringen,
+        [Description("Säbel")]
+        Saebel,
+        [Description("Schleuder")]
+        Schleuder,
+        [Description("Schwerter")]
+        Schwerter,
+        [Description("Speere")]
+        Speere,
+        [Description("Stäbe")]
+        Staebe,
+        [Description("Wurfbeile")]
+        Wurfbeile,
+        [Description("Wurfmesser")]
+        Wurfmesser,
+        [Description("Wurfspeere")]
+        Wurfspeere,
+        [Description("Zweihandflegel")]
+        Zweihandflegel,
+        [Description("Zweihand-Hiebwaffen")]
+        ZweihandHiebwaffen,
+        [Description("Zweihandschwerter/-säbel")]
+        ZweihandSchwerterUndSaebel,
+    }
+
+    public enum WaffenNamen
     {
         // Werkzeuge und Gebrauchswaffen:
         [Description("Beil")]

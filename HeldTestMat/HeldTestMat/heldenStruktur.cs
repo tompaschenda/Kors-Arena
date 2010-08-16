@@ -168,7 +168,7 @@ namespace heldenStruktur
             ort.yKoord = 0;
             ort.zKoord = 0;
             //[Tom] Hier benutzen wir jetzt die Property für den Rassennamen
-            rasse.Rasse=RassenTyp.Mittellaender;
+            rasse.Rasse = SpielerRassenNamen.Mittellaender;
             // TODO: Wähle Subrasse, falls möglich!
             berechneKoerpergroesse();
             berechneGewicht();

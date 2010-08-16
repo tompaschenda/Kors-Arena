@@ -69,33 +69,33 @@ namespace rassenStruktur
         ///  Empfohlene Vorteile für eine Rasse. Kann optisch bei der Generierung in der GUI als grün 
         ///  hervorgehoben werden. Ist nicht bindend.
         /// </summary>
-        public List<string> empfohleneVorteile;
+        public List<VorteileNamen> empfohleneVorteile;
         /// <summary>
         ///  Empfohlene Nachteile für eine Rasse. Kann optisch bei der Generierung in der GUI als grün 
         ///  hervorgehoben werden. Ist nicht bindend.
         /// </summary>
-        public List<string> empfohleneNachteile;
+        public List<NachteileNamen> empfohleneNachteile;
         /// <summary>
         ///  Nicht geeignere Vorteile für eine Rasse. Kann optisch bei der Generierung in der GUI
         ///  als rot hervorgehoben werden. Sollte bindend sein.
         /// </summary>
-        public List<string> ungeeigneteVorteile;
+        public List<VorteileNamen> ungeeigneteVorteile;
         /// <summary>
         ///  Nicht geeignere Nachteile für eine Rasse. Kann optisch bei der Generierung in der GUI
         ///  als rot hervorgehoben werden. Sollte bindend sein.
         /// </summary>
-        public List<string> ungeeigneteNachteile;
+        public List<NachteileNamen> ungeeigneteNachteile;
         /// <summary>
         /// Übliche Kulturen für eine Rasse. Kann optisch bei der Generierung in der GUI als grün
         /// hervorgehoben werden. Ist nicht bindend.
         /// </summary>
-        public List<string> ueblicheKulturen;
+        public List<KulturNamen> ueblicheKulturen;
         /// <summary>
         /// Unübliche Kulturen für eine Rasse. Kann optisch bei der Generierung in der GUI als
         /// gelb hervorgehoben werden. Ist nicht bindend, sollte aber nur in Absprache mit dem
         /// Meister verwendet werden.
         /// </summary>
-        public List<string> unueblicheKulturen;
+        public List<KulturNamen> unueblicheKulturen;
         /// <summary>
         /// Die Talentmodifikatoren dieser Rasse. Enthält sowohl den jeweiligen Talentnamen als
         /// auch den Modifikator auf das Talent.
@@ -107,12 +107,12 @@ namespace rassenStruktur
         /// Eintrag mit dem eigentlichen Rassennamen. Bei manchen Rassen (z.B. Thorwaler)
         /// können Subrassen gewählt werden.
         /// </summary>
-        public List<string> moeglicheSubrassen;
+        public List<SpielerSubRassenNamen> moeglicheSubrassen;
 
         /// <summary>
         /// Der Name der tatsächlich vom Helden gewählten Subrasse.
         /// </summary>
-        public string gewaehlteSubrasse;
+        public SpielerSubRassenNamen gewaehlteSubrasse;
 
         /// <summary>
         /// Ermöglicht die Auswahl einer der möglichen Subrassen durch den Spieler. 
@@ -120,9 +120,9 @@ namespace rassenStruktur
         /// also die "Standardvariante" gewählt. Erfordert GUI- oder Eingabeninteraktion mit Spieler.
         /// </summary>
         /// <returns></returns>
-        public string auswahlSubrasse()
+        public SpielerSubRassenNamen auswahlSubrasse()
         {
-            string ausgewaehlteSubrasse = moeglicheSubrassen[0];
+            SpielerSubRassenNamen ausgewaehlteSubrasse = moeglicheSubrassen[0];
             return ausgewaehlteSubrasse;
         }
 
@@ -139,7 +139,7 @@ namespace rassenStruktur
         /// <summary>
         /// Identifier der Rasse
         /// </summary>
-        private RassenTyp rasse;
+        private SpielerRassenNamen rasse;
 
         /// <summary>
         /// [Tom]: Der Name der Rasse. Beim Setzen des Namens werden die anderen Felder automatisch gefüllt.
@@ -149,7 +149,7 @@ namespace rassenStruktur
         {
             get
             {
-                return EnumExtentions.GetDescription<RassenTyp>(rasse);
+                return EnumExtentions.GetDescription<SpielerRassenNamen>(rasse);
             }
         }
 
@@ -160,14 +160,10 @@ namespace rassenStruktur
         /// <summary>
         /// Der Identifier dieser Rasse. Der Setter definiert die Attribute der Rasse
         /// </summary>
-        public RassenTyp Rasse
+        public SpielerRassenNamen Rasse
         {
             set
             {
-
-                // Wir legen uns zunächst eine Struktur mit allen Listen an. Darauf greifen wird
-                // dann ständig zu:
-                // TODO!!!!! @ Tom: WIE!? :)
 
                 // Definition der Maps für die Farben:
                 RangeMap<string> haarfabenMap = new RangeMap<string>();
@@ -182,11 +178,11 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Mittelreichler
                         ///////////////////////////////////////
-                        case RassenTyp.Mittellaender :
+                        case SpielerRassenNamen.Mittellaender:
 
                             rasse = value;
 
-                            moeglicheSubrassen = new List<string>(){};
+                            moeglicheSubrassen = new List<SpielerSubRassenNamen>(){};
 
                             generierungskosten = 0;
 
@@ -222,22 +218,22 @@ namespace rassenStruktur
 
                             automatischeNachteile = new List<NameWertPaar>(){};
 
-                            empfohleneVorteile = new List<string>() { };
-                            empfohleneNachteile = new List<string>() { };
-                            ungeeigneteVorteile = new List<string>() 
+                            empfohleneVorteile = new List<VorteileNamen>() { };
+                            empfohleneNachteile = new List<NachteileNamen>() { };
+                            ungeeigneteVorteile = new List<VorteileNamen>() 
                             {
-                                "Herausragende Balance",
+                               VorteileNamen.HerausragendeBalance,
                             };
-                            ungeeigneteNachteile = new List<string>() 
+                            ungeeigneteNachteile = new List<NachteileNamen>() 
                             {
-                                "Nahrungsrestriktion",
+                                NachteileNamen.Nahrungsrestriktion,
                             };                            
                            
-                            ueblicheKulturen = new List<string>()
+                            ueblicheKulturen = new List<KulturNamen>()
                             {
-                                "Mittelländische Städte", "Mittelländische Landbevölkerung", "Andergast und Nostria",
-                                "Bornland", "Svelttal", "Almada", "Horasreich", "Zyklopeninseln",
-                                "Maraskan", "Südaventurien", "Bukanier"
+                                KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeLandbevoelkerung, KulturNamen.AndergastUndNostria,
+                                KulturNamen.Bornland, KulturNamen.SvellttalUndNordlande, KulturNamen.Almada, KulturNamen.Horasreich,
+                                KulturNamen.Zyklopeninseln, KulturNamen.Maraskan, KulturNamen.Suedaventurien, KulturNamen.Bukanier,
                             };
                             // [Tom]: oder auch so:
                             // ueblicheKulturen.Add("Bukanier");
@@ -245,10 +241,10 @@ namespace rassenStruktur
                             //[Tom]: Listenbefüllung:
                             // Wir füllen die Liste mittels eines sogenannten Collection Initializers
                             // siehe http://www.developer.com/net/csharp/article.php/3607421/New-in-C-30-Create-and-Initialize-Collection-Objects-in-One-Step.htm
-                            unueblicheKulturen = new List<string> 
+                            unueblicheKulturen = new List<KulturNamen> 
                             {
-                                "Aranien", "Tulamidische Stadtstaaten", 
-                                "Thorwal", "Mhanadistan", "Amazonenburg"
+                                KulturNamen.Aranien, KulturNamen.TulamidischeStadtstaaten, KulturNamen.Thorwal,
+                                KulturNamen.Mhanadistan, KulturNamen.Amazonenburg,
                             };
 
                             //[Tom]: Auch hier können wir ganz Prima einen Collection Initializer benutzen. Diesmal in der geschachtelten Ausführung
@@ -259,11 +255,11 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Tulamiden
                         ///////////////////////////////////////
-                        case RassenTyp.Tulamiden:
+                        case SpielerRassenNamen.Tulamiden:
 
                             rasse = value;
 
-                            moeglicheSubrassen = new List<string>(){};
+                            moeglicheSubrassen = new List<SpielerSubRassenNamen>(){};
 
                             generierungskosten = 0;
 
@@ -297,27 +293,27 @@ namespace rassenStruktur
 
                             automatischeVorteile = new List<NameWertPaar>() {};
                             automatischeNachteile = new List<NameWertPaar>() {};
-                            empfohleneVorteile = new List<string>() {};
-                            empfohleneNachteile = new List<string>() {};
-                            ungeeigneteVorteile = new List<string>() 
+                            empfohleneVorteile = new List<VorteileNamen>() {};
+                            empfohleneNachteile = new List<NachteileNamen>() {};
+                            ungeeigneteVorteile = new List<VorteileNamen>() 
                             {
-                                "Herausragende Balance",
+                                VorteileNamen.HerausragendeBalance,
                             };
 
-                            ungeeigneteNachteile = new List<string>()
+                            ungeeigneteNachteile = new List<NachteileNamen>()
                             {
-                                "Nahrungsrestriktion",
+                                NachteileNamen.Nahrungsrestriktion,
                             };
 
-                            ueblicheKulturen = new List<string>()
+                            ueblicheKulturen = new List<KulturNamen>()
                             {
-                                "Aranien", "Mhenadistan", "Tulamidische Stadtstaaten", "Novadi", "Ferkina",
-                                "Zahori", "Maraskan", "Südaventurien", "Bukanier"
+                                KulturNamen.Aranien, KulturNamen.Mhanadistan, KulturNamen.TulamidischeStadtstaaten, KulturNamen.Novadi,
+                                KulturNamen.Ferkina, KulturNamen.Zahori, KulturNamen.Maraskan, KulturNamen.Suedaventurien, KulturNamen.Bukanier,
                             };
 
-                            unueblicheKulturen = new List<string> 
+                            unueblicheKulturen = new List<KulturNamen> 
                             {
-                                "Mittelländische Städte", "Almada", "Amazonenburg"
+                                KulturNamen.MittellaendischeStaedte, KulturNamen.Almada, KulturNamen.Amazonenburg
                             };
 
                             talentModifikatoren = new List<NameWertPaar>(){};
@@ -327,20 +323,20 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Thorwaler
                         ///////////////////////////////////////
-                        case RassenTyp.Thorwaler:
+                        case SpielerRassenNamen.Thorwaler:
 
                             rasse = value;
 
-                            moeglicheSubrassen = new List<string>()
+                            moeglicheSubrassen = new List<SpielerSubRassenNamen>()
                             {
-                                "Thorwaler", "Fjarninger", "Gjalskerländer"
+                                SpielerSubRassenNamen.keine, SpielerSubRassenNamen.Fjarninger, SpielerSubRassenNamen.Gjalskerlaender,
                             };
 
                             generierungskosten = 5;
 
                             try
                             {
-                                if (gewaehlteSubrasse == "Thorwaler" || gewaehlteSubrasse == "Fjarninger")
+                                if (gewaehlteSubrasse != SpielerSubRassenNamen.Gjalskerlaender)
                                 {
                                     haarfabenMap.Add(new Range(1, 8), "blond");
                                     haarfabenMap.Add(new Range(9, 13), "rotblond");
@@ -357,7 +353,7 @@ namespace rassenStruktur
                                     augenfarbenMap.Add(new Range(19, 20), "grau");
 
                                 }
-                                else if (gewaehlteSubrasse == "Gjalskerländer")
+                                else
                                 {
                                     haarfarbe.Add(new Range(1, 4), "blond");
                                     haarfarbe.Add(new Range(5, 8), "rotblond");
@@ -370,10 +366,6 @@ namespace rassenStruktur
                                     augenfarbenMap.Add(new Range(11, 18), "grün");
                                     augenfarbenMap.Add(new Range(19, 20), "blau");
                                 }
-                                else
-                                {
-                                    throw new System.ArgumentOutOfRangeException();
-                                }
                             }
                             catch (System.ArgumentOutOfRangeException)
                             {
@@ -384,7 +376,7 @@ namespace rassenStruktur
                             koerpergroesse.wuerfel = new int[3];
                             koerpergroesse.wuerfel[0] = 2;
                             koerpergroesse.wuerfel[1] = 20;
-                            if (gewaehlteSubrasse == "Fjarninger")
+                            if (gewaehlteSubrasse == SpielerSubRassenNamen.Fjarninger)
                                 koerpergroesse.wuerfel[2] = 5;
                             else
                                 koerpergroesse.wuerfel[2] = 0;
@@ -403,40 +395,45 @@ namespace rassenStruktur
                             mrModifikator = -5;
 
                             automatischeVorteile = new List<NameWertPaar>(){};
+                            // @Tom - Hier das unschöne Listen-Beispiel:
+                            // Hier möchte ich eigentlich KEINEN String angeben müssen.
+                            // Aber ich möchte auch NICHT extra einen neuen "Vorteilsname-Wert-Paar"-Typ
+                            // erfinden müssen.
                             automatischeNachteile = new List<NameWertPaar>()
                             {
                                 new NameWertPaar{name="Jähzorn", wert=6},
                             };
 
-                            empfohleneVorteile = new List<string>()
+                            empfohleneVorteile = new List<VorteileNamen>()
                             {
-                                "Eisern", "Hohe Lebenskraft", "Innerer Kompass", "Kälteresistenz",
-                                "Kampfrausch", "Richtungssinn", "Zäher Hund"
+                                VorteileNamen.Eisern, VorteileNamen.HoheLebenskraft, VorteileNamen.InnererKompass,
+                                VorteileNamen.Kaelteresistenz, VorteileNamen.Kampfrausch, VorteileNamen.Richtungssinn,
+                                VorteileNamen.ZaeherHund,
                             };
-                            empfohleneNachteile = new List<string>()
+                            empfohleneNachteile = new List<NachteileNamen>()
                             {
-                                "Blutrausch", "Hitzeempfindlich"
-                            };
-
-                            ungeeigneteVorteile = new List<string>()
-                            {
-                                "Herausragende Balance", "Hohe Magieresistenz"
-                            };
-                            ungeeigneteNachteile = new List<string>()
-                            {
-                                "Kleinwüchsig", "Nahrungsrestriktion"
+                                NachteileNamen.Blutrausch, NachteileNamen.Hitzeempfindlichkeit
                             };
 
-                            ueblicheKulturen = new List<string>()
+                            ungeeigneteVorteile = new List<VorteileNamen>()
                             {
-                                "Thorwal", "Fjarninger", "Gjalskerland"
+                                VorteileNamen.HerausragendeBalance, VorteileNamen.HoheMagieresistenz,
+                            };
+                            ungeeigneteNachteile = new List<NachteileNamen>()
+                            {
+                                NachteileNamen.Kleinwuechsig, NachteileNamen.Nahrungsrestriktion,
                             };
 
-                            unueblicheKulturen = new List<string> 
+                            ueblicheKulturen = new List<KulturNamen>()
                             {
-                                "Mittelländische Städte", "Mittelländische Landbevölkerung",
-                                "Andergast und Nostria", "Bornland", "Svellttal", "südaventurien", "Tulamidische Stadtstaaten",
-                                "Bukanier"
+                                KulturNamen.Thorwal, KulturNamen.Fjarninger, KulturNamen.Gjalskerland
+                            };
+
+                            unueblicheKulturen = new List<KulturNamen> 
+                            {
+                                KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeLandbevoelkerung,
+                                KulturNamen.AndergastUndNostria, KulturNamen.Bornland, KulturNamen.SvellttalUndNordlande, 
+                                KulturNamen.Suedaventurien, KulturNamen.TulamidischeStadtstaaten, KulturNamen.Bukanier,
                             };
 
                             talentModifikatoren = new List<NameWertPaar>(){};

@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum NachteileTyp
+    public enum NachteileNamen
     {
         [Description("Aberglaube")]
         Aberglaube,

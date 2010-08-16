@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum ZauberTyp
+    public enum ZauberNamen
     {
         [Description("Abveneum reine Speise")]
         Abveneum,
@@ -542,5 +542,127 @@ namespace Listen
         ZungeLaehmen,
         [Description("Zwingtanz")]
         Zwingtanz,
+    }
+
+    public enum ZauberMerkmale
+    {
+        [Description("Antimagie")]
+        Antimagie,
+        [Description("Beschwörung")]
+        Beschwoerung,
+        [Description("Dämonisch (Blakharaz)")]
+        DaemonischBlakharaz,
+        [Description("Dämonisch (Belhalhar)")]
+        DaemonischBelhalhar,
+        [Description("Dämonisch (Charyptoroth)")]
+        DaemonischCharyptoroth,
+        [Description("Dämonisch (Lolgramoth)")]
+        DaemonischLolgramoth,
+        [Description("Dämonisch (Thargunitoth)")]
+        DaemonischThargunitoth,
+        [Description("Dämonisch (Amazeroth)")]
+        DaemonischAmazeroth,
+        [Description("Dämonisch (Belshirash)")]
+        DaemonischBelshirash,
+        [Description("Dämonisch (Tasfarelel)")]
+        DaemonischTasfarelel,
+        [Description("Dämonisch (Belzhorash)")]
+        DaemonischBelzhorash,
+        [Description("Dämonisch (Agrimoth)")]
+        DaemonischAgrimoth,
+        [Description("Dämonisch (Belkelel)")]
+        DaemonischBelkelel,
+        [Description("Dämonisch (Asfaloth)")]
+        DaemonischAsfaloth,
+        [Description("Dämonisch (allgemein)")]
+        DaemonischAllgemein,
+        [Description("Dämonisch (der Namenlose)")]
+        DaemonischDerNamenlose,
+        [Description("Eigenschaften")]
+        Eigenschaften,
+        [Description("Einfluss")]
+        Einfluss,
+        [Description("Elementar (allgemein)")]
+        ElementarAllgemein,
+        [Description("Elementar (Eis)")]
+        ElementarEis,
+        [Description("Elementar (Erz)")]
+        ElementarErz,
+        [Description("Elementar (Feuer)")]
+        ElementarFeuer,
+        [Description("Elementar (Humus)")]
+        ElementarHumus,
+        [Description("Elementar (Luft)")]
+        ElementarLuft,
+        [Description("Elementar (Wasser)")]
+        ElementarWasser,	
+        [Description("Form")]
+        Form,
+        [Description("Geisterwesen")]
+        Geisterwesen,
+        [Description("Heilung")]
+        Heilung,
+        [Description("Hellsicht")]
+        Hellsicht,
+        [Description("Herbeirufung")]
+        Herbeirufung,
+        [Description("Herrschaft")]
+        Herrschaft,
+        [Description("Illusion")]
+        Illusion,
+        [Description("Kraft")]
+        Kraft,
+        [Description("Limbus")]
+        Limbus,
+        [Description("Metamagie")]
+        Metamagie,
+        [Description("Objekt")]
+        Objekt,
+        [Description("Schaden")]
+        Schaden,
+        [Description("Telekinese")]
+        Telekinese,
+        [Description("Temporal")]
+        Temporal,
+        [Description("Umwelt")]
+        Umwelt,
+        [Description("Verständigung")]
+        Verständigung,
+    }
+
+    public enum Zauberreprasentationen
+    {
+        [Description("druidisch")]
+        Druidisch,
+        [Description("elfisch")]
+        Elfisch,
+        [Description("geodisch")]
+        Geodisch,
+        [Description("hexisch")]
+        Hexisch,
+        [Description("kristallomantisch")]
+        Kristallomantisch,
+        [Description("gildenmagisch")]
+        Gildenmagisch,
+        [Description("scharlatanisch")]
+        Scharlatanisch,
+        [Description("schelmisch")]
+        Schelmisch,
+    }
+
+    public enum Elemente
+    {
+        [Description("Eis")]
+        Eis,
+        [Description("Erz")]
+        Erz,
+        [Description("Feuer")]
+        Feuer,
+        [Description("Humus")]
+        Humus,
+        [Description("Luft")]
+        Luft,
+        [Description("Wasser")]
+        Wasser,					
     }
 }
