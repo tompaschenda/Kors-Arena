@@ -9,23 +9,23 @@ namespace Listen
     public enum EigenschaftenNamen
     {
         [Description("Mut")]
-        Mut, MU, Mu, mu,
+        Mut, MU,
         [Description("Klugheit")]
-        Klugheit, KL, Kl, kl,
+        Klugheit, KL, 
         [Description("Intuition")]
-        Intuition, IN, In,
+        Intuition, IN, 
         [Description("Charisma")]
-        Charisma, CH, Ch, ch,
+        Charisma, CH, 
         [Description("Fingerfertigkeit")]
-        Fingerfertigkeit, FF, Ff, ff,
+        Fingerfertigkeit, FF,
         [Description("Gewandtheit")]
-        Gewandtheit, GE, Ge, ge,
+        Gewandtheit, GE,
         [Description("Körperkraft")]
-        Koerperkraft, KK, Kk, kk,
+        Koerperkraft, KK,
         [Description("Konstitution")]
-        Konstitution, KO, Ko, ko,
+        Konstitution, KO,
         [Description("Sozialstatus")]
-        Sozialstatus, SO, So, so,
+        Sozialstatus, SO,
     }
 
     public enum AbgeleiteteGrundwerteNamen
@@ -48,6 +48,32 @@ namespace Listen
         Magieresistenz, MR, mr,
         [Description("Initiative Basiswert")]
         InitiativeBasiswert, INIBasis, iniBasis,
+    }
+
+    public enum SinneNamen
+    {
+        [Description("Sicht")]
+        Sicht,
+        [Description("Gehör")]
+        Gehoer,
+        [Description("Geruch")]
+        Geruch,
+        [Description("Tastsinn")]
+        Tastsinn,
+        [Description("Geschmack")]
+        Geschmack,
+    }
+
+    public enum GliedmassenNamen
+    {
+        [Description("Arm")]
+        Arm,
+        [Description("Bein")]
+        Bein,
+        [Description("Kopf")]
+        Kopf,
+        [Description("Schwanz")]
+        Schwanz,
     }
 
     public enum KampfwerteNamen

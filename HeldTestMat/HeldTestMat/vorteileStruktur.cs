@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Common;
+using Listen;
+using wuerfelKlasse;
 
 namespace vorteileStruktur
 {
@@ -394,6 +396,90 @@ namespace vorteileStruktur
         public vorteilsVoraussetzungen voraussetzungen;
     }
 
+    /// <summary>
+    /// Eine Struktur, die lediglich ALLE Attribute enthält, mit denen sich ein Vorteil
+    /// mit ALLEN Ausprägungen EINDEUTIG identifizieren lässt.
+    /// </summary>
+    public struct VorteilsIdentifier
+    {
+        /// <summary>
+        /// Der Hauptname des Vorteils, z.B. "Begabung für Talentgruppe"
+        /// </summary>
+        public VorteileNamen name;
+        /// <summary>
+        /// Die Ausprägung im Falle von Zaubermerkmalen, z.B. "Hellsicht"
+        /// </summary>
+        public ZauberMerkmale auspraegungZauberMerkmal;
+        /// <summary>
+        /// Die Ausprägung im Falle von Talenten, z.B. "Klettern"
+        /// </summary>
+        public TalentNamen auspraegungTalent;
+        /// <summary>
+        /// Die Ausprägung im Falle von Talentkategorien, z.B. "Kampftalente"
+        /// </summary>
+        public TalentKategorie auspraegungTalentgruppe;
 
+        /// <summary>
+        /// Die Ausprägung im Falle eines Giftes:
+        /// </summary>
+        public GiftNamen auspraegungSpezielleGifte;
+
+        /// <summary>
+        /// Die Ausprägung für Giftarten
+        /// </summary>
+        public GiftArten auspraegungGiftArten;
+
+        /// <summary>
+        /// Die Ausprägung für Giftwirkungstypen:
+        /// </summary>
+        public GiftWirkungsTypen auspraegungGiftwirkungstypen;
+
+        /// <summary>
+        /// Die Ausprägung im Falle einer Krankheit:
+        /// </summary>
+        public KrankheitsNamen auspraegungKrankheit;
+
+        /// <summary>
+        /// Die Ausprägung im Falle eines Sinnes:
+        /// </summary>
+        public SinneNamen auspraegungSinn;
+
+        /// <summary>
+        /// Der zugehörige Wert des Vorteils
+        /// </summary>
+        public int wert;
+
+        /// <summary>
+        /// GGfs. braucht man die Angabe von noch mehr Details für den Vorteil Natürliche Waffe, etc.
+        /// </summary>
+        public natuerlicheWaffenIdentifier natuerlicheWaffen;
+
+        /// <summary>
+        /// Der Held kann den Vorteil einer zusätzlichen Gliedmaße haben. Hier wird gesagt, welche dies ist.
+        /// </summary>
+        public GliedmassenNamen auspraegungGliedmasse;
+
+    }
+
+    /// <summary>
+    /// Identifier, um eine natürliche Waffe zu spezifizieren:
+    /// </summary>
+    public struct natuerlicheWaffenIdentifier
+    {
+        /// <summary>
+        /// Der Würfel für die natürliche Waffe:
+        /// </summary>
+        public wuerfel schadensWuerfel;
+
+        /// <summary>
+        /// Name der Natürlichen Waffe (z.B. Biss , etc.)
+        /// </summary>
+        public natuerlicheWaffenNamen name;
+
+        /// <summary>
+        /// Macht die natürliche Waffe nur TP(A) statt echten TP?
+        /// </summary>
+        public bool machtNurTPA;
+    }
 
 }

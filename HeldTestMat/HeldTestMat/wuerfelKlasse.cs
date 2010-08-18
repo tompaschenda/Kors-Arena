@@ -3,11 +3,28 @@
 namespace wuerfelKlasse
 {
     /// <summary>
-    /// Klasse, die alle benötigten Würfel-Kombinatinen definiert und
-    /// geeignete Methoden bereit stellt.
+    /// Klasse, die mit Hilfe von drei Attributen einen
+    /// Würfelwurf genau beschreiben kann.
     /// </summary>
     public class wuerfel
     {
+
+        /// <summary>
+        /// Mit wie vielen Würfeln soll gewürfelt werden?
+        /// </summary>
+        public int wuerfelanzahl;
+
+        /// <summary>
+        /// Wie viele Augen hat der Würfel, mit dem gewürfelt werden soll?
+        /// </summary>
+        public int wuerfelaugen;
+        
+        /// <summary>
+        /// Wie hoch ist das Offset, das auf das Ergebnis addiert oder davon
+        /// abgezogen werden soll?
+        /// </summary>
+        public int wuerfeloffset;
+
 
         /// <summary>
         /// Würfelt eine beliebige Kombinatin aus x * Wy + z.
@@ -15,26 +32,20 @@ namespace wuerfelKlasse
         /// Der Seed wird hier NICHT von Hand initialisiert!
         /// Negative Ergebnisse sind an dieser Stelle möglich, wenn z negativ ist!
         /// </summary>
-        /// <param name="wuerfelVek"></param>
-        /// <returns></returns>
-        public int wuerfelWurf(int[] wuerfelVek)
+        /// <returns> ergebnis des Würfelwurfs</returns>
+        public int wuerfelWurf()
         {
-            int anzahlWuerfel = wuerfelVek[0];
-            int anzahlAugenProWuerfel = wuerfelVek[1];
-            int anzahlZuAddierenderPunkte = wuerfelVek[2];
         
             int ergebnis = 0;
 
-            for(int i=0; i<anzahlWuerfel; i++)
+            for (int i = 0; i < wuerfelanzahl; i++)
             {
                 // Wir legen uns ein neues Zufallsgenerator-Objekt an:
                 // Dafür verwenden wir die interne System-Funktion!
                 Random rand = new Random();
-
-                ergebnis = ergebnis + rand.Next(1, anzahlAugenProWuerfel);
+                ergebnis = ergebnis + rand.Next(1, wuerfelaugen);
             }
-
-            ergebnis = ergebnis + anzahlZuAddierenderPunkte;
+            ergebnis = ergebnis + wuerfeloffset;
 
             System.Console.WriteLine("Ergebnis eines Würfelwurfs: " + ergebnis);
 

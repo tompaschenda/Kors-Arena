@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using listenStruktur;
 using Common;
+using Listen;
+using wuerfelKlasse;
 
 namespace sfStruktur
 {
@@ -139,5 +141,26 @@ namespace sfStruktur
         /// </summary>
         public List<string> andereSF;
     };
+
+    /// <summary>
+    /// Eine Sturktur, die das eindeutige Identifizieren einer SF ermöglicht:
+    /// </summary>
+    public struct sfIdentifier
+    {
+        /// <summary>
+        /// Name der SF
+        /// </summary>
+        public SFNamen name;
+
+        /// <summary>
+        /// Talentspeziealisierung, die man sich auswählt.
+        /// </summary>
+        public TalentSpezialisierungen talentSubSpez;
+
+        /// <summary>
+        /// Talent, das man sich für die Spezialisierung auswählt:
+        /// </summary>
+        public TalentNamen talent;
+    }
 
 }

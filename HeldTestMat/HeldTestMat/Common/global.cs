@@ -50,6 +50,18 @@ namespace Common
         public int wert;
     }
 
+    /// <summary>
+    /// Struktur mit einem Namen aus einer beliebigen Liste.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public struct GenericListenName<T>
+    {
+        /// <summary>
+        /// Der Name aus der beliebigen Liste.
+        /// </summary>
+        public T name;
+    }
+
 
 
     /// <summary>

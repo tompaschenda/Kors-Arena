@@ -46,6 +46,8 @@ namespace Listen
         Fjarninger,	
         [Description("Dschungelstämme")]
         Dschungelstaemme,
+        [Description("Darna")]
+        Darna,
         [Description("Verlorene Stämme")]
         VerloreneStaemme,		
         [Description("Waldinsel Utulus")]        

@@ -1,4 +1,8 @@
 ﻿using System.Collections.Generic;
+using vorteileStruktur;
+using talentStruktur;
+using listenStruktur;
+using Listen;
 
 
 namespace spielerAuswahl
@@ -7,7 +11,7 @@ namespace spielerAuswahl
     /// Hier kann ein SPIELER eines von mehreren möglichen Talenten, das er durch die Kultur
     /// mit einem Bonus bekommt, auswählen:
     /// </summary>
-    public class spielerAuswahlAusListe
+    public class TESTspielerAuswahlAusListe
     {
 
         /// <summary>
@@ -68,5 +72,32 @@ namespace spielerAuswahl
     }
 
 
+    /// <summary>
+    /// In dieser Struktur sind alle Wahlmöglichkeiten enthalten, die ein SPIELER
+    /// bei einer bestimmten Rasse, Kultur, etc. bekommt. Es können Wahlmöglichkeiten sein für:
+    /// - Talente
+    /// - Vorteile
+    /// </summary>
+    public struct wahlmoeglichkeiten
+    {
+        /// <summary>
+        /// Eine Liste, von Vorteilen, zwischen denen gewählt werden darf (ggfs. mit Ausprägung)
+        /// </summary>
+        public List<VorteilsIdentifier> vorteile;
+        /// <summary>
+        /// Die ANZAHL der Vorteile, die aus der Liste ausgewählt werden dürfen.
+        /// </summary>
+        public int anzahlWaehlbarerVorteile;
+
+        /// <summary>
+        /// Eine Liste von Talenten, zwischen denen gewählt werden darf.
+        /// </summary>
+        public List<TalentNamen> talente;
+
+        /// <summary>
+        /// Die ANZAHL der Talente, die aus der Liste ausgewählt werden dürfen.
+        /// </summary>
+        public int anzahlWaehlbarerTalente;
+    };
 
 }

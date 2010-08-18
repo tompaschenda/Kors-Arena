@@ -452,4 +452,12 @@ namespace Listen
         [Description("Turmschild")]
         Turmschild,
     }
+
+    public enum natuerlicheWaffenNamen
+    {
+        [Description("Biss")]
+        Biss,
+        [Description("Schwanz")]
+        Schwanz,
+    }
 }

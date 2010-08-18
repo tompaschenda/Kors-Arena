@@ -84,8 +84,12 @@ namespace Listen
     {
         [Description("Blutiger Rotz")]
         BlutigerRotz,
+        [Description("Brabaker Schweiß")]
+        BrabakerSchweiss,
         [Description("Dumpfschädel")]
         Dumpfschaedel,
+        [Description("Flinker Difar")]
+        FlinkerDifar,
         [Description("Schlafkrankheit")]
         Schlafkrankheit,
         [Description("Lutanas")]
@@ -110,6 +114,32 @@ namespace Listen
         EfferdUndKerkersieche,
         [Description("Duglumspest")]
         Duglumspest,
+        [Description("Lykanthrophie")]
+        Lykanthrophie,
+    }
+
+    public enum Suchtmittel
+    {
+        [Description("Alkohol")]
+        Alkohol,
+        [Description("Drogen")]
+        Drogen,
+    }
+
+    public enum Aengste
+    {
+        [Description("Insekten")]
+        Insekten,
+        [Description("Spinnen")]
+        Spinnen,
+        [Description("Pelztieren")]
+        Pelztieren,
+        [Description("Feuer")]
+        Feuer,
+        [Description("Wasser")]
+        Wasser,
+        [Description("Klerikalem Wirken")]
+        KlerikalemWirken,
     }
 
 }

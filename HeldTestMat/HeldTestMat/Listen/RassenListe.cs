@@ -36,6 +36,8 @@ namespace Listen
         Halbork,
         [Description("Goblin")]
         Goblin,
+        [Description("Achaz")]
+        Achaz,
 
     }
 
@@ -58,6 +60,14 @@ namespace Listen
         Waldelf,
         [Description("Firnelf")]
         Firnelf,
+        [Description("Halbelf aus elfischer Siedlung")]
+        HalbelfAusElfischerSiedlung,
+        [Description("Halbelf aus auelfischer Sippe")]
+        HalbelfAusAuelfischerSippe,
+        [Description("Halbelf aus waldelfischer Sippe")]
+        HalbelfAusWaldelfischerSippe,
+        [Description("Halbelf aus firnelfischer Sippe")]
+        HalbelfAusFirnelfischerSippe,
         [Description("Halbelf firnelfischer Abstammung")]
         HalbelfFirnelf,
         [Description("Halbelf nivesischer Abstammung")]

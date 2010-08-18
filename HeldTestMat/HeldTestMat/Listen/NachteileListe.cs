@@ -8,6 +8,8 @@ namespace Listen
 {
     public enum NachteileNamen
     {
+        [Description("Albino")]
+        Albino,
         [Description("Aberglaube")]
         Aberglaube,
         [Description("Angst vor")]
@@ -52,6 +54,8 @@ namespace Listen
         Eitelkeit,
         [Description("Elfische Weltsicht")]
         ElfischeWeltsicht,
+        [Description("Farbenblind")]
+        Farbenblind,
         [Description("Feind")]
         Feind,
         [Description("Feste Gewohnheit")]
@@ -212,8 +216,14 @@ namespace Listen
         UnangenehmeStimme,
         [Description("Unansehnlich")]
         Unansehnlich,
-        [Description("Unfähigkeit für")]
-        UnfaehigkeitFuer,
+        [Description("Unfähigkeit für Talent")]
+        UnfaehigkeitFuerTalent,
+        [Description("Unfähigkeit für Talentgruppe")]
+        UnfaehigkeitFuerTalentgruppe,
+        [Description("Unfähigkeit für Zauber")]
+        UnfaehigkeitFuerZauber,
+        [Description("Unfähigkeit für Merkmal")]
+        UnfaehigkeitFuerMerkmal,
         [Description("Unfrei")]
         Unfrei,
         [Description("Ungebildet")]

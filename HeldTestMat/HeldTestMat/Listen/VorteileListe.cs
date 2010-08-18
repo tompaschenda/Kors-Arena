@@ -34,8 +34,16 @@ namespace Listen
         Ausrüstungsvorteil,
         [Description("Balance")]
         Balance,
-        [Description("Begabung für")]
-        BegabungFuer,
+        [Description("Begabung für Merkmal")]
+        BegabungFuerMerkmal,
+        [Description("Begabung für Talent")]
+        BegabungFuerTalent,
+        [Description("Begabung für Talentgruppe")]
+        BegabungFuerTalentgruppe,
+        [Description("Begabung für Zauber")]
+        BegabungFuerZauber,
+        [Description("Begabung für Ritual")]
+        BegabungFuerRitual,
         [Description("Beidhändig")]
         Beidhaendig,
         [Description("Beseelte Knochenkeule")]
@@ -55,7 +63,7 @@ namespace Listen
         [Description("Empathie")]
         Empathie,
         [Description("Entfernugssinn")]
-        Entfernugssinn,
+        Entfernungssinn,
         [Description("Ererbte Knochenkeule")]
         ErerbteKnochenkeule,
         [Description("Feenfreund")]
@@ -98,10 +106,18 @@ namespace Listen
         HoheLebenskraft,
         [Description("Hohe Magieresistenz")]
         HoheMagieresistenz,
-        [Description("Immunität gegen Gift")]
-        ImmunitaetGegenGift,
-        [Description("Immunität gegen Krankheit")]
-        ImmunitaetGegenKrankheit,
+        [Description("Immunität gegen Gifte")]
+        ImmunitaetGegenGifte,
+        [Description("Immunität gegen bestimmtes Gift")]
+        ImmunitaetGegenBestimmtesGift,
+        [Description("Immunität gegen bestimmte Giftart")]
+        ImmunitaetGegenBestimmteGiftart,
+        [Description("Immunität gegen bestimmten Giftwirkungstypen")]
+        ImmunitaetGegenBestimmtenGifwirkungstypen,
+        [Description("Immunität gegen bestimmte Krankheit")]
+        ImmunitaetGegenBestimmteKrankheit,
+        [Description("Immunität gegen Krankheiten")]
+        ImmunitaetGegenKrankheiten,
         [Description("Innerer Kompass")]
         InnererKompass,
         [Description("Kälteresistenz")]
@@ -134,8 +150,14 @@ namespace Listen
         NiedrigeSchlechteEigenschaft,
         [Description("Prophezeien")]
         Prophezeien,
-        [Description("Resistenz gegen Gift")]
-        ResistenzGegenGift,
+        [Description("Resistenz gegen Gifte")]
+        ResistenzGegenGifte,
+        [Description("Resistenz gegen bestimmtes Gift")]
+        ResistenzGegenBestimmtesGift,
+        [Description("Resistenz gegen bestimmte Giftart")]
+        ResistenzGegenBestimmteGiftart,
+        [Description("Resistenz gegen bestimmten Giftwirkungstypen")]
+        ResistenzGegenBestimmtenGifwirkungstypen,
         [Description("Resistenz gegen Krankheiten")]
         ResistenzGegenKrankheiten,
         [Description("Richtungssinn")]
@@ -189,4 +211,5 @@ namespace Listen
         [Description("Zwergennase")]
         Zwergennase,
     }
+
 }
