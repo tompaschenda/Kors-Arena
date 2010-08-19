@@ -6,8 +6,10 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum GiftNamen
+    public enum GiftName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Angstgift")]
         Angstgift,
         [Description("Arachnae")]
@@ -55,9 +57,10 @@ namespace Listen
     }
 
 
-    public enum GiftArten
+    public enum GiftArt
     {
-
+        [Description("undefined")]
+        undefined,
         [Description("pflanzliche Gifte")]
         PflanzlicheGifte,
         [Description("tierische Gifte")]
@@ -68,8 +71,10 @@ namespace Listen
         MineralischeGifte,
     }
 
-    public enum GiftWirkungsTypen
+    public enum GiftWirkungsTyp
     {
+        [Description("undefined")]
+        undefined,
         [Description("Atemgifte")]
         Atemgifte,
         [Description("Einnahmegifte")]
@@ -80,8 +85,10 @@ namespace Listen
         Waffengifte,
     }
 
-    public enum KrankheitsNamen
+    public enum KrankheitsName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Blutiger Rotz")]
         BlutigerRotz,
         [Description("Brabaker Schweiß")]
@@ -120,14 +127,18 @@ namespace Listen
 
     public enum Suchtmittel
     {
+        [Description("undefined")]
+        undefined,
         [Description("Alkohol")]
         Alkohol,
         [Description("Drogen")]
         Drogen,
     }
 
-    public enum Aengste
+    public enum Angst
     {
+        [Description("undefined")]
+        undefined,
         [Description("Insekten")]
         Insekten,
         [Description("Spinnen")]
@@ -138,6 +149,8 @@ namespace Listen
         Feuer,
         [Description("Wasser")]
         Wasser,
+        [Description("Menschenmassen")]
+        Menschenmassen,
         [Description("Klerikalem Wirken")]
         KlerikalemWirken,
     }

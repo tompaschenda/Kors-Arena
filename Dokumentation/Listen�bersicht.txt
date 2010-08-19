@@ -23,12 +23,6 @@ gesellschaftlich
 handwerklich und Wissen
 magisch
 geweiht
-
-///////////////////////////////
-Professionen:
-////////////////////////////////
-
-
 ///////////////////////////////
 Talenttypen:
 ////////////////////////////////
@@ -671,17 +665,6 @@ Goblin-Schamanin
 	Stammes-Schamanin
 Schamane der Achaz
 	
-	
-		
-		
-	
-	
-	
-	
-	
-
-
-
 
 ///////////////////////////////
 Zaubersprüche:

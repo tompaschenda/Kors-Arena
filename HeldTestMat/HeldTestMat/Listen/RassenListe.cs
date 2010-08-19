@@ -6,8 +6,10 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum SpielerRassenNamen
+    public enum SpielerRassenName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Mittelländer")]
         Mittellaender,
         [Description("Tulamiden")]
@@ -41,8 +43,10 @@ namespace Listen
 
     }
 
-    public enum SpielerSubRassenNamen
+    public enum SpielerSubRassenName
     {
+        [Description("undefined")]
+        undefined,
         // Keine Subrasse ist auch manchmal möglich!
         [Description("keine")]
         keine,

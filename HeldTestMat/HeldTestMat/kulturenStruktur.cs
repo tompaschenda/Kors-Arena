@@ -3,13 +3,14 @@ using listenStruktur;
 using sfStruktur;
 using spielerAuswahl;
 using Common;
+using Listen;
+using vorteileStruktur;
+using nachteileStruktur;
+using SprachenUndSchriften;
+using professionenStruktur;
 
 namespace kulturenStruktur
 {
-    //////////////////////////////////////
-    //  Kulturen-Struktur. TODO: Ausgliedern!
-    //////////////////////////////////////
-
     /// <summary>
     /// Struktur, die alle Kulturen in Aventurien enthält:
     /// </summary>
@@ -18,9 +19,9 @@ namespace kulturenStruktur
         // Wir listen nun auf, welche Attribute eine Kultur hat:
 
         /// <summary>
-        /// Name der Kultur
+        /// Identifier der Kultur
         /// </summary>
-        public string name;
+        public KulturName kultur;
 
         /// <summary>
         /// Eine liste, die alle möglichen Subkulturen enthält. Falls es keine Subkulturen gibt, 
@@ -34,136 +35,40 @@ namespace kulturenStruktur
         public subkultur gewaehlteSubkultur;
 
         /// <summary>
-        /// Die Generierungskosten der Kultur in GP (Man kann eine Kultur NUR zur Generierung erwerben)
-        /// </summary>
-        public int generierungskostenKultur;
-
-        /// <summary>
-        /// Der Kultur-Modifikator auf die LE
-        /// </summary>
-        public int leModifikator;
-        /// <summary>
-        /// Der Kultur-Modifikator auf die Ausdauer
-        /// </summary>
-        public int auModifikator;
-        /// <summary>
-        /// Der Kultur-Modifikator auf die Magieresistenz
-        /// </summary>
-        public int mrModifikator;
-        /// <summary>
-        /// Der Kultur Modifikator auf die Eigenschaften inklusive Name der Eigenschaft
-        /// </summary>
-        public List<NameWertPaar> eigenschaftsModifikationen;
-        /// <summary>
-        /// Der Maximale Sozialstatus, den man für die Kulturzugehörigkeit besitzen darf
-        /// </summary>
-        public int soMaximum;
-        /// <summary>
-        /// Eine Liste aller automatischen Vorteile durch die Kultur (inklusive Wert)
-        /// </summary>
-        public List<NameWertPaar> automatischeVorteile;
-        /// <summary>
-        /// Eine Liste aller automatischen Nachteile durch die Kultur (inklusive Wert)
-        /// </summary>
-        public List<NameWertPaar> automatischeNachteile;
-        /// <summary>
-        /// Eine liste der empfohlenen Vorteile durch die Kultur (nicht bindend)
-        /// </summary>
-        public List<string> empfohleneVorteile;
-        /// <summary>
-        /// Eine liste der empfohlenen Nachteile durch die Kultur (nicht bindend)
-        /// </summary>
-        public List<string> empfohleneNachteile;
-        /// <summary>
-        /// Eine Liste der ungeeigneten Vorteile durch die Kultur (sollte bindend sein)
-        /// </summary>
-        public List<string> ungeeigneteVorteile;
-        /// <summary>
-        /// Eine Liste der ungeeigneten Nachteile durch die Kultur (sollte bindend sein)
-        /// </summary>
-        public List<string> ungeeigneteNachteile;
-        /// <summary>
-        /// Eine Liste der geeigneten Professionen durch die Kultur (ist nicht bindend, aber empfohlen)
-        /// </summary>
-        public List<string> geeigneteProfessionen;
-
-        /// <summary>
-        /// Eine Liste der ungeeigneten Professionen durch die Kultur (sollte bindend sein)
-        /// </summary>
-        public List<string> ungeeigneteProfessionen;
-
-        /// <summary>
-        /// Eine Liste der durch die Kultur fixen Talentboni inklusive ihrem Wert
-        /// </summary>
-        public List<NameWertPaar> talentBoni;
-
-        /// <summary>
-        /// Eine Liste der durch die Kultur wählbaren Talentboni inklusive ihrem Wert
-        /// </summary>
-        public List<NamenslisteWertPaar> talentWahlBoniMoeglich;
-
-        /// <summary>
-        /// Eine Liste, die tatsächlich vom Spieler gewählten Talentboni endhält (endgültig)
-        /// </summary>
-        public List<NameWertPaar> talentWahlBoniGewählt;
-
-        /// <summary>
-        /// Enthält die Muttersprache des Helden. Der Wert ist IMMER KL-2
-        /// und wird erst zu späterer Zeit besimmt, wenn der Held endgültig
-        /// zusammen gebastelt wird.
-        /// </summary>
-        public string muttersprache;
-
-        /// <summary>
-        /// Wie Muttersprache, aber der Wert ist IMMER KL-4.
-        /// </summary>
-        public string zweitsprache;
-
-        /// <summary>
-        /// Eine Liste, die mögliche Verkehrssprachen enthält, für die sich ein
-        /// Held entscheiden kann.
-        /// </summary>
-        public List<NameWertPaar> moeglicheVerkehrssprachen;
-
-        /// <summary>
-        /// Eine Liste, die die Verkehrssprachen enthält, für die sich ein Spieler
-        /// auch wirklich entschieden hat (endgültig)
-        /// </summary>
-        public List<string> gewaehlteVerkehrssprachen;
-
-        /// <summary>
-        /// Eine Liste der durch die Kultur erworbenen Sonderfertigkeiten
-        /// </summary>
-        public List<nameSubnamePaar> sonderfertigkeiten;
-
-        /// <summary>
-        /// Eine Liste der verbilligten Sonderfertigkeiten, die ein Held günstiger beziehen kann.
-        /// </summary>
-        public List<nameSubnamePaar> verbilligteSonderfertigkeiten;
-
-        /// <summary>
-        /// Eine Auswahlliste, aus der sich ein Spieler jeweils bestimmte Talente auswählen kann.
-        /// </summary>
-        public List<string> auswahlListe;
-
-        /// <summary>
-        /// Name der Kultur
+        /// Der Identifier dieser Kultur. Der Setter definiert die Attribute der Kultur
         /// </summary>        
-        public string Name
+        public KulturName Kultur
         {
             get
             {
-                return name;
+                return kultur;
             }
 
             set
             {
-
                 try
                 {
 
                     switch (value)
                     {
+
+                        ///////////////////////////////////////
+                        // Mittelländische Städte
+                        ///////////////////////////////////////
+                        case KulturName.MittellaendischeStaedte:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createMittelStaedteSubKeine());
+                            moeglicheSubkulturen.Add(createMittelStaedteSubHafen());
+                            moeglicheSubkulturen.Add(createMittelStaedteSubTempel());
+                            moeglicheSubkulturen.Add(createMittelStaedteSubSiedler());
+                            moeglicheSubkulturen.Add(createMittelStaedteSubAdel());
+                            moeglicheSubkulturen.Add(createMittelStaedteSubKanne());
+                            moeglicheSubkulturen.Add(createMittelStaedteSubFluechtlinge());
+                            break;
+
+/*
+
                         ///////////////////////////////////////
                         // Mittelländische Städte
                         ///////////////////////////////////////
@@ -433,7 +338,7 @@ namespace kulturenStruktur
 
                             break;
 
-
+                            */
                         default:
                             throw new System.ArgumentOutOfRangeException();
 
@@ -446,6 +351,146 @@ namespace kulturenStruktur
                 }
             }
         }
+
+        private subkultur createMittelStaedteSubFluechtlinge()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private subkultur createMittelStaedteSubKanne()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private subkultur createMittelStaedteSubAdel()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private subkultur createMittelStaedteSubSiedler()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private subkultur createMittelStaedteSubTempel()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private subkultur createMittelStaedteSubHafen()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private subkultur createMittelStaedteSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 0;
+            subKeine.soMaximum = -1;
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){name = VorteileName.Ausrüstungsvorteil},
+                new VorteilsIdentifier(){name = VorteileName.BesondererBesitz},
+                new VorteilsIdentifier(){name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){name = VorteileName.Verbindungen},
+            };
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){name = NachteileName.Schulden},
+                new NachteilsIdentifier(){name = NachteileName.Verpflichtungen},
+                new NachteilsIdentifier(){name = NachteileName.Vorurteile},
+            };
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+            };
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){name = NachteileName.AngstVor, auspraegung = Angst.Menschenmassen},
+                new NachteilsIdentifier(){name = NachteileName.Raumangst},
+            };
+
+            // Vorbereiten der Professions-Kategorienklasse. @Tom: Kann man das
+            // auch global machen? Sonst kommt diese Zeile in JEDER Subkultur immer wieder vor...
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsName>() {};
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
+            
+            // Die folgenden Professionen lassen wir nicht zu:
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
+            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
+
+            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            {
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Dolche, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Infanteriewaffen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Raufen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Etikette, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Gassenwissen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Menschenkenntnis, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Ueberreden, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.GoetterUndKulte, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Heraldik, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Rechnen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Rechtskunde, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.SagenUndLegenden, wert = +2},
+            };
+
+            // Wahl der Muttersprache:
+            subKeine.muttersprache = new SprachenIdentifier() { name = SprachenName.Garethi, muttersprache = true, modifikator = 0 };
+
+            // Wir bereiten die Wahlmöglichkeiten vor:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>(){};
+
+            // Beginnen wir mit Der Wahl der Kampftalente:
+            var wahlTalentKampf = new wahlmoeglichkeiten();
+            wahlTalentKampf.talente = new List<TalentName>()
+            {
+                TalentName.Armbrust, TalentName.Bogen, TalentName.Wurfmesser,
+            };
+            wahlTalentKampf.anzahlWaehlbarerTalente = 1;
+            wahlTalentKampf.talentWerte = new int[1];
+            wahlTalentKampf.talentWerte[0] = 1;
+            subKeine.wahlen.Add(wahlTalentKampf);
+
+            // Nun die Wahl aus dem Handwerksbereich:
+            var wahlHandwerk = new wahlmoeglichkeiten();
+            wahlHandwerk.talente = new List<TalentName>()
+            {
+                TalentName.Ackerbau, TalentName.Hauswirtschaft,
+            };
+            wahlHandwerk.anzahlWaehlbarerTalente = 1;
+            wahlHandwerk.talentWerte = new int[1];
+            wahlHandwerk.talentWerte[0] = 1;
+            subKeine.wahlen.Add(wahlHandwerk);
+
+            // Nun die Wahl zwischen einer von drei Sprachen:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlHandwerk.sprachen= new List<SprachenName>()
+            {
+                SprachenName.Tulamidya, SprachenName.Rogolan, SprachenName.Thorwalsch
+            };
+            wahlSprache.anzahlWaehlbarerTalente = 1;
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 3;
+            subKeine.wahlen.Add(wahlSprache);
+
+            return subKeine;
+        }
     };
 
 
@@ -454,14 +499,15 @@ namespace kulturenStruktur
     //////////////////////////////////////
 
     /// <summary>
-    /// Enthält eine Subkultur mit allen zugehörigen Attributen
+    /// Struktur, die die eigentlichen Informationen zur Kultur enthält. Jede Kultur wird
+    /// als Subkultur "keine" bezeichnet, wenn sie keine Subkultur hat!
     /// </summary>
     public struct subkultur
     {
         /// <summary>
         /// Name der Subkultur (bzw. Variante)
         /// </summary>
-        public string name;
+        public SubKulturName name;
 
         /// <summary>
         /// Zusätzliche Generierungskosten für die Variante in GP
@@ -469,93 +515,115 @@ namespace kulturenStruktur
         public int generierungskosten;
 
         /// <summary>
+        /// Der Maximale Sozialstatus, den man für die Kulturzugehörigkeit besitzen darf
+        /// Wenn es keinen gibt, sollte der Wert "-1" betragen!
+        /// </summary>
+        public int soMaximum;
+
+        /// <summary>
+        /// Der Kultur-Modifikator auf die LE
+        /// </summary>
+        public int leModifikator;
+        /// <summary>
+        /// Der Kultur-Modifikator auf die Ausdauer
+        /// </summary>
+        public int auModifikator;
+        /// <summary>
+        /// Der Kultur-Modifikator auf die Magieresistenz
+        /// </summary>
+        public int mrModifikator;
+
+        /// <summary>
         /// Enthält die Voraussetzungen für eine Subkultur in einer eigenen Struktur
         /// </summary>
         public subkulturVoraussetzungen voraussetzungen;
 
         /// <summary>
-        /// Enthält eine Liste von Beispielregionen, zwischen denen man sich entscheiden kann (eigene möglich!)
+        /// Eine Liste, in der alle Modifikatoren auf die Eigenschaften durch die Subrasse 
+        /// aufgeführt sind
         /// </summary>
-        public List<string> regionenMoeglich;
+        public List<GenericListenNameWertPaar<EigenschaftenName>> eigenschaftsModifikationen;
 
         /// <summary>
-        /// Enthält alle vom Spieler tatsächlich gewählten Regionen
+        /// Eine Liste aller automatischen Vorteile durch die Kultur (inklusive Wert)
         /// </summary>
-        public List<string> regionenGewaehlt;
+        public List<VorteilsIdentifier> automatischeVorteile;
 
         /// <summary>
-        /// Enthält eine Liste von Beispielstädten, zwischen denen man sich entscheiden kann (eigene möglich!)
+        /// Eine Liste aller automatischen Nachteile durch die Kultur (inklusive Wert)
         /// </summary>
-        public List<string> staedteMoeglich;
+        public List<NachteilsIdentifier> automatischeNachteile;
 
         /// <summary>
-        /// Enthält alle vom Spieler tatsächlich gewählten Städte
+        /// Eine liste der empfohlenen Vorteile durch die Kultur (nicht bindend)
         /// </summary>
-        public List<string> staedteGewaehlt;
+        public List<VorteilsIdentifier> empfohleneVorteile;
+
+        /// <summary>
+        /// Eine liste der empfohlenen Nachteile durch die Kultur (nicht bindend)
+        /// </summary>
+        public List<NachteilsIdentifier> empfohleneNachteile;
+
+        /// <summary>
+        /// Eine Liste der ungeeigneten Vorteile durch die Kultur (sollte bindend sein)
+        /// </summary>
+        public List<VorteilsIdentifier> ungeeigneteVorteile;
+
+        /// <summary>
+        /// Eine Liste der ungeeigneten Nachteile durch die Kultur (sollte bindend sein)
+        /// </summary>
+        public List<NachteilsIdentifier> ungeeigneteNachteile;
+
+        /// <summary>
+        /// Eine Liste der geeigneten Professionen durch die Kultur (ist nicht bindend, aber empfohlen)
+        /// </summary>
+        public List<ProfessionsName> geeigneteProfessionen;
+
+        /// <summary>
+        /// Eine Liste der ungeeigneten Professionen durch die Kultur (sollte bindend sein)
+        /// </summary>
+        public List<ProfessionsName> ungeeigneteProfessionen;
 
         /// <summary>
         /// Einthält eine Liste mit allen fixen Talentboni (Name, Modifikator)
         /// </summary>
-        public List<NameWertPaar> talentBoni;
+        public List<GenericListenNameWertPaar<TalentName>> talentModifikatoren;
 
         /// <summary>
-        /// Enthält eine Liste mit allen flexiblen Talentboni zwischen denen man sich entscheiden muss
+        /// Die mit der Kultur verbundene Muttersprache:
+        /// (kann auch sein, dass sie erst zwischen mehreren gewählt werden muss!)
         /// </summary>
-        public List<NamenslisteWertPaar> talentWahlBoniMoeglich;
+        public SprachenIdentifier muttersprache;
 
         /// <summary>
-        /// Enthält die tatsächlich vom Spieler gewählten flexiblen Talentboni
+        /// Enthält eine Liste möglicher Zweitsprachen.
         /// </summary>
-        public List<NameWertPaar> talentWahlBoniGewaehlt;
+        public List<SprachenIdentifier> zweitsprachen;
 
         /// <summary>
-        /// Enthält eine Liste möglicher Vekehrssprachen, die man durch eine Subkultur zusätzlich erhält
-        /// inklusive des Modifikators, den man darauf bekommt als Start-Talentwert.
+        /// Eine Liste der durch die Kultur erworbenen Sonderfertigkeiten
         /// </summary>
-        public List<NameWertPaar> moeglicheVerkehrssprachen;
-
-        /// <summary>
-        /// Eine Zweitsprache, die exklusiv durch die Subkultur festgelegt wird.
-        /// </summary>
-        public string zweitsprache;
-
-        /// <summary>
-        /// Dieser Bool gibt an, ob die Verkehrssprache der Subkultur die Auswahl aus der
-        /// Hauptkultur ersetzt.
-        /// </summary>
-        public bool verkehrssprachenDerHauptKulturErsetzen;
-
-        /// <summary>
-        /// Enthält eine Liste von Talentboni, die aus der Hauptkultur wiederum durch
-        /// die Wahl der Subkultur ENTFERNT werden können!
-        /// </summary>
-        public List<string> zuEntfernendeTalentBoni;
-
-        /// <summary>
-        /// Enthält eine Liste von Boni auf verschiedene Schriften
-        /// </summary>
-        public List<NameWertPaar> schriftBoni;
+        public List<sfIdentifier> sonderfertigkeiten;
 
         /// <summary>
         /// Eine Liste, die die verbilligten SF inklusive ihrer Ausprägungen enthält.
         /// </summary>
-        public List<nameSubnamePaar> verbilligteSonderfertigkeiten;
+        public List<sfIdentifier> verbilligteSonderfertigkeiten;
 
         /// <summary>
-        /// Eine Liste, in der alle Modifikatoren auf die Eigenschaften durch die Subrasse 
-        /// aufgeführt sind
+        /// Enthält eine Liste von Beispielregionen, zwischen denen man sich entscheiden kann (eigene möglich!)
         /// </summary>
-        public List<NameWertPaar> eigenschaften;
+        public List<Region> moeglicheRegionen;
 
         /// <summary>
-        /// Eine Liste mit allen empfohlenen Vorteilen für eine Subkultur
+        /// Enthält eine Liste von Beispielstädten, zwischen denen man sich entscheiden kann (eigene möglich!)
         /// </summary>
-        public List<string> empfohleneVorteile;
-        /// <summary>
-        /// Eine Liste mit allen empfohlenen Nachteilen für eine Subkultur
-        /// </summary>
-        public List<string> empfohleneNachteile;
+        public List<Stadt> moeglicheStaedte;
 
+        /// <summary>
+        /// Eine Liste von verschiedenen Auswahlen für Vorteile, Talente, etc.
+        /// </summary>
+        public List<wahlmoeglichkeiten> wahlen;
     };
 
 
@@ -567,29 +635,27 @@ namespace kulturenStruktur
         /// <summary>
         /// Eigenschaftenvoraussetzung für Profession
         /// </summary>
-        public List<NameWertPaar> eigenschaften;
+        public List<GenericListenNameWertPaar<EigenschaftenName>> eigenschaften;
         /// <summary>
         /// Talentwertvoraussetzung für Profession
         /// </summary>
-        public List<NameWertPaar> talentwerte;
+        public List<GenericListenNameWertPaar<TalentName>> talentwerte;
         /// <summary>
         /// SF-Voraussetzung für Profession
         /// </summary>
-        public List<string> SF;
+        public List<sfIdentifier> SF;
         /// <summary>
         /// Beschreibt, welches Geschlecht ein Held/eine Helden haben muss, um die Profession
         /// ausüben zu können. "männlich", "weiblich", "beide"
         /// Ist z.B. wichtig für: Amazonen
         /// </summary>
-        public string geschlechtstyp;
+        public GeschlechtNamen geschlecht;
 
         /// <summary>
         /// Vorteile, die man für die Subkultur mitbringen muss
         /// </summary>
-        public List<NameWertPaar> vorteile;
-
+        public List<VorteilsIdentifier> vorteile;
     };
-
 }
 
 

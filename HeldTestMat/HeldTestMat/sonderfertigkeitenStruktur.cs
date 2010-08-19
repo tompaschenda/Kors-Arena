@@ -155,12 +155,12 @@ namespace sfStruktur
         /// <summary>
         /// Talentspeziealisierung, die man sich auswählt.
         /// </summary>
-        public TalentSpezialisierungen talentSubSpez;
+        public TalentSpezialisierung talentSubSpez;
 
         /// <summary>
         /// Talent, das man sich für die Spezialisierung auswählt:
         /// </summary>
-        public TalentNamen talent;
+        public TalentName talent;
     }
 
 }

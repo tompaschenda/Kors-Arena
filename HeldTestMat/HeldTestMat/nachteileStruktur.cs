@@ -17,39 +17,28 @@ namespace nachteileStruktur
         /// <summary>
         /// Der Hauptname des Nachteils, z.B. "Begabung für Talentgruppe"
         /// </summary>
-        public NachteileNamen name;
-        /// <summary>
-        /// Die Ausprägung im Falle von Zaubermerkmalen, z.B. "Hellsicht"
-        /// </summary>
-        public ZauberMerkmale auspraegungZauberMerkmal;
-        /// <summary>
-        /// Die Ausprägung im Falle von Talenten, z.B. "Klettern"
-        /// </summary>
-        public TalentNamen auspraegungTalent;
-        /// <summary>
-        /// Die Ausprägung im Falle von Talentkategorien, z.B. "Kampftalente"
-        /// </summary>
-        public TalentKategorie auspraegungTalengruppe;
+        public NachteileName name;
 
         /// <summary>
-        /// Ausprägung für Suchtmittel
+        /// Die Ausprägung eines Nachteils. Das kann eine Ausprägung sein für:
+        ///  - Zaubermerkmal
+        ///  - Talent
+        ///  - Talentgruppe
+        ///  - Bestimmtes Gift
+        ///  - Giftart
+        ///  - Giftwirkungstyp
+        ///  - Bestimmte Krankheit
+        ///  - Sinn
+        ///  - Gliedmaße
+        ///  - Sucht
+        ///  - Angst
         /// </summary>
-        public Suchtmittel auspraegungSucht;
-
-        /// <summary>
-        /// Ausprägung für eine Angst / Phobie
-        /// </summary>
-        public Aengste auspraegungAngst;
+        public object auspraegung;
 
         /// <summary>
         /// Der zugehörige Wert des Nachteils
         /// </summary>
         public int wert;
-
-        /// <summary>
-        /// Die Ausprägung im Falle eines Sinnes:
-        /// </summary>
-        public SinneNamen auspraegungSinn;
 
     }
 

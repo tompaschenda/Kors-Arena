@@ -6,8 +6,22 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum EigenschaftenNamen
+    public enum GeschlechtNamen
     {
+        [Description("undefined")]
+        undefined,
+        [Description("beide")]
+        beide,
+        [Description("männlich")]
+        maennlich,
+        [Description("weiblich")]
+        weiblich,
+    }
+
+    public enum EigenschaftenName
+    {
+        [Description("undefined")]
+        undefined,
         [Description("Mut")]
         Mut, MU,
         [Description("Klugheit")]
@@ -28,8 +42,10 @@ namespace Listen
         Sozialstatus, SO,
     }
 
-    public enum AbgeleiteteGrundwerteNamen
+    public enum AbgeleiteteGrundwerteName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Geschwindigkeit")]
         Geschwindigkeit, GS, gs,
         [Description("Attacke Basiswert")]
@@ -50,8 +66,10 @@ namespace Listen
         InitiativeBasiswert, INIBasis, iniBasis,
     }
 
-    public enum SinneNamen
+    public enum SinneName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Sicht")]
         Sicht,
         [Description("Gehör")]
@@ -64,8 +82,10 @@ namespace Listen
         Geschmack,
     }
 
-    public enum GliedmassenNamen
+    public enum GliedmassenName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Arm")]
         Arm,
         [Description("Bein")]
@@ -76,8 +96,10 @@ namespace Listen
         Schwanz,
     }
 
-    public enum KampfwerteNamen
+    public enum KampfwerteName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Parade")]
         Parade, PA, pa, Pa,
         [Description("Attacke")]

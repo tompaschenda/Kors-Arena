@@ -6,8 +6,10 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum KulturNamen
+    public enum KulturName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Mittelländische Städte")]
         MittellaendischeStaedte,
         [Description("Mittelländische Landbevölkerung")]
@@ -108,8 +110,14 @@ namespace Listen
         StammesAchaz,
     }
 
-    public enum SubKulturNamen
+    public enum SubKulturName
     {
+        [Description("undefined")]
+        undefined,
+        // Man kann (fast) immer die Variante "keine" wählen:
+        [Description("keine")]
+        Keine,
+
         [Description("Hafenstädte und Städte an großen Flüssen")]
         HafenstaedteUndStaedteAnGroessenFluessen,
         [Description("Städte mit wichtigem Tempel/Pilgerstätte")]
@@ -252,8 +260,10 @@ namespace Listen
 
     }							
 
-    public enum OrkstaemmeNamen
+    public enum OrkstaemmeName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Korogai")]
         Korogai,
         [Description("Molokash")]
@@ -270,8 +280,10 @@ namespace Listen
         Zholochai,
     }
 
-    public enum OrkkastenNamen
+    public enum OrkkastenName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Ergoch")]
         Ergoch,
         [Description("Grishik")]

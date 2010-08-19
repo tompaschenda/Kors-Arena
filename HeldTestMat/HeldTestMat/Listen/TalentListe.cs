@@ -9,6 +9,8 @@ namespace Listen
     public enum TalentKategorie
     {
 
+        [Description("undefined")]
+        undefined,
         [Description("Kampftalent")]
         Kampf,
         [Description("körperliches Talent")]
@@ -34,8 +36,10 @@ namespace Listen
 
     }
 
-    public enum TalentNamen
+    public enum TalentName
     {
+        [Description("undefined")]
+        undefined,
         // Waffentalente:
 
         [Description("Anderthalbhänder")]
@@ -256,6 +260,8 @@ namespace Listen
         Grobschmied,
         [Description("Handel")]
         Handel,
+        [Description("Hauswirtschaft")]
+        Hauswirtschaft,
         [Description("Heilkunde Gift")]
         HeilkundeGift,
         [Description("Heilkunde Krankheiten")]
@@ -314,8 +320,10 @@ namespace Listen
         Zimmermann,
     }
 
-    public enum TalentSpezialisierungen
+    public enum TalentSpezialisierung
     {
+        [Description("undefined")]
+        undefined,
         // Akrobatik:
         [Description("Balancieren")]
         Balancieren,

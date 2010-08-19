@@ -9,6 +9,8 @@ namespace Listen
 
     public enum MittellaendischeWeiblicheVornamenListe
     {
+        [Description("undefined")]
+        undefined,
         [Description("Adaque")]
         Adaque,
         // TODO!

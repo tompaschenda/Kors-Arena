@@ -8,6 +8,8 @@ namespace Listen
 {
     public enum ErzdaemonenNamen
     {
+        [Description("undefined")]
+        undefined,
         [Description("Der Namenlose")]
         DerNamenlose, DerGottOhneNamen, DerDreizehnte,
         [Description("Blakharaz")]
@@ -40,6 +42,8 @@ namespace Listen
 
     public enum DaemonenNamen
     {
+        [Description("undefined")]
+        undefined,
         // TODO!!!
     }
 

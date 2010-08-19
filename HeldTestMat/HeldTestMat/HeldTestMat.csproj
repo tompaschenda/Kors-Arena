@@ -72,6 +72,7 @@
     <Compile Include="kulturenStruktur.cs" />
     <Compile Include="listenStruktur.cs" />
     <Compile Include="heldenStruktur.cs" />
+    <Compile Include="SprachenSchriftenStruktur.cs" />
     <Compile Include="talentStruktur.cs" />
     <Compile Include="vorteileStruktur.cs" />
     <Compile Include="wuerfelKlasse.cs" />

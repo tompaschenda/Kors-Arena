@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaemonenListe.cs" />
+    <Compile Include="GenerierungsListe.cs" />
     <Compile Include="GifteUndKrankheitenListe.cs" />
     <Compile Include="HeldenNamenListe.cs" />
     <Compile Include="HeldPropertiesListe.cs" />
@@ -49,7 +50,9 @@
     <Compile Include="ProdessionenListe.cs" />
     <Compile Include="RassenListe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GeographischeListe.cs" />
     <Compile Include="SFListe.cs" />
+    <Compile Include="SprachenUndSchriften.cs" />
     <Compile Include="TalentListe.cs" />
     <Compile Include="VorteileListe.cs" />
     <Compile Include="WaffenListe.cs" />

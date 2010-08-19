@@ -1,12 +1,264 @@
 ﻿using System.Collections.Generic;
 using listenStruktur;
 using Common;
+using Listen;
+using professionenStruktur;
 
 namespace professionenStruktur
 {
     //////////////////////////////////////
     //  Professionsstruktur. TODO: Ausgliedern!
     //////////////////////////////////////
+
+    /// <summary>
+    /// Versschiedenen Kategorien von Professionen inklusive aller zugehörigen Professionen.
+    /// </summary>
+    public class ProfessionsKategorien
+    {
+        /// <summary>
+        /// Gibt ALLE Professionen zurück:
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessionsName> GetAlle()
+        {
+            var alleProfs = new List<ProfessionsName>() { };
+            alleProfs.AddRange(GetKriegerische());
+            alleProfs.AddRange(GetReisende());
+            alleProfs.AddRange(GetGesellschaft());
+            alleProfs.AddRange(GetHandwerk());
+            alleProfs.AddRange(GetMagisch());
+            alleProfs.AddRange(GetKlerikal());
+            return alleProfs;
+        }
+
+        /// <summary>
+        /// Gibt nur zwölfgöttliche Geweihte Professionen zurück:
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessionsName> GetZwoelfgoetterkulte()
+        {
+            var zwoelfeProfs = new List<ProfessionsName>()
+            {
+                ProfessionsName.GeweihterDesPraios,
+                ProfessionsName.GeweihterDerRondra,
+                ProfessionsName.RondrageweihteAmazone,
+                ProfessionsName.GeweihterDesEfferd,
+                ProfessionsName.GeweihterDerTravia,
+                ProfessionsName.GeweihterDesBoronAlAnfanerRitus,
+                ProfessionsName.GeweihterDesBoronPuninerRitus,
+                ProfessionsName.GeweihterDerHesinde,
+                ProfessionsName.GeweihterDesFirun,
+                ProfessionsName.GeweihterDerTsa,
+                ProfessionsName.GeweihterDesPhex,
+                ProfessionsName.GeweihterDerPeraine,
+                ProfessionsName.GeweihterDesIngerimm,
+                ProfessionsName.GeweihteDerRahja,
+                ProfessionsName.PredigerVomBundDesWahrenGlaubens,
+                ProfessionsName.GeweihterDesAves,
+                ProfessionsName.GeweihterDesKor,
+                ProfessionsName.GeweihterDesNandus,
+                ProfessionsName.GeweihterDerIfirn,
+                ProfessionsName.GeweihterDesSwafnir,
+                ProfessionsName.GeweihterDesAngrosch,
+            };
+            return zwoelfeProfs;
+        }
+
+        /// <summary>
+        ///  Alle Gesellschaftlichen Professionen
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessionsName> GetKriegerische()
+        {
+            var kriegerischeProfs = new List<ProfessionsName>()
+            {
+                ProfessionsName.Amazone,
+                ProfessionsName.Faehnrich,
+                ProfessionsName.FaehnrichDerKavallerie,
+                ProfessionsName.Stabsfaehnrich,
+                ProfessionsName.FaehnrichZurSee,
+                ProfessionsName.Gladiator,
+                ProfessionsName.Schaukaempfer,
+                ProfessionsName.Gardist,
+                ProfessionsName.Jahrmarktskaempfer,
+                ProfessionsName.Krieger,
+                ProfessionsName.Ritter,
+                ProfessionsName.Schwertgeselle,
+                ProfessionsName.Soldat,
+                ProfessionsName.Soeldner,
+                ProfessionsName.Stammeskrieger                
+            };
+            return kriegerischeProfs;
+        }
+
+        /// <summary>
+        /// Alle Reisenden Professionen
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessionsName> GetReisende()
+        {
+            var reisendeProfs = new List<ProfessionsName>()
+            {
+                ProfessionsName.Botenreiter,
+                ProfessionsName.Entdecker,
+                ProfessionsName.Fernhaendler,
+                ProfessionsName.Fischer,
+                ProfessionsName.Fuhrmann,
+                ProfessionsName.Grenzjaeger,
+                ProfessionsName.Großwildjaeger,
+                ProfessionsName.Hirte,
+                ProfessionsName.Jaeger,
+                ProfessionsName.Karawanenhueter,
+                ProfessionsName.Kundschafter,
+                ProfessionsName.Prospektor,
+                ProfessionsName.Schiffer,
+                ProfessionsName.Schmuggler,
+                ProfessionsName.Seefahrer,
+                ProfessionsName.Straßenraeuber
+            };
+            return reisendeProfs;
+        }
+
+        /// <summary>
+        ///  Alle Gesellschaftlichen Professionen:
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessionsName> GetGesellschaft()
+        {
+            var gesellschaftProfs = new List<ProfessionsName>()
+            {
+                ProfessionsName.Ausrufer,
+                ProfessionsName.Barde,
+                ProfessionsName.Bettler,
+                ProfessionsName.Dieb,
+                ProfessionsName.Einbrecher,
+                ProfessionsName.Gaukler,
+                ProfessionsName.Haendler,
+                ProfessionsName.Herold,
+                ProfessionsName.Hofkuenstler,
+                ProfessionsName.Hoefling,
+                ProfessionsName.KurtisaneGesellschafter,
+                ProfessionsName.Privatlehrer,
+                ProfessionsName.Schriftsteller,
+                ProfessionsName.Spitzel,
+                ProfessionsName.Streuner,
+                ProfessionsName.Taugenichts,
+                ProfessionsName.Wirt,
+            };
+
+            return gesellschaftProfs;
+        }
+
+        /// <summary>
+        ///  Alle handwerklichen Professionen:
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessionsName> GetHandwerk()
+        {
+            var handwerkProfs = new List<ProfessionsName>()
+            {
+                ProfessionsName.Bader,
+                ProfessionsName.Bauer,
+                ProfessionsName.Bergmann,
+                ProfessionsName.Domestik,
+                ProfessionsName.Edelhandwerker,
+                ProfessionsName.Gelehrter,
+                ProfessionsName.Handwerker,
+                ProfessionsName.Rattenfaenger,
+                ProfessionsName.Schreiber,
+                ProfessionsName.Tageloehnerin,
+                ProfessionsName.Tierbaendiger,
+                ProfessionsName.Wundarzt
+            };
+
+            return handwerkProfs;
+        }
+
+        /// <summary>
+        /// Alle magischen Professionen:
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessionsName> GetMagisch()
+        {
+            var magischProfs = new List<ProfessionsName>()
+            {
+                ProfessionsName.Alchimist,
+                ProfessionsName.MagiebegabterAlchimist,
+                ProfessionsName.Derwisch,
+                ProfessionsName.Druide,
+                ProfessionsName.DurroDun,
+                ProfessionsName.Bewahrer,
+                ProfessionsName.Former,
+                ProfessionsName.Kaempfer,
+                ProfessionsName.Legendensaenger,
+                ProfessionsName.Wildnislaeufer,
+                ProfessionsName.Zauberweber,
+                ProfessionsName.Wanderer,
+                ProfessionsName.FerkinaBesessener,
+                ProfessionsName.Geode,
+                ProfessionsName.Hexe,
+                ProfessionsName.Kristallomant,
+                ProfessionsName.Magier,
+                ProfessionsName.Scharlatan,
+                ProfessionsName.Taenzer,
+                ProfessionsName.Schelm,
+                ProfessionsName.Zibilja
+            };
+            return magischProfs;
+        }
+
+        /// <summary>
+        /// Alle klerikalen Professionen:
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessionsName> GetKlerikal()
+        {
+            var klerikaleProfs = new List<ProfessionsName>()
+            {
+                ProfessionsName.GeweihterDesPraios,
+                ProfessionsName.GeweihterDerRondra,
+                ProfessionsName.RondrageweihteAmazone,
+                ProfessionsName.GeweihterDesEfferd,
+                ProfessionsName.GeweihterDerTravia,
+                ProfessionsName.GeweihterDesBoronAlAnfanerRitus,
+                ProfessionsName.GeweihterDesBoronPuninerRitus,
+                ProfessionsName.GeweihterDerHesinde,
+                ProfessionsName.GeweihterDesFirun,
+                ProfessionsName.GeweihterDerTsa,
+                ProfessionsName.GeweihterDesPhex,
+                ProfessionsName.GeweihterDerPeraine,
+                ProfessionsName.GeweihterDesIngerimm,
+                ProfessionsName.GeweihteDerRahja,
+                ProfessionsName.PredigerVomBundDesWahrenGlaubens,
+                ProfessionsName.GeweihterDesAves,
+                ProfessionsName.GeweihterDesKor,
+                ProfessionsName.GeweihterDesNandus,
+                ProfessionsName.GeweihterDerIfirn,
+                ProfessionsName.HorasRitter,
+                ProfessionsName.GeweihterDesSwafnir,
+                ProfessionsName.GeweihterDesAngrosch,
+                ProfessionsName.PriesterDerHSzint,
+                ProfessionsName.PriesterDerZsahh,
+                ProfessionsName.PriesterVonRurUndGror,
+                ProfessionsName.StammeskriegerDerBeniDervez,
+                ProfessionsName.Hadjinim,
+                ProfessionsName.Medizinmann,
+                ProfessionsName.Kaskjua,
+                ProfessionsName.Nuranshar,
+                ProfessionsName.BrenochDun,
+                ProfessionsName.Skuldrun,
+                ProfessionsName.Shochzul,
+                ProfessionsName.TairachPriester,
+                ProfessionsName.GraveshPriester,
+                ProfessionsName.RikaiPriester,
+                ProfessionsName.GoblinSchamanin,
+                ProfessionsName.SchamaneDerAchaz,
+
+            };
+            return klerikaleProfs;
+
+        }         
+    }
 
     /// <summary>
     /// Struktur, die alle Professionen in Aventurien enthält:

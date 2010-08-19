@@ -186,8 +186,7 @@ namespace Common
         /// <typeparam name="T"></typeparam>
         /// <param name="enumerationValue"></param>
         /// <returns></returns>
-        public static string GetDescription<T>(this object enumerationValue)
-                where T : struct
+        public static string GetDescription(this object enumerationValue)
         {
             Type type = enumerationValue.GetType();
             if (!type.IsEnum)

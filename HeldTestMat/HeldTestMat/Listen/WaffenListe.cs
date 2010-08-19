@@ -6,8 +6,10 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum WaffenKategorien
+    public enum WaffenKategorie
     {
+        [Description("undefined")]
+        undefined,
         [Description("Anderthalbhänder")]
         Anderthalbhaender,
         [Description("Armbrust")]
@@ -64,8 +66,10 @@ namespace Listen
         ZweihandSchwerterUndSaebel,
     }
 
-    public enum WaffenNamen
+    public enum WaffenName
     {
+        [Description("undefined")]
+        undefined,
         // Werkzeuge und Gebrauchswaffen:
         [Description("Beil")]
         Beil,
@@ -453,8 +457,10 @@ namespace Listen
         Turmschild,
     }
 
-    public enum natuerlicheWaffenNamen
+    public enum natuerlicheWaffenName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Biss")]
         Biss,
         [Description("Schwanz")]

@@ -6,8 +6,10 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum VorteileNamen
+    public enum VorteileName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Adlig")]
         Adlig,
         [Description("Adlige Abstammung")]

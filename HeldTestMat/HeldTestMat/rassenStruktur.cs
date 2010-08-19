@@ -6,15 +6,10 @@ using nachteileStruktur;
 using wuerfelKlasse;
 using sfStruktur;
 using spielerAuswahl;
+using System;
 
 namespace rassenStruktur
 {
-
-    //////////////////////////////////////
-    //  Rassen-Struktur. TODO: Ausgliedern!
-    //////////////////////////////////////
-
-
     /// <summary>
     /// Struktur, die alle Rassen in Aventurien enthält:
     /// </summary>
@@ -28,14 +23,9 @@ namespace rassenStruktur
         public List<subrasse> moeglicheSubrassen;
 
         /// <summary>
-        /// Der Name der tatsächlich vom Helden gewählten Subrasse.
-        /// </summary>
-        public SpielerSubRassenNamen gewaehlteSubrasse;
-
-        /// <summary>
         /// Identifier der Rasse
         /// </summary>
-        private SpielerRassenNamen rasse;
+        private SpielerRassenName rasse;
 
         /// <summary>
         /// [Tom]: Der Name der Rasse. Beim Setzen des Namens werden die anderen Felder automatisch gefüllt.
@@ -45,7 +35,7 @@ namespace rassenStruktur
         {
             get
             {
-                return EnumExtentions.GetDescription<SpielerRassenNamen>(rasse);
+                return EnumExtentions.GetDescription(rasse);
             }
         }
 
@@ -59,8 +49,11 @@ namespace rassenStruktur
         }
         /// <summary>
         /// Der Identifier dieser Rasse. Der Setter definiert die Attribute der Rasse
+        /// Dazu werden jeweils alle möglichen Subrassen angelegt und mit in der Struktur verankert.
+        /// Wenn die Rasse über keine Subrasse verfügt, erhält sie die Rubrasse "keine", die alle
+        /// Eigenschaften und Attribute der "Mutterrasse" enthält.
         /// </summary>
-        public SpielerRassenNamen Rasse
+        public SpielerRassenName Rasse
         {
             set
             {
@@ -72,7 +65,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Mittelreichler
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Mittellaender:
+                        case SpielerRassenName.Mittellaender:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createMittellaenderSubrasseKeine());
@@ -81,7 +74,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Tulamiden
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Tulamiden:
+                        case SpielerRassenName.Tulamiden:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createTulamideSubrasseKeine());
@@ -90,7 +83,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Thorwaler
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Thorwaler:
+                        case SpielerRassenName.Thorwaler:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createThorwalerSubrasseKeine());
@@ -101,7 +94,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Nivese
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Nivese:
+                        case SpielerRassenName.Nivese:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createNiveseSubrasseKeine());
@@ -109,7 +102,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Norbarde
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Norbarde:
+                        case SpielerRassenName.Norbarde:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createNorbardeSubrasseKeine());
@@ -117,7 +110,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Trollzacker
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Trollzacker:
+                        case SpielerRassenName.Trollzacker:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createTrollzackerSubrasseKeine());
@@ -125,7 +118,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Waldmenschen
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Waldmensch:
+                        case SpielerRassenName.Waldmensch:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createWaldmenschenSubrasseKeine());
@@ -134,7 +127,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Utulus
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Utulu:
+                        case SpielerRassenName.Utulu:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createUtuluSubrasseKeine());
@@ -142,7 +135,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Elfen
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Elf:
+                        case SpielerRassenName.Elf:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createElfSubrasseAuelf());
@@ -152,7 +145,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Halbelfen
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Halbelf:
+                        case SpielerRassenName.Halbelf:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createHalbelfSubrasseKeine());
@@ -167,7 +160,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Zwerge
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Zwerg:
+                        case SpielerRassenName.Zwerg:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createZwergSubrasseKeine());
@@ -178,7 +171,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Orks
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Ork:
+                        case SpielerRassenName.Ork:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createOrkSubrasseKeine());
@@ -187,7 +180,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Halborks
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Halbork:
+                        case SpielerRassenName.Halbork:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createHalborkSubrasseKeine());
@@ -195,7 +188,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Goblins
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Goblin:
+                        case SpielerRassenName.Goblin:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createGoblinSubrasseKeine());
@@ -204,7 +197,7 @@ namespace rassenStruktur
                         ///////////////////////////////////////
                         // Achaz
                         ///////////////////////////////////////
-                        case SpielerRassenNamen.Achaz:
+                        case SpielerRassenName.Achaz:
                             rasse = value;
                             moeglicheSubrassen = new List<subrasse>();
                             moeglicheSubrassen.Add(createAchazSubrasseKeine());
@@ -228,7 +221,7 @@ namespace rassenStruktur
         private static subrasse createMittellaenderSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.haarfarbenMap = new RangeMap<string>();
             srKeine.haarfarbenMap.Add(new Range(1, 3), "schwarz");
@@ -260,20 +253,20 @@ namespace rassenStruktur
 
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeLandbevoelkerung, 
-                KulturNamen.AndergastUndNostria,
-                KulturNamen.Bornland, KulturNamen.SvellttalUndNordlande, KulturNamen.Almada, 
-                KulturNamen.Horasreich,
-                KulturNamen.Zyklopeninseln, KulturNamen.Maraskan, KulturNamen.Suedaventurien, 
-                KulturNamen.Bukanier,
+                KulturName.MittellaendischeStaedte, KulturName.MittellaendischeLandbevoelkerung, 
+                KulturName.AndergastUndNostria,
+                KulturName.Bornland, KulturName.SvellttalUndNordlande, KulturName.Almada, 
+                KulturName.Horasreich,
+                KulturName.Zyklopeninseln, KulturName.Maraskan, KulturName.Suedaventurien, 
+                KulturName.Bukanier,
             };
             // [Tom]: oder auch so:
             // ueblicheKulturen.Add("Bukanier");
@@ -281,20 +274,20 @@ namespace rassenStruktur
             // Wir füllen die Liste mittels eines sogenannten Collection Initializers
             // siehe http://www.developer.com/net/csharp/article.php/3607421/New-in-C-30-Create-and-Initialize-Collection-Objects-in-One-Step.htm
 
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Aranien, KulturNamen.TulamidischeStadtstaaten, KulturNamen.Thorwal,
-                KulturNamen.Mhanadistan, KulturNamen.Amazonenburg,
+                KulturName.Aranien, KulturName.TulamidischeStadtstaaten, KulturName.Thorwal,
+                KulturName.Mhanadistan, KulturName.Amazonenburg,
             };
             //[Tom]: Auch hier können wir ganz Prima einen Collection Initializer benutzen. Diesmal in der geschachtelten Ausführung
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>() { };
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>() { };
 
             return srKeine;
         }
         private static subrasse createTulamideSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.generierungskosten = 0;
 
@@ -325,27 +318,27 @@ namespace rassenStruktur
 
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Aranien, KulturNamen.Mhanadistan, KulturNamen.TulamidischeStadtstaaten, KulturNamen.Novadi,
-                KulturNamen.Ferkina, KulturNamen.Zahori, KulturNamen.Maraskan, KulturNamen.Suedaventurien, KulturNamen.Bukanier,
+                KulturName.Aranien, KulturName.Mhanadistan, KulturName.TulamidischeStadtstaaten, KulturName.Novadi,
+                KulturName.Ferkina, KulturName.Zahori, KulturName.Maraskan, KulturName.Suedaventurien, KulturName.Bukanier,
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen> 
+            srKeine.unueblicheKulturen = new List<KulturName> 
             {
-                KulturNamen.MittellaendischeStaedte, KulturNamen.Almada, KulturNamen.Amazonenburg,
+                KulturName.MittellaendischeStaedte, KulturName.Almada, KulturName.Amazonenburg,
             };
             return srKeine;
         }
         private static subrasse createThorwalerSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.haarfarbenMap = new RangeMap<string>();
             srKeine.haarfarbenMap.Add(new Range(1, 8), "blond");
@@ -374,58 +367,58 @@ namespace rassenStruktur
             srKeine.auModifikator = 10;
             srKeine.mrModifikator = -5;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>{name= EigenschaftenNamen.MU, wert=1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>{name= EigenschaftenNamen.KO, wert=1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>{name= EigenschaftenNamen.KK, wert=1},
+                new GenericListenNameWertPaar<EigenschaftenName>{name= EigenschaftenName.MU, wert=1},
+                new GenericListenNameWertPaar<EigenschaftenName>{name= EigenschaftenName.KO, wert=1},
+                new GenericListenNameWertPaar<EigenschaftenName>{name= EigenschaftenName.KK, wert=1},
             };
 
             srKeine.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Jaehzorn,wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.Jaehzorn,wert = 6},
             };
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Eisern},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheLebenskraft},
-                new VorteilsIdentifier(){name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.ZaeherHund},
+                new VorteilsIdentifier(){name = VorteileName.Eisern},
+                new VorteilsIdentifier(){name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.ZaeherHund},
             };
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Blutdurst},
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Blutdurst},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheMagieresistenz},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.HoheMagieresistenz},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Kleinwuechsig},
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Kleinwuechsig},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Thorwal, KulturNamen.Fjarninger, KulturNamen.Gjalskerland
+                KulturName.Thorwal, KulturName.Fjarninger, KulturName.Gjalskerland
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen> 
+            srKeine.unueblicheKulturen = new List<KulturName> 
             {
-                KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeLandbevoelkerung,
-                KulturNamen.AndergastUndNostria, KulturNamen.Bornland, KulturNamen.SvellttalUndNordlande, 
-                KulturNamen.Suedaventurien, KulturNamen.TulamidischeStadtstaaten, KulturNamen.Bukanier,
+                KulturName.MittellaendischeStaedte, KulturName.MittellaendischeLandbevoelkerung,
+                KulturName.AndergastUndNostria, KulturName.Bornland, KulturName.SvellttalUndNordlande, 
+                KulturName.Suedaventurien, KulturName.TulamidischeStadtstaaten, KulturName.Bukanier,
             };
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Athletik, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Wettervorhersage, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Athletik, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Wettervorhersage, wert = 1},
             };
 
             return srKeine;
@@ -434,7 +427,7 @@ namespace rassenStruktur
         {
             var srFjarn = createThorwalerSubrasseKeine();
             // Wir brauchen nur die Unterschiede zwischen den Subrassen zu ändern:
-            srFjarn.name = SpielerSubRassenNamen.Fjarninger;
+            srFjarn.name = SpielerSubRassenName.Fjarninger;
             srFjarn.koerpergroesse.basisgroesse = 1.68 + 0.05;
             return srFjarn;
         }
@@ -442,7 +435,7 @@ namespace rassenStruktur
         {
             var srGjal = createThorwalerSubrasseKeine();
             // Wir brauchen nur die Unterschiede zwischen den Subrassen zu ändern:
-            srGjal.name = SpielerSubRassenNamen.Gjalskerlaender;
+            srGjal.name = SpielerSubRassenName.Gjalskerlaender;
             srGjal.haarfarbenMap.Add(new Range(1, 4), "blond");
             srGjal.haarfarbenMap.Add(new Range(5, 8), "rotblond");
             srGjal.haarfarbenMap.Add(new Range(9, 15), "rot");
@@ -481,10 +474,10 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 110;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = 1},
             };
 
             srKeine.leModifikator = 9;
@@ -493,51 +486,51 @@ namespace rassenStruktur
 
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){name = VorteileNamen.Entfernungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Wolfskind},
-                new VorteilsIdentifier(){name = VorteileNamen.ZaeherHund},
+                new VorteilsIdentifier(){name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){name = VorteileName.Entfernungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Wolfskind},
+                new VorteilsIdentifier(){name = VorteileName.ZaeherHund},
             };
 
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
             };
 
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.Hitzeresistenz},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.Hitzeresistenz},
             };
 
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Kaelteempfindlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){name = NachteileNamen.Platzangst},
+                new NachteilsIdentifier(){name = NachteileName.Kaelteempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Platzangst},
             };
 
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Nivesenstaemme, KulturNamen.NuanaaeLie,
+                KulturName.Nivesenstaemme, KulturName.NuanaaeLie,
             };
 
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeLandbevoelkerung,
-                KulturNamen.Bornland, KulturNamen.SvellttalUndNordlande, KulturNamen.Thorwal,
-                KulturNamen.Gjalskerland, KulturNamen.Fjarninger, KulturNamen.Norbardensippe
+                KulturName.MittellaendischeStaedte, KulturName.MittellaendischeLandbevoelkerung,
+                KulturName.Bornland, KulturName.SvellttalUndNordlande, KulturName.Thorwal,
+                KulturName.Gjalskerland, KulturName.Fjarninger, KulturName.Norbardensippe
             };
 
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Selbstbeherrschung, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Selbstbeherrschung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = 1},
             };
 
             return srKeine;
@@ -545,7 +538,7 @@ namespace rassenStruktur
         private static subrasse createNorbardeSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.generierungskosten = 3;
 
@@ -566,46 +559,46 @@ namespace rassenStruktur
             srKeine.koerpergroesse.wuerfel = new wuerfel() { wuerfelanzahl = 2, wuerfelaugen = 20, wuerfeloffset = 0 };
 
             srKeine.gewichtsabzug = 100;
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Charisma, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Charisma, wert = 1},
             };
             srKeine.leModifikator = 11;
             srKeine.auModifikator = 10;
             srKeine.mrModifikator = -4;
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.GutesGedaechtnis},
-                new VorteilsIdentifier(){name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.ZaeherHund},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.GutesGedaechtnis},
+                new VorteilsIdentifier(){name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.ZaeherHund},
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.Hitzeresistenz},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.Hitzeresistenz},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){name = NachteileNamen.Platzangst},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Platzangst},
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Norbardensippe
+                KulturName.Norbardensippe
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeLandbevoelkerung,
-                KulturNamen.Bornland, KulturNamen.Thorwal, KulturNamen.SvellttalUndNordlande,
-                KulturNamen.Nivesenstaemme, KulturNamen.Gjalskerland,
+                KulturName.MittellaendischeStaedte, KulturName.MittellaendischeLandbevoelkerung,
+                KulturName.Bornland, KulturName.Thorwal, KulturName.SvellttalUndNordlande,
+                KulturName.Nivesenstaemme, KulturName.Gjalskerland,
             };
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>{name = TalentNamen.Orientierung, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>{name = TalentNamen.Rechnen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>{name = TalentName.Orientierung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>{name = TalentName.Rechnen, wert = 1},
             };
 
 
@@ -614,7 +607,7 @@ namespace rassenStruktur
         private static subrasse createTrollzackerSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.generierungskosten = 7;
 
@@ -637,66 +630,66 @@ namespace rassenStruktur
             srKeine.koerpergroesse.wuerfel = new wuerfel() { wuerfelanzahl = 1, wuerfelaugen = 20, wuerfeloffset = 0 };
 
             srKeine.gewichtsabzug = 100;
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = 2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = 1},
             };
             srKeine.leModifikator = 11;
             srKeine.auModifikator = 18;
             srKeine.mrModifikator = -5;
             srKeine.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Platzangst, wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.Platzangst, wert = 6},
             };
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.Eisern},
-                new VorteilsIdentifier(){name = VorteileNamen.Entfernungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheLebenskraft},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenGifte},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenKrankheiten},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.Eisern},
+                new VorteilsIdentifier(){name = VorteileName.Entfernungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenKrankheiten},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
             };
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Blutdurst},
-                new NachteilsIdentifier(){name = NachteileNamen.Jaehzorn},
-                new NachteilsIdentifier(){name = NachteileNamen.UnangenehmeStimme},
-                new NachteilsIdentifier(){name = NachteileNamen.Unansehnlich},
+                new NachteilsIdentifier(){name = NachteileName.Blutdurst},
+                new NachteilsIdentifier(){name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){name = NachteileName.UnangenehmeStimme},
+                new NachteilsIdentifier(){name = NachteileName.Unansehnlich},
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Kleinwuechsig},
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){name = NachteileNamen.SchlechteRegeneration},
+                new NachteilsIdentifier(){name = NachteileName.Kleinwuechsig},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.SchlechteRegeneration},
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Trollzacken
+                KulturName.Trollzacken
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Ferkina, KulturNamen.Aranien,
+                KulturName.Ferkina, KulturName.Aranien,
             };
 
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Athletik, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Klettern, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Selbstbeherrschung, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Athletik, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Klettern, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Selbstbeherrschung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 1},
             };
             return srKeine;
         }
@@ -704,7 +697,7 @@ namespace rassenStruktur
         {
             var srRoch = createTrollzackerSubrasseKeine();
             // Wir überschreiben nur, was sich ändert!
-            srRoch.name = SpielerSubRassenNamen.Rochshaz;
+            srRoch.name = SpielerSubRassenName.Rochshaz;
             srRoch.generierungskosten = 6;
 
             srRoch.koerpergroesse = new koerpergroesse();
@@ -712,36 +705,36 @@ namespace rassenStruktur
             srRoch.koerpergroesse.wuerfel = new wuerfel() { wuerfelanzahl = 1, wuerfelaugen = 20, wuerfeloffset = 0 };
 
             srRoch.gewichtsabzug = 95;
-            srRoch.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srRoch.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = 2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = 2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = 2},
             };
             srRoch.leModifikator = 12;
             srRoch.auModifikator = 20;
             srRoch.mrModifikator = -5;
             srRoch.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Platzangst, wert = 6},
-                new NachteilsIdentifier(){name = NachteileNamen.Jaehzorn, wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.Platzangst, wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.Jaehzorn, wert = 6},
             };
-            srRoch.empfohleneNachteile.Add(new NachteilsIdentifier(){name = NachteileNamen.Randgruppe});
-            srRoch.ueblicheKulturen = new List<KulturNamen>()
+            srRoch.empfohleneNachteile.Add(new NachteilsIdentifier(){name = NachteileName.Randgruppe});
+            srRoch.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Trollzacken
+                KulturName.Trollzacken
             };
             // Andere Kulturen gehen nicht!
-            srRoch.unueblicheKulturen = new List<KulturNamen>(){};
-            srRoch.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srRoch.unueblicheKulturen = new List<KulturName>(){};
+            srRoch.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Athletik, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Klettern, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Selbstbeherrschung, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Athletik, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Klettern, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Selbstbeherrschung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 1},
             };
 
             return srRoch;
@@ -749,7 +742,7 @@ namespace rassenStruktur
         private static subrasse createWaldmenschenSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.generierungskosten = 5;
 
@@ -769,12 +762,12 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 110;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Charisma, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Charisma, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             srKeine.leModifikator = 8;
@@ -785,59 +778,70 @@ namespace rassenStruktur
             {
                 // Durch die Besonderheit der Rasse gibt es noch ein paar Extra-Vorteile:
                 // Diese sind intelligenterweise nur im Fließtext und nicht in der Box aufgeführt. BOONS! :)
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmtesGift, auspraegungSpezielleGifte = GiftNamen.Wuara},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenKrankheiten, auspraegungKrankheit = KrankheitsNamen.FlinkerDifar},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenKrankheiten, auspraegungKrankheit = KrankheitsNamen.BrabakerSchweiss},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmtesGift, auspraegung = GiftName.Wuara},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenKrankheiten, auspraegung = KrankheitsName.FlinkerDifar},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenKrankheiten, auspraegung = KrankheitsName.BrabakerSchweiss},
             };
+
+            if (srKeine.automatischeVorteile[0].auspraegung.GetType()==typeof(GiftName))
+            {
+                System.Console.Write("Juhu");
+            }
+
+            if (srKeine.automatischeVorteile[0].name.GetType() == typeof(VorteileName))
+            {
+                
+            }
+
 
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.Flink},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.Hitzeresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenGifte},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.Flink},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
             };
 
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Kaelteempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Kaelteempfindlichkeit},
             };
 
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HoheMagieresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.HoheMagieresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
             };
 
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Dschungelstaemme, KulturNamen.VerloreneStaemme, KulturNamen.Miniwatu,
-                KulturNamen.Darna, KulturNamen.Suedaventurien, KulturNamen.Bukanier,
+                KulturName.Dschungelstaemme, KulturName.VerloreneStaemme, KulturName.Miniwatu,
+                KulturName.Darna, KulturName.Suedaventurien, KulturName.Bukanier,
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Tocamuyac, KulturNamen.Horasreich, KulturNamen.Aranien,
-                KulturNamen.TulamidischeStadtstaaten,
+                KulturName.Tocamuyac, KulturName.Horasreich, KulturName.Aranien,
+                KulturName.TulamidischeStadtstaaten,
             };
 
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Klettern, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Tanzen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Klettern, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Tanzen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = 1},
             };
 
             return srKeine;
@@ -845,7 +849,7 @@ namespace rassenStruktur
         private static subrasse createWaldmenschenSubrasseTocamuyac()
         {
             var srToca = new subrasse();
-            srToca.name = SpielerSubRassenNamen.Tocamuyac;
+            srToca.name = SpielerSubRassenName.Tocamuyac;
 
             srToca.generierungskosten = 3;
 
@@ -866,12 +870,12 @@ namespace rassenStruktur
 
             srToca.gewichtsabzug = 110;
 
-            srToca.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srToca.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Charisma, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Charisma, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             srToca.leModifikator = 8;
@@ -882,58 +886,58 @@ namespace rassenStruktur
             {
                 // Durch die Besonderheit der Rasse gibt es noch ein paar Extra-Vorteile:
                 // Diese sind intelligenterweise nur im Fließtext und nicht in der Box aufgeführt. BOONS! :)
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmtesGift, auspraegungSpezielleGifte = GiftNamen.Wuara},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenKrankheiten, auspraegungKrankheit = KrankheitsNamen.FlinkerDifar},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenKrankheiten, auspraegungKrankheit = KrankheitsNamen.BrabakerSchweiss},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmtesGift, auspraegung = GiftName.Wuara},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenKrankheiten, auspraegung = KrankheitsName.FlinkerDifar},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenKrankheiten, auspraegung = KrankheitsName.BrabakerSchweiss},
             };
 
             srToca.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Kleinwuechsig},
+                new NachteilsIdentifier(){name = NachteileName.Kleinwuechsig},
             };
             srToca.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.Flink},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.Hitzeresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenGifte},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.Flink},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
             };
             srToca.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Kaelteempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Kaelteempfindlichkeit},
             };
             srToca.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HoheMagieresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.HoheMagieresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
             };
             srToca.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.Meeresangst},
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Meeresangst},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
             };
-            srToca.ueblicheKulturen = new List<KulturNamen>()
+            srToca.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Tocamuyac,
+                KulturName.Tocamuyac,
             };
-            srToca.ueblicheKulturen = new List<KulturNamen>()
+            srToca.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Dschungelstaemme, KulturNamen.Miniwatu, KulturNamen.WaldinselUtulus,
-                KulturNamen.Suedaventurien, KulturNamen.Bukanier, KulturNamen.Aranien, 
-                KulturNamen.TulamidischeStadtstaaten, KulturNamen.MittellaendischeStaedte,
+                KulturName.Dschungelstaemme, KulturName.Miniwatu, KulturName.WaldinselUtulus,
+                KulturName.Suedaventurien, KulturName.Bukanier, KulturName.Aranien, 
+                KulturName.TulamidischeStadtstaaten, KulturName.MittellaendischeStaedte,
             };
-            srToca.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srToca.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = 3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schwimmen, wert = 3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = 3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schwimmen, wert = 3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = 1},
             };
 
             return srToca;
@@ -942,7 +946,7 @@ namespace rassenStruktur
         private static subrasse createUtuluSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.generierungskosten = 9;
 
@@ -961,10 +965,10 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 110;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = 1},
             };
 
             srKeine.leModifikator = 11;
@@ -973,58 +977,58 @@ namespace rassenStruktur
 
             srKeine.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Hitzeresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Hitzeresistenz},
                 // Durch die Besonderheit der Rasse gibt es noch ein paar Extra-Vorteile:
                 // Diese sind intelligenterweise nur im Fließtext und nicht in der Box aufgeführt. BOONS! :)
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmtesGift, auspraegungSpezielleGifte = GiftNamen.Wuara},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenKrankheiten, auspraegungKrankheit = KrankheitsNamen.FlinkerDifar},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenKrankheiten, auspraegungKrankheit = KrankheitsNamen.BrabakerSchweiss},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmtesGift, auspraegung = GiftName.Wuara},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenKrankheiten, auspraegung = KrankheitsName.FlinkerDifar},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenKrankheiten, auspraegung = KrankheitsName.BrabakerSchweiss},
             };
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Musizieren},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenGifte},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Musizieren},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
             };
 
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Kaelteempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Kaelteempfindlichkeit},
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HoheMagieresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.HoheMagieresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.WaldinselUtulus, KulturNamen.Dschungelstaemme, KulturNamen.VerloreneStaemme,
-                KulturNamen.Suedaventurien, KulturNamen.Bukanier,               
+                KulturName.WaldinselUtulus, KulturName.Dschungelstaemme, KulturName.VerloreneStaemme,
+                KulturName.Suedaventurien, KulturName.Bukanier,               
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Aranien, KulturNamen.Dschungelstaemme, KulturNamen.Tocamuyac, KulturNamen.TulamidischeStadtstaaten,
-                KulturNamen.VerloreneStaemme
+                KulturName.Aranien, KulturName.Dschungelstaemme, KulturName.Tocamuyac, KulturName.TulamidischeStadtstaaten,
+                KulturName.VerloreneStaemme
             };
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Klettern, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Tanzen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Klettern, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Tanzen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = 1},
             };
 
 
@@ -1033,7 +1037,7 @@ namespace rassenStruktur
         private static subrasse createElfSubrasseFirnelf()
         {
             var srFirnelf = new subrasse();
-            srFirnelf.name = SpielerSubRassenNamen.Firnelf;
+            srFirnelf.name = SpielerSubRassenName.Firnelf;
 
             srFirnelf.generierungskosten = 24;
 
@@ -1063,13 +1067,13 @@ namespace rassenStruktur
 
             srFirnelf.gewichtsabzug = 120;
 
-            srFirnelf.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srFirnelf.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = 2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             srFirnelf.leModifikator = 7;
@@ -1083,9 +1087,9 @@ namespace rassenStruktur
             var wahlSinn = new wahlmoeglichkeiten();
             wahlSinn.vorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Gehoer,},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Sicht, },
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Tastsinn, },
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Gehoer,},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Sicht, },
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Tastsinn, },
             };
             wahlSinn.anzahlWaehlbarerVorteile = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
@@ -1096,95 +1100,95 @@ namespace rassenStruktur
 
             srFirnelf.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Altersresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenKrankheiten},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Vollzauberer},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
-                new VorteilsIdentifier(){name = VorteileNamen.ZweistimmigerGesang},
+                new VorteilsIdentifier(){name = VorteileName.Altersresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenKrankheiten},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Vollzauberer},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.ZweistimmigerGesang},
 
                 // Sowie die Rassenvorteile, die wieder einmal nur im Fließtext stehen *kotz*
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.Tollwut},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.SchwarzeWut},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.Lykanthrophie},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.Tollwut},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.SchwarzeWut},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.Lykanthrophie},
             };
 
             srFirnelf.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.SensiblerGeruchssinn, wert = 6},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.Zechen},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.SensiblerGeruchssinn, wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.Zechen},
             };
             srFirnelf.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.AstraleRegeneration},
-                new VorteilsIdentifier(){name = VorteileNamen.Astralmacht},
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Singen},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Musizieren},
-                new VorteilsIdentifier(){name = VorteileNamen.Beidhaendig},
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.Flink},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Sicht},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Geschmack},
-                new VorteilsIdentifier(){name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){name = VorteileNamen.Nachtsicht},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.AstraleRegeneration},
+                new VorteilsIdentifier(){name = VorteileName.Astralmacht},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Singen},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Musizieren},
+                new VorteilsIdentifier(){name = VorteileName.Beidhaendig},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.Flink},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Sicht},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geschmack},
+                new VorteilsIdentifier(){name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){name = VorteileName.Nachtsicht},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
             };
             srFirnelf.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Albino},
-                new NachteilsIdentifier(){name = NachteileNamen.Farbenblind},
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Albino},
+                new NachteilsIdentifier(){name = NachteileName.Farbenblind},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
             };
             srFirnelf.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Hitzeresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
-                new VorteilsIdentifier(){name = VorteileNamen.VomSchicksalBeguenstigt},
-                new VorteilsIdentifier(){name = VorteileNamen.Zwergennase},
+                new VorteilsIdentifier(){name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.VomSchicksalBeguenstigt},
+                new VorteilsIdentifier(){name = VorteileName.Zwergennase},
             };
             srFirnelf.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Behaebig},
-                new NachteilsIdentifier(){name = NachteileNamen.EingeschraenkterSinn},
-                new NachteilsIdentifier(){name = NachteileNamen.Fettleibig},
-                new NachteilsIdentifier(){name = NachteileNamen.Glasknochen},
-                new NachteilsIdentifier(){name = NachteileNamen.Kleinwuechsig},
-                new NachteilsIdentifier(){name = NachteileNamen.Kurzatmig},
-                new NachteilsIdentifier(){name = NachteileNamen.Nachtblind},
-                new NachteilsIdentifier(){name = NachteileNamen.Platzangst},
-                new NachteilsIdentifier(){name = NachteileNamen.Stubenhocker},
-                new NachteilsIdentifier(){name = NachteileNamen.UeblerGeruch},
-                new NachteilsIdentifier(){name = NachteileNamen.Unansehnlich},
+                new NachteilsIdentifier(){name = NachteileName.Behaebig},
+                new NachteilsIdentifier(){name = NachteileName.EingeschraenkterSinn},
+                new NachteilsIdentifier(){name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){name = NachteileName.Kleinwuechsig},
+                new NachteilsIdentifier(){name = NachteileName.Kurzatmig},
+                new NachteilsIdentifier(){name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){name = NachteileName.Stubenhocker},
+                new NachteilsIdentifier(){name = NachteileName.UeblerGeruch},
+                new NachteilsIdentifier(){name = NachteileName.Unansehnlich},
             };
-            srFirnelf.ueblicheKulturen = new List<KulturNamen>()
+            srFirnelf.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.FirnelfischeSippe,
+                KulturName.FirnelfischeSippe,
 
             };
-            srFirnelf.unueblicheKulturen = new List<KulturNamen>()
+            srFirnelf.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.AuelfischeSippe, KulturNamen.SteppenelfischeSippe, KulturNamen.ElfischeSiedlung,
-                KulturNamen.Fjarninger, KulturNamen.Gjalskerland, KulturNamen.Nivesenstaemme,
-                KulturNamen.Norbardensippe, KulturNamen.Thorwal,
+                KulturName.AuelfischeSippe, KulturName.SteppenelfischeSippe, KulturName.ElfischeSiedlung,
+                KulturName.Fjarninger, KulturName.Gjalskerland, KulturName.Nivesenstaemme,
+                KulturName.Norbardensippe, KulturName.Thorwal,
             };
 
-            srFirnelf.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srFirnelf.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Athletik, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = 3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 5},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen, wert = -2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Athletik, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = 3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 5},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = -2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = 2},
             };
 
             return srFirnelf;
@@ -1192,7 +1196,7 @@ namespace rassenStruktur
         private static subrasse createElfSubrasseAuelf()
         {
             var srAuelf = new subrasse();
-            srAuelf.name = SpielerSubRassenNamen.Auelf;
+            srAuelf.name = SpielerSubRassenName.Auelf;
 
             srAuelf.generierungskosten = 20;
 
@@ -1221,12 +1225,12 @@ namespace rassenStruktur
 
             srAuelf.gewichtsabzug = 120;
 
-            srAuelf.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srAuelf.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = 2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             srAuelf.leModifikator = 6;
@@ -1241,9 +1245,9 @@ namespace rassenStruktur
             var wahlSinn = new wahlmoeglichkeiten();
             wahlSinn.vorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Gehoer,},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Geruch, },
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Sicht, },
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Gehoer,},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geruch, },
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Sicht, },
             };
             wahlSinn.anzahlWaehlbarerVorteile = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
@@ -1254,87 +1258,87 @@ namespace rassenStruktur
 
             srAuelf.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Altersresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenKrankheiten},
-                new VorteilsIdentifier(){name = VorteileNamen.Vollzauberer},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
-                new VorteilsIdentifier(){name = VorteileNamen.ZweistimmigerGesang},
+                new VorteilsIdentifier(){name = VorteileName.Altersresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenKrankheiten},
+                new VorteilsIdentifier(){name = VorteileName.Vollzauberer},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.ZweistimmigerGesang},
 
                 // Sowie die Rassenvorteile, die wieder einmal nur im Fließtext stehen *kotz*
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.Tollwut},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.SchwarzeWut},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.Lykanthrophie},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.Tollwut},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.SchwarzeWut},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.Lykanthrophie},
 
             };
             srAuelf.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.SensiblerGeruchssinn, wert = 6},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.Zechen},
+                new NachteilsIdentifier(){name = NachteileName.SensiblerGeruchssinn, wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.Zechen},
             };
 
             srAuelf.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.AstraleRegeneration},
-                new VorteilsIdentifier(){name = VorteileNamen.Astralmacht},
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Singen},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Musizieren},
-                new VorteilsIdentifier(){name = VorteileNamen.Beidhaendig},
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.Flink},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Tastsinn},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendesAussehen},
-                new VorteilsIdentifier(){name = VorteileNamen.Nachtsicht},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.AstraleRegeneration},
+                new VorteilsIdentifier(){name = VorteileName.Astralmacht},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Singen},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Musizieren},
+                new VorteilsIdentifier(){name = VorteileName.Beidhaendig},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.Flink},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Tastsinn},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendesAussehen},
+                new VorteilsIdentifier(){name = VorteileName.Nachtsicht},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
             };
             srAuelf.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){name = NachteileNamen.Raumangst},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Raumangst},
             };
             srAuelf.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
-                new VorteilsIdentifier(){name = VorteileNamen.VomSchicksalBeguenstigt},
-                new VorteilsIdentifier(){name = VorteileNamen.Zwergennase},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.VomSchicksalBeguenstigt},
+                new VorteilsIdentifier(){name = VorteileName.Zwergennase},
             };
             srAuelf.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Behaebig},
-                new NachteilsIdentifier(){name = NachteileNamen.Blutrausch},
-                new NachteilsIdentifier(){name = NachteileNamen.EingeschraenkterSinn},
-                new NachteilsIdentifier(){name = NachteileNamen.Fettleibig},
-                new NachteilsIdentifier(){name = NachteileNamen.Kleinwuechsig},
-                new NachteilsIdentifier(){name = NachteileNamen.Kurzatmig},
-                new NachteilsIdentifier(){name = NachteileNamen.Nachtblind},
-                new NachteilsIdentifier(){name = NachteileNamen.Platzangst},
-                new NachteilsIdentifier(){name = NachteileNamen.UeblerGeruch},
+                new NachteilsIdentifier(){name = NachteileName.Behaebig},
+                new NachteilsIdentifier(){name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){name = NachteileName.EingeschraenkterSinn},
+                new NachteilsIdentifier(){name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){name = NachteileName.Kleinwuechsig},
+                new NachteilsIdentifier(){name = NachteileName.Kurzatmig},
+                new NachteilsIdentifier(){name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){name = NachteileName.UeblerGeruch},
             };
-            srAuelf.ueblicheKulturen = new List<KulturNamen>()
+            srAuelf.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.AuelfischeSippe, KulturNamen.SteppenelfischeSippe, KulturNamen.ElfischeSiedlung,
+                KulturName.AuelfischeSippe, KulturName.SteppenelfischeSippe, KulturName.ElfischeSiedlung,
 
             };
-            srAuelf.unueblicheKulturen = new List<KulturNamen>()
+            srAuelf.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.WaldelfischeSippe, KulturNamen.AndergastUndNostria,
-                KulturNamen.Bornland, KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeLandbevoelkerung,
-                KulturNamen.Norbardensippe, KulturNamen.SvellttalUndNordlande, KulturNamen.Almada
+                KulturName.WaldelfischeSippe, KulturName.AndergastUndNostria,
+                KulturName.Bornland, KulturName.MittellaendischeStaedte, KulturName.MittellaendischeLandbevoelkerung,
+                KulturName.Norbardensippe, KulturName.SvellttalUndNordlande, KulturName.Almada
             };
 
-            srAuelf.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srAuelf.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = 3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 5},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Tanzen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen, wert = -2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = 3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 5},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Tanzen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = -2},
             };
 
             return srAuelf;
@@ -1342,7 +1346,7 @@ namespace rassenStruktur
         private static subrasse createElfSubrasseWaldelf()
         {
             var srWaldelf = new subrasse();
-            srWaldelf.name = SpielerSubRassenNamen.Waldelf;
+            srWaldelf.name = SpielerSubRassenName.Waldelf;
 
             srWaldelf.generierungskosten = 20;
 
@@ -1372,12 +1376,12 @@ namespace rassenStruktur
 
             srWaldelf.gewichtsabzug = 120;
 
-            srWaldelf.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srWaldelf.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = 2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = 2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             srWaldelf.leModifikator = 6;
@@ -1391,8 +1395,8 @@ namespace rassenStruktur
             var wahlSinn = new wahlmoeglichkeiten();
             wahlSinn.vorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Gehoer,},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Geruch, },
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Gehoer,},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geruch, },
             };
             wahlSinn.anzahlWaehlbarerVorteile = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
@@ -1400,91 +1404,91 @@ namespace rassenStruktur
 
             srWaldelf.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Altersresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenKrankheiten},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Vollzauberer},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
-                new VorteilsIdentifier(){name = VorteileNamen.ZweistimmigerGesang},
+                new VorteilsIdentifier(){name = VorteileName.Altersresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenKrankheiten},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Vollzauberer},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.ZweistimmigerGesang},
 
                 // Sowie die Rassenvorteile, die wieder einmal nur im Fließtext stehen *kotz*
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.Tollwut},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.SchwarzeWut},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.Lykanthrophie},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.Tollwut},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.SchwarzeWut},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.Lykanthrophie},
             };
 
             srWaldelf.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.SensiblerGeruchssinn, wert = 6},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.Zechen},
+                new NachteilsIdentifier(){name = NachteileName.SensiblerGeruchssinn, wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.Zechen},
             };
             srWaldelf.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.AstraleRegeneration},
-                new VorteilsIdentifier(){name = VorteileNamen.Astralmacht},
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Singen},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Musizieren},
-                new VorteilsIdentifier(){name = VorteileNamen.Beidhaendig},
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.Flink},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Tastsinn},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Sicht},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendesAussehen},
-                new VorteilsIdentifier(){name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Nachtsicht},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.AstraleRegeneration},
+                new VorteilsIdentifier(){name = VorteileName.Astralmacht},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Singen},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Musizieren},
+                new VorteilsIdentifier(){name = VorteileName.Beidhaendig},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.Flink},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Tastsinn},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Sicht},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendesAussehen},
+                new VorteilsIdentifier(){name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Nachtsicht},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
             };
             srWaldelf.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){name = NachteileNamen.Raumangst},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Raumangst},
             };
             srWaldelf.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Hitzeresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
-                new VorteilsIdentifier(){name = VorteileNamen.VomSchicksalBeguenstigt},
-                new VorteilsIdentifier(){name = VorteileNamen.Zwergennase},
+                new VorteilsIdentifier(){name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.VomSchicksalBeguenstigt},
+                new VorteilsIdentifier(){name = VorteileName.Zwergennase},
             };
             srWaldelf.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Blutrausch},
-                new NachteilsIdentifier(){name = NachteileNamen.EingeschraenkterSinn},
-                new NachteilsIdentifier(){name = NachteileNamen.Fettleibig},
-                new NachteilsIdentifier(){name = NachteileNamen.Hoehenangst},
-                new NachteilsIdentifier(){name = NachteileNamen.Kleinwuechsig},
-                new NachteilsIdentifier(){name = NachteileNamen.Kurzatmig},
-                new NachteilsIdentifier(){name = NachteileNamen.Nachtblind},
-                new NachteilsIdentifier(){name = NachteileNamen.Platzangst},
-                new NachteilsIdentifier(){name = NachteileNamen.UeblerGeruch},
+                new NachteilsIdentifier(){name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){name = NachteileName.EingeschraenkterSinn},
+                new NachteilsIdentifier(){name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){name = NachteileName.Hoehenangst},
+                new NachteilsIdentifier(){name = NachteileName.Kleinwuechsig},
+                new NachteilsIdentifier(){name = NachteileName.Kurzatmig},
+                new NachteilsIdentifier(){name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){name = NachteileName.UeblerGeruch},
             };
-            srWaldelf.ueblicheKulturen = new List<KulturNamen>()
+            srWaldelf.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.WaldelfischeSippe,
+                KulturName.WaldelfischeSippe,
 
             };
-            srWaldelf.unueblicheKulturen = new List<KulturNamen>()
+            srWaldelf.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.AuelfischeSippe, KulturNamen.SteppenelfischeSippe, KulturNamen.ElfischeSiedlung,
-                KulturNamen.MittellaendischeLandbevoelkerung, KulturNamen.MittellaendischeStaedte,
-                KulturNamen.Norbardensippe, KulturNamen.SvellttalUndNordlande,
+                KulturName.AuelfischeSippe, KulturName.SteppenelfischeSippe, KulturName.ElfischeSiedlung,
+                KulturName.MittellaendischeLandbevoelkerung, KulturName.MittellaendischeStaedte,
+                KulturName.Norbardensippe, KulturName.SvellttalUndNordlande,
             };
 
-            srWaldelf.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srWaldelf.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = 4},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 5},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Tanzen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen, wert = -2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = 4},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 5},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Tanzen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = -2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = 2},
             };
 
             return srWaldelf;
@@ -1494,11 +1498,11 @@ namespace rassenStruktur
         {
             var srThorwalisch = createHalbelfSubrasseKeine();
             // Wir passen nur das an, was sich ändert:
-            srThorwalisch.name = SpielerSubRassenNamen.HalbelfThorwalElf;
+            srThorwalisch.name = SpielerSubRassenName.HalbelfThorwalElf;
             srThorwalisch.generierungskosten = 4;
             srThorwalisch.leModifikator = srThorwalisch.leModifikator + 1;
             // Keine Mods auf irgendwas:
-            srThorwalisch.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>() { };
+            srThorwalisch.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>() { };
 
             return srThorwalisch;
         }
@@ -1506,14 +1510,14 @@ namespace rassenStruktur
         {
             var srNivesisch = createHalbelfSubrasseKeine();
             // Wir passen nur das an, was sich ändert:
-            srNivesisch.name = SpielerSubRassenNamen.HalbelfNivesenElf;
+            srNivesisch.name = SpielerSubRassenName.HalbelfNivesenElf;
             srNivesisch.generierungskosten = 8;
             srNivesisch.auModifikator = srNivesisch.auModifikator + 1;
-            srNivesisch.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srNivesisch.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name=EigenschaftenNamen.Gewandtheit, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name=EigenschaftenNamen.Koerperkraft, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name=EigenschaftenNamen.Intuition, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name=EigenschaftenName.Gewandtheit, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name=EigenschaftenName.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name=EigenschaftenName.Intuition, wert = 1},
             };
 
             // Wir tragen die erste Wahlmöglichkeit ein: Zwischen den Vorteilen darf aus 2 Vorteilen
@@ -1522,8 +1526,8 @@ namespace rassenStruktur
             var wahlVorteil = new wahlmoeglichkeiten();
             wahlVorteil.vorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
-                new VorteilsIdentifier(){name = VorteileNamen.ZweistimmigerGesang},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.ZweistimmigerGesang},
             };
             wahlVorteil.anzahlWaehlbarerVorteile = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
@@ -1532,13 +1536,13 @@ namespace rassenStruktur
 
             srNivesisch.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.Viertelzauberer},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.Viertelzauberer},
             };
 
             srNivesisch.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name= NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent=TalentNamen.Zechen},
+                new NachteilsIdentifier(){name= NachteileName.UnfaehigkeitFuerTalent, auspraegung=TalentName.Zechen},
             };
 
             return srNivesisch;
@@ -1546,31 +1550,31 @@ namespace rassenStruktur
         private static subrasse createHalbelfSubrasseFirnelfischeAbstammung()
         {
             var srFirnelf = createHalbelfSubrasseKeine();
-            srFirnelf.name = SpielerSubRassenNamen.HalbelfFirnelf;
+            srFirnelf.name = SpielerSubRassenName.HalbelfFirnelf;
             // Wir passen nur das an, was sich ändert:
             srFirnelf.generierungskosten = 5;
             srFirnelf.auModifikator = srFirnelf.auModifikator + 2;
             srFirnelf.mrModifikator = srFirnelf.mrModifikator + 1;
             srFirnelf.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Viertelzauberer},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Viertelzauberer},
             };
             srFirnelf.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){name = NachteileNamen.SensiblerGeruchssinn},
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.SensiblerGeruchssinn},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
             };
-            srFirnelf.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srFirnelf.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Tanzen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen, wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Tanzen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = 1},
             };
 
             return srFirnelf;
@@ -1578,10 +1582,10 @@ namespace rassenStruktur
         private static subrasse createHalbelfSubrasseFirnelfischeSippe()
         {
             var srHalbelfFirnelfischeSippe = createHalbelfSubrasseElfischeSiedlung();
-            srHalbelfFirnelfischeSippe.name = SpielerSubRassenNamen.HalbelfAusFirnelfischerSippe;
-            srHalbelfFirnelfischeSippe.ueblicheKulturen = new List<KulturNamen>()
+            srHalbelfFirnelfischeSippe.name = SpielerSubRassenName.HalbelfAusFirnelfischerSippe;
+            srHalbelfFirnelfischeSippe.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.FirnelfischeSippe,
+                KulturName.FirnelfischeSippe,
             };
 
             return srHalbelfFirnelfischeSippe;
@@ -1589,10 +1593,10 @@ namespace rassenStruktur
         private static subrasse createHalbelfSubrasseWaldelfischeSippe()
         {
             var srHalbelfWaldelfischeSippe = createHalbelfSubrasseElfischeSiedlung();
-            srHalbelfWaldelfischeSippe.name = SpielerSubRassenNamen.HalbelfAusWaldelfischerSippe;
-            srHalbelfWaldelfischeSippe.ueblicheKulturen = new List<KulturNamen>()
+            srHalbelfWaldelfischeSippe.name = SpielerSubRassenName.HalbelfAusWaldelfischerSippe;
+            srHalbelfWaldelfischeSippe.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.WaldelfischeSippe,
+                KulturName.WaldelfischeSippe,
             };
 
             return srHalbelfWaldelfischeSippe;
@@ -1600,10 +1604,10 @@ namespace rassenStruktur
         private static subrasse createHalbelfSubrasseAuelfischeSippe()
         {
             var srHalbelfAuelfischeSippe = createHalbelfSubrasseElfischeSiedlung();
-            srHalbelfAuelfischeSippe.name = SpielerSubRassenNamen.HalbelfAusAuelfischerSippe;
-            srHalbelfAuelfischeSippe.ueblicheKulturen = new List<KulturNamen>()
+            srHalbelfAuelfischeSippe.name = SpielerSubRassenName.HalbelfAusAuelfischerSippe;
+            srHalbelfAuelfischeSippe.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.AuelfischeSippe,
+                KulturName.AuelfischeSippe,
             };
 
             return srHalbelfAuelfischeSippe;
@@ -1611,7 +1615,7 @@ namespace rassenStruktur
         private static subrasse createHalbelfSubrasseElfischeSiedlung()
         {
             var srHalbelfElfischeSiedlung = createHalbelfSubrasseKeine();
-            srHalbelfElfischeSiedlung.name = SpielerSubRassenNamen.HalbelfAusElfischerSiedlung;
+            srHalbelfElfischeSiedlung.name = SpielerSubRassenName.HalbelfAusElfischerSiedlung;
 
             // Wir brauchen nur die Dinge zu überschreiben, die sich ändern!
             srHalbelfElfischeSiedlung.generierungskosten = 10;
@@ -1620,15 +1624,15 @@ namespace rassenStruktur
 
             srHalbelfElfischeSiedlung.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.Vollzauberer},
-                new VorteilsIdentifier(){name = VorteileNamen.ZweistimmigerGesang},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.Vollzauberer},
+                new VorteilsIdentifier(){name = VorteileName.ZweistimmigerGesang},
             };
-            srHalbelfElfischeSiedlung.ueblicheKulturen = new List<KulturNamen>()
+            srHalbelfElfischeSiedlung.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.ElfischeSiedlung,
+                KulturName.ElfischeSiedlung,
             };
-            srHalbelfElfischeSiedlung.unueblicheKulturen = new List<KulturNamen>() { };
+            srHalbelfElfischeSiedlung.unueblicheKulturen = new List<KulturName>() { };
 
 
             return srHalbelfElfischeSiedlung;
@@ -1636,7 +1640,7 @@ namespace rassenStruktur
         private static subrasse createHalbelfSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.haarfarbenMap = new RangeMap<string>();
             srKeine.haarfarbenMap.Add(new Range(1, 3), "rot");
@@ -1665,10 +1669,10 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 120;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name=EigenschaftenNamen.Gewandtheit, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name=EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name=EigenschaftenName.Gewandtheit, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name=EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             srKeine.leModifikator = 8;
@@ -1678,65 +1682,65 @@ namespace rassenStruktur
 
             srKeine.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.Viertelzauberer},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.Viertelzauberer},
             };
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Singen},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Musizieren},
-                new VorteilsIdentifier(){name = VorteileNamen.Beidhaendig},
-                new VorteilsIdentifier(){name = VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.Flink},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendesAussehen},
-                new VorteilsIdentifier(){name = VorteileNamen.Magiegespuer},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
-                new VorteilsIdentifier(){name = VorteileNamen.ZweistimmigerGesang},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Singen},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Musizieren},
+                new VorteilsIdentifier(){name = VorteileName.Beidhaendig},
+                new VorteilsIdentifier(){name = VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.Flink},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendesAussehen},
+                new VorteilsIdentifier(){name = VorteileName.Magiegespuer},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.ZweistimmigerGesang},
             };
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){name = NachteileNamen.SensiblerGeruchssinn},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.SensiblerGeruchssinn},
             };
 
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Blutrausch},
-                new NachteilsIdentifier(){name = NachteileNamen.Fettleibig},
-                new NachteilsIdentifier(){name = NachteileNamen.Kleinwuechsig},
-                new NachteilsIdentifier(){name = NachteileNamen.Krankheitsanfaellig},
-                new NachteilsIdentifier(){name = NachteileNamen.UnangenehmeStimme},
+                new NachteilsIdentifier(){name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){name = NachteileName.Kleinwuechsig},
+                new NachteilsIdentifier(){name = NachteileName.Krankheitsanfaellig},
+                new NachteilsIdentifier(){name = NachteileName.UnangenehmeStimme},
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeLandbevoelkerung,
-                KulturNamen.AndergastUndNostria, KulturNamen.Almada, KulturNamen.SvellttalUndNordlande,
-                KulturNamen.Nivesenstaemme, KulturNamen.Norbardensippe
+                KulturName.MittellaendischeStaedte, KulturName.MittellaendischeLandbevoelkerung,
+                KulturName.AndergastUndNostria, KulturName.Almada, KulturName.SvellttalUndNordlande,
+                KulturName.Nivesenstaemme, KulturName.Norbardensippe
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Aranien, KulturNamen.Thorwal, KulturNamen.Bornland, KulturNamen.Horasreich,
-                KulturNamen.Fjarninger, KulturNamen.Gjalskerland
+                KulturName.Aranien, KulturName.Thorwal, KulturName.Bornland, KulturName.Horasreich,
+                KulturName.Fjarninger, KulturName.Gjalskerland
             };
 
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Tanzen, wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Tanzen, wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = -1},
             };
 
             return srKeine;
@@ -1746,34 +1750,34 @@ namespace rassenStruktur
         {
             var srKeine = createZwergSubrasseKeine();
             // Wir müssen nur das ändern, was sich unterscheidet:
-            srKeine.name = SpielerSubRassenNamen.WilderZwerg;
+            srKeine.name = SpielerSubRassenName.WilderZwerg;
             srKeine.generierungskosten = 16;
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = +2},
             };
             srKeine.leModifikator = srKeine.leModifikator + 1;
             srKeine.auModifikator = srKeine.auModifikator + 3;
             srKeine.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name= VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name= VorteileNamen.ResistenzGegenBestimmteGiftart, auspraegungGiftArten = GiftArten.MineralischeGifte},
-                new VorteilsIdentifier(){name=VorteileNamen.ResistenzGegenKrankheiten},
-                new VorteilsIdentifier(){name=VorteileNamen.SchwerZuVerzaubern},
-                new VorteilsIdentifier(){name = VorteileNamen.Linkshaender},
+                new VorteilsIdentifier(){name= VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name= VorteileName.ResistenzGegenBestimmteGiftart, auspraegung = GiftArt.MineralischeGifte},
+                new VorteilsIdentifier(){name=VorteileName.ResistenzGegenKrankheiten},
+                new VorteilsIdentifier(){name=VorteileName.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.Linkshaender},
 
                 // Und hier wieder einmal Vorteile aus dem Fließtext... :(
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmtesGift, auspraegungSpezielleGifte = GiftNamen.Tulmadron},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmtesGift, auspraegung = GiftName.Tulmadron},
                 new VorteilsIdentifier()
                 {
-                    name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.Lykanthrophie
+                    name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.Lykanthrophie
                 },
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Brobim,
+                KulturName.Brobim,
             };
 
             return srKeine;
@@ -1782,27 +1786,27 @@ namespace rassenStruktur
         {
             var srAmbosszwerg = createZwergSubrasseKeine();
             // Wir müssen nur das ändern, was sich unterscheidet:
-            srAmbosszwerg.name = SpielerSubRassenNamen.Ambosszwerg;
+            srAmbosszwerg.name = SpielerSubRassenName.Ambosszwerg;
             srAmbosszwerg.generierungskosten = 16;
-            srAmbosszwerg.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srAmbosszwerg.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = +2},
             };
             srAmbosszwerg.leModifikator = srAmbosszwerg.leModifikator + 1;
             srAmbosszwerg.auModifikator = srAmbosszwerg.auModifikator + 3;
-            srAmbosszwerg.ueblicheKulturen = new List<KulturNamen>()
+            srAmbosszwerg.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Ambosszwerge,
+                KulturName.Ambosszwerge,
             };
-            srAmbosszwerg.unueblicheKulturen = new List<KulturNamen>()
+            srAmbosszwerg.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Erzzwerge, KulturNamen.Brillantzwerge, KulturNamen.Huegelzwerge,
-                KulturNamen.MittellaendischeStaedte, KulturNamen.MittellaendischeStaedte,
-                KulturNamen.Thorwal, KulturNamen.AndergastUndNostria, KulturNamen.TulamidischeStadtstaaten,
-                KulturNamen.SvellttalUndNordlande,
+                KulturName.Erzzwerge, KulturName.Brillantzwerge, KulturName.Huegelzwerge,
+                KulturName.MittellaendischeStaedte, KulturName.MittellaendischeStaedte,
+                KulturName.Thorwal, KulturName.AndergastUndNostria, KulturName.TulamidischeStadtstaaten,
+                KulturName.SvellttalUndNordlande,
             };
 
             return srAmbosszwerg;
@@ -1811,18 +1815,18 @@ namespace rassenStruktur
         {
             var srBrilliantzwerg = createZwergSubrasseKeine();
             // Wir müssen nur das ändern, was sich unterscheidet:
-            srBrilliantzwerg.name = SpielerSubRassenNamen.Brilliantzwerg;
+            srBrilliantzwerg.name = SpielerSubRassenName.Brilliantzwerg;
             srBrilliantzwerg.leModifikator = srBrilliantzwerg.leModifikator - 1;
             srBrilliantzwerg.auModifikator = srBrilliantzwerg.auModifikator + 3;
-            srBrilliantzwerg.ueblicheKulturen = new List<KulturNamen>()
+            srBrilliantzwerg.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Brillantzwerge,
+                KulturName.Brillantzwerge,
             };
-            srBrilliantzwerg.unueblicheKulturen = new List<KulturNamen>()
+            srBrilliantzwerg.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Ambosszwerge, KulturNamen.Erzzwerge, KulturNamen.Huegelzwerge, KulturNamen.MittellaendischeStaedte,
-                KulturNamen.MittellaendischeLandbevoelkerung,
-                KulturNamen.TulamidischeStadtstaaten,
+                KulturName.Ambosszwerge, KulturName.Erzzwerge, KulturName.Huegelzwerge, KulturName.MittellaendischeStaedte,
+                KulturName.MittellaendischeLandbevoelkerung,
+                KulturName.TulamidischeStadtstaaten,
             };
 
             return srBrilliantzwerg;
@@ -1830,7 +1834,7 @@ namespace rassenStruktur
         private static subrasse createZwergSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.haarfarbenMap = new RangeMap<string>();
             srKeine.haarfarbenMap.Add(new Range(1, 5), "blond");
@@ -1858,12 +1862,12 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 80;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = 1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = 1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = +1},
             };
 
             srKeine.leModifikator = 11;
@@ -1872,94 +1876,94 @@ namespace rassenStruktur
 
             srKeine.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name= VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name= VorteileNamen.ResistenzGegenBestimmteGiftart, auspraegungGiftArten = GiftArten.MineralischeGifte},
-                new VorteilsIdentifier(){name=VorteileNamen.ResistenzGegenKrankheiten},
-                new VorteilsIdentifier(){name=VorteileNamen.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name= VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name= VorteileName.ResistenzGegenBestimmteGiftart, auspraegung = GiftArt.MineralischeGifte},
+                new VorteilsIdentifier(){name=VorteileName.ResistenzGegenKrankheiten},
+                new VorteilsIdentifier(){name=VorteileName.SchwerZuVerzaubern},
 
                 // Und hier wieder einmal Vorteile aus dem Fließtext... :(
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmtesGift, auspraegungSpezielleGifte = GiftNamen.Tulmadron},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmtesGift, auspraegung = GiftName.Tulmadron},
                 new VorteilsIdentifier()
                 {
-                    name = VorteileNamen.ImmunitaetGegenBestimmteKrankheit, auspraegungKrankheit = KrankheitsNamen.Lykanthrophie
+                    name = VorteileName.ImmunitaetGegenBestimmteKrankheit, auspraegung = KrankheitsName.Lykanthrophie
                 },
             };
             srKeine.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Goldgier, wert=5},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.Schwimmen},
-                new NachteilsIdentifier(){name = NachteileNamen.Zwergenwuchs},
+                new NachteilsIdentifier(){name = NachteileName.Goldgier, wert=5},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.Schwimmen},
+                new NachteilsIdentifier(){name = NachteileName.Zwergenwuchs},
             };
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){name = VorteileNamen.Eisern},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.GutesGedaechtnis},
-                new VorteilsIdentifier(){name = VorteileNamen.Hitzeresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheMagieresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheLebenskraft},
-                new VorteilsIdentifier(){name = VorteileNamen.Nachtsicht},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenGifte},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenGifte},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.ZaeherHund},
-                new VorteilsIdentifier(){name = VorteileNamen.Zwergennase},
+                new VorteilsIdentifier(){name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){name = VorteileName.Eisern},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.GutesGedaechtnis},
+                new VorteilsIdentifier(){name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){name = VorteileName.HoheMagieresistenz},
+                new VorteilsIdentifier(){name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){name = VorteileName.Nachtsicht},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.ZaeherHund},
+                new VorteilsIdentifier(){name = VorteileName.Zwergennase},
             };
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Blutrausch},
-                new NachteilsIdentifier(){name = NachteileNamen.Jaehzorn},
-                new NachteilsIdentifier(){name = NachteileNamen.Lichtscheu},
-                new NachteilsIdentifier(){name = NachteileNamen.Meeresangst},
-                new NachteilsIdentifier(){name = NachteileNamen.Platzangst},
-                new NachteilsIdentifier(){name = NachteileNamen.Unansehnlich},
+                new NachteilsIdentifier(){name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){name = NachteileName.Lichtscheu},
+                new NachteilsIdentifier(){name = NachteileName.Meeresangst},
+                new NachteilsIdentifier(){name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){name = NachteileName.Unansehnlich},
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendesAussehen},
-                new VorteilsIdentifier(){name = VorteileNamen.Koboldfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.Magiegespuer},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
-                new VorteilsIdentifier(){name = VorteileNamen.VomSchicksalBeguenstigt},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendesAussehen},
+                new VorteilsIdentifier(){name = VorteileName.Koboldfreund},
+                new VorteilsIdentifier(){name = VorteileName.Magiegespuer},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.VomSchicksalBeguenstigt},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Dunkelangst},
-                new NachteilsIdentifier(){name = NachteileNamen.Glasknochen},
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.Nachtblind},
-                new NachteilsIdentifier(){name = NachteileNamen.NiedrigeMagieresistenz},
-                new NachteilsIdentifier(){name = NachteileNamen.Raumangst},
-                new NachteilsIdentifier(){name = NachteileNamen.Sucht, auspraegungSucht = Suchtmittel.Alkohol},
-                new NachteilsIdentifier(){name = NachteileNamen.Unstet},
+                new NachteilsIdentifier(){name = NachteileName.Dunkelangst},
+                new NachteilsIdentifier(){name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){name = NachteileName.NiedrigeMagieresistenz},
+                new NachteilsIdentifier(){name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){name = NachteileName.Sucht, auspraegung = Suchtmittel.Alkohol},
+                new NachteilsIdentifier(){name = NachteileName.Unstet},
             };
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Erzzwerge, KulturNamen.Huegelzwerge
+                KulturName.Erzzwerge, KulturName.Huegelzwerge
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Ambosszwerge, KulturNamen.Brillantzwerge, KulturNamen.MittellaendischeStaedte,
-                KulturNamen.MittellaendischeLandbevoelkerung, KulturNamen.Thorwal, KulturNamen.AndergastUndNostria,
-                KulturNamen.TulamidischeStadtstaaten, KulturNamen.SvellttalUndNordlande,
+                KulturName.Ambosszwerge, KulturName.Brillantzwerge, KulturName.MittellaendischeStaedte,
+                KulturName.MittellaendischeLandbevoelkerung, KulturName.Thorwal, KulturName.AndergastUndNostria,
+                KulturName.TulamidischeStadtstaaten, KulturName.SvellttalUndNordlande,
             };
 
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Ringen , wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Reiten , wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Akrobatik , wert = -3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schwimmen , wert = -3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Selbstbeherrschung , wert = 2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen , wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung , wert = 1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Gesteinskunde , wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Ringen , wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Reiten , wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Akrobatik , wert = -3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schwimmen , wert = -3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Selbstbeherrschung , wert = 2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen , wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung , wert = 1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Gesteinskunde , wert = 1},
             };
 
             return srKeine;
@@ -1969,7 +1973,7 @@ namespace rassenStruktur
         {
             var srOrkfrau = createOrkSubrasseKeine();
             // Wir ändern nur das, was sich unterscheidet:
-            srOrkfrau.name = SpielerSubRassenNamen
+            srOrkfrau.name = SpielerSubRassenName
                 .Orkfrau;
             srOrkfrau.generierungskosten = 2;
             srOrkfrau.koerpergroesse = new koerpergroesse();
@@ -1978,13 +1982,13 @@ namespace rassenStruktur
 
             srOrkfrau.gewichtsabzug = 90;
 
-            srOrkfrau.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srOrkfrau.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Charisma, wert = -2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Charisma, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = +1},
             };
 
             srOrkfrau.leModifikator = srOrkfrau.leModifikator - 2;
@@ -1994,11 +1998,11 @@ namespace rassenStruktur
             {
                 new NachteilsIdentifier()
                 {
-                    name = NachteileNamen.UnfaehigkeitFuerTalentgruppe, 
-                    auspraegungTalengruppe = TalentKategorie.SprachenUndSchriften
+                    name = NachteileName.UnfaehigkeitFuerTalentgruppe, 
+                    auspraegung = TalentKategorie.SprachenUndSchriften
                 },
-                new NachteilsIdentifier(){name = NachteileNamen.Randgruppe},
-                new NachteilsIdentifier(){name = NachteileNamen.Raubtiergeruch},
+                new NachteilsIdentifier(){name = NachteileName.Randgruppe},
+                new NachteilsIdentifier(){name = NachteileName.Raubtiergeruch},
             };
 
             srOrkfrau.nurFuerFrauen = true;
@@ -2010,7 +2014,7 @@ namespace rassenStruktur
         private static subrasse createOrkSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.haarfarbenMap = new RangeMap<string>();
             srKeine.haarfarbenMap.Add(new Range(1, 5), "dunkelbraun");
@@ -2032,14 +2036,14 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 95;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = 2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Charisma, wert = -2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = 2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Charisma, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = +2},
             };
 
             srKeine.leModifikator = 12;
@@ -2049,97 +2053,97 @@ namespace rassenStruktur
             // Wir brauchen noch einen Identifier für den "Biss". Wir tragen ihn
             // auch gleich als Vorteil ein!
             var Orkbiss = new natuerlicheWaffenIdentifier();
-            Orkbiss.name = natuerlicheWaffenNamen.Biss;
+            Orkbiss.name = natuerlicheWaffenName.Biss;
             Orkbiss.schadensWuerfel.wuerfelanzahl = 1;
             Orkbiss.schadensWuerfel.wuerfelaugen = 6;
             Orkbiss.schadensWuerfel.wuerfeloffset = 1;
 
             srKeine.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicheWaffen, natuerlicheWaffen = Orkbiss },
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicherRuestungsschutz, wert = 1},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.ZaeherHund},
+                new VorteilsIdentifier(){name = VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicheWaffen, natuerlicheWaffen = Orkbiss },
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicherRuestungsschutz, wert = 1},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.ZaeherHund},
             };
             srKeine.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Jaehzorn, wert = 6},
-                new NachteilsIdentifier(){name = NachteileNamen.Randgruppe},
-                new NachteilsIdentifier(){name = NachteileNamen.Raubtiergeruch},
+                new NachteilsIdentifier(){name = NachteileName.Jaehzorn, wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.Randgruppe},
+                new NachteilsIdentifier(){name = NachteileName.Raubtiergeruch},
             };
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){name = VorteileNamen.Eisern},
-                new VorteilsIdentifier(){name = VorteileNamen.Entfernungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenGifte},
-                new VorteilsIdentifier(){name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheLebenskraft},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){name = VorteileName.Eisern},
+                new VorteilsIdentifier(){name = VorteileName.Entfernungssinn},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenGifte},
             };
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Blutrausch},
-                new NachteilsIdentifier(){name = NachteileNamen.Hitzeempfindlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.NiedrigeMagieresistenz},
-                new NachteilsIdentifier(){name = NachteileNamen.UeblerGeruch},
-                new NachteilsIdentifier(){name = NachteileNamen.UnangenehmeStimme},
-                new NachteilsIdentifier(){name = NachteileNamen.Unansehnlich},
-                new NachteilsIdentifier(){name = NachteileNamen.Arkanophobie},
+                new NachteilsIdentifier(){name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){name = NachteileName.Hitzeempfindlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.NiedrigeMagieresistenz},
+                new NachteilsIdentifier(){name = NachteileName.UeblerGeruch},
+                new NachteilsIdentifier(){name = NachteileName.UnangenehmeStimme},
+                new NachteilsIdentifier(){name = NachteileName.Unansehnlich},
+                new NachteilsIdentifier(){name = NachteileName.Arkanophobie},
                 new NachteilsIdentifier()
                 {
-                    name = NachteileNamen.UnfaehigkeitFuerTalentgruppe, 
-                    auspraegungTalengruppe = TalentKategorie.Gesellschaftlich
+                    name = NachteileName.UnfaehigkeitFuerTalentgruppe, 
+                    auspraegung = TalentKategorie.Gesellschaftlich
                 },
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendesAussehen},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheMagieresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Koboldfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
-                new VorteilsIdentifier(){name = VorteileNamen.Tierfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendesAussehen},
+                new VorteilsIdentifier(){name = VorteileName.HoheMagieresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Koboldfreund},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.Tierfreund},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.AngstVor, auspraegungAngst = Aengste.Feuer},
-                new NachteilsIdentifier(){name = NachteileNamen.AngstVor, auspraegungAngst = Aengste.Insekten},
-                new NachteilsIdentifier(){name = NachteileNamen.AngstVor, auspraegungAngst = Aengste.Pelztieren},
-                new NachteilsIdentifier(){name = NachteileNamen.AngstVor, auspraegungAngst = Aengste.Spinnen},
-                new NachteilsIdentifier(){name = NachteileNamen.AngstVor, auspraegungAngst = Aengste.Wasser},
-                new NachteilsIdentifier(){name = NachteileNamen.Glasknochen},
-                new NachteilsIdentifier(){name = NachteileNamen.KrankhafteReinlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.Nachtblind},
-                new NachteilsIdentifier(){name = NachteileNamen.SchlechteRegeneration},
+                new NachteilsIdentifier(){name = NachteileName.AngstVor, auspraegung = Angst.Feuer},
+                new NachteilsIdentifier(){name = NachteileName.AngstVor, auspraegung = Angst.Insekten},
+                new NachteilsIdentifier(){name = NachteileName.AngstVor, auspraegung = Angst.Pelztieren},
+                new NachteilsIdentifier(){name = NachteileName.AngstVor, auspraegung = Angst.Spinnen},
+                new NachteilsIdentifier(){name = NachteileName.AngstVor, auspraegung = Angst.Wasser},
+                new NachteilsIdentifier(){name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){name = NachteileName.SchlechteRegeneration},
             };
 
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Orkland, KulturNamen.Yurach, KulturNamen.SvellttalBesatzer,
+                KulturName.Orkland, KulturName.Yurach, KulturName.SvellttalBesatzer,
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.AndergastUndNostria, KulturNamen.MittellaendischeStaedte,
-                KulturNamen.Suedaventurien, KulturNamen.SvellttalUndNordlande, KulturNamen.Thorwal,
+                KulturName.AndergastUndNostria, KulturName.MittellaendischeStaedte,
+                KulturName.Suedaventurien, KulturName.SvellttalUndNordlande, KulturName.Thorwal,
             };
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Selbstbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = -2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = +2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = +2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Rechnen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Raufen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Ringen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Athletik, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Selbstbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = -2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Rechnen, wert = -1},
             };
 
             srKeine.sonderfertigkeiten = new List<sfIdentifier>()
@@ -2155,7 +2159,7 @@ namespace rassenStruktur
         private static subrasse createHalborkSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.generierungskosten = 1;
 
@@ -2177,13 +2181,13 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 100;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Charisma, wert = -2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Charisma, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = +1},
             };
 
             srKeine.leModifikator = 11;
@@ -2192,67 +2196,70 @@ namespace rassenStruktur
 
             srKeine.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.ZaeherHund},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.ZaeherHund},
             };
+
+
+
             srKeine.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Jaehzorn, wert = 6},
-                new NachteilsIdentifier(){name = NachteileNamen.Randgruppe},
+                new NachteilsIdentifier(){name = NachteileName.Jaehzorn, wert = 6},
+                new NachteilsIdentifier(){name = NachteileName.Randgruppe},
             };
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){name = VorteileNamen.Eisern},
-                new VorteilsIdentifier(){name = VorteileNamen.Entfernungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){name = VorteileNamen.Kampfrausch},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheLebenskraft},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){name = VorteileName.Eisern},
+                new VorteilsIdentifier(){name = VorteileName.Entfernungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenGifte},
             };
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Blutrausch},
-                new NachteilsIdentifier(){name = NachteileNamen.NiedrigeMagieresistenz},
-                new NachteilsIdentifier(){name = NachteileNamen.UeblerGeruch},
-                new NachteilsIdentifier(){name = NachteileNamen.UnangenehmeStimme},
-                new NachteilsIdentifier(){name = NachteileNamen.Unansehnlich},
+                new NachteilsIdentifier(){name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){name = NachteileName.NiedrigeMagieresistenz},
+                new NachteilsIdentifier(){name = NachteileName.UeblerGeruch},
+                new NachteilsIdentifier(){name = NachteileName.UnangenehmeStimme},
+                new NachteilsIdentifier(){name = NachteileName.Unansehnlich},
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.GutAussehend},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheMagieresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Koboldfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){name = VorteileName.HoheMagieresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Koboldfreund},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Glasknochen},
-                new NachteilsIdentifier(){name = NachteileNamen.Nachtblind},
-                new NachteilsIdentifier(){name = NachteileNamen.SchlechteRegeneration},
+                new NachteilsIdentifier(){name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){name = NachteileName.SchlechteRegeneration},
             };
 
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Yurach,
+                KulturName.Yurach,
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.SvellttalBesatzer, KulturNamen.SvellttalUndNordlande, KulturNamen.AndergastUndNostria,
-                KulturNamen.MittellaendischeStaedte, KulturNamen.Gjalskerland,
+                KulturName.SvellttalBesatzer, KulturName.SvellttalUndNordlande, KulturName.AndergastUndNostria,
+                KulturName.MittellaendischeStaedte, KulturName.Gjalskerland,
             };
 
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schleichen, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Selbstbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = -2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Ringen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Athletik, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Selbstbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = -2},
             };
 
             return srKeine;
@@ -2262,60 +2269,60 @@ namespace rassenStruktur
         {
             var srGoblinfrau = createGoblinSubrasseKeine();
             // Wir müssen nur das ändern, was sich unterscheidet:
-            srGoblinfrau.name = SpielerSubRassenNamen.Goblinfrau;
+            srGoblinfrau.name = SpielerSubRassenName.Goblinfrau;
             srGoblinfrau.nurFuerMaenner = false;
             srGoblinfrau.nurFuerFrauen = true;
             srGoblinfrau.generierungskosten = 4;
 
             // Außerdem müssen wir die natürliche Waffe anlegen:
             var Goblinbiss = new natuerlicheWaffenIdentifier();
-            Goblinbiss.name = natuerlicheWaffenNamen.Biss;
+            Goblinbiss.name = natuerlicheWaffenName.Biss;
             Goblinbiss.schadensWuerfel.wuerfelanzahl = 1;
             Goblinbiss.schadensWuerfel.wuerfelaugen = 6;
             Goblinbiss.schadensWuerfel.wuerfeloffset = 0;
 
             srGoblinfrau.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Nachtsicht},
-                new VorteilsIdentifier(){name = VorteileNamen.Flink},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicheWaffen, natuerlicheWaffen = Goblinbiss},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicherRuestungsschutz, wert = 1},
+                new VorteilsIdentifier(){name = VorteileName.Nachtsicht},
+                new VorteilsIdentifier(){name = VorteileName.Flink},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicheWaffen, natuerlicheWaffen = Goblinbiss},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicherRuestungsschutz, wert = 1},
             };
 
             srGoblinfrau.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendesAussehen},
-                new VorteilsIdentifier(){name = VorteileNamen.Linkshaender},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendesAussehen},
+                new VorteilsIdentifier(){name = VorteileName.Linkshaender},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
             };
 
-            srGoblinfrau.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srGoblinfrau.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = +1},
             };
 
-            srGoblinfrau.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srGoblinfrau.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Klettern, wert = +2},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Schleichen, wert = +2},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Selbstbeherrschung, wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.SichVerstecken, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Singen, wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Sinnesschaerfe, wert = +4},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Zechen, wert = -3},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Faehrtensuchen, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Rechnen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Singen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +4},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -3},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = -1},
             };
 
             return srGoblinfrau;
@@ -2323,7 +2330,7 @@ namespace rassenStruktur
         private static subrasse createGoblinSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
             srKeine.nurFuerMaenner = true;
 
             srKeine.generierungskosten = 3;
@@ -2349,13 +2356,13 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 100;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Klugheit, wert = -2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Klugheit, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
             srKeine.iniBasisbonus = 2;
 
@@ -2368,8 +2375,8 @@ namespace rassenStruktur
             var wahlSinn = new wahlmoeglichkeiten();
             wahlSinn.vorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Gehoer,},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Geruch, },
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Gehoer,},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geruch, },
             };
             wahlSinn.anzahlWaehlbarerVorteile = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
@@ -2377,100 +2384,100 @@ namespace rassenStruktur
 
             // Außerdem müssen wir die natürliche Waffe anlegen:
             var Goblinbiss = new natuerlicheWaffenIdentifier();
-            Goblinbiss.name = natuerlicheWaffenNamen.Biss;
+            Goblinbiss.name = natuerlicheWaffenName.Biss;
             Goblinbiss.schadensWuerfel.wuerfelanzahl = 1;
             Goblinbiss.schadensWuerfel.wuerfelaugen = 6;
             Goblinbiss.schadensWuerfel.wuerfeloffset = 0;
 
             srKeine.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name = VorteileNamen.Flink},
-                new VorteilsIdentifier(){name = VorteileNamen.Gefahreninstinkt},
-                new VorteilsIdentifier(){name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicheWaffen, natuerlicheWaffen = Goblinbiss},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicherRuestungsschutz, wert = 1},
+                new VorteilsIdentifier(){name = VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name = VorteileName.Flink},
+                new VorteilsIdentifier(){name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicheWaffen, natuerlicheWaffen = Goblinbiss},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicherRuestungsschutz, wert = 1},
             };
             srKeine.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Kleinwuechsig},
-                new NachteilsIdentifier(){name = NachteileNamen.Randgruppe},
-                new NachteilsIdentifier(){name = NachteileNamen.Unstet},
+                new NachteilsIdentifier(){name = NachteileName.Kleinwuechsig},
+                new NachteilsIdentifier(){name = NachteileName.Randgruppe},
+                new NachteilsIdentifier(){name = NachteileName.Unstet},
             };
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.Beidhaendig},
-                new VorteilsIdentifier(){name = VorteileNamen.Eisern},
-                new VorteilsIdentifier(){name = VorteileNamen.Entfernungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Glueck},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Magiegespuer},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenGifte},
-                new VorteilsIdentifier(){name = VorteileNamen.ImmunitaetGegenBestimmtesGift},
-                new VorteilsIdentifier(){name = VorteileNamen.ResistenzGegenKrankheiten},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.Schlangenmensch},
-                new VorteilsIdentifier(){name = VorteileNamen.ZaeherHund},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.Beidhaendig},
+                new VorteilsIdentifier(){name = VorteileName.Eisern},
+                new VorteilsIdentifier(){name = VorteileName.Entfernungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Glueck},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn},
+                new VorteilsIdentifier(){name = VorteileName.Magiegespuer},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenGifte},
+                new VorteilsIdentifier(){name = VorteileName.ImmunitaetGegenBestimmtesGift},
+                new VorteilsIdentifier(){name = VorteileName.ResistenzGegenKrankheiten},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.Schlangenmensch},
+                new VorteilsIdentifier(){name = VorteileName.ZaeherHund},
             };
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Neugier},
-                new NachteilsIdentifier(){name = NachteileNamen.NiedrigeMagieresistenz},
-                new NachteilsIdentifier(){name = NachteileNamen.UeblerGeruch},
-                new NachteilsIdentifier(){name = NachteileNamen.UnangenehmeStimme},
-                new NachteilsIdentifier(){name = NachteileNamen.Unansehnlich},
+                new NachteilsIdentifier(){name = NachteileName.Neugier},
+                new NachteilsIdentifier(){name = NachteileName.NiedrigeMagieresistenz},
+                new NachteilsIdentifier(){name = NachteileName.UeblerGeruch},
+                new NachteilsIdentifier(){name = NachteileName.UnangenehmeStimme},
+                new NachteilsIdentifier(){name = NachteileName.Unansehnlich},
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragendesAussehen},
-                new VorteilsIdentifier(){name = VorteileNamen.HoheMagieresistenz},
-                new VorteilsIdentifier(){name = VorteileNamen.Linkshaender},
-                new VorteilsIdentifier(){name = VorteileNamen.SchwerZuVerzaubern},
-                new VorteilsIdentifier(){name = VorteileNamen.Wohlklang},
-                new VorteilsIdentifier(){name = VorteileNamen.Vollzauberer},
-                new VorteilsIdentifier(){name = VorteileNamen.Viertelzauberer},
+                new VorteilsIdentifier(){name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){name = VorteileName.HerausragendesAussehen},
+                new VorteilsIdentifier(){name = VorteileName.HoheMagieresistenz},
+                new VorteilsIdentifier(){name = VorteileName.Linkshaender},
+                new VorteilsIdentifier(){name = VorteileName.SchwerZuVerzaubern},
+                new VorteilsIdentifier(){name = VorteileName.Wohlklang},
+                new VorteilsIdentifier(){name = VorteileName.Vollzauberer},
+                new VorteilsIdentifier(){name = VorteileName.Viertelzauberer},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Blutrausch},
-                new NachteilsIdentifier(){name = NachteileNamen.Dunkelangst},
-                new NachteilsIdentifier(){name = NachteileNamen.Glasknochen},
-                new NachteilsIdentifier(){name = NachteileNamen.Hoehenangst},
-                new NachteilsIdentifier(){name = NachteileNamen.KrankhafteReinlichkeit},
-                new NachteilsIdentifier(){name = NachteileNamen.Krankheitsanfaellig},
-                new NachteilsIdentifier(){name = NachteileNamen.Nachtblind},
-                new NachteilsIdentifier(){name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){name = NachteileNamen.Raumangst},
-                new NachteilsIdentifier(){name = NachteileNamen.SchlechteRegeneration},
+                new NachteilsIdentifier(){name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){name = NachteileName.Dunkelangst},
+                new NachteilsIdentifier(){name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){name = NachteileName.Hoehenangst},
+                new NachteilsIdentifier(){name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){name = NachteileName.Krankheitsanfaellig},
+                new NachteilsIdentifier(){name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){name = NachteileName.SchlechteRegeneration},
             };
 
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Goblinstamm, KulturNamen.Goblinbande, KulturNamen.FestumerGhetto,
-                KulturNamen.MittellaendischeStaedte
+                KulturName.Goblinstamm, KulturName.Goblinbande, KulturName.FestumerGhetto,
+                KulturName.MittellaendischeStaedte
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.SvellttalUndNordlande, KulturNamen.MittellaendischeLandbevoelkerung,
-                KulturNamen.AndergastUndNostria, KulturNamen.Orkland, KulturNamen.Yurach,
+                KulturName.SvellttalUndNordlande, KulturName.MittellaendischeLandbevoelkerung,
+                KulturName.AndergastUndNostria, KulturName.Orkland, KulturName.Yurach,
             };
 
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Klettern, wert = +2},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Schleichen, wert = +2},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Selbstbeherrschung, wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.SichVerstecken, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Singen, wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Sinnesschaerfe, wert = +4},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Zechen, wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Faehrtensuchen, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){ name = TalentNamen.Rechnen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Singen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +4},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = -1},
             };
 
             srKeine.sonderfertigkeiten = new List<sfIdentifier>()
@@ -2481,37 +2488,37 @@ namespace rassenStruktur
             return srKeine;
         }
 
-        private subrasse createAchazSubrasseMaraskan()
+        private static subrasse createAchazSubrasseMaraskan()
         {
             var srMaraskan = createAchazSubrasseKeine();
             // Wir ändern nur das, was sich unterscheidet:
-            srMaraskan.name = SpielerSubRassenNamen.MaraskanAchaz;
+            srMaraskan.name = SpielerSubRassenName.MaraskanAchaz;
 
             srMaraskan.generierungskosten = 16;
             srMaraskan.leModifikator = 7;
-            srMaraskan.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srMaraskan.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
-            srMaraskan.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileNamen.Tierempathie });
+            srMaraskan.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.Tierempathie });
 
-            srMaraskan.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srMaraskan.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schwimmen, wert = +3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = -3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = +7},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.StimmenImitieren, wert = -3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen, wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Faehrtensuchen, wert = +3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.FischenUndAngeln, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Musizieren, wert = -3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schwimmen, wert = +3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = -3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = +7},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.StimmenImitieren, wert = -3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Faehrtensuchen, wert = +3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.FischenUndAngeln, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Musizieren, wert = -3},
             };
 
             srMaraskan.sonderfertigkeiten.Add
@@ -2519,8 +2526,8 @@ namespace rassenStruktur
                 new sfIdentifier() 
                 {
                     name = SFNamen.Talentspezialisierung, 
-                    talent  = TalentNamen.Sinnesschaerfe,
-                    talentSubSpez = TalentSpezialisierungen.RiechenUndSchmecken, 
+                    talent  = TalentName.Sinnesschaerfe,
+                    talentSubSpez = TalentSpezialisierung.RiechenUndSchmecken, 
                 }
             );
 
@@ -2528,11 +2535,11 @@ namespace rassenStruktur
             return srMaraskan;
 
         }
-        private subrasse createAchazSubrasseWaldinsel()
+        private static subrasse createAchazSubrasseWaldinsel()
         {
             var srWaldinsel = createAchazSubrasseKeine();
             // Wir ändern nur das, was sich unterscheidet:
-            srWaldinsel.name = SpielerSubRassenNamen.WaldinselAchaz;
+            srWaldinsel.name = SpielerSubRassenName.WaldinselAchaz;
 
             srWaldinsel.generierungskosten = 5;
 
@@ -2543,24 +2550,24 @@ namespace rassenStruktur
             srWaldinsel.gewichtsabzug = 120;
             srWaldinsel.leModifikator = 7;
 
-            srWaldinsel.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srWaldinsel.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = -2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             return srWaldinsel;
 
 
         }
-        private subrasse createAchazSubrasseOrkland()
+        private static subrasse createAchazSubrasseOrkland()
         {
             var srOrkland = createAchazSubrasseKeine();
             // Wir ändern nur das, was sich unterscheidet:
-            srOrkland.name = SpielerSubRassenNamen.OrklandAchaz;
+            srOrkland.name = SpielerSubRassenName.OrklandAchaz;
 
             srOrkland.generierungskosten = 9;
 
@@ -2568,24 +2575,24 @@ namespace rassenStruktur
             srOrkland.koerpergroesse.basisgroesse = 1.59;
             srOrkland.koerpergroesse.wuerfel = new wuerfel() { wuerfelanzahl = 3, wuerfelaugen = 6, wuerfeloffset = 0 };
 
-            srOrkland.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srOrkland.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             // Wir legen schon einmal die beiden natürlichen Waffen an:
             var Achazbiss = new natuerlicheWaffenIdentifier();
-            Achazbiss.name = natuerlicheWaffenNamen.Biss;
+            Achazbiss.name = natuerlicheWaffenName.Biss;
             Achazbiss.schadensWuerfel.wuerfelanzahl = 1;
             Achazbiss.schadensWuerfel.wuerfelaugen = 6;
             Achazbiss.schadensWuerfel.wuerfeloffset = 0;
             Achazbiss.machtNurTPA = true;
             var AchazSchwanz = new natuerlicheWaffenIdentifier();
-            AchazSchwanz.name = natuerlicheWaffenNamen.Schwanz;
+            AchazSchwanz.name = natuerlicheWaffenName.Schwanz;
             AchazSchwanz.schadensWuerfel.wuerfelanzahl = 1;
             AchazSchwanz.schadensWuerfel.wuerfelaugen = 6;
             AchazSchwanz.schadensWuerfel.wuerfeloffset = 0;
@@ -2593,40 +2600,40 @@ namespace rassenStruktur
 
             srOrkland.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Schwimmen},
-                new VorteilsIdentifier(){name = VorteileNamen.Beidhaendig},
-                new VorteilsIdentifier(){name = VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Geruch},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicheWaffen, natuerlicheWaffen = Achazbiss},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicheWaffen, natuerlicheWaffen = AchazSchwanz},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicherRuestungsschutz, wert = 1},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.ZusaetzlicheGliedmassen, auspraegungGliedmasse = GliedmassenNamen.Schwanz},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Schwimmen},
+                new VorteilsIdentifier(){name = VorteileName.Beidhaendig},
+                new VorteilsIdentifier(){name = VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geruch},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicheWaffen, natuerlicheWaffen = Achazbiss},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicheWaffen, natuerlicheWaffen = AchazSchwanz},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicherRuestungsschutz, wert = 1},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.ZusaetzlicheGliedmassen, auspraegung = GliedmassenName.Schwanz},
             };
 
             srOrkland.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Dunkelangst, wert = 5},
-                new NachteilsIdentifier(){name = NachteileNamen.EingeschraenkterSinn, auspraegungSinn = SinneNamen.Gehoer},
-                new NachteilsIdentifier(){name = NachteileNamen.Randgruppe},
-                new NachteilsIdentifier(){name = NachteileNamen.Raubtiergeruch},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.Singen},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.StimmenImitieren},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.Musizieren},
+                new NachteilsIdentifier(){name = NachteileName.Dunkelangst, wert = 5},
+                new NachteilsIdentifier(){name = NachteileName.EingeschraenkterSinn, auspraegung = SinneName.Gehoer},
+                new NachteilsIdentifier(){name = NachteileName.Randgruppe},
+                new NachteilsIdentifier(){name = NachteileName.Raubtiergeruch},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.Singen},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.StimmenImitieren},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.Musizieren},
             };
 
-            srOrkland.ueblicheKulturen = new List<KulturNamen>()
+            srOrkland.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.StammesAchaz,
+                KulturName.StammesAchaz,
             };
 
             return srOrkland;
         }
-        private subrasse createAchazSubrasseKeine()
+        private static subrasse createAchazSubrasseKeine()
         {
             var srKeine = new subrasse();
-            srKeine.name = SpielerSubRassenNamen.keine;
+            srKeine.name = SpielerSubRassenName.keine;
 
             srKeine.generierungskosten = 14;
 
@@ -2652,14 +2659,14 @@ namespace rassenStruktur
 
             srKeine.gewichtsabzug = 120;
 
-            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenNamen>>()
+            srKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
             {
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Mut, wert = -1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Intuition, wert = +2},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Fingerfertigkeit, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Gewandtheit, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Konstitution, wert = +1},
-                new GenericListenNameWertPaar<EigenschaftenNamen>(){name = EigenschaftenNamen.Koerperkraft, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Intuition, wert = +2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Fingerfertigkeit, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Gewandtheit, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Konstitution, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Koerperkraft, wert = -1},
             };
 
             srKeine.leModifikator = 8;
@@ -2668,13 +2675,13 @@ namespace rassenStruktur
 
             // Wir legen schon einmal die beiden natürlichen Waffen an:
             var Achazbiss = new natuerlicheWaffenIdentifier();
-            Achazbiss.name = natuerlicheWaffenNamen.Biss;
+            Achazbiss.name = natuerlicheWaffenName.Biss;
             Achazbiss.schadensWuerfel.wuerfelanzahl = 1;
             Achazbiss.schadensWuerfel.wuerfelaugen = 6;
             Achazbiss.schadensWuerfel.wuerfeloffset = 0;
             Achazbiss.machtNurTPA = true;
             var AchazSchwanz = new natuerlicheWaffenIdentifier();
-            AchazSchwanz.name = natuerlicheWaffenNamen.Schwanz;
+            AchazSchwanz.name = natuerlicheWaffenName.Schwanz;
             AchazSchwanz.schadensWuerfel.wuerfelanzahl = 1;
             AchazSchwanz.schadensWuerfel.wuerfelaugen = 6;
             AchazSchwanz.schadensWuerfel.wuerfeloffset = 0;
@@ -2682,97 +2689,97 @@ namespace rassenStruktur
 
             srKeine.automatischeVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){name = VorteileNamen.Balance},
-                new VorteilsIdentifier(){name = VorteileNamen.BegabungFuerTalent, auspraegungTalent = TalentNamen.Schwimmen},
-                new VorteilsIdentifier(){name = VorteileNamen.Beidhaendig},
-                new VorteilsIdentifier(){name = VorteileNamen.Daemmerungssicht},
-                new VorteilsIdentifier(){name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Geruch},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicheWaffen, natuerlicheWaffen = Achazbiss},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicheWaffen, natuerlicheWaffen = AchazSchwanz},
-                new VorteilsIdentifier(){name = VorteileNamen.NatuerlicherRuestungsschutz, wert = 2},
-                new VorteilsIdentifier(){name = VorteileNamen.Richtungssinn},
-                new VorteilsIdentifier(){name = VorteileNamen.ZusaetzlicheGliedmassen, auspraegungGliedmasse = GliedmassenNamen.Schwanz},
+                new VorteilsIdentifier(){name = VorteileName.Balance},
+                new VorteilsIdentifier(){name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Schwimmen},
+                new VorteilsIdentifier(){name = VorteileName.Beidhaendig},
+                new VorteilsIdentifier(){name = VorteileName.Daemmerungssicht},
+                new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geruch},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicheWaffen, natuerlicheWaffen = Achazbiss},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicheWaffen, natuerlicheWaffen = AchazSchwanz},
+                new VorteilsIdentifier(){name = VorteileName.NatuerlicherRuestungsschutz, wert = 2},
+                new VorteilsIdentifier(){name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){name = VorteileName.ZusaetzlicheGliedmassen, auspraegung = GliedmassenName.Schwanz},
             };
 
             srKeine.automatischeNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){name = NachteileNamen.Dunkelangst, wert = 5},
-                new NachteilsIdentifier(){name = NachteileNamen.EingeschraenkterSinn, auspraegungSinn = SinneNamen.Gehoer},
-                new NachteilsIdentifier(){name = NachteileNamen.Kaeltestarre},
-                new NachteilsIdentifier(){name = NachteileNamen.Randgruppe},
-                new NachteilsIdentifier(){name = NachteileNamen.Raubtiergeruch},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.Singen},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.StimmenImitieren},
-                new NachteilsIdentifier(){name = NachteileNamen.UnfaehigkeitFuerTalent, auspraegungTalent = TalentNamen.Musizieren},
+                new NachteilsIdentifier(){name = NachteileName.Dunkelangst, wert = 5},
+                new NachteilsIdentifier(){name = NachteileName.EingeschraenkterSinn, auspraegung = SinneName.Gehoer},
+                new NachteilsIdentifier(){name = NachteileName.Kaeltestarre},
+                new NachteilsIdentifier(){name = NachteileName.Randgruppe},
+                new NachteilsIdentifier(){name = NachteileName.Raubtiergeruch},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.Singen},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.StimmenImitieren},
+                new NachteilsIdentifier(){name = NachteileName.UnfaehigkeitFuerTalent, auspraegung = TalentName.Musizieren},
             };
 
             srKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){ name = VorteileNamen.GutesGedaechtnis},
-                new VorteilsIdentifier(){ name = VorteileNamen.HerausragendeBalance},
-                new VorteilsIdentifier(){ name = VorteileNamen.HoheMagieresistenz},
-                new VorteilsIdentifier(){ name = VorteileNamen.InnererKompass},
-                new VorteilsIdentifier(){ name = VorteileNamen.ResistenzGegenGifte},
-                new VorteilsIdentifier(){ name = VorteileNamen.ImmunitaetGegenGifte},
-                new VorteilsIdentifier(){ name = VorteileNamen.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileNamen.Zeitgefuehl},
+                new VorteilsIdentifier(){ name = VorteileName.GutesGedaechtnis},
+                new VorteilsIdentifier(){ name = VorteileName.HerausragendeBalance},
+                new VorteilsIdentifier(){ name = VorteileName.HoheMagieresistenz},
+                new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
+                new VorteilsIdentifier(){ name = VorteileName.ImmunitaetGegenGifte},
+                new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
+                new VorteilsIdentifier(){ name = VorteileName.Zeitgefuehl},
             };
             srKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){ name = NachteileNamen.Kurzatmig},
-                new NachteilsIdentifier(){ name = NachteileNamen.Nachtblind},
-                new NachteilsIdentifier(){ name = NachteileNamen.Nahrungsrestriktion},
-                new NachteilsIdentifier(){ name = NachteileNamen.Sonnensucht},
-                new NachteilsIdentifier(){ name = NachteileNamen.UnangenehmeStimme},
+                new NachteilsIdentifier(){ name = NachteileName.Kurzatmig},
+                new NachteilsIdentifier(){ name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){ name = NachteileName.Nahrungsrestriktion},
+                new NachteilsIdentifier(){ name = NachteileName.Sonnensucht},
+                new NachteilsIdentifier(){ name = NachteileName.UnangenehmeStimme},
             };
 
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
-                new VorteilsIdentifier(){ name = VorteileNamen.Ausdauernd},
-                new VorteilsIdentifier(){ name = VorteileNamen.Entfernungssinn},
-                new VorteilsIdentifier(){ name = VorteileNamen.Feenfreund},
-                new VorteilsIdentifier(){ name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Tastsinn},
-                new VorteilsIdentifier(){ name = VorteileNamen.HerausragenderSinn, auspraegungSinn = SinneNamen.Gehoer},
-                new VorteilsIdentifier(){ name = VorteileNamen.HerausragendesAussehen},
-                new VorteilsIdentifier(){ name = VorteileNamen.Hitzeresistenz},
-                new VorteilsIdentifier(){ name = VorteileNamen.Kaelteresistenz},
-                new VorteilsIdentifier(){ name = VorteileNamen.Koboldfreund},
-                new VorteilsIdentifier(){ name = VorteileNamen.BegabungFuerTalentgruppe, auspraegungTalentgruppe = TalentKategorie.SprachenUndSchriften},
-                new VorteilsIdentifier(){ name = VorteileNamen.VomSchicksalBeguenstigt},
-                new VorteilsIdentifier(){ name = VorteileNamen.Wohlklang},
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Entfernungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){ name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Tastsinn},
+                new VorteilsIdentifier(){ name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Gehoer},
+                new VorteilsIdentifier(){ name = VorteileName.HerausragendesAussehen},
+                new VorteilsIdentifier(){ name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){ name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){ name = VorteileName.Koboldfreund},
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.SprachenUndSchriften},
+                new VorteilsIdentifier(){ name = VorteileName.VomSchicksalBeguenstigt},
+                new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
             srKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
             {
-                new NachteilsIdentifier(){ name = NachteileNamen.Fettleibig},
-                new NachteilsIdentifier(){ name = NachteileNamen.Kleinwuechsig},
-                new NachteilsIdentifier(){ name = NachteileNamen.Krankheitsanfaellig},
-                new NachteilsIdentifier(){ name = NachteileNamen.Lichtempfindlich},
-                new NachteilsIdentifier(){ name = NachteileNamen.Lichtscheu},
+                new NachteilsIdentifier(){ name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){ name = NachteileName.Kleinwuechsig},
+                new NachteilsIdentifier(){ name = NachteileName.Krankheitsanfaellig},
+                new NachteilsIdentifier(){ name = NachteileName.Lichtempfindlich},
+                new NachteilsIdentifier(){ name = NachteileName.Lichtscheu},
             };
 
-            srKeine.ueblicheKulturen = new List<KulturNamen>()
+            srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.StammesAchaz, KulturNamen.ArchaischeAchaz,
+                KulturName.StammesAchaz, KulturName.ArchaischeAchaz,
             };
-            srKeine.unueblicheKulturen = new List<KulturNamen>()
+            srKeine.unueblicheKulturen = new List<KulturName>()
             {
-                KulturNamen.Suedaventurien, KulturNamen.Maraskan
+                KulturName.Suedaventurien, KulturName.Maraskan
             };
 
-            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentNamen>>()
+            srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
             {
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Schwimmen, wert = +5},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Singen, wert = -3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Sinnesschaerfe, wert = +5},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.StimmenImitieren, wert = +3},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Zechen, wert = -1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Faehrtensuchen, wert = +2},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.FischenUndAngeln, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Wettervorhersage, wert = +1},
-                new GenericListenNameWertPaar<TalentNamen>(){name = TalentNamen.Musizieren, wert = -3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Raufen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schwimmen, wert = +5},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Singen, wert = -3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = +5},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.StimmenImitieren, wert = +3},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = -1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Faehrtensuchen, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.FischenUndAngeln, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Orientierung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Wettervorhersage, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Musizieren, wert = -3},
             };
 
             srKeine.sonderfertigkeiten = new List<sfIdentifier>()
@@ -2790,7 +2797,7 @@ namespace rassenStruktur
     }
 
     //////////////////////////////////////
-    //  Substrukturen der Rassen-Struktur. TODO: Auräumen!
+    //  Substrukturen der Rassen-Struktur.
     //////////////////////////////////////
     /// <summary>
     /// Struktur, die die eigentlichen Informationen zur Subrasse enthält. Jede Rasse wird
@@ -2801,7 +2808,7 @@ namespace rassenStruktur
         /// <summary>
         /// Name der Subrasse. Ist "keine", falls die Rasse keine Subrasse besitzt.
         /// </summary>
-        public SpielerSubRassenNamen name;
+        public SpielerSubRassenName name;
 
         // Wir listen nun auf, welche Attribute eine Rasse hat:      
         /// <summary>
@@ -2830,7 +2837,7 @@ namespace rassenStruktur
         /// Substruktur. Enthält die jeweiligen Eigenschaften, die modifiziert werden, sowie den Modifikator 
         /// derselben.
         /// </summary>
-        public List<GenericListenNameWertPaar<EigenschaftenNamen>> eigenschaftsModifikationen;
+        public List<GenericListenNameWertPaar<EigenschaftenName>> eigenschaftsModifikationen;
         /// <summary>
         /// Rassen-Modifikator der Lebensenergie
         /// </summary>
@@ -2882,18 +2889,18 @@ namespace rassenStruktur
         /// Übliche Kulturen für eine Rasse. Kann optisch bei der Generierung in der GUI als grün
         /// hervorgehoben werden. Ist nicht bindend.
         /// </summary>
-        public List<KulturNamen> ueblicheKulturen;
+        public List<KulturName> ueblicheKulturen;
         /// <summary>
         /// Unübliche Kulturen für eine Rasse. Kann optisch bei der Generierung in der GUI als
         /// gelb hervorgehoben werden. Ist nicht bindend, sollte aber nur in Absprache mit dem
         /// Meister verwendet werden.
         /// </summary>
-        public List<KulturNamen> unueblicheKulturen;
+        public List<KulturName> unueblicheKulturen;
         /// <summary>
         /// Die Talentmodifikatoren dieser Rasse. Enthält sowohl den jeweiligen Talentnamen als
         /// auch den Modifikator auf das Talent.
         /// </summary>
-        public List<GenericListenNameWertPaar<TalentNamen>> talentModifikatoren;
+        public List<GenericListenNameWertPaar<TalentName>> talentModifikatoren;
 
         /// <summary>
         /// Welche SF bekommt man automatisch?

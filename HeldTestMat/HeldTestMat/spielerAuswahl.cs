@@ -90,14 +90,29 @@ namespace spielerAuswahl
         public int anzahlWaehlbarerVorteile;
 
         /// <summary>
+        /// Eine Liste von Sprachen, die aus der Liste gewählt werden dürfen:
+        /// </summary>
+        public List<SprachenName> sprachen;
+
+        /// <summary>
         /// Eine Liste von Talenten, zwischen denen gewählt werden darf.
         /// </summary>
-        public List<TalentNamen> talente;
+        public List<TalentName> talente;
 
         /// <summary>
         /// Die ANZAHL der Talente, die aus der Liste ausgewählt werden dürfen.
         /// </summary>
         public int anzahlWaehlbarerTalente;
+
+        /// <summary>
+        /// Enthält die WERTE für das Talent aus der Auswahlliste. Ist ein Vektor,
+        /// denn es wären aberwitzige Kombinationen möglich wie z.B.:
+        /// Wähle aus der Liste von 4 Talenten 2 aus, wobei der Talentwert für das 
+        /// erste der Auswahl 5 beträgt und derjenige für das zweite der Auswahl 2.
+        /// Die Länge ist IMMER gleich anzahlWaehlbarerTalente.
+        /// Der 0. Eintrag entspricht dem 1. gewählten Talent, usw.
+        /// </summary>
+        public int[] talentWerte;
     };
 
 }

@@ -405,44 +405,21 @@ namespace vorteileStruktur
         /// <summary>
         /// Der Hauptname des Vorteils, z.B. "Begabung für Talentgruppe"
         /// </summary>
-        public VorteileNamen name;
-        /// <summary>
-        /// Die Ausprägung im Falle von Zaubermerkmalen, z.B. "Hellsicht"
-        /// </summary>
-        public ZauberMerkmale auspraegungZauberMerkmal;
-        /// <summary>
-        /// Die Ausprägung im Falle von Talenten, z.B. "Klettern"
-        /// </summary>
-        public TalentNamen auspraegungTalent;
-        /// <summary>
-        /// Die Ausprägung im Falle von Talentkategorien, z.B. "Kampftalente"
-        /// </summary>
-        public TalentKategorie auspraegungTalentgruppe;
+        public VorteileName name;
 
         /// <summary>
-        /// Die Ausprägung im Falle eines Giftes:
+        /// Die Ausprägung eines Vorteils. Das kann eine Ausprägung sein für:
+        ///  - Zaubermerkmal
+        ///  - Talent
+        ///  - Talentgruppe
+        ///  - Bestimmtes Gift
+        ///  - Giftart
+        ///  - Giftwirkungstyp
+        ///  - Bestimmte Krankheit
+        ///  - Sinn
+        ///  - Gliedmaße
         /// </summary>
-        public GiftNamen auspraegungSpezielleGifte;
-
-        /// <summary>
-        /// Die Ausprägung für Giftarten
-        /// </summary>
-        public GiftArten auspraegungGiftArten;
-
-        /// <summary>
-        /// Die Ausprägung für Giftwirkungstypen:
-        /// </summary>
-        public GiftWirkungsTypen auspraegungGiftwirkungstypen;
-
-        /// <summary>
-        /// Die Ausprägung im Falle einer Krankheit:
-        /// </summary>
-        public KrankheitsNamen auspraegungKrankheit;
-
-        /// <summary>
-        /// Die Ausprägung im Falle eines Sinnes:
-        /// </summary>
-        public SinneNamen auspraegungSinn;
+        public object auspraegung;
 
         /// <summary>
         /// Der zugehörige Wert des Vorteils
@@ -453,11 +430,6 @@ namespace vorteileStruktur
         /// GGfs. braucht man die Angabe von noch mehr Details für den Vorteil Natürliche Waffe, etc.
         /// </summary>
         public natuerlicheWaffenIdentifier natuerlicheWaffen;
-
-        /// <summary>
-        /// Der Held kann den Vorteil einer zusätzlichen Gliedmaße haben. Hier wird gesagt, welche dies ist.
-        /// </summary>
-        public GliedmassenNamen auspraegungGliedmasse;
 
     }
 
@@ -474,7 +446,7 @@ namespace vorteileStruktur
         /// <summary>
         /// Name der Natürlichen Waffe (z.B. Biss , etc.)
         /// </summary>
-        public natuerlicheWaffenNamen name;
+        public natuerlicheWaffenName name;
 
         /// <summary>
         /// Macht die natürliche Waffe nur TP(A) statt echten TP?

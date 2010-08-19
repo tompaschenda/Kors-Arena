@@ -8,6 +8,8 @@ namespace Listen
 {
     public enum SFKategorien
     {
+        [Description("undefined")]
+        undefined,
         [Description("Allgemeine Sonderfertigkeiten")]
         AllgemeineSF,
         [Description("Kampfsonderfertigkeiten (bewaffneter Nahkampf)")]
@@ -24,6 +26,8 @@ namespace Listen
 
     public enum SFNamen
     {
+        [Description("undefined")]
+        undefined,
         // Allgemeine:
         [Description("Akklimatisierung")]
         Akklimatisierung,
@@ -409,6 +413,8 @@ namespace Listen
 
     public enum SFSubNamen
     {
+        [Description("undefined")]
+        undefined,
         // Akklimatisierung:
         [Description("Hitze")]
         Hitze,

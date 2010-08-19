@@ -6,8 +6,10 @@ using System.ComponentModel;
 
 namespace Listen
 {
-    public enum ZauberNamen
+    public enum ZauberName
     {
+        [Description("undefined")]
+        undefined,
         [Description("Abveneum reine Speise")]
         Abveneum,
         [Description("Accuratum Zaubernadel")]
@@ -544,8 +546,10 @@ namespace Listen
         Zwingtanz,
     }
 
-    public enum ZauberMerkmale
+    public enum ZauberMerkmal
     {
+        [Description("undefined")]
+        undefined,
         [Description("Antimagie")]
         Antimagie,
         [Description("Beschwörung")]
@@ -630,8 +634,10 @@ namespace Listen
         Verständigung,
     }
 
-    public enum Zauberreprasentationen
+    public enum Zauberreprasentation
     {
+        [Description("undefined")]
+        undefined,
         [Description("druidisch")]
         Druidisch,
         [Description("elfisch")]
@@ -650,8 +656,10 @@ namespace Listen
         Schelmisch,
     }
 
-    public enum Elemente
+    public enum Element
     {
+        [Description("undefined")]
+        undefined,
         [Description("Eis")]
         Eis,
         [Description("Erz")]

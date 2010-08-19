@@ -170,7 +170,7 @@ namespace heldenStruktur
             ort.yKoord = 0;
             ort.zKoord = 0;
             //[Tom] Hier benutzen wir jetzt die Property für den Rassennamen
-            rasse.Rasse = SpielerRassenNamen.Nivese;          
+            rasse.Rasse = SpielerRassenName.Waldmensch;          
             // TODO: Wähle Subrasse, falls möglich!
             // TODO! Muss an Subrassen gepasst werden!
             // berechneKoerpergroesse();
