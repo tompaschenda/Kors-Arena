@@ -18,6 +18,11 @@ namespace Listen
         [Description("Tulamidenlande")]
         Tulamidenlande,
 
+        [Description("Svellttal")]
+        Svellttal,
+        [Description("Nordlande")]
+        Nordlande,
+
         [Description("Mittelländische Städte")]
         MittellaendischeStaedte,
         [Description("Mittelländische Landbevölkerung")]

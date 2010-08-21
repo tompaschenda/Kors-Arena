@@ -4,6 +4,7 @@ using talentStruktur;
 using listenStruktur;
 using Listen;
 using sfStruktur;
+using SprachenUndSchriften;
 
 
 namespace spielerAuswahl
@@ -110,7 +111,7 @@ namespace spielerAuswahl
         /// <summary>
         /// Eine Liste von Sprachen, die aus der Liste gewählt werden dürfen:
         /// </summary>
-        public List<SprachenName> sprachen;
+        public List<SprachenIdentifier> sprachen;
 
         /// <summary>
         /// Eine Liste von Talenten, zwischen denen gewählt werden darf.

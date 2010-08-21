@@ -97,6 +97,7 @@ namespace kulturenStruktur
                             moeglicheSubkulturen.Add(createAndergastSubKueste());
                             moeglicheSubkulturen.Add(createAndergastSubTeshkalien());
                             break;
+
                         ///////////////////////////////////////
                         // Bornland
                         ///////////////////////////////////////
@@ -108,6 +109,7 @@ namespace kulturenStruktur
                             moeglicheSubkulturen.Add(createBornlandSubKueste());
                             moeglicheSubkulturen.Add(createBornlandSubLandadel());
                             break;
+
                         ///////////////////////////////////////
                         // SvelltTal und Nordlande
                         ///////////////////////////////////////
@@ -137,32 +139,326 @@ namespace kulturenStruktur
 
         private subkultur createSvelltSubFluecht()
         {
-            throw new System.NotImplementedException();
-        }
+            var subFluecht = createSvelltSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subFluecht.name = SubKulturName.FluechtlingeAusGlorania;
+            subFluecht.generierungskosten = 6;
 
+            subFluecht.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = -1},
+            };
+            subFluecht.leModifikator = 0;
+
+            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = -1 });
+            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Skifahren, wert = +2 });
+            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Magiekunde, wert = +1 });
+            // Pflanzenkunde raus, Magiekunde rein:
+            subFluecht.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Pflanzenkunde, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Magiekunde, wert = +1 });
+
+            subFluecht.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = SFSubNamen.Eiskundig });
+
+            // Verbilligte SF Sumpfkundig entfernen:
+            subFluecht.verbilligteSonderfertigkeiten.Remove(new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = SFSubNamen.Sumpfkundig});
+
+            return subFluecht;
+        }
         private subkultur createSvelltSubFern()
         {
-            throw new System.NotImplementedException();
-        }
+            var subFern = createSvelltSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subFern.name = SubKulturName.FernDerZivilisation;
+            subFern.generierungskosten = 9;
 
+            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
+            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +1 });
+            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
+            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wettervorhersage, wert = +1 });
+            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FahrzeugLenken, wert = +1 });
+
+            // Noch eine Sprachwahl:
+            var wahlZusatzSprache = new wahlmoeglichkeiten();
+            wahlZusatzSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name= SprachenName.Garethi},
+                new SprachenIdentifier(){ name= SprachenName.Alaani},
+                new SprachenIdentifier(){ name = SprachenName.Nujuka},
+                new SprachenIdentifier(){ name= SprachenName.OrkischOloarkh},
+                new SprachenIdentifier(){ name= SprachenName.OrkischOloghaijan},
+                new SprachenIdentifier(){ name= SprachenName.Isdira},
+                new SprachenIdentifier(){ name= SprachenName.Goblinisch},
+            };
+            wahlZusatzSprache.talentWerte = new int[1];
+            wahlZusatzSprache.talentWerte[0] = 2;
+            wahlZusatzSprache.identifier = "SprachenWahlZusatzZwei";
+            wahlZusatzSprache.anzahlZuWaehlen = 1;
+            subFern.wahlen.Add(wahlZusatzSprache);
+
+            return subFern;
+        }
         private subkultur createSvelltSubKueste()
         {
-            throw new System.NotImplementedException();
-        }
+            var subKueste = createSvelltSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subKueste.name = SubKulturName.KuestengebieteOderAnGrossenFluessen;
+            subKueste.generierungskosten = 9;
 
+            // Bogen raus, Wahl rein:
+            subKueste.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Bogen, wert = +1 });
+            var wahlBogen = new wahlmoeglichkeiten();
+            wahlBogen.anzahlZuWaehlen = 1;
+            wahlBogen.talentWerte = new int[1];
+            wahlBogen.talentWerte[0] = 1;
+            wahlBogen.talente = new List<TalentName>() 
+            { 
+                TalentName.Wurfbeile, TalentName.Bogen, TalentName.Wurfmesser,
+            };
+            subKueste.wahlen.Add(wahlBogen);
+
+            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +1 });
+            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wettervorhersage, wert = +1 });
+            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Holzbearbeitung, wert = +1 });
+            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
+
+            return subKueste;
+
+        }
         private subkultur createSvelltSubKleinstadt()
         {
-            throw new System.NotImplementedException();
-        }
+            var subKlein = createSvelltSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subKlein.name = SubKulturName.Kleinstaedte;
+            subKlein.generierungskosten = 6;
 
+            // Bogen raus, Wahl rein:
+            subKlein.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Bogen, wert = +1 });
+            var Wahlarmbrust = new wahlmoeglichkeiten();
+            Wahlarmbrust.anzahlZuWaehlen = 1;
+            Wahlarmbrust.talentWerte = new int[1];
+            Wahlarmbrust.talentWerte[0] = 1;
+            Wahlarmbrust.talente = new List<TalentName>() 
+            { 
+                TalentName.Armbrust, TalentName.Bogen, TalentName.Wurfmesser,
+            };
+            subKlein.wahlen.Add(Wahlarmbrust);
+
+            // Speere raus, Wahl rein:
+            subKlein.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Speere, wert = +1 });
+            var wahlInfi = new wahlmoeglichkeiten();
+            wahlInfi.anzahlZuWaehlen = 1;
+            wahlInfi.talentWerte = new int[1];
+            wahlInfi.talentWerte[0] = 1;
+            wahlInfi.talente = new List<TalentName>() 
+            { 
+                TalentName.Infanteriewaffen, TalentName.Speere,
+            };
+            subKlein.wahlen.Add(wahlInfi);
+
+            // Mods:
+            subKlein.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Koerperbeherrschung, wert = -1 });
+            subKlein.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subKlein.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
+            subKlein.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +1 });
+
+            // Fallenstellen raus:
+            subKlein.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
+
+            return subKlein;
+        }
         private subkultur createSvelltSubStadt()
         {
-            throw new System.NotImplementedException();
-        }
+            var subStadt = createSvelltSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subStadt.name = SubKulturName.Stadt;
+            subStadt.generierungskosten = 7;
 
+            // Speere raus, Infanterie rein:
+            subStadt.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +1});
+            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Infanteriewaffen, wert = +1});
+            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Koerperbeherrschung, wert = -1 });
+            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
+            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +1 });
+            // Fallenstellen raus:
+            subStadt.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
+
+            return subStadt;
+        }
         private subkultur createSvelltSubKeine()
         {
-            throw new System.NotImplementedException();
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 7;
+            subKeine.soMaximum = 10;
+
+            subKeine.leModifikator = 1;
+            subKeine.auModifikator = 2;
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Entfernungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Krankheitsanfaellig},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst},
+            };
+
+            // Nun zu den Professionen:
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schaukaempfer);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gardist);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soldat);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
+
+            // Folgende Professionen lassen wir nicht zu:
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Herold);
+            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Hofkuenstler);
+            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Hoefling);
+            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Taugenichts);
+            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gelehrter);
+
+
+            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            {
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Bogen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schneidern, wert = +1},
+                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Viehzucht, wert = +1},
+            };
+
+            // Jetzt die Auswahlmöglichkeiten:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            // Wahl der Muttersprache:
+            var wahlMutterSprache = new wahlmoeglichkeiten();
+            wahlMutterSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name= SprachenName.Garethi, muttersprache = true},
+                new SprachenIdentifier(){ name= SprachenName.Alaani, muttersprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Nujuka, muttersprache = true},
+                new SprachenIdentifier(){ name= SprachenName.Thorwalsch, muttersprache = true},
+            };
+            wahlMutterSprache.identifier = "SprachenWahlMutter";
+            wahlMutterSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlMutterSprache);
+
+            // Wahl der zusätzlichen Sprache:
+            var wahlZusatzSprache = new wahlmoeglichkeiten();
+            wahlZusatzSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name= SprachenName.Garethi},
+                new SprachenIdentifier(){ name= SprachenName.Alaani},
+                new SprachenIdentifier(){ name = SprachenName.Nujuka},
+                new SprachenIdentifier(){ name= SprachenName.OrkischOloarkh},
+                new SprachenIdentifier(){ name= SprachenName.OrkischOloghaijan},
+                new SprachenIdentifier(){ name= SprachenName.Isdira},
+            };
+            wahlZusatzSprache.talentWerte = new int[1];
+            wahlZusatzSprache.talentWerte[0] = 4;
+            wahlZusatzSprache.identifier = "SprachenWahlZusatz";
+            wahlZusatzSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlZusatzSprache);
+
+            // Wahl Boote / Fahrzeug:
+            var wahlBoote = new wahlmoeglichkeiten();
+            wahlBoote.anzahlZuWaehlen = 1;
+            wahlBoote.talentWerte = new int[1];
+            wahlBoote.talentWerte[0] = 1;
+            wahlBoote.talente = new List<TalentName>() 
+            { 
+                TalentName.BooteFahren, TalentName.Seefahrt,
+            };
+            subKeine.wahlen.Add(wahlBoote);
+
+            // Wahl Handwerk:
+            var wahlHandwerk = new wahlmoeglichkeiten();
+            wahlHandwerk.anzahlZuWaehlen = 1;
+            wahlHandwerk.talentWerte = new int[1];
+            wahlHandwerk.talentWerte[0] = 1;
+            wahlHandwerk.talente = new List<TalentName>() 
+            { 
+                TalentName.Abrichten, TalentName.Ackerbau, TalentName.Brauer, TalentName.FischenUndAngeln, 
+                TalentName.Fleischer, TalentName.GerberUndKuerschner, TalentName.Grobschmied, TalentName.Kochen,
+                TalentName.Seiler, TalentName.StoffeFaerben, TalentName.Toepfern, TalentName.Viehzucht,
+                TalentName.Webkunst, TalentName.Zimmermann,
+            };
+            subKeine.wahlen.Add(wahlHandwerk);
+
+            // Wahl SF:
+            var wahlSF = new wahlmoeglichkeiten();
+            wahlSF.anzahlZuWaehlen = 1;
+            wahlSF.sonderfertigkeiten = new List<sfIdentifier>() 
+            { 
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Svellttal},
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Nordlande},
+            };
+            subKeine.wahlen.Add(wahlSF);            
+
+            // Verbilligte SF:
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.MeisterDerImprovisation},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = SFSubNamen.Steppenkundig},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = SFSubNamen.Sumpfkundig},
+            };
+
+            return subKeine;
         }
 
         private subkultur createBornlandSubLandadel()
@@ -335,9 +631,10 @@ namespace kulturenStruktur
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
 
             var wahlSprache = new wahlmoeglichkeiten();
-            wahlSprache.sprachen = new List<SprachenName>()
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-                SprachenName.Alaani, SprachenName.Nujuka,
+                new SprachenIdentifier(){name = SprachenName.Alaani}, 
+                new SprachenIdentifier(){name= SprachenName.Nujuka},
             };
             wahlSprache.identifier = "SprachenWahl";
             wahlSprache.anzahlZuWaehlen = 2;
@@ -651,9 +948,11 @@ namespace kulturenStruktur
 
             // Und die Sprache:
             var wahlSprache = new wahlmoeglichkeiten();
-            wahlSprache.sprachen = new List<SprachenName>()
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-                SprachenName.OrkischOloarkh, SprachenName.OrkischOloghaijan, SprachenName.Thorwalsch,
+                new SprachenIdentifier(){name = SprachenName.OrkischOloarkh},
+                new SprachenIdentifier(){name = SprachenName.OrkischOloghaijan},
+                new SprachenIdentifier(){name = SprachenName.Thorwalsch},
             };
             wahlSprache.identifier = "SprachenWahl";
             wahlSprache.anzahlZuWaehlen = 1;
@@ -699,8 +998,8 @@ namespace kulturenStruktur
             // Wir müssen noch die Sprachenauswahl erneuern!
             // Holen wir uns zunächst die Sprachauswahl:
             var myIndex = subFluecht.wahlen.FindIndex(FindSprache);
-            subFluecht.wahlen[myIndex].sprachen.Add(SprachenName.Zhayad);
-            subFluecht.wahlen[myIndex].sprachen.Add(SprachenName.Zhulchammaqra);
+            subFluecht.wahlen[myIndex].sprachen.Add( new SprachenIdentifier(){name = SprachenName.Zhayad} );
+            subFluecht.wahlen[myIndex].sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra });
 
             // Zu den empfohlenen Vor- und Nachteilen kommt jeweils etwas dazu:
             subFluecht.empfohleneVorteile.Add(new VorteilsIdentifier() { name = VorteileName.AffinitaetZu, auspraegung = AffinitaetenName.Daemonen });
@@ -803,9 +1102,9 @@ namespace kulturenStruktur
 
             // Bei den Auswahlen ändern sich die möglichen Sprachen. Also fügen wir die neuen Sprachen hinzu:
             var myIndex = subFern.wahlen.FindIndex(FindSprache);
-            subFern.wahlen[myIndex].sprachen.Add(SprachenName.Nujuka);
-            subFern.wahlen[myIndex].sprachen.Add(SprachenName.OrkischOloarkh);
-            subFern.wahlen[myIndex].sprachen.Add(SprachenName.Goblinisch);
+            subFern.wahlen[myIndex].sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka });
+            subFern.wahlen[myIndex].sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloarkh });
+            subFern.wahlen[myIndex].sprachen.Add(new SprachenIdentifier() { name = SprachenName.Goblinisch });
 
             // Und die SF:
             subFern.sonderfertigkeiten = new List<sfIdentifier>()
@@ -857,10 +1156,14 @@ namespace kulturenStruktur
             // TOCHECK: Ich gehe davon aus, dass damit eine weitere Sprache aus der Kategorie der Muttersprachen gemeint ist!
             // Also fügen wir eine weitere Auswahl hinzu:
             var wahlSprache = new wahlmoeglichkeiten();
-            wahlSprache.sprachen = new List<SprachenName>()
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-                SprachenName.Tulamidya, SprachenName.Rogolan, SprachenName.Isdira, SprachenName.Thorwalsch
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya},
+                new SprachenIdentifier(){ name = SprachenName.Rogolan},
+                new SprachenIdentifier(){ name = SprachenName.Isdira},
+                new SprachenIdentifier(){ name = SprachenName.Thorwalsch},
             };
+            
             wahlSprache.anzahlZuWaehlen = 1;
             wahlSprache.talentWerte = new int[1];
             wahlSprache.talentWerte[0] = 2;
@@ -989,9 +1292,12 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlHandwerk);
             // Nun die Wahl zwischen einer von vier Sprachen:
             var wahlSprache = new wahlmoeglichkeiten();
-            wahlSprache.sprachen = new List<SprachenName>()
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-                SprachenName.Tulamidya, SprachenName.Rogolan, SprachenName.Isdira, SprachenName.Thorwalsch
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya},
+                new SprachenIdentifier(){ name = SprachenName.Rogolan},
+                new SprachenIdentifier(){ name = SprachenName.Isdira},
+                new SprachenIdentifier(){ name = SprachenName.Thorwalsch},
             };
             wahlSprache.anzahlZuWaehlen = 1;
             wahlSprache.talentWerte = new int[1];
@@ -1033,8 +1339,8 @@ namespace kulturenStruktur
             // Zur Auswahl der Sprachen kommt etwas hinzu:
             // Holen wir uns zunächst die Sprachauswahl:
             var myIndex = subFluecht.wahlen.FindIndex(FindSprache);
-            subFluecht.wahlen[myIndex].sprachen.Add(SprachenName.Zhayad);
-            subFluecht.wahlen[myIndex].sprachen.Add(SprachenName.Zhulchammaqra);
+            subFluecht.wahlen[myIndex].sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhayad });
+            subFluecht.wahlen[myIndex].sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra });
 
             // Zu den empfohlenen Vor- und Nachteilen kommt jeweils etwas dazu:
             subFluecht.empfohleneVorteile.Add(new VorteilsIdentifier() { name = VorteileName.AffinitaetZu, auspraegung = AffinitaetenName.Daemonen });
@@ -1168,9 +1474,11 @@ namespace kulturenStruktur
             var myIndex = subSiedler.wahlen.FindIndex(FindSprache);
             subSiedler.wahlen.RemoveAt(myIndex);
             var wahlSprache = new wahlmoeglichkeiten();
-            wahlSprache.sprachen = new List<SprachenName>()
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-               SprachenName.Nujuka, SprachenName.Alaani, SprachenName.OrkischOloarkh
+                new SprachenIdentifier(){ name = SprachenName.Nujuka},
+                new SprachenIdentifier(){ name = SprachenName.Alaani},
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloarkh},
             };
             wahlSprache.anzahlZuWaehlen = 1;
             wahlSprache.talentWerte = new int[1];
@@ -1203,9 +1511,11 @@ namespace kulturenStruktur
             // Wir  löschen die Sprachwahl und schreiben sie neu:
             subTempel.wahlen.RemoveAt(myIndex);
             var wahlSprache = new wahlmoeglichkeiten();
-            wahlSprache.sprachen = new List<SprachenName>()
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-                SprachenName.Tulamidya, SprachenName.Rogolan, SprachenName.Thorwalsch
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya},
+                new SprachenIdentifier(){ name = SprachenName.Rogolan},
+                new SprachenIdentifier(){ name = SprachenName.Thorwalsch},
             };
             wahlSprache.anzahlZuWaehlen = 2;
             wahlSprache.talentWerte = new int[2];
@@ -1343,9 +1653,11 @@ namespace kulturenStruktur
 
             // Nun die Wahl zwischen einer von drei Sprachen:
             var wahlSprache = new wahlmoeglichkeiten();
-            wahlSprache.sprachen = new List<SprachenName>()
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-                SprachenName.Tulamidya, SprachenName.Rogolan, SprachenName.Thorwalsch
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya},
+                new SprachenIdentifier(){ name = SprachenName.Rogolan},
+                new SprachenIdentifier(){ name = SprachenName.Thorwalsch},
             };
             wahlSprache.identifier = "SprachWahl";
             wahlSprache.anzahlZuWaehlen = 1;
@@ -1383,7 +1695,6 @@ namespace kulturenStruktur
 
 
     };
-
 
     //////////////////////////////////////
     //  Subkulturen-Struktur
@@ -1548,6 +1859,3 @@ namespace kulturenStruktur
         public List<VorteilsIdentifier> vorteile;
     };
 }
-
-
-
