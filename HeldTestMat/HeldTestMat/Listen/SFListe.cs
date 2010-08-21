@@ -36,7 +36,7 @@ namespace Listen
         [Description("Fälscher")]
         Faelscher,
         [Description("Geländekunde")]
-        Gelaedekunde,
+        Gelaendekunde,
         [Description("Kulturkunde")]
         Kulturkunde,
         [Description("Meister der Improvisation")]

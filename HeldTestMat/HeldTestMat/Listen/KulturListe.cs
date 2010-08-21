@@ -10,6 +10,14 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Mittelreich")]
+        Mittelreich,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Tulamidenlande")]
+        Tulamidenlande,
+
         [Description("Mittelländische Städte")]
         MittellaendischeStaedte,
         [Description("Mittelländische Landbevölkerung")]
@@ -133,8 +141,6 @@ namespace Listen
         [Description("Maraskanische Exilanten")]
         MaraskanischeExilanten,
 
-        [Description("Küstengebiete oder an großen Flüssen")]
-        KuestengebieteOderGroesseFluesse,
         [Description("An einer wichtigen Handelsroute/Reichsstraße")]
         AnWichtigerHandelsrouteOderReichsstrasse,
         [Description("Regionen Weiden und Greifenfurt")]

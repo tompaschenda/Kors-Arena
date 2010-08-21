@@ -1091,7 +1091,7 @@ namespace rassenStruktur
                 new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Sicht, },
                 new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Tastsinn, },
             };
-            wahlSinn.anzahlWaehlbarerVorteile = 1;
+            wahlSinn.anzahlZuWaehlen = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
             srFirnelf.wahlen.Add( wahlSinn);
 
@@ -1249,7 +1249,7 @@ namespace rassenStruktur
                 new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geruch, },
                 new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Sicht, },
             };
-            wahlSinn.anzahlWaehlbarerVorteile = 1;
+            wahlSinn.anzahlZuWaehlen = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
             srAuelf.wahlen.Add(wahlSinn);
 
@@ -1398,7 +1398,7 @@ namespace rassenStruktur
                 new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Gehoer,},
                 new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geruch, },
             };
-            wahlSinn.anzahlWaehlbarerVorteile = 1;
+            wahlSinn.anzahlZuWaehlen = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
             srWaldelf.wahlen.Add(wahlSinn);
 
@@ -1529,7 +1529,7 @@ namespace rassenStruktur
                 new VorteilsIdentifier(){name = VorteileName.Wohlklang},
                 new VorteilsIdentifier(){name = VorteileName.ZweistimmigerGesang},
             };
-            wahlVorteil.anzahlWaehlbarerVorteile = 1;
+            wahlVorteil.anzahlZuWaehlen = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
             srNivesisch.wahlen.Add(wahlVorteil);
 
@@ -2378,7 +2378,7 @@ namespace rassenStruktur
                 new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Gehoer,},
                 new VorteilsIdentifier(){name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Geruch, },
             };
-            wahlSinn.anzahlWaehlbarerVorteile = 1;
+            wahlSinn.anzahlZuWaehlen = 1;
             // Jetzt fügen wir diese Auswahl hinzu:
             srKeine.wahlen.Add(wahlSinn);
 
@@ -2526,8 +2526,8 @@ namespace rassenStruktur
                 new sfIdentifier() 
                 {
                     name = SFNamen.Talentspezialisierung, 
-                    talent  = TalentName.Sinnesschaerfe,
-                    talentSubSpez = TalentSpezialisierung.RiechenUndSchmecken, 
+                    auspraegung  = TalentName.Sinnesschaerfe,
+                    subAuspraegung = TalentSpezialisierung.RiechenUndSchmecken, 
                 }
             );
 

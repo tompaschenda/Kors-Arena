@@ -7,6 +7,22 @@ using Listen;
 namespace SprachenUndSchriften
 {
     /// <summary>
+    /// Ermöglicht die eindeutige Identifiezierung einer Schrift:
+    /// </summary>
+    public struct SchriftenIdentifier
+    {
+        /// <summary>
+        /// Name der Schrift:
+        /// </summary>
+        public SchriftName name;
+
+        /// <summary>
+        /// Wert der Schrift
+        /// </summary>
+        public int wert;
+    }
+
+    /// <summary>
     ///  Struktur, die alle notwendigen Attribute enthält, um eine Sprache eindeutig zuordnen zu können.
     /// </summary>
     public struct SprachenIdentifier
@@ -17,12 +33,18 @@ namespace SprachenUndSchriften
         public SprachenName name;
 
         /// <summary>
-        /// Handelt es sich um eine Muttersprache?
+        /// Handelt es sich um eine Muttersprache? => Sprachen Kennen (Muttersprache) auf KL-2
         /// </summary>
         public bool muttersprache;
 
         /// <summary>
-        /// Modifikator, den man zusätzlich zum Wert der Sprache von "KL-2", oder "KL-4" erhält.
+        /// Handelt es sich um eine Zweitsprache? => Sprachen Kennen (Zweitsprache) auf KL-4
+        /// </summary>
+        public bool zweitsprache;
+
+        /// <summary>
+        /// Modifikator, den man zum Wert der Sprache erhält. Nur nötig, wenn !muttersprache
+        /// UND !zweitsprache
         /// </summary>
         public int modifikator;
     }

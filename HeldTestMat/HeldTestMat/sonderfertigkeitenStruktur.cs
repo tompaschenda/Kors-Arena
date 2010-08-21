@@ -153,14 +153,18 @@ namespace sfStruktur
         public SFNamen name;
 
         /// <summary>
-        /// Talentspeziealisierung, die man sich auswählt.
+        /// Ausprägung. Kann sein:
+        /// - Talent
+        /// - Kultur (SF-Kulturkunde)
         /// </summary>
-        public TalentSpezialisierung talentSubSpez;
+        public object auspraegung;
 
         /// <summary>
-        /// Talent, das man sich für die Spezialisierung auswählt:
+        /// Subausprägung. Kann sein:
+        /// - Talentspezialisierung
         /// </summary>
-        public TalentName talent;
+        public object subAuspraegung;
+
     }
 
 }

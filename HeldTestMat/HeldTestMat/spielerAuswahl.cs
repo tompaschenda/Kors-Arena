@@ -3,6 +3,7 @@ using vorteileStruktur;
 using talentStruktur;
 using listenStruktur;
 using Listen;
+using sfStruktur;
 
 
 namespace spielerAuswahl
@@ -80,14 +81,31 @@ namespace spielerAuswahl
     /// </summary>
     public struct wahlmoeglichkeiten
     {
+
+        /// <summary>
+        /// Ein Identifier, mit dem man die Auswahl eindeutig identifizieren kann.
+        /// </summary>
+        public string identifier;
+
         /// <summary>
         /// Eine Liste, von Vorteilen, zwischen denen gewählt werden darf (ggfs. mit Ausprägung)
         /// </summary>
         public List<VorteilsIdentifier> vorteile;
+
         /// <summary>
-        /// Die ANZAHL der Vorteile, die aus der Liste ausgewählt werden dürfen.
+        /// Liste mit SF, zwischen denen gewählt werden darf (ggfs. mit Ausprägung)
         /// </summary>
-        public int anzahlWaehlbarerVorteile;
+        public List<sfIdentifier> sonderfertigkeiten;
+
+        /// <summary>
+        /// Liste mit verbilligteSonderfertigkeiten, zwischen denen gewählt werden darf (ggfs. mit Ausprägung)
+        /// </summary>
+        public List<sfIdentifier> verbilligteSonderfertigkeiten;
+
+        /// <summary>
+        /// Die ANZAHL an wählbaren Talenten, Sprachen, etc.:
+        /// </summary>
+        public int anzahlZuWaehlen;
 
         /// <summary>
         /// Eine Liste von Sprachen, die aus der Liste gewählt werden dürfen:
@@ -100,11 +118,6 @@ namespace spielerAuswahl
         public List<TalentName> talente;
 
         /// <summary>
-        /// Die ANZAHL der Talente, die aus der Liste ausgewählt werden dürfen.
-        /// </summary>
-        public int anzahlWaehlbarerTalente;
-
-        /// <summary>
         /// Enthält die WERTE für das Talent aus der Auswahlliste. Ist ein Vektor,
         /// denn es wären aberwitzige Kombinationen möglich wie z.B.:
         /// Wähle aus der Liste von 4 Talenten 2 aus, wobei der Talentwert für das 
@@ -113,6 +126,42 @@ namespace spielerAuswahl
         /// Der 0. Eintrag entspricht dem 1. gewählten Talent, usw.
         /// </summary>
         public int[] talentWerte;
-    };
 
+        /// <summary>
+        /// Löscht aus einer Subkultur und der Unterstruktur "Wahlen" eine Wahl, falls
+        /// der Identifier gleich dem loeschIdentifier ist. Wenn Einträge mit demselben
+        /// Identifier mehrmals vorhanden sind, werden ALLE Einträge gelöscht.
+        /// TODO: Sollte nicht hier definiert werden, sondern
+        /// an der Stelle, wo die GENERIC Liste definiert wird, damit dies für ALLE Listen geht!
+        /// </summary>
+        /// <param name="wahlListe"></param>
+        /// <param name="loeschIdentifier"></param>
+        /// <returns></returns>
+        public List<wahlmoeglichkeiten> loescheEintrag( List<wahlmoeglichkeiten> wahlListe, string loeschIdentifier)
+        {
+            try
+            {
+                var foundBool = false;
+                for (int laufindex = 0; laufindex < wahlListe.Count; laufindex++)
+                {
+                    if (wahlListe[laufindex].identifier == loeschIdentifier)
+                    {
+                        wahlListe.RemoveAt(laufindex);
+                        foundBool = true;
+                    }
+                }
+
+                if (!foundBool)
+                {
+                    throw new System.ArgumentOutOfRangeException();
+                };
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                System.Console.WriteLine("Identifier wurde nicht gefunden!");
+            }
+
+            return wahlListe;
+        }
+    };
 }

@@ -160,6 +160,8 @@ namespace Listen
 		// Natur-Talente:															
         [Description("Fährtensuchen")]
         Faehrtensuchen,
+        [Description("Fallenstellen")]
+        Fallenstellen,
         [Description("Fesseln/Entfesseln")]
         FesselnUndEntfesseln,
         [Description("Fischen/Angeln")]
@@ -311,7 +313,9 @@ namespace Listen
         [Description("Tätowieren")]
         Taetowieren,		
         [Description("Töpfern")]
-        Toepfern,		
+        Toepfern,
+        [Description("Viehzucht")]
+        Viehzucht,
         [Description("Webkunst")]
         Webkunst,		
         [Description("Winzer")]

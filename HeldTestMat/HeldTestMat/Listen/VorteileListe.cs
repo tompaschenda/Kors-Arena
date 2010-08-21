@@ -6,6 +6,18 @@ using System.ComponentModel;
 
 namespace Listen
 {
+    public enum AffinitaetenName
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Dämonen")]
+        Daemonen,
+        [Description("Geistern")]
+        Geistern,
+        [Description("Elementaren")]
+        Elementaren,  
+    }
+
     public enum VorteileName
     {
         [Description("undefined")]
