@@ -6,6 +6,42 @@ using Listen;
 
 namespace SprachenUndSchriften
 {
+
+
+    /// <summary>
+    /// Kategorien von Sprachidentifiern:
+    /// </summary>
+    public class SprachKategorien
+    {
+        /// <summary>
+        /// Gibt alle Handelssprachen zurück:
+        /// </summary>
+        /// <returns></returns>
+        public List<SprachenIdentifier> GetHandel()
+        {
+            var handelsSprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Alaani},
+                new SprachenIdentifier(){ name = SprachenName.Bosparano},
+                new SprachenIdentifier(){ name = SprachenName.Ferkina},
+                new SprachenIdentifier(){ name = SprachenName.Goblinisch},
+                new SprachenIdentifier(){ name = SprachenName.Grolmisch},
+                new SprachenIdentifier(){ name = SprachenName.Hjaldingsch},
+                new SprachenIdentifier(){ name = SprachenName.Isdira},
+                new SprachenIdentifier(){ name = SprachenName.Mohisch},
+                new SprachenIdentifier(){ name = SprachenName.Nujuka},
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloarkh},
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloghaijan},
+                new SprachenIdentifier(){ name = SprachenName.Rogolan},
+                new SprachenIdentifier(){ name = SprachenName.Thorwalsch},
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya},
+                new SprachenIdentifier(){ name = SprachenName.Zelemja},
+            };
+
+            return handelsSprachen;
+        }
+    }
+
     /// <summary>
     /// Ermöglicht die eindeutige Identifiezierung einer Schrift:
     /// </summary>

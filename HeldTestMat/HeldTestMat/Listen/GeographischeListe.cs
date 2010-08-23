@@ -168,6 +168,10 @@ namespace Listen
         Ferdok,
         [Description("Festum")]
         Festum,
+        [Description("Ragath")]
+        Ragath,
+        [Description("Brig-Lo")]
+        BrigLo,
 
         // Der äußerste Norden
         [Description("Frisov")]
