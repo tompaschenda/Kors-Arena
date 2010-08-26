@@ -166,7 +166,7 @@ namespace professionenStruktur
                 ProfessionsName.Handwerker,
                 ProfessionsName.Rattenfaenger,
                 ProfessionsName.Schreiber,
-                ProfessionsName.Tageloehnerin,
+                ProfessionsName.Tageloehner,
                 ProfessionsName.Tierbaendiger,
                 ProfessionsName.Wundarzt
             };

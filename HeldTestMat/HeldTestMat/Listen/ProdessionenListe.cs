@@ -155,7 +155,7 @@ namespace Listen
         [Description("Schreiber")]
         Schreiber,	
         [Description("Tagelöhnerin")]
-        Tageloehnerin,	
+        Tageloehner,	
         [Description("Tierbändiger")]
         Tierbaendiger,	
         [Description("Wundarzt")]

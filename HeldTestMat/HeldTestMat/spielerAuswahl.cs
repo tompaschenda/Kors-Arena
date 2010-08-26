@@ -5,6 +5,7 @@ using listenStruktur;
 using Listen;
 using sfStruktur;
 using SprachenUndSchriften;
+using nachteileStruktur;
 
 
 namespace spielerAuswahl
@@ -117,6 +118,11 @@ namespace spielerAuswahl
         /// Eine Liste von Schriften, die aus einer Liste gewählt werden dürfen.
         /// </summary>
         public List<SchriftenIdentifier> schriften;
+
+        /// <summary>
+        /// Eine Liste von Nachteilen, die aus einer Liste gewählt werden dürfen.
+        /// </summary>
+        public List<NachteilsIdentifier> nachteile;
 
         /// <summary>
         /// Eine Liste von Talenten, zwischen denen gewählt werden darf.
