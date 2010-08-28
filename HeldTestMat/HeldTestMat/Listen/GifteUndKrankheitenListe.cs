@@ -143,6 +143,8 @@ namespace Listen
         Insekten,
         [Description("Spinnen")]
         Spinnen,
+        [Description("Reptilien")]
+        Reptilien,
         [Description("Pelztieren")]
         Pelztieren,
         [Description("Feuer")]

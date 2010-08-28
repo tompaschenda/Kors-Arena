@@ -17,6 +17,12 @@ namespace Listen
         // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
         [Description("Tulamidenlande")]
         Tulamidenlande,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Waldmenschen")]
+        Waldmenschen,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Südliche Stadtstaaten")]
+        SuedlicheStadtstaaten,
 
         [Description("Svellttal")]
         Svellttal,
