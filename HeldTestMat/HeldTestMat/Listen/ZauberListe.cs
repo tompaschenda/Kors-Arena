@@ -478,6 +478,8 @@ namespace Listen
         Transmutare,
         [Description("Transversalis Teleport")]
         Transversalis,
+        [Description("Traumgestalt")]
+        Traumgestalt,
         [Description("Unberührt von Satinav")]
         UnberuehrtVonSatinav,
         [Description("Unitatio Geistesbund")]

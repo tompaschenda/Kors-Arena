@@ -6,6 +6,17 @@ using System.ComponentModel;
 
 namespace Listen
 {
+
+    public enum VorteilsAuspraegung
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("willentlich")]
+        Willentlich,
+        [Description("unbewusst")]
+        Unbewusst,
+    };
+
     public enum AffinitaetenName
     {
         [Description("undefined")]

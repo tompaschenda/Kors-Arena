@@ -6,6 +6,22 @@ using System.ComponentModel;
 
 namespace Listen
 {
+    public enum Weltfremd
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Religion")]
+        Religion,
+        [Description("Adelsherrschaft")]
+        Adelsherrschaft,
+        [Description("Währung und Geld")]
+        WaherungUndGeld,
+        [Description("Rechtssprechung Und Gesetze")]
+        RechtssprechungUndGesetze,
+        [Description("Besitz")]
+        Besitz,
+    }
+
     public enum NachteileName
     {
         [Description("undefined")]

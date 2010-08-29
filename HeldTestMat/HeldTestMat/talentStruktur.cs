@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using listenStruktur;
+using Listen;
 using Common;
 
 namespace talentStruktur
@@ -191,6 +191,31 @@ namespace talentStruktur
         /// Vorausgesetzte SF
         /// </summary>
         public List<string> andereSF;
+
+    };
+
+
+    /// <summary>
+    /// Ermöglicht die eindeutige Identifizierung eines Talents.
+    /// </summary>
+    public struct talentIdentifier
+    {
+        /// <summary>
+        /// Name des Talents
+        /// </summary>
+        public TalentName name;
+
+        /// <summary>
+        /// Wert des Talents (kann auch negativ sein!)
+        /// </summary>
+        public int wert;
+
+        /// <summary>
+        /// Handelt es sich um ein Leittalent (Elfen) oder nicht?
+        /// Default: False!
+        /// </summary>
+        public bool leittalent;
+
     };
 
 }

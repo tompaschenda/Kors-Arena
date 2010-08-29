@@ -23,6 +23,15 @@ namespace Listen
         // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
         [Description("Südliche Stadtstaaten")]
         SuedlicheStadtstaaten,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Nivesen")]
+        Nivesen,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Norbarden")]
+        Norbarden,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Trolle")]
+        Trolle,
 
         [Description("Svellttal")]
         Svellttal,

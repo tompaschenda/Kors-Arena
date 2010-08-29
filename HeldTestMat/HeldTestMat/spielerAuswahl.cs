@@ -127,7 +127,7 @@ namespace spielerAuswahl
         /// <summary>
         /// Eine Liste von Talenten, zwischen denen gewählt werden darf.
         /// </summary>
-        public List<TalentName> talente;
+        public List<talentIdentifier> talente;
 
         /// <summary>
         /// Enthält die WERTE für das Talent aus der Auswahlliste. Ist ein Vektor,

@@ -8,6 +8,8 @@ using vorteileStruktur;
 using nachteileStruktur;
 using SprachenUndSchriften;
 using professionenStruktur;
+using talentStruktur;
+using zauberStruktur;
 
 namespace kulturenStruktur
 {
@@ -351,6 +353,48 @@ namespace kulturenStruktur
                             moeglicheSubkulturen = new List<subkultur>();
                             moeglicheSubkulturen.Add(createBukanierSubKeine());
                             break;
+                        ///////////////////////////////////////
+                        // Nivesenstämme
+                        ///////////////////////////////////////
+                        case KulturName.Nivesenstaemme:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createNiveseSubKeine());
+                            moeglicheSubkulturen.Add(createNiveseSubSesshaft());
+                            break;
+                        ///////////////////////////////////////
+                        // Nuanaä-Lie
+                        ///////////////////////////////////////
+                        case KulturName.NuanaaeLie:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createNuanaSubKeine());
+                            moeglicheSubkulturen.Add(createNuanaSubNauoke());
+                            break;
+                        ///////////////////////////////////////
+                        // Norbardensippe
+                        ///////////////////////////////////////
+                        case KulturName.Norbardensippe:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createNorbardeSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Trollzacken
+                        ///////////////////////////////////////
+                        case KulturName.Trollzacken:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createTrollZackenSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Auelfische Sippe
+                        ///////////////////////////////////////
+                        case KulturName.AuelfischeSippe:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createAuelfischSubKeine());
+                            break;
 
                         default:
                             throw new System.ArgumentOutOfRangeException();
@@ -361,6 +405,752 @@ namespace kulturenStruktur
                     System.Console.WriteLine("Ungültige Kultur angegeben!");
                 }
             }
+        }
+
+        private subkultur createAuelfischSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 4;
+            subKeine.soMaximum = 8;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.ElfischeWeltsicht},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Randgruppe, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz , wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion , wert = +5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Tierfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Zauberhaar},
+            };
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.AnimalischeMagie},
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Artefaktgebunden},
+                // TODO: Ausprägung! Menschen oder Zwerge!
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+                new NachteilsIdentifier(){ name = NachteileName.WahrerName},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {            
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+            };
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier },
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht },
+                new NachteilsIdentifier(){ name = NachteileName.Thesisgebunden },
+            };
+
+            // Professionen:
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsName>() 
+            { 
+                ProfessionsName.Bewahrer, ProfessionsName.Former, ProfessionsName.Kaempfer,
+                ProfessionsName.Legendensaenger, ProfessionsName.Wildnislaeufer, ProfessionsName.Zauberweber,
+            };
+
+            // Leittalente und normale Talente:
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen, leittalent = true, wert = +4},
+                new talentIdentifier(){ name = TalentName.Dolche, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Athletik, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Klettern, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schleichen, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Schwimmen, leittalent = true, wert = +4},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, leittalent = true, wert = +5},
+                new talentIdentifier(){ name = TalentName.Singen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Tanzen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Betoeren, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Gassenwissen, leittalent = false, wert = -2},
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, leittalent = true, wert = +3},
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln, leittalent = true, wert = +3},
+                new talentIdentifier(){ name = TalentName.Orientierung, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, leittalent = true, wert = +5},
+                new talentIdentifier(){ name = TalentName.Magiekunde, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Rechtskunde, leittalent = false, wert = -2},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Tierkunde, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.HeilkundeGift, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, leittalent = true, wert = +1},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Musizieren, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Schneidern, leittalent = false, wert = +2},
+            };
+
+            // Wahlen:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlBogenbau = new wahlmoeglichkeiten();
+            wahlBogenbau.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogenbau, leittalent = true},
+                new talentIdentifier(){ name = TalentName.BooteFahren, leittalent = true}
+            };
+            wahlBogenbau.talentWerte = new int[1];
+            wahlBogenbau.talentWerte[0] = 2;
+            wahlBogenbau.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlBogenbau);
+
+            // Hauszauber:
+            subKeine.moeglicheHauszauber = new List<ZauberIdentifier>(){};
+            var hauszauber = new zauberVorauswahlen();
+            subKeine.moeglicheHauszauber.AddRange(hauszauber.GetElfenHauszauber());
+
+
+
+            return subKeine;
+
+
+        }
+
+        private subkultur createTrollZackenSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 10;
+            subKeine.soMaximum = 4;
+            subKeine.auModifikator = +2;
+            subKeine.leModifikator = +1;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Konstitution, wert = +1},
+            };
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Randgruppe},
+                new NachteilsIdentifier(){ name = NachteileName.Unansehnlich},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Eisern},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube},
+                new NachteilsIdentifier(){ name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Ausrüstungsvorteil},
+                new VorteilsIdentifier(){ name = VorteileName.Koboldfreund},               
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Einbeinig },
+                new NachteilsIdentifier(){ name = NachteileName.Glasknochen },
+                new NachteilsIdentifier(){ name = NachteileName.Krankheitsanfaellig },
+                new NachteilsIdentifier(){ name = NachteileName.Kurzatmig },
+                new NachteilsIdentifier(){ name = NachteileName.NiedrigeLebenskraft },
+                new NachteilsIdentifier(){ name = NachteileName.Schulden },
+                new NachteilsIdentifier(){ name = NachteileName.Totenangst },
+                new NachteilsIdentifier(){ name = NachteileName.UnfaehigkeitFuerTalentgruppe, auspraegung = TalentKategorie.Natur },
+            };
+
+            // Professionen:
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsName>() 
+            { 
+                ProfessionsName.Stammeskrieger, ProfessionsName.Hirte, ProfessionsName.Jaeger, ProfessionsName.Kundschafter,
+                ProfessionsName.Straßenraeuber, ProfessionsName.Haendler, ProfessionsName.Bauer, ProfessionsName.Handwerker,
+                ProfessionsName.Druide,
+                // TOCHECK: Schamane???
+            };
+
+            // Wahlen:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlSpeere = new wahlmoeglichkeiten();
+            wahlSpeere.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Speere},
+                new talentIdentifier(){ name = TalentName.ZweihandHiebwaffen},
+            };
+            wahlSpeere.talentWerte = new int[2];
+            wahlSpeere.talentWerte[0] = 3;
+            wahlSpeere.talentWerte[1] = 1;
+            wahlSpeere.anzahlZuWaehlen = 2;
+            subKeine.wahlen.Add(wahlSpeere);
+
+            // Sprachen:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Zhulchammaqra, muttersprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Garethi, modifikator = +4},
+                new SprachenIdentifier(){ name = SprachenName.Trollisch, modifikator = +4},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +2},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +3},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Schleuder, wert = +2},
+                new talentIdentifier{ name = TalentName.Wurfbeile, wert = +1},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +2},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +2},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +2},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = -1},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier{ name = TalentName.Wettervorhersage, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +4},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier{ name = TalentName.Feuersteinbearbeitung, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Trollzacken},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Gebirge},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Trolle},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createNorbardeSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 8;
+            subKeine.soMaximum = 10;
+            subKeine.auModifikator = +2;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Hoehenangst, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier, wert = +5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.BreitgefaecherteBildung},
+                new VorteilsIdentifier(){ name = VorteileName.GutesGedaechtnis},
+                new VorteilsIdentifier(){ name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
+            };
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+            };
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz },
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst },
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue },
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile },
+            };
+
+            // Profession:
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsName>() 
+            { 
+                ProfessionsName.Gladiator, ProfessionsName.Schaukaempfer, ProfessionsName.Soeldner,
+                ProfessionsName.Entdecker, ProfessionsName.Fernhaendler, ProfessionsName.Fuhrmann,
+                ProfessionsName.Großwildjaeger, ProfessionsName.Jaeger, ProfessionsName.Kundschafter,
+                ProfessionsName.Prospektor, ProfessionsName.Schiffer, ProfessionsName.Schmuggler,
+                ProfessionsName.Ausrufer, ProfessionsName.Barde, ProfessionsName.Gaukler, ProfessionsName.Haendler,
+                ProfessionsName.Streuner, ProfessionsName.Bader, ProfessionsName.Gelehrter, ProfessionsName.Handwerker,
+                ProfessionsName.Tierbaendiger, ProfessionsName.Wirt, ProfessionsName.Wundarzt, ProfessionsName.Hexe,
+                ProfessionsName.GeweihterDesAves, ProfessionsName.GeweihterDesFirun, ProfessionsName.GeweihterDerHesinde,
+                ProfessionsName.GeweihterDesNandus, ProfessionsName.GeweihterDesPhex, ProfessionsName.Scharlatan,
+                ProfessionsName.Zibilja,
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlArmbrust = new wahlmoeglichkeiten();
+            wahlArmbrust.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Armbrust},
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfbeile},
+            };
+            wahlArmbrust.talentWerte = new int[1];
+            wahlArmbrust.talentWerte[0] = 1;
+            wahlArmbrust.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlArmbrust);
+
+            var wahlSpeere = new wahlmoeglichkeiten();
+            wahlSpeere.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Speere},
+                new talentIdentifier(){ name = TalentName.Staebe},
+            };
+            wahlSpeere.talentWerte = new int[1];
+            wahlSpeere.talentWerte[0] = 1;
+            wahlSpeere.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSpeere);
+
+            // Sprachen:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Alaani, muttersprache = true },
+            };
+
+            // Wahl Zweitsprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name= SprachenName.Garethi, zweitsprache = true},
+                new SprachenIdentifier(){ name= SprachenName.Nujuka, zweitsprache = true},
+            };
+            wahlSprache.identifier = "Zweitsprachwahl";
+            wahlSprache.anzahlZuWaehlen = 1;
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 5;
+            subKeine.wahlen.Add(wahlSprache);
+
+            // Wahl Dritt- bis Fünftsprache:
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name= SprachenName.Garethi},
+                new SprachenIdentifier(){ name= SprachenName.Nujuka},
+                new SprachenIdentifier(){ name= SprachenName.Thorwalsch},
+                new SprachenIdentifier(){ name= SprachenName.OrkischOloghaijan},
+            };
+            wahlSprache.identifier = "Zweitsprachwahl";
+            wahlSprache.anzahlZuWaehlen = 3;
+            wahlSprache.talentWerte = new int[3];
+            wahlSprache.talentWerte[0] = 5;
+            wahlSprache.talentWerte[1] = 5;
+            wahlSprache.talentWerte[2] = 5;
+            subKeine.wahlen.Add(wahlSprache);
+
+            // Wahl der SF:
+            var wahlSF = new wahlmoeglichkeiten();
+            wahlSF.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Wald},
+            };
+            wahlSF.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSF);
+
+            // Und nochmal verbilligt:
+            wahlSF = new wahlmoeglichkeiten();
+            wahlSF.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Wald},
+            };
+            wahlSF.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSF);
+
+            // Talente:
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.Reiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.Singen, wert = +1},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +2},
+                new talentIdentifier{ name = TalentName.Zechen, wert = +3},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +3},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +3},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +2},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +2},
+                new talentIdentifier{ name = TalentName.Geographie, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Schaetzen, wert = +2},
+                new talentIdentifier{ name = TalentName.FahrzeugLenken, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Musizieren, wert = +1},
+                new talentIdentifier{ name = TalentName.Schneidern, wert = +1},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Norbarden},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Bornland},
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Nivesen},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createNuanaSubNauoke()
+        {
+            var subNauo = createNuanaSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subNauo.name = SubKulturName.Nauoke;
+            subNauo.generierungskosten = 25;
+
+            subNauo.automatischeVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Wolfskind, auspraegung = VorteilsAuspraegung.Willentlich},
+                // TOCHECK: Vierteilzauberer automatisch dabei, daher höhere GP!
+                new VorteilsIdentifier(){ name = VorteileName.Viertelzauberer,},
+            };
+
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Raufen, wert = +2 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ringen, wert = +3 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Speere, wert = +1 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Koerperbeherrschung, wert = +1 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schleichen, wert = +1 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Selbstbeherrschung, wert = +2 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = +1 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = +1 });
+            subNauo.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Tierkunde, wert = +2 });
+
+            return subNauo;
+        }
+        private subkultur createNuanaSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 7;
+            subKeine.soMaximum = 5;
+            subKeine.auModifikator = +5;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Randgruppe},
+                new NachteilsIdentifier(){ name = NachteileName.UnfaehigkeitFuerTalentgruppe, auspraegung = TalentKategorie.Gesellschaftlich},
+            };
+
+            // Zu den Wahlen kommt auf jeden Fall dreimal Weltfremd hinzu!
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlNachteile = new wahlmoeglichkeiten();
+            wahlNachteile.nachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Adelsherrschaft},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.RechtssprechungUndGesetze},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.WaherungUndGeld},
+            };
+            wahlNachteile.talentWerte = new int[3];
+            wahlNachteile.talentWerte[0] = 5;
+            wahlNachteile.talentWerte[1] = 5;
+            wahlNachteile.talentWerte[2] = 5;
+            wahlNachteile.anzahlZuWaehlen = 3;
+            subKeine.wahlen.Add(wahlNachteile);
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Eisern},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.Viertelzauberer},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+                new VorteilsIdentifier(){ name = VorteileName.Wolfskind},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube},
+                new NachteilsIdentifier(){ name = NachteileName.AngstVor, auspraegung = Angst.Feuer},
+                new NachteilsIdentifier(){ name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){ name = NachteileName.Unstet},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Ausrüstungsvorteil},
+                new VorteilsIdentifier(){ name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+            };
+
+            // Profession:
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
+            // TOCHECK: Wolfskind, Magiedilettant
+            //subKeine.geeigneteProfessionen.Add(ProfessionsName.);
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +2},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +4},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Speere, wert = +3},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +3},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +3},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +3},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +3},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +2},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +2},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +4},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +3},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +3},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +4},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +2},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +2},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+            };
+
+            // Wahl Talent:
+            var wahlBogen = new wahlmoeglichkeiten();
+            wahlBogen.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
+            };
+            wahlBogen.talentWerte = new int[1];
+            wahlBogen.talentWerte[0] = 2;
+            wahlBogen.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlBogen);
+
+            var wahlBogenbau = new wahlmoeglichkeiten();
+            wahlBogenbau.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogenbau},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.Feuersteinbearbeitung},
+                new talentIdentifier(){ name = TalentName.Fleischer},
+            };
+            wahlBogenbau.talentWerte = new int[1];
+            wahlBogenbau.talentWerte[0] = 2;
+            wahlBogenbau.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlBogenbau);
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Nivesen},
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Nujuka, muttersprache = true},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createNiveseSubSesshaft()
+        {
+            var subSess = createNiveseSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subSess.name = SubKulturName.HalbsesshafteKuestenstaemme;
+            subSess.generierungskosten = 11;
+
+            subSess.talentModifikatoren.Add( new talentIdentifier{ name = TalentName.Schwimmen, wert = +1});
+            subSess.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
+
+            subSess.geeigneteProfessionen.Add(ProfessionsName.Seefahrer);
+
+            return subSess;
+        }
+        private subkultur createNiveseSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 10;
+            subKeine.soMaximum = 8;
+            subKeine.auModifikator = +5;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Totenangst, wert = +5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Kaelteresistenz},
+                new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.Wolfskind},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Hoehenangst},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Ausrüstungsvorteil},
+                new VorteilsIdentifier(){ name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Kurzatmig},
+                new NachteilsIdentifier(){ name = NachteileName.NiedrigeLebenskraft},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+            };
+
+            // Profession:
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
+            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kaskjua);
+
+            // Talente: 
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1 },
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2 },
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2 },
+                new talentIdentifier{ name = TalentName.Speere, wert = +2 },
+                new talentIdentifier{ name = TalentName.Wurfbeile, wert = +1 },
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1 },
+                new talentIdentifier{ name = TalentName.Klettern, wert = +1 },
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1 },
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +1 },
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +1 },
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +1 },
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +2 },
+                new talentIdentifier{ name = TalentName.Skifahren, wert = +2 },
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +3 },
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +1 },
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +2 },
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +2 },
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +2 },
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1 },
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2 },
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +2 },
+                new talentIdentifier{ name = TalentName.Abrichten, wert = +1 },
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = +1 },
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1 },
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1 },
+                new talentIdentifier{ name = TalentName.FahrzeugLenken, wert = +2 },
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +2 },
+                new talentIdentifier{ name = TalentName.Schneidern, wert = +1 },
+                new talentIdentifier{ name = TalentName.Viehzucht, wert = +2 },
+            };
+
+            // Sprache:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Nujuka, muttersprache = true},
+            };
+
+            // Wahl Sprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name= SprachenName.Garethi, modifikator = 5},
+                new SprachenIdentifier(){ name= SprachenName.Alaani, modifikator = 5},
+            };
+            wahlSprache.identifier = "MutterSprachenwahl";
+            wahlSprache.anzahlZuWaehlen = 1;
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 5;
+            subKeine.wahlen.Add(wahlSprache);
+
+            // Sonder:
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Nivesen},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Eis},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier()
+                { 
+                    name = SFNamen.Talentspezialisierung, 
+                    auspraegung = TalentName.FahrzeugLenken, 
+                    subAuspraegung = TalentSpezialisierung.HundeUndDachsschlitten
+                },
+            };
+
+            return subKeine;
         }
 
         private subkultur createBukanierSubKeine()
@@ -441,29 +1231,29 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesEfferd);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesSwafnir);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Bogen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schleichen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Schwimmen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Sinnesschaerfe, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Faehrtensuchen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.FesselnUndEntfesseln, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.FischenUndAngeln, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Wildnisleben, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.SagenUndLegenden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.BooteFahren, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Fleischer, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.GerberUndKuerschner, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Kochen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{name = TalentName.Bogen, wert = +1},
+                new talentIdentifier{name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier{name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier{name = TalentName.Schwimmen, wert = +3},
+                new talentIdentifier{name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier{name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier{name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{name = TalentName.FesselnUndEntfesseln, wert = +1},
+                new talentIdentifier{name = TalentName.FischenUndAngeln, wert = +1},
+                new talentIdentifier{name = TalentName.Wildnisleben, wert = +2},
+                new talentIdentifier{name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier{name = TalentName.BooteFahren, wert = +2},
+                new talentIdentifier{name = TalentName.Fleischer, wert = +1},
+                new talentIdentifier{name = TalentName.GerberUndKuerschner, wert = +1},
+                new talentIdentifier{name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{name = TalentName.Kochen, wert = +1},
+                new talentIdentifier{name = TalentName.Lederarbeiten, wert = +1},
             };
 
             subKeine.sonderfertigkeiten = new List<sfIdentifier>()
@@ -483,9 +1273,10 @@ namespace kulturenStruktur
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlHieb = new wahlmoeglichkeiten();
-            wahlHieb.talente = new List<TalentName>()
+            wahlHieb.talente = new List<talentIdentifier>()
             {
-                TalentName.Hiebwaffen, TalentName.Saebel,
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Saebel},
             };
             wahlHieb.talentWerte = new int[1];
             wahlHieb.talentWerte[0] = 1;
@@ -503,9 +1294,10 @@ namespace kulturenStruktur
             subSelem.generierungskosten = 4;
 
             var wahlPhilo = new wahlmoeglichkeiten();
-            wahlPhilo.talente = new List<TalentName>()
+            wahlPhilo.talente = new List<talentIdentifier>()
             {
-                TalentName.Philosophie, TalentName.HeilkundeSeele,
+                new talentIdentifier(){ name = TalentName.Philosophie},
+                new talentIdentifier(){ name = TalentName.HeilkundeSeele},
             };
             wahlPhilo.talentWerte = new int[1];
             wahlPhilo.talentWerte[0] = 1;
@@ -572,17 +1364,18 @@ namespace kulturenStruktur
             subPlantage.generierungskosten = 2;
 
             subPlantage.automatischeVorteile = new List<VorteilsIdentifier>(){};
-            subPlantage.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Hiebwaffen, wert = +1 });
-            subPlantage.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Saebel, wert = +1 });
-            subPlantage.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +2 });
-            subPlantage.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Gassenwissen, wert = +1 });
-            subPlantage.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Pflanzenkunde, wert = +2 });
-            subPlantage.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Tierkunde, wert = +1 });
+            subPlantage.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Hiebwaffen, wert = +1 });
+            subPlantage.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Saebel, wert = +1 });
+            subPlantage.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +2 });
+            subPlantage.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Gassenwissen, wert = +1 });
+            subPlantage.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Pflanzenkunde, wert = +2 });
+            subPlantage.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Tierkunde, wert = +1 });
 
             var wahlAcker = new wahlmoeglichkeiten();
-            wahlAcker.talente = new List<TalentName>()
+            wahlAcker.talente = new List<talentIdentifier>()
             {
-                TalentName.Ackerbau, TalentName.Fallenstellen,
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Fallenstellen},
             };
             wahlAcker.talentWerte = new int[1];
             wahlAcker.talentWerte[0] = 1;
@@ -598,13 +1391,13 @@ namespace kulturenStruktur
             subHafen.name = SubKulturName.Kolonialhaefen;
             subHafen.generierungskosten = 5;
 
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Hiebwaffen, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +2 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Holzbearbeitung, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Lederarbeiten, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +2 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Hiebwaffen, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +2 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Holzbearbeitung, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Lederarbeiten, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +2 });
 
             subHafen.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, modifikator = +2 });
 
@@ -618,8 +1411,8 @@ namespace kulturenStruktur
             {
                 StadtName.Sylla,
             };
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
             return subStadt;
         }
         private subkultur createSuedSubStaatenMirham()
@@ -630,7 +1423,7 @@ namespace kulturenStruktur
             {
                 StadtName.Mirham,
             };
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
             return subStadt;
         }
         private subkultur createSuedSubStaatenMengbilla()
@@ -641,7 +1434,7 @@ namespace kulturenStruktur
             {
                 StadtName.Mengbilla,
             };
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.HeilkundeGift, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.HeilkundeGift, wert = +1 });
             return subStadt;
         }
         private subkultur createSuedSubStaatenKhefu()
@@ -652,8 +1445,8 @@ namespace kulturenStruktur
             {
                 StadtName.Khefu,
             };
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +2 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +2 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
             return subStadt;
         }
         private subkultur createSuedSubStaatenHotAlem()
@@ -664,7 +1457,7 @@ namespace kulturenStruktur
             {
                 StadtName.HotAlem,
             };
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +1 });
             return subStadt;
         }
         private subkultur createSuedSubStaatenChorhop()
@@ -675,7 +1468,7 @@ namespace kulturenStruktur
             {
                 StadtName.Chorhop,
             };
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Holzbearbeitung, wert = +2 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Holzbearbeitung, wert = +2 });
             subStadt.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya, modifikator = +2 });
             return subStadt;
         }
@@ -687,8 +1480,8 @@ namespace kulturenStruktur
             {
                 StadtName.Charypso,
             };
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
             return subStadt;
         }
         private subkultur createSuedSubStaatenBrabak()
@@ -712,8 +1505,8 @@ namespace kulturenStruktur
             {
                 StadtName.AlAnfa,
             };
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Gassenwissen, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +2 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Gassenwissen, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +2 });
 
             return subStadt;
         }
@@ -724,9 +1517,9 @@ namespace kulturenStruktur
             subStadt.name = SubKulturName.SuedlicheStadtstaaten;
             subStadt.generierungskosten = 4;
 
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Gassenwissen, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +2 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Gassenwissen, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +2 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +1 });
 
             return subStadt;
 
@@ -797,34 +1590,35 @@ namespace kulturenStruktur
                 ProfessionsName.GeweihterDesFirun, ProfessionsName.GeweihterDesAngrosch,
             };
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Saebel, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Gassenwissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerkleiden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Geschichtswissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schaetzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +2},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Saebel, wert = +1},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier{ name = TalentName.Gassenwissen, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerkleiden, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{ name = TalentName.Geschichtswissen, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier{ name = TalentName.Schaetzen, wert = +1},
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
             };
 
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
 
             var wahlBogen = new wahlmoeglichkeiten();
-            wahlBogen.talente = new List<TalentName>()
+            wahlBogen.talente = new List<talentIdentifier>()
             {
-                TalentName.Bogen, TalentName.Armbrust,
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Armbrust},
             };
             wahlBogen.talentWerte = new int[1];
             wahlBogen.talentWerte[0] = 1;
@@ -854,9 +1648,9 @@ namespace kulturenStruktur
             subStadt.name = SubKulturName.MaraskanischeStaedte;
             subStadt.generierungskosten = 6;
 
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +2 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schaetzen, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +2 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schaetzen, wert = +1 });
 
             return subStadt;
         }
@@ -867,13 +1661,13 @@ namespace kulturenStruktur
             subKueste.name = SubKulturName.Kuestengebiete;
             subKueste.generierungskosten = 8;
 
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wurfspeere, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Sinnesschaerfe, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +2 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Tierkunde, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wurfspeere, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +2 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Tierkunde, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +1 });
 
             return subKueste;
         }
@@ -884,18 +1678,18 @@ namespace kulturenStruktur
             subDschungel.name = SubKulturName.Dschungel;
             subDschungel.generierungskosten = 10;
 
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Koerperbeherrschung, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schleichen, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SichVerstecken, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Sinnesschaerfe, wert = +2 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +2 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Pflanzenkunde, wert = +1 });
-            subDschungel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Tierkunde, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Koerperbeherrschung, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schleichen, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SichVerstecken, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Sinnesschaerfe, wert = +2 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +2 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Pflanzenkunde, wert = +1 });
+            subDschungel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Tierkunde, wert = +1 });
 
             subDschungel.sonderfertigkeiten = new List<sfIdentifier>()
             {
@@ -977,28 +1771,28 @@ namespace kulturenStruktur
                 ProfessionsName.Amazone, ProfessionsName.Ritter, ProfessionsName.Stammeskrieger, ProfessionsName.StammeskriegerDerBeniDervez
             };
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Diskus, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerkleiden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Philosophie, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ackerbau, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeGift, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.StoffeFaerben, wert = +1},
+                new talentIdentifier{ name = TalentName.Diskus, wert = +2},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerkleiden, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +2},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.Philosophie, wert = +2},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +2},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.Ackerbau, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeGift, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.StoffeFaerben, wert = +1},
             };
 
             subKeine.sonderfertigkeiten = new List<sfIdentifier>()
@@ -1014,9 +1808,10 @@ namespace kulturenStruktur
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
 
             var wahlSchwert = new wahlmoeglichkeiten();
-            wahlSchwert.talente = new List<TalentName>()
+            wahlSchwert.talente = new List<talentIdentifier>()
             {
-                TalentName.Hiebwaffen, TalentName.Saebel,
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Saebel},
             };
             wahlSchwert.talentWerte = new int[1];
             wahlSchwert.talentWerte[0] = 1;
@@ -1024,9 +1819,10 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlSchwert);
 
             var wahlInfi = new wahlmoeglichkeiten();
-            wahlInfi.talente = new List<TalentName>()
+            wahlInfi.talente = new List<talentIdentifier>()
             {
-                TalentName.Infanteriewaffen, TalentName.Speere,
+                new talentIdentifier(){ name = TalentName.Infanteriewaffen},
+                new talentIdentifier(){ name = TalentName.Speere},
             };
             wahlInfi.talentWerte = new int[1];
             wahlInfi.talentWerte[0] = 1;
@@ -1034,9 +1830,10 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlInfi);
 
             var wahlMusi = new wahlmoeglichkeiten();
-            wahlMusi.talente = new List<TalentName>()
+            wahlMusi.talente = new List<talentIdentifier>()
             {
-                TalentName.MalenUndZeichnen, TalentName.Musizieren,
+                new talentIdentifier(){ name = TalentName.MalenUndZeichnen},
+                new talentIdentifier(){ name = TalentName.Musizieren},
             };
             wahlMusi.talentWerte = new int[1];
             wahlMusi.talentWerte[0] = 2;
@@ -1145,34 +1942,34 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wurfspeere, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +5},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = -1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +2},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +3},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +3},
+                new talentIdentifier{ name = TalentName.Speere, wert = +2},
+                new talentIdentifier{ name = TalentName.Wurfspeere, wert = +2},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +3},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +5},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +3},
+                new talentIdentifier{ name = TalentName.Zechen, wert = -2},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = -1},
 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FesselnUndEntfesseln, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wettervorhersage, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = +5},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Feuersteinbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeGift, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.FesselnUndEntfesseln, wert = +3},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +4},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +4},
+                new talentIdentifier{ name = TalentName.Wettervorhersage, wert = +3},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +3},
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = +5},
+                new talentIdentifier{ name = TalentName.Feuersteinbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeGift, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +2},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
             };
 
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
@@ -1199,7 +1996,7 @@ namespace kulturenStruktur
             {
                 new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Tocamuyac},
                 new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Meer},
-                new sfIdentifier(){ name = SFNamen.Talentspezialisierung, auspraegung = TalentSpezialisierung.Seefischerei},
+                new sfIdentifier(){ name = SFNamen.Talentspezialisierung, auspraegung = TalentName.FischenUndAngeln, subAuspraegung = TalentSpezialisierung.Seefischerei},
             };
 
             subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
@@ -1299,41 +2096,43 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FesselnUndEntfesseln, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeGift, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +2},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +2},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +4},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +4},
+                new talentIdentifier{ name = TalentName.Speere, wert = +3},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +2},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +3},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +4},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +2},
+                new talentIdentifier{ name = TalentName.Zechen, wert = -2},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +3},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.FesselnUndEntfesseln, wert = +2},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +2},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +3},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +3},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +2},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +2},
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = +4},
+                new talentIdentifier{ name = TalentName.HeilkundeGift, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
             };
 
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlBlasrohr = new wahlmoeglichkeiten();
-            wahlBlasrohr.talente = new List<TalentName>()
+            wahlBlasrohr.talente = new List<talentIdentifier>()
             {
-                TalentName.Blasrohr, TalentName.Bogen, TalentName.Wurfspeere,
+                new talentIdentifier(){ name = TalentName.Blasrohr},
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
             };
             wahlBlasrohr.talentWerte = new int[1];
             wahlBlasrohr.talentWerte[0] = 3;
@@ -1458,44 +2257,46 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FesselnUndEntfesseln, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Feuersteinbearbeitung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeGift, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Musizieren, wert = +3},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Speere, wert = +3},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +2},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +2},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +2},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +2},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +2},
+                new talentIdentifier{ name = TalentName.Zechen, wert = -2},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +3},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.FesselnUndEntfesseln, wert = +2},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +2},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +4},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +3},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +2},
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = +1},
+                new talentIdentifier{ name = TalentName.Feuersteinbearbeitung, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeGift, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Musizieren, wert = +3},
             };
 
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlBlasrohr = new wahlmoeglichkeiten();
-            wahlBlasrohr.talente = new List<TalentName>()
+            wahlBlasrohr.talente = new List<talentIdentifier>()
             {
-                TalentName.Blasrohr, TalentName.Bogen, TalentName.Wurfspeere,
+                new talentIdentifier(){ name = TalentName.Blasrohr},
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
             };
             wahlBlasrohr.talentWerte = new int[1];
             wahlBlasrohr.talentWerte[0] = 2;
@@ -1542,29 +2343,30 @@ namespace kulturenStruktur
             subChira.geeigneteProfessionen.Add(ProfessionsName.Bauer);
             subChira.geeigneteProfessionen.Add(ProfessionsName.Tageloehner);
 
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ringen, wert = -1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Koerperbeherrschung, wert = -1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schleichen, wert = -2 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = -1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SichVerstecken, wert = -2 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Zechen, wert = +1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = -2 });
-            subChira.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +3 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = -2 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = -1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Tierkunde, wert = +1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.HeilkundeGift, wert = -1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.HeilkundeKrankheiten, wert = +1 });
-            subChira.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.HeilkundeWunden, wert = +1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ringen, wert = -1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Koerperbeherrschung, wert = -1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schleichen, wert = -2 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = -1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SichVerstecken, wert = -2 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Zechen, wert = +1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = -2 });
+            subChira.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +3 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = -2 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = -1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Tierkunde, wert = +1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.HeilkundeGift, wert = -1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.HeilkundeKrankheiten, wert = +1 });
+            subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.HeilkundeWunden, wert = +1 });
 
 
             // Wahl:
             subChira.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlBlasrohr = new wahlmoeglichkeiten();
-            wahlBlasrohr.talente = new List<TalentName>()
+            wahlBlasrohr.talente = new List<talentIdentifier>()
             {
-                TalentName.Bogen, TalentName.Wurfspeere,
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
             };
             wahlBlasrohr.talentWerte = new int[1];
             wahlBlasrohr.talentWerte[0] = 1;
@@ -1572,9 +2374,10 @@ namespace kulturenStruktur
             subChira.wahlen.Add(wahlBlasrohr);
 
             var wahlAcker = new wahlmoeglichkeiten();
-            wahlAcker.talente = new List<TalentName>()
+            wahlAcker.talente = new List<talentIdentifier>()
             {
-                TalentName.Ackerbau, TalentName.Viehzucht,
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
             };
             wahlAcker.talentWerte = new int[1];
             wahlAcker.talentWerte[0] = 1;
@@ -1607,8 +2410,8 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
             };
 
-            subShoku.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Singen, wert = +1 });
-            subShoku.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Musizieren, wert = +2 });
+            subShoku.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Singen, wert = +1 });
+            subShoku.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Musizieren, wert = +2 });
 
             return subShoku;
         }
@@ -1699,39 +2502,41 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +12},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FesselnUndEntfesseln, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeGift, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +12},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +3},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Speere, wert = +2},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +3},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +4},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +3},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +2},
+                new talentIdentifier{ name = TalentName.Zechen, wert = -2},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +4},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.FesselnUndEntfesseln, wert = +3},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +4},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +3},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +2},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeGift, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
             };
 
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlBlasrohr = new wahlmoeglichkeiten();
-            wahlBlasrohr.talente = new List<TalentName>()
+            wahlBlasrohr.talente = new List<talentIdentifier>()
             {
-                TalentName.Blasrohr, TalentName.Bogen, TalentName.Wurfspeere,
+                new talentIdentifier(){ name = TalentName.Blasrohr},
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
             };
             wahlBlasrohr.talentWerte = new int[1];
             wahlBlasrohr.talentWerte[0] = 2;
@@ -1861,44 +2666,45 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wurfspeere, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerkleiden, wert = -1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Gesteinskunde, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Feuersteinbearbeitung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeGift, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.MalenUndZeichnen, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +2},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Speere, wert = +2},
+                new talentIdentifier{ name = TalentName.Wurfspeere, wert = +1},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +3},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +3},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +3},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +2},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Zechen, wert = -2},
+                new talentIdentifier{ name = TalentName.SichVerkleiden, wert = -1},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +3},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +3},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +4},
+                new talentIdentifier{ name = TalentName.Gesteinskunde, wert = +2},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +3},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +3},
+                new talentIdentifier{ name = TalentName.Feuersteinbearbeitung, wert = +3},
+                new talentIdentifier{ name = TalentName.HeilkundeGift, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.MalenUndZeichnen, wert = +1},
             };
 
             // Wahlen:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlAckerbau = new wahlmoeglichkeiten();
-            wahlAckerbau.talente = new List<TalentName>()
+            wahlAckerbau.talente = new List<talentIdentifier>()
             {
-                TalentName.Ackerbau, TalentName.SteinschneiderUndJuwelier,
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.SteinschneiderUndJuwelier},
             };
             wahlAckerbau.talentWerte = new int[1];
             wahlAckerbau.talentWerte[0] = 2;
@@ -1968,13 +2774,13 @@ namespace kulturenStruktur
                 new NachteilsIdentifier(){ name = NachteileName.Neugier, wert = +5},
             };
 
-            subHaipu.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = -2 });
-            subHaipu.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +3 });
-            subHaipu.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SichVerstecken, wert = -1 });
-            subHaipu.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = -1 });
-            subHaipu.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subHaipu.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = -1 });
-            subHaipu.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +2 });
+            subHaipu.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = -2 });
+            subHaipu.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +3 });
+            subHaipu.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SichVerstecken, wert = -1 });
+            subHaipu.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = -1 });
+            subHaipu.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subHaipu.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = -1 });
+            subHaipu.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +2 });
 
             return subHaipu;
         }
@@ -1992,10 +2798,10 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
             };
 
-            subBerg.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +2 });
-            subBerg.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = -1 });
-            subBerg.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = -1 });
-            subBerg.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Feuersteinbearbeitung, wert = +1 });
+            subBerg.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +2 });
+            subBerg.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = -1 });
+            subBerg.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = -1 });
+            subBerg.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Feuersteinbearbeitung, wert = +1 });
 
             return subBerg;
         }
@@ -2011,8 +2817,8 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
             };
 
-            subTschop.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Singen, wert = +1 });
-            subTschop.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Musizieren, wert = +2 });
+            subTschop.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Singen, wert = +1 });
+            subTschop.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Musizieren, wert = +2 });
 
             return subTschop;
         }
@@ -2102,43 +2908,45 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +5},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Feuersteinbearbeitung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeGift, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.MalenUndZeichnen, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Speere, wert = +2},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +2},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +3},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +3},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +2},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Zechen, wert = -2},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +4},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +3},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +5},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +4},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +4},
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = +1},
+                new talentIdentifier{ name = TalentName.Feuersteinbearbeitung, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeGift, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.MalenUndZeichnen, wert = +1},
             };
 
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlBlasrohr = new wahlmoeglichkeiten();
-            wahlBlasrohr.talente = new List<TalentName>()
+            wahlBlasrohr.talente = new List<talentIdentifier>()
             {
-                TalentName.Blasrohr, TalentName.Bogen, TalentName.Wurfspeere,
+                new talentIdentifier(){ name = TalentName.Blasrohr},
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
             };
             wahlBlasrohr.talentWerte = new int[1];
             wahlBlasrohr.talentWerte[0] = 2;
@@ -2271,31 +3079,31 @@ namespace kulturenStruktur
             // TOCHECK: Frunu?
             // subKeine.geeigneteProfessionen.Add(ProfessionsName.???);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wurfspeere, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.ZweihandHiebwaffen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = -2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Skifahren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = -1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +4},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Feuersteinbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Wurfspeere, wert = +1},
+                new talentIdentifier{ name = TalentName.ZweihandHiebwaffen, wert = +2},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +2},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = -2},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier{ name = TalentName.Skifahren, wert = +1},
+                new talentIdentifier{ name = TalentName.Zechen, wert = -1},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +3},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +4},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.Feuersteinbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
             };
 
             // Sprache:
@@ -2423,39 +3231,42 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.BrenochDun);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.DurroDun);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.ZweihandHiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wettervorhersage, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Feuersteinbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +2},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +3},
+                new talentIdentifier{ name = TalentName.Speere, wert = +2},
+                new talentIdentifier{ name = TalentName.ZweihandHiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +2},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +2},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +2},
+                new talentIdentifier{ name = TalentName.Wettervorhersage, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +3},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Feuersteinbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
             };
 
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlHandwerk = new wahlmoeglichkeiten();
-            wahlHandwerk.talente = new List<TalentName>()
+            wahlHandwerk.talente = new List<talentIdentifier>()
             {
-                TalentName.Fleischer, TalentName.GerberUndKuerschner, TalentName.Grobschmied,
-                TalentName.StoffeFaerben, TalentName.Viehzucht,
+                new talentIdentifier(){ name = TalentName.Fleischer},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
             };
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 2;
@@ -2492,27 +3303,33 @@ namespace kulturenStruktur
             subBinnen.name = SubKulturName.Binnenland;
             subBinnen.generierungskosten = 5;
 
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.ZweihandHiebwaffen, wert = +1});
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +1 });
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = -1 });
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = +1 });
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = -2 });
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = -1 });
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +2 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.ZweihandHiebwaffen, wert = +1});
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = -1 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = +1 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Fallenstellen, wert = +1 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = -2 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = -1 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +2 });
 
             // Boote fahren niedriger, Seefahrt raus:
-            subBinnen.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +2 });
-            subBinnen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = -1 });
+            subBinnen.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Seefahrt, wert = +2 });
+            subBinnen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = -1 });
 
             // Wahl:
             subBinnen.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlHandwerk = new wahlmoeglichkeiten();
-            wahlHandwerk.talente = new List<TalentName>()
+            wahlHandwerk.talente = new List<talentIdentifier>()
             {
-                TalentName.Ackerbau, TalentName.Grobschmied, TalentName.Holzbearbeitung, TalentName.Lederarbeiten,
-                TalentName.Schneidern, TalentName.StoffeFaerben, TalentName.Viehzucht, TalentName.Webkunst
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten},
+                new talentIdentifier(){ name = TalentName.Schneidern},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
+                new talentIdentifier(){ name = TalentName.Webkunst},
             };
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 1;
@@ -2624,24 +3441,24 @@ namespace kulturenStruktur
 
             // Talente:
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wurfbeile, wert = +2}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +3}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = +3}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FesselnUndEntfesseln, wert = +1}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +3}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +3}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +4}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sternkunde, wert = +1}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = +2}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1}, 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Seefahrt, wert = +2}, 
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1}, 
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2}, 
+                new talentIdentifier{ name = TalentName.Wurfbeile, wert = +2}, 
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1}, 
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1}, 
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +3}, 
+                new talentIdentifier{ name = TalentName.Zechen, wert = +3}, 
+                new talentIdentifier{ name = TalentName.FesselnUndEntfesseln, wert = +1}, 
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +3}, 
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +3}, 
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1}, 
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +4}, 
+                new talentIdentifier{ name = TalentName.Sternkunde, wert = +1}, 
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = +2}, 
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1}, 
+                new talentIdentifier{ name = TalentName.Seefahrt, wert = +2}, 
             };
 
             // Sprache:
@@ -2759,42 +3576,44 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihteDerRahja);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDerTsa);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wurfmesser, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Singen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Betoeren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerkleiden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Geographie, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schaetzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sternkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FahrzeugLenken, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleuder, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Wurfmesser, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier{ name = TalentName.Singen, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Betoeren, wert = +1},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerkleiden, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +2},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Geographie, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Schaetzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Sternkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.FahrzeugLenken, wert = +2},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Schleuder, wert = +1},
             };
 
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlKampf = new wahlmoeglichkeiten();
-            wahlKampf.talente = new List<TalentName>()
+            wahlKampf.talente = new List<talentIdentifier>()
             {
-                TalentName.Akrobatik, TalentName.Gaukeleien, TalentName.Taschendiebstahl,
+                new talentIdentifier(){ name = TalentName.Akrobatik},
+                new talentIdentifier(){ name = TalentName.Gaukeleien},
+                new talentIdentifier(){ name = TalentName.Taschendiebstahl},
             };
             wahlKampf.talentWerte = new int[1];
             wahlKampf.talentWerte[0] = 2;
@@ -2912,45 +3731,48 @@ namespace kulturenStruktur
             // TOCHECK: Schamane?
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Nuranshar);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Reiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wettervorhersage, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Gesteinskunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sternkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Feuersteinbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Viehzucht, wert = +2},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +2},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Reiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +2},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +2},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +2},
+                new talentIdentifier{ name = TalentName.Wettervorhersage, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +3},
+                new talentIdentifier{ name = TalentName.Gesteinskunde, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Sternkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.Feuersteinbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Viehzucht, wert = +2},
 
             };
 
             // Wahl:
             subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
             var wahlKampf = new wahlmoeglichkeiten();
-            wahlKampf.talente = new List<TalentName>()
+            wahlKampf.talente = new List<talentIdentifier>()
             {
-                TalentName.Bogen, TalentName.Schleuder, TalentName.Wurfspeere, TalentName.Wurfbeile,
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Schleuder},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
+                new talentIdentifier(){ name = TalentName.Wurfbeile},
             };
             wahlKampf.talentWerte = new int[1];
             wahlKampf.talentWerte[0] = 1;
@@ -2958,9 +3780,12 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlKampf);
 
             var wahlAbrichten = new wahlmoeglichkeiten();
-            wahlAbrichten.talente = new List<TalentName>()
+            wahlAbrichten.talente = new List<talentIdentifier>()
             {
-                TalentName.Abrichten, TalentName.Fleischer, TalentName.GerberUndKuerschner, TalentName.HeilkundeGift
+                new talentIdentifier(){ name = TalentName.Abrichten},
+                new talentIdentifier(){ name = TalentName.Fleischer},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.HeilkundeGift},
             };
             wahlAbrichten.talentWerte = new int[1];
             wahlAbrichten.talentWerte[0] = 2;
@@ -2991,13 +3816,13 @@ namespace kulturenStruktur
             subOase.name = SubKulturName.Wuestenoase;
             subOase.generierungskosten = 0;
 
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = -1 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Koerperbeherrschung, wert = -1 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = -1 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = -2 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ackerbau, wert = +1 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Hauswirtschaft, wert = +1 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Lederarbeiten, wert = -1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = -1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Koerperbeherrschung, wert = -1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = -1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = -2 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ackerbau, wert = +1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Hauswirtschaft, wert = +1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Lederarbeiten, wert = -1 });
 
             return subOase;
         }
@@ -3096,40 +3921,40 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Reiten, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = -1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +3},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.Reiten, wert = +2},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = -1},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +3},
 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Betoeren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lehren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier{ name = TalentName.Betoeren, wert = +1},
+                new talentIdentifier{ name = TalentName.Lehren, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +3},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +1},
 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BrettUndKartenspiel, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechtskunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schaetzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sternkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = -1},
+                new talentIdentifier{ name = TalentName.BrettUndKartenspiel, wert = +3},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechtskunde, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +3},
+                new talentIdentifier{ name = TalentName.Schaetzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Sternkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = -1},
 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeGift, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeKrankheiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeSeele, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Kochen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schneidern, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeGift, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeKrankheiten, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeSeele, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +2},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Kochen, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +2},
+                new talentIdentifier{ name = TalentName.Schneidern, wert = +1},
             };
 
             // Sprache:
@@ -3155,17 +3980,17 @@ namespace kulturenStruktur
             subOase.generierungskosten = 1;
 
             //Waffentalente raus:
-            subOase.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Bogen, wert = +1 });
-            subOase.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Lanzenreiten, wert = +1 });
-            subOase.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wurfspeere, wert = +1 });
+            subOase.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Bogen, wert = +1 });
+            subOase.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Lanzenreiten, wert = +1 });
+            subOase.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Wurfspeere, wert = +1 });
 
             // Und dies kommt dazu:
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +2 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = -2 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = -2 });
-            subOase.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ackerbau, wert = +1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +2 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = -2 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = -2 });
+            subOase.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ackerbau, wert = +1 });
 
             return subOase;
         }
@@ -3276,33 +4101,33 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Derwisch);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Bogen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lanzenreiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Saebel, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wurfspeere, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Reiten, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = -1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sinnesschaerfe, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BrettUndKartenspiel, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechtskunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schaetzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Sternkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = -1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Viehzucht, wert = +2},
+                new talentIdentifier{ name = TalentName.Bogen, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Lanzenreiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Saebel, wert = +1},
+                new talentIdentifier{ name = TalentName.Speere, wert = +1},
+                new talentIdentifier{ name = TalentName.Wurfspeere, wert = +1},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.Reiten, wert = +3},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = -1},
+                new talentIdentifier{ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +3},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier{ name = TalentName.BrettUndKartenspiel, wert = +2},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechtskunde, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier{ name = TalentName.Schaetzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Sternkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = -1},
+                new talentIdentifier{ name = TalentName.Viehzucht, wert = +2},
             };
 
             // Sprache:
@@ -3338,10 +4163,10 @@ namespace kulturenStruktur
                 new NachteilsIdentifier(){ name = NachteileName.Vorurteile, wert = +5},
             };
 
-            subKasi.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ringen, wert = +2 });
-            subKasi.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +2 });
-            subKasi.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +2 });
-            subKasi.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SagenUndLegenden, wert = +2 });
+            subKasi.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ringen, wert = +2 });
+            subKasi.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +2 });
+            subKasi.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +2 });
+            subKasi.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SagenUndLegenden, wert = +2 });
 
             // Sprache:
             subKasi.sprachen = new List<SprachenIdentifier>() 
@@ -3385,10 +4210,10 @@ namespace kulturenStruktur
                 new NachteilsIdentifier(){ name = NachteileName.Vorurteile, wert = +5},
             };
 
-            subKasi.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ringen, wert = +2 });
-            subKasi.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +2 });
-            subKasi.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +2 });
-            subKasi.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SagenUndLegenden, wert = +2 });
+            subKasi.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ringen, wert = +2 });
+            subKasi.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +2 });
+            subKasi.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +2 });
+            subKasi.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SagenUndLegenden, wert = +2 });
 
             // Sprache:
             subKasi.sprachen = new List<SprachenIdentifier>() 
@@ -3433,17 +4258,18 @@ namespace kulturenStruktur
             subSee.name = SubKulturName.SeeOderMhanadihafen;
             subSee.generierungskosten = 6;
 
-            subSee.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +2 });
-            subSee.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subSee.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subSee.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wettervorhersage, wert = +1 });
-            subSee.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
+            subSee.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +2 });
+            subSee.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subSee.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subSee.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wettervorhersage, wert = +1 });
+            subSee.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
 
             // Zusatzwahl:
             var wahlBoot = new wahlmoeglichkeiten();
-            wahlBoot.talente = new List<TalentName>()
+            wahlBoot.talente = new List<talentIdentifier>()
             {
-                TalentName.Seefahrt, TalentName.BooteFahren,
+                new talentIdentifier(){ name = TalentName.Seefahrt},
+                new talentIdentifier(){ name = TalentName.BooteFahren},
             };
             wahlBoot.talentWerte = new int[1];
             wahlBoot.talentWerte[0] = 1;
@@ -3552,37 +4378,38 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Jaeger);
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Kundschafter);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Saebel, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Etikette, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Gassenwissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerkleiden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BrettUndKartenspiel, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Geschichtswissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechtskunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schaetzen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hauswirtschaft, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +2},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Saebel, wert = +1},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Etikette, wert = +1},
+                new talentIdentifier{ name = TalentName.Gassenwissen, wert = +1},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +2},
+                new talentIdentifier{ name = TalentName.SichVerkleiden, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{ name = TalentName.BrettUndKartenspiel, wert = +2},
+                new talentIdentifier{ name = TalentName.Geschichtswissen, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechtskunde, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Schaetzen, wert = +2},
+                new talentIdentifier{ name = TalentName.Hauswirtschaft, wert = +1},
             };
 
             // Wahlen:
             subKeine.wahlen = new List<wahlmoeglichkeiten>();
 
             var wahlDieb = new wahlmoeglichkeiten();
-            wahlDieb.talente = new List<TalentName>()
+            wahlDieb.talente = new List<talentIdentifier>()
             {
-                TalentName.Taschendiebstahl, TalentName.Gaukeleien,
+                new talentIdentifier(){ name = TalentName.Taschendiebstahl},
+                new talentIdentifier(){ name = TalentName.Gaukeleien},
             };
             wahlDieb.talentWerte = new int[1];
             wahlDieb.talentWerte[0] = 1;
@@ -3611,17 +4438,17 @@ namespace kulturenStruktur
             subNomade.name = SubKulturName.KuestengebieteOderAnGrossenFluessen;
             subNomade.generierungskosten = 2;
 
-            subNomade.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subNomade.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Koerperbeherrschung, wert = +1 });
-            subNomade.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +2 });
-            subNomade.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = +1 });
-            subNomade.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +1 });
-            subNomade.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechnen, wert = +1 });
+            subNomade.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subNomade.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Koerperbeherrschung, wert = +1 });
+            subNomade.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = +2 });
+            subNomade.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = +1 });
+            subNomade.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +1 });
+            subNomade.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechnen, wert = +1 });
 
             // Überreden, Etikette, Ackerbau raus:
-            subNomade.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subNomade.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +2 });
-            subNomade.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ackerbau, wert = +1 });
+            subNomade.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subNomade.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Ueberreden, wert = +2 });
+            subNomade.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Ackerbau, wert = +1 });
 
             // Wahl der Zweitsrpache:
             // Muttersprache:
@@ -3642,9 +4469,10 @@ namespace kulturenStruktur
 
             // Wahl Bogen:
             var wahlBogen = new wahlmoeglichkeiten();
-            wahlBogen.talente = new List<TalentName>()
+            wahlBogen.talente = new List<talentIdentifier>()
             {
-                TalentName.Bogen, TalentName.Schleuder,
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Schleuder},
             };
             wahlBogen.talentWerte = new int[1];
             wahlBogen.talentWerte[0] = 1;
@@ -3660,17 +4488,18 @@ namespace kulturenStruktur
             subKueste.name = SubKulturName.KuestengebieteOderAnGrossenFluessen;
             subKueste.generierungskosten = 3;
 
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +2 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wettervorhersage, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +2 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wettervorhersage, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
 
             // Wahl:
             var wahlBoote = new wahlmoeglichkeiten();
-            wahlBoote.talente = new List<TalentName>()
+            wahlBoote.talente = new List<talentIdentifier>()
             {
-                TalentName.Seefahrt, TalentName.BooteFahren,
+                new talentIdentifier(){ name = TalentName.Seefahrt},
+                new talentIdentifier(){ name = TalentName.BooteFahren},
             };
             wahlBoote.talentWerte = new int[1];
             wahlBoote.talentWerte[0] = 1;
@@ -3686,11 +4515,11 @@ namespace kulturenStruktur
             subFern.name = SubKulturName.FernDerZivilisation;
             subFern.generierungskosten = 1;
 
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Selbstbeherrschung, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = -1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Kochen, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = -1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Kochen, wert = +1 });
 
             // Zweitsprache löschen:
             subFern.sprachen = new List<SprachenIdentifier>() { };
@@ -3698,9 +4527,11 @@ namespace kulturenStruktur
 
             // Wahl Bogen:
             var wahlBogen = new wahlmoeglichkeiten();
-            wahlBogen.talente = new List<TalentName>()
+            wahlBogen.talente = new List<talentIdentifier>()
             {
-                TalentName.Bogen, TalentName.Schleuder, TalentName.Zweihandflegel,
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Schleuder},
+                new talentIdentifier(){ name = TalentName.Zweihandflegel},
             };
             wahlBogen.talentWerte = new int[1];
             wahlBogen.talentWerte[0] = 1;
@@ -3709,9 +4540,10 @@ namespace kulturenStruktur
 
             // Wahl Athletik:
             var wahlAth = new wahlmoeglichkeiten();
-            wahlAth.talente = new List<TalentName>()
+            wahlAth.talente = new List<talentIdentifier>()
             {
-                TalentName.Athletik, TalentName.Klettern,
+                new talentIdentifier(){ name = TalentName.Athletik},
+                new talentIdentifier(){ name = TalentName.Klettern},
             };
             wahlAth.talentWerte = new int[1];
             wahlAth.talentWerte[0] = 1;
@@ -3728,11 +4560,11 @@ namespace kulturenStruktur
             subHandel.name = SubKulturName.AnEinerWichtigenHandelsroute;
             subHandel.generierungskosten = 1;
 
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechnen, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schaetzen, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechnen, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schaetzen, wert = +1 });
 
             return subHandel;
         }
@@ -3828,25 +4660,25 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.GeweihterDesFirun);
 
             // Talente:
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Etikette, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wettervorhersage, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BrettUndKartenspiel, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ackerbau, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Viehzucht, wert = +2},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Etikette, wert = +1},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +2},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier{ name = TalentName.Wettervorhersage, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier{ name = TalentName.BrettUndKartenspiel, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +3},
+                new talentIdentifier{ name = TalentName.Ackerbau, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Viehzucht, wert = +2},
             };
 
             // Sonder:
@@ -3859,9 +4691,11 @@ namespace kulturenStruktur
             subKeine.wahlen = new List<wahlmoeglichkeiten>();
 
             var wahlHIeb = new wahlmoeglichkeiten();
-            wahlHIeb.talente = new List<TalentName>()
+            wahlHIeb.talente = new List<talentIdentifier>()
             {
-                TalentName.Hiebwaffen, TalentName.Saebel, TalentName.Speere,
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Saebel},
+                new talentIdentifier(){ name = TalentName.Speere},
             };
             wahlHIeb.talentWerte = new int[1];
             wahlHIeb.talentWerte[0] = 1;
@@ -3869,11 +4703,17 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlHIeb);
 
             var wahlHandwerk = new wahlmoeglichkeiten();
-            wahlHandwerk.talente = new List<TalentName>()
+            wahlHandwerk.talente = new List<talentIdentifier>()
             {
-                TalentName.Abrichten , TalentName.Fleischer, TalentName.GerberUndKuerschner, TalentName.Grobschmied,
-                TalentName.Hauswirtschaft, TalentName.StoffeFaerben, TalentName.Toepfern, TalentName.Webkunst,
-                TalentName.Winzer,
+                new talentIdentifier(){ name = TalentName.Abrichten},
+                new talentIdentifier(){ name = TalentName.Fleischer},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Hauswirtschaft},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben},
+                new talentIdentifier(){ name = TalentName.Toepfern},
+                new talentIdentifier(){ name = TalentName.Webkunst},
+                new talentIdentifier(){ name = TalentName.Winzer},
             };
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 1;
@@ -3908,16 +4748,17 @@ namespace kulturenStruktur
             };
 
 
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Saebel, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +2 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Saebel, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +1 });
 
             // Zu den Wahlen kommt eine dazu:
             var wahlReiten = new wahlmoeglichkeiten();
-            wahlReiten.talente = new List<TalentName>()
+            wahlReiten.talente = new List<talentIdentifier>()
             {
-                TalentName.Reiten, TalentName.FahrzeugLenken
+                new talentIdentifier(){ name = TalentName.Reiten},
+                new talentIdentifier(){ name = TalentName.FahrzeugLenken},
             };
             wahlReiten.talentWerte = new int[1];
             wahlReiten.talentWerte[0] = 1;
@@ -3951,12 +4792,12 @@ namespace kulturenStruktur
             subKueste.voraussetzungen = new subkulturVoraussetzungen() { };
             subKueste.voraussetzungen.geschlecht = GeschlechtNamen.beide;
 
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +2 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +2 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
 
             return subKueste;
         }
@@ -3975,8 +4816,8 @@ namespace kulturenStruktur
             subStadt.voraussetzungen = new subkulturVoraussetzungen() { };
             subStadt.voraussetzungen.geschlecht = GeschlechtNamen.beide;
 
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Gassenwissen, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Gassenwissen, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
 
             // TOCHECK:
             subStadt.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Ortskenntnis});
@@ -3997,10 +4838,10 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Fernhaendler);
 
             // Die Männer haben nur einen Bonus von +1 auf Etikette und Menschnenk.:
-            subKeine.talentModifikatoren.Remove( new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Etikette, wert = +2});
-            subKeine.talentModifikatoren.Remove( new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +2});
-            subKeine.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subKeine.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subKeine.talentModifikatoren.Remove( new talentIdentifier{ name = TalentName.Etikette, wert = +2});
+            subKeine.talentModifikatoren.Remove( new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +2});
+            subKeine.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
 
             return subKeine;
         }
@@ -4048,37 +4889,38 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
 
             // Talente:
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Saebel, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Reiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Etikette, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Gassenwissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BrettUndKartenspiel, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schaetzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hauswirtschaft, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Saebel, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.Reiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Etikette, wert = +2},
+                new talentIdentifier{ name = TalentName.Gassenwissen, wert = +1},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +2},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{ name = TalentName.BrettUndKartenspiel, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Schaetzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Hauswirtschaft, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
             };
 
             // Wahlen:
             subKeine.wahlen = new List<wahlmoeglichkeiten>();
 
             var wahlMagie = new wahlmoeglichkeiten();
-            wahlMagie.talente = new List<TalentName>()
+            wahlMagie.talente = new List<talentIdentifier>()
             {
-                TalentName.Magiekunde, TalentName.Philosophie
+                new talentIdentifier(){ name = TalentName.Magiekunde},
+                new talentIdentifier(){ name = TalentName.Philosophie},
             };
             wahlMagie.talentWerte = new int[1];
             wahlMagie.talentWerte[0] = 1;
@@ -4086,9 +4928,11 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlMagie);
 
             var wahlAbrichten = new wahlmoeglichkeiten();
-            wahlAbrichten.talente = new List<TalentName>()
+            wahlAbrichten.talente = new List<talentIdentifier>()
             {
-                TalentName.Abrichten, TalentName.Musizieren, TalentName.Webkunst
+                new talentIdentifier(){ name = TalentName.Abrichten},
+                new talentIdentifier(){ name = TalentName.Musizieren},
+                new talentIdentifier(){ name = TalentName.Webkunst},
             };
             wahlAbrichten.talentWerte = new int[1];
             wahlAbrichten.talentWerte[0] = 1;
@@ -4211,34 +5055,35 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
             subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDerRondra);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Staebe, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Reiten, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Etikette, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Gassenwissen, wert = -2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Geschichtswissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Heraldik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Kriegskunst, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Abrichten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +2},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Staebe, wert = +2},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +2},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +3},
+                new talentIdentifier{ name = TalentName.Reiten, wert = +3},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +3},
+                new talentIdentifier{ name = TalentName.Etikette, wert = +1},
+                new talentIdentifier{ name = TalentName.Gassenwissen, wert = -2},
+                new talentIdentifier{ name = TalentName.Geschichtswissen, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Heraldik, wert = +1},
+                new talentIdentifier{ name = TalentName.Kriegskunst, wert = +2},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Abrichten, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
             };
 
             // Wahlen:
             subKeine.wahlen = new List<wahlmoeglichkeiten>();
             var wahlBogen = new wahlmoeglichkeiten();
-            wahlBogen.talente = new List<TalentName>()
+            wahlBogen.talente = new List<talentIdentifier>()
             {
-                TalentName.Bogen, TalentName.Wurfspeere
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
             };
             wahlBogen.talentWerte = new int[1];
             wahlBogen.talentWerte[0] = 4;
@@ -4246,9 +5091,10 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlBogen);
 
             var wahlSäbel = new wahlmoeglichkeiten();
-            wahlSäbel.talente = new List<TalentName>()
+            wahlSäbel.talente = new List<talentIdentifier>()
             {
-                TalentName.Saebel, TalentName.Schwerter,
+                new talentIdentifier(){ name = TalentName.Saebel},
+                new talentIdentifier(){ name = TalentName.Schwerter},
             };
             wahlSäbel.talentWerte = new int[1];
             wahlSäbel.talentWerte[0] = 2;
@@ -4286,15 +5132,15 @@ namespace kulturenStruktur
             };
 
             // Schleuder raus, Bogen rein:
-            subAdel.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleuder, wert = +1});
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Bogen, wert = +1 });
+            subAdel.talentModifikatoren.Remove(new talentIdentifier{ name = TalentName.Schleuder, wert = +1});
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Bogen, wert = +1 });
 
             // Mods:
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Hiebwaffen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Heraldik, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Hiebwaffen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Heraldik, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +1 });
 
             // Außerdem gibt's die Kusliker Zeichen dazu:
             subAdel.schriften = new List<SchriftenIdentifier>() { new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = 2 }, };
@@ -4352,29 +5198,29 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
 
             // Talente:
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleuder, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Klettern, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FesselnUndEntfesseln, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wettervorhersage, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Philosophie, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Seefahrt, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Viehzucht, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier{ name = TalentName.Schleuder, wert = +1},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +2},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.FesselnUndEntfesseln, wert = +1},
+                new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier{ name = TalentName.Wettervorhersage, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier{ name = TalentName.Philosophie, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.BooteFahren, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Seefahrt, wert = +1},
+                new talentIdentifier{ name = TalentName.Viehzucht, wert = +1},
             };
 
             // SF:
@@ -4439,15 +5285,15 @@ namespace kulturenStruktur
             };
 
             // Infi raus, Schwerter rein:
-            subAdel.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Infanteriewaffen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwerter, wert = +1 });
+            subAdel.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Infanteriewaffen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwerter, wert = +1 });
 
             //Mods:
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +2 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Heraldik, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Heraldik, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +1 });
 
             // Außerdem gibt's die Kusliker Zeichen dazu:
             subAdel.schriften = new List<SchriftenIdentifier>() { new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = 2 }, };
@@ -4465,11 +5311,12 @@ namespace kulturenStruktur
             // TO CHECK: Chababien???
 
             // Armbrust raus, Wahl rein!
-            subFern.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Armbrust, wert = +1 });
+            subFern.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Armbrust, wert = +1 });
             var wahlArmbrust = new wahlmoeglichkeiten();
-            wahlArmbrust.talente = new List<TalentName>()
+            wahlArmbrust.talente = new List<talentIdentifier>()
             {
-                TalentName.Bogen, TalentName.Armbrust
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Armbrust},
             };
             wahlArmbrust.talentWerte = new int[1];
             wahlArmbrust.talentWerte[0] = 1;
@@ -4477,23 +5324,23 @@ namespace kulturenStruktur
             subFern.wahlen.Add(wahlArmbrust);
 
             // Infi raus, Speere rein:
-            subFern.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Infanteriewaffen, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Speere, wert = +1 });
+            subFern.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Infanteriewaffen, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Speere, wert = +1 });
 
             // Fechtwaffen raus, Gassenwissen raus, Rechtskunde raus:
-            subFern.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fechtwaffen, wert = +1 });
-            subFern.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Gassenwissen, wert = +2 });
-            subFern.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +1 });
+            subFern.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Fechtwaffen, wert = +1 });
+            subFern.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Gassenwissen, wert = +2 });
+            subFern.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Rechtskunde, wert = +1 });
 
             // Mods:
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Raufen, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ringen, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = -1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +2 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Raufen, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ringen, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = -1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Fallenstellen, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +2 });
 
 
             // Wahl der zusätzlichen Sprache erneuern:
@@ -4513,9 +5360,11 @@ namespace kulturenStruktur
             // Viehzucht zur Wahl dazu:
             subFern.wahlen[0].loescheEintrag(subFern.wahlen, "WahlHandwerk");
             var wahlHandwerk = new wahlmoeglichkeiten();
-            wahlHandwerk.talente = new List<TalentName>()
+            wahlHandwerk.talente = new List<talentIdentifier>()
             {
-                TalentName.Ackerbau, TalentName.Hauswirtschaft, TalentName.Viehzucht
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Hauswirtschaft},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
             };
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 1;
@@ -4532,9 +5381,9 @@ namespace kulturenStruktur
             subGebirge.name = SubKulturName.Gebirge;
             subGebirge.generierungskosten = 4;
 
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +1 });
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +1 });
 
             return subGebirge;
         }
@@ -4545,11 +5394,11 @@ namespace kulturenStruktur
             subHandel.name = SubKulturName.AnEinerWichtigenHandelsroute;
             subHandel.generierungskosten = 5;
 
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SagenUndLegenden, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FahrzeugLenken, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SagenUndLegenden, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FahrzeugLenken, wert = +1 });
 
             // Eine beliebige (!) Handelssprache. TOCHECK: Kann das wirklich JEDE Sprache sein??? Was sind "Handelssprachen"???
             var wahlSprache = new wahlmoeglichkeiten();
@@ -4571,12 +5420,12 @@ namespace kulturenStruktur
             subKueste.name = SubKulturName.DoerferAnKuesteOderAnGrossenFluessen;
             subKueste.generierungskosten = 6;
 
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +2 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +2 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +1 });
 
             return subKueste;
         }
@@ -4600,22 +5449,23 @@ namespace kulturenStruktur
             };
 
             // Infi raus, Wahl rein:
-            subAdel.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Infanteriewaffen, wert = +1 });
+            subAdel.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Infanteriewaffen, wert = +1 });
             var wahlSchwerter = new wahlmoeglichkeiten();
             wahlSchwerter.anzahlZuWaehlen = 1;
             wahlSchwerter.talentWerte = new int[1];
             wahlSchwerter.talentWerte[0] = 1;
-            wahlSchwerter.talente = new List<TalentName>() 
+            wahlSchwerter.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Schwerter, TalentName.Fechtwaffen,
+                new talentIdentifier(){ name = TalentName.Schwerter},
+                new talentIdentifier(){ name = TalentName.Fechtwaffen},
             };
             wahlSchwerter.identifier = "Schwerter";
             subAdel.wahlen.Add(wahlSchwerter);
 
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +2 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Heraldik, wert = +2 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Heraldik, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
 
             // Außerdem gibt's die Kusliker Zeichen dazu - sie werden verbessert, weshalb wir überschrieben 
             // und "4" als Wert setzen:
@@ -4635,10 +5485,10 @@ namespace kulturenStruktur
                 StadtName.Kuslik, StadtName.Bethana, StadtName.Neetha, StadtName.Arivor
             };
 
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +2 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +2 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +2 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +2 });
 
             // Eine beliebige (!) Handelssprache. TOCHECK: Kann das wirklich JEDE Sprache sein??? Was sind "Handelssprachen"???
             var wahlSprache = new wahlmoeglichkeiten();
@@ -4667,14 +5517,14 @@ namespace kulturenStruktur
             };
 
             // Talente:
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1});
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +1});
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +1});
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FesselnUndEntfesseln, wert = +1});
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.FischenUndAngeln, wert = +1});
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Geographie, wert = +1});
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.BooteFahren, wert = +1});
-            subHafen.talentModifikatoren.Add( new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Seefahrt, wert = +1});
+            subHafen.talentModifikatoren.Add(new talentIdentifier{ name = TalentName.Schwimmen, wert = +1});
+            subHafen.talentModifikatoren.Add(new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +1});
+            subHafen.talentModifikatoren.Add(new talentIdentifier{ name = TalentName.Ueberreden, wert = +1});
+            subHafen.talentModifikatoren.Add(new talentIdentifier{ name = TalentName.FesselnUndEntfesseln, wert = +1});
+            subHafen.talentModifikatoren.Add(new talentIdentifier{ name = TalentName.FischenUndAngeln, wert = +1});
+            subHafen.talentModifikatoren.Add(new talentIdentifier{ name = TalentName.Geographie, wert = +1});
+            subHafen.talentModifikatoren.Add(new talentIdentifier{ name = TalentName.BooteFahren, wert = +1});
+            subHafen.talentModifikatoren.Add( new talentIdentifier{ name = TalentName.Seefahrt, wert = +1});
             return subHafen;
         }
         private subkultur createHorasSubKeine()
@@ -4682,26 +5532,26 @@ namespace kulturenStruktur
             var subKeine = createAlmadaSubKeine();
 
             // Wir ändern nur das, was unterschiedlich ist:
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Armbrust, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fechtwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Infanteriewaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Betoeren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Etikette, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Gassenwissen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Geschichtswissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Mechanik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechtskunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Armbrust, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Fechtwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Infanteriewaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Betoeren, wert = +1},
+                new talentIdentifier{ name = TalentName.Etikette, wert = +2},
+                new talentIdentifier{ name = TalentName.Gassenwissen, wert = +2},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +2},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{ name = TalentName.Geschichtswissen, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.Mechanik, wert = +1},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +2},
+                new talentIdentifier{ name = TalentName.Rechtskunde, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
             };
 
             // Außerdem gibt's die Kusliker Zeichen dazu:
@@ -4726,9 +5576,10 @@ namespace kulturenStruktur
 
             // Wahl von Handwerk:
             var wahlHandwerk = new wahlmoeglichkeiten();
-            wahlHandwerk.talente = new List<TalentName>()
+            wahlHandwerk.talente = new List<talentIdentifier>()
             {
-                TalentName.Ackerbau, TalentName.Hauswirtschaft
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Hauswirtschaft},
             };
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 1;
@@ -4771,14 +5622,14 @@ namespace kulturenStruktur
                 new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Sozialstatus, wert = 7},
             };
             // Infi raus, Schwerter rein:
-            subAdel.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Infanteriewaffen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwerter, wert = +1 });
+            subAdel.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Infanteriewaffen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwerter, wert = +1 });
 
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Heraldik, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Heraldik, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +1 });
 
             // Außerdem gibt's die Kusliker Zeichen dazu:
             subAdel.schriften = new List<SchriftenIdentifier>() { new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = 2 }, };
@@ -4793,9 +5644,9 @@ namespace kulturenStruktur
             subGebirge.generierungskosten = 4;
 
             // Talente:
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +1 });
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +1 });
 
             return subGebirge;
         }
@@ -4806,11 +5657,11 @@ namespace kulturenStruktur
             subHandel.name = SubKulturName.AnEinerWichtigenHandelsroute;
             subHandel.generierungskosten = 4;
 
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SagenUndLegenden, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FahrzeugLenken, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SagenUndLegenden, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FahrzeugLenken, wert = +1 });
 
             // Eine beliebige (!) Handelssprache. TOCHECK: Kann das wirklich JEDE Sprache sein??? Was sind "Handelssprachen"???
             var wahlSprache = new wahlmoeglichkeiten();
@@ -4844,22 +5695,23 @@ namespace kulturenStruktur
             };
 
             // Infi raus, Wahl rein:
-            subAdel.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Infanteriewaffen, wert = +1 });
+            subAdel.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Infanteriewaffen, wert = +1 });
             var wahlSchwerter = new wahlmoeglichkeiten();
             wahlSchwerter.anzahlZuWaehlen = 1;
             wahlSchwerter.talentWerte = new int[1];
             wahlSchwerter.talentWerte[0] = 1;
-            wahlSchwerter.talente = new List<TalentName>() 
+            wahlSchwerter.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Schwerter, TalentName.Fechtwaffen,
+                new talentIdentifier(){ name = TalentName.Schwerter},
+                new talentIdentifier(){ name = TalentName.Fechtwaffen},
             };
             wahlSchwerter.identifier = "Schwerter";
             subAdel.wahlen.Add(wahlSchwerter);
 
             // Talente:
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +2 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Heraldik, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Heraldik, wert = +2 });
 
             // Außerdem gibt's die Kusliker Zeichen dazu:
             subAdel.schriften = new List<SchriftenIdentifier>() { new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = 2 }, };
@@ -4878,10 +5730,10 @@ namespace kulturenStruktur
             {
                 StadtName.Punin, StadtName.BrigLo,
             };
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +2 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +2 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +2 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +2 });
 
             // Weitere Sprachwahl:
             var wahlSprache = new wahlmoeglichkeiten();
@@ -4912,14 +5764,14 @@ namespace kulturenStruktur
             };
 
             // Talente:
-            subYaq.talentModifikatoren.Add( new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1});
-            subYaq.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subYaq.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subYaq.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subYaq.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subYaq.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subYaq.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
-            subYaq.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +1 });
+            subYaq.talentModifikatoren.Add( new talentIdentifier{ name = TalentName.Schwimmen, wert = +1});
+            subYaq.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subYaq.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subYaq.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subYaq.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subYaq.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subYaq.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
+            subYaq.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +1 });
 
             return subYaq;
         }
@@ -4991,28 +5843,28 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Ritter);
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fechtwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Infanteriewaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Saebel, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Reiten, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Etikette, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Gassenwissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Geschichtswissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Abrichten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Musizieren, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Viehzucht, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Fechtwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Infanteriewaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Saebel, wert = +1},
+                new talentIdentifier{ name = TalentName.Reiten, wert = +2},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Zechen, wert = +1},
+                new talentIdentifier{ name = TalentName.Etikette, wert = +1},
+                new talentIdentifier{ name = TalentName.Gassenwissen, wert = +1},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{ name = TalentName.Geschichtswissen, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier{ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Abrichten, wert = +1},
+                new talentIdentifier{ name = TalentName.Musizieren, wert = +1},
+                new talentIdentifier{ name = TalentName.Viehzucht, wert = +1},
             };
 
             // Wahlen:
@@ -5034,9 +5886,11 @@ namespace kulturenStruktur
 
             // Wahl von Handwerk:
             var wahlHandwerk = new wahlmoeglichkeiten();
-            wahlHandwerk.talente = new List<TalentName>()
+            wahlHandwerk.talente = new List<talentIdentifier>()
             {
-                TalentName.Ackerbau, TalentName.Hauswirtschaft, TalentName.Winzer
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Hauswirtschaft},
+                new talentIdentifier(){ name = TalentName.Winzer},
             };
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 1;
@@ -5068,14 +5922,14 @@ namespace kulturenStruktur
             };
             subFluecht.leModifikator = 0;
 
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = -1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Skifahren, wert = +2 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Sinnesschaerfe, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Magiekunde, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = -1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Skifahren, wert = +2 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Magiekunde, wert = +1 });
             // Pflanzenkunde raus, Magiekunde rein:
-            subFluecht.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Pflanzenkunde, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Magiekunde, wert = +1 });
+            subFluecht.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Pflanzenkunde, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Magiekunde, wert = +1 });
 
             subFluecht.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = SFSubNamen.Eiskundig });
 
@@ -5091,11 +5945,11 @@ namespace kulturenStruktur
             subFern.name = SubKulturName.FernDerZivilisation;
             subFern.generierungskosten = 9;
 
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wettervorhersage, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FahrzeugLenken, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wettervorhersage, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FahrzeugLenken, wert = +1 });
 
             // Noch eine Sprachwahl:
             var wahlZusatzSprache = new wahlmoeglichkeiten();
@@ -5125,23 +5979,25 @@ namespace kulturenStruktur
             subKueste.generierungskosten = 9;
 
             // Bogen raus, Wahl rein:
-            subKueste.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Bogen, wert = +1 });
+            subKueste.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Bogen, wert = +1 });
             var wahlBogen = new wahlmoeglichkeiten();
             wahlBogen.anzahlZuWaehlen = 1;
             wahlBogen.talentWerte = new int[1];
             wahlBogen.talentWerte[0] = 1;
-            wahlBogen.talente = new List<TalentName>() 
+            wahlBogen.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Wurfbeile, TalentName.Bogen, TalentName.Wurfmesser,
+                new talentIdentifier(){ name = TalentName.Wurfbeile},
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfmesser},
             };
             subKueste.wahlen.Add(wahlBogen);
 
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wettervorhersage, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Holzbearbeitung, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wettervorhersage, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Holzbearbeitung, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
 
             return subKueste;
 
@@ -5154,37 +6010,40 @@ namespace kulturenStruktur
             subKlein.generierungskosten = 6;
 
             // Bogen raus, Wahl rein:
-            subKlein.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Bogen, wert = +1 });
+            subKlein.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Bogen, wert = +1 });
             var Wahlarmbrust = new wahlmoeglichkeiten();
             Wahlarmbrust.anzahlZuWaehlen = 1;
             Wahlarmbrust.talentWerte = new int[1];
             Wahlarmbrust.talentWerte[0] = 1;
-            Wahlarmbrust.talente = new List<TalentName>() 
+            Wahlarmbrust.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Armbrust, TalentName.Bogen, TalentName.Wurfmesser,
+                new talentIdentifier(){ name = TalentName.Armbrust},
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfmesser},
             };
             subKlein.wahlen.Add(Wahlarmbrust);
 
             // Speere raus, Wahl rein:
-            subKlein.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Speere, wert = +1 });
+            subKlein.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Speere, wert = +1 });
             var wahlInfi = new wahlmoeglichkeiten();
             wahlInfi.anzahlZuWaehlen = 1;
             wahlInfi.talentWerte = new int[1];
             wahlInfi.talentWerte[0] = 1;
-            wahlInfi.talente = new List<TalentName>() 
+            wahlInfi.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Infanteriewaffen, TalentName.Speere,
+                new talentIdentifier(){ name = TalentName.Infanteriewaffen},
+                new talentIdentifier(){ name = TalentName.Speere},
             };
             subKlein.wahlen.Add(wahlInfi);
 
             // Mods:
-            subKlein.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Koerperbeherrschung, wert = -1 });
-            subKlein.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subKlein.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subKlein.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subKlein.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Koerperbeherrschung, wert = -1 });
+            subKlein.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subKlein.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subKlein.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +1 });
 
             // Fallenstellen raus:
-            subKlein.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
+            subKlein.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Fallenstellen, wert = +1 });
 
             return subKlein;
         }
@@ -5196,14 +6055,14 @@ namespace kulturenStruktur
             subStadt.generierungskosten = 7;
 
             // Speere raus, Infanterie rein:
-            subStadt.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +1});
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Infanteriewaffen, wert = +1});
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Koerperbeherrschung, wert = -1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subStadt.talentModifikatoren.Remove(new talentIdentifier{ name = TalentName.Speere, wert = +1});
+            subStadt.talentModifikatoren.Add(new talentIdentifier{ name = TalentName.Infanteriewaffen, wert = +1});
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Koerperbeherrschung, wert = -1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +1 });
             // Fallenstellen raus:
-            subStadt.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
+            subStadt.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Fallenstellen, wert = +1 });
 
             return subStadt;
         }
@@ -5271,33 +6130,33 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gelehrter);
 
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Bogen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Koerperbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schwimmen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Pflanzenkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tierkunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schneidern, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Viehzucht, wert = +1},
+                new talentIdentifier{ name = TalentName.Bogen, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Speere, wert = +1},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier{ name = TalentName.Schwimmen, wert = +1},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier{ name = TalentName.Zechen, wert = +1},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +2},
+                new talentIdentifier{ name = TalentName.Pflanzenkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Tierkunde, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Schneidern, wert = +1},
+                new talentIdentifier{ name = TalentName.Viehzucht, wert = +1},
             };
 
             // Jetzt die Auswahlmöglichkeiten:
@@ -5338,9 +6197,10 @@ namespace kulturenStruktur
             wahlBoote.anzahlZuWaehlen = 1;
             wahlBoote.talentWerte = new int[1];
             wahlBoote.talentWerte[0] = 1;
-            wahlBoote.talente = new List<TalentName>() 
+            wahlBoote.talente = new List<talentIdentifier>() 
             { 
-                TalentName.BooteFahren, TalentName.Seefahrt,
+                new talentIdentifier(){ name = TalentName.BooteFahren},
+                new talentIdentifier(){ name = TalentName.Seefahrt},
             };
             subKeine.wahlen.Add(wahlBoote);
 
@@ -5349,12 +6209,22 @@ namespace kulturenStruktur
             wahlHandwerk.anzahlZuWaehlen = 1;
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 1;
-            wahlHandwerk.talente = new List<TalentName>() 
+            wahlHandwerk.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Abrichten, TalentName.Ackerbau, TalentName.Brauer, TalentName.FischenUndAngeln, 
-                TalentName.Fleischer, TalentName.GerberUndKuerschner, TalentName.Grobschmied, TalentName.Kochen,
-                TalentName.Seiler, TalentName.StoffeFaerben, TalentName.Toepfern, TalentName.Viehzucht,
-                TalentName.Webkunst, TalentName.Zimmermann,
+                new talentIdentifier(){ name = TalentName.Abrichten},
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Brauer},
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln},
+                new talentIdentifier(){ name = TalentName.Fleischer},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Kochen},
+                new talentIdentifier(){ name = TalentName.Seiler},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben},
+                new talentIdentifier(){ name = TalentName.Toepfern},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
+                new talentIdentifier(){ name = TalentName.Webkunst},
+                new talentIdentifier(){ name = TalentName.Zimmermann},
             };
             subKeine.wahlen.Add(wahlHandwerk);
 
@@ -5397,22 +6267,23 @@ namespace kulturenStruktur
                 new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Sozialstatus, wert = 7},
             };
 
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Bogen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +2 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Zechen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Heraldik, wert = +2 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Hauswirtschaft, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Bogen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Zechen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Heraldik, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Hauswirtschaft, wert = +1 });
 
             // Weitere Wahl:
             var wahlSchwerter = new wahlmoeglichkeiten();
             wahlSchwerter.anzahlZuWaehlen = 1;
             wahlSchwerter.talentWerte = new int[1];
             wahlSchwerter.talentWerte[0] = 1;
-            wahlSchwerter.talente = new List<TalentName>() 
+            wahlSchwerter.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Schwerter, TalentName.Hiebwaffen,
+                new talentIdentifier(){ name = TalentName.Schwerter},
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
             };
             wahlSchwerter.identifier = "Schwerter";
             subAdel.wahlen.Add(wahlSchwerter);
@@ -5427,12 +6298,12 @@ namespace kulturenStruktur
             subKueste.name = SubKulturName.Kuestengebiete;
             subKueste.generierungskosten = 3;
 
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +2 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +2 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +1 });
 
             return subKueste;
         }
@@ -5448,21 +6319,31 @@ namespace kulturenStruktur
                 StadtName.Firunen, StadtName.Norburg, StadtName.Notmark, StadtName.Ouvenmas, StadtName.Rodebrannt,
             };
 
-            subLand.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Bogen, wert = +1 });
-            subLand.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Infanteriewaffen, wert = +1 });
-            subLand.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subLand.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
+            subLand.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Bogen, wert = +1 });
+            subLand.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Infanteriewaffen, wert = +1 });
+            subLand.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subLand.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
 
             // Zusätzliche Wahl:
             var wahlHandwerk = new wahlmoeglichkeiten();
             wahlHandwerk.anzahlZuWaehlen = 1;
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 2;
-            wahlHandwerk.talente = new List<TalentName>() 
+            wahlHandwerk.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Abrichten, TalentName.Brauer, TalentName.Fleischer, TalentName.GerberUndKuerschner,
-                TalentName.Grobschmied, TalentName.Kochen, TalentName.Seiler, TalentName.StoffeFaerben,
-                TalentName.Toepfern, TalentName.Viehzucht, TalentName.Webkunst, TalentName.Winzer, TalentName.Zimmermann,
+                new talentIdentifier(){ name = TalentName.Abrichten},
+                new talentIdentifier(){ name = TalentName.Brauer},
+                new talentIdentifier(){ name = TalentName.Fleischer},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Kochen},
+                new talentIdentifier(){ name = TalentName.Seiler},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben},
+                new talentIdentifier(){ name = TalentName.Toepfern},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
+                new talentIdentifier(){ name = TalentName.Webkunst},
+                new talentIdentifier(){ name = TalentName.Winzer},
+                new talentIdentifier(){ name = TalentName.Zimmermann},
             };
             wahlHandwerk.identifier = "Handwerk";
             subLand.wahlen.Add(wahlHandwerk);
@@ -5521,25 +6402,25 @@ namespace kulturenStruktur
             subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wurfmesser, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Tanzen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Etikette, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Wurfmesser, wert = +1},
+                new talentIdentifier{ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier{ name = TalentName.Zechen, wert = +2},
+                new talentIdentifier{ name = TalentName.Etikette, wert = +1},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +2},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ackerbau, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Kochen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schneidern, wert = +1},
+                new talentIdentifier{ name = TalentName.Ackerbau, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +2},
+                new talentIdentifier{ name = TalentName.Kochen, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Schneidern, wert = +1},
             };
 
             // Muttersprache:
@@ -5589,12 +6470,12 @@ namespace kulturenStruktur
             subTesh.generierungskosten = 10;
 
             // Mods:
-            subTesh.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +2 });
-            subTesh.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = +2 });
-            subTesh.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
-            subTesh.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = +1 });
-            subTesh.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Abrichten, wert = +2 });
-            subTesh.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FahrzeugLenken, wert = +2 });
+            subTesh.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = +2 });
+            subTesh.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = +2 });
+            subTesh.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Fallenstellen, wert = +1 });
+            subTesh.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = +1 });
+            subTesh.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Abrichten, wert = +2 });
+            subTesh.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FahrzeugLenken, wert = +2 });
 
             // Außerdem gibt's die SF Steppenkundig dazu:
             subTesh.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = SFSubNamen.Steppenkundig });
@@ -5609,18 +6490,19 @@ namespace kulturenStruktur
             subKueste.generierungskosten = 8;
 
             // Mods:
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +2 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +2 });
 
             // Neue Wahl: seefahrt / boote fahren:
             var wahlBoote = new wahlmoeglichkeiten();
             wahlBoote.anzahlZuWaehlen = 1;
             wahlBoote.talentWerte = new int[1];
             wahlBoote.talentWerte[0] = 2;
-            wahlBoote.talente = new List<TalentName>() 
+            wahlBoote.talente = new List<talentIdentifier>() 
             { 
-                TalentName.BooteFahren, TalentName.Seefahrt,
+                new talentIdentifier(){ name = TalentName.BooteFahren},
+                new talentIdentifier(){ name = TalentName.Seefahrt},
             };
             subKueste.wahlen.Add(wahlBoote);
 
@@ -5649,9 +6531,9 @@ namespace kulturenStruktur
             subGebirge.generierungskosten = 7;
 
             // Mods:
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +1 });
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = +1 });
 
             // Die SFs werden zurück gesetzt:
             subGebirge.sonderfertigkeiten = new List<sfIdentifier>() 
@@ -5689,24 +6571,25 @@ namespace kulturenStruktur
             };
 
             //  Die Speere fliegen raus. Dafür gibt's Schwerter oder Hiebwaffen als Wahl!
-            subAdel.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Speere, wert = +1 });
+            subAdel.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Speere, wert = +1 });
             var wahlSchwerter = new wahlmoeglichkeiten();
             wahlSchwerter.anzahlZuWaehlen = 1;
             wahlSchwerter.talentWerte = new int[1];
             wahlSchwerter.talentWerte[0] = 1;
-            wahlSchwerter.talente = new List<TalentName>() 
+            wahlSchwerter.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Schwerter, TalentName.Hiebwaffen,
+                new talentIdentifier(){ name = TalentName.Schwerter},
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
             };
             wahlSchwerter.identifier = "Schwerter";
             subAdel.wahlen.Add(wahlSchwerter);
 
             // Zu noch folgende Mods:
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +2 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Heraldik, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = +2 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Heraldik, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +1 });
 
             // Und die Kusliker Zeichen dazu:
             subAdel.schriften = new List<SchriftenIdentifier>() { new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = 2 }, };
@@ -5721,31 +6604,32 @@ namespace kulturenStruktur
             subStadt.generierungskosten = 6;
 
             // Der Bonus auf Wurfspeere fällt heraus:
-            subStadt.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wurfspeere, wert = +1 });
+            subStadt.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Wurfspeere, wert = +1 });
             // Dafür gibt es Armbrust oder Bogen +1 als Wahl:
             var wahlArmbrust = new wahlmoeglichkeiten();
             wahlArmbrust.anzahlZuWaehlen = 1;
             wahlArmbrust.talentWerte = new int[1];
             wahlArmbrust.talentWerte[0] = 1;
-            wahlArmbrust.talente = new List<TalentName>() 
+            wahlArmbrust.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Armbrust, TalentName.Bogen,
+                new talentIdentifier(){ name = TalentName.Armbrust},
+                new talentIdentifier(){ name = TalentName.Bogen},
             };
             wahlArmbrust.identifier = "Armbrust";
             subStadt.wahlen.Add(wahlArmbrust);
 
             // Der Bonus auf Speere fällt hinaus:
-            subStadt.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Speere, wert = +1 });
+            subStadt.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Speere, wert = +1 });
             // Dafür gibt es Infanteriewaffen dazu:
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Infanteriewaffen, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Infanteriewaffen, wert = +1 });
 
             // Fallenstellen wird entfernt:
-            subStadt.talentModifikatoren.Remove(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
+            subStadt.talentModifikatoren.Remove(new talentIdentifier { name = TalentName.Fallenstellen, wert = +1 });
 
             // Und die folgenden Mods:
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subStadt.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = -1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = -1 });
 
             // Moegliche Städte:
             subStadt.moeglicheStaedte = new List<StadtName>()
@@ -5817,31 +6701,31 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Edelhandwerker);
 
             // Jetzt die Talente:
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Speere, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wurfspeere, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schleichen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SichVerstecken, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Fallenstellen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Orientierung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Speere, wert = +1},
+                new talentIdentifier{ name = TalentName.Wurfspeere, wert = +1},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier{ name = TalentName.Zechen, wert = +1},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier{ name = TalentName.Fallenstellen, wert = +1},
+                new talentIdentifier{ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +2},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
 
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ackerbau, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schneidern, wert = +1},
+                new talentIdentifier{ name = TalentName.Ackerbau, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +2},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Schneidern, wert = +1},
             };
 
             // Muttersprache:
@@ -5856,11 +6740,21 @@ namespace kulturenStruktur
             wahlHandwerk.anzahlZuWaehlen = 1;
             wahlHandwerk.talentWerte = new int[1];
             wahlHandwerk.talentWerte[0] = 1;
-            wahlHandwerk.talente = new List<TalentName>() 
+            wahlHandwerk.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Abrichten, TalentName.Brauer, TalentName.Fleischer, TalentName.GerberUndKuerschner,
-                TalentName.Grobschmied, TalentName.Kochen, TalentName.Seiler, TalentName.StoffeFaerben,
-                TalentName.Toepfern, TalentName.Viehzucht, TalentName.Webkunst, TalentName.Winzer, TalentName.Zimmermann,
+                new talentIdentifier(){ name = TalentName.Abrichten},
+                new talentIdentifier(){ name = TalentName.Brauer},
+                new talentIdentifier(){ name = TalentName.Fleischer},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Kochen},
+                new talentIdentifier(){ name = TalentName.Seiler},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben},
+                new talentIdentifier(){ name = TalentName.Toepfern},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
+                new talentIdentifier(){ name = TalentName.Webkunst},
+                new talentIdentifier(){ name = TalentName.Winzer},
+                new talentIdentifier(){ name = TalentName.Zimmermann},
             };
             wahlHandwerk.identifier = "Handwerk";
             subKeine.wahlen.Add(wahlHandwerk);
@@ -5906,13 +6800,13 @@ namespace kulturenStruktur
                 new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = -1},
             };
 
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Selbstbeherrschung, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SichVerstecken, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Sinnesschaerfe, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Zechen, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = -1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Magiekunde, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SichVerstecken, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Zechen, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = -1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Magiekunde, wert = +1 });
 
             // Wir müssen noch die Sprachenauswahl erneuern!
             // Holen wir uns zunächst die Sprachauswahl:
@@ -5951,17 +6845,17 @@ namespace kulturenStruktur
             // Wir ändern nur das, was sich unterscheidet:
             subJilas.name = SubKulturName.Jilaskan;
             subJilas.generierungskosten = 4;
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Dolche, wert = -1 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Hiebwaffen, wert = +1 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Selbstbeherrschung, wert = +2 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Singen, wert = +2 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Zechen, wert = -1 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = -1 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = +2 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Pflanzenkunde, wert = +1 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +2 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Tierkunde, wert = +1 });
-            subJilas.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.HeilkundeGift, wert = +1 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Dolche, wert = -1 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Hiebwaffen, wert = +1 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Selbstbeherrschung, wert = +2 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Singen, wert = +2 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Zechen, wert = -1 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = -1 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = +2 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Pflanzenkunde, wert = +1 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +2 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Tierkunde, wert = +1 });
+            subJilas.talentModifikatoren.Add(new talentIdentifier { name = TalentName.HeilkundeGift, wert = +1 });
 
             // Die Wahl der zweiten Sprache fällt heraus, daher müssen wir die Wahlen erneuern!
             // Wir müssen noch die Sprachenauswahl erneuern!
@@ -5992,11 +6886,11 @@ namespace kulturenStruktur
             subAdel.wahlen[0].loescheEintrag(subAdel.wahlen, "Infi");
 
             // Talente:
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Reiten, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Heraldik, wert = +1 });
-            subAdel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechtskunde, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Reiten, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Heraldik, wert = +1 });
+            subAdel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechtskunde, wert = +1 });
 
             // Außerdem gibt's die Kusliker Zeichen dazu:
             subAdel.schriften = new List<SchriftenIdentifier>() { new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = 2 }, };
@@ -6009,15 +6903,15 @@ namespace kulturenStruktur
             // Wir ändern nur das, was sich unterscheidet:
             subFern.name = SubKulturName.FernDerZivilisation;
             subFern.generierungskosten = 4;
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = -1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = -1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Faehrtensuchen, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Orientierung, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wettervorhersage, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +2 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Pflanzenkunde, wert = +1 });
-            subFern.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Tierkunde, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = -1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = -1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Faehrtensuchen, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Orientierung, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wettervorhersage, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +2 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Pflanzenkunde, wert = +1 });
+            subFern.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Tierkunde, wert = +1 });
 
             // Bei den Auswahlen ändern sich die möglichen Sprachen. Also fügen wir die neuen Sprachen hinzu:
             var myIndex = subFern.wahlen.FindIndex(FindSprache);
@@ -6039,9 +6933,9 @@ namespace kulturenStruktur
             // Wir ändern nur das, was sich unterscheidet:
             subGebirge.name = SubKulturName.Gebirge;
             subGebirge.generierungskosten = 1;
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Athletik, wert = +1 });
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Klettern, wert = +1 });
-            subGebirge.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Athletik, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
+            subGebirge.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +1 });
 
             return subGebirge;
         }
@@ -6051,10 +6945,10 @@ namespace kulturenStruktur
             // Wir ändern nur das, was sich unterscheidet:
             subWeiden.name = SubKulturName.RegionenWeidenUndGreifenfurt;
             subWeiden.generierungskosten = 2;
-            subWeiden.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Selbstbeherrschung, wert = +1 });
-            subWeiden.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Fallenstellen, wert = +1 });
-            subWeiden.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = +1 });
-            subWeiden.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Viehzucht, wert = +1 });
+            subWeiden.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subWeiden.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Fallenstellen, wert = +1 });
+            subWeiden.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = +1 });
+            subWeiden.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Viehzucht, wert = +1 });
 
             return subWeiden;
         }
@@ -6065,11 +6959,11 @@ namespace kulturenStruktur
             subHandel.name = SubKulturName.AnWichtigerHandelsrouteOderReichsstrasse;
             subHandel.generierungskosten = 2;
 
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Etikette, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SagenUndLegenden, wert = +1 });
-            subHandel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FahrzeugLenken, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Etikette, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SagenUndLegenden, wert = +1 });
+            subHandel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FahrzeugLenken, wert = +1 });
 
             // Es darf noch eine beliebige andere Sprache gewählt werden ("Handelssprache").
             // TOCHECK: Ich gehe davon aus, dass damit eine weitere Sprache aus der Kategorie der Muttersprachen gemeint ist!
@@ -6097,12 +6991,12 @@ namespace kulturenStruktur
             subKueste.name = SubKulturName.KuestengebieteOderAnGrossenFluessen;
             subKueste.generierungskosten = 3;
 
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = +2 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
-            subKueste.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = +2 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +1 });
 
             return subKueste;
         }
@@ -6160,27 +7054,27 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Edelhandwerker);
 
             // Nun folgen die Talentboni:
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Hiebwaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ringen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Athletik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Selbstbeherrschung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Zechen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Menschenkenntnis, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Faehrtensuchen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wettervorhersage, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Wildnisleben, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.GoetterUndKulte, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.SagenUndLegenden, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Ackerbau, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.HeilkundeWunden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Holzbearbeitung, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Lederarbeiten, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){ name = TalentName.Schneidern, wert = +1},
+                new talentIdentifier{ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier{ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier{ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier{ name = TalentName.Selbstbeherrschung, wert = +1},
+                new talentIdentifier{ name = TalentName.Zechen, wert = +1},
+                new talentIdentifier{ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier{ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{ name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier{ name = TalentName.Wettervorhersage, wert = +1},
+                new talentIdentifier{ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier{ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier{ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{ name = TalentName.Ackerbau, wert = +1},
+                new talentIdentifier{ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier{ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier{ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier{ name = TalentName.Schneidern, wert = +1},
             };
 
             // Jetzt die Auswahlmöglichkeiten:
@@ -6191,7 +7085,11 @@ namespace kulturenStruktur
             wahlInfi.anzahlZuWaehlen = 1;
             wahlInfi.talentWerte = new int[1];
             wahlInfi.talentWerte[0] = 1;
-            wahlInfi.talente = new List<TalentName>() { TalentName.Infanteriewaffen, TalentName.ZweihandHiebwaffen };
+            wahlInfi.talente = new List<talentIdentifier>() 
+            { 
+                new talentIdentifier(){ name = TalentName.Infanteriewaffen},
+                new talentIdentifier(){ name = TalentName.ZweihandHiebwaffen},
+            };
             wahlInfi.identifier = "Infi";
             subKeine.wahlen.Add(wahlInfi);
 
@@ -6201,12 +7099,21 @@ namespace kulturenStruktur
             wahlHandwerk.talentWerte = new int[2];
             wahlHandwerk.talentWerte[0] = 2;
             wahlHandwerk.talentWerte[1] = 1;
-            wahlHandwerk.talente = new List<TalentName>() 
+            wahlHandwerk.talente = new List<talentIdentifier>() 
             { 
-                TalentName.Abrichten, TalentName.Brauer, TalentName.Fleischer, TalentName.GerberUndKuerschner,
-                TalentName.Grobschmied, TalentName.Kochen, TalentName.Seiler, TalentName.StoffeFaerben,
-                TalentName.Toepfern, TalentName.Viehzucht, TalentName.Webkunst, TalentName.Winzer,
-                TalentName.Zimmermann,
+                new talentIdentifier(){ name = TalentName.Abrichten},
+                new talentIdentifier(){ name = TalentName.Brauer},
+                new talentIdentifier(){ name = TalentName.Fleischer},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Kochen},
+                new talentIdentifier(){ name = TalentName.Seiler},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben},
+                new talentIdentifier(){ name = TalentName.Toepfern},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
+                new talentIdentifier(){ name = TalentName.Webkunst},
+                new talentIdentifier(){ name = TalentName.Winzer},
+                new talentIdentifier(){ name = TalentName.Zimmermann},
             };
             subKeine.wahlen.Add(wahlHandwerk);
             // Nun die Wahl zwischen einer von vier Sprachen:
@@ -6247,13 +7154,13 @@ namespace kulturenStruktur
                 new GenericListenNameWertPaar<EigenschaftenName>(){name = EigenschaftenName.Mut, wert = -1},
             };
 
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Selbstbeherrschung, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.SichVerstecken, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Sinnesschaerfe, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Zechen, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = -1 });
-            subFluecht.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Magiekunde, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.SichVerstecken, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Zechen, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = -1 });
+            subFluecht.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Magiekunde, wert = +1 });
 
             // Zur Auswahl der Sprachen kommt etwas hinzu:
             // Holen wir uns zunächst die Sprachauswahl:
@@ -6293,10 +7200,10 @@ namespace kulturenStruktur
             subKanne.generierungskosten = 3;
 
             // Zuerst die Talente:
-            subKanne.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subKanne.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subKanne.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subKanne.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Rechnen, wert = +1 });
+            subKanne.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subKanne.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subKanne.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subKanne.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Rechnen, wert = +1 });
 
 
             // Bei den Wahlmöglichkeiten wird die Auswahl der Sprachen entfernt,
@@ -6306,9 +7213,11 @@ namespace kulturenStruktur
 
             // Zu den Auswahlen kommt eine hinzu:
             var wahlTalentHandwerk = new wahlmoeglichkeiten();
-            wahlTalentHandwerk.talente = new List<TalentName>()
+            wahlTalentHandwerk.talente = new List<talentIdentifier>()
             {
-                TalentName.BooteFahren, TalentName.FischenUndAngeln, TalentName.Kochen,
+                new talentIdentifier(){ name = TalentName.BooteFahren},
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln},
+                new talentIdentifier(){ name = TalentName.Kochen},
             };
             wahlTalentHandwerk.anzahlZuWaehlen = 1;
             wahlTalentHandwerk.talentWerte = new int[1];
@@ -6346,27 +7255,28 @@ namespace kulturenStruktur
             };
 
             // Nun noch die Talentmods: Wir müssen leider alles überschreiben...
-            subAdel.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subAdel.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Infanteriewaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Etikette, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Menschenkenntnis, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.GoetterUndKulte, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Heraldik, wert = +3},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Rechtskunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{name = TalentName.Infanteriewaffen, wert = +1},
+                new talentIdentifier{name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{name = TalentName.Zechen, wert = +1},
+                new talentIdentifier{name = TalentName.Etikette, wert = +3},
+                new talentIdentifier{name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier{name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier{name = TalentName.Heraldik, wert = +3},
+                new talentIdentifier{name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{name = TalentName.Rechtskunde, wert = +1},
+                new talentIdentifier{name = TalentName.SagenUndLegenden, wert = +2},
             };
 
             // Die Wahlmöglichkeiten werden ergänzt um eine Wahl:
             var wahlTalentKampf2 = new wahlmoeglichkeiten();
-            wahlTalentKampf2.talente = new List<TalentName>()
+            wahlTalentKampf2.talente = new List<talentIdentifier>()
             {
-                TalentName.Fechtwaffen, TalentName.Schwerter,
+                new talentIdentifier(){ name = TalentName.Fechtwaffen},
+                new talentIdentifier(){ name = TalentName.Schwerter},
             };
             wahlTalentKampf2.anzahlZuWaehlen = 1;
             wahlTalentKampf2.talentWerte = new int[1];
@@ -6384,9 +7294,9 @@ namespace kulturenStruktur
             // Wir ändern nur das, was sich unterscheidet!
             subSiedler.name = SubKulturName.SiedlerstaedteDesNordens;
             subSiedler.generierungskosten = 1;
-            subSiedler.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Wildnisleben, wert = 1 });
-            subSiedler.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ackerbau, wert = 1 });
-            subSiedler.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Viehzucht, wert = 1 });
+            subSiedler.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Wildnisleben, wert = 1 });
+            subSiedler.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ackerbau, wert = 1 });
+            subSiedler.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Viehzucht, wert = 1 });
 
             // Außerdem ändern sich die Sprachen, aus denen man wählen darf. Wir überschrieben daher die
             // die Wahlsprache nachdem wir sie gelöscht haben:
@@ -6418,10 +7328,10 @@ namespace kulturenStruktur
             // Wir ändern nur das, was sich unterscheidet!
             subTempel.name = SubKulturName.StaedteMitWichtigemTempelOderPilgerstaette;
             subTempel.generierungskosten = 2;
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = 2 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = 1 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geschichtswissen, wert = 1 });
-            subTempel.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.GoetterUndKulte, wert = 2 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = 2 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = 1 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geschichtswissen, wert = 1 });
+            subTempel.talentModifikatoren.Add(new talentIdentifier { name = TalentName.GoetterUndKulte, wert = 2 });
 
             // Außerdem gibt es noch eine beliebige Sprache dazu!
             // Das bedeutet im Klartext: Aus der ursprünglichen Sprachenliste der Hauptkukur mit
@@ -6456,14 +7366,14 @@ namespace kulturenStruktur
             // Wir ändern nur das, was sich unterscheidet!
             subHafen.name = SubKulturName.HafenstaedteUndStaedteAnGroessenFluessen;
             subHafen.generierungskosten = 3;
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Schwimmen, wert = 1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Menschenkenntnis, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Ueberreden, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.FischenUndAngeln, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Geographie, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.BooteFahren, wert = +1 });
-            subHafen.talentModifikatoren.Add(new GenericListenNameWertPaar<TalentName>() { name = TalentName.Seefahrt, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Schwimmen, wert = 1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Menschenkenntnis, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ueberreden, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.FischenUndAngeln, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Geographie, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
+            subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +1 });
 
             subHafen.moeglicheStaedte = new List<StadtName>()
             {
@@ -6523,21 +7433,21 @@ namespace kulturenStruktur
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
             subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
 
-            subKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Dolche, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Infanteriewaffen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Raufen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Zechen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Etikette, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Gassenwissen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Menschenkenntnis, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Ueberreden, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.GoetterUndKulte, wert = +2},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Heraldik, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Rechnen, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.Rechtskunde, wert = +1},
-                new GenericListenNameWertPaar<TalentName>(){name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier{name = TalentName.Dolche, wert = +1},
+                new talentIdentifier{name = TalentName.Infanteriewaffen, wert = +1},
+                new talentIdentifier{name = TalentName.Raufen, wert = +1},
+                new talentIdentifier{name = TalentName.Zechen, wert = +1},
+                new talentIdentifier{name = TalentName.Etikette, wert = +1},
+                new talentIdentifier{name = TalentName.Gassenwissen, wert = +1},
+                new talentIdentifier{name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier{name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier{name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier{name = TalentName.Heraldik, wert = +1},
+                new talentIdentifier{name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier{name = TalentName.Rechtskunde, wert = +1},
+                new talentIdentifier{name = TalentName.SagenUndLegenden, wert = +2},
             };
 
             // Wahl der Muttersprache:
@@ -6548,9 +7458,11 @@ namespace kulturenStruktur
 
             // Beginnen wir mit Der Wahl der Kampftalente:
             var wahlTalentKampf = new wahlmoeglichkeiten();
-            wahlTalentKampf.talente = new List<TalentName>()
+            wahlTalentKampf.talente = new List<talentIdentifier>()
             {
-                TalentName.Armbrust, TalentName.Bogen, TalentName.Wurfmesser,
+                new talentIdentifier(){ name = TalentName.Armbrust},
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Wurfmesser},
             };
             wahlTalentKampf.identifier = "ArmburstWahl";
             wahlTalentKampf.anzahlZuWaehlen = 1;
@@ -6560,9 +7472,10 @@ namespace kulturenStruktur
 
             // Nun die Wahl aus dem Handwerksbereich:
             var wahlHandwerk = new wahlmoeglichkeiten();
-            wahlHandwerk.talente = new List<TalentName>()
+            wahlHandwerk.talente = new List<talentIdentifier>()
             {
-                TalentName.Ackerbau, TalentName.Hauswirtschaft,
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Hauswirtschaft},
             };
             wahlHandwerk.identifier = "AckerbauWahl";
             wahlHandwerk.anzahlZuWaehlen = 1;
@@ -6708,7 +7621,7 @@ namespace kulturenStruktur
         /// <summary>
         /// Einthält eine Liste mit allen fixen Talentboni (Name, Modifikator)
         /// </summary>
-        public List<GenericListenNameWertPaar<TalentName>> talentModifikatoren;
+        public List<talentIdentifier> talentModifikatoren;
 
         /// <summary>
         /// Sprachen, die mit der Kultur verknüpft sind:
@@ -6751,11 +7664,21 @@ namespace kulturenStruktur
         /// </summary>
         public List<ZauberName> moeglicheUebernatuerlicheBegabungen;
 
+        /// <summary>
+        /// Mögliche Hauszauber (z.B. Elfen)
+        /// </summary>
+        public List<ZauberIdentifier> moeglicheHauszauber;
+
+        /// <summary>
+        /// Mögliche generelle Zauber.
+        /// </summary>
+        public List<ZauberIdentifier> moeglicheZauber;
+
     };
 
 
     /// <summary>
-    /// Eine Struktur, in der die Voraussetzungen einer SF aufgelistet sein können:
+    /// Eine Struktur, in der die Voraussetzungen einer Subkultur aufgelistet sein können:
     /// </summary>
     public struct subkulturVoraussetzungen
     {
@@ -6766,7 +7689,7 @@ namespace kulturenStruktur
         /// <summary>
         /// Talentwertvoraussetzung für Profession
         /// </summary>
-        public List<GenericListenNameWertPaar<TalentName>> talentwerte;
+        public List<talentIdentifier> talentwerte;
         /// <summary>
         /// SF-Voraussetzung für Profession
         /// </summary>
@@ -6783,4 +7706,82 @@ namespace kulturenStruktur
         /// </summary>
         public List<VorteilsIdentifier> vorteile;
     };
+
+
+    /// <summary>
+    /// Enthält Listen von Zauberauswahlen (z.B. für Elfensippen, etc.)
+    /// </summary>
+    public class zauberVorauswahlen
+    {
+        /// <summary>
+        /// Gibt eine List mit allen möglichen Hauszaubern der Elfen zurück!
+        /// </summary>
+        /// <returns></returns>
+        public List<ZauberIdentifier> GetElfenHauszauber()
+        { 
+            var elfenHauszauber = new List<ZauberIdentifier>()
+            {
+                new ZauberIdentifier(){ name = ZauberName.Abveneum},
+                new ZauberIdentifier(){ name = ZauberName.Adlerauge},
+                new ZauberIdentifier(){ name = ZauberName.Adlerschwinge},
+                new ZauberIdentifier(){ name = ZauberName.Aeolitus},
+                new ZauberIdentifier(){ name = ZauberName.Armatrutz},
+                new ZauberIdentifier(){ name = ZauberName.Attributo},
+                new ZauberIdentifier(){ name = ZauberName.Axxeleratus},
+                new ZauberIdentifier(){ name = ZauberName.Balsam},
+                new ZauberIdentifier(){ name = ZauberName.BandUndFessel},
+                new ZauberIdentifier(){ name = ZauberName.Bannbaladin},
+                new ZauberIdentifier(){ name = ZauberName.Baerenruhe},
+                new ZauberIdentifier(){ name = ZauberName.BeherrschungBrechen},
+                new ZauberIdentifier(){ name = ZauberName.BewegungStoeren},
+                new ZauberIdentifier(){ name = ZauberName.BlickAufsWesen},
+                new ZauberIdentifier(){ name = ZauberName.BlickInDieGedanken},
+                new ZauberIdentifier(){ name = ZauberName.BlitzDichFind},
+                new ZauberIdentifier(){ name = ZauberName.Chamaelioni},
+                new ZauberIdentifier(){ name = ZauberName.EinflussBannen},
+                new ZauberIdentifier(){ name = ZauberName.ExposamiLebenskraft},
+                new ZauberIdentifier(){ name = ZauberName.FalkenaugeMeisterschuss},
+                new ZauberIdentifier(){ name = ZauberName.FlimFlam},
+                new ZauberIdentifier(){ name = ZauberName.Fulminictus},
+                new ZauberIdentifier(){ name = ZauberName.Gedankenbilder},
+                new ZauberIdentifier(){ name = ZauberName.Haselbusch},
+                new ZauberIdentifier(){ name = ZauberName.HellsichtTrueben},
+                new ZauberIdentifier(){ name = ZauberName.HilfreicheTatze},
+                new ZauberIdentifier(){ name = ZauberName.KlarumPurum},
+                new ZauberIdentifier(){ name = ZauberName.Kroetensprung},
+                new ZauberIdentifier(){ name = ZauberName.LeibDerErde},
+                new ZauberIdentifier(){ name = ZauberName.Motoricus},
+                new ZauberIdentifier(){ name = ZauberName.Movimento},
+                new ZauberIdentifier(){ name = ZauberName.Nebelwand},
+                new ZauberIdentifier(){ name = ZauberName.Objectovoco},
+                new ZauberIdentifier(){ name = ZauberName.Odem},
+                new ZauberIdentifier(){ name = ZauberName.Penetrizzel},
+                new ZauberIdentifier(){ name = ZauberName.PestilenzErspueren},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Luft},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Humus},
+                new ZauberIdentifier(){ name = ZauberName.Plumbumbarum},
+                new ZauberIdentifier(){ name = ZauberName.Respondami},
+                new ZauberIdentifier(){ name = ZauberName.RuheKoerper},
+                new ZauberIdentifier(){ name = ZauberName.Sanftmut},
+                new ZauberIdentifier(){ name = ZauberName.SeidenzungeElfenwort},
+                new ZauberIdentifier(){ name = ZauberName.Sensibar},
+                new ZauberIdentifier(){ name = ZauberName.Silentium},
+                new ZauberIdentifier(){ name = ZauberName.Solidirid},
+                new ZauberIdentifier(){ name = ZauberName.Somnigravis},
+                new ZauberIdentifier(){ name = ZauberName.SpurlosTrittlos},
+                new ZauberIdentifier(){ name = ZauberName.Tiergedanken},
+                new ZauberIdentifier(){ name = ZauberName.Traumgestalt},
+                new ZauberIdentifier(){ name = ZauberName.Unitatio},
+                new ZauberIdentifier(){ name = ZauberName.VerstaendigungStoeren},
+                new ZauberIdentifier(){ name = ZauberName.Visibili},
+                new ZauberIdentifier(){ name = ZauberName.Wasseratem},
+                new ZauberIdentifier(){ name = ZauberName.WeisseMaehn},
+                new ZauberIdentifier(){ name = ZauberName.Wellenlauf},
+                new ZauberIdentifier(){ name = ZauberName.Windstille},
+                new ZauberIdentifier(){ name = ZauberName.Zaubernahrung},
+            };
+            return elfenHauszauber;
+        }
+    };
+
 }
