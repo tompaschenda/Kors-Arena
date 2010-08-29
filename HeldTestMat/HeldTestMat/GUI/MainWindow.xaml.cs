@@ -22,11 +22,14 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+            //var w = new NeuerHeldWindow();
+            //w.ShowDialog();
         }
 
         private void NeuerHeld_Click(object sender, RoutedEventArgs e)
         {
-
+            var w = new NeuerHeldWindow();
+            w.Show();
         }
 
         private void Beenden_Click(object sender, RoutedEventArgs e)

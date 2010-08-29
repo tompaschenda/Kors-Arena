@@ -30,7 +30,7 @@ namespace heldenStruktur
         /// <summary>
         /// Das Geschlecht eines Helden. Entweder männlich oder weiblich.
         /// </summary>
-        public string geschlecht;
+        public GeschlechtNamen geschlecht;
         /// <summary>
         /// Gibt an, wie viele AP ein Held bereits ausgegeben hat, bzw. wie viele AP
         /// ein Held noch ausgeben kann.
@@ -160,7 +160,7 @@ namespace heldenStruktur
             nachname = "Kartakis";
             titel = "";
             berechneNamen();
-            geschlecht = "männlich";
+            geschlecht = GeschlechtNamen.maennlich;
             apAusgegeben = 0;
             apUebrig = 0;
             art = "Mensch";
