@@ -9,16 +9,17 @@
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="600"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TabControl Grid.Column="0" Grid.Row="0" Height="300" Width="300" HorizontalAlignment="Left" Name="geschlechtTab" VerticalAlignment="Top" >
-            <TabItem Header="Geschlecht" Name="GeschlechtTab" >
-                <Controls:GeschlechtControl/>
+        <TabControl Grid.Column="0" Grid.Row="0" Height="300" Width="600" HorizontalAlignment="Left" Name="geschlechtTab" VerticalAlignment="Top" >
+            <TabItem Header="Basisdaten" Name="BasisdatenTab" >
+                <Controls:BasisdatenControl/>
             </TabItem>
             <TabItem Header="Kultur" Name="KulturTab" >
                 <Controls:KulturControl/>
             </TabItem>
         </TabControl>
         <Button Content="OK" Grid.Row="1" Height="23"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Name="button1" Width="75" />
+        
     </Grid>
 </Window>

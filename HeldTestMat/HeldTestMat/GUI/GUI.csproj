@@ -8,7 +8,7 @@
     <ProjectGuid>{44282919-DBDD-4155-B63E-F9F04B3FD1EF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WpfApplication1</RootNamespace>
+    <RootNamespace>GUI</RootNamespace>
     <AssemblyName>GUI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -55,9 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BasisdatenControl.xaml.cs">
+      <DependentUpon>BasisdatenControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EnumComboBox.cs" />
     <Compile Include="GeschlechtControl.xaml.cs">
       <DependentUpon>GeschlechtControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HeaderControl.xaml.cs">
+      <DependentUpon>HeaderControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="KulturControl.xaml.cs">
       <DependentUpon>KulturControl.xaml</DependentUpon>
@@ -65,7 +71,22 @@
     <Compile Include="NeuerHeldWindow.xaml.cs">
       <DependentUpon>NeuerHeldWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PortraitControl.xaml.cs">
+      <DependentUpon>PortraitControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="BasisdatenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DSAStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GeschlechtControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,6 +107,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NeuerHeldWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PortraitControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
