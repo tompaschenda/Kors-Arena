@@ -7,13 +7,16 @@
              mc:Ignorable="d" >
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Name="border1" VerticalAlignment="Top">
-            <Controls:HeaderControl></Controls:HeaderControl>
+        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Stretch" Name="border1" VerticalAlignment="Top">
+            <Controls:HeaderControl HorizontalAlignment="Stretch" VerticalAlignment="Top"></Controls:HeaderControl>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Silver" MinHeight="10" BorderThickness="1" HorizontalAlignment="Stretch" Name="border2" VerticalAlignment="Stretch">
         </Border>
     </Grid>
 </UserControl>

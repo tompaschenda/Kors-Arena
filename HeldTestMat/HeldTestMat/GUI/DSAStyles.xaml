@@ -3,11 +3,45 @@
     <Style x:Key="DSAFontStyle" >
         <Setter Property="Control.FontFamily" Value="Avalon Quest" />
         <Setter Property="Control.FontSize" Value="18" />
+        <Setter Property="Control.Background" Value="Transparent" />
     </Style>
     <Style x:Key="DSAFontStyleBold" >
         <Setter Property="Control.FontFamily" Value="Avalon Quest" />
         <Setter Property="Control.FontSize" Value="18" />
         <Setter Property="Control.FontWeight" Value="Bold" />
+        
     </Style>
-    
+
+    <Style x:Key="TabHeaderStyle" TargetType="{x:Type TabItem}">
+        <Setter Property="Control.FontFamily" Value="Avalon Quest" />
+        <Setter Property="Control.FontSize" Value="18" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid>
+                        <Border
+             Name="Border"
+             Background="LightBlue"
+             BorderBrush="Black"
+             BorderThickness="1,1,1,1" >
+                            <ContentPresenter x:Name="ContentSite"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               ContentSource="Header"
+               Margin="12,2,12,2"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="LightBlue" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="LightGray" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

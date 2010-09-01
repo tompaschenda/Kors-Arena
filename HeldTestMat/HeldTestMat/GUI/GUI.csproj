@@ -58,6 +58,9 @@
     <Compile Include="BasisdatenControl.xaml.cs">
       <DependentUpon>BasisdatenControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlTesterWindow.xaml.cs">
+      <DependentUpon>ControlTesterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EnumComboBox.cs" />
     <Compile Include="GeschlechtControl.xaml.cs">
       <DependentUpon>GeschlechtControl.xaml</DependentUpon>
@@ -75,6 +78,10 @@
       <DependentUpon>PortraitControl.xaml</DependentUpon>
     </Compile>
     <Page Include="BasisdatenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlTesterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +155,15 @@
       <Project>{EB96D371-6B45-4D80-9503-29A7E82B8524}</Project>
       <Name>Listen</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bilder\vergilbt_130x30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bilder\vergilbt_800x30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bilder\vergilbt_800x1076.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
