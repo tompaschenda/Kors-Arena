@@ -216,6 +216,11 @@ namespace talentStruktur
         /// </summary>
         public bool leittalent;
 
+        /// <summary>
+        /// Welche Ausprägung soll das Talent haben?
+        /// </summary>
+        public object auspraegung;
+
     };
 
 }

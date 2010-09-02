@@ -32,6 +32,9 @@ namespace Listen
         // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
         [Description("Trolle")]
         Trolle,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Auelfen")]
+        Auelfen,
 
         [Description("Svellttal")]
         Svellttal,

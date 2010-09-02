@@ -394,6 +394,19 @@ namespace kulturenStruktur
                             kultur = value;
                             moeglicheSubkulturen = new List<subkultur>();
                             moeglicheSubkulturen.Add(createAuelfischSubKeine());
+                            moeglicheSubkulturen.Add(createAuelfischSubHoherNorden());
+                            break;
+                        ///////////////////////////////////////
+                        // Elfische Siedling
+                        ///////////////////////////////////////
+                        case KulturName.ElfischeSiedlung:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubKeine());
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubSuedlich());
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubGroess());
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubFirn());
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubWald());
                             break;
 
                         default:
@@ -407,6 +420,467 @@ namespace kulturenStruktur
             }
         }
 
+        private subkultur createElfischeSiedlungSubWald()
+        {
+            var subWald = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subWald.name = SubKulturName.WaldelfischBeeinflussteSiedlung;
+            subWald.generierungskosten = 5;
+
+            subWald.automatischeNachteile.Remove(new NachteilsIdentifier() { name = NachteileName.Neugier, wert = +5 });
+            subWald.geeigneteProfessionen.Remove(ProfessionsName.Hirte);
+            subWald.geeigneteProfessionen.Remove(ProfessionsName.Hofkuenstler);
+            subWald.geeigneteProfessionen.Remove(ProfessionsName.Taugenichts);
+            subWald.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +1 });
+
+            // zu den sonstigen Zaubern kommen noch ein paar dazu:
+            var hauszauber = new zauberVorauswahlen();
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.Zaubernahrung });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.HerrUeberDasTierreich });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Katzenaugen });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Kroetensprung });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.LeibDerErde });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Memorabia });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.SeidenzungeElfenwort });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Wipfellauf });
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            wahlSonstZauber.identifier = "wahlSonstigeZauber";
+            subWald.wahlen.Add(wahlSonstZauber);
+
+            return subWald;
+        }
+        private subkultur createElfischeSiedlungSubFirn()
+        {
+            var subFirn = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subFirn.name = SubKulturName.FirnelfischBeeinflussteSiedlung;
+            subFirn.generierungskosten = 4;
+
+            subFirn.moeglicheStaedte = new List<StadtName>() { StadtName.Olport, StadtName.Keamonmund};
+
+            subFirn.geeigneteProfessionen.Remove(ProfessionsName.Bauer);
+            subFirn.geeigneteProfessionen.Remove(ProfessionsName.Botenreiter);
+            subFirn.geeigneteProfessionen.Remove(ProfessionsName.Gaukler);
+            subFirn.geeigneteProfessionen.Remove(ProfessionsName.Hirte);
+            subFirn.geeigneteProfessionen.Remove(ProfessionsName.Hofkuenstler);
+            subFirn.geeigneteProfessionen.Remove(ProfessionsName.Taugenichts);
+            subFirn.geeigneteProfessionen.Add(ProfessionsName.Seefahrer);
+
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = -1});
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Skifahren, wert = +1 });
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Betoeren, wert = -2 });
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +1 });
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wettervorhersage, wert = +1 });
+
+            return subFirn;
+        }
+        private subkultur createElfischeSiedlungSubGroess()
+        {
+            var substadt = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            substadt.name = SubKulturName.Grossstadt;
+            substadt.generierungskosten = 2;
+
+            substadt.moeglicheStaedte = new List<StadtName>() { StadtName.Lowangen, StadtName.Punin };
+
+            substadt.geeigneteProfessionen.Add(ProfessionsName.Einbrecher);
+            substadt.geeigneteProfessionen.Add(ProfessionsName.Haendler);
+            substadt.geeigneteProfessionen.Add(ProfessionsName.KurtisaneGesellschafter);
+            substadt.geeigneteProfessionen.Add(ProfessionsName.Bader);
+            substadt.geeigneteProfessionen.Add(ProfessionsName.Edelhandwerker);
+
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Bogen, wert = -2});
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = -2 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = -1 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = -2 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Rechtskunde, wert = +2 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Kochen, wert = +1 });
+
+            return substadt;
+        }
+        private subkultur createElfischeSiedlungSubSuedlich()
+        {
+            var subSued = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subSued.name = SubKulturName.SuedlicheMittellande;
+            subSued.generierungskosten = 4;
+
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Bogen, wert = -1 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = -1 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +1 });
+            subSued.talentModifikatoren.Remove(new talentIdentifier() { name = TalentName.Wildnisleben, leittalent = true , wert = +3 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = +2 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, leittalent = true , wert = +1 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +1 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ackerbau, wert = +2 });
+
+            // Wahl zwischen Schrift und Sprache:
+            var wahlSchrift = new wahlmoeglichkeiten();
+            wahlSchrift.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.LesenUndSchreiben, auspraegung = SchriftName.IsdiraAsdharia, wert = 4},
+                new talentIdentifier(){ name = TalentName.SprachenKennen, auspraegung = SprachenName.Asdharia, wert = 4},
+            };
+            wahlSchrift.anzahlZuWaehlen = 1;
+            wahlSchrift.talentWerte = new int[1];
+            wahlSchrift.talentWerte[0] = 4;
+
+            return subSued;
+        }
+        private subkultur createElfischeSiedlungSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 3;
+            subKeine.soMaximum = 10;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.ElfischeWeltsicht},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Adelsherrschaft , wert = +6},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Tierfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Zauberhaar},
+            };
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.AnimalischeMagie},
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Artefaktgebunden},
+                // TODO: Ausprägung! Menschen oder Zwerge!
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+                new NachteilsIdentifier(){ name = NachteileName.WahrerName},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd},
+            };
+
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Thesisgebunden},
+            };
+
+            // Professionen:
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsName>() 
+            { 
+                ProfessionsName.Bewahrer, ProfessionsName.Former, ProfessionsName.Kaempfer,
+                ProfessionsName.Legendensaenger, ProfessionsName.Wildnislaeufer, ProfessionsName.Zauberweber,
+                ProfessionsName.Botenreiter, ProfessionsName.Fischer, ProfessionsName.Großwildjaeger, ProfessionsName.Hirte,
+                ProfessionsName.Karawanenhueter, ProfessionsName.Kundschafter, ProfessionsName.Prospektor, ProfessionsName.Schiffer,
+                ProfessionsName.Schmuggler, ProfessionsName.Barde, ProfessionsName.Gaukler, ProfessionsName.Hofkuenstler,
+                ProfessionsName.Taugenichts, ProfessionsName.Bauer, ProfessionsName.Handwerker, ProfessionsName.Edelhandwerker,
+                ProfessionsName.Tierbaendiger, ProfessionsName.Wundarzt
+            };
+
+            // Leittalente und normale Talente:
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen, leittalent = true, wert = +3},
+                new talentIdentifier(){ name = TalentName.Dolche, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Raufen, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Athletik, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Klettern, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schleichen, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schwimmen, leittalent = true, wert = +2},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Singen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Tanzen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Betoeren, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ueberreden, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln, leittalent = true, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, leittalent = true, wert = +3},
+                new talentIdentifier(){ name = TalentName.Magiekunde, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Rechtskunde, leittalent = false, wert = -1},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Tierkunde, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, leittalent = true, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Musizieren, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Schneidern, leittalent = false, wert = +2},
+            };
+
+            // Wahlen:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlKampf = new wahlmoeglichkeiten();
+            wahlKampf.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Fechtwaffen, leittalent = false},
+                new talentIdentifier(){ name = TalentName.Saebel, leittalent = false},
+                new talentIdentifier(){ name = TalentName.Schwerter, leittalent = false},
+                new talentIdentifier(){ name = TalentName.Speere, leittalent = false},
+                new talentIdentifier(){ name = TalentName.Staebe, leittalent = false},
+            };
+            wahlKampf.talentWerte = new int[1];
+            wahlKampf.talentWerte[0] = 2;
+            wahlKampf.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlKampf);
+
+            var wahlHandwerk = new wahlmoeglichkeiten();
+            wahlHandwerk.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Abrichten, leittalent = true},
+                new talentIdentifier(){ name = TalentName.Bogenbau, leittalent = true},
+                new talentIdentifier(){ name = TalentName.BooteFahren, leittalent = true},
+                new talentIdentifier(){ name = TalentName.HeilkundeGift, leittalent = true},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, leittalent = true},
+                new talentIdentifier(){ name = TalentName.MalenUndZeichnen, leittalent = true},
+            };
+            wahlHandwerk.talentWerte = new int[2];
+            wahlHandwerk.talentWerte[0] = 3;
+            wahlHandwerk.talentWerte[1] = 3;
+            wahlHandwerk.anzahlZuWaehlen = 2;
+            subKeine.wahlen.Add(wahlHandwerk);
+
+            // Sprache:
+           subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Isdira, muttersprache = true},
+            };
+
+            // Wahl der Sprache:
+            var wahlZweitsprache = new wahlmoeglichkeiten();
+            wahlZweitsprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.AlteKemi, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Angram, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Asdharia, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Atak, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Aureliani, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Drachisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ferkina, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Fuechsisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Goblinisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Grolmisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Hjaldingsch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Koboldisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mahrisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Molochisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Neckergesang, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloarkh, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloghaijan, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rabensprache, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rissoal, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rogolan, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rssahh, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ruuz, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Trollisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zelemja, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhayad, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.ZLit, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zyklopaeisch, zweitsprache = true });
+            wahlZweitsprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlZweitsprache);
+
+            // Wahl der Drittsprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.AlteKemi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Angram });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Asdharia });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Atak });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Aureliani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Drachisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ferkina });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Fuechsisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Goblinisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Grolmisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Hjaldingsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Koboldisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mahrisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Molochisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Neckergesang });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloarkh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloghaijan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rabensprache });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rissoal });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rogolan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rssahh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ruuz });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Trollisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zelemja });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhayad });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.ZLit });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zyklopaeisch });
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 3;
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
+
+            // Hauszauber:
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
+            var hauszauber = new zauberVorauswahlen();
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlHausZauber);
+
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlLeitzauber);
+
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.WeisseMaehn });
+            wahlSonstZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.Zaubernahrung });
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            wahlSonstZauber.identifier = "wahlSonstigeZauber";
+            subKeine.wahlen.Add(wahlSonstZauber);
+
+            // SO:
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.GrosseMeditation},
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Auelfen},
+                new sfIdentifier(){ name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Elfisch},
+                new sfIdentifier(){ name = SFNamen.Salasandra},
+                new sfIdentifier(){ name = SFNamen.Elfenlieder, auspraegung = Elfenlieder.Freundschaftslied},
+            };
+
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Regeneration, auspraegung = SFSubNamen.I},
+            };
+
+            // TODO: Spezielle Ausrüstung!
+
+            return subKeine;
+        }
+
+        private subkultur createAuelfischSubHoherNorden()
+        {
+            var subHoch = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subHoch.name = SubKulturName.HoherNorden;
+
+            subHoch.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.ElfischeWeltsicht},
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Randgruppe, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz , wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion , wert = +5},
+            };
+
+            subHoch.empfohleneVorteile.Add(new VorteilsIdentifier() { name = VorteileName.Kaelteresistenz });
+
+            subHoch.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Raumangst });
+            subHoch.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz });
+            subHoch.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Weltfremd, auspraegung = Weltfremd.WaherungUndGeld });
+            subHoch.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Weltfremd, auspraegung = Weltfremd.StaedtischesLeben });
+
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = -2 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.SichVerstecken, wert = -1 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Skifahren, wert = +1 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Magiekunde, wert = -2 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = -1 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +1 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.BooteFahren, leittalent = true, wert = +2 });
+            // Betören raus:
+            subHoch.talentModifikatoren.Remove(new talentIdentifier(){ name = TalentName.Betoeren, leittalent = false, wert = +3});
+
+
+            // Wahlen:
+            subHoch.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlBogenbau = new wahlmoeglichkeiten();
+            wahlBogenbau.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogenbau, leittalent = true},
+                new talentIdentifier(){ name = TalentName.BooteFahren, leittalent = true}
+            };
+            wahlBogenbau.talentWerte = new int[1];
+            wahlBogenbau.talentWerte[0] = 2;
+            wahlBogenbau.anzahlZuWaehlen = 1;
+            subHoch.wahlen.Add(wahlBogenbau);
+
+            // Wahl dazu:
+            subHoch.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlSpeere = new wahlmoeglichkeiten();
+            wahlSpeere.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Speere},
+                new talentIdentifier(){ name = TalentName.Wurfspeere}
+            };
+            wahlSpeere.talentWerte = new int[1];
+            wahlSpeere.talentWerte[0] = 2;
+            wahlSpeere.anzahlZuWaehlen = 1;
+            subHoch.wahlen.Add(wahlSpeere);
+
+            // Hauszauber:
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
+            var hauszauber = new zauberVorauswahlen();
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subHoch.wahlen.Add(wahlHausZauber);
+
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
+            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subHoch.wahlen.Add(wahlLeitzauber);
+
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            subHoch.wahlen.Add(wahlSonstZauber);
+
+            return subHoch;
+
+        }
         private subkultur createAuelfischSubKeine()
         {
             var subKeine = new subkultur();
@@ -506,15 +980,97 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlBogenbau);
 
             // Hauszauber:
-            subKeine.moeglicheHauszauber = new List<ZauberIdentifier>(){};
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
             var hauszauber = new zauberVorauswahlen();
-            subKeine.moeglicheHauszauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlHausZauber);
 
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlLeitzauber);
 
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            subKeine.wahlen.Add(wahlSonstZauber);
+
+            // SO:
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Auelfen},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf},
+                new sfIdentifier(){ name = SFNamen.GrosseMeditation},
+                new sfIdentifier(){ name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Elfisch},
+                new sfIdentifier(){ name = SFNamen.Salasandra},
+                new sfIdentifier(){ name = SFNamen.Elfenlieder, auspraegung = Elfenlieder.Freundschaftslied},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Aufmerksamkeit},
+                new sfIdentifier(){ name = SFNamen.KampfImWasser},
+                new sfIdentifier(){ name = SFNamen.Regeneration, auspraegung = SFSubNamen.I},
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Isdira, muttersprache = true},
+            };
+
+            // Wahl der Sprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.AlteKemi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Angram });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Asdharia });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Atak });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Aureliani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Drachisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ferkina });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Fuechsisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Goblinisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Grolmisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Hjaldingsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Koboldisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mahrisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Molochisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Neckergesang });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloarkh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloghaijan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rabensprache });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rissoal });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rogolan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rssahh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ruuz });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Trollisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zelemja });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhayad });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.ZLit });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zyklopaeisch });
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 4;
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
 
             return subKeine;
-
-
         }
 
         private subkultur createTrollZackenSubKeine()
@@ -7782,6 +8338,70 @@ namespace kulturenStruktur
             };
             return elfenHauszauber;
         }
+
+        /// <summary>
+        /// Gibt eine Liste mit allen Basis-Zaubern der Elfen zurück!
+        /// </summary>
+        /// <returns></returns>
+        public List<ZauberIdentifier> GetElfenBasisZauber()
+        {
+            var elfenBasisZauber = new List<ZauberIdentifier>()
+            {
+                new ZauberIdentifier(){ name = ZauberName.Abveneum},
+                new ZauberIdentifier(){ name = ZauberName.Adlerauge},
+                new ZauberIdentifier(){ name = ZauberName.Adlerschwinge},
+                new ZauberIdentifier(){ name = ZauberName.Aeolitus},
+                new ZauberIdentifier(){ name = ZauberName.Armatrutz},
+                new ZauberIdentifier(){ name = ZauberName.Attributo},
+                new ZauberIdentifier(){ name = ZauberName.Axxeleratus},
+                new ZauberIdentifier(){ name = ZauberName.Balsam},
+                new ZauberIdentifier(){ name = ZauberName.BandUndFessel},
+                new ZauberIdentifier(){ name = ZauberName.Bannbaladin},
+                new ZauberIdentifier(){ name = ZauberName.Baerenruhe},
+                new ZauberIdentifier(){ name = ZauberName.BeherrschungBrechen},
+                new ZauberIdentifier(){ name = ZauberName.BewegungStoeren},
+                new ZauberIdentifier(){ name = ZauberName.BlickAufsWesen},
+                new ZauberIdentifier(){ name = ZauberName.BlickInDieGedanken},
+                new ZauberIdentifier(){ name = ZauberName.BlitzDichFind},
+                new ZauberIdentifier(){ name = ZauberName.Chamaelioni},
+                new ZauberIdentifier(){ name = ZauberName.Eigenschaft},
+                new ZauberIdentifier(){ name = ZauberName.EinflussBannen},
+                new ZauberIdentifier(){ name = ZauberName.ExposamiLebenskraft},
+                new ZauberIdentifier(){ name = ZauberName.FalkenaugeMeisterschuss},
+                new ZauberIdentifier(){ name = ZauberName.FlimFlam},
+                new ZauberIdentifier(){ name = ZauberName.Fulminictus},
+                new ZauberIdentifier(){ name = ZauberName.Gedankenbilder},
+                new ZauberIdentifier(){ name = ZauberName.Haselbusch},
+                new ZauberIdentifier(){ name = ZauberName.HellsichtTrueben},
+                new ZauberIdentifier(){ name = ZauberName.HilfreicheTatze},
+                new ZauberIdentifier(){ name = ZauberName.Motoricus},
+                new ZauberIdentifier(){ name = ZauberName.Movimento},
+                new ZauberIdentifier(){ name = ZauberName.Nebelwand},
+                new ZauberIdentifier(){ name = ZauberName.Objectovoco},
+                new ZauberIdentifier(){ name = ZauberName.Odem},
+                new ZauberIdentifier(){ name = ZauberName.Penetrizzel},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Luft},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Humus},
+                new ZauberIdentifier(){ name = ZauberName.Plumbumbarum},
+                new ZauberIdentifier(){ name = ZauberName.Respondami},
+                new ZauberIdentifier(){ name = ZauberName.RuheKoerper},
+                new ZauberIdentifier(){ name = ZauberName.Sanftmut},
+                new ZauberIdentifier(){ name = ZauberName.Sensibar},
+                new ZauberIdentifier(){ name = ZauberName.Silentium},
+                new ZauberIdentifier(){ name = ZauberName.Solidirid},
+                new ZauberIdentifier(){ name = ZauberName.Somnigravis},
+                new ZauberIdentifier(){ name = ZauberName.SpurlosTrittlos},
+                new ZauberIdentifier(){ name = ZauberName.Tiergedanken},
+                new ZauberIdentifier(){ name = ZauberName.Unitatio},
+                new ZauberIdentifier(){ name = ZauberName.VerstaendigungStoeren},
+                new ZauberIdentifier(){ name = ZauberName.Visibili},
+                new ZauberIdentifier(){ name = ZauberName.Wasseratem},
+                new ZauberIdentifier(){ name = ZauberName.Windstille},
+            };
+
+            return elfenBasisZauber;
+        }
+
     };
 
 }

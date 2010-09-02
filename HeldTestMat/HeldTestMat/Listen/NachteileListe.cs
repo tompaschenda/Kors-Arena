@@ -20,6 +20,8 @@ namespace Listen
         RechtssprechungUndGesetze,
         [Description("Besitz")]
         Besitz,
+        [Description("städtisches Leben")]
+        StaedtischesLeben,
     }
 
     public enum NachteileName

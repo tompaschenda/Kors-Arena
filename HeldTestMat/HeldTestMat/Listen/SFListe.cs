@@ -488,4 +488,30 @@ namespace Listen
         JeNachRepraesentation,
 
     }
+
+    public enum Elfenlieder
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Sorgenlied")]
+        Sorgenlied,
+        [Description("Zaubermelodie")]
+        Zaubermelodie,
+        [Description("Friedenslied")]
+        Friedenslied,
+        [Description("Windgeflüster")]
+        Windgefluester,
+        [Description("Lied der Lieder")]
+        LiedDerLieder,
+        [Description("Freundschaftslied")]
+        Freundschaftslied,
+        [Description("Erinnerungsmelodie")]
+        Erinnerungsmelodie,
+        [Description("Melodie der Kunstfertigkeit")]
+        MelodieDerKunstfertigkeit,
+        [Description("Lied des Trostes")]
+        LiedDesTrostes,
+        [Description("Lied der Reinheit")]
+        LiedDerReinheit,
+    };
 }
