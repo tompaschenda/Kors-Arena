@@ -155,6 +155,8 @@ namespace Listen
         Menschenmassen,
         [Description("Klerikalem Wirken")]
         KlerikalemWirken,
+        [Description("Fliegenden Wesen")]
+        FliegendenWesen,
     }
 
 }

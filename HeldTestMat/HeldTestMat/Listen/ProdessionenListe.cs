@@ -82,8 +82,8 @@ namespace Listen
         Hirte,
         [Description("Jäger")]
         Jaeger,
-        [Description("Karawanenhüter")]
-        Karawanenhueter,
+        [Description("Karawanenführer")]
+        Karawanenfuehrer,
         [Description("Kundschafter")]
         Kundschafter,
         [Description("Prospektor")]

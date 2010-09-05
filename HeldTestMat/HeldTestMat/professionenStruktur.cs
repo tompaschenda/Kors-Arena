@@ -108,7 +108,7 @@ namespace professionenStruktur
                 ProfessionsName.Großwildjaeger,
                 ProfessionsName.Hirte,
                 ProfessionsName.Jaeger,
-                ProfessionsName.Karawanenhueter,
+                ProfessionsName.Karawanenfuehrer,
                 ProfessionsName.Kundschafter,
                 ProfessionsName.Prospektor,
                 ProfessionsName.Schiffer,

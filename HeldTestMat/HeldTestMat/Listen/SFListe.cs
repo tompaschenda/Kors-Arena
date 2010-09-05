@@ -6,6 +6,18 @@ using System.ComponentModel;
 
 namespace Listen
 {
+
+
+    public enum TierischeBegleiter
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Elfenpony")]
+        Elfenpony,
+
+
+    };
+
     public enum SFKategorien
     {
         [Description("undefined")]

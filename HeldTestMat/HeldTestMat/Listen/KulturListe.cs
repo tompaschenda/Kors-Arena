@@ -35,6 +35,18 @@ namespace Listen
         // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
         [Description("Auelfen")]
         Auelfen,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Steppenelfen")]
+        Steppenelfen,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Waldelfen")]
+        Waldelfen,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Firnelfen")]
+        Firnelfen,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Orks")]
+        Orks,
 
         [Description("Svellttal")]
         Svellttal,
@@ -123,8 +135,18 @@ namespace Listen
         Brillantzwerge,
         [Description("Brobim")]
         Brobim,
-        [Description("Orkland")]
-        Orkland,
+
+        [Description("Orkland (Ergoch)")]
+        OrklandErgoch,
+        [Description("Orkland (Grishik)")]
+        OrklandGrishik,
+        [Description("Orkland (Drasdech)")]
+        OrklandDrasdech,
+        [Description("Orkland (Khurkach)")]
+        OrklandKhurkach,
+        [Description("Orkland (Okwach)")]
+        OrklandOkwach,
+
         [Description("Yurach")]
         Yurach,
         [Description("Svellttal Besatzer")]
@@ -321,6 +343,8 @@ namespace Listen
         Drasdech,
         [Description("Khurkach")]
         Khurkach,
+        [Description("Okwach")]
+        Okwach,
     }
 
 }

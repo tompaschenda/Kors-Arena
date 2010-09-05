@@ -6,6 +6,38 @@ using System.ComponentModel;
 
 namespace Listen
 {
+
+
+    public enum Speisegebote
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("nur rohes Fleisch")]
+        NurRohesFleisch,
+    }
+
+    public enum Vorurteile
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Menschen")]
+        Menschen,
+        [Description("Frauen")]
+        Frauen,
+        [Description("Männer")]
+        Maenner,
+        [Description("Zwerge")]
+        Zwerge,
+        [Description("Goblins")]
+        Goblins,
+        [Description("Elfen")]
+        Elfen,
+        [Description("Echsen")]
+        Echsen,
+    }
+
+
+
     public enum Weltfremd
     {
         [Description("undefined")]
