@@ -47,6 +47,9 @@ namespace Listen
         // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
         [Description("Orks")]
         Orks,
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Goblins")]
+        Goblins,
 
         [Description("Svellttal")]
         Svellttal,
