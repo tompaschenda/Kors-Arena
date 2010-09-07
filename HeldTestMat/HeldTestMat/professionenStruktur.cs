@@ -3,12 +3,36 @@ using listenStruktur;
 using Common;
 using Listen;
 using professionenStruktur;
+using System;
+using System.Linq;
+using System.Text;
+
 
 namespace professionenStruktur
 {
     //////////////////////////////////////
     //  Professionsstruktur. TODO: Ausgliedern!
     //////////////////////////////////////
+
+
+    /// <summary>
+    /// Eine Struktur, die lediglich ALLE Attribute enthält, mit denen sich eine Profession
+    /// mit ALLEN Ausprägungen EINDEUTIG identifizieren lässt.
+    /// </summary>
+    public struct ProfessionsIdentifier
+    {
+        /// <summary>
+        ///  Name eines Zaubers
+        /// </summary>
+        public ProfessionsName name;
+
+        /// <summary>
+        /// Subprofession
+        /// </summary>
+        public SubProfessionsName subname;
+    };
+
+
 
     /// <summary>
     /// Versschiedenen Kategorien von Professionen inklusive aller zugehörigen Professionen.
@@ -19,9 +43,9 @@ namespace professionenStruktur
         /// Gibt ALLE Professionen zurück:
         /// </summary>
         /// <returns></returns>
-        public List<ProfessionsName> GetAlle()
+        public List<ProfessionsIdentifier> GetAlle()
         {
-            var alleProfs = new List<ProfessionsName>() { };
+            var alleProfs = new List<ProfessionsIdentifier>() { };
             alleProfs.AddRange(GetKriegerische());
             alleProfs.AddRange(GetReisende());
             alleProfs.AddRange(GetGesellschaft());
@@ -35,31 +59,31 @@ namespace professionenStruktur
         /// Gibt nur zwölfgöttliche Geweihte Professionen zurück:
         /// </summary>
         /// <returns></returns>
-        public List<ProfessionsName> GetZwoelfgoetterkulte()
+        public List<ProfessionsIdentifier> GetZwoelfgoetterkulte()
         {
-            var zwoelfeProfs = new List<ProfessionsName>()
+            var zwoelfeProfs = new List<ProfessionsIdentifier>()
             {
-                ProfessionsName.GeweihterDesPraios,
-                ProfessionsName.GeweihterDerRondra,
-                ProfessionsName.RondrageweihteAmazone,
-                ProfessionsName.GeweihterDesEfferd,
-                ProfessionsName.GeweihterDerTravia,
-                ProfessionsName.GeweihterDesBoronAlAnfanerRitus,
-                ProfessionsName.GeweihterDesBoronPuninerRitus,
-                ProfessionsName.GeweihterDerHesinde,
-                ProfessionsName.GeweihterDesFirun,
-                ProfessionsName.GeweihterDerTsa,
-                ProfessionsName.GeweihterDesPhex,
-                ProfessionsName.GeweihterDerPeraine,
-                ProfessionsName.GeweihterDesIngerimm,
-                ProfessionsName.GeweihteDerRahja,
-                ProfessionsName.PredigerVomBundDesWahrenGlaubens,
-                ProfessionsName.GeweihterDesAves,
-                ProfessionsName.GeweihterDesKor,
-                ProfessionsName.GeweihterDesNandus,
-                ProfessionsName.GeweihterDerIfirn,
-                ProfessionsName.GeweihterDesSwafnir,
-                ProfessionsName.GeweihterDesAngrosch,
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesPraios},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerRondra},
+                new ProfessionsIdentifier(){ name = ProfessionsName.RondrageweihteAmazone},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesEfferd},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerTravia},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesBoronAlAnfanerRitus},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesBoronPuninerRitus},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerHesinde},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerTsa},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesPhex},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerPeraine},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesIngerimm},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihteDerRahja},
+                new ProfessionsIdentifier(){ name = ProfessionsName.PredigerVomBundDesWahrenGlaubens},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAves},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesKor},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesNandus},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerIfirn},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesSwafnir},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAngrosch},
             };
             return zwoelfeProfs;
         }
@@ -68,26 +92,27 @@ namespace professionenStruktur
         ///  Alle Gesellschaftlichen Professionen
         /// </summary>
         /// <returns></returns>
-        public List<ProfessionsName> GetKriegerische()
+        public List<ProfessionsIdentifier> GetKriegerische()
         {
-            var kriegerischeProfs = new List<ProfessionsName>()
+            var kriegerischeProfs = new List<ProfessionsIdentifier>()
             {
-                ProfessionsName.Amazone,
-                ProfessionsName.Faehnrich,
-                ProfessionsName.FaehnrichDerKavallerie,
-                ProfessionsName.Stabsfaehnrich,
-                ProfessionsName.FaehnrichZurSee,
-                ProfessionsName.Gladiator,
-                ProfessionsName.Schaukaempfer,
-                ProfessionsName.Gardist,
-                ProfessionsName.Jahrmarktskaempfer,
-                ProfessionsName.Krieger,
-                ProfessionsName.Ritter,
-                ProfessionsName.Schwertgeselle,
-                ProfessionsName.Soldat,
-                ProfessionsName.Soeldner,
-                ProfessionsName.Stammeskrieger                
+                new ProfessionsIdentifier(){ name = ProfessionsName.Amazone},            
+                new ProfessionsIdentifier(){ name = ProfessionsName.Faehnrich},
+                new ProfessionsIdentifier(){ name = ProfessionsName.FaehnrichDerKavallerie},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stabsfaehnrich},
+                new ProfessionsIdentifier(){ name = ProfessionsName.FaehnrichZurSee},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schaukaempfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gardist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jahrmarktskaempfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Krieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Ritter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schwertgeselle},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soldat},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger}
             };
+    
             return kriegerischeProfs;
         }
 
@@ -95,26 +120,26 @@ namespace professionenStruktur
         /// Alle Reisenden Professionen
         /// </summary>
         /// <returns></returns>
-        public List<ProfessionsName> GetReisende()
+        public List<ProfessionsIdentifier> GetReisende()
         {
-            var reisendeProfs = new List<ProfessionsName>()
+            var reisendeProfs = new List<ProfessionsIdentifier>()
             {
-                ProfessionsName.Botenreiter,
-                ProfessionsName.Entdecker,
-                ProfessionsName.Fernhaendler,
-                ProfessionsName.Fischer,
-                ProfessionsName.Fuhrmann,
-                ProfessionsName.Grenzjaeger,
-                ProfessionsName.Großwildjaeger,
-                ProfessionsName.Hirte,
-                ProfessionsName.Jaeger,
-                ProfessionsName.Karawanenfuehrer,
-                ProfessionsName.Kundschafter,
-                ProfessionsName.Prospektor,
-                ProfessionsName.Schiffer,
-                ProfessionsName.Schmuggler,
-                ProfessionsName.Seefahrer,
-                ProfessionsName.Straßenraeuber
+                new ProfessionsIdentifier(){ name = ProfessionsName.Botenreiter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Entdecker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fischer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fuhrmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Grenzjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Karawanenfuehrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schiffer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber}
             };
             return reisendeProfs;
         }
@@ -123,27 +148,27 @@ namespace professionenStruktur
         ///  Alle Gesellschaftlichen Professionen:
         /// </summary>
         /// <returns></returns>
-        public List<ProfessionsName> GetGesellschaft()
+        public List<ProfessionsIdentifier> GetGesellschaft()
         {
-            var gesellschaftProfs = new List<ProfessionsName>()
+            var gesellschaftProfs = new List<ProfessionsIdentifier>()
             {
-                ProfessionsName.Ausrufer,
-                ProfessionsName.Barde,
-                ProfessionsName.Bettler,
-                ProfessionsName.Dieb,
-                ProfessionsName.Einbrecher,
-                ProfessionsName.Gaukler,
-                ProfessionsName.Haendler,
-                ProfessionsName.Herold,
-                ProfessionsName.Hofkuenstler,
-                ProfessionsName.Hoefling,
-                ProfessionsName.KurtisaneGesellschafter,
-                ProfessionsName.Privatlehrer,
-                ProfessionsName.Schriftsteller,
-                ProfessionsName.Spitzel,
-                ProfessionsName.Streuner,
-                ProfessionsName.Taugenichts,
-                ProfessionsName.Wirt,
+                new ProfessionsIdentifier(){ name = ProfessionsName.Ausrufer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Barde},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bettler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Dieb},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Herold},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hofkuenstler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hoefling},
+                new ProfessionsIdentifier(){ name = ProfessionsName.KurtisaneGesellschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Privatlehrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schriftsteller},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Spitzel},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Streuner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Taugenichts},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wirt},
             };
 
             return gesellschaftProfs;
@@ -153,22 +178,22 @@ namespace professionenStruktur
         ///  Alle handwerklichen Professionen:
         /// </summary>
         /// <returns></returns>
-        public List<ProfessionsName> GetHandwerk()
+        public List<ProfessionsIdentifier> GetHandwerk()
         {
-            var handwerkProfs = new List<ProfessionsName>()
+            var handwerkProfs = new List<ProfessionsIdentifier>()
             {
-                ProfessionsName.Bader,
-                ProfessionsName.Bauer,
-                ProfessionsName.Bergmann,
-                ProfessionsName.Domestik,
-                ProfessionsName.Edelhandwerker,
-                ProfessionsName.Gelehrter,
-                ProfessionsName.Handwerker,
-                ProfessionsName.Rattenfaenger,
-                ProfessionsName.Schreiber,
-                ProfessionsName.Tageloehner,
-                ProfessionsName.Tierbaendiger,
-                ProfessionsName.Wundarzt
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bader},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bergmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Domestik},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Rattenfaenger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schreiber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt}
             };
 
             return handwerkProfs;
@@ -178,31 +203,31 @@ namespace professionenStruktur
         /// Alle magischen Professionen:
         /// </summary>
         /// <returns></returns>
-        public List<ProfessionsName> GetMagisch()
+        public List<ProfessionsIdentifier> GetMagisch()
         {
-            var magischProfs = new List<ProfessionsName>()
+            var magischProfs = new List<ProfessionsIdentifier>()
             {
-                ProfessionsName.Alchimist,
-                ProfessionsName.MagiebegabterAlchimist,
-                ProfessionsName.Derwisch,
-                ProfessionsName.Druide,
-                ProfessionsName.DurroDun,
-                ProfessionsName.Bewahrer,
-                ProfessionsName.Former,
-                ProfessionsName.Kaempfer,
-                ProfessionsName.Legendensaenger,
-                ProfessionsName.Wildnislaeufer,
-                ProfessionsName.Zauberweber,
-                ProfessionsName.Wanderer,
-                ProfessionsName.FerkinaBesessener,
-                ProfessionsName.Geode,
-                ProfessionsName.Hexe,
-                ProfessionsName.Kristallomant,
-                ProfessionsName.Magier,
-                ProfessionsName.Scharlatan,
-                ProfessionsName.Taenzer,
-                ProfessionsName.Schelm,
-                ProfessionsName.Zibilja
+                new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Derwisch},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Druide},
+                new ProfessionsIdentifier(){ name = ProfessionsName.DurroDun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bewahrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Former},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kaempfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Legendensaenger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wildnislaeufer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Zauberweber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wanderer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.FerkinaBesessener},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Geode},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hexe},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kristallomant},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Magier},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schelm},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Zibilja}
             };
             return magischProfs;
         }
@@ -211,48 +236,48 @@ namespace professionenStruktur
         /// Alle klerikalen Professionen:
         /// </summary>
         /// <returns></returns>
-        public List<ProfessionsName> GetKlerikal()
+        public List<ProfessionsIdentifier> GetKlerikal()
         {
-            var klerikaleProfs = new List<ProfessionsName>()
+            var klerikaleProfs = new List<ProfessionsIdentifier>()
             {
-                ProfessionsName.GeweihterDesPraios,
-                ProfessionsName.GeweihterDerRondra,
-                ProfessionsName.RondrageweihteAmazone,
-                ProfessionsName.GeweihterDesEfferd,
-                ProfessionsName.GeweihterDerTravia,
-                ProfessionsName.GeweihterDesBoronAlAnfanerRitus,
-                ProfessionsName.GeweihterDesBoronPuninerRitus,
-                ProfessionsName.GeweihterDerHesinde,
-                ProfessionsName.GeweihterDesFirun,
-                ProfessionsName.GeweihterDerTsa,
-                ProfessionsName.GeweihterDesPhex,
-                ProfessionsName.GeweihterDerPeraine,
-                ProfessionsName.GeweihterDesIngerimm,
-                ProfessionsName.GeweihteDerRahja,
-                ProfessionsName.PredigerVomBundDesWahrenGlaubens,
-                ProfessionsName.GeweihterDesAves,
-                ProfessionsName.GeweihterDesKor,
-                ProfessionsName.GeweihterDesNandus,
-                ProfessionsName.GeweihterDerIfirn,
-                ProfessionsName.HorasRitter,
-                ProfessionsName.GeweihterDesSwafnir,
-                ProfessionsName.GeweihterDesAngrosch,
-                ProfessionsName.PriesterDerHSzint,
-                ProfessionsName.PriesterDerZsahh,
-                ProfessionsName.PriesterVonRurUndGror,
-                ProfessionsName.StammeskriegerDerBeniDervez,
-                ProfessionsName.Hadjinim,
-                ProfessionsName.Medizinmann,
-                ProfessionsName.Kaskjua,
-                ProfessionsName.Nuranshar,
-                ProfessionsName.BrenochDun,
-                ProfessionsName.Skuldrun,
-                ProfessionsName.Shochzul,
-                ProfessionsName.TairachPriester,
-                ProfessionsName.GraveshPriester,
-                ProfessionsName.RikaiPriester,
-                ProfessionsName.GoblinSchamanin,
-                ProfessionsName.SchamaneDerAchaz,
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesPraios},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerRondra},
+                new ProfessionsIdentifier(){ name = ProfessionsName.RondrageweihteAmazone},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesEfferd},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerTravia},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesBoronAlAnfanerRitus},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesBoronPuninerRitus},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerHesinde},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerTsa},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesPhex},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerPeraine},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesIngerimm},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihteDerRahja},
+                new ProfessionsIdentifier(){ name = ProfessionsName.PredigerVomBundDesWahrenGlaubens},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAves},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesKor},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesNandus},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerIfirn},
+                new ProfessionsIdentifier(){ name = ProfessionsName.HorasRitter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesSwafnir},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAngrosch},
+                new ProfessionsIdentifier(){ name = ProfessionsName.PriesterDerHSzint},
+                new ProfessionsIdentifier(){ name = ProfessionsName.PriesterDerZsahh},
+                new ProfessionsIdentifier(){ name = ProfessionsName.PriesterVonRurUndGror},
+                new ProfessionsIdentifier(){ name = ProfessionsName.StammeskriegerDerBeniDervez},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hadjinim},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Medizinmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kaskjua},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Nuranshar},
+                new ProfessionsIdentifier(){ name = ProfessionsName.BrenochDun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Skuldrun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Shochzul},
+                new ProfessionsIdentifier(){ name = ProfessionsName.TairachPriester},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GraveshPriester},
+                new ProfessionsIdentifier(){ name = ProfessionsName.RikaiPriester},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GoblinSchamanin},
+                new ProfessionsIdentifier(){ name = ProfessionsName.SchamaneDerAchaz},
 
             };
             return klerikaleProfs;
