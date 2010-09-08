@@ -33,14 +33,6 @@ namespace Listen
         Amazone,
         [Description("Fähnrich")]
         Faehnrich,
-        [Description("Fähnrich zur See")]
-        FaehnrichZurSee,
-        [Description("Fähnrich der Kavallerie")]
-        FaehnrichDerKavallerie,
-        [Description("Stabsfähnrich")]
-        Stabsfaehnrich,
-        [Description("Fähnrich zur See")]
-        FähnrichZurSee,
         [Description("Gladiator")]
         Gladiator,
         [Description("Schaukämpfer")]
@@ -296,25 +288,41 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("keine")]
+        keine,
         // Fähnrich
-        [Description("Al'Anfa")]
-        AlAnfa,
-        [Description("Albenhus")]
-        Albenhus,
-        [Description("Festum")]
-        Festum,
-        [Description("Gareth")]
-        Gareth,
-        [Description("Oberfels")]
-        Oberfels,
-        [Description("Honingen")]
-        Honingen,
+
+        [Description("Fähnrich der Fußlämpfer (Al'Anfa)")]
+        FusskaempferAlAnfa,
+        [Description("Fähnrich der Fußlämpfer (Albenhus)")]
+        FusskaempferAlbenhus,
+        [Description("Fähnrich der Fußlämpfer (Festum)")]
+        FusskaempferFestum,
+        [Description("Fähnrich der Fußlämpfer (Gareth)")]
+        FusskaempferGareth,
+        [Description("Fähnrich der Fußlämpfer (Oberfels)")]
+        FusskaempferOberfels,
+        [Description("Fähnrich der Fußlämpfer (Honingen)")]
+        FusskaempferHoningen,
 
         // Fähnrich der Kavallerie
-        [Description("Ragath")]
-        Ragath,
+        [Description("Fähnrich der Kavallerie")]
+        FaehnrichDerKavallerie,
+        [Description("Fähnrich der Kavallerie (Ragath)")]
+        KavallerieRagath,
+
+        [Description("Stabsfähnrich")]
+        Stabsfaehnrich,
 
         // Fähnrich zur See
+        [Description("Fähnrich zur See")]
+        FaehnrichZurSee,
+        [Description("Fähnrich zur See (Harben)")]
+        SeeHarben,
+        [Description("Fähnrich zur See (Al'Anfa)")]
+        SeeAlAnfa,
+        [Description("Fähnrich zur See (Festum)")]
+        SeeFestum,
 
         // Gladiator:
         [Description("Fasar")]

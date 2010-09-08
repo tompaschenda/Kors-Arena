@@ -3197,7 +3197,7 @@ namespace kulturenStruktur
             {
                 new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Ambosszwerge},
                 new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Höhle},
-                new sfIdentifier(){ name = SFNamen.Ruestungsgewoehnung, auspraegung = SFSubNamen.I, subAuspraegung = RuestungsName.Kettenhemd},
+                new sfIdentifier(){ name = SFNamen.Ruestungsgewoehnung1, auspraegung = RuestungsName.Kettenhemd},
             };
 
             return subKeine;
@@ -3384,7 +3384,7 @@ namespace kulturenStruktur
             {
                 new sfIdentifier(){ name = SFNamen.Aufmerksamkeit},
                 new sfIdentifier(){ name = SFNamen.Konzentrationsstaerke},
-                new sfIdentifier(){ name = SFNamen.Regeneration, auspraegung = SFSubNamen.I},
+                new sfIdentifier(){ name = SFNamen.Regeneration1},
             };
 
             // Zauber:
@@ -3596,8 +3596,8 @@ namespace kulturenStruktur
             subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
             {
                 new sfIdentifier(){ name = SFNamen.Aufmerksamkeit },
-                new sfIdentifier(){ name = SFNamen.Ausweichen, auspraegung = SFSubNamen.I },
-                new sfIdentifier(){ name = SFNamen.Regeneration, auspraegung = SFSubNamen.I },
+                new sfIdentifier(){ name = SFNamen.Ausweichen1},
+                new sfIdentifier(){ name = SFNamen.Regeneration1},
             };
 
             // Zauber:
@@ -3763,9 +3763,9 @@ namespace kulturenStruktur
             subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
             {
                 new sfIdentifier(){name = SFNamen.Aufmerksamkeit},
-                new sfIdentifier(){name = SFNamen.Ausweichen, auspraegung = SFSubNamen.I},
+                new sfIdentifier(){name = SFNamen.Ausweichen1},
                 new sfIdentifier(){name = SFNamen.BerittenerSchuetze},
-                new sfIdentifier(){name = SFNamen.Regeneration, auspraegung = SFSubNamen.I},
+                new sfIdentifier(){name = SFNamen.Regeneration1},
             };
 
             // Zauber:
@@ -4180,7 +4180,7 @@ namespace kulturenStruktur
 
             subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
             {
-                new sfIdentifier(){ name = SFNamen.Regeneration, auspraegung = SFSubNamen.I},
+                new sfIdentifier(){ name = SFNamen.Regeneration1},
             };
 
             // TODO: Spezielle Ausrüstung!
@@ -4421,7 +4421,7 @@ namespace kulturenStruktur
             {
                 new sfIdentifier(){ name = SFNamen.Aufmerksamkeit},
                 new sfIdentifier(){ name = SFNamen.KampfImWasser},
-                new sfIdentifier(){ name = SFNamen.Regeneration, auspraegung = SFSubNamen.I},
+                new sfIdentifier(){ name = SFNamen.Regeneration1},
             };
 
             subKeine.sprachen = new List<SprachenIdentifier>()

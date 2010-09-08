@@ -83,8 +83,12 @@ namespace Listen
         Aufmerksamkeit,
         [Description("Ausfall")]
         Ausfall,
-        [Description("Ausweichen")]
-        Ausweichen,
+        [Description("Ausweichen I")]
+        Ausweichen1,
+        [Description("Ausweichen II")]
+        Ausweichen2,
+        [Description("Ausweichen III")]
+        Ausweichen3,
         [Description("Befreiungsschlag")]
         Befreiungsschlag,
         [Description("Beidhändiger Kampf")]
@@ -137,10 +141,16 @@ namespace Listen
         Niederwerfen,
         [Description("Parierwaffen")]
         Parierwaffen,
-        [Description("Rüstungsgewöhnung")]
-        Ruestungsgewoehnung,
-        [Description("Schildkampf")]
-        Schildkampf,
+        [Description("Rüstungsgewöhnung I")]
+        Ruestungsgewoehnung1,
+        [Description("Rüstungsgewöhnung II")]
+        Ruestungsgewoehnung2,
+        [Description("Rüstungsgewöhnung III")]
+        Ruestungsgewoehnung3,
+        [Description("Schildkampf I")]
+        Schildkampf1,
+        [Description("Schildkampf II")]
+        Schildkampf2,
         [Description("Schildspalter")]
         Schildspalter,
         [Description("Spießgespann")]
@@ -361,8 +371,10 @@ namespace Listen
         OdunGaben,
         [Description("Ottagaldr")]
         Ottagaldr,
-        [Description("Regeneration")]
-        Regeneration,
+        [Description("Regeneration I")]
+        Regeneration1,
+        [Description("Regeneration II")]
+        Regeneration2,
         [Description("Repräsentation")]
         Repraesentation,
         [Description("Ritualkenntins")]
@@ -468,14 +480,6 @@ namespace Listen
         // Talentspezialisierung:
         [Description("je nach Talent")]
         JaNachTalent,
-
-        // Ausweichen:
-        [Description("I")]
-        I,
-        [Description("II")]
-        II,
-        [Description("I")]
-        III,
 
         // Schnellladen:
         [Description("Bogen")]

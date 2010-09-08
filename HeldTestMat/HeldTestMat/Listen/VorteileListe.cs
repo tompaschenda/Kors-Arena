@@ -7,6 +7,14 @@ using System.ComponentModel;
 namespace Listen
 {
 
+    public enum AkademischeAusbilung
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Krieger")]
+        Krieger,
+    };
+
     public enum VorteilsAuspraegung
     {
         [Description("undefined")]

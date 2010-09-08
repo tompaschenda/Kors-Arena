@@ -6,7 +6,13 @@ using professionenStruktur;
 using System;
 using System.Linq;
 using System.Text;
-
+using sfStruktur;
+using vorteileStruktur;
+using nachteileStruktur;
+using zauberStruktur;
+using talentStruktur;
+using spielerAuswahl;
+using SprachenUndSchriften;
 
 namespace professionenStruktur
 {
@@ -98,9 +104,6 @@ namespace professionenStruktur
             {
                 new ProfessionsIdentifier(){ name = ProfessionsName.Amazone},            
                 new ProfessionsIdentifier(){ name = ProfessionsName.Faehnrich},
-                new ProfessionsIdentifier(){ name = ProfessionsName.FaehnrichDerKavallerie},
-                new ProfessionsIdentifier(){ name = ProfessionsName.Stabsfaehnrich},
-                new ProfessionsIdentifier(){ name = ProfessionsName.FaehnrichZurSee},
                 new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator},
                 new ProfessionsIdentifier(){ name = ProfessionsName.Schaukaempfer},
                 new ProfessionsIdentifier(){ name = ProfessionsName.Gardist},
@@ -293,14 +296,447 @@ namespace professionenStruktur
         // Wir listen nun auf, welche Attribute eine Profession hat:
 
         /// <summary>
-        /// Name der Profession
+        /// Identifier der Profession
         /// </summary>
-        public string name;
+        public ProfessionsName profession;
+
+        /// <summary>
+        /// Eine Liste mit allen möglichen Subprofessionen. Gibt es keine
+        /// Subprofessionen, wird die Subprofession "keine" gesetzt.
+        /// Die Variante besimmt GP-Kosten, Talente, Modifikatoren,
+        /// etc. Und muss beim Auswählen einer Profession immer mit angegeben werden.
+        /// </summary>
+        public List<subprofession> moeglicheSubprofessionen;
+
+
+        /// <summary>
+        /// Der Identifier dieser Kultur. Der Setter definiert die Attribute der Kultur
+        /// </summary>        
+        public ProfessionsName Profession
+        {
+            get
+            {
+                return profession;
+            }
+
+            set
+            {
+                try
+                {
+
+                    switch (value)
+                    {
+
+                        ///////////////////////////////////////
+                        // Amazone
+                        ///////////////////////////////////////
+                        case ProfessionsName.Amazone:
+                            profession = value;
+                            moeglicheSubprofessionen = new List<subprofession>();
+                            moeglicheSubprofessionen.Add(createAmazoneSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Fähnrich
+                        ///////////////////////////////////////
+                        case ProfessionsName.Faehnrich:
+                            profession = value;
+                            moeglicheSubprofessionen = new List<subprofession>();
+                            moeglicheSubprofessionen.Add(createFaehnrichSubFussAlAnfa());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubFussAlbenhus());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubFussFestum());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubFussGareth());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubFussOberfels());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubFussHoningen());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubKavKeine());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubKavRagath());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubStabKeine());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubSeeKeine());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubSeeHarben());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubSeeAlAnfa());
+                            moeglicheSubprofessionen.Add(createFaehnrichSubSeeFestum());
+                            break;
+
+                        default:
+                            throw new System.ArgumentOutOfRangeException();
+                    }
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    System.Console.WriteLine("Ungültige Profession angegeben!");
+                }
+            }
+        }
+
+
+
+        private subprofession createFaehnrichSubSeeFestum()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubSeeAlAnfa()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubSeeHarben()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubSeeKeine()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubStabKeine()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubKavRagath()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubKavKeine()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubFussHoningen()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubFussOberfels()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubFussGareth()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubFussFestum()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubFussAlbenhus()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubFussAlAnfa()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createFaehnrichSubFussKeine()
+        {
+            var subkeine = new subprofession() { };
+            subkeine.name = SubProfessionsName.keine;
+            subkeine.zeitaufwaendig = true;
+
+            subkeine.professionenTyp = ProfessionsTyp.Kaempferisch;
+
+            subkeine.voraussetzungen = new professionsVorausssetzungen() { };
+            subkeine.voraussetzungen.eigenschaften = new List<GenericListenNameWertPaar<EigenschaftenName>>() 
+            { 
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = +12},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Klugheit, wert = +11},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Charisma, wert = +11},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Gewandtheit, wert = +11},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Konstitution, wert = +11},
+            };
+
+            subkeine.leModifikator = +1;
+            subkeine.auModifikator = +3;
+            subkeine.soInterval = new Range() { lower = 7, upper = 11 };
+
+            subkeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue, auspraegung = Prinzipien.Gehorsam, wert = +10},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue, auspraegung = Prinzipien.Loyalitaet, wert = +10},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue, auspraegung = Prinzipien.Ehrenhaftigkeit, wert = +10},
+                // TOCHECK: In Dukaten!
+                new NachteilsIdentifier(){ name = NachteileName.Schulden, wert = +1500},
+            };
+
+            subkeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.AdligeAbstammung},
+            };
+
+            subkeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+            };
+
+            subkeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Gesucht},
+                new NachteilsIdentifier(){ name = NachteileName.Lichtscheu},
+                new NachteilsIdentifier(){ name = NachteileName.Randgruppe},
+            };
+
+            subkeine.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Armbrust, wert = +3},
+                new talentIdentifier(){ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +4},
+                new talentIdentifier(){ name = TalentName.Klettern, wert = +2},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +4},
+                new talentIdentifier(){ name = TalentName.Reiten, wert = +3},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +4},
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, wert = +3},
+                new talentIdentifier(){ name = TalentName.Zechen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Etikette, wert = +4},
+                new talentIdentifier(){ name = TalentName.Lehren, wert = +4},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +5},
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +3},
+                new talentIdentifier(){ name = TalentName.Ueberzeugen, wert = +4},
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier(){ name = TalentName.Geographie, wert = +2},
+                new talentIdentifier(){ name = TalentName.Geschichtswissen, wert = +2},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.Heraldik, wert = +3},
+                new talentIdentifier(){ name = TalentName.Kriegskunst, wert = +6},
+                new talentIdentifier(){ name = TalentName.Magiekunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Rechtskunde, wert = +3},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Staatskunst, wert = +2},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, wert = +2},
+            };
+
+            subkeine.schriften = new List<SchriftenIdentifier>()
+            {
+                new SchriftenIdentifier(){ name = SchriftName.KuslikerZeichen, wert = +4},
+            };
+
+            subkeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Ruestungsgewoehnung1},
+                new sfIdentifier(){ name = SFNamen.Formation},
+            };
+
+            subkeine.verbilligteSF = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Aufmerksamkeit},
+                new sfIdentifier(){ name = SFNamen.Linkhand},
+                new sfIdentifier(){ name = SFNamen.Schildkampf1},
+            };
+
+            // Wahl:
+            subkeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlFecht = new wahlmoeglichkeiten() { };
+            wahlFecht.talente = new List<talentIdentifier>()
+            {
+                 new talentIdentifier(){ name = TalentName.Fechtwaffen},
+                 new talentIdentifier(){ name = TalentName.Schwerter},
+            };
+            wahlFecht.talentWerte = new int[1];
+            wahlFecht.talentWerte[0] = +5;
+            wahlFecht.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlFecht);
+
+            var wahlHieb = new wahlmoeglichkeiten() { };
+            wahlHieb.talente = new List<talentIdentifier>()
+            {
+                 new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                 new talentIdentifier(){ name = TalentName.Saebel},
+            };
+            wahlHieb.talentWerte = new int[1];
+            wahlHieb.talentWerte[0] = +5;
+            wahlHieb.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlHieb);
+
+            var wahlInfi = new wahlmoeglichkeiten() { };
+            wahlInfi.talente = new List<talentIdentifier>()
+            {
+                 new talentIdentifier(){ name = TalentName.Infanteriewaffen},
+                 new talentIdentifier(){ name = TalentName.Speere},
+            };
+            wahlInfi.talentWerte = new int[1];
+            wahlInfi.talentWerte[0] = +3;
+            wahlInfi.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlInfi);
+
+            return subkeine;
+        }
+
+        private subprofession createAmazoneSubKeine()
+        {
+            var subkeine = new subprofession() { };
+            subkeine.name = SubProfessionsName.keine;
+            subkeine.generierungskosten = 10;
+            subkeine.zeitaufwaendig = true;
+
+            subkeine.professionenTyp = ProfessionsTyp.Kaempferisch;
+
+            subkeine.voraussetzungen = new professionsVorausssetzungen(){ };
+            subkeine.voraussetzungen.eigenschaften = new List<GenericListenNameWertPaar<EigenschaftenName>>() 
+            { 
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = +13},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Gewandtheit, wert = +12},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Konstitution, wert = +13},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Koerperkraft, wert = +11},
+            };
+            subkeine.voraussetzungen.geschlechtstyp = GeschlechtNamen.weiblich;
+
+            subkeine.leModifikator = +1;
+            subkeine.auModifikator = +3;
+            subkeine.soInterval = new Range() { lower = 5, upper = 10 };
+
+            subkeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.AkademischeAusbildung, auspraegung = AkademischeAusbilung.Krieger},
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Beidhaendig},
+                new VorteilsIdentifier(){ name = VorteileName.Eisern},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+
+            subkeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Maenner},
+            };
+
+            subkeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Koboldfreund},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+            };
+
+            subkeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){ name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){ name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){ name = NachteileName.SchlechteRegeneration},
+            };
+
+            // Talente:
+            subkeine.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier(){ name = TalentName.Lanzenreiten, wert = +5},
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Speere, wert = +2},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +3},
+                new talentIdentifier(){ name = TalentName.Klettern, wert = +2},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Reiten, wert = +4},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, wert = +2},
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.Kriegskunst, wert = +3},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +1},
+            };
+
+
+            // SF:
+            subkeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Ausweichen1},
+                new sfIdentifier(){ name = SFNamen.Linkhand},
+                new sfIdentifier(){ name = SFNamen.Reiterkampf},
+                new sfIdentifier(){ name = SFNamen.Schildkampf1},
+            };
+
+            subkeine.verbilligteSF = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Ausfall},
+                new sfIdentifier(){ name = SFNamen.Finte},
+                new sfIdentifier(){ name = SFNamen.Kampfreflexe},
+                new sfIdentifier(){ name = SFNamen.Klingensturm},
+                new sfIdentifier(){ name = SFNamen.Kriegsreiterei},
+                new sfIdentifier(){ name = SFNamen.Schnellziehen},
+            };
+
+            // Wahl:
+            subkeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlNachteil = new wahlmoeglichkeiten() { };
+            wahlNachteil.nachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue, wert = +12},
+                new NachteilsIdentifier(){ name = NachteileName.Moralkodex, auspraegung = Moralcodices.Rondrakirche},
+            };
+            wahlNachteil.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlNachteil);
+
+            var wahlKampf = new wahlmoeglichkeiten() { };
+            wahlKampf.talente = new List<talentIdentifier>()
+            {
+                 new talentIdentifier(){ name = TalentName.Saebel},
+                 new talentIdentifier(){ name = TalentName.Schwerter},
+            };
+            wahlKampf.talentWerte = new int[1];
+            wahlKampf.talentWerte[0] = +3;
+            wahlKampf.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlKampf);
+
+            return subkeine;
+        }
+
+    }
+
+    /// <summary>
+    /// Eine Struktur, in der die Voraussetzungen einer SF aufgelistet sein können:
+    /// </summary>
+    public struct professionsVorausssetzungen
+    {
+        /// <summary>
+        /// Eigenschaftenvoraussetzung für Profession
+        /// </summary>
+        public List<GenericListenNameWertPaar<EigenschaftenName>> eigenschaften;
+        /// <summary>
+        /// Talentwertvoraussetzung für Profession
+        /// </summary>
+        public List<talentIdentifier> talentwerte;
+        /// <summary>
+        /// SF-Voraussetzung für Profession
+        /// </summary>
+        public List<sfIdentifier> andereSF;
+        /// <summary>
+        /// Beschreibt, welches Geschlecht ein Held/eine Helden haben muss, um die Profession
+        /// ausüben zu können. "männlich", "weiblich", "beide"
+        /// Ist z.B. wichtig für: Amazonen
+        /// </summary>
+        public GeschlechtNamen geschlechtstyp;
+    };
+
+    /// <summary>
+    /// Eine Struktur mit allen Attributen, die eine Profession ausmachen!
+    /// </summary>
+    public struct subprofession
+    {
+        /// <summary>
+        /// Name der Subprofession
+        /// </summary>
+        public SubProfessionsName name;
 
         /// <summary>
         /// Typ der Profession (z.B. "kämpferisch", "reisend", etc.
         /// </summary>
-        public string professionenTyp;
+        public ProfessionsTyp professionenTyp;
 
         /// <summary>
         /// Generierungskosten in GP. Eine Profession kann nur bei der Generierung gewählt werden
@@ -333,7 +769,7 @@ namespace professionenStruktur
         /// <summary>
         /// Der Professionsmodifikator auf die Eigenschaften inklusive Name der Eigenschaft
         /// </summary>
-        public List<NameWertPaar> eigenschaftsModifikationen;
+        public List<GenericListenNameWertPaar<EigenschaftenName>> eigenschaftsModifikationen;
 
         /// <summary>
         /// Das Interval, in dem sich der Sozialstatus bewegen muss, damit man die Profession ausüben / erlernen kann.
@@ -345,174 +781,67 @@ namespace professionenStruktur
         public Range soInterval;
 
         /// <summary>
-        /// Eine Liste der für die Profession üblichen Kulturen. Nicht bindend, aber sollte eingehalten werden.
-        /// </summary>
-        public List<string> ueblicheKulturen;
-
-        /// <summary>
-        /// Eine Liste aller möglichen Varianten einer Profession. Die Variante besimmt GP-Kosten, Talente, Modifikatoren,
-        /// etc. Und muss beim Auswählen einer Profession immer mit angegeben werden. Wenn es moegliche Varianten gibt,
-        /// aber auch eine "Basisvariante", sollte die Basisvariante mit "keine" bezeichnet werden.
-        /// </summary>
-        public List<string> moeglicheVarianten;
-
-        /// <summary>
-        /// Die vom Helden tatsächlich gewählte Variante.
-        /// </summary>
-        public string gewaehlteVariante;
-
-        /// <summary>
         /// Automatische Vorteile durch die Profession inklusive Wert.
         /// </summary>
-        public List<NameWertPaar> automatischeVorteile;
+        public List<VorteilsIdentifier> automatischeVorteile;
         /// <summary>
         /// Automatische Nachteile durch die Profession inklusive Wert.
         /// </summary>
-        public List<NameWertPaar> automatischeNachteile;
+        public List<NachteilsIdentifier> automatischeNachteile;
         /// <summary>
         /// Empfohlene Vorteile durch die Profession (nicht bindend).
         /// </summary>
-        public List<string> empfohleneVorteile;
+        public List<VorteilsIdentifier> empfohleneVorteile;
         /// <summary>
         /// Empfohlene Nachteile durch die Profession (nicht bindend).
         /// </summary>
-        public List<string> empfohleneNachteile;
+        public List<NachteilsIdentifier> empfohleneNachteile;
         /// <summary>
         /// Ungeeignete Vorteile für die Profession (sollte bindend sein).
         /// </summary>
-        public List<string> ungeeigneteVorteile;
+        public List<VorteilsIdentifier> ungeeigneteVorteile;
         /// <summary>
         /// Ungeeignete Nachteile für die Profession (sollte bindend sein).
         /// </summary>
-        public List<string> ungeeigneteNachteile;
+        public List<NachteilsIdentifier> ungeeigneteNachteile;
 
         /// <summary>
         /// Liste von Talenten und Modifikatoren, die man durch die Profession erhält.
         /// </summary>
-        public List<NameWertPaar> talente;
+        public List<talentIdentifier> talente;
 
         /// <summary>
         /// Liste von Sonderfertigkeiten, die man durch die Profession erhält.
         /// </summary>
-        public List<string> sonderfertigkeiten;
+        public List<sfIdentifier> sonderfertigkeiten;
 
         /// <summary>
         /// Liste von Sonderfertigkeiten, die man durch die Profession verbilligt kaufen kann:
         /// </summary>
-        public List<string> verbilligteSF;
-
-        /// <summary>
-        /// Eine Liste, die die Ausrüstungsgegenstände enthält, die man durch die Profession bekommt.
-        /// TODO!
-        /// </summary>
-        public List<NameWertPaar> ausruestung;
-
-        /// <summary>
-        /// Eine Liste, die den besonderen Besitz enthält, den ein Held durch die Profession NUR DANN
-        /// bekommt, wenn er den Vorteil "besonderer Besitz" gewählt hat
-        /// </summary>
-        public List<NameWertPaar> besondererBesitz;
+        public List<sfIdentifier> verbilligteSF;
 
         /// <summary>
         /// Eine Liste, die alle Zauberfertigkeiten und Spezialisierungen enthält, die durch die Rasse
         /// gegeben werden.
         /// </summary>
-        public List<nameSubnamePaar> zauberfertigkeiten;
+        public List<ZauberIdentifier> zauberfertigkeiten;
 
         /// <summary>
-        /// Eine Liste, die alle möglichen Ausbildungsorte / Akademien, etc. enthält.
-        /// TODO: Ist das überhaupt nötig?
+        /// Eine Liste von verschiedenen Auswahlen für Vorteile, Talente, etc.
         /// </summary>
-        public List<string> ausbildungsorte;
-
+        public List<wahlmoeglichkeiten> wahlen;
 
         /// <summary>
-        /// Name der Profession
-        /// </summary>        
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-
-            set
-            {
-
-                try
-                {
-
-                    switch (value)
-                    {
-                        ///////////////////////////////////////
-                        // Amazone
-                        ///////////////////////////////////////
-                        case "Amazone":
-                            name = value;
-
-                            generierungskosten = 10;
-                            zeitaufwaendig = true;
-                            voraussetzungen = new professionsVorausssetzungen()
-                            {
-                                geschlechtstyp = "weiblich",
-                                eigenschaften = new List<NameWertPaar>()
-                                {
-                                    new NameWertPaar () {name = "MU", wert = 13},
-                                    new NameWertPaar () {name = "GE", wert = 12},
-                                    new NameWertPaar () {name = "KO", wert = 13},
-                                    new NameWertPaar () {name = "KK", wert = 11},
-                                },
-                            };
-                            leModifikator = 1;
-                            auModifikator = 3;
-                            soInterval = new Range(){ lower = 5, upper = 10};
-                            automatischeVorteile = new List<NameWertPaar>()
-                            {
-                                new NameWertPaar () {name = "Akademische Ausbildung", wert = 0},
-                                new NameWertPaar () {name = "Akademische Ausbildung", wert = 0},
-                            };
-
-                            break;
-
-
-                        default:
-                            throw new System.ArgumentOutOfRangeException();
-
-
-                    }
-                }
-                catch (System.ArgumentOutOfRangeException)
-                {
-                    System.Console.WriteLine("Ungültige Profession angegeben!");
-                }
-            }
-        }
-
-    }
-
-    /// <summary>
-    /// Eine Struktur, in der die Voraussetzungen einer SF aufgelistet sein können:
-    /// </summary>
-    public struct professionsVorausssetzungen
-    {
-        /// <summary>
-        /// Eigenschaftenvoraussetzung für Profession
+        /// Sprachen, die mit der Profession verknüpft sind:
+        /// (kann auch sein, dass sie erst zwischen mehreren gewählt werden muss!)
         /// </summary>
-        public List<NameWertPaar> eigenschaften;
+        public List<SprachenIdentifier> sprachen;
+
         /// <summary>
-        /// Talentwertvoraussetzung für Profession
+        /// Eine Liste aller Schriften, die man durch die Profession kennt:
         /// </summary>
-        public List<NameWertPaar> talentwerte;
-        /// <summary>
-        /// SF-Voraussetzung für Profession
-        /// </summary>
-        public List<string> andereSF;
-        /// <summary>
-        /// Beschreibt, welches Geschlecht ein Held/eine Helden haben muss, um die Profession
-        /// ausüben zu können. "männlich", "weiblich", "beide"
-        /// Ist z.B. wichtig für: Amazonen
-        /// </summary>
-        public string geschlechtstyp;
+        public List<SchriftenIdentifier> schriften;
+
     };
 
 }

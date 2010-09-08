@@ -7,6 +7,25 @@ using System.ComponentModel;
 namespace Listen
 {
 
+    public enum Moralcodices
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Rondrakirche")]
+        Rondrakirche,
+    };
+
+    public enum Prinzipien
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Gehorsam")]
+        Gehorsam,
+        [Description("Loyalität")]
+        Loyalitaet,
+        [Description("Ehrenhaftigkeit")]
+        Ehrenhaftigkeit,
+    };
 
     public enum Speisegebote
     {
