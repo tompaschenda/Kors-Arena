@@ -290,7 +290,56 @@ namespace Listen
         undefined,
         [Description("keine")]
         keine,
+
+        [Description("Wehrheim")]
+        Wehrheim,
+        [Description("Vinsalt")]
+        Vinsalt,
+        [Description("Al' Anfa")]
+        AlAnfa,
+
+
+        // Hexe:
+        [Description("Katze")]
+        Katze,
+        [Description("Schlange")]
+        Schlange,
+        [Description("Spinne")]
+        Spinne,
+        [Description("Eule")]
+        Eule,
+        [Description("Kröte")]
+        Kroete,
+        [Description("Affe")]
+        Affe,
+
+        // Gelehrter
+        [Description("Jurist")]
+        Jurist,
+
+        [Description("Gold- und Feinschmied")]
+        GoldUndFeinschmied,
+        [Description("Grobschmied")]
+        Grobschmied,
+        [Description("Instrumentenbauer")]
+        Instrumentenbauer,
+        [Description("Schneider")]
+        Schneider,
+        [Description("Stellmacher")]
+        Stellmacher,
+        [Description("Tätowierer")]
+        Taetowierer,
+        [Description("Gerber / Kürschner")]
+        GerberKuerschner,
+        [Description("Sklavenaufseher")]
+        Sklavenaufseher,
+
+        [Description("Graveur")]
+        Graveur,
+
+
         // Fähnrich
+
 
         [Description("Fähnrich der Fußlämpfer (Al'Anfa)")]
         FusskaempferAlAnfa,
@@ -747,6 +796,7 @@ namespace Listen
         [Description("Uhrmacher")]
         Uhrmacher,
 
+
         // Gelehrter
         [Description("Anatom")]
         Anatom,
@@ -784,6 +834,26 @@ namespace Listen
         ArchaischeHandwerkerDerOrks,
         [Description("Archaische Handwerker des Nordens")]
         ArchaischeHandwerkerDesNordens,
+        [Description("Plättner")]
+        Plaettner,
+        [Description("Sattler/Schuster")]
+        SchusterUndSattler,
+        [Description("Schreiner")]
+        Schreiner,
+        [Description("Waffenschmied")]
+        Waffenschmied,
+        [Description("Bogenbauer")]
+        Bogenbauer,
+        [Description("Edelsteinschleifer")]
+        Edelsteinschleifer,
+        [Description("Glasbläser")]
+        Glasblaeser,
+        [Description("Steinmetz")]
+        Steinmetz,
+        [Description("Töpfer")]
+        Toepfer,
+        [Description("Weber")]
+        Weber,
 
         // Rattenfänger
         [Description("Krokodillero")]

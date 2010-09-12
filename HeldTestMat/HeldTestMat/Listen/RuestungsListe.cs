@@ -15,5 +15,13 @@ namespace Listen
         undefined,
         [Description("Kettenhemd")]
         Kettenhemd,
+        [Description("Kürass")]
+        Kuerass,
+        [Description("Leichte Platte")]
+        LeichtePlatte,
+        [Description("Wattierter Waffenrock")]
+        WattierterWaffenrock,
+        [Description("Lederwams")]
+        Lederwams,
     }
 }

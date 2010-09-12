@@ -365,6 +365,8 @@ namespace Listen
         Bauchreden,
         [Description("Feuerkunst")]
         Feuerkunst,
+        [Description("Jonglieren")]
+        Jonglieren,
         [Description("Possenreißen")]
         Possenreissen,
         [Description("Taschenspielereien")]

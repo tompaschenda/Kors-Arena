@@ -111,6 +111,8 @@ namespace Listen
         Formation,
         [Description("Gegenhalten")]
         Gegenhalten,
+        [Description("Geschützmeister")]
+        Geschuetzmeister,
         [Description("Gezielter Stich")]
         GezielterStich,
         [Description("Halbschwert")]
@@ -139,8 +141,10 @@ namespace Listen
         Meisterparade,
         [Description("Niederwerfen")]
         Niederwerfen,
-        [Description("Parierwaffen")]
-        Parierwaffen,
+        [Description("Parierwaffen I")]
+        Parierwaffen1,
+        [Description("Parierwaffen II")]
+        Parierwaffen2,
         [Description("Rüstungsgewöhnung I")]
         Ruestungsgewoehnung1,
         [Description("Rüstungsgewöhnung II")]
