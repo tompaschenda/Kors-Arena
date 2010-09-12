@@ -7,6 +7,20 @@ using System.ComponentModel;
 namespace Listen
 {
 
+    public enum Verpflichtungen
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("(der Sippe gegenüber)")]
+        Sippe,
+        [Description("Finanzier")]
+        Finanzier,
+        [Description("Lehrer")]
+        Lehrer,
+        [Description("Dienstherr")]
+        Dienstherr,
+    };
+
     public enum Moralcodices
     {
         [Description("undefined")]
@@ -25,6 +39,8 @@ namespace Listen
         Loyalitaet,
         [Description("Ehrenhaftigkeit")]
         Ehrenhaftigkeit,
+        [Description("Schutz der Schwachen")]
+        SchutzDerSchwachen,
     };
 
     public enum Speisegebote
@@ -141,8 +157,12 @@ namespace Listen
         Geiz,
         [Description("Gerechtigkeitswahn")]
         Gerechtigkeitswahn,
-        [Description("Gesucht")]
-        Gesucht,
+        [Description("Gesucht I")]
+        Gesucht1,
+        [Description("Gesucht II")]
+        Gesucht2,
+        [Description("Gesucht III")]
+        Gesucht3,
         [Description("Glasknochen")]
         Glasknochen,
         [Description("Goldgier")]
@@ -229,8 +249,10 @@ namespace Listen
         Raumangst,
         [Description("Rückschlag")]
         Rueckschlag,
-        [Description("Schlafstörungen")]
-        Schlafstoerungen,
+        [Description("Schlafstörungen I")]
+        Schlafstoerungen1,
+        [Description("Schlafstörungen II")]
+        Schlafstoerungen2,
         [Description("Schlafwandler")]
         Schlafwandler,
         [Description("Schlechte Eigenschaft")]

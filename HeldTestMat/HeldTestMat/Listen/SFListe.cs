@@ -193,17 +193,17 @@ namespace Listen
         Schnellziehen,
 
         // Kampfsonderfertigkeiten (Waffenloser Kampf):
-        [Description("Bornländisch")]
+        [Description("Waffenloser Kampfstil (Bornländisch)")]
         Bornlaendisch,
-        [Description("Gladiatorenstil")]
+        [Description("Waffenloser Kampfstil (Gladiatorenstil)")]
         Gladiatorenstil,
-        [Description("Hammerfaust")]
+        [Description("Waffenloser Kampfstil (Hammerfaust)")]
         Hammerfaust,
-        [Description("Hruruzat")]
+        [Description("Waffenloser Kampfstil (Hruruzat)")]
         Hruruzat,
-        [Description("Mercenario")]
+        [Description("Waffenloser Kampfstil (Mercenario)")]
         Mercenario,
-        [Description("Unauer Schule")]
+        [Description("Waffenloser Kampfstil (Unauer Schule)")]
         UnauerSchule,
         [Description("Auspendeln")]
         Auspendeln,

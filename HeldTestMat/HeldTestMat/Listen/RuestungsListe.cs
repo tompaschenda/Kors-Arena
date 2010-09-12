@@ -23,5 +23,11 @@ namespace Listen
         WattierterWaffenrock,
         [Description("Lederwams")]
         Lederwams,
+        [Description("Lederrüstung")]
+        Lederruestung,
+        [Description("Ringelpanzer")]
+        Ringelpanzer,
+        [Description("Gambeson")]
+        Gambeson,
     }
 }

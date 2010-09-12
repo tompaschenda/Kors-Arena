@@ -1878,7 +1878,7 @@ namespace kulturenStruktur
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
                 new NachteilsIdentifier(){ name = NachteileName.Arroganz},
-                new NachteilsIdentifier(){ name = NachteileName.Gesucht},
+                new NachteilsIdentifier(){ name = NachteileName.Gesucht1},
                 new NachteilsIdentifier(){ name = NachteileName.Goldgier},
                 new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
                 new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
@@ -2421,7 +2421,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Linkshaender},
                 new VorteilsIdentifier(){ name = VorteileName.Nachtsicht},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -3121,7 +3121,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Kampf },
                 new VorteilsIdentifier(){ name = VorteileName.BesondererBesitz },
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft },
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung },
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1 },
                 new VorteilsIdentifier(){ name = VorteileName.Veteran },
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund },
             };
@@ -4551,7 +4551,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
@@ -4936,7 +4936,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Viertelzauberer},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
                 new VorteilsIdentifier(){ name = VorteileName.Wolfskind},
@@ -5079,7 +5079,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
                 new VorteilsIdentifier(){ name = VorteileName.Kaelteresistenz},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wolfskind},
             };
 
@@ -5225,7 +5225,7 @@ namespace kulturenStruktur
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
                 new NachteilsIdentifier(){ name = NachteileName.Aberglaube},
-                new NachteilsIdentifier(){ name = NachteileName.Gesucht},
+                new NachteilsIdentifier(){ name = NachteileName.Gesucht1},
                 new NachteilsIdentifier(){ name = NachteileName.Goldgier},
                 new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
                 new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
@@ -5777,7 +5777,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenKrankheiten},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
             };
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
@@ -5948,7 +5948,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -6094,7 +6094,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -6254,7 +6254,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -6498,7 +6498,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -6660,7 +6660,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Schutzgeist},
                 new VorteilsIdentifier(){ name = VorteileName.UebernatürlicheBegabung},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
@@ -6905,7 +6905,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -7079,7 +7079,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -7227,7 +7227,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -7430,7 +7430,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -7587,7 +7587,7 @@ namespace kulturenStruktur
             {
                 new NachteilsIdentifier(){ name = NachteileName.Aberglaube},
                 new NachteilsIdentifier(){ name = NachteileName.Eitelkeit},
-                new NachteilsIdentifier(){ name = NachteileName.Gesucht},
+                new NachteilsIdentifier(){ name = NachteileName.Gesucht1},
                 new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
                 new NachteilsIdentifier(){ name = NachteileName.Neugier},
                 new NachteilsIdentifier(){ name = NachteileName.Schulden},
@@ -7742,7 +7742,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -7944,7 +7944,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Entfernungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.SchwerZuVerzaubern},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
@@ -8117,7 +8117,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Entfernungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.SchwerZuVerzaubern},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
@@ -9101,7 +9101,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Eisern},
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -10465,7 +10465,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kaelteresistenz},
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenKrankheiten},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
@@ -10757,7 +10757,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Magiegespuer},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Tierfreund},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
@@ -10931,7 +10931,7 @@ namespace kulturenStruktur
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Dunkelangst });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Einbildungen });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Goldgier });
-            subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schlafstoerungen });
+            subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schlafstoerungen1 });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Stigma });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Unstet });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Wahnvorstellungen });
@@ -11287,7 +11287,7 @@ namespace kulturenStruktur
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Dunkelangst });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Einbildungen });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Goldgier });
-            subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schlafstoerungen });
+            subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schlafstoerungen1 });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Stigma });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Unstet });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Wahnvorstellungen });

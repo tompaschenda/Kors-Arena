@@ -300,7 +300,7 @@ namespace talentStruktur
         /// speziell, da für jede Sprache anders!)
         /// </summary>
         /// <returns></returns>
-        private List<talentIdentifier> getSpracheUndSchrift()
+        public List<talentIdentifier> getSpracheUndSchrift()
         {
             var sprachenSchriften = new List<talentIdentifier>() { };
             sprachenSchriften.Add(new talentIdentifier() { name = TalentName.LesenUndSchreiben });
@@ -308,22 +308,38 @@ namespace talentStruktur
             return sprachenSchriften;
         }
 
-        private List<talentIdentifier> getZauber()
+        /// <summary>
+        /// Sammelt alle Zaubertalente (?)
+        /// </summary>
+        /// <returns></returns>
+        public List<talentIdentifier> getZauber()
         {
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// Sammelt alle Metatalente
+        /// </summary>
+        /// <returns></returns>
         private List<talentIdentifier> getMeta()
         {
             throw new System.NotImplementedException();
         }
 
-        private List<talentIdentifier> getGabe()
+        /// <summary>
+        /// Sammelt alle Gaben
+        /// </summary>
+        /// <returns></returns>
+        public List<talentIdentifier> getGabe()
         {
             throw new System.NotImplementedException();
         }
 
-        private List<talentIdentifier> getBeruf()
+        /// <summary>
+        /// Sammelt alle Berufstalente
+        /// </summary>
+        /// <returns></returns>
+        public List<talentIdentifier> getBeruf()
         {
             throw new System.NotImplementedException();
         }
@@ -332,7 +348,7 @@ namespace talentStruktur
         /// Eine Sammlung aller Handwerkstalente:
         /// </summary>
         /// <returns></returns>
-        private List<talentIdentifier> getHandwerk()
+        public List<talentIdentifier> getHandwerk()
         {
             var handwerk = new List<talentIdentifier>() { };
             handwerk.Add(new talentIdentifier() { name = TalentName.Abrichten });
@@ -390,7 +406,7 @@ namespace talentStruktur
         /// Eine Sammlung aller Wissenstalente:
         /// </summary>
         /// <returns></returns>
-        private List<talentIdentifier> getWissen()
+        public List<talentIdentifier> getWissen()
         {
             var wissen = new List<talentIdentifier>() { };
             wissen.Add(new talentIdentifier() { name = TalentName.Anatomie });
@@ -423,7 +439,7 @@ namespace talentStruktur
         /// Eine Sammlung aller Naturtalente:
         /// </summary>
         /// <returns></returns>
-        private List<talentIdentifier> getNatur()
+        public List<talentIdentifier> getNatur()
         {
             var natur = new List<talentIdentifier>() { };
             natur.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen });
@@ -440,7 +456,7 @@ namespace talentStruktur
         /// Eine Sammlung aller gesellschaftlichen Talente:
         /// </summary>
         /// <returns></returns>
-        private List<talentIdentifier> getGesellschaftlich()
+        public List<talentIdentifier> getGesellschaftlich()
         {
             var gesellschaftlich = new List<talentIdentifier>() { };
             gesellschaftlich.Add(new talentIdentifier() { name = TalentName.Betoeren });
@@ -460,7 +476,7 @@ namespace talentStruktur
         /// Eine Sammlung aller körperlichen Talente:
         /// </summary>
         /// <returns></returns>
-        private List<talentIdentifier> getKoerperlich()
+        public List<talentIdentifier> getKoerperlich()
         {
             var koerperlich = new List<talentIdentifier>() { };
             koerperlich.Add(new talentIdentifier() { name = TalentName.Akrobatik });
@@ -502,7 +518,7 @@ namespace talentStruktur
         /// Sonstige Kampffertigkeiten:
         /// </summary>
         /// <returns></returns>
-        private List<talentIdentifier> getKampfSonst()
+        public List<talentIdentifier> getKampfSonst()
         {
             var kampfsonst = new List<talentIdentifier>() { };
             kampfsonst.Add(new talentIdentifier() { name = TalentName.Lanzenreiten });

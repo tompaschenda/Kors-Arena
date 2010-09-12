@@ -1130,8 +1130,8 @@ namespace Listen
         SchuelerRafim,
 
         // Scharlatan
-        [Description("Jahrmarktszauber")]
-        Jahrmarktszauber,
+        [Description("Jahrmarktszauberer")]
+        Jahrmarktszauberer,
         [Description("Scharlatanischer Seher")]
         ScharlatanischerSeher,
         [Description("Magischer Quacksalber")]
