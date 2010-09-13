@@ -28,7 +28,7 @@ namespace GUI
 
         private void NeuerHeld_Click(object sender, RoutedEventArgs e)
         {
-            var w = new NeuerHeldWindow();
+            var w = new NeuerHeldWizard();
             w.Show();
         }
 

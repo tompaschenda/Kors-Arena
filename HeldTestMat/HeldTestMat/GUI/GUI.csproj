@@ -74,8 +74,30 @@
     <Compile Include="NeuerHeldWindow.xaml.cs">
       <DependentUpon>NeuerHeldWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NeuerHeldWizard\NeuerHeldWizard.xaml.cs">
+      <DependentUpon>NeuerHeldWizard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeuerHeldWizard\WizardRassenAuswahlControl.xaml.cs">
+      <DependentUpon>WizardRassenAuswahlControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeuerHeldWizard\WizardStep.cs" />
     <Compile Include="PortraitControl.xaml.cs">
       <DependentUpon>PortraitControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeuerHeldWizard\StepIndicatorControl.xaml.cs">
+      <DependentUpon>StepIndicatorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeuerHeldWizard\WizardButtonsControl.xaml.cs">
+      <DependentUpon>WizardButtonsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeuerHeldWizard\WizardContentControl.xaml.cs">
+      <DependentUpon>WizardContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeuerHeldWizard\WizardGeschlechtAuswahlControl.xaml.cs">
+      <DependentUpon>WizardGeschlechtAuswahlControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeuerHeldWizard\WizardHeaderControl.xaml.cs">
+      <DependentUpon>WizardHeaderControl.xaml</DependentUpon>
     </Compile>
     <Page Include="BasisdatenControl.xaml">
       <SubType>Designer</SubType>
@@ -117,7 +139,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NeuerHeldWizard\NeuerHeldWizard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NeuerHeldWizard\WizardRassenAuswahlControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PortraitControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NeuerHeldWizard\StepIndicatorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NeuerHeldWizard\WizardButtonsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NeuerHeldWizard\WizardContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NeuerHeldWizard\WizardGeschlechtAuswahlControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NeuerHeldWizard\WizardHeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
