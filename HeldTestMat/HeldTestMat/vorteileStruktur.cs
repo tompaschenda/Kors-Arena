@@ -454,4 +454,163 @@ namespace vorteileStruktur
         public bool machtNurTPA;
     }
 
+    /// <summary>
+    /// Bieter Zugriff auf alle Vorteilskategorien
+    /// </summary>
+    public class Vorteilskategorien
+    {
+        /// <summary>
+        /// Gibt ALLE Nachteile zurück:
+        /// </summary>
+        /// <returns></returns>
+        public List<VorteilsIdentifier> GetAlle()
+        {
+            var alleVorteile = new List<VorteilsIdentifier>() { };
+            alleVorteile.AddRange(getProfane());
+            alleVorteile.AddRange(getMagische());
+            alleVorteile.AddRange(getKlerikale());
+            return alleVorteile;
+        }
+
+        /// <summary>
+        /// Sammlung aller Profanen Vorteile
+        /// </summary>
+        /// <returns></returns>
+        public List<VorteilsIdentifier> getProfane()
+        {
+            var profane = new List<VorteilsIdentifier>();
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Adlig });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.AdligeAbstammung });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.AdligesErbe });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Amtsadel });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungGelehrter });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungKrieger });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Altersresistenz });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Ausdauernd });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Ausrüstungsvorteil});
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Balance });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.BegabungFuerTalent });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.BegabungFuerTalentgruppe });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Beidhaendig });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.BesondererBesitz });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.BreitgefaecherteBildung });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Daemmerungssicht });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.EidetischesGedaechtnis});
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Eisern });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Empathie });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Entfernungssinn });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Feenfreund });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Flink });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Gebildet });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Gefahreninstinkt });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Glueck });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.GlueckImSpiel });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.GutAussehend });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.GuterRuf });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.GutesGedaechtnis });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.HerausragendeBalance });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.HerausragendeEigenschaft });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.HerausragenderSechsterSinn });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.HerausragenderSinn });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Hitzeresistenz });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.HoheLebenskraft });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.HoheMagieresistenz });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ImmunitaetGegenGifte });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ImmunitaetGegenKrankheiten });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ImmunitaetGegenBestimmteGiftart });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ImmunitaetGegenBestimmteKrankheit });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ImmunitaetGegenBestimmtenGifwirkungstypen });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.InnererKompass });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Kaelteresistenz });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Kampfrausch });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Koboldfreund });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Kraefteschub });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Talentschub });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Linkshaender });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Magiegespuer });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Nachtsicht });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.NatuerlicheWaffen });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.NatuerlicherRuestungsschutz });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.NiedrigeSchlechteEigenschaft });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Prophezeien });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ResistenzGegenBestimmteGiftart });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ResistenzGegenBestimmtenGifwirkungstypen });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ResistenzGegenBestimmtesGift });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ResistenzGegenGifte });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ResistenzGegenKrankheiten });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Richtungssinn });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Schlangenmensch });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.SchnelleHeilung1 });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.SchnelleHeilung2 });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.SchnelleHeilung3 });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.SchwerZuVerzaubern });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.SozialeAnpassungsfaehigkeit });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Tierempathie });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Tierfreund });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Verbindungen });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Veteran });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.VomSchicksalBeguenstigt });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Wohlklang });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ZaeherHund });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Zeitgefuehl });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.ZusaetzlicheGliedmassen });
+            profane.Add(new VorteilsIdentifier() { name = VorteileName.Zwergennase });
+
+
+            return profane;
+        }
+
+        /// <summary>
+        /// Sammlung aller magischen Vorteile:
+        /// </summary>
+        /// <returns></returns>
+        public List<VorteilsIdentifier> getMagische()
+        {
+            var magische = new List<VorteilsIdentifier>();
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.AffinitaetZu });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungMagier });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.AstraleRegeneration });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Astralmacht });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.AusdauernderZauberer });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.BegabungFuerMerkmal });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.BegabungFuerRitual });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.BegabungFuerZauber });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.BeseelteKnochenkeule });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Eigeboren });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.EisenaffineAura });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.ErerbteKnochenkeule });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.FesteMatrix });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Geraeuschhexerei });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Halbzauberer });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.MachtvollerVertrauter });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Magiedilettant });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Meisterhandwerk });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Schutzgeist });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.UebernatürlicheBegabung });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.UnbeschwertesZaubern });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.VerhuellteAura });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Viertelzauberer });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Vollzauberer });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.WesenDerNacht });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Wolfskind });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Zauberhaar });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.ZweistimmigerGesang });
+            magische.Add(new VorteilsIdentifier() { name = VorteileName.Zwergennase });
+           
+            return magische;
+        }
+
+        /// <summary>
+        /// Sammlung aller klerikalen Vorteile:
+        /// </summary>
+        /// <returns></returns>
+        public List<VorteilsIdentifier> getKlerikale()
+        {
+            var klerikale = new List<VorteilsIdentifier>();
+            klerikale.Add(new VorteilsIdentifier() { name = VorteileName.Geweiht });
+            return klerikale;
+        }
+
+    }
+
 }

@@ -394,6 +394,226 @@ namespace kulturenStruktur
                             kultur = value;
                             moeglicheSubkulturen = new List<subkultur>();
                             moeglicheSubkulturen.Add(createAuelfischSubKeine());
+                            moeglicheSubkulturen.Add(createAuelfischSubHoherNorden());
+                            break;
+                        ///////////////////////////////////////
+                        // Elfische Siedling
+                        ///////////////////////////////////////
+                        case KulturName.ElfischeSiedlung:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubKeine());
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubSuedlich());
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubGroess());
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubFirn());
+                            moeglicheSubkulturen.Add(createElfischeSiedlungSubWald());
+                            break;
+                        ///////////////////////////////////////
+                        // Steppenelfische Sippe
+                        ///////////////////////////////////////
+                        case KulturName.SteppenelfischeSippe:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createSteppenSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Waldelfische Sippe
+                        ///////////////////////////////////////
+                        case KulturName.WaldelfischeSippe:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createWaldSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Firnelfische Sippe
+                        ///////////////////////////////////////
+                        case KulturName.Firnelfen:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createFirnSubKeine());
+                            moeglicheSubkulturen.Add(createFirnSubKueste());
+                            break;
+                        ///////////////////////////////////////
+                        // Ambosszwerge
+                        ///////////////////////////////////////
+                        case KulturName.Ambosszwerge:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createAmbossSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Erzzwerge
+                        ///////////////////////////////////////
+                        case KulturName.Erzzwerge:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createErzSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Hügelzwerge
+                        ///////////////////////////////////////
+                        case KulturName.Huegelzwerge:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createHuegelSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Brillantzwerge
+                        ///////////////////////////////////////
+                        case KulturName.Brillantzwerge:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createBrilliantSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Brobim
+                        ///////////////////////////////////////
+                        case KulturName.Brobim:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createBrobimSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Orks (Ergoch)
+                        ///////////////////////////////////////
+                        case KulturName.OrklandErgoch:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createOrkSubKorogai( KulturName.OrklandErgoch));
+                            moeglicheSubkulturen.Add(createOrkSubMokolash( KulturName.OrklandErgoch));
+                            moeglicheSubkulturen.Add(createOrkSubOlochtai( KulturName.OrklandErgoch));
+                            moeglicheSubkulturen.Add(createOrkSubOrichai( KulturName.OrklandErgoch));
+                            moeglicheSubkulturen.Add(createOrkSubTrunzhai( KulturName.OrklandErgoch));
+                            moeglicheSubkulturen.Add(createOrkSubTscharshai( KulturName.OrklandErgoch));
+                            moeglicheSubkulturen.Add(createOrkSubZholochai( KulturName.OrklandErgoch ));
+                            break;
+                        ///////////////////////////////////////
+                        // Orks (Grishik)
+                        ///////////////////////////////////////
+                        case KulturName.OrklandGrishik:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createOrkSubKorogai(KulturName.OrklandGrishik));
+                            moeglicheSubkulturen.Add(createOrkSubMokolash(KulturName.OrklandGrishik));
+                            moeglicheSubkulturen.Add(createOrkSubOlochtai(KulturName.OrklandGrishik));
+                            moeglicheSubkulturen.Add(createOrkSubOrichai(KulturName.OrklandGrishik));
+                            moeglicheSubkulturen.Add(createOrkSubTrunzhai(KulturName.OrklandGrishik));
+                            moeglicheSubkulturen.Add(createOrkSubTscharshai(KulturName.OrklandGrishik));
+                            moeglicheSubkulturen.Add(createOrkSubZholochai(KulturName.OrklandGrishik));
+                            break;
+                        ///////////////////////////////////////
+                        // Orks (Drasdech)
+                        ///////////////////////////////////////
+                        case KulturName.OrklandDrasdech:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createOrkSubKorogai(KulturName.OrklandDrasdech));
+                            moeglicheSubkulturen.Add(createOrkSubMokolash(KulturName.OrklandDrasdech));
+                            moeglicheSubkulturen.Add(createOrkSubOlochtai(KulturName.OrklandDrasdech));
+                            moeglicheSubkulturen.Add(createOrkSubOrichai(KulturName.OrklandDrasdech));
+                            moeglicheSubkulturen.Add(createOrkSubTrunzhai(KulturName.OrklandDrasdech));
+                            moeglicheSubkulturen.Add(createOrkSubTscharshai(KulturName.OrklandDrasdech));
+                            moeglicheSubkulturen.Add(createOrkSubZholochai(KulturName.OrklandDrasdech));
+                            break;
+                        ///////////////////////////////////////
+                        // Orks (Khurkach)
+                        ///////////////////////////////////////
+                        case KulturName.OrklandKhurkach:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createOrkSubKorogai(KulturName.OrklandKhurkach));
+                            moeglicheSubkulturen.Add(createOrkSubMokolash(KulturName.OrklandKhurkach));
+                            moeglicheSubkulturen.Add(createOrkSubOlochtai(KulturName.OrklandKhurkach));
+                            moeglicheSubkulturen.Add(createOrkSubOrichai(KulturName.OrklandKhurkach));
+                            moeglicheSubkulturen.Add(createOrkSubTrunzhai(KulturName.OrklandKhurkach));
+                            moeglicheSubkulturen.Add(createOrkSubTscharshai(KulturName.OrklandKhurkach));
+                            moeglicheSubkulturen.Add(createOrkSubZholochai(KulturName.OrklandKhurkach));
+                            break;
+                        ///////////////////////////////////////
+                        // Orks (Okwach)
+                        ///////////////////////////////////////
+                        case KulturName.OrklandOkwach:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createOrkSubKorogai(KulturName.OrklandOkwach));
+                            moeglicheSubkulturen.Add(createOrkSubMokolash(KulturName.OrklandOkwach));
+                            moeglicheSubkulturen.Add(createOrkSubOlochtai(KulturName.OrklandOkwach));
+                            moeglicheSubkulturen.Add(createOrkSubOrichai(KulturName.OrklandOkwach));
+                            moeglicheSubkulturen.Add(createOrkSubTrunzhai(KulturName.OrklandOkwach));
+                            moeglicheSubkulturen.Add(createOrkSubTscharshai(KulturName.OrklandOkwach));
+                            moeglicheSubkulturen.Add(createOrkSubZholochai(KulturName.OrklandOkwach));
+                            break;
+                       ///////////////////////////////////////
+                        // Orks (Yurach)
+                        ///////////////////////////////////////
+                        case KulturName.Yurach:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createYurachSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Svallttal-Besatzer
+                        ///////////////////////////////////////
+                        case KulturName.SvellttalBesatzer:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createSvelltErgoch());
+                            moeglicheSubkulturen.Add(createSvelltGrishik());
+                            moeglicheSubkulturen.Add(createSvelltDrasdech());
+                            moeglicheSubkulturen.Add(createSvelltKhur());
+                            moeglicheSubkulturen.Add(createSvelltOkwach());
+                            break;
+                        ///////////////////////////////////////
+                        // Goblinstamm
+                        ///////////////////////////////////////
+                        case KulturName.Goblinstamm:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createGoblinMannSubKeine());
+                            moeglicheSubkulturen.Add(createGoblinMannSubEbene());
+                            moeglicheSubkulturen.Add(createGoblinMannSubGebirge());
+                            moeglicheSubkulturen.Add(createGoblinMannSubSchnee());
+                            moeglicheSubkulturen.Add(createGoblinFrauSubKeine());
+                            moeglicheSubkulturen.Add(createGoblinFrauSubEbene());
+                            moeglicheSubkulturen.Add(createGoblinFrauSubGebirge());
+                            moeglicheSubkulturen.Add(createGoblinFrauSubSchnee());
+                            break;
+                        ///////////////////////////////////////
+                        // Goblinbande
+                        ///////////////////////////////////////
+                        case KulturName.Goblinbande:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createGoblinBandeSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Festumer Ghetto
+                        ///////////////////////////////////////
+                        case KulturName.FestumerGhetto:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createFestumSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Archaische Achaz
+                        ///////////////////////////////////////
+                        case KulturName.ArchaischeAchaz:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createArchAchazSubKeine());
+                            break;
+                        ///////////////////////////////////////
+                        // Stammes-Achaz
+                        ///////////////////////////////////////
+                        case KulturName.StammesAchaz:
+                            kultur = value;
+                            moeglicheSubkulturen = new List<subkultur>();
+                            moeglicheSubkulturen.Add(createStammAchazSubKeine());
+                            moeglicheSubkulturen.Add(createStammAchazSubMaraskan());
+                            moeglicheSubkulturen.Add(createStammAchazSubOrkland());
+                            moeglicheSubkulturen.Add(createStammAchazSubEchsen());
+                            moeglicheSubkulturen.Add(createStammAchazSubLoch());
+                            moeglicheSubkulturen.Add(createStammAchazSubWald());
                             break;
 
                         default:
@@ -407,6 +627,3706 @@ namespace kulturenStruktur
             }
         }
 
+        private subkultur createStammAchazSubWald()
+        {
+            var subWald = createStammAchazSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subWald.name = SubKulturName.WaldinselnUndSuedaventurien;
+
+            subWald.wahlen[0].loescheEintrag(subWald.wahlen, "WahlSprache");
+
+            subWald.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, modifikator = +2});
+
+            return subWald;
+        }
+        private subkultur createStammAchazSubLoch()
+        {
+            var subLoch = createStammAchazSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subLoch.generierungskosten = 13;
+            subLoch.name = SubKulturName.LochHarodrol;
+
+            subLoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = +1 });
+            subLoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +2 });
+            subLoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +2 });
+            subLoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.BooteFahren, wert = +2 });
+
+            subLoch.sonderfertigkeiten.Add(new sfIdentifier() 
+            { name = SFNamen.Talentspezialisierung, auspraegung = TalentName.Schwimmen, subAuspraegung = TalentSpezialisierung.Tauchen});
+
+            return subLoch;
+        }
+        private subkultur createStammAchazSubEchsen()
+        {
+            var subEchsen = createStammAchazSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subEchsen.generierungskosten = 11;
+            subEchsen.name = SubKulturName.Echsensuempfe;
+
+            // SF-Wahl raus, SF rein:
+            subEchsen.wahlen[0].loescheEintrag(subEchsen.wahlen, "WahlSF");
+            subEchsen.wahlen[0].loescheEintrag(subEchsen.wahlen, "WahlVerbilligt");
+
+            subEchsen.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Dschungel });
+            subEchsen.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf });
+
+            return subEchsen;
+        }
+        private subkultur createStammAchazSubOrkland()
+        {
+            var subOrkland = createStammAchazSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subOrkland.name = SubKulturName.Orkland;
+
+            // Wahl mit Blasrohr raus, Ersatz rein:
+            subOrkland.wahlen[0].loescheEintrag(subOrkland.wahlen, "WahlBlasrohr");
+            subOrkland.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wurfspeere, wert = +2 });
+
+            // Neue Sprachwahl:
+            subOrkland.wahlen[0].loescheEintrag(subOrkland.wahlen, "WahlSprache");
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloarkh},
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloghaijan},
+            };
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 2;
+            wahlSprache.anzahlZuWaehlen = 1;
+            wahlSprache.identifier = "WahlSprache";
+            subOrkland.wahlen.Add(wahlSprache);
+
+            // SF-Wahl raus, SF rein:
+            subOrkland.wahlen[0].loescheEintrag(subOrkland.wahlen, "WahlSF");
+            subOrkland.wahlen[0].loescheEintrag(subOrkland.wahlen, "WahlVerbilligt");
+
+            subOrkland.sonderfertigkeiten.Add(new sfIdentifier(){ name = SFNamen.Gelaendekunde , auspraegung = GelaendeArt.Sumpf});
+            subOrkland.verbilligteSonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe });
+
+            return subOrkland;
+        }
+        private subkultur createStammAchazSubMaraskan()
+        {
+            var subMaraskan = createStammAchazSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subMaraskan.name = SubKulturName.Maraskan;
+
+            subMaraskan.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = -1 });
+            subMaraskan.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +1 });
+            subMaraskan.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +2 });
+            subMaraskan.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.BooteFahren, wert = -1 });
+
+            return subMaraskan;
+        }
+        private subkultur createStammAchazSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 10;
+            subKeine.soMaximum = 4;
+            subKeine.leModifikator = +1;
+            subKeine.auModifikator = +3;
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Ausrüstungsvorteil},
+                new VorteilsIdentifier(){ name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Koboldfreund},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Einbeinig},
+                new NachteilsIdentifier(){ name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){ name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Meeresangst},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+                new NachteilsIdentifier(){ name = NachteileName.Totenangst},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fischer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.SchamaneDerAchaz},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Speere, wert = +3},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schwimmen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +2},
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln, wert = +2},
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Wettervorhersage, wert = +2},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, wert = +4},
+                new talentIdentifier(){ name = TalentName.Geschichtswissen, wert = +1},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, wert = +2},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier(){ name = TalentName.BooteFahren, wert = +2},
+                new talentIdentifier(){ name = TalentName.Feuersteinbearbeitung, wert = +1},
+                new talentIdentifier(){ name = TalentName.HeilkundeKrankheiten, wert = +1},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +1},
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Rssahh, muttersprache = true},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlHieb = new wahlmoeglichkeiten();
+            wahlHieb.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.ZweihandHiebwaffen},
+            };
+            wahlHieb.talentWerte = new int[0];
+            wahlHieb.talentWerte[0] = 2;
+            wahlHieb.anzahlZuWaehlen = 1;
+            wahlHieb.identifier = "WahlHieb";
+            subKeine.wahlen.Add(wahlHieb);
+
+            var wahlWurf = new wahlmoeglichkeiten();
+            wahlWurf.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Blasrohr},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},                
+            };
+            wahlWurf.talentWerte = new int[0];
+            wahlWurf.talentWerte[0] = 2;
+            wahlWurf.anzahlZuWaehlen = 1;
+            wahlWurf.identifier = "WahlBlasrohr";
+            subKeine.wahlen.Add(wahlWurf);
+
+            var wahlSF = new wahlmoeglichkeiten();
+            wahlSF.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Dschungel},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf},
+            };
+            wahlSF.anzahlZuWaehlen = 1;
+            wahlSF.identifier = "WahlSF";
+            subKeine.wahlen.Add(wahlSF);
+
+            wahlSF = new wahlmoeglichkeiten();
+            wahlSF.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Dschungel},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf},
+            };
+            wahlSF.anzahlZuWaehlen = 1;
+            wahlSF.identifier = "WahlVerbilligt";
+            subKeine.wahlen.Add(wahlSF);
+
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya},
+                new SprachenIdentifier(){ name = SprachenName.Garethi},
+            };
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 2;
+            wahlSprache.anzahlZuWaehlen = 1;
+            wahlSprache.identifier = "WahlSprache";
+            subKeine.wahlen.Add(wahlSprache);
+
+            return subKeine;
+        }
+
+        private subkultur createArchAchazSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 9;
+            subKeine.soMaximum = 5;
+
+            subKeine.mrModifikator = +1;
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Koboldfreund},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Meeresangst},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+                new NachteilsIdentifier(){ name = NachteileName.Totenangst},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fischer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Kraeutersammler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Sammler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kristallomant},
+                new ProfessionsIdentifier(){ name = ProfessionsName.PriesterDerHSzint},
+                new ProfessionsIdentifier(){ name = ProfessionsName.PriesterDerZsahh},
+            };
+
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker, subname = SubProfessionsName.Drucker});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Gelehrter, subname = SubProfessionsName.Mawdli });
+                
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier(){ name = TalentName.Etikette, wert = +1},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier(){ name = TalentName.Lehren, wert = +2},
+                new talentIdentifier(){ name = TalentName.Wettervorhersage, wert = +1},
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier(){ name = TalentName.Geschichtswissen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Gesteinskunde, wert = +2},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier(){ name = TalentName.Magiekunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.Philosophie, wert = +1},
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, wert = +2},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +4},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +3},
+                new talentIdentifier(){ name = TalentName.Sternkunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.Tierkunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.BooteFahren, wert = +1},
+                new talentIdentifier(){ name = TalentName.Feuersteinbearbeitung, wert = +1},
+                new talentIdentifier(){ name = TalentName.HeilkundeKrankheiten, wert = +1},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +1},
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Rssahh, muttersprache = true},
+            };
+
+            subKeine.schriften = new List<SchriftenIdentifier>()
+            {
+                new SchriftenIdentifier(){ name = SchriftName.Chrmk, wert = +4},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.ArchaischeAchaz},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlSpeere = new wahlmoeglichkeiten();
+            wahlSpeere.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.ZweihandHiebwaffen},
+                new talentIdentifier(){ name = TalentName.Speere},
+            };
+            wahlSpeere.talentWerte = new int[0];
+            wahlSpeere.talentWerte[0] = 3;
+            wahlSpeere.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSpeere);
+
+            var wahlWurf = new wahlmoeglichkeiten();
+            wahlWurf.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Blasrohr},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},                
+                new talentIdentifier(){ name = TalentName.Schleuder},
+            };
+            wahlWurf.talentWerte = new int[0];
+            wahlWurf.talentWerte[0] = 2;
+            wahlWurf.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlWurf);
+
+            var wahlSF = new wahlmoeglichkeiten();
+            wahlSF.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Dschungel},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf},
+            };
+            wahlSF.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSF);
+
+            wahlSF = new wahlmoeglichkeiten();
+            wahlSF.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Dschungel},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf},
+            };
+            wahlSF.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSF);
+
+            return subKeine;
+        }
+
+        private subkultur createFestumSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 6;
+            subKeine.soMaximum = 5;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Klugheit, wert = +1},
+            };
+
+            subKeine.auModifikator = -2;
+            subKeine.mrModifikator = +1;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube, wert = +5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Glueck},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Neugier},                
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Feenfreund},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Speisegebote},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gardist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Kraeutersammler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schiffer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bettler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Dieb},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler, subname = SubProfessionsName.Dompteur},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Streuner, subname = SubProfessionsName.Schieber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Domestik, subname = SubProfessionsName.HausknechtMagd},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Domestik, subname = SubProfessionsName.Haussklave},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Rattenfaenger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wirt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GoblinSchamanin},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerPeraine},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Dolche, wert = +2},
+                new talentIdentifier(){ name = TalentName.Infanteriewaffen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schwimmen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +1},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, wert = +2},
+                new talentIdentifier(){ name = TalentName.Taschendiebstahl, wert = +1},
+                new talentIdentifier(){ name = TalentName.Zechen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Etikette, wert = +1},
+                new talentIdentifier(){ name = TalentName.Gassenwissen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +3},
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +2},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schaetzen, wert = +1},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schneidern, wert = +1},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben, wert = +2},
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Goblinisch, muttersprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Garethi, zweitsprache = true},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Goblins},
+                new sfIdentifier(){ name = SFNamen.MeisterDerImprovisation},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Bornland},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createGoblinBandeSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 1;
+            subKeine.soMaximum = 3;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = -1},
+            };
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube, wert = +5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Glueck},
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier},                
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){ name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+                new NachteilsIdentifier(){ name = NachteileName.Speisegebote},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bettler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Dieb},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wurfspeere, wert = +1},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schleichen, wert = +3},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, wert = +1},
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Fallenstellen, wert = +2},
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln, wert = +1},
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, wert = +3},
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Tierkunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Kochen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +2},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Goblins},
+                // TODO: Ausprägung Ortskenntnis!
+                new sfIdentifier(){ name = SFNamen.Ortskenntnis},
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Goblinisch, muttersprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Garethi, zweitsprache = true},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlHieb = new wahlmoeglichkeiten();
+            wahlHieb.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Saebel},
+                new talentIdentifier(){ name = TalentName.Speere},
+            };
+            wahlHieb.talentWerte = new int[0];
+            wahlHieb.talentWerte[0] = 2;
+            wahlHieb.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlHieb);
+
+            return subKeine;
+        }
+
+        private subkultur createGoblinFrauSubSchnee()
+        {
+            var subSchnee = createGoblinFrauSubKeine();
+            subSchnee.name = SubKulturName.Schneegoblins;
+            subSchnee.generierungskosten = subSchnee.generierungskosten + 1;
+
+            subSchnee.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Hitzeempfindlichkeit });
+
+            subSchnee.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +2 });
+            subSchnee.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Koerperbeherrschung, wert = +2 });
+
+            subSchnee.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Eis });
+
+            subSchnee.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer});
+
+            return subSchnee;
+        }
+        private subkultur createGoblinFrauSubGebirge()
+        {
+            var subGebirge = createGoblinFrauSubKeine();
+            subGebirge.name = SubKulturName.Gebirge;
+            subGebirge.generierungskosten = subGebirge.generierungskosten + 3;
+
+            subGebirge.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +3 });
+
+            subGebirge.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Gebirge });
+
+            return subGebirge;
+        }
+        private subkultur createGoblinFrauSubEbene()
+        {
+            var subEbene = createGoblinFrauSubKeine();
+            subEbene.name = SubKulturName.Ebene;
+            subEbene.generierungskosten = subEbene.generierungskosten + 4;
+
+            subEbene.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ringen, wert = +2 });
+            subEbene.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Abrichten, wert = +2 });
+
+            subEbene.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe });
+
+            subEbene.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, modifikator = +3 });
+
+            return subEbene;
+        }
+        private subkultur createGoblinFrauSubKeine()
+        {
+            var subKeine = createGoblinBase();
+            subKeine.name = SubKulturName.Keine;
+            // Wir passen nur das an, was sich ändert:
+            subKeine.generierungskosten = 5;
+            subKeine.voraussetzungen = new subkulturVoraussetzungen()
+            {
+                geschlecht = GeschlechtNamen.weiblich,
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Sammler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler},
+                new ProfessionsIdentifier(){ name =  ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GoblinSchamanin},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlHieb = new wahlmoeglichkeiten();
+            wahlHieb.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Speere},
+            };
+            wahlHieb.talentWerte = new int[0];
+            wahlHieb.talentWerte[0] = 2;
+            wahlHieb.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlHieb);
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>() { };
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Raufen, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ringen, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Athletik, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Koerperbeherrschung, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schleichen, wert = +3 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.SichVerstecken, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Lehren, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Orientierung, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = +3 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Feuersteinbearbeitung, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.HeilkundeKrankheiten, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.HeilkundeWunden, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Holzbearbeitung, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Kochen, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Lederarbeiten, wert = +2 });
+
+            return subKeine;
+        }
+        private subkultur createGoblinMannSubSchnee()
+        {
+            var subSchnee = createGoblinMannSubKeine();
+            subSchnee.name = SubKulturName.Schneegoblins;
+            subSchnee.generierungskosten = subSchnee.generierungskosten + 1;
+
+            subSchnee.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Hitzeempfindlichkeit });
+
+            subSchnee.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +2 });
+            subSchnee.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Koerperbeherrschung, wert = +2 });
+
+            subSchnee.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Eis });
+
+            subSchnee.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer});
+
+            return subSchnee;
+        }
+        private subkultur createGoblinMannSubGebirge()
+        {
+            var subGebirge = createGoblinMannSubKeine();
+            subGebirge.name = SubKulturName.Gebirge;
+            subGebirge.generierungskosten = subGebirge.generierungskosten + 3;
+
+            subGebirge.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +3 });
+
+            subGebirge.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Gebirge });
+
+            return subGebirge;
+        }
+        private subkultur createGoblinMannSubEbene()
+        {
+            var subEbene = createGoblinMannSubKeine();
+            subEbene.name = SubKulturName.Ebene;
+            subEbene.generierungskosten = subEbene.generierungskosten + 4;
+
+            subEbene.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ringen, wert = +2 });
+            subEbene.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Abrichten, wert = +2 });
+
+            subEbene.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe});
+
+            subEbene.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, modifikator = +3});
+
+            return subEbene;
+        }
+        private subkultur createGoblinMannSubKeine()
+        {
+            var subKeine = createGoblinBase();
+            subKeine.name = SubKulturName.Keine;
+            // Wir passen nur das an, was sich ändert:
+            subKeine.generierungskosten = 4;
+            subKeine.voraussetzungen = new subkulturVoraussetzungen()
+            {
+                geschlecht = GeschlechtNamen.maennlich,
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Sammler},           
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>() { };
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Raufen, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ringen, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Athletik, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Koerperbeherrschung, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schleichen, wert = +3 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.SichVerstecken, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Orientierung, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = +4 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Geschichtswissen, wert = -2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Feuersteinbearbeitung, wert = +2 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.HeilkundeWunden, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Holzbearbeitung, wert = +1 });
+            subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Lederarbeiten, wert = +1 });
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlHieb = new wahlmoeglichkeiten();
+            wahlHieb.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Speere},
+            };
+            wahlHieb.talentWerte = new int[0];
+            wahlHieb.talentWerte[0] = 2;
+            wahlHieb.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlHieb);
+
+            var wahlBogen = new wahlmoeglichkeiten();
+            wahlBogen.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen},
+                new talentIdentifier(){ name = TalentName.Schleuder},
+                new talentIdentifier(){ name = TalentName.Wurfspeere},
+            };
+            wahlBogen.talentWerte = new int[0];
+            wahlBogen.talentWerte[0] = 1;
+            wahlBogen.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlBogen);
+
+            return subKeine;
+        }
+        private subkultur createGoblinBase()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.soMaximum = 3;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = -1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Konstitution, wert = +1},
+            };
+            subKeine.leModifikator = +1;
+            subKeine.auModifikator = +4;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube, wert = +5},
+            };
+
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Natur},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Glueck},
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Neugier},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Ausrüstungsvorteil},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Einbeinig},
+                new NachteilsIdentifier(){ name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Kurzatmig},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+                new NachteilsIdentifier(){ name = NachteileName.Speisegebote},
+                new NachteilsIdentifier(){ name = NachteileName.Verpflichtungen},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Goblins}
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Goblinisch},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createSvelltOkwach()
+        {
+            var subOkwach = createSvelltBesatzerSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subOkwach.generierungskosten = +8;
+            subOkwach.orkkaste = OrkkastenName.Okwach;
+
+            subOkwach.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Klugheit, wert = +1},
+            };
+
+            subOkwach.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesIngerimm},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GraveshPriester},
+                new ProfessionsIdentifier(){ name = ProfessionsName.RikaiPriester},
+            };
+
+            subOkwach.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Raufen, wert = +1 });
+            subOkwach.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+
+            var wahlWaffe = new wahlmoeglichkeiten();
+            // TOCHECK: Sind die talente okay?
+            wahlWaffe.talente = new List<talentIdentifier>()
+                    {
+                        new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                        new talentIdentifier(){ name = TalentName.Saebel},
+                    };
+            wahlWaffe.talentWerte = new int[1];
+            wahlWaffe.talentWerte[0] = +1;
+            wahlWaffe.anzahlZuWaehlen = 1;
+            subOkwach.wahlen.Add(wahlWaffe);
+
+            return subOkwach;
+        }
+        private subkultur createSvelltKhur()
+        {
+            var subKhur = createSvelltBesatzerSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subKhur.generierungskosten = +6;
+            subKhur.orkkaste = OrkkastenName.Khurkach;
+
+            subKhur.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = +1},
+            };
+
+            subKhur.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gardist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber},
+            };
+
+            subKhur.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Jaeger, subname = SubProfessionsName.Wildhueter });
+
+            subKhur.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Raufen, wert = +1 });
+
+            var wahlWaffe = new wahlmoeglichkeiten();
+            // TOCHECK: Sind die talente okay?
+            wahlWaffe.talente = new List<talentIdentifier>()
+                    {
+                        new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                        new talentIdentifier(){ name = TalentName.Saebel},
+                    };
+            wahlWaffe.talentWerte = new int[1];
+            wahlWaffe.talentWerte[0] = +1;
+            wahlWaffe.anzahlZuWaehlen = 1;
+            subKhur.wahlen.Add(wahlWaffe);
+
+            return subKhur;
+        }
+        private subkultur createSvelltDrasdech()
+        {
+            var subDrasdech = createSvelltBesatzerSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subDrasdech.generierungskosten = +6;
+            subDrasdech.orkkaste = OrkkastenName.Drasdech;
+
+            subDrasdech.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Fingerfertigkeit, wert = +1},
+            };
+
+            subDrasdech.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fuhrmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schiffer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Streuner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+            };
+
+            var wahlHandwerk = new wahlmoeglichkeiten();
+            // TOCHECK: Sind die talente okay?
+            wahlHandwerk.talente = new List<talentIdentifier>()
+                    {
+                        new talentIdentifier(){ name = TalentName.Holzbearbeitung},
+                        new talentIdentifier(){ name = TalentName.Kochen},
+                        new talentIdentifier(){ name = TalentName.Schneidern},
+                        new talentIdentifier(){ name = TalentName.Lederarbeiten},
+                        new talentIdentifier(){ name = TalentName.Feuersteinbearbeitung},
+                        new talentIdentifier(){ name = TalentName.Ackerbau},
+                        new talentIdentifier(){ name = TalentName.Abrichten},
+                    };
+            wahlHandwerk.talentWerte = new int[1];
+            wahlHandwerk.talentWerte[0] = 2;
+            wahlHandwerk.anzahlZuWaehlen = 1;
+            subDrasdech.wahlen.Add(wahlHandwerk);
+
+            return subDrasdech;
+        }
+        private subkultur createSvelltGrishik()
+        {
+            var subGrisihik = createSvelltBesatzerSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subGrisihik.generierungskosten = +3;
+            subGrisihik.orkkaste = OrkkastenName.Grishik;
+
+            subGrisihik.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Freibauer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Viehzuechter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bergmann, subname = SubProfessionsName.Sammler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bergmann, subname = SubProfessionsName.Goldsucher},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fischer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor}
+            };
+
+            return subGrisihik;
+        }
+        private subkultur createSvelltErgoch()
+        {
+            var subErgoch = createSvelltBesatzerSubKeine();
+
+            // Wir passen nur das an, was sich ändert:
+            subErgoch.generierungskosten = +1;
+            subErgoch.orkkaste = OrkkastenName.Ergoch;
+
+            subErgoch.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = -2},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Konstitution, wert = +1},
+            };
+
+            subErgoch.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Erntehelfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Feldsklave},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.KnechtMagd},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Leibeigener},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner, subname = SubProfessionsName.Bauhelfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner, subname = SubProfessionsName.Holzfaeller},
+            };
+
+            subErgoch.talentModifikatoren.Remove( new talentIdentifier(){ name = TalentName.Bogen, wert = +1});
+            subErgoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.SichVerstecken, wert = +2 });
+            subErgoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+
+            return subErgoch;
+        }
+        private subkultur createSvelltBesatzerSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 0;
+            subKeine.soMaximum = 5;
+
+            subKeine.mrModifikator = +2;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube, wert = +5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Gesellschaftlich},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue},
+            };
+
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Reiten, wert = +1},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Zechen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +2},
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, wert = +1},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +2},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Orks},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.SvellttalUndNordlande},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe},
+            };
+
+            // Sprache:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloarkh, muttersprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Garethi, zweitsprache = true},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlWaffe = new wahlmoeglichkeiten();
+            wahlWaffe.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Saebel},
+            };
+            wahlWaffe.talentWerte = new int[0];
+            wahlWaffe.talentWerte[0] = 2;
+            wahlWaffe.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlWaffe);
+
+            var wahlAcker = new wahlmoeglichkeiten();
+            wahlAcker.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
+                new talentIdentifier(){ name = TalentName.Bergbau},
+            };
+            wahlAcker.talentWerte = new int[0];
+            wahlAcker.talentWerte[0] = 2;
+            wahlAcker.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlAcker);
+
+            return subKeine;
+        }
+
+        private subkultur createYurachSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 0;
+            subKeine.soMaximum = 3;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = -1},
+            };
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube, wert = +5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Gesucht1},
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Gesellschaftlich},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Fettleibig},
+                new NachteilsIdentifier(){ name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Feldsklave},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Rattenfaenger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Wurfspeere, wert = +1},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +1},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, wert = +2},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, wert = +3},
+                new talentIdentifier(){ name = TalentName.Geographie, wert = +1},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schaetzen, wert = +1},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +1},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Orks},
+            };
+
+            // Sprache:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloarkh, muttersprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Garethi, modifikator = +3},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlWaffe = new wahlmoeglichkeiten();
+            wahlWaffe.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Saebel},
+                new talentIdentifier(){ name = TalentName.Speere},
+            };
+            wahlWaffe.talentWerte = new int[0];
+            wahlWaffe.talentWerte[0] = 2;
+            wahlWaffe.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlWaffe);
+
+            return subKeine;
+        }
+
+        private subkultur createOrkSubZholochai(KulturName kulturName)
+        {
+            var subkeine = createOrkBasis();
+            subkeine = createOrkKaste(subkeine, kulturName);
+            subkeine.name = SubKulturName.Orkland;
+            subkeine.orkstamm = OrkstaemmeName.Zholochai;
+            subkeine.generierungskosten = subkeine.generierungskosten + 4;
+
+            subkeine.eigenschaftsModifikationen.Add(new GenericListenNameWertPaar<EigenschaftenName>() 
+            { name = EigenschaftenName.Mut, wert = +1 });
+
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Raufen, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ringen, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Kriegskunst, wert = +1 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe });
+
+            return subkeine;
+        }    
+        private subkultur createOrkSubTscharshai(KulturName kulturName)
+        {
+            var subkeine = createOrkBasis();
+            subkeine = createOrkKaste(subkeine, kulturName);
+            subkeine.name = SubKulturName.Orkland;
+            subkeine.orkstamm = OrkstaemmeName.Tscharshai;
+            subkeine.generierungskosten = subkeine.generierungskosten + 5;
+
+            subkeine.eigenschaftsModifikationen.Add(new GenericListenNameWertPaar<EigenschaftenName>() 
+            { name = EigenschaftenName.Klugheit, wert = +1 });
+
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +2 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schaetzen, wert = +2 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FahrzeugLenken, wert = +2 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe });
+
+            return subkeine;
+        }
+        private subkultur createOrkSubTrunzhai(KulturName kulturName)
+        {
+            var subkeine = createOrkBasis();
+            subkeine = createOrkKaste(subkeine, kulturName);
+            subkeine.name = SubKulturName.Orkland;
+            subkeine.orkstamm = OrkstaemmeName.Truanzhai;
+            subkeine.generierungskosten = subkeine.generierungskosten + 3;
+
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Orientierung, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Lederarbeiten, wert = +1 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe });
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Gebirge });
+
+            return subkeine;
+        }
+        private subkultur createOrkSubOrichai(KulturName kulturName)
+        {
+            var subkeine = createOrkBasis();
+            subkeine = createOrkKaste(subkeine, kulturName);
+            subkeine.name = SubKulturName.Orkland;
+            subkeine.orkstamm = OrkstaemmeName.Orichai;
+            subkeine.generierungskosten = subkeine.generierungskosten + 2;
+
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ackerbau, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Feuersteinbearbeitung, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Holzbearbeitung, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Lederarbeiten, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Viehzucht, wert = +1 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe});
+
+            return subkeine;
+        }        
+        private subkultur createOrkSubOlochtai(KulturName kulturName)
+        {
+            var subkeine = createOrkBasis();
+            subkeine = createOrkKaste(subkeine, kulturName);
+            subkeine.name = SubKulturName.Orkland;
+            subkeine.orkstamm = OrkstaemmeName.Olochtai;
+            subkeine.generierungskosten = subkeine.generierungskosten + 4;
+
+            subkeine.auModifikator = subkeine.auModifikator + 2;
+
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() 
+            { 
+                name = NachteileName.Speisegebote, auspraegung = Speisegebote.NurRohesFleisch 
+            });
+
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ringen, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +2 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = +2 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Feuersteinbearbeitung, wert = +2 });
+
+            var wahlSF = new wahlmoeglichkeiten();
+            wahlSF.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Gebirge},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Eis},
+            };
+            wahlSF.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlSF);
+
+            var wahlBilligeSF = new wahlmoeglichkeiten();
+            wahlBilligeSF.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Gebirge},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Eis},
+            };
+            wahlBilligeSF.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlBilligeSF);
+
+            return subkeine;
+        }
+        private subkultur createOrkSubMokolash(KulturName kulturName)
+        {
+            var subkeine = createOrkBasis();
+            subkeine = createOrkKaste(subkeine, kulturName);
+            subkeine.name = SubKulturName.Orkland;
+            subkeine.orkstamm = OrkstaemmeName.Molokash;
+            subkeine.generierungskosten = subkeine.generierungskosten + 3;
+
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = +2 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +2 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.BooteFahren, wert = +1 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf});
+
+            return subkeine;
+        }
+        private subkultur createOrkSubKorogai(KulturName kulturName)
+        {
+            // Unsere Kultur basiert immer auf dem "Basis-Ork":
+            var subkeine = createOrkBasis();
+
+ 	        // Je nachdem, welche Orkkaste gewählt wurde, entscheiden
+            // wir uns nun für die richtige:
+            subkeine = createOrkKaste(subkeine, kulturName);
+
+            // Jetzt kommen noch die Modifikatoren für den Stamm dazu:
+            subkeine.name = SubKulturName.Orkland;
+            subkeine.orkstamm = OrkstaemmeName.Korogai;
+
+            subkeine.generierungskosten = subkeine.generierungskosten + 3;
+            subkeine.mrModifikator = +1;
+
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Bergbau, wert = +1 });
+            subkeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Grobschmied, wert = +1 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.MeisterDerImprovisation });
+
+            return subkeine;
+        }
+        private subkultur createOrkKaste(subkultur subKeine, KulturName nameDerKultur)
+        {
+            // Je nachdem, welche Kultur von außen vorgegeben wurde, entscheiden
+            // wir uns hier richtig:
+            switch (nameDerKultur)
+            {
+                case KulturName.OrklandErgoch:
+                    subKeine.orkkaste = OrkkastenName.Ergoch;
+                    subKeine.generierungskosten = +1;
+
+                    subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+                    {
+                        new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = -2},
+                        new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Konstitution, wert = +1},
+                    };
+
+                    subKeine.soMaximum = +4;
+
+                    subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+                    {
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Erntehelfer},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Feldsklave},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.KnechtMagd},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Leibeigener},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner, subname = SubProfessionsName.Bauhelfer},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner, subname = SubProfessionsName.Holzfaeller},
+                    };
+
+                    subKeine.talentModifikatoren.Remove( new talentIdentifier(){ name = TalentName.Bogen, wert = +1 });
+                    subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.SichVerstecken, wert = +2 });
+                    subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+
+                    break;
+                case KulturName.OrklandGrishik:
+                    subKeine.orkkaste = OrkkastenName.Grishik;
+                    subKeine.generierungskosten = +3;
+                    subKeine.soMaximum = +4;
+
+                    subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+                    {
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Freibauer},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Viehzuechter},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Bergmann, subname = SubProfessionsName.Sammler},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Bergmann, subname = SubProfessionsName.Goldsucher},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Fischer},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor},
+                    };
+
+                    break;
+                case KulturName.OrklandDrasdech:
+                    subKeine.orkkaste = OrkkastenName.Drasdech;
+                    subKeine.generierungskosten = +5;
+                    subKeine.soMaximum = +4;
+                    subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+                    {
+                        new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Fingerfertigkeit, wert = +1},
+                    };
+
+                    subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+                    {
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Fuhrmann},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+                    };
+
+                    var wahlHandwerk = new wahlmoeglichkeiten();
+                    // TOCHECK: Sind die talente okay?
+                    wahlHandwerk.talente = new List<talentIdentifier>()
+                    {
+                        new talentIdentifier(){ name = TalentName.Holzbearbeitung},
+                        new talentIdentifier(){ name = TalentName.Kochen},
+                        new talentIdentifier(){ name = TalentName.Schneidern},
+                        new talentIdentifier(){ name = TalentName.Lederarbeiten},
+                        new talentIdentifier(){ name = TalentName.Feuersteinbearbeitung},
+                        new talentIdentifier(){ name = TalentName.Ackerbau},
+                        new talentIdentifier(){ name = TalentName.Abrichten},
+                    };
+                    wahlHandwerk.talentWerte = new int[1];
+                    wahlHandwerk.talentWerte[0] = 2;
+                    wahlHandwerk.anzahlZuWaehlen = 1;
+                    subKeine.wahlen.Add(wahlHandwerk);
+                    break;
+                case KulturName.OrklandKhurkach:
+                    subKeine.orkkaste = OrkkastenName.Khurkach;
+                    subKeine.generierungskosten = +5;
+                    subKeine.soMaximum = +5;
+                    subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+                    {
+                        new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = +1},
+                    };
+
+                    subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+                    {
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner, subname = SubProfessionsName.Sklavenaufseher},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                    };
+
+                    subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+                    subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Jaeger, subname = SubProfessionsName.Wildhueter });
+
+                    subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Raufen, wert = +1 });
+
+                    var wahlWaffe = new wahlmoeglichkeiten();
+                    wahlWaffe.talente = new List<talentIdentifier>()
+                    {
+                        new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                        new talentIdentifier(){ name = TalentName.Saebel},
+                    };
+                    wahlWaffe.talentWerte = new int[1];
+                    wahlWaffe.talentWerte[0] = +1;
+                    wahlWaffe.anzahlZuWaehlen = 1;
+                    subKeine.wahlen.Add(wahlWaffe);
+                    break;
+                case KulturName.OrklandOkwach:
+                    subKeine.orkkaste = OrkkastenName.Okwach;
+                    subKeine.generierungskosten = +8;
+                    subKeine.soMaximum = +5;
+                    subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+                    {
+                        new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = +1},
+                        new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Klugheit, wert = +1},
+                    };
+
+                    subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+                    {
+                        new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger },
+                        new ProfessionsIdentifier(){ name = ProfessionsName.GraveshPriester},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.RikaiPriester},
+                        new ProfessionsIdentifier(){ name = ProfessionsName.TairachPriester},
+                    };
+
+                    subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Raufen, wert = +1 });
+                    subKeine.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+
+                    var wahlWaffe2 = new wahlmoeglichkeiten();
+                    wahlWaffe2.talente = new List<talentIdentifier>()
+                    {
+                        new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                        new talentIdentifier(){ name = TalentName.Saebel},
+                    };
+                    wahlWaffe2.talentWerte = new int[1];
+                    wahlWaffe2.talentWerte[0] = +1;
+                    wahlWaffe2.anzahlZuWaehlen = 1;
+                    subKeine.wahlen.Add(wahlWaffe2);
+                    break;
+
+                default:
+                    throw new System.ArgumentOutOfRangeException();
+            }
+            return subKeine;
+        }
+        private subkultur createOrkBasis()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+
+            subKeine.leModifikator = +1;
+            subKeine.auModifikator = +2;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube, wert = 5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausdauernd},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
+                new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Ausrüstungsvorteil},
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Gesellschaftlich},
+                new VorteilsIdentifier(){ name = VorteileName.GutAussehend},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Einbeinig},
+                new NachteilsIdentifier(){ name = NachteileName.Glasknochen},
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Kurzatmig},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +2 },
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +2 },
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +2 },
+                new talentIdentifier(){ name = TalentName.Schleichen, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +2 },
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +2 },
+                new talentIdentifier(){ name = TalentName.Wildnisleben, wert = +2 },
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, wert = +1 },
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Tierkunde, wert = +2 },
+                new talentIdentifier(){ name = TalentName.Feuersteinbearbeitung, wert = +1 },
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +1 },
+                new talentIdentifier(){ name = TalentName.Viehzucht, wert = +1 },
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>(){};
+            var wahlWaffe = new wahlmoeglichkeiten();
+            wahlWaffe.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Saebel},
+            };
+            wahlWaffe.talentWerte = new int[2];
+            wahlWaffe.talentWerte[0] = 2;
+            wahlWaffe.talentWerte[2] = 1;
+            wahlWaffe.anzahlZuWaehlen = 2;
+            subKeine.wahlen.Add(wahlWaffe);
+
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Garethi},
+                new SprachenIdentifier(){ name = SprachenName.Thorwalsch},
+            };
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 2;
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Orks},
+            };
+
+            // Sprache:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloghaijan},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createBrobimSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 0;
+            subKeine.soMaximum = 4;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Fingerfertigkeit, wert = -1},
+            };
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Aberglaube, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.UnfaehigkeitFuerTalentgruppe,auspraegung = TalentKategorie.Handwerk},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Zwerge},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Hitzeresistenz},
+                new VorteilsIdentifier(){ name = VorteileName.Linkshaender},
+                new VorteilsIdentifier(){ name = VorteileName.Nachtsicht},
+                new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.AngstVor, auspraegung = Angst.FliegendenWesen},
+                new NachteilsIdentifier(){ name = NachteileName.Autoritaetsglaeubig},
+                new NachteilsIdentifier(){ name = NachteileName.Hoehenangst},
+                new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){ name = NachteileName.Lichtscheu},
+                new NachteilsIdentifier(){ name = NachteileName.Meeresangst},
+                new NachteilsIdentifier(){ name = NachteileName.UeblerGeruch},
+                new NachteilsIdentifier(){ name = NachteileName.Unansehnlich},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Dunkelangst},
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.Stubenhocker},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger, subname = SubProfessionsName.Sklavenjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Barde, subname = SubProfessionsName.Erzaehler },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bergmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Rattenfaenger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wirt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Geode },
+            };
+
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Dolche, wert = +2},
+                new talentIdentifier(){ name = TalentName.Hiebwaffen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Klettern, wert = +2},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Zechen, wert = +1},
+                new talentIdentifier(){ name = TalentName.FesselnUndEntfesseln, wert = +1},
+                new talentIdentifier(){ name = TalentName.Orientierung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Gesteinskunde, wert = +2},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +2},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +3},
+                new talentIdentifier(){ name = TalentName.Tierkunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.Bergbau, wert = +1},
+                new talentIdentifier(){ name = TalentName.Feuersteinbearbeitung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Kochen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Viehzucht, wert = +1},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Brobim},
+            };
+
+
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlSchleuder = new wahlmoeglichkeiten();
+            wahlSchleuder.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Schleuder},
+                new talentIdentifier(){ name = TalentName.Wurfbeile},
+            };
+            wahlSchleuder.talentWerte = new int[1];
+            wahlSchleuder.talentWerte[0] = +1;
+            wahlSchleuder.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSchleuder);
+
+            var wahlSpeere = new wahlmoeglichkeiten();
+            wahlSpeere.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Speere},
+                new talentIdentifier(){ name = TalentName.ZweihandHiebwaffen},
+            };
+            wahlSpeere.talentWerte = new int[1];
+            wahlSpeere.talentWerte[0] = +1;
+            wahlSpeere.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSpeere);
+
+            var wahlHandwerk = new wahlmoeglichkeiten();
+            wahlHandwerk.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Baukunst},
+                new talentIdentifier(){ name = TalentName.Fleischer},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Hauswirtschaft},
+                new talentIdentifier(){ name = TalentName.Kristallzucht},
+                new talentIdentifier(){ name = TalentName.Mechanik},
+                new talentIdentifier(){ name = TalentName.Steinmetz},
+                new talentIdentifier(){ name = TalentName.Toepfern},
+                new talentIdentifier(){ name = TalentName.Zimmermann},
+            };
+            wahlHandwerk.talentWerte = new int[2];
+            wahlHandwerk.talentWerte[0] = 3;
+            wahlHandwerk.talentWerte[1] = 2;
+            wahlHandwerk.anzahlZuWaehlen = 2;
+            subKeine.wahlen.Add(wahlHandwerk);
+
+            // Sprachen
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Rogolan, muttersprache = true},
+            };
+
+            // Wahl Sprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Alaani},
+                new SprachenIdentifier(){ name = SprachenName.Isdira},
+                new SprachenIdentifier(){ name = SprachenName.Nujuka},
+            };
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 3;
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
+
+            return subKeine;
+        }
+
+        private subkultur createBrilliantSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 3;
+            subKeine.soMaximum = -1;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Mut, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Charisma, wert = +1},
+            };
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Meeresangst, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst, wert = +6},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Eitelkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+                new NachteilsIdentifier(){ name = NachteileName.Verpflichtungen},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){ name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.UeblerGeruch},
+                new NachteilsIdentifier(){ name = NachteileName.Unstet},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                // TOCHECK: Ordenskrieger!!!
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gardist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Krieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schwertgeselle},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner}, 
+            };
+
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ausrufer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Barde, subname = SubProfessionsName.Erzaehler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Dieb});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Herold});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hofkuenstler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schriftsteller});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Privatlehrer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Spitzel});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Streuner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taugenichts});
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Geode});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAngrosch});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesIngerimm});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesPhex});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerRondra});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesKor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerHesinde});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihteDerRahja});
+
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Botenreiter },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Karawanenfuehrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter, subname = SubProfessionsName.Mawdli},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Armbrust, wert = +2},
+                new talentIdentifier(){ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schleichen, wert = +1},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, wert = +1},
+                new talentIdentifier(){ name = TalentName.Zechen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wettervorhersage, wert = -2},
+                new talentIdentifier(){ name = TalentName.Gesteinskunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.Mechanik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schaetzen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Bergbau, wert = +1},
+                new talentIdentifier(){ name = TalentName.FahrzeugLenken, wert = +1},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +1},
+                new talentIdentifier(){ name = TalentName.MalenUndZeichnen, wert = +3},
+                new talentIdentifier(){ name = TalentName.SchloesserKnacken, wert = +1},
+            };
+
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlNachteil = new wahlmoeglichkeiten();
+            wahlNachteil.nachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Eitelkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier},
+            };
+            wahlNachteil.talentWerte = new int[1];
+            wahlNachteil.talentWerte[0] = +5;
+            wahlNachteil.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlNachteil);
+
+            var wahlSchwerter = new wahlmoeglichkeiten();
+            wahlSchwerter.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Schwerter},
+                new talentIdentifier(){ name = TalentName.Speere},
+            };
+            wahlSchwerter.talentWerte = new int[1];
+            wahlSchwerter.talentWerte[0] = +1;
+            wahlSchwerter.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSchwerter);
+
+            var wahlGlas = new wahlmoeglichkeiten();
+            wahlGlas.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Glaskunst},
+                new talentIdentifier(){ name = TalentName.Kristallzucht},
+                new talentIdentifier(){ name = TalentName.SteinschneiderUndJuwelier},
+            };
+            wahlGlas.talentWerte = new int[1];
+            wahlGlas.talentWerte[0] = 3;
+            wahlGlas.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlGlas);
+
+
+            // Sprachen / Schriften:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Rogolan, muttersprache = true},
+            };
+
+            subKeine.schriften = new List<SchriftenIdentifier>()
+            {
+                new SchriftenIdentifier(){ name = SchriftName.Rogolan, wert = +6},
+            };
+
+            // Wahl Zweitsprache:
+            var wahlZweit = new wahlmoeglichkeiten();
+            wahlZweit.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Garethi, zweitsprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya, zweitsprache = true},
+            };
+            wahlZweit.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlZweit);
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Brillantzwerge},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Höhle},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createHuegelSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 4;
+            subKeine.soMaximum = -1;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Intuition, wert = +1},
+            };
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Meeresangst, wert = +5},
+            };
+
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Handwerk},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+                new VorteilsIdentifier(){ name = VorteileName.Verbindungen},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Neugier},
+                new NachteilsIdentifier(){ name = NachteileName.Schulden},
+                new NachteilsIdentifier(){ name = NachteileName.Verpflichtungen},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Blutrausch},
+                new NachteilsIdentifier(){ name = NachteileName.Dunkelangst},
+                new NachteilsIdentifier(){ name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gardist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Krieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soldat},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+            };
+
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ausrufer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Barde, subname = SubProfessionsName.Erzaehler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Dieb});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schriftsteller});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Privatlehrer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Streuner});
+            subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Geode});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAngrosch});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesIngerimm});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerTravia});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerPeraine});
+
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Botenreiter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Karawanenfuehrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter, subname = SubProfessionsName.Mawdli},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler, subname = SubProfessionsName.Akrobat},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler, subname = SubProfessionsName.GauklerTaenzer},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Armbrust, wert = +2},
+                new talentIdentifier(){ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier(){ name = TalentName.Hiebwaffen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schleuder, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schwimmen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Zechen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +1},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.Mechanik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schaetzen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Kochen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +1},
+            };
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Huegelzwerge},
+            };
+
+
+            // Sprachen / Schriften:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Rogolan, muttersprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Garethi, zweitsprache = true},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlSchrift = new wahlmoeglichkeiten();
+            wahlSchrift.schriften = new List<SchriftenIdentifier>()
+            {
+                new SchriftenIdentifier(){ name = SchriftName.Rogolan},
+                new SchriftenIdentifier(){ name = SchriftName.KuslikerZeichen},
+            };
+            wahlSchrift.talentWerte = new int[1];
+            wahlSchrift.talentWerte[0] = 6;
+            wahlSchrift.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSchrift);
+
+            var wahlAcker = new wahlmoeglichkeiten();
+            wahlAcker.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Ackerbau},
+                new talentIdentifier(){ name = TalentName.Viehzucht},
+            };
+            wahlAcker.talentWerte = new int[1];
+            wahlAcker.talentWerte[0] = 1;
+            wahlAcker.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlAcker);
+
+            var wahlSchmied = new wahlmoeglichkeiten();
+            wahlSchmied.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Brauer},
+            };
+            wahlSchmied.talentWerte = new int[1];
+            wahlSchmied.talentWerte[0] = +1;
+            wahlSchmied.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSchmied);
+
+            var wahlBoote = new wahlmoeglichkeiten();
+            wahlBoote.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.BooteFahren},
+                new talentIdentifier(){ name = TalentName.FahrzeugLenken},
+            };
+            wahlBoote.talentWerte = new int[1];
+            wahlBoote.talentWerte[0] = +1;
+            wahlBoote.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlBoote);
+
+            return subKeine;
+        }
+
+        private subkultur createErzSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 1;
+            subKeine.soMaximum = -1;
+
+            subKeine.eigenschaftsModifikationen = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Klugheit, wert = +1},
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Intuition, wert = -1},
+            };
+
+            subKeine.mrModifikator = +1;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Hoehenangst, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Meeresangst, wert = +5},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Handwerk},
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Wissen},
+                new VorteilsIdentifier(){ name = VorteileName.GutesGedaechtnis},
+                new VorteilsIdentifier(){ name = VorteileName.Veteran},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue},
+                new NachteilsIdentifier(){ name = NachteileName.Verpflichtungen},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Dunkelangst},
+                new NachteilsIdentifier(){ name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.Unstet},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gardist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Krieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soldat},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Barde, subname = SubProfessionsName.Erzaehler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher, subname = SubProfessionsName.Grabraeuber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Privatlehrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Freibauer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Viehzuechter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bergmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schreiber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wirt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Geode},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAngrosch},
+            };
+
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Edelhandwerker, subname = SubProfessionsName.Drucker });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Edelhandwerker, subname = SubProfessionsName.Schiffbauer });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Gelehrter, subname = SubProfessionsName.Mawdli });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Gelehrter, subname = SubProfessionsName.Sternkundiger });
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Armbrust, wert = +1},
+                new talentIdentifier(){ name = TalentName.Dolche, wert = +1},
+                new talentIdentifier(){ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier(){ name = TalentName.ZweihandHiebwaffen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, wert = +2},
+                new talentIdentifier(){ name = TalentName.Singen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Etikette, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lehren, wert = +1},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +2},
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, wert = -1},
+                new talentIdentifier(){ name = TalentName.Wettervorhersage, wert = -2},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, wert = -1},
+                new talentIdentifier(){ name = TalentName.Geschichtswissen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Gesteinskunde, wert = +4},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +2},
+                new talentIdentifier(){ name = TalentName.Mechanik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +4},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +3},
+                new talentIdentifier(){ name = TalentName.Schaetzen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Bergbau, wert = +2},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, wert = +1},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, wert = +1},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, wert = +1},
+            };
+
+
+            // Sprachen / Schriften:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Rogolan, muttersprache = true},
+            };
+            subKeine.schriften = new List<SchriftenIdentifier>()
+            {
+                new SchriftenIdentifier(){ name = SchriftName.Rogolan, wert = +8},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Garethi, zweitsprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya, zweitsprache = true},
+            };
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
+
+            var wahlHuette = new wahlmoeglichkeiten();
+            wahlHuette.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Huettenkunde},
+                new talentIdentifier(){ name = TalentName.Rechtskunde},
+                new talentIdentifier(){ name = TalentName.Tierkunde},
+            };
+            wahlHuette.talentWerte = new int[1];
+            wahlHuette.talentWerte[0] = 2;
+            wahlHuette.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlHuette);
+
+            var wahlSchmied = new wahlmoeglichkeiten();
+            wahlSchmied.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Grobschmied},
+                new talentIdentifier(){ name = TalentName.Kristallzucht},
+                new talentIdentifier(){ name = TalentName.Steinmetz},
+            };
+            wahlSchmied.talentWerte = new int[1];
+            wahlSchmied.talentWerte[0] = +3;
+            wahlSchmied.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSchmied);
+
+
+            // SO:
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Erzzwerge},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Höhle},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createAmbossSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 0;
+            subKeine.soMaximum = -1;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst, wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Meeresangst, wert = +6},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Ausrüstungsvorteil },
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalent, auspraegung = TalentName.Grobschmied },
+                new VorteilsIdentifier(){ name = VorteileName.BegabungFuerTalentgruppe, auspraegung = TalentKategorie.Kampf },
+                new VorteilsIdentifier(){ name = VorteileName.BesondererBesitz },
+                new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft },
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1 },
+                new VorteilsIdentifier(){ name = VorteileName.Veteran },
+                new VorteilsIdentifier(){ name = VorteileName.ZaeherHund },
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz },
+                new NachteilsIdentifier(){ name = NachteileName.Einbildungen },
+                new NachteilsIdentifier(){ name = NachteileName.Geiz },
+                new NachteilsIdentifier(){ name = NachteileName.Prinzipientreue },
+                new NachteilsIdentifier(){ name = NachteileName.Schulden },
+                new NachteilsIdentifier(){ name = NachteileName.UeblerGeruch },
+                new NachteilsIdentifier(){ name = NachteileName.Verpflichtungen },
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Elfen },
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Echsen },
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Adlig},
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Dunkelangst},
+                new NachteilsIdentifier(){ name = NachteileName.KrankhafteReinlichkeit},
+                new NachteilsIdentifier(){ name = NachteileName.Nachtblind},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.Speisegebote},
+                new NachteilsIdentifier(){ name = NachteileName.Unstet},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gardist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Krieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soldat},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fuhrmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Barde, subname = SubProfessionsName.Erzaehler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher, subname = SubProfessionsName.Grabraeuber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Freibauer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Viehzuechter },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bergmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter, subname = SubProfessionsName.Historiker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wirt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Geode},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Magier},
+                // TOCHECK: Zwergischer Alchimist???
+                new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAngrosch},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesIngerimm},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesKor},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerRondra },
+            };
+
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Edelhandwerker, subname = SubProfessionsName.Drucker });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Edelhandwerker, subname = SubProfessionsName.Schiffbauer });
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Armbrust, wert = +3},
+                new talentIdentifier(){ name = TalentName.Hiebwaffen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Raufen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ringen, wert = +2},
+                new talentIdentifier(){ name = TalentName.ZweihandHiebwaffen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Klettern, wert = +1},
+                new talentIdentifier(){ name = TalentName.Zechen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Gassenwissen, wert = -2},
+                new talentIdentifier(){ name = TalentName.Wettervorhersage, wert = -2},
+                new talentIdentifier(){ name = TalentName.Gesteinskunde, wert = +4},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.Mechanik, wert = +1},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +1},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schaetzen, wert = +3},
+                new talentIdentifier(){ name = TalentName.Bergbau, wert = +2},
+                new talentIdentifier(){ name = TalentName.Grobschmied, wert = +3},
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Rogolan, muttersprache = true},
+            };
+
+            // Wahl:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Garethi, zweitsprache = true},
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya, zweitsprache = true},
+            };
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Ambosszwerge},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Höhle},
+                new sfIdentifier(){ name = SFNamen.Ruestungsgewoehnung1, auspraegung = RuestungsName.Kettenhemd},
+            };
+
+            return subKeine;
+        }
+
+        private subkultur createFirnSubKueste()
+        {
+            var subKueste = createFirnSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subKueste.name = SubKulturName.KuesteUndInseln;
+
+            subKueste.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = -1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = -2 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subKueste.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +1 });
+
+            subKueste.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.GrosseMeditation},
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Firnelfen},
+                new sfIdentifier(){ name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Elfisch},
+                new sfIdentifier(){ name = SFNamen.Salasandra},
+                new sfIdentifier(){ name = SFNamen.Elfenlieder, auspraegung = Elfenlieder.Freundschaftslied},
+            };
+
+            var sfWahl = new wahlmoeglichkeiten() { };
+            sfWahl.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Eis},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Meer},
+            };
+            sfWahl.anzahlZuWaehlen = 1;
+            subKueste.wahlen.Add(sfWahl);
+
+            return subKueste;
+
+        }
+        private subkultur createFirnSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 6;
+            subKeine.soMaximum = 7;
+            subKeine.auModifikator = +2;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.ElfischeWeltsicht},                
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Adelsherrschaft , wert = +6},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Balance },
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt },
+                new VorteilsIdentifier(){ name = VorteileName.InnererKompass },
+                new VorteilsIdentifier(){ name = VorteileName.Zauberhaar },
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.AnimalischeMagie },
+                new NachteilsIdentifier(){ name = NachteileName.Artefaktgebunden },
+                new NachteilsIdentifier(){ name = NachteileName.WahrerName },
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Menschen },
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Zwerge },
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit },
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Dunkelangst},
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst},
+                new NachteilsIdentifier(){ name = NachteileName.Thesisgebunden},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bewahrer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Former },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kaempfer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Legendensaenger },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wildnislaeufer },
+                new ProfessionsIdentifier(){ name =  ProfessionsName.Zauberweber},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Dolche, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Athletik, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Klettern, leittalent = true , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Schwimmen, leittalent = false , wert = -1 },
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, leittalent = true , wert = +3 },
+                new talentIdentifier(){ name = TalentName.SichVerstecken, leittalent = true , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Singen, leittalent = false , wert = +1 },
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Skifahren, leittalent = false , wert = +1 },
+                new talentIdentifier(){ name = TalentName.Gassenwissen, leittalent = false , wert = -2 },
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, leittalent = false , wert = +3 },
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln, leittalent = true , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Orientierung, leittalent = false , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Wettervorhersage, leittalent = false , wert = +4 },
+                new talentIdentifier(){ name = TalentName.Wildnisleben, leittalent = true , wert = +5 },
+                new talentIdentifier(){ name = TalentName.Magiekunde, leittalent = false , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Rechtskunde, leittalent = false , wert = -2 },
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, leittalent = false , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Sternkunde, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Tierkunde, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.BooteFahren, leittalent = false , wert = +3 },
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, leittalent = true , wert = +4 },
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, leittalent = false , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, leittalent = true , wert = +4 },
+                new talentIdentifier(){ name = TalentName.Musizieren, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Schneidern, leittalent = false , wert = +2 },
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Isdira, muttersprache = true}
+            };
+
+
+            // Wahlen:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlBogen = new wahlmoeglichkeiten();
+            wahlBogen.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen, leittalent = true},
+                new talentIdentifier(){ name = TalentName.Wurfspeere, leittalent = true},
+            };
+            wahlBogen.talentWerte = new int[1];
+            wahlBogen.talentWerte[0] = 4;
+            wahlBogen.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlBogen);
+
+
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlFeuer = new wahlmoeglichkeiten();
+            wahlFeuer.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Feuersteinbearbeitung, leittalent = false},
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner, leittalent = false},
+            };
+            wahlFeuer.talentWerte = new int[1];
+            wahlFeuer.talentWerte[0] = 3;
+            wahlFeuer.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlFeuer);
+
+            // Wahl der Sprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Asdharia });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch });
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 4;
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Eis},
+                new sfIdentifier(){ name = SFNamen.GrosseMeditation},
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Firnelfen},
+                new sfIdentifier(){ name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Elfisch},
+                new sfIdentifier(){ name = SFNamen.Salasandra},
+                new sfIdentifier(){ name = SFNamen.Elfenlieder, auspraegung = Elfenlieder.Freundschaftslied},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Aufmerksamkeit},
+                new sfIdentifier(){ name = SFNamen.Konzentrationsstaerke},
+                new sfIdentifier(){ name = SFNamen.Regeneration1},
+            };
+
+            // Zauber:
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
+            var hauszauber = new zauberVorauswahlen();
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.LeibDerErde });
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.SeidenzungeElfenwort });
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.WeisseMaehn });
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.Wellenlauf});
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Eiseskaelte });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.LeibDesEises });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.LeibDesWindes });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.PfeilDesElements, auspraegung = Element.Eis });
+
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlHausZauber);
+
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlLeitzauber);
+
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            wahlSonstZauber.identifier = "wahlSonstigeZauber";
+            subKeine.wahlen.Add(wahlSonstZauber);
+
+            return subKeine;
+        }
+
+        private subkultur createWaldSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 6;
+            subKeine.soMaximum = 8;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst, wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.ElfischeWeltsicht},                
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Adelsherrschaft , wert = +6},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Balance },
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt },
+                new VorteilsIdentifier(){ name = VorteileName.WesenDerNacht },
+                new VorteilsIdentifier(){ name = VorteileName.Zauberhaar },
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Albino },
+                new NachteilsIdentifier(){ name = NachteileName.AnimalischeMagie },
+                new NachteilsIdentifier(){ name = NachteileName.KoerpergebundeneKraft },
+                new NachteilsIdentifier(){ name = NachteileName.Lichtscheu },
+                new NachteilsIdentifier(){ name = NachteileName.WahrerName },
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit },
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Thesisgebunden},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bewahrer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Former },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kaempfer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Legendensaenger },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wildnislaeufer },
+                new ProfessionsIdentifier(){ name =  ProfessionsName.Zauberweber},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Dolche, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Speere, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Klettern, leittalent = true , wert = +5 },
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Schleichen, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Schwimmen, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.SichVerstecken, leittalent = true , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Singen, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, leittalent = false , wert = +1 },
+                new talentIdentifier(){ name = TalentName.StimmenImitieren, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Tanzen, leittalent = false , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Gassenwissen, leittalent = false , wert = -2 },
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, leittalent = true , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Orientierung, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Wettervorhersage, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Wildnisleben, leittalent = true , wert = +5 },
+                new talentIdentifier(){ name = TalentName.Magiekunde, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, leittalent = true , wert = +5 },
+                new talentIdentifier(){ name = TalentName.Rechtskunde, leittalent = false , wert = -2 },
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.Tierkunde, leittalent = true , wert = +5 },
+                new talentIdentifier(){ name = TalentName.Bogenbau, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.HeilkundeGift, leittalent = false , wert = +2 },
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, leittalent = false , wert = +3 },
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, leittalent = true , wert = +5 },
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, leittalent = false , wert = +5 },
+                new talentIdentifier(){ name = TalentName.Musizieren, leittalent = false , wert = +5 },
+                new talentIdentifier(){ name = TalentName.Schneidern, leittalent = false , wert = +3 },
+            };
+
+
+            // Sprache:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Isdira}
+            };
+
+            // Wahlen:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlKampf = new wahlmoeglichkeiten();
+            wahlKampf.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen, leittalent = true},
+                new talentIdentifier(){ name = TalentName.Wurfspeere, leittalent = true},
+            };
+            wahlKampf.talentWerte = new int[1];
+            wahlKampf.talentWerte[0] = 3;
+            wahlKampf.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlKampf);
+
+            // Wahl der Sprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.AlteKemi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Angram });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Asdharia });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Atak });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Aureliani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Drachisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ferkina });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Fuechsisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Goblinisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Grolmisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Hjaldingsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Koboldisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mahrisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Molochisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Neckergesang });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloarkh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloghaijan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rabensprache });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rissoal });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rogolan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rssahh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ruuz });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Trollisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zelemja });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhayad });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.ZLit });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zyklopaeisch });
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 2;
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
+
+
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.GrosseMeditation},
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Waldelfen},
+                new sfIdentifier(){ name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Elfisch},
+                new sfIdentifier(){ name = SFNamen.Salasandra},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Wald},
+                new sfIdentifier(){ name = SFNamen.Elfenlieder, auspraegung = Elfenlieder.Freundschaftslied},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Aufmerksamkeit },
+                new sfIdentifier(){ name = SFNamen.Ausweichen1},
+                new sfIdentifier(){ name = SFNamen.Regeneration1},
+            };
+
+            // Zauber:
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
+            var hauszauber = new zauberVorauswahlen();
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.KlarumPurum });
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.Zaubernahrung });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.HerrUeberDasTierreich });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Katzenaugen });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Memorabia });
+
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlHausZauber);
+
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlLeitzauber);
+
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            wahlSonstZauber.identifier = "wahlSonstigeZauber";
+            subKeine.wahlen.Add(wahlSonstZauber);
+
+            return subKeine;
+        }
+
+        private subkultur createSteppenSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 4;
+            subKeine.soMaximum = 7;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Raumangst, wert = +10},
+                new NachteilsIdentifier(){ name = NachteileName.ElfischeWeltsicht},                
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Adelsherrschaft , wert = +6},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.HerausragenderSinn, auspraegung = SinneName.Sicht},
+                new VorteilsIdentifier(){ name = VorteileName.Tierfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Zauberhaar},
+            };
+
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.AnimalischeMagie},
+                new NachteilsIdentifier(){ name = NachteileName.Artefaktgebunden},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Menschen},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Zwerge},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile, auspraegung = Vorurteile.Goblins},
+                new NachteilsIdentifier(){ name = NachteileName.WahrerName},
+            };
+
+            subKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
+            };
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Platzangst},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Thesisgebunden},
+            };
+
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>()
+            {
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bewahrer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Former },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kaempfer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Legendensaenger },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wildnislaeufer },
+                new ProfessionsIdentifier(){ name =  ProfessionsName.Zauberweber},
+            };
+
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen, leittalent = true, wert = +4},
+                new talentIdentifier(){ name = TalentName.Dolche, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Speere, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Athletik, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Reiten, leittalent = true, wert = +5},
+                new talentIdentifier(){ name = TalentName.Schleichen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schwimmen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Selbstbeherrschung, leittalent = true, wert = +2},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, leittalent = true, wert = +2},
+                new talentIdentifier(){ name = TalentName.Singen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Sinnesschaerfe, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Tanzen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Gassenwissen, leittalent = false, wert = -2},
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, leittalent = true, wert = +2},
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Orientierung, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Wettervorhersage, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, leittalent = true, wert = +5},
+                new talentIdentifier(){ name = TalentName.Magiekunde, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, leittalent = false, wert = +4},
+                new talentIdentifier(){ name = TalentName.Rechtskunde, leittalent = false, wert = -2},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Tierkunde, leittalent = true, wert = +4},
+                new talentIdentifier(){ name = TalentName.Abrichten, leittalent = true, wert = +2},
+                new talentIdentifier(){ name = TalentName.Bogenbau, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.HeilkundeGift, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Musizieren, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Schneidern, leittalent = false, wert = +2},
+            };
+
+            // Sprachen:
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Isdira, muttersprache = true},
+            };
+
+            // Wahl der Sprache:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlZweitsprache = new wahlmoeglichkeiten();
+            wahlZweitsprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani});
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi});
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka});
+            wahlZweitsprache.anzahlZuWaehlen = 1;
+            wahlZweitsprache.talentWerte = new int[1];
+            wahlZweitsprache.talentWerte[0] = 4;
+            subKeine.wahlen.Add(wahlZweitsprache);
+
+            // SO:
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){name = SFNamen.GrosseMeditation},
+                new sfIdentifier(){name = SFNamen.Kulturkunde, auspraegung = KulturName.Steppenelfen},
+                new sfIdentifier(){name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Elfisch},
+                new sfIdentifier(){name = SFNamen.Salasandra},
+                new sfIdentifier(){name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe},
+                new sfIdentifier(){name = SFNamen.TierischerBegleiter, auspraegung = TierischeBegleiter.Elfenpony},
+                new sfIdentifier(){name = SFNamen.Elfenlieder, auspraegung = Elfenlieder.Freundschaftslied},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){name = SFNamen.Aufmerksamkeit},
+                new sfIdentifier(){name = SFNamen.Ausweichen1},
+                new sfIdentifier(){name = SFNamen.BerittenerSchuetze},
+                new sfIdentifier(){name = SFNamen.Regeneration1},
+            };
+
+            // Zauber:
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
+            var hauszauber = new zauberVorauswahlen();
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+
+
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlHausZauber);
+
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.KlarumPurum});
+            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.LeibDesWindes });
+
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlLeitzauber);
+
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            wahlSonstZauber.identifier = "wahlSonstigeZauber";
+            subKeine.wahlen.Add(wahlSonstZauber);
+
+            return subKeine;
+        }
+
+        private subkultur createElfischeSiedlungSubWald()
+        {
+            var subWald = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subWald.name = SubKulturName.WaldelfischBeeinflussteSiedlung;
+            subWald.generierungskosten = 5;
+
+            subWald.automatischeNachteile.Remove(new NachteilsIdentifier() { name = NachteileName.Neugier, wert = +5 });
+            subWald.geeigneteProfessionen.Remove(new ProfessionsIdentifier() { name = ProfessionsName.Hirte });
+            subWald.geeigneteProfessionen.Remove( new ProfessionsIdentifier(){ name = ProfessionsName.Hofkuenstler});
+            subWald.geeigneteProfessionen.Remove( new ProfessionsIdentifier(){ name = ProfessionsName.Taugenichts});
+            subWald.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +1 });
+
+            // zu den sonstigen Zaubern kommen noch ein paar dazu:
+            var hauszauber = new zauberVorauswahlen();
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.Zaubernahrung });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.HerrUeberDasTierreich });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Katzenaugen });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Kroetensprung });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.LeibDerErde });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Memorabia });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.SeidenzungeElfenwort });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Wipfellauf });
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            wahlSonstZauber.identifier = "wahlSonstigeZauber";
+            subWald.wahlen.Add(wahlSonstZauber);
+
+            return subWald;
+        }
+        private subkultur createElfischeSiedlungSubFirn()
+        {
+            var subFirn = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subFirn.name = SubKulturName.FirnelfischBeeinflussteSiedlung;
+            subFirn.generierungskosten = 4;
+
+            subFirn.moeglicheStaedte = new List<StadtName>() { StadtName.Olport, StadtName.Keamonmund};
+
+            subFirn.geeigneteProfessionen.Remove( new ProfessionsIdentifier(){ name = ProfessionsName.Bauer});
+            subFirn.geeigneteProfessionen.Remove( new ProfessionsIdentifier() { name = ProfessionsName.Botenreiter });
+            subFirn.geeigneteProfessionen.Remove( new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler});
+            subFirn.geeigneteProfessionen.Remove( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subFirn.geeigneteProfessionen.Remove( new ProfessionsIdentifier(){ name = ProfessionsName.Hofkuenstler});
+            subFirn.geeigneteProfessionen.Remove( new ProfessionsIdentifier(){ name = ProfessionsName.Taugenichts});
+            subFirn.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Seefahrer });
+
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = -1});
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Skifahren, wert = +1 });
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Betoeren, wert = -2 });
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +1 });
+            subFirn.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wettervorhersage, wert = +1 });
+
+            return subFirn;
+        }
+        private subkultur createElfischeSiedlungSubGroess()
+        {
+            var substadt = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            substadt.name = SubKulturName.Grossstadt;
+            substadt.generierungskosten = 2;
+
+            substadt.moeglicheStaedte = new List<StadtName>() { StadtName.Lowangen, StadtName.Punin };
+
+            substadt.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher});
+            substadt.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler});
+            substadt.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.KurtisaneGesellschafter});
+            substadt.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bader});
+            substadt.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker});
+
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Bogen, wert = -2});
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = -2 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = -1 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = -2 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Rechtskunde, wert = +2 });
+            substadt.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Kochen, wert = +1 });
+
+            return substadt;
+        }
+        private subkultur createElfischeSiedlungSubSuedlich()
+        {
+            var subSued = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subSued.name = SubKulturName.SuedlicheMittellande;
+            subSued.generierungskosten = 4;
+
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Bogen, wert = -1 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = -1 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.FischenUndAngeln, wert = +1 });
+            subSued.talentModifikatoren.Remove(new talentIdentifier() { name = TalentName.Wildnisleben, leittalent = true , wert = +3 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = +2 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, leittalent = true , wert = +1 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +1 });
+            subSued.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Ackerbau, wert = +2 });
+
+            // Wahl zwischen Schrift und Sprache:
+            var wahlSchrift = new wahlmoeglichkeiten();
+            wahlSchrift.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.LesenUndSchreiben, auspraegung = SchriftName.IsdiraAsdharia, wert = 4},
+                new talentIdentifier(){ name = TalentName.SprachenKennen, auspraegung = SprachenName.Asdharia, wert = 4},
+            };
+            wahlSchrift.anzahlZuWaehlen = 1;
+            wahlSchrift.talentWerte = new int[1];
+            wahlSchrift.talentWerte[0] = 4;
+
+            return subSued;
+        }
+        private subkultur createElfischeSiedlungSubKeine()
+        {
+            var subKeine = new subkultur();
+            subKeine.name = SubKulturName.Keine;
+            subKeine.generierungskosten = 3;
+            subKeine.soMaximum = 10;
+
+            subKeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.ElfischeWeltsicht},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion , wert = +6},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Adelsherrschaft , wert = +6},
+            };
+
+            subKeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.Feenfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
+                new VorteilsIdentifier(){ name = VorteileName.Tierfreund},
+                new VorteilsIdentifier(){ name = VorteileName.Zauberhaar},
+            };
+            subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.AnimalischeMagie},
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Artefaktgebunden},
+                // TODO: Ausprägung! Menschen oder Zwerge!
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+                new NachteilsIdentifier(){ name = NachteileName.WahrerName},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd},
+            };
+
+
+            subKeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier},
+                new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
+                new NachteilsIdentifier(){ name = NachteileName.Thesisgebunden},
+            };
+
+            // Professionen:
+            var professionsSubsets = new ProfessionsKategorien();
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() 
+            { 
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bewahrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Former},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kaempfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Legendensaenger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wildnislaeufer },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Zauberweber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Botenreiter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fischer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Karawanenfuehrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Kraeutersammler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schiffer, subname = SubProfessionsName.Lotse},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Barde},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hofkuenstler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Taugenichts},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Bogenbauer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Edelsteinschleifer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Glasblaeser},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Instrumentenbauer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.SchusterUndSattler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Schneider},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Schreiner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Steinmetz},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Toepfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Weber},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+            };
+
+            // Leittalente und normale Talente:
+            subKeine.talentModifikatoren = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogen, leittalent = true, wert = +3},
+                new talentIdentifier(){ name = TalentName.Dolche, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Raufen, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Athletik, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Klettern, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schleichen, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Schwimmen, leittalent = true, wert = +2},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Singen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Tanzen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Betoeren, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ueberreden, leittalent = false, wert = +1},
+                new talentIdentifier(){ name = TalentName.Faehrtensuchen, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.FischenUndAngeln, leittalent = true, wert = +1},
+                new talentIdentifier(){ name = TalentName.Wildnisleben, leittalent = true, wert = +3},
+                new talentIdentifier(){ name = TalentName.Magiekunde, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Pflanzenkunde, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Rechtskunde, leittalent = false, wert = -1},
+                new talentIdentifier(){ name = TalentName.SagenUndLegenden, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Tierkunde, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Holzbearbeitung, leittalent = true, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lederarbeiten, leittalent = false, wert = +2},
+                new talentIdentifier(){ name = TalentName.Musizieren, leittalent = false, wert = +3},
+                new talentIdentifier(){ name = TalentName.Schneidern, leittalent = false, wert = +2},
+            };
+
+            // Wahlen:
+            subKeine.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlKampf = new wahlmoeglichkeiten();
+            wahlKampf.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Fechtwaffen, leittalent = false},
+                new talentIdentifier(){ name = TalentName.Saebel, leittalent = false},
+                new talentIdentifier(){ name = TalentName.Schwerter, leittalent = false},
+                new talentIdentifier(){ name = TalentName.Speere, leittalent = false},
+                new talentIdentifier(){ name = TalentName.Staebe, leittalent = false},
+            };
+            wahlKampf.talentWerte = new int[1];
+            wahlKampf.talentWerte[0] = 2;
+            wahlKampf.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlKampf);
+
+            var wahlHandwerk = new wahlmoeglichkeiten();
+            wahlHandwerk.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Abrichten, leittalent = true},
+                new talentIdentifier(){ name = TalentName.Bogenbau, leittalent = true},
+                new talentIdentifier(){ name = TalentName.BooteFahren, leittalent = true},
+                new talentIdentifier(){ name = TalentName.HeilkundeGift, leittalent = true},
+                new talentIdentifier(){ name = TalentName.HeilkundeWunden, leittalent = true},
+                new talentIdentifier(){ name = TalentName.MalenUndZeichnen, leittalent = true},
+            };
+            wahlHandwerk.talentWerte = new int[2];
+            wahlHandwerk.talentWerte[0] = 3;
+            wahlHandwerk.talentWerte[1] = 3;
+            wahlHandwerk.anzahlZuWaehlen = 2;
+            subKeine.wahlen.Add(wahlHandwerk);
+
+            // Sprache:
+           subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Isdira, muttersprache = true},
+            };
+
+            // Wahl der Sprache:
+            var wahlZweitsprache = new wahlmoeglichkeiten();
+            wahlZweitsprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.AlteKemi, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Angram, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Asdharia, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Atak, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Aureliani, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Drachisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ferkina, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Fuechsisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Goblinisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Grolmisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Hjaldingsch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Koboldisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mahrisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Molochisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Neckergesang, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloarkh, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloghaijan, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rabensprache, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rissoal, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rogolan, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rssahh, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ruuz, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Trollisch, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zelemja, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhayad, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.ZLit, zweitsprache = true });
+            wahlZweitsprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zyklopaeisch, zweitsprache = true });
+            wahlZweitsprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlZweitsprache);
+
+            // Wahl der Drittsprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.AlteKemi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Angram });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Asdharia });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Atak });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Aureliani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Drachisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ferkina });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Fuechsisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Goblinisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Grolmisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Hjaldingsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Koboldisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mahrisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Molochisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Neckergesang });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloarkh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloghaijan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rabensprache });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rissoal });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rogolan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rssahh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ruuz });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Trollisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zelemja });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhayad });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.ZLit });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zyklopaeisch });
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 3;
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
+
+            // Hauszauber:
+            var hauszauber = new zauberVorauswahlen();
+
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.WeisseMaehn });
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.Zaubernahrung });
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlHausZauber);
+
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlLeitzauber);
+
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            wahlSonstZauber.identifier = "wahlSonstigeZauber";
+            subKeine.wahlen.Add(wahlSonstZauber);
+
+            // SO:
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.GrosseMeditation},
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Auelfen},
+                new sfIdentifier(){ name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Elfisch},
+                new sfIdentifier(){ name = SFNamen.Salasandra},
+                new sfIdentifier(){ name = SFNamen.Elfenlieder, auspraegung = Elfenlieder.Freundschaftslied},
+            };
+
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Regeneration1},
+            };
+
+            // TODO: Spezielle Ausrüstung!
+
+            return subKeine;
+        }
+
+        private subkultur createAuelfischSubHoherNorden()
+        {
+            var subHoch = createAuelfischSubKeine();
+            // Wir ändern nur, was sich unterscheidet:
+            subHoch.name = SubKulturName.HoherNorden;
+
+            subHoch.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.ElfischeWeltsicht},
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Randgruppe, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz , wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Weltfremd, auspraegung = Weltfremd.Religion , wert = +5},
+            };
+
+            subHoch.empfohleneVorteile.Add(new VorteilsIdentifier() { name = VorteileName.Kaelteresistenz });
+
+            subHoch.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Raumangst });
+            subHoch.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Weltfremd, auspraegung = Weltfremd.Besitz });
+            subHoch.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Weltfremd, auspraegung = Weltfremd.WaherungUndGeld });
+            subHoch.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Weltfremd, auspraegung = Weltfremd.StaedtischesLeben });
+
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = -2 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.SichVerstecken, wert = -1 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Skifahren, wert = +1 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Magiekunde, wert = -2 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = -1 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +1 });
+            subHoch.talentModifikatoren.Add(new talentIdentifier() { name = TalentName.BooteFahren, leittalent = true, wert = +2 });
+            // Betören raus:
+            subHoch.talentModifikatoren.Remove(new talentIdentifier(){ name = TalentName.Betoeren, leittalent = false, wert = +3});
+
+
+            // Wahlen:
+            subHoch.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlBogenbau = new wahlmoeglichkeiten();
+            wahlBogenbau.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Bogenbau, leittalent = true},
+                new talentIdentifier(){ name = TalentName.BooteFahren, leittalent = true}
+            };
+            wahlBogenbau.talentWerte = new int[1];
+            wahlBogenbau.talentWerte[0] = 2;
+            wahlBogenbau.anzahlZuWaehlen = 1;
+            subHoch.wahlen.Add(wahlBogenbau);
+
+            // Wahl dazu:
+            subHoch.wahlen = new List<wahlmoeglichkeiten>() { };
+            var wahlSpeere = new wahlmoeglichkeiten();
+            wahlSpeere.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Speere},
+                new talentIdentifier(){ name = TalentName.Wurfspeere}
+            };
+            wahlSpeere.talentWerte = new int[1];
+            wahlSpeere.talentWerte[0] = 2;
+            wahlSpeere.anzahlZuWaehlen = 1;
+            subHoch.wahlen.Add(wahlSpeere);
+
+            // Hauszauber:
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
+            var hauszauber = new zauberVorauswahlen();
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subHoch.wahlen.Add(wahlHausZauber);
+
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
+            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subHoch.wahlen.Add(wahlLeitzauber);
+
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
+            wahlSonstZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            subHoch.wahlen.Add(wahlSonstZauber);
+
+            return subHoch;
+
+        }
         private subkultur createAuelfischSubKeine()
         {
             var subKeine = new subkultur();
@@ -453,10 +4373,14 @@ namespace kulturenStruktur
 
             // Professionen:
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() 
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() 
             { 
-                ProfessionsName.Bewahrer, ProfessionsName.Former, ProfessionsName.Kaempfer,
-                ProfessionsName.Legendensaenger, ProfessionsName.Wildnislaeufer, ProfessionsName.Zauberweber,
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bewahrer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Former},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kaempfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Legendensaenger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wildnislaeufer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Zauberweber}
             };
 
             // Leittalente und normale Talente:
@@ -506,15 +4430,97 @@ namespace kulturenStruktur
             subKeine.wahlen.Add(wahlBogenbau);
 
             // Hauszauber:
-            subKeine.moeglicheHauszauber = new List<ZauberIdentifier>(){};
+            var wahlHausZauber = new wahlmoeglichkeiten();
+            wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
             var hauszauber = new zauberVorauswahlen();
-            subKeine.moeglicheHauszauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
+            wahlHausZauber.anzahlZuWaehlen = 3;
+            wahlHausZauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlHausZauber);
 
+            // Leitzauber:
+            var wahlLeitzauber = new wahlmoeglichkeiten();
+            wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.anzahlZuWaehlen = 3;
+            wahlLeitzauber.zauberHaus = true;
+            subKeine.wahlen.Add(wahlLeitzauber);
 
+            // Maximal 4 weitere:
+            var wahlSonstZauber = new wahlmoeglichkeiten();
+            wahlSonstZauber.zauber = new List<ZauberIdentifier>() { };
+            wahlSonstZauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlSonstZauber.anzahlZuWaehlen = 4;
+            subKeine.wahlen.Add(wahlSonstZauber);
+
+            // SO:
+            subKeine.sonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Kulturkunde, auspraegung = KulturName.Auelfen},
+                new sfIdentifier(){ name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Sumpf},
+                new sfIdentifier(){ name = SFNamen.GrosseMeditation},
+                new sfIdentifier(){ name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Elfisch},
+                new sfIdentifier(){ name = SFNamen.Salasandra},
+                new sfIdentifier(){ name = SFNamen.Elfenlieder, auspraegung = Elfenlieder.Freundschaftslied},
+            };
+
+            subKeine.verbilligteSonderfertigkeiten = new List<sfIdentifier>()
+            {
+                new sfIdentifier(){ name = SFNamen.Aufmerksamkeit},
+                new sfIdentifier(){ name = SFNamen.KampfImWasser},
+                new sfIdentifier(){ name = SFNamen.Regeneration1},
+            };
+
+            subKeine.sprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Isdira, muttersprache = true},
+            };
+
+            // Wahl der Sprache:
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.AlteKemi });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Angram });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Asdharia });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Atak });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Aureliani });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Drachisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ferkina });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Fuechsisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Goblinisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Grolmisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Hjaldingsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Koboldisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mahrisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Molochisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Neckergesang });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Nujuka });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloarkh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.OrkischOloghaijan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rabensprache });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rissoal });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rogolan });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rssahh });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Ruuz });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Trollisch });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zelemja });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhayad });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zhulchammaqra });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.ZLit });
+            wahlSprache.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Zyklopaeisch });
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = 4;
+            wahlSprache.anzahlZuWaehlen = 1;
+            subKeine.wahlen.Add(wahlSprache);
 
             return subKeine;
-
-
         }
 
         private subkultur createTrollZackenSubKeine()
@@ -545,7 +4551,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
@@ -579,11 +4585,17 @@ namespace kulturenStruktur
 
             // Professionen:
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() 
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() 
             { 
-                ProfessionsName.Stammeskrieger, ProfessionsName.Hirte, ProfessionsName.Jaeger, ProfessionsName.Kundschafter,
-                ProfessionsName.Straßenraeuber, ProfessionsName.Haendler, ProfessionsName.Bauer, ProfessionsName.Handwerker,
-                ProfessionsName.Druide,
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hirte},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber },
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bauer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Druide , subname = SubProfessionsName.HueterDerMacht},
                 // TOCHECK: Schamane???
             };
 
@@ -690,18 +4702,44 @@ namespace kulturenStruktur
 
             // Profession:
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() 
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() 
             { 
-                ProfessionsName.Gladiator, ProfessionsName.Schaukaempfer, ProfessionsName.Soeldner,
-                ProfessionsName.Entdecker, ProfessionsName.Fernhaendler, ProfessionsName.Fuhrmann,
-                ProfessionsName.Großwildjaeger, ProfessionsName.Jaeger, ProfessionsName.Kundschafter,
-                ProfessionsName.Prospektor, ProfessionsName.Schiffer, ProfessionsName.Schmuggler,
-                ProfessionsName.Ausrufer, ProfessionsName.Barde, ProfessionsName.Gaukler, ProfessionsName.Haendler,
-                ProfessionsName.Streuner, ProfessionsName.Bader, ProfessionsName.Gelehrter, ProfessionsName.Handwerker,
-                ProfessionsName.Tierbaendiger, ProfessionsName.Wirt, ProfessionsName.Wundarzt, ProfessionsName.Hexe,
-                ProfessionsName.GeweihterDesAves, ProfessionsName.GeweihterDesFirun, ProfessionsName.GeweihterDerHesinde,
-                ProfessionsName.GeweihterDesNandus, ProfessionsName.GeweihterDesPhex, ProfessionsName.Scharlatan,
-                ProfessionsName.Zibilja,
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schaukaempfer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Entdecker},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Fuhrmann},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schiffer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Ausrufer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Barde},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Haendler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Streuner},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Bader},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter, subname = SubProfessionsName.Sprachenkundler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter, subname = SubProfessionsName.VoelkerkundlerSagenkundler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.GoldUndFeinschmied},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Graveur},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.SchusterUndSattler},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Stellmacher},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Taetowierer},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wirt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hexe},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAves },
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerHesinde},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesNandus},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesPhex},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Zibilja},
             };
 
             // Wahl:
@@ -898,7 +4936,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Viertelzauberer},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
                 new VorteilsIdentifier(){ name = VorteileName.Wolfskind},
@@ -931,14 +4969,18 @@ namespace kulturenStruktur
 
             // Profession:
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Sammler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
             // TOCHECK: Wolfskind, Magiedilettant
-            //subKeine.geeigneteProfessionen.Add(ProfessionsName.);
+            //subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.);
+
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Jaeger , subname = SubProfessionsName.Wildhueter });
+
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -1014,7 +5056,7 @@ namespace kulturenStruktur
             subSess.talentModifikatoren.Add( new talentIdentifier{ name = TalentName.Schwimmen, wert = +1});
             subSess.talentModifikatoren.Add(new talentIdentifier { name = TalentName.BooteFahren, wert = +1 });
 
-            subSess.geeigneteProfessionen.Add(ProfessionsName.Seefahrer);
+            subSess.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer, subname = SubProfessionsName.Robbenjaeger});
 
             return subSess;
         }
@@ -1037,7 +5079,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
                 new VorteilsIdentifier(){ name = VorteileName.Kaelteresistenz},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wolfskind},
             };
 
@@ -1068,16 +5110,18 @@ namespace kulturenStruktur
 
             // Profession:
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kaskjua);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Prospektor, subname = SubProfessionsName.Sammler });
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kaskjua});
+
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Jaeger, subname = SubProfessionsName.Wildhueter });
 
             // Talente: 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -1181,7 +5225,7 @@ namespace kulturenStruktur
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
             {
                 new NachteilsIdentifier(){ name = NachteileName.Aberglaube},
-                new NachteilsIdentifier(){ name = NachteileName.Gesucht},
+                new NachteilsIdentifier(){ name = NachteileName.Gesucht1},
                 new NachteilsIdentifier(){ name = NachteileName.Goldgier},
                 new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
                 new NachteilsIdentifier(){ name = NachteileName.Rachsucht},
@@ -1201,35 +5245,35 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gladiator);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schaukaempfer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Großwildjaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schmuggler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schiffer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Seefahrer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schaukaempfer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schiffer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber});
 
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bettler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Dieb);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Einbrecher);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Streuner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bauer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Rattenfaenger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tageloehner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wirt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesPhex);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesEfferd);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesSwafnir);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bettler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Dieb});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Streuner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bauer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Rattenfaenger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wirt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe, subname = SubProfessionsName.Affe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesPhex});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesEfferd});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesSwafnir});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -1568,26 +5612,31 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht geeignet:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>()
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>()
             {
-                ProfessionsName.Amazone, ProfessionsName.Ritter, ProfessionsName.StammeskriegerDerBeniDervez, ProfessionsName.Stammeskrieger,
-                ProfessionsName.GeweihterDesFirun, ProfessionsName.GeweihterDesAngrosch,
+                new ProfessionsIdentifier(){ name = ProfessionsName.Amazone},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Ritter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.StammeskriegerDerBeniDervez},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun},
+                new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAngrosch},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Hexe, subname = SubProfessionsName.Kroete},
             };
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -1728,7 +5777,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenKrankheiten},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.SozialeAnpassungsfaehigkeit},
             };
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
@@ -1753,22 +5802,25 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Folgende Professionen sind nicht möglich:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() 
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() 
             { 
-                ProfessionsName.Amazone, ProfessionsName.Ritter, ProfessionsName.Stammeskrieger, ProfessionsName.StammeskriegerDerBeniDervez
+                new ProfessionsIdentifier(){ name = ProfessionsName.Amazone},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Ritter},
+                new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger},
+                new ProfessionsIdentifier(){ name = ProfessionsName.StammeskriegerDerBeniDervez },
             };
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -1896,7 +5948,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -1934,13 +5986,13 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Medizinmann});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -2042,7 +6094,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -2083,18 +6135,18 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner, subname = SubProfessionsName.Sklavenaufseher});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Medizinmann});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -2202,7 +6254,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -2243,19 +6295,19 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gladiator);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler });
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Medizinmann});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -2339,9 +6391,9 @@ namespace kulturenStruktur
 
             subChira.mrModifikator = +1;
 
-            subChira.geeigneteProfessionen.Add(ProfessionsName.Soldat);
-            subChira.geeigneteProfessionen.Add(ProfessionsName.Bauer);
-            subChira.geeigneteProfessionen.Add(ProfessionsName.Tageloehner);
+            subChira.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soldat});
+            subChira.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bauer});
+            subChira.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner});
 
             subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Ringen, wert = -1 });
             subChira.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Klettern, wert = +1 });
@@ -2446,7 +6498,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -2488,19 +6540,19 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Medizinmann});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -2608,7 +6660,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Schutzgeist},
                 new VorteilsIdentifier(){ name = VorteileName.UebernatürlicheBegabung},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
@@ -2654,17 +6706,17 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bauer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bauer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Medizinmann});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -2853,7 +6905,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenGifte},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.Schlangenmensch},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Wohlklang},
             };
 
@@ -2896,17 +6948,17 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Medizinmann);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Medizinmann});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -3027,7 +7079,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -3069,15 +7121,18 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.GerberKuerschner });
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Grobschmied});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.SchusterUndSattler });
+
             // TOCHECK: Frunu?
-            // subKeine.geeigneteProfessionen.Add(ProfessionsName.???);
+            // subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.???);
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -3172,7 +7227,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -3211,25 +7266,25 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schaukaempfer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Großwildjaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Karawanenhueter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Barde);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bauer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.BrenochDun);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.DurroDun);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schaukaempfer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Karawanenfuehrer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Sammler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Barde});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Viehzuechter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.BrenochDun});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.DurroDun});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -3375,7 +7430,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -3404,40 +7459,50 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Krieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soldat);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Entdecker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fernhaendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Großwildjaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schiffer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Seefahrer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Ausrufer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Barde);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gaukler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Krieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soldat});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Entdecker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Goldsucher});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schiffer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ausrufer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Barde, subname = SubProfessionsName.Skalde});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesSwafnir);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesEfferd);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesFirun);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDerIfirn);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDerTravia);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesSwafnir});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesEfferd});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerIfirn});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerTravia});
 
             // Entfernt werden müssen:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Domestik);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Rattenfaenger);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Domestik});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Rattenfaenger});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Jaeger, subname = SubProfessionsName.Wildhueter });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Seefahrer, subname = SubProfessionsName.Walfaenger });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.HueterDerMacht });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideEis });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideErz });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideFeuer });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideHumus });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideLuft });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideWasser });
+
 
             // Talente:
 
@@ -3522,7 +7587,7 @@ namespace kulturenStruktur
             {
                 new NachteilsIdentifier(){ name = NachteileName.Aberglaube},
                 new NachteilsIdentifier(){ name = NachteileName.Eitelkeit},
-                new NachteilsIdentifier(){ name = NachteileName.Gesucht},
+                new NachteilsIdentifier(){ name = NachteileName.Gesucht1},
                 new NachteilsIdentifier(){ name = NachteileName.Jaehzorn},
                 new NachteilsIdentifier(){ name = NachteileName.Neugier},
                 new NachteilsIdentifier(){ name = NachteileName.Schulden},
@@ -3544,37 +7609,45 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gladiator);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fernhaendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fuhrmann);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Karawanenhueter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schmuggler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Ausrufer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Barde);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bettler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Dieb);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Einbrecher);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gaukler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hofkuenstler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.KurtisaneGesellschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Streuner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bader);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wirt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesAves);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDesPhex);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihteDerRahja);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDerTsa);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schaukaempfer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fuhrmann});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Karawanenfuehrer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor, subname = SubProfessionsName.Kraeutersammler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ausrufer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Barde});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bettler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Dieb});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hofkuenstler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.FahrenderHaendler});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Haendler, subname = SubProfessionsName.Hausierer });
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.KurtisaneGesellschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Streuner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bader});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.GoldUndFeinschmied});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.Grobschmied });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.Instrumentenbauer });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.Schneider });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.SchusterUndSattler });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.Stellmacher });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.Taetowierer });
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wirt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Taenzer, subname = SubProfessionsName.ZaubertäenzerHazaqi });
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesAves});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesPhex});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihteDerRahja});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerTsa});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -3669,7 +7742,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kampfrausch},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -3708,28 +7781,28 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gladiator);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Botenreiter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Großwildjaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Barde);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Dieb);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Streuner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bauer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.FerkinaBesessener);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Botenreiter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Barde});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Dieb});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler, subname = SubProfessionsName.Tauschhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Streuner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bauer, subname = SubProfessionsName.Viehzuechter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.FerkinaBesessener});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
             // TOCHECK: Schamane?
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Nuranshar);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Nuranshar});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -3871,7 +7944,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Entfernungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.SchwerZuVerzaubern},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
@@ -3903,23 +7976,23 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Entdecker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fernhaendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Barde);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gaukler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Streuner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bauer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Domestik);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tageloehner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Entdecker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Barde});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gaukler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Streuner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bauer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Domestik});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -4044,7 +8117,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Entfernungssinn},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.InnererKompass},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.SchwerZuVerzaubern},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
@@ -4077,29 +8150,33 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hadjinim);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Krieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Entdecker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fernhaendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Großwildjaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Karawanenhueter);            
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Barde);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Haendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Bauer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Domestik);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gelehrter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tageloehner);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Derwisch);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hadjinim});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Krieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Entdecker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Karawanenfuehrer});   
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber, subname = SubProfessionsName.Bandit});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Barde, subname = SubProfessionsName.Erzaehler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Haendler});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Bauer});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Domestik});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tageloehner});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Derwisch});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>(){};
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() {  name = ProfessionsName.Gelehrter, subname = SubProfessionsName.Jurist});
+
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -4182,18 +8259,18 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKasi.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
+            subKasi.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer});
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKasi.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKasi.ungeeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKasi.ungeeigneteProfessionen.Add(ProfessionsName.Kundschafter);
+            subKasi.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKasi.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKasi.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
 
             return subKasi;
         }
@@ -4229,25 +8306,25 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKasi.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKasi.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKasi.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKasi.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKasi.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
 
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Gardist);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.StammeskriegerDerBeniDervez);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKasi.geeigneteProfessionen.Add(ProfessionsName.Derwisch);
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gardist});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.StammeskriegerDerBeniDervez});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKasi.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Derwisch});
             subKasi.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKasi.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKasi.ungeeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKasi.ungeeigneteProfessionen.Add(ProfessionsName.Kundschafter);
+            subKasi.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKasi.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKasi.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
 
             return subKasi;
         }
@@ -4285,25 +8362,25 @@ namespace kulturenStruktur
             subKeine.voraussetzungen.geschlecht = GeschlechtNamen.weiblich;
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Amazone);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schwertgeselle);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Krieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Amazone});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schwertgeselle});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Krieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Kundschafter);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
 
             return subKeine;
         }
@@ -4358,25 +8435,29 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe, subname = SubProfessionsName.Katze});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Hexe, subname = SubProfessionsName.Rabe });
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer, subname = SubProfessionsName.NovadischeSharisad});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Taenzer, subname = SubProfessionsName.TulamidischeSharisad });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Taenzer, subname = SubProfessionsName.ZaubertaenzerNovadischeSharisad });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Taenzer, subname = SubProfessionsName.ZaubertaenzerTulamidischeSharisad });
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Ritter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Kundschafter);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ritter});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -4576,32 +8657,32 @@ namespace kulturenStruktur
             subKeine.voraussetzungen.geschlecht = GeschlechtNamen.weiblich;
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
 
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Amazone);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Krieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Amazone});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Krieger});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Ritter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Faehnrich);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Herold);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Schriftsteller);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gelehrter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Edelhandwerker);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.GeweihterDesFirun);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Großwildjaeger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Seefahrer);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ritter});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Faehnrich});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Herold});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schriftsteller});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Seefahrer});
 
             return subKeine;
         }
@@ -4636,28 +8717,28 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Ritter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Faehnrich);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Herold);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Schriftsteller);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gelehrter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Edelhandwerker);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.GeweihterDesFirun);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ritter});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Faehnrich});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Herold});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schriftsteller});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDesFirun});
 
             // Talente:
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -4833,9 +8914,9 @@ namespace kulturenStruktur
             subKeine.voraussetzungen.geschlecht = GeschlechtNamen.maennlich;
 
             // Die Männer haben manche Professionen nicht:
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Faehnrich);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Entdecker);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Fernhaendler);
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Faehnrich});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Entdecker});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler});
 
             // Die Männer haben nur einen Bonus von +1 auf Etikette und Menschnenk.:
             subKeine.talentModifikatoren.Remove( new talentIdentifier{ name = TalentName.Etikette, wert = +2});
@@ -4868,25 +8949,26 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Taenzer);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Taenzer, subname = SubProfessionsName.AranischerMajuna});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Taenzer, subname = SubProfessionsName.ZaubertaenzerMajuna });
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Ritter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ritter});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
 
             // Talente:
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -5019,7 +9101,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Eisern},
                 new VorteilsIdentifier(){ name = VorteileName.Gefahreninstinkt},
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
 
@@ -5047,13 +9129,17 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Amazone);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Kundschafter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Handwerker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Tierbaendiger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Wundarzt);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.GeweihterDerRondra);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Amazone});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Kundschafter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Handwerker, subname = SubProfessionsName.Plaettner});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.SchusterUndSattler });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.Schreiner });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.SchusterUndSattler });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Handwerker, subname = SubProfessionsName.Waffenschmied });
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Tierbaendiger, subname = SubProfessionsName.Zureiter});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Wundarzt});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.GeweihterDerRondra});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -5178,24 +9264,26 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Druide, subname = SubProfessionsName.Haindruide});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Ritter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Ritter});
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.StammeskriegerDerBeniDervez });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.GeweihterDesFirun });
 
             // Talente:
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -5815,33 +9903,38 @@ namespace kulturenStruktur
             };
 
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Entdecker);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fernhaendler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Fischer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Großwildjaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hirte);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Jaeger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Prospektor);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schiffer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schmuggler);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Entdecker });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Fernhaendler});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Fischer});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hirte});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Jaeger});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Prospektor});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schiffer});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schmuggler});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Alchimist});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hexe, subname = SubProfessionsName.Eule});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Hexe, subname = SubProfessionsName.Kroete });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Hexe, subname = SubProfessionsName.Rabe });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen sind nicht erlaubt:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Ritter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Ritter});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Stammeskrieger });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.StammeskriegerDerBeniDervez });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.HueterDerMacht });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.Sumupriester });
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -6106,28 +10199,34 @@ namespace kulturenStruktur
 
             // Nun zu den Professionen:
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schaukaempfer);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gardist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soldat);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Schaukaempfer });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Gardist});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Soldat});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Folgende Professionen lassen wir nicht zu:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Herold);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Hofkuenstler);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Hoefling);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Taugenichts);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gelehrter);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Herold});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hofkuenstler});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hoefling});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Taugenichts});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideEis });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideErz });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideFeuer });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideHumus });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideLuft });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideWasser });
 
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -6366,7 +10465,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.Kaelteresistenz},
                 new VorteilsIdentifier(){ name = VorteileName.ResistenzGegenKrankheiten},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
             subKeine.empfohleneNachteile = new List<NachteilsIdentifier>()
@@ -6384,22 +10483,23 @@ namespace kulturenStruktur
 
             // Nun zu den Professionen:
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Faehnrich);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Gardist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Ritter);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Krieger);
-            // TOCHECK! subKeine.geeigneteProfessionen.Add(ProfessionsName.ordenskrieger);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soldat);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Soeldner);
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Faehnrich });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Gardist});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Ritter});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Krieger});
+            // TOCHECK! subKeine.geeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.ordenskrieger);
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Soldat});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Soeldner});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Druide, subname = SubProfessionsName.Haindruide});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.HueterDerMacht });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -6657,7 +10757,7 @@ namespace kulturenStruktur
                 new VorteilsIdentifier(){ name = VorteileName.HoheLebenskraft},
                 new VorteilsIdentifier(){ name = VorteileName.Magiegespuer},
                 new VorteilsIdentifier(){ name = VorteileName.Richtungssinn},
-                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung},
+                new VorteilsIdentifier(){ name = VorteileName.SchnelleHeilung1},
                 new VorteilsIdentifier(){ name = VorteileName.Tierfreund},
                 new VorteilsIdentifier(){ name = VorteileName.ZaeherHund},
             };
@@ -6676,29 +10776,35 @@ namespace kulturenStruktur
 
             // Nun zu den Professionen:
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Alchimist });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen lassen wir nicht zu:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Amazone);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gladiator);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Schwertgeselle);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Großwildjaeger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gelehrter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Edelhandwerker);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Amazone});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schwertgeselle});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Großwildjaeger});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideEis });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideErz });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideFeuer });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideHumus });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideLuft });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.KonzilsdruideWasser });
 
             // Jetzt die Talente:
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -6825,7 +10931,7 @@ namespace kulturenStruktur
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Dunkelangst });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Einbildungen });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Goldgier });
-            subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schlafstoerungen });
+            subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schlafstoerungen1 });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Stigma });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Unstet });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Wahnvorstellungen });
@@ -7027,31 +11133,33 @@ namespace kulturenStruktur
             // Vorbereiten der Professions-Kategorienklasse. @Tom: Kann man das
             // auch global machen? Sonst kommt diese Zeile in JEDER Subkultur immer wieder vor...
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Alchimist });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Druide});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hexe});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
             // Die folgenden Professionen lassen wir nicht zu:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gladiator);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Schwertgeselle);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Bettler);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Einbrecher);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Spitzel);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Taugenichts);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Gelehrter);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Edelhandwerker);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Gladiator});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schwertgeselle});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.StammeskriegerDerBeniDervez });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Bettler});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Einbrecher});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Spitzel});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Taugenichts});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Gelehrter});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Edelhandwerker});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Druide, subname = SubProfessionsName.Sumupriester });
 
             // Nun folgen die Talentboni:
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -7179,7 +11287,7 @@ namespace kulturenStruktur
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Dunkelangst });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Einbildungen });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Goldgier });
-            subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schlafstoerungen });
+            subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schlafstoerungen1 });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Stigma });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Unstet });
             subFluecht.empfohleneNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Wahnvorstellungen });
@@ -7414,24 +11522,28 @@ namespace kulturenStruktur
             // Vorbereiten der Professions-Kategorienklasse. @Tom: Kann man das
             // auch global machen? Sonst kommt diese Zeile in JEDER Subkultur immer wieder vor...
             var professionsSubsets = new ProfessionsKategorien();
-            subKeine.geeigneteProfessionen = new List<ProfessionsName>() { };
+            subKeine.geeigneteProfessionen = new List<ProfessionsIdentifier>() { };
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetKriegerische());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetReisende());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetGesellschaft());
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetHandwerk());
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Alchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.MagiebegabterAlchimist);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Druide);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Hexe);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Magier);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Scharlatan);
-            subKeine.geeigneteProfessionen.Add(ProfessionsName.Schelm);
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Alchimist });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.MagiebegabterAlchimist});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Druide, subname = SubProfessionsName.MehrerDerMacht});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Hexe, subname = SubProfessionsName.Katze});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Hexe, subname = SubProfessionsName.Schlange });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.Hexe, subname = SubProfessionsName.Rabe });
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Magier});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Scharlatan});
+            subKeine.geeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Schelm});
             subKeine.geeigneteProfessionen.AddRange(professionsSubsets.GetZwoelfgoetterkulte());
 
+
             // Die folgenden Professionen lassen wir nicht zu:
-            subKeine.ungeeigneteProfessionen = new List<ProfessionsName>() { };
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Stammeskrieger);
-            subKeine.ungeeigneteProfessionen.Add(ProfessionsName.Straßenraeuber);
+            subKeine.ungeeigneteProfessionen = new List<ProfessionsIdentifier>() { };
+            subKeine.ungeeigneteProfessionen.Add( new ProfessionsIdentifier(){ name = ProfessionsName.Stammeskrieger});
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier() { name = ProfessionsName.StammeskriegerDerBeniDervez });
+            subKeine.ungeeigneteProfessionen.Add(new ProfessionsIdentifier(){ name = ProfessionsName.Straßenraeuber});
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
             {
@@ -7611,12 +11723,12 @@ namespace kulturenStruktur
         /// <summary>
         /// Eine Liste der geeigneten Professionen durch die Kultur (ist nicht bindend, aber empfohlen)
         /// </summary>
-        public List<ProfessionsName> geeigneteProfessionen;
+        public List<ProfessionsIdentifier> geeigneteProfessionen;
 
         /// <summary>
         /// Eine Liste der ungeeigneten Professionen durch die Kultur (sollte bindend sein)
         /// </summary>
-        public List<ProfessionsName> ungeeigneteProfessionen;
+        public List<ProfessionsIdentifier> ungeeigneteProfessionen;
 
         /// <summary>
         /// Einthält eine Liste mit allen fixen Talentboni (Name, Modifikator)
@@ -7673,6 +11785,16 @@ namespace kulturenStruktur
         /// Mögliche generelle Zauber.
         /// </summary>
         public List<ZauberIdentifier> moeglicheZauber;
+
+        /// <summary>
+        /// Nur im Fall von Orkland-Kultur. Gibt Kaste an.
+        /// </summary>
+        public OrkkastenName orkkaste;
+
+        /// <summary>
+        /// Nur im Fall von Orkland-Kultur. Gibt Stamm an.
+        /// </summary>
+        public OrkstaemmeName orkstamm;
 
     };
 
@@ -7782,6 +11904,70 @@ namespace kulturenStruktur
             };
             return elfenHauszauber;
         }
+
+        /// <summary>
+        /// Gibt eine Liste mit allen Basis-Zaubern der Elfen zurück!
+        /// </summary>
+        /// <returns></returns>
+        public List<ZauberIdentifier> GetElfenBasisZauber()
+        {
+            var elfenBasisZauber = new List<ZauberIdentifier>()
+            {
+                new ZauberIdentifier(){ name = ZauberName.Abveneum},
+                new ZauberIdentifier(){ name = ZauberName.Adlerauge},
+                new ZauberIdentifier(){ name = ZauberName.Adlerschwinge},
+                new ZauberIdentifier(){ name = ZauberName.Aeolitus},
+                new ZauberIdentifier(){ name = ZauberName.Armatrutz},
+                new ZauberIdentifier(){ name = ZauberName.Attributo},
+                new ZauberIdentifier(){ name = ZauberName.Axxeleratus},
+                new ZauberIdentifier(){ name = ZauberName.Balsam},
+                new ZauberIdentifier(){ name = ZauberName.BandUndFessel},
+                new ZauberIdentifier(){ name = ZauberName.Bannbaladin},
+                new ZauberIdentifier(){ name = ZauberName.Baerenruhe},
+                new ZauberIdentifier(){ name = ZauberName.BeherrschungBrechen},
+                new ZauberIdentifier(){ name = ZauberName.BewegungStoeren},
+                new ZauberIdentifier(){ name = ZauberName.BlickAufsWesen},
+                new ZauberIdentifier(){ name = ZauberName.BlickInDieGedanken},
+                new ZauberIdentifier(){ name = ZauberName.BlitzDichFind},
+                new ZauberIdentifier(){ name = ZauberName.Chamaelioni},
+                new ZauberIdentifier(){ name = ZauberName.Eigenschaft},
+                new ZauberIdentifier(){ name = ZauberName.EinflussBannen},
+                new ZauberIdentifier(){ name = ZauberName.ExposamiLebenskraft},
+                new ZauberIdentifier(){ name = ZauberName.FalkenaugeMeisterschuss},
+                new ZauberIdentifier(){ name = ZauberName.FlimFlam},
+                new ZauberIdentifier(){ name = ZauberName.Fulminictus},
+                new ZauberIdentifier(){ name = ZauberName.Gedankenbilder},
+                new ZauberIdentifier(){ name = ZauberName.Haselbusch},
+                new ZauberIdentifier(){ name = ZauberName.HellsichtTrueben},
+                new ZauberIdentifier(){ name = ZauberName.HilfreicheTatze},
+                new ZauberIdentifier(){ name = ZauberName.Motoricus},
+                new ZauberIdentifier(){ name = ZauberName.Movimento},
+                new ZauberIdentifier(){ name = ZauberName.Nebelwand},
+                new ZauberIdentifier(){ name = ZauberName.Objectovoco},
+                new ZauberIdentifier(){ name = ZauberName.Odem},
+                new ZauberIdentifier(){ name = ZauberName.Penetrizzel},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Luft},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Humus},
+                new ZauberIdentifier(){ name = ZauberName.Plumbumbarum},
+                new ZauberIdentifier(){ name = ZauberName.Respondami},
+                new ZauberIdentifier(){ name = ZauberName.RuheKoerper},
+                new ZauberIdentifier(){ name = ZauberName.Sanftmut},
+                new ZauberIdentifier(){ name = ZauberName.Sensibar},
+                new ZauberIdentifier(){ name = ZauberName.Silentium},
+                new ZauberIdentifier(){ name = ZauberName.Solidirid},
+                new ZauberIdentifier(){ name = ZauberName.Somnigravis},
+                new ZauberIdentifier(){ name = ZauberName.SpurlosTrittlos},
+                new ZauberIdentifier(){ name = ZauberName.Tiergedanken},
+                new ZauberIdentifier(){ name = ZauberName.Unitatio},
+                new ZauberIdentifier(){ name = ZauberName.VerstaendigungStoeren},
+                new ZauberIdentifier(){ name = ZauberName.Visibili},
+                new ZauberIdentifier(){ name = ZauberName.Wasseratem},
+                new ZauberIdentifier(){ name = ZauberName.Windstille},
+            };
+
+            return elfenBasisZauber;
+        }
+
     };
 
 }

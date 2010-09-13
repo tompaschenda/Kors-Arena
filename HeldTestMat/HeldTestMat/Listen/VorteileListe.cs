@@ -7,6 +7,14 @@ using System.ComponentModel;
 namespace Listen
 {
 
+    public enum AkademischeAusbilung
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Krieger")]
+        Krieger,
+    };
+
     public enum VorteilsAuspraegung
     {
         [Description("undefined")]
@@ -43,8 +51,13 @@ namespace Listen
         Amtsadel,
         [Description("Affinität zu")]
         AffinitaetZu,
-        [Description("Akademische Ausbildung")]
-        AkademischeAusbildung,
+        [Description("Akademische Ausbildung (Gelehrter)")]
+        AkademischeAusbildungGelehrter,
+        [Description("Akademische Ausbildung (Magier)")]
+        AkademischeAusbildungMagier,
+        [Description("Akademische Ausbildung (Krieger)")]
+        AkademischeAusbildungKrieger,
+
         [Description("Altersresistenz")]
         Altersresistenz,
         [Description("Astrale Regeneration")]
@@ -79,6 +92,10 @@ namespace Listen
         BreitgefaecherteBildung,
         [Description("Dämmerungssicht")]
         Daemmerungssicht,
+
+        [Description("Eidetisches Gedächtnis")]
+        EidetischesGedaechtnis,
+
         [Description("Eigeboren")]
         Eigeboren,
         [Description("Eisenaffine Aura")]
@@ -101,6 +118,11 @@ namespace Listen
         Gebildet,
         [Description("Gefahreninstinkt")]
         Gefahreninstinkt,
+
+        [Description("Geräuschhexerei")]
+        Geraeuschhexerei,
+
+
         [Description("Geweiht")]
         Geweiht,
         [Description("Glück")]
@@ -189,8 +211,17 @@ namespace Listen
         Richtungssinn,
         [Description("Schlangenmensch")]
         Schlangenmensch,
-        [Description("Schnelle Heilung")]
-        SchnelleHeilung,
+        [Description("Schnelle Heilung I")]
+        SchnelleHeilung1,
+
+        [Description("Schnelle Heilung II")]
+        SchnelleHeilung2,
+
+        [Description("Schnelle Heilung III")]
+        SchnelleHeilung3,
+
+
+
         [Description("Schutzgeist")]
         Schutzgeist,
         [Description("Schwer zu verzaubern")]

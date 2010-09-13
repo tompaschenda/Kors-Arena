@@ -6,6 +6,7 @@ using Listen;
 using sfStruktur;
 using SprachenUndSchriften;
 using nachteileStruktur;
+using zauberStruktur;
 
 
 namespace spielerAuswahl
@@ -93,6 +94,17 @@ namespace spielerAuswahl
         /// Eine Liste, von Vorteilen, zwischen denen gewählt werden darf (ggfs. mit Ausprägung)
         /// </summary>
         public List<VorteilsIdentifier> vorteile;
+
+        /// <summary>
+        /// Eine Liste mit Zaubern, zwischen denen gewählt werden darf!
+        /// </summary>
+        public List<ZauberIdentifier> zauber;
+
+        /// <summary>
+        /// Handelt es sich um einen Hauszauber (Leitzauber bei Elfen!)
+        /// </summary>
+        public bool zauberHaus;
+
 
         /// <summary>
         /// Liste mit SF, zwischen denen gewählt werden darf (ggfs. mit Ausprägung)

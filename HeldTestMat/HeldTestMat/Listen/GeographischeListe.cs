@@ -172,6 +172,8 @@ namespace Listen
         Ragath,
         [Description("Brig-Lo")]
         BrigLo,
+        [Description("Keamonmund")]
+        Keamonmund,
 
         // Der äußerste Norden
         [Description("Frisov")]

@@ -51,6 +51,7 @@
     <Compile Include="RassenListe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GeographischeListe.cs" />
+    <Compile Include="RuestungsListe.cs" />
     <Compile Include="SFListe.cs" />
     <Compile Include="SprachenUndSchriften.cs" />
     <Compile Include="TalentListe.cs" />

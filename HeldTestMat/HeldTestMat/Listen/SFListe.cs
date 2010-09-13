@@ -6,6 +6,18 @@ using System.ComponentModel;
 
 namespace Listen
 {
+
+
+    public enum TierischeBegleiter
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Elfenpony")]
+        Elfenpony,
+
+
+    };
+
     public enum SFKategorien
     {
         [Description("undefined")]
@@ -71,8 +83,12 @@ namespace Listen
         Aufmerksamkeit,
         [Description("Ausfall")]
         Ausfall,
-        [Description("Ausweichen")]
-        Ausweichen,
+        [Description("Ausweichen I")]
+        Ausweichen1,
+        [Description("Ausweichen II")]
+        Ausweichen2,
+        [Description("Ausweichen III")]
+        Ausweichen3,
         [Description("Befreiungsschlag")]
         Befreiungsschlag,
         [Description("Beidhändiger Kampf")]
@@ -95,6 +111,8 @@ namespace Listen
         Formation,
         [Description("Gegenhalten")]
         Gegenhalten,
+        [Description("Geschützmeister")]
+        Geschuetzmeister,
         [Description("Gezielter Stich")]
         GezielterStich,
         [Description("Halbschwert")]
@@ -123,12 +141,20 @@ namespace Listen
         Meisterparade,
         [Description("Niederwerfen")]
         Niederwerfen,
-        [Description("Parierwaffen")]
-        Parierwaffen,
-        [Description("Rüstungsgewöhnung")]
-        Ruestungsgewoehnung,
-        [Description("Schildkampf")]
-        Schildkampf,
+        [Description("Parierwaffen I")]
+        Parierwaffen1,
+        [Description("Parierwaffen II")]
+        Parierwaffen2,
+        [Description("Rüstungsgewöhnung I")]
+        Ruestungsgewoehnung1,
+        [Description("Rüstungsgewöhnung II")]
+        Ruestungsgewoehnung2,
+        [Description("Rüstungsgewöhnung III")]
+        Ruestungsgewoehnung3,
+        [Description("Schildkampf I")]
+        Schildkampf1,
+        [Description("Schildkampf II")]
+        Schildkampf2,
         [Description("Schildspalter")]
         Schildspalter,
         [Description("Spießgespann")]
@@ -167,17 +193,17 @@ namespace Listen
         Schnellziehen,
 
         // Kampfsonderfertigkeiten (Waffenloser Kampf):
-        [Description("Bornländisch")]
+        [Description("Waffenloser Kampfstil (Bornländisch)")]
         Bornlaendisch,
-        [Description("Gladiatorenstil")]
+        [Description("Waffenloser Kampfstil (Gladiatorenstil)")]
         Gladiatorenstil,
-        [Description("Hammerfaust")]
+        [Description("Waffenloser Kampfstil (Hammerfaust)")]
         Hammerfaust,
-        [Description("Hruruzat")]
+        [Description("Waffenloser Kampfstil (Hruruzat)")]
         Hruruzat,
-        [Description("Mercenario")]
+        [Description("Waffenloser Kampfstil (Mercenario)")]
         Mercenario,
-        [Description("Unauer Schule")]
+        [Description("Waffenloser Kampfstil (Unauer Schule)")]
         UnauerSchule,
         [Description("Auspendeln")]
         Auspendeln,
@@ -349,8 +375,10 @@ namespace Listen
         OdunGaben,
         [Description("Ottagaldr")]
         Ottagaldr,
-        [Description("Regeneration")]
-        Regeneration,
+        [Description("Regeneration I")]
+        Regeneration1,
+        [Description("Regeneration II")]
+        Regeneration2,
         [Description("Repräsentation")]
         Repraesentation,
         [Description("Ritualkenntins")]
@@ -457,14 +485,6 @@ namespace Listen
         [Description("je nach Talent")]
         JaNachTalent,
 
-        // Ausweichen:
-        [Description("I")]
-        I,
-        [Description("II")]
-        II,
-        [Description("I")]
-        III,
-
         // Schnellladen:
         [Description("Bogen")]
         Bogen,
@@ -488,4 +508,30 @@ namespace Listen
         JeNachRepraesentation,
 
     }
+
+    public enum Elfenlieder
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Sorgenlied")]
+        Sorgenlied,
+        [Description("Zaubermelodie")]
+        Zaubermelodie,
+        [Description("Friedenslied")]
+        Friedenslied,
+        [Description("Windgeflüster")]
+        Windgefluester,
+        [Description("Lied der Lieder")]
+        LiedDerLieder,
+        [Description("Freundschaftslied")]
+        Freundschaftslied,
+        [Description("Erinnerungsmelodie")]
+        Erinnerungsmelodie,
+        [Description("Melodie der Kunstfertigkeit")]
+        MelodieDerKunstfertigkeit,
+        [Description("Lied des Trostes")]
+        LiedDesTrostes,
+        [Description("Lied der Reinheit")]
+        LiedDerReinheit,
+    };
 }

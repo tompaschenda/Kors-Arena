@@ -33,14 +33,6 @@ namespace Listen
         Amazone,
         [Description("Fähnrich")]
         Faehnrich,
-        [Description("Fähnrich zur See")]
-        FaehnrichZurSee,
-        [Description("Fähnrich der Kavallerie")]
-        FaehnrichDerKavallerie,
-        [Description("Stabsfähnrich")]
-        Stabsfaehnrich,
-        [Description("Fähnrich zur See")]
-        FähnrichZurSee,
         [Description("Gladiator")]
         Gladiator,
         [Description("Schaukämpfer")]
@@ -82,8 +74,8 @@ namespace Listen
         Hirte,
         [Description("Jäger")]
         Jaeger,
-        [Description("Karawanenhüter")]
-        Karawanenhueter,
+        [Description("Karawanenführer")]
+        Karawanenfuehrer,
         [Description("Kundschafter")]
         Kundschafter,
         [Description("Prospektor")]
@@ -296,25 +288,90 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
-        // Fähnrich
-        [Description("Al'Anfa")]
+        [Description("keine")]
+        keine,
+
+        [Description("Wehrheim")]
+        Wehrheim,
+        [Description("Vinsalt")]
+        Vinsalt,
+        [Description("Al' Anfa")]
         AlAnfa,
-        [Description("Albenhus")]
-        Albenhus,
-        [Description("Festum")]
-        Festum,
-        [Description("Gareth")]
-        Gareth,
-        [Description("Oberfels")]
-        Oberfels,
-        [Description("Honingen")]
-        Honingen,
+
+
+        // Hexe:
+        [Description("Katze")]
+        Katze,
+        [Description("Schlange")]
+        Schlange,
+        [Description("Spinne")]
+        Spinne,
+        [Description("Eule")]
+        Eule,
+        [Description("Kröte")]
+        Kroete,
+        [Description("Affe")]
+        Affe,
+
+        // Gelehrter
+        [Description("Jurist")]
+        Jurist,
+
+        [Description("Gold- und Feinschmied")]
+        GoldUndFeinschmied,
+        [Description("Grobschmied")]
+        Grobschmied,
+        [Description("Instrumentenbauer")]
+        Instrumentenbauer,
+        [Description("Schneider")]
+        Schneider,
+        [Description("Stellmacher")]
+        Stellmacher,
+        [Description("Tätowierer")]
+        Taetowierer,
+        [Description("Gerber / Kürschner")]
+        GerberKuerschner,
+        [Description("Sklavenaufseher")]
+        Sklavenaufseher,
+
+        [Description("Graveur")]
+        Graveur,
+
+
+        // Fähnrich
+
+
+        [Description("Fähnrich der Fußlämpfer (Al'Anfa)")]
+        FusskaempferAlAnfa,
+        [Description("Fähnrich der Fußlämpfer (Albenhus)")]
+        FusskaempferAlbenhus,
+        [Description("Fähnrich der Fußlämpfer (Festum)")]
+        FusskaempferFestum,
+        [Description("Fähnrich der Fußlämpfer (Gareth)")]
+        FusskaempferGareth,
+        [Description("Fähnrich der Fußlämpfer (Oberfels)")]
+        FusskaempferOberfels,
+        [Description("Fähnrich der Fußlämpfer (Honingen)")]
+        FusskaempferHoningen,
 
         // Fähnrich der Kavallerie
-        [Description("Ragath")]
-        Ragath,
+        [Description("Fähnrich der Kavallerie")]
+        FaehnrichDerKavallerie,
+        [Description("Fähnrich der Kavallerie (Ragath)")]
+        KavallerieRagath,
+
+        [Description("Stabsfähnrich")]
+        Stabsfaehnrich,
 
         // Fähnrich zur See
+        [Description("Fähnrich zur See")]
+        FaehnrichZurSee,
+        [Description("Fähnrich zur See (Harben)")]
+        SeeHarben,
+        [Description("Fähnrich zur See (Al'Anfa)")]
+        SeeAlAnfa,
+        [Description("Fähnrich zur See (Festum)")]
+        SeeFestum,
 
         // Gladiator:
         [Description("Fasar")]
@@ -739,6 +796,7 @@ namespace Listen
         [Description("Uhrmacher")]
         Uhrmacher,
 
+
         // Gelehrter
         [Description("Anatom")]
         Anatom,
@@ -776,6 +834,26 @@ namespace Listen
         ArchaischeHandwerkerDerOrks,
         [Description("Archaische Handwerker des Nordens")]
         ArchaischeHandwerkerDesNordens,
+        [Description("Plättner")]
+        Plaettner,
+        [Description("Sattler/Schuster")]
+        SchusterUndSattler,
+        [Description("Schreiner")]
+        Schreiner,
+        [Description("Waffenschmied")]
+        Waffenschmied,
+        [Description("Bogenbauer")]
+        Bogenbauer,
+        [Description("Edelsteinschleifer")]
+        Edelsteinschleifer,
+        [Description("Glasbläser")]
+        Glasblaeser,
+        [Description("Steinmetz")]
+        Steinmetz,
+        [Description("Töpfer")]
+        Toepfer,
+        [Description("Weber")]
+        Weber,
 
         // Rattenfänger
         [Description("Krokodillero")]
@@ -1052,8 +1130,8 @@ namespace Listen
         SchuelerRafim,
 
         // Scharlatan
-        [Description("Jahrmarktszauber")]
-        Jahrmarktszauber,
+        [Description("Jahrmarktszauberer")]
+        Jahrmarktszauberer,
         [Description("Scharlatanischer Seher")]
         ScharlatanischerSeher,
         [Description("Magischer Quacksalber")]

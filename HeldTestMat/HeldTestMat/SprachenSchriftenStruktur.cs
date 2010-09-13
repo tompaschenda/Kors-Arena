@@ -7,6 +7,48 @@ using Listen;
 namespace SprachenUndSchriften
 {
 
+    /// <summary>
+    /// Sammlung von Schriften
+    /// </summary>
+    public class SchriftenKategorien
+    {
+        /// <summary>
+        /// Gibt alle Schriften zurück:
+        /// </summary>
+        /// <returns></returns>
+        public List<SchriftenIdentifier> GetSchriften()
+        {
+            var schriften = new List<SchriftenIdentifier>()
+            {
+                new SchriftenIdentifier(){ name = SchriftName.AltesAlaani},
+                new SchriftenIdentifier(){ name = SchriftName.AltesKemi},
+                new SchriftenIdentifier(){ name = SchriftName.Amulashtra},
+                new SchriftenIdentifier(){ name = SchriftName.Angram},
+                new SchriftenIdentifier(){ name = SchriftName.Arkanil},
+                new SchriftenIdentifier(){ name = SchriftName.Chrmk},
+                new SchriftenIdentifier(){ name = SchriftName.Chuchas},
+                new SchriftenIdentifier(){ name = SchriftName.DrakhadZinken},
+                new SchriftenIdentifier(){ name = SchriftName.DraknedGlyphen},
+                new SchriftenIdentifier(){ name = SchriftName.GeheiligteGlyphen},
+                new SchriftenIdentifier(){ name = SchriftName.Gimaril},
+                new SchriftenIdentifier(){ name = SchriftName.Gjalskisch},
+                new SchriftenIdentifier(){ name = SchriftName.HjaldingscheRunen},
+                new SchriftenIdentifier(){ name = SchriftName.ImperialeZeichen},
+                new SchriftenIdentifier(){ name = SchriftName.IsdiraAsdharia},
+                new SchriftenIdentifier(){ name = SchriftName.KuslikerZeichen},
+                new SchriftenIdentifier(){ name = SchriftName.MahrischeGlyphen},
+                new SchriftenIdentifier(){ name = SchriftName.Nanduria},
+                new SchriftenIdentifier(){ name = SchriftName.Rogolan},
+                new SchriftenIdentifier(){ name = SchriftName.TrollischeRaumbilderschrift},
+                new SchriftenIdentifier(){ name = SchriftName.Tulamidya},
+                new SchriftenIdentifier(){ name = SchriftName.UrTulamidya},
+                new SchriftenIdentifier(){ name = SchriftName.Zhayad},
+            };
+
+            return schriften;
+        }
+    }
+
 
     /// <summary>
     /// Kategorien von Sprachidentifiern:

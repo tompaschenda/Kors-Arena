@@ -6,6 +6,73 @@ using System.ComponentModel;
 
 namespace Listen
 {
+
+    public enum Verpflichtungen
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("(der Sippe gegenüber)")]
+        Sippe,
+        [Description("Finanzier")]
+        Finanzier,
+        [Description("Lehrer")]
+        Lehrer,
+        [Description("Dienstherr")]
+        Dienstherr,
+    };
+
+    public enum Moralcodices
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Rondrakirche")]
+        Rondrakirche,
+    };
+
+    public enum Prinzipien
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Gehorsam")]
+        Gehorsam,
+        [Description("Loyalität")]
+        Loyalitaet,
+        [Description("Ehrenhaftigkeit")]
+        Ehrenhaftigkeit,
+        [Description("Schutz der Schwachen")]
+        SchutzDerSchwachen,
+    };
+
+    public enum Speisegebote
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("nur rohes Fleisch")]
+        NurRohesFleisch,
+    }
+
+    public enum Vorurteile
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Menschen")]
+        Menschen,
+        [Description("Frauen")]
+        Frauen,
+        [Description("Männer")]
+        Maenner,
+        [Description("Zwerge")]
+        Zwerge,
+        [Description("Goblins")]
+        Goblins,
+        [Description("Elfen")]
+        Elfen,
+        [Description("Echsen")]
+        Echsen,
+    }
+
+
+
     public enum Weltfremd
     {
         [Description("undefined")]
@@ -20,6 +87,8 @@ namespace Listen
         RechtssprechungUndGesetze,
         [Description("Besitz")]
         Besitz,
+        [Description("städtisches Leben")]
+        StaedtischesLeben,
     }
 
     public enum NachteileName
@@ -88,8 +157,12 @@ namespace Listen
         Geiz,
         [Description("Gerechtigkeitswahn")]
         Gerechtigkeitswahn,
-        [Description("Gesucht")]
-        Gesucht,
+        [Description("Gesucht I")]
+        Gesucht1,
+        [Description("Gesucht II")]
+        Gesucht2,
+        [Description("Gesucht III")]
+        Gesucht3,
         [Description("Glasknochen")]
         Glasknochen,
         [Description("Goldgier")]
@@ -176,8 +249,10 @@ namespace Listen
         Raumangst,
         [Description("Rückschlag")]
         Rueckschlag,
-        [Description("Schlafstörungen")]
-        Schlafstoerungen,
+        [Description("Schlafstörungen I")]
+        Schlafstoerungen1,
+        [Description("Schlafstörungen II")]
+        Schlafstoerungen2,
         [Description("Schlafwandler")]
         Schlafwandler,
         [Description("Schlechte Eigenschaft")]

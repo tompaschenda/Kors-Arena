@@ -2125,7 +2125,9 @@ namespace rassenStruktur
 
             srKeine.ueblicheKulturen = new List<KulturName>()
             {
-                KulturName.Orkland, KulturName.Yurach, KulturName.SvellttalBesatzer,
+                KulturName.OrklandDrasdech, KulturName.OrklandErgoch, KulturName.OrklandGrishik, 
+                KulturName.OrklandKhurkach, KulturName.OrklandOkwach,
+                KulturName.Yurach, KulturName.SvellttalBesatzer,
             };
             srKeine.unueblicheKulturen = new List<KulturName>()
             {
@@ -2462,7 +2464,9 @@ namespace rassenStruktur
             srKeine.unueblicheKulturen = new List<KulturName>()
             {
                 KulturName.SvellttalUndNordlande, KulturName.MittellaendischeLandbevoelkerung,
-                KulturName.AndergastUndNostria, KulturName.Orkland, KulturName.Yurach,
+                KulturName.AndergastUndNostria, KulturName.Yurach,
+                KulturName.OrklandOkwach, KulturName.OrklandKhurkach, KulturName.OrklandGrishik,
+                KulturName.OrklandErgoch, KulturName.OrklandDrasdech,
             };
 
             srKeine.talentModifikatoren = new List<GenericListenNameWertPaar<TalentName>>()
