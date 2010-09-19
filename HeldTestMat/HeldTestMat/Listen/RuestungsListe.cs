@@ -29,5 +29,11 @@ namespace Listen
         Ringelpanzer,
         [Description("Gambeson")]
         Gambeson,
+        [Description("Leichtes Kettenhemd")]
+        LeichtesKettenhemd,
+        [Description("Kurzes Kettenhemd")]
+        KurzesKettenhemd,
+        [Description("Langes Kettenhemd")]
+        LangesKettenhemd,
     }
 }

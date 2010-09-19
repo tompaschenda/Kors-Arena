@@ -19,6 +19,10 @@ namespace Listen
         Lehrer,
         [Description("Dienstherr")]
         Dienstherr,
+        [Description("Lehnsherr")]
+        Lehnsherr,
+        [Description("Schuztbefohlenen")]
+        Schuztbefohlenen,
     };
 
     public enum Moralcodices
@@ -41,6 +45,10 @@ namespace Listen
         Ehrenhaftigkeit,
         [Description("Schutz der Schwachen")]
         SchutzDerSchwachen,
+        [Description("Ritterkodex")]
+        Ritterkodex,
+        [Description("Schutz des Glaubens")]
+        SchutzDesGlaubens,
     };
 
     public enum Speisegebote
@@ -89,6 +97,9 @@ namespace Listen
         Besitz,
         [Description("städtisches Leben")]
         StaedtischesLeben,
+        [Description("menschliche Ansiedlung und Gewohnheiten")]
+        MenschlicheAnsiedlungen,
+
     }
 
     public enum NachteileName

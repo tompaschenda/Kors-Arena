@@ -41,13 +41,18 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+
+        /// <summary>
+        /// ACHTUNG! "Adlig" gibt es als einzelnen Vorteil gar nicht, aber jeder Held, der einen der Subvorteile
+        /// wählt, ist automatisch "adlig". Das wird leider von den DSA-Leuten ebenfalls sehr uneinheitlich gehandhabt.
+        /// </summary>
         [Description("Adlig")]
         Adlig,
-        [Description("Adlige Abstammung")]
+        [Description("Adlig (Adlige Abstammung)")]
         AdligeAbstammung,
-        [Description("Adliges Erbe")]
+        [Description("Adlig (Adliges Erbe)")]
         AdligesErbe,
-        [Description("Amtsadel")]
+        [Description("Adlig (Amtsadel)")]
         Amtsadel,
         [Description("Affinität zu")]
         AffinitaetZu,

@@ -398,34 +398,40 @@ namespace Listen
         // Krieger
         [Description("Standard-Kriegerakademie")]
         StandardKriegerakademie,
-        [Description("Arivor")]
-        Arivor,
-        [Description("Baliho")]
-        Baliho,
-        [Description("Baburin")]
-        Baburin,
-        [Description("Elenvina")]
-        Elenvina,
-        [Description("Eslamsgrund")]
-        Eslamsgrund,
-        [Description("Havena")]
-        Havena,
-        [Description("Hylailos")]
-        Hylailos,
-        [Description("Mengbilla")]
-        Mengbilla,
-        [Description("Neersand")]
-        Neersand,
-        [Description("Prem")]
-        Prem,
-        [Description("Punin")]
-        Punin,
-        [Description("Rommilys")]
-        Rommilys,
-        [Description("Thorwal")]
-        Thorwal,
-        [Description("Xorlosch")]
-        Xorlosch,
+        [Description("Akademie Arivor")]
+        AkademieArivor,
+        [Description("Akademie Baliho")]
+        AkademieBaliho,
+        [Description("Akademie Baburin")]
+        AkademieBaburin,
+        [Description("Akademie Elenvina")]
+        AkademieElenvina,
+        [Description("Akademie Eslamsgrund")]
+        AkademieEslamsgrund,
+        [Description("Akademie Gareth")]
+        AkademieGareth,
+        [Description("Akademie Havena")]
+        AkademieHavena,
+        [Description("Akademie Hylailos")]
+        AkademieHylailos,
+        [Description("Akademie Mengbilla")]
+        AkademieMengbilla,
+        [Description("Akademie Neersand")]
+        AkademieNeersand,
+        [Description("Akademie Prem")]
+        AkademiePrem,
+        [Description("Akademie Punin")]
+        AkademiePunin,
+        [Description("Akademie Rommilys")]
+        AkademieRommilys,
+        [Description("Akademie Thorwal")]
+        AkademieThorwal,
+        [Description("Akademie Vinsalt")]
+        AkademieVinsalt,
+        [Description("Akademie Winhall")]
+        AkademieWinhall,
+        [Description("Akademie Xorlosch")]
+        AkademieXorlosch,
 
         // Ritter
         [Description("Standard")]

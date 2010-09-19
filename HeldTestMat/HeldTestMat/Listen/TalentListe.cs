@@ -683,7 +683,7 @@ namespace Listen
         [Description("Magische Metalle")]
         MagischeMetalle,
 
-        // Kriegstkunst:
+        // Kriegskunst:
         [Description("Logistik")]
         Logistik,
         [Description("Monstren")]
@@ -694,6 +694,8 @@ namespace Listen
         Strategie,
         [Description("Taktik")]
         Taktik,
+        [Description("Kampf gegem Drachen")]
+        KampfGegenDrachen,
 
         // Magiekunde:
         [Description("Artefaktherstellung")]
@@ -714,6 +716,8 @@ namespace Listen
         Zauberpraxis,
         [Description("Zauberwerkstatt")]
         Zauberwerkstatt,
+        [Description("Drachenmagie")]
+        Drachenmagie,
 
         // Mechanik:
         [Description("Belagerungswaffen")]
