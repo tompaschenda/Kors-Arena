@@ -91,8 +91,10 @@ namespace Listen
         Ausweichen3,
         [Description("Befreiungsschlag")]
         Befreiungsschlag,
-        [Description("Beidhändiger Kampf")]
-        BeidhaendigerKampf,
+        [Description("Beidhändiger Kampf I")]
+        BeidhaendigerKampf1,
+        [Description("Beidhändiger Kampf II")]
+        BeidhaendigerKampf2,
         [Description("Betäubungsschlag")]
         Betaeubungsschlag,
         [Description("Binden")]

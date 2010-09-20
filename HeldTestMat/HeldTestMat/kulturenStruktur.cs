@@ -636,7 +636,7 @@ namespace kulturenStruktur
 
             subWald.wahlen[0].loescheEintrag(subWald.wahlen, "WahlSprache");
 
-            subWald.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, modifikator = +2});
+            subWald.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, wert = +2});
 
             return subWald;
         }
@@ -1310,7 +1310,7 @@ namespace kulturenStruktur
 
             subEbene.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe });
 
-            subEbene.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, modifikator = +3 });
+            subEbene.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, wert = +3 });
 
             return subEbene;
         }
@@ -1417,7 +1417,7 @@ namespace kulturenStruktur
 
             subEbene.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Steppe});
 
-            subEbene.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, modifikator = +3});
+            subEbene.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, wert = +3});
 
             return subEbene;
         }
@@ -1946,7 +1946,7 @@ namespace kulturenStruktur
             subKeine.sprachen = new List<SprachenIdentifier>()
             {
                 new SprachenIdentifier(){ name = SprachenName.OrkischOloarkh, muttersprache = true},
-                new SprachenIdentifier(){ name = SprachenName.Garethi, modifikator = +3},
+                new SprachenIdentifier(){ name = SprachenName.Garethi, wert = +3},
             };
 
             // Wahl:
@@ -4617,8 +4617,8 @@ namespace kulturenStruktur
             subKeine.sprachen = new List<SprachenIdentifier>()
             {
                 new SprachenIdentifier(){ name = SprachenName.Zhulchammaqra, muttersprache = true},
-                new SprachenIdentifier(){ name = SprachenName.Garethi, modifikator = +4},
-                new SprachenIdentifier(){ name = SprachenName.Trollisch, modifikator = +4},
+                new SprachenIdentifier(){ name = SprachenName.Garethi, wert = +4},
+                new SprachenIdentifier(){ name = SprachenName.Trollisch, wert = +4},
             };
 
             subKeine.talentModifikatoren = new List<talentIdentifier>()
@@ -5167,8 +5167,8 @@ namespace kulturenStruktur
             var wahlSprache = new wahlmoeglichkeiten();
             wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-                new SprachenIdentifier(){ name= SprachenName.Garethi, modifikator = 5},
-                new SprachenIdentifier(){ name= SprachenName.Alaani, modifikator = 5},
+                new SprachenIdentifier(){ name= SprachenName.Garethi, wert = 5},
+                new SprachenIdentifier(){ name= SprachenName.Alaani, wert = 5},
             };
             wahlSprache.identifier = "MutterSprachenwahl";
             wahlSprache.anzahlZuWaehlen = 1;
@@ -5309,9 +5309,9 @@ namespace kulturenStruktur
             subKeine.sprachen = new List<SprachenIdentifier>() 
             { 
                 new SprachenIdentifier(){ name = SprachenName.Garethi, muttersprache = true},
-                new SprachenIdentifier(){ name = SprachenName.Tulamidya, modifikator = +2},
-                new SprachenIdentifier(){ name = SprachenName.Mohisch, modifikator = +2},
-                new SprachenIdentifier(){ name = SprachenName.Thorwalsch, modifikator = +2},
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya, wert = +2},
+                new SprachenIdentifier(){ name = SprachenName.Mohisch, wert = +2},
+                new SprachenIdentifier(){ name = SprachenName.Thorwalsch, wert = +2},
             };
 
             // Wahl:
@@ -5382,11 +5382,11 @@ namespace kulturenStruktur
             wahlSprache = new wahlmoeglichkeiten();
             wahlSprache.sprachen = new List<SprachenIdentifier>()
             {
-                new SprachenIdentifier(){ name= SprachenName.Garethi, modifikator = +4},
-                new SprachenIdentifier(){ name= SprachenName.Rssahh, modifikator = +4},
-                new SprachenIdentifier(){ name= SprachenName.Tulamidya, modifikator = +4},
-                new SprachenIdentifier(){ name= SprachenName.Zelemja, modifikator = +4},
-                new SprachenIdentifier(){ name= SprachenName.Mohisch, modifikator = +4},
+                new SprachenIdentifier(){ name= SprachenName.Garethi, wert = +4},
+                new SprachenIdentifier(){ name= SprachenName.Rssahh, wert = +4},
+                new SprachenIdentifier(){ name= SprachenName.Tulamidya, wert = +4},
+                new SprachenIdentifier(){ name= SprachenName.Zelemja, wert = +4},
+                new SprachenIdentifier(){ name= SprachenName.Mohisch, wert = +4},
             };
             wahlSprache.identifier = "Drittsprachenwahl";
             wahlSprache.anzahlZuWaehlen = 1;
@@ -5443,7 +5443,7 @@ namespace kulturenStruktur
             subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Lederarbeiten, wert = +1 });
             subHafen.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Seefahrt, wert = +2 });
 
-            subHafen.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, modifikator = +2 });
+            subHafen.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, wert = +2 });
 
             return subHafen;
         }
@@ -5513,7 +5513,7 @@ namespace kulturenStruktur
                 StadtName.Chorhop,
             };
             subStadt.talentModifikatoren.Add(new talentIdentifier { name = TalentName.Holzbearbeitung, wert = +2 });
-            subStadt.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya, modifikator = +2 });
+            subStadt.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya, wert = +2 });
             return subStadt;
         }
         private subkultur createSuedSubStaatenCharypso()
@@ -5537,7 +5537,7 @@ namespace kulturenStruktur
                 StadtName.Brabak,
             };
 
-            subStadt.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch, modifikator = +2 });
+            subStadt.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Thorwalsch, wert = +2 });
 
             return subStadt;
         }
@@ -5678,8 +5678,8 @@ namespace kulturenStruktur
             subKeine.sprachen = new List<SprachenIdentifier>()
             {
                 new SprachenIdentifier(){ name = SprachenName.Garethi, muttersprache = true},
-                new SprachenIdentifier(){ name = SprachenName.Tulamidya, modifikator = +4},
-                new SprachenIdentifier(){ name = SprachenName.Mohisch, modifikator = +4},
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya, wert = +4},
+                new SprachenIdentifier(){ name = SprachenName.Mohisch, wert = +4},
             };
 
             subKeine.sonderfertigkeiten = new List<sfIdentifier>()
@@ -7332,8 +7332,8 @@ namespace kulturenStruktur
             subKeine.sprachen = new List<SprachenIdentifier>() 
             { 
                 new SprachenIdentifier(){ name = SprachenName.Thorwalsch, muttersprache = true},
-                new SprachenIdentifier(){ name = SprachenName.OrkischOloghaijan, modifikator = +6},
-                new SprachenIdentifier(){ name = SprachenName.Alaani, modifikator = +4},
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloghaijan, wert = +6},
+                new SprachenIdentifier(){ name = SprachenName.Alaani, wert = +4},
             };
 
             subKeine.sonderfertigkeiten = new List<sfIdentifier>()
@@ -7704,7 +7704,7 @@ namespace kulturenStruktur
             { 
                 new SprachenIdentifier(){ name = SprachenName.Tulamidya, muttersprache = true},
                 new SprachenIdentifier(){ name = SprachenName.Garethi, zweitsprache = true},
-                new SprachenIdentifier(){ name = SprachenName.Atak, modifikator = +4},
+                new SprachenIdentifier(){ name = SprachenName.Atak, wert = +4},
             };
 
             return subKeine;

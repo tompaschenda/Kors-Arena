@@ -23,6 +23,10 @@ namespace Listen
         Lehnsherr,
         [Description("Schuztbefohlenen")]
         Schuztbefohlenen,
+        [Description("Kalifat")]
+        Kalifat,
+        [Description("Marwan Sahib")]
+        MarwanSahib,
     };
 
     public enum Moralcodices
@@ -49,6 +53,8 @@ namespace Listen
         Ritterkodex,
         [Description("Schutz des Glaubens")]
         SchutzDesGlaubens,
+        [Description("Wahrung von Stil und Ästhetik")]
+        WahrungStil,
     };
 
     public enum Speisegebote

@@ -98,6 +98,11 @@ namespace SprachenUndSchriften
         /// Wert der Schrift
         /// </summary>
         public int wert;
+
+        /// <summary>
+        /// Soll eine Schrift passend zur Muttersprache erhöht werden?
+        /// </summary>
+        public bool schriftZurMuttersprache;
     }
 
     /// <summary>
@@ -124,7 +129,7 @@ namespace SprachenUndSchriften
         /// Modifikator, den man zum Wert der Sprache erhält. Nur nötig, wenn !muttersprache
         /// UND !zweitsprache
         /// </summary>
-        public int modifikator;
+        public int wert;
     }
 
     /// <summary>
