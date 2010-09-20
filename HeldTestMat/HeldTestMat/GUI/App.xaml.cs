@@ -18,9 +18,11 @@ namespace GUI
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            NeuerHeldWindow neuerHeldWindow = new NeuerHeldWindow();
+            NeuerHeldWizard neuerHeldWindow = new NeuerHeldWizard();
             mainWindow.Show();
             neuerHeldWindow.Show();
+            //ControlTesterWindow w = new ControlTesterWindow();
+            //w.Show();
         }
 
     }
