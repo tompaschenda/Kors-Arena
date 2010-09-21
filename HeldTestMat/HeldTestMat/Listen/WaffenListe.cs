@@ -93,6 +93,8 @@ namespace Listen
         Lasso,
         [Description("Messer")]
         Messer,
+        [Description("Steinmesser")]
+        Steinmesser,
         [Description("Neunschwänzige")]
         Neunschwaenzige,
         [Description("Peitsche")]

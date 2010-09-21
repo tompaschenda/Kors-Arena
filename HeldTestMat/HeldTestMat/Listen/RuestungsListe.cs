@@ -35,5 +35,7 @@ namespace Listen
         KurzesKettenhemd,
         [Description("Langes Kettenhemd")]
         LangesKettenhemd,
+        [Description("Maraskanischer Hartholzharnisch")]
+        MaraskanischerHartholzharnisch,
     }
 }
