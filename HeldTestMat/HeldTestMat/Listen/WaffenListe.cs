@@ -245,8 +245,14 @@ namespace Listen
         Hornisse,
         [Description("Onager")]
         Onager,
-        [Description("Rotze")]
-        Rotze,
+        [Description("Leichte Rotze")]
+        LeichteRotze,
+        [Description("Mittlere Rotze")]
+        MittlereRotze,
+        [Description("Schwere Rotze")]
+        SchwereRotze,
+        [Description("Überschwere Rotze")]
+        UeberschwereRotze,
         [Description("Skorpion")]
         Skorpion,
         [Description("Zyklop")]
