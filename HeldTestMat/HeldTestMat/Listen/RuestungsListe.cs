@@ -25,6 +25,8 @@ namespace Listen
         Lederwams,
         [Description("Lederrüstung")]
         Lederruestung,
+        [Description("Lederkleidung")]
+        Lederkleidung,
         [Description("Ringelpanzer")]
         Ringelpanzer,
         [Description("Gambeson")]

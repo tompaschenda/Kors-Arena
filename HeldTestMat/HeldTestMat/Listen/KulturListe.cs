@@ -51,6 +51,10 @@ namespace Listen
         [Description("Goblins")]
         Goblins,
 
+        // Achtung: eigentlich Kulturregion, aber dennoch als Kultur definiert...
+        [Description("Zwerge")]
+        Zwerge,
+
         [Description("Svellttal")]
         Svellttal,
         [Description("Nordlande")]

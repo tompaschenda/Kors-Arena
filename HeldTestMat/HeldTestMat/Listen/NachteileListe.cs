@@ -21,6 +21,8 @@ namespace Listen
         Dienstherr,
         [Description("Lehnsherr")]
         Lehnsherr,
+        [Description("Landesherr")]
+        Landesherr,
         [Description("Schuztbefohlenen")]
         Schuztbefohlenen,
         [Description("Kalifat")]
@@ -55,6 +57,16 @@ namespace Listen
         SchutzDesGlaubens,
         [Description("Wahrung von Stil und Ästhetik")]
         WahrungStil,
+        [Description("Unbestechlichkeit")]
+        Unbestechlichkeit,
+        [Description("Sichere Überbringung von Nachrichten")]
+        SichereUeberbringung,
+        [Description("Reichstreue")]
+        Reichstreue,
+        [Description("Befehlsempfänger")]
+        Befehlsempfaenger,
+        [Description("Militärischer Geheimnisträger")]
+        MilitaerischerGeheimnistraeger,
     };
 
     public enum Speisegebote
@@ -83,6 +95,18 @@ namespace Listen
         Elfen,
         [Description("Echsen")]
         Echsen,
+        [Description("Blasshäute")]
+        Blasshaeute,
+        [Description("Städter")]
+        Staedter,
+        [Description("Gebildete")]
+        Gebildete,
+        [Description("Fremde Kulturen")]
+        FremdeKulturen,
+        [Description("Andersgläubige")]
+        Andersglaeubige,
+        [Description("Schuppenlose")]
+        Schuppenlose,
     }
 
 

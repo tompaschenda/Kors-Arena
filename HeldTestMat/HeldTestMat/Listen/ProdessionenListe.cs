@@ -509,6 +509,8 @@ namespace Listen
         // Stammeskrieger
         [Description("Waldmenschen")]
         Waldmenschen,
+        [Description("Kanutepeku")]
+        Kanutepeku,
         [Description("Fjarninger")]
         Fjarninger,
         [Description("Gjalskerländer")]
@@ -519,6 +521,8 @@ namespace Listen
         Trollzacker,
         [Description("Novadischer Wüstenkrieger")]
         NovadischerWuestenkrieger,
+        [Description("Achmad'sunni")]
+        AchmadSunni,
         [Description("Goblin-Stammeskrieger")]
         GoblinStammeskrieger,
         [Description("Orkischer Stammeskrieger")]
