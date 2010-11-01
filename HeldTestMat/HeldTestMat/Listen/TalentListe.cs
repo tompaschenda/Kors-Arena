@@ -620,6 +620,8 @@ namespace Listen
         // Orientierung:
         [Description("Meer")]
         Meer,
+        [Description("Gewässer")]
+        Gewaesser,
 
         // Wettervorhersage:
         [Description("je nach Geländetyp")]
