@@ -52,6 +52,655 @@ namespace talentStruktur
             return gewuenschtesTalent;
         }
 
+
+        private talentStruct getUeberzeugen()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Ueberzeugen;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.KL, EigenschaftenName.IN, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.voraussetzungen.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +4 });
+            talent.effektiveBEAbzug = 4; // todo je nach Situation
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.OeffentlicheRede, 
+                TalentSpezialisierung.Einzelgespraech, 
+                TalentSpezialisierung.DikussionsRhetorik, 
+                TalentSpezialisierung.SchriftlicheRhetorik, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +10},
+            };
+
+            return talent;
+        }
+        private talentStruct getUeberreden()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Ueberreden;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.IN, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() 
+            {// todo für Überreden>10 Menschenkenntnis>4 nötig
+            };
+            talent.effektiveBEAbzug = 4; // todo jenach Situation
+            talent.effektiveBEMultiplikator = 1; // todo beim Betteln mit sichtbarer Rüstung 2
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Aufwiegeln, 
+                TalentSpezialisierung.Betteln, 
+                TalentSpezialisierung.Einschuechtern, 
+                TalentSpezialisierung.Feilschen, 
+                TalentSpezialisierung.Luegen, 
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Ueberzeugen, wert = +10},
+            };
+
+            return talent;
+        }
+        private talentStruct getSichVerkleiden()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.SichVerkleiden;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.CH, EigenschaftenName.GE,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 0; // todo je nach Situation bis zu 2
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.andererStand, 
+                TalentSpezialisierung.anderesGeschlecht, 
+                TalentSpezialisierung.andereRasse, 
+                TalentSpezialisierung.fremdeKultur, 
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Schauspielerei, wert = +10},
+            };
+
+            return talent;
+        }
+        private talentStruct getSchriftlicherAusdruck()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.SchriftlicherAusdruck;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.KL, EigenschaftenName.IN, EigenschaftenName.IN,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.voraussetzungen.talente.Add(new talentIdentifier() { name = TalentName.LesenUndSchreiben, wert = +6 });
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 0;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Schreiber, 
+                TalentSpezialisierung.Schriftsteller,
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+              // todo  new talentIdentifier(){ name = TalentName.JeNachSprache, wert = +10},
+                new talentIdentifier(){ name = TalentName.Ueberzeugen, wert = +5}, // todo nur mit schriftlicher Rhetorik
+            };
+
+            return talent;
+        }
+        private talentStruct getSchauspielerei()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Schauspielerei;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.KL, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() 
+            {// todo für Schauspielerei>10, Etikette>4 SichVerkleiden>4 Singen>4 Überreden>4 und Überzeugen>4 nötig
+            };
+            talent.effektiveBEAbzug = 0; // todo je nach zu verkörpernder Rolle
+            talent.effektiveBEMultiplikator = 0;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Komoedie, 
+                TalentSpezialisierung.Posse, 
+                TalentSpezialisierung.Tragoedie, 
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +10},
+            };
+
+            return talent;
+        }
+        private talentStruct getMenschenkenntnis()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Menschenkenntnis;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.KL, EigenschaftenName.IN, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 0;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.JeNachKultur, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.HeilkundeSeele, wert = +5},
+            };
+
+            return talent;
+        }
+        private talentStruct getLehren()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Lehren;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.KL, EigenschaftenName.IN, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() 
+            { // todo für Lehren>10 Menschenkenntnis>4 nötig
+            };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 0;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Kampftalente, 
+                TalentSpezialisierung.KoerperlicheTalente, 
+                TalentSpezialisierung.GesellschaftlicheTalente, 
+                TalentSpezialisierung.NaturTalente, 
+                TalentSpezialisierung.WissensTalente, 
+                TalentSpezialisierung.HandwerksTalente, 
+                TalentSpezialisierung.SprachenUndSchriften, 
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Ueberzeugen, wert = +10},
+            };
+
+            return talent;
+        }
+        private talentStruct getGassenwissen()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Gassenwissen;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.KL, EigenschaftenName.IN, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 4;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Beschatten, 
+                TalentSpezialisierung.Hehlerei, 
+                TalentSpezialisierung.Kontakte, 
+                TalentSpezialisierung.Ortseinschaetzung, 
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +10},
+
+            };
+
+            return talent;
+        }
+        private talentStruct getEtikette()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Etikette;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.KL, EigenschaftenName.IN, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 2;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.JeNachKultur, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>(){};
+
+            return talent;
+        }
+        private talentStruct getBetoeren()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Betoeren;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Gesellschaftlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.IN, EigenschaftenName.CH, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.voraussetzungen.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +4 });
+            talent.effektiveBEAbzug = 2;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.JeNachKultur, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {// todo je nach Situation
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +10},
+                new talentIdentifier(){ name = TalentName.Ueberzeugen, wert = +10},
+            };
+
+            return talent;
+        }
+        private talentStruct getZechen()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Zechen;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.IN, EigenschaftenName.KO, EigenschaftenName.KK,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 0;
+            talent.spezialisierungen = new List<TalentSpezialisierung>(){ };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>(){ };
+
+            return talent;
+        }
+        private talentStruct getTaschendiebstahl()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Taschendiebstahl;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.IN, EigenschaftenName.FF,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() 
+            { // todo Menschenkentnis>4 nötig für Taschendiebstahl>10
+            };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 2;
+            talent.spezialisierungen = new List<TalentSpezialisierung>(){ };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {// todo nur mit Taschenspielereien
+                new talentIdentifier(){ name = TalentName.Gaukeleien, wert = +10},
+
+            };
+
+            return talent;
+        }
+        private talentStruct getTanzen()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Tanzen;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.CH, EigenschaftenName.GE, EigenschaftenName.GE,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 2;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {// todo spezielle Vorraussetzungen für einige Tänze nötig
+                TalentSpezialisierung.Ausdruckstaenze, 
+                TalentSpezialisierung.Formationstaenze,
+                TalentSpezialisierung.HoefischeTaenze, 
+                TalentSpezialisierung.Kulttaenze, 
+                TalentSpezialisierung.Meditationstaenze, 
+
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +5},
+                new talentIdentifier(){ name = TalentName.Akrobatik, wert = +5},
+            };
+
+            return talent;
+        }
+        private talentStruct getStimmenImitieren()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.StimmenImitieren;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.KL, EigenschaftenName.IN, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.voraussetzungen.talente.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +4 });
+            talent.effektiveBEAbzug = 4;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Haustiere, 
+                TalentSpezialisierung.Jagdwild,
+                TalentSpezialisierung.MenschlicheStimmen, 
+                TalentSpezialisierung.Raubtiere, 
+                TalentSpezialisierung.Voegel,
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {// todo nur mit spezialisierung Bauchreden
+                new talentIdentifier(){ name = TalentName.Gaukeleien, wert = +5},
+
+            };
+
+            return talent;
+        }
+        private talentStruct getSkifahren()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Skifahren;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.GE, EigenschaftenName.GE, EigenschaftenName.KO,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 2;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung> () {};
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +15},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +10},
+            };
+
+            return talent;
+        }
+        private talentStruct getSinnesschaerfe()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Sinnesschaerfe;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {//todo Eigenschaften KL/IN/FF
+                EigenschaftenName.KL, EigenschaftenName.IN, EigenschaftenName.IN,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Hoeren, 
+                TalentSpezialisierung.RiechenUndSchmecken,
+                TalentSpezialisierung.Sehen, 
+                TalentSpezialisierung.Tasten, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>() { };
+
+            return talent;
+        }
+        private talentStruct getSingen()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Singen;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.IN, EigenschaftenName.CH, EigenschaftenName.CH,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 3;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Balladenvortrag, 
+                TalentSpezialisierung.Chorgesang,
+                TalentSpezialisierung.Mehrstimmigkeit, 
+                TalentSpezialisierung.Operngesang, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>() { };
+
+            return talent;
+        }
+        private talentStruct getSichVerstecken()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.SichVerstecken;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.IN, EigenschaftenName.GE,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 2;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Gebaeude, 
+                TalentSpezialisierung.Gebirge,
+                TalentSpezialisierung.Grasland, 
+                TalentSpezialisierung.EisSchnee, 
+                TalentSpezialisierung.Stadt,
+                TalentSpezialisierung.WaldUndDschungel, 
+                TalentSpezialisierung.Wueste, 
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Schleichen, wert = +10},
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +15},
+
+            };
+
+            return talent;
+        }
+        private talentStruct getSelbstbeherrschung()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Selbstbeherrschung;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.KO, EigenschaftenName.KK,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 0;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.ErschoepfungIgnorieren, 
+                TalentSpezialisierung.SchmerzUnterdruecken,
+                TalentSpezialisierung.StoerungenIgnorieren, 
+                TalentSpezialisierung.WundenIgnorieren, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+
+            };
+
+            return talent;
+        }
+        private talentStruct getSchwimmen()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Schwimmen;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.GE, EigenschaftenName.KO, EigenschaftenName.KK,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 2;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Langstreckenschwimmen, 
+                TalentSpezialisierung.Schnellschwimmen,
+                TalentSpezialisierung.Tauchen, 
+                TalentSpezialisierung.Unterwasserkampf, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +10},
+
+            };
+
+            return talent;
+        }
+        private talentStruct getSchleichen()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Schleichen;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.IN, EigenschaftenName.GE,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.JeNachGelaendeTyp, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +10},
+                new talentIdentifier(){ name = TalentName.SichVerstecken, wert = +10},
+           
+            };
+
+            return talent;
+        }
+        private talentStruct getReiten()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Reiten;
+            talent.istBasisTalent = false;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.CH, EigenschaftenName.GE, EigenschaftenName.KK,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 2;
+            talent.effektiveBEMultiplikator = 1;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.JeNachTierart, 
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +10},
+                new talentIdentifier(){ name = TalentName.Akrobatik, wert = +15},
+            };
+
+            return talent;
+        }
+        private talentStruct getKoerperbeherrschung()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Koerperbeherrschung;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.IN, EigenschaftenName.GE,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 2;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Fallen, 
+                TalentSpezialisierung.Spruenge,
+                TalentSpezialisierung.Standfestigkeit, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Akrobatik, wert = +5},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +5},
+            };
+
+            return talent;
+        }
+        private talentStruct getKlettern()
+        {
+            var talent = new talentStruct();
+            talent.name = TalentName.Klettern;
+            talent.istBasisTalent = true;
+            talent.talenttyp = TalentKategorie.Koerperlich;
+            talent.eigenschaften = new List<EigenschaftenName>()
+            {
+                EigenschaftenName.MU, EigenschaftenName.GE, EigenschaftenName.KK,
+            };
+            talent.voraussetzungen = new talentVorausssetzungen() { };
+            talent.effektiveBEAbzug = 0;
+            talent.effektiveBEMultiplikator = 2;
+            talent.spezialisierungen = new List<TalentSpezialisierung>()
+            {
+                TalentSpezialisierung.Bergsteigen, 
+                TalentSpezialisierung.Eisklettern,
+                TalentSpezialisierung.Freiklettern, 
+                TalentSpezialisierung.Seilklettern, 
+                
+            };
+            talent.ersatzweiseFertigkeiten = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Koerperbeherrschung, wert = +10},
+                new talentIdentifier(){ name = TalentName.Akrobatik, wert = +5},
+                new talentIdentifier(){ name = TalentName.Athletik, wert = +5},
+            };
+
+            return talent;
+        }
         private talentStruct getGaukeleien()
         {
             var talent = new talentStruct();
@@ -166,6 +815,7 @@ namespace talentStruktur
 
             return talent;
         }
+        
     }
 
 
