@@ -29,6 +29,8 @@ namespace Listen
         Kalifat,
         [Description("Marwan Sahib")]
         MarwanSahib,
+        [Description("Heimatland")]
+        Heimatland,
     };
 
     public enum Moralcodices
@@ -107,6 +109,8 @@ namespace Listen
         Andersglaeubige,
         [Description("Schuppenlose")]
         Schuppenlose,
+        [Description("Besatzer")]
+        Besatzer,
     }
 
 
