@@ -31,6 +31,10 @@ namespace Listen
         MarwanSahib,
         [Description("Heimatland")]
         Heimatland,
+        [Description("Diebesbande")]
+        Diebesbande,
+        [Description("Auftraggeber")]
+        Auftraggeber,
     };
 
     public enum Moralcodices
