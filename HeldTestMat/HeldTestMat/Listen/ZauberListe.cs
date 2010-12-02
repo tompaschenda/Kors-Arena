@@ -675,4 +675,12 @@ namespace Listen
         [Description("Wasser")]
         Wasser,					
     }
+
+    public enum ZauberModifikationen
+    {
+    }
+
+    public enum ZauberVariante
+    {
+    }
 }

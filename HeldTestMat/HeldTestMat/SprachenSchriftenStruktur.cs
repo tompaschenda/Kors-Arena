@@ -47,6 +47,31 @@ namespace SprachenUndSchriften
 
             return schriften;
         }
+
+        /// <summary>
+        /// Gibt alle verbreiteten Schriften zurück:
+        /// </summary>
+        /// <returns></returns>
+        public List<SchriftenIdentifier> GetVerbreiteteSchriften()
+        {
+            // TODO: Check - diese Auswahl habe ich selbst getroffen. Ist die so korrekt?
+            var schriften = new List<SchriftenIdentifier>()
+            {
+                new SchriftenIdentifier(){ name = SchriftName.DrakhadZinken},
+                new SchriftenIdentifier(){ name = SchriftName.GeheiligteGlyphen},
+                new SchriftenIdentifier(){ name = SchriftName.Gjalskisch},
+                new SchriftenIdentifier(){ name = SchriftName.HjaldingscheRunen},
+                new SchriftenIdentifier(){ name = SchriftName.ImperialeZeichen},
+                new SchriftenIdentifier(){ name = SchriftName.IsdiraAsdharia},
+                new SchriftenIdentifier(){ name = SchriftName.KuslikerZeichen},
+                new SchriftenIdentifier(){ name = SchriftName.Nanduria},
+                new SchriftenIdentifier(){ name = SchriftName.Rogolan},
+                new SchriftenIdentifier(){ name = SchriftName.Tulamidya},
+                new SchriftenIdentifier(){ name = SchriftName.Zhayad},
+            };
+
+            return schriften;
+        }
     }
 
 
@@ -82,6 +107,7 @@ namespace SprachenUndSchriften
 
             return handelsSprachen;
         }
+
     }
 
     /// <summary>
