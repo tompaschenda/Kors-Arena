@@ -115,6 +115,8 @@ namespace Listen
         Schuppenlose,
         [Description("Besatzer")]
         Besatzer,
+        [Description("Nicht-Adlige")]
+        NichtAdlige,
     }
 
 

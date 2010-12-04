@@ -720,6 +720,8 @@ namespace Listen
         Zauberwerkstatt,
         [Description("Drachenmagie")]
         Drachenmagie,
+        [Description("Zauberzeichen")]
+        Zauberzeichen,
 
         // Mechanik:
         [Description("Belagerungswaffen")]
