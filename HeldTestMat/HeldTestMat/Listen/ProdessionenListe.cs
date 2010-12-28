@@ -113,6 +113,8 @@ namespace Listen
         Hoefling,
         [Description("Kurtisane/Gesellschafter")]
         KurtisaneGesellschafter,
+        [Description("Hure/Lustknabe")]
+        HureLustknabe,
         [Description("Privatlehrer")]
         Privatlehrer,
         [Description("Schriftsteller")]
