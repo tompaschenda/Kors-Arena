@@ -117,6 +117,8 @@ namespace Listen
         Besatzer,
         [Description("Nicht-Adlige")]
         NichtAdlige,
+        [Description("Unbekanntes")]
+        Unbekanntes,
     }
 
 
