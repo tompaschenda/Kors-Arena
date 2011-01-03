@@ -683,4 +683,28 @@ namespace Listen
     public enum ZauberVariante
     {
     }
+
+    public enum Zauberer
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Druide")]
+        Druide,
+        [Description("Elf")]
+        Elf,
+        [Description("Geode")]
+        Geode,
+        [Description("Hexe")]
+        Hexe,
+        [Description("Achaz / Kirstallomant")]
+        Kirstallomant,
+        [Description("Magier")]
+        Magier,
+        [Description("Scharlatan")]
+        Scharlatan,
+        [Description("Schelm")]
+        Schelm,
+        [Description("Borbaradianer")]
+        Borbaradianer,
+    }
 }

@@ -310,7 +310,7 @@ namespace professionenStruktur
 
 
         /// <summary>
-        /// Der Identifier dieser Kultur. Der Setter definiert die Attribute der Kultur
+        /// Der Identifier dieser Kultur. Der Setter definiert die Attribute der Profession
         /// </summary>        
         public ProfessionsName Profession
         {
@@ -896,37 +896,30 @@ namespace professionenStruktur
         {
             throw new NotImplementedException();
         }
-
         private subprofession createBauerSubViehzuechter()
         {
             throw new NotImplementedException();
         }
-
         private subprofession createBauerSubPflanzer()
         {
             throw new NotImplementedException();
         }
-
         private subprofession createBauerSubMueller()
         {
             throw new NotImplementedException();
         }
-
         private subprofession createBauerSubLeibeigener()
         {
             throw new NotImplementedException();
         }
-
         private subprofession createBauerSubKnecht()
         {
             throw new NotImplementedException();
         }
-
         private subprofession createBauerSubGutsherr()
         {
             throw new NotImplementedException();
         }
-
         private subprofession createBauerSubGaertner()
         {
             throw new NotImplementedException();
