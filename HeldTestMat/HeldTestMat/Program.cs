@@ -25,7 +25,7 @@ namespace heldenGenerierung
             System.Console.WriteLine("----------ToStringGeneric---------------");
             System.Console.WriteLine(held1.ToString());
             System.Console.WriteLine("----------------------------------------");
-
+            System.Console.WriteLine("Hallo von Nicki");
             // Die Konsole so lange offen halten, bis man die
             // ENTER Taste drückt, sonst würde man die  
             // Ausgaben nicht sehen
