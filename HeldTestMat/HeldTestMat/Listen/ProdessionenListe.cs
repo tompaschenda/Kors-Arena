@@ -757,6 +757,8 @@ namespace Listen
         Freibauer,
         [Description("Gärtner")]
         Gaertner,
+        [Description("Gutsherr")]
+        Gutsherr,
         [Description("Knecht/Magd")]
         KnechtMagd,
         [Description("Leibeigener")]
