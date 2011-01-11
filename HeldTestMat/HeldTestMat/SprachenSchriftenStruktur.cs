@@ -108,6 +108,57 @@ namespace SprachenUndSchriften
             return handelsSprachen;
         }
 
+        /// <summary>
+        /// Gibt alle Sprachen zurück:
+        /// </summary>
+        /// <returns></returns>
+        public List<SprachenIdentifier> GetSprachen()
+        {
+            var alleSprachen = new List<SprachenIdentifier>()
+            {
+                new SprachenIdentifier(){ name = SprachenName.Alaani},
+                new SprachenIdentifier(){ name = SprachenName.AlteKemi},
+                new SprachenIdentifier(){ name = SprachenName.Angram},
+                new SprachenIdentifier(){ name = SprachenName.Asdharia},
+                new SprachenIdentifier(){ name = SprachenName.Atak},
+                new SprachenIdentifier(){ name = SprachenName.Aureliani},
+                new SprachenIdentifier(){ name = SprachenName.Bosparano},
+                new SprachenIdentifier(){ name = SprachenName.Drachisch},
+                new SprachenIdentifier(){ name = SprachenName.Ferkina},
+                new SprachenIdentifier(){ name = SprachenName.Fuechsisch},
+                new SprachenIdentifier(){ name = SprachenName.Garethi},
+                new SprachenIdentifier(){ name = SprachenName.Goblinisch},
+                new SprachenIdentifier(){ name = SprachenName.Grolmisch},
+                new SprachenIdentifier(){ name = SprachenName.Hjaldingsch},
+                new SprachenIdentifier(){ name = SprachenName.Isdira},
+                new SprachenIdentifier(){ name = SprachenName.Koboldisch},
+                new SprachenIdentifier(){ name = SprachenName.Mahrisch},
+                new SprachenIdentifier(){ name = SprachenName.Mohisch},
+                new SprachenIdentifier(){ name = SprachenName.Molochisch},
+                new SprachenIdentifier(){ name = SprachenName.Neckergesang},
+                new SprachenIdentifier(){ name = SprachenName.Nujuka},
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloarkh},
+                new SprachenIdentifier(){ name = SprachenName.OrkischOloghaijan},
+                new SprachenIdentifier(){ name = SprachenName.Rabensprache},
+                new SprachenIdentifier(){ name = SprachenName.Rissoal},
+                new SprachenIdentifier(){ name = SprachenName.Rogolan},
+                new SprachenIdentifier(){ name = SprachenName.Rssahh},
+                new SprachenIdentifier(){ name = SprachenName.Ruuz},
+                new SprachenIdentifier(){ name = SprachenName.Thorwalsch},
+                new SprachenIdentifier(){ name = SprachenName.Trollisch},
+                new SprachenIdentifier(){ name = SprachenName.Tulamidya},
+                new SprachenIdentifier(){ name = SprachenName.UrTulamidya},
+                new SprachenIdentifier(){ name = SprachenName.Zelemja},
+                new SprachenIdentifier(){ name = SprachenName.Zhayad},
+                new SprachenIdentifier(){ name = SprachenName.Zhulchammaqra},
+                new SprachenIdentifier(){ name = SprachenName.ZLit},
+                new SprachenIdentifier(){ name = SprachenName.Zyklopaeisch},
+            };
+
+            return alleSprachen;
+        }
+
+
     }
 
     /// <summary>

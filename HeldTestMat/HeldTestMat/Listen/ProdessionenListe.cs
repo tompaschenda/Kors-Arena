@@ -785,6 +785,8 @@ namespace Listen
         HausknechtMagd,
         [Description("Haussklave")]
         Haussklave,
+        [Description("Kutscher")]
+        Kutscher,
         [Description("Leibdiener/Zofe")]
         LeibdienerZofe,
         [Description("Erzieher der Achaz")]
