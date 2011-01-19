@@ -113,6 +113,8 @@ namespace Listen
         Hoefling,
         [Description("Kurtisane/Gesellschafter")]
         KurtisaneGesellschafter,
+        [Description("Hure/Lustknabe")]
+        HureLustknabe,
         [Description("Privatlehrer")]
         Privatlehrer,
         [Description("Schriftsteller")]
@@ -755,6 +757,8 @@ namespace Listen
         Freibauer,
         [Description("Gärtner")]
         Gaertner,
+        [Description("Gutsherr")]
+        Gutsherr,
         [Description("Knecht/Magd")]
         KnechtMagd,
         [Description("Leibeigener")]
@@ -781,6 +785,8 @@ namespace Listen
         HausknechtMagd,
         [Description("Haussklave")]
         Haussklave,
+        [Description("Kutscher")]
+        Kutscher,
         [Description("Leibdiener/Zofe")]
         LeibdienerZofe,
         [Description("Erzieher der Achaz")]
