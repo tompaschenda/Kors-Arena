@@ -171,6 +171,7 @@ namespace heldenStruktur
             ort.yKoord = 0;
             ort.zKoord = 0;
             //[Tom] Hier benutzen wir jetzt die Property für den Rassennamen
+            rasse = new rassenStruct(SpielerRassenName.Waldmensch);
             rasse.Rasse = SpielerRassenName.Waldmensch;
             kultur.Kultur = KulturName.AndergastUndNostria;
             // TODO: Wähle Subrasse, falls möglich!

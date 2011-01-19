@@ -461,7 +461,7 @@ namespace rassenStruktur
             var srGjal = createThorwalerSubrasseKeine();
             // Wir brauchen nur die Unterschiede zwischen den Subrassen zu ändern:
             srGjal.name = SpielerSubRassenName.Gjalskerlaender;
-            //srGjal.haarfarbenMap.Clear(); //Tom: Einige der Werte, die unten stehen sind auch schon in der Oberrasse enthalten. 
+            srGjal.haarfarbenMap.Clear(); //Tom: Einige der Werte, die unten stehen sind auch schon in der Oberrasse enthalten. 
                                           //Das gibt einen Absturz. Um den zu verhindern wird die Liste hier geleeert.
                                           //@Mat: Bitte ansehen
             srGjal.haarfarbenMap.Add(new Range(1, 4), "blond");
@@ -469,7 +469,7 @@ namespace rassenStruktur
             srGjal.haarfarbenMap.Add(new Range(9, 15), "rot");
             srGjal.haarfarbenMap.Add(new Range(16, 17), "braun");
             srGjal.haarfarbenMap.Add(new Range(18, 20), "schwarz");
-            //srGjal.augenfarbenMap.Clear(); //Tom: Siehe oben, @Mat: Bitte ansehen.
+            srGjal.augenfarbenMap.Clear(); //Tom: Siehe oben, @Mat: Bitte ansehen.
             srGjal.augenfarbenMap.Add(new Range(1, 2), "dunkelbraun");
             srGjal.augenfarbenMap.Add(new Range(3, 10), "braun");
             srGjal.augenfarbenMap.Add(new Range(11, 18), "grün");

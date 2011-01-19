@@ -13,7 +13,7 @@ namespace heldenGenerierung
         static void Main()
         {
 
-            held held1 = new held();
+            Held held1 = new Held();
 
             // So, und nun initialisieren wir auch alle Werte der Struktur:
             held1.initialsiereHelden();
