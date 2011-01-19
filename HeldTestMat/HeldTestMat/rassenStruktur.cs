@@ -7,6 +7,8 @@ using wuerfelKlasse;
 using sfStruktur;
 using spielerAuswahl;
 using System;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace rassenStruktur
 {
@@ -15,11 +17,10 @@ namespace rassenStruktur
     /// </summary>
     public class rassenStruct
     {
-
         public rassenStruct(SpielerRassenName spielerRassenName)
         {
             this.rasse = spielerRassenName;
-            this.moeglicheSubrassen = new List<subrasse>();
+            this.moeglicheSubrassen = new ObservableCollection<subrasse>();
         }
 
         /// <summary>
@@ -27,7 +28,12 @@ namespace rassenStruktur
         /// Eintrag mit dem eigentlichen Rassennamen. Bei manchen Rassen (z.B. Thorwaler)
         /// können Subrassen gewählt werden.
         /// </summary>
-        public List<subrasse> moeglicheSubrassen;
+        public ObservableCollection<subrasse> moeglicheSubrassen;
+
+        public ObservableCollection<subrasse> MoeglicheSubrassen
+        {
+            get { return moeglicheSubrassen; }
+        }
 
         /// <summary>
         /// Identifier der Rasse
@@ -61,6 +67,7 @@ namespace rassenStruktur
             alleRassen.Add(createMittellaender());
             alleRassen.Add(createTulamide());
             alleRassen.Add(createThorwaler());
+            alleRassen.Add(createNivese());
             return alleRassen;
         }
 
@@ -128,7 +135,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Norbarde:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createNorbardeSubrasseKeine());
                                 break;
                             ///////////////////////////////////////
@@ -136,7 +143,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Trollzacker:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createTrollzackerSubrasseKeine());
                                 break;
                             ///////////////////////////////////////
@@ -144,7 +151,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Waldmensch:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createWaldmenschenSubrasseKeine());
                                 moeglicheSubrassen.Add(createWaldmenschenSubrasseTocamuyac());
                                 break;
@@ -153,7 +160,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Utulu:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createUtuluSubrasseKeine());
                                 break;
                             ///////////////////////////////////////
@@ -161,7 +168,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Elf:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createElfSubrasseAuelf());
                                 moeglicheSubrassen.Add(createElfSubrasseWaldelf());
                                 moeglicheSubrassen.Add(createElfSubrasseFirnelf());
@@ -171,7 +178,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Halbelf:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createHalbelfSubrasseKeine());
                                 moeglicheSubrassen.Add(createHalbelfSubrasseFirnelfischeAbstammung());
                                 moeglicheSubrassen.Add(createHalbelfSubrasseNivesischeAbstammung());
@@ -186,7 +193,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Zwerg:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createZwergSubrasseKeine());
                                 moeglicheSubrassen.Add(createZwergSubrasseBrillantzwerg());
                                 moeglicheSubrassen.Add(createZwergSubrasseAmbosszwerg());
@@ -197,7 +204,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Ork:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createOrkSubrasseKeine());
                                 moeglicheSubrassen.Add(createOrkSubrasseOrkfrau());
                                 break;
@@ -206,7 +213,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Halbork:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createHalborkSubrasseKeine());
                                 break;
                             ///////////////////////////////////////
@@ -214,7 +221,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Goblin:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createGoblinSubrasseKeine());
                                 moeglicheSubrassen.Add(createGoblinSubrasseGoblinfrau());
                                 break;
@@ -223,7 +230,7 @@ namespace rassenStruktur
                             ///////////////////////////////////////
                             case SpielerRassenName.Achaz:
                                 rasse = value;
-                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen = new  ObservableCollection<subrasse>();
                                 moeglicheSubrassen.Add(createAchazSubrasseKeine());
                                 moeglicheSubrassen.Add(createAchazSubrasseOrkland());
                                 moeglicheSubrassen.Add(createAchazSubrasseWaldinsel());
@@ -2841,7 +2848,18 @@ namespace rassenStruktur
         /// <summary>
         /// Name der Subrasse. Ist "keine", falls die Rasse keine Subrasse besitzt.
         /// </summary>
-        public SpielerSubRassenName name;
+        public SpielerSubRassenName name {get; set;}
+
+        /// <summary>
+        /// Der Name der Subrasse als String für die GUI
+        /// </summary>
+        public string nameAlsString
+        {
+            get
+            {
+                return EnumExtentions.GetDescription(name);
+            }
+        }
 
         // Wir listen nun auf, welche Attribute eine Rasse hat:      
         /// <summary>
