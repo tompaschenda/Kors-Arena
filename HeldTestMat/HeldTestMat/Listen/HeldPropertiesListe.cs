@@ -12,7 +12,7 @@ namespace Listen
         undefined,
         [Description("beide")]
         beide,
-        [Description("männlich")]
+        [Description("maennlich")]
         maennlich,
         [Description("weiblich")]
         weiblich,

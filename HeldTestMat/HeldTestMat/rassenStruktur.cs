@@ -13,8 +13,15 @@ namespace rassenStruktur
     /// <summary>
     /// Struktur, die alle Rassen in Aventurien enthält:
     /// </summary>
-    public struct rassenStruct
+    public class rassenStruct
     {
+
+        public rassenStruct(SpielerRassenName spielerRassenName)
+        {
+            this.rasse = spielerRassenName;
+            this.moeglicheSubrassen = new List<subrasse>();
+        }
+
         /// <summary>
         /// Eine Liste mit allen möglichen Subrassennamen. Enthält immer mindestens den
         /// Eintrag mit dem eigentlichen Rassennamen. Bei manchen Rassen (z.B. Thorwaler)
@@ -28,7 +35,7 @@ namespace rassenStruktur
         private SpielerRassenName rasse;
 
         /// <summary>
-        /// [Tom]: Der Name der Rasse. Beim Setzen des Namens werden die anderen Felder automatisch gefüllt.
+        /// [Tom]: Der Name der Rasse.
         /// Dies ist eine sogenannte Property.
         /// </summary>
         public string Name
@@ -47,6 +54,53 @@ namespace rassenStruktur
         {
             return Name;
         }
+
+        public static List<rassenStruct> erzeugeAlleRassen()
+        {
+            List<rassenStruct> alleRassen = new List<rassenStruct>();
+            alleRassen.Add(createMittellaender());
+            alleRassen.Add(createTulamide());
+            alleRassen.Add(createThorwaler());
+            return alleRassen;
+        }
+
+        static rassenStruct createMittellaender()
+        {
+            rassenStruct mittellaender = new rassenStruct(SpielerRassenName.Mittellaender);
+            mittellaender.moeglicheSubrassen.Add(createMittellaenderSubrasseKeine());
+            return mittellaender;
+        }
+
+        static rassenStruct createTulamide()
+        {
+            rassenStruct tulamide = new rassenStruct(SpielerRassenName.Tulamiden);
+            tulamide.moeglicheSubrassen.Add(createTulamideSubrasseKeine());
+            return tulamide;
+        }
+
+        static rassenStruct createThorwaler()
+        {
+            rassenStruct thorwaler = new rassenStruct(SpielerRassenName.Thorwaler);
+            thorwaler.moeglicheSubrassen.Add(createThorwalerSubrasseKeine());
+            thorwaler.moeglicheSubrassen.Add(createThorwalerSubrasseFjarninger());
+            thorwaler.moeglicheSubrassen.Add(createThorwalerSubrasseGjalskalaender());
+            return thorwaler;
+        }
+
+        static rassenStruct createNivese()
+        {
+            var nivese = new rassenStruct(SpielerRassenName.Nivese);
+            nivese.moeglicheSubrassen.Add(createNiveseSubrasseKeine());
+            return nivese;
+        }
+
+        private rassenStruct getRasseByName(SpielerRassenName name)
+        {
+            var alleRassen = erzeugeAlleRassen();
+            var gesuchteRasse = alleRassen.Find(rasse => rasse.Name.Equals(name));
+            return gesuchteRasse;
+        }
+
         /// <summary>
         /// Der Identifier dieser Rasse. Der Setter definiert die Attribute der Rasse
         /// Dazu werden jeweils alle möglichen Subrassen angelegt und mit in der Struktur verankert.
@@ -59,155 +113,126 @@ namespace rassenStruktur
             {
                 try
                 {
-
-                    switch (value)
+                    var r = getRasseByName(value);
+                    if (r != null)
                     {
-                        ///////////////////////////////////////
-                        // Mittelreichler
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Mittellaender:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createMittellaenderSubrasseKeine());
-                            break;
+                        rasse = value;
+                        moeglicheSubrassen = r.moeglicheSubrassen;
+                    }
+                    else
+                    {
+                        switch (value)
+                        {
+                            ///////////////////////////////////////
+                            // Norbarde
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Norbarde:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createNorbardeSubrasseKeine());
+                                break;
+                            ///////////////////////////////////////
+                            // Trollzacker
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Trollzacker:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createTrollzackerSubrasseKeine());
+                                break;
+                            ///////////////////////////////////////
+                            // Waldmenschen
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Waldmensch:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createWaldmenschenSubrasseKeine());
+                                moeglicheSubrassen.Add(createWaldmenschenSubrasseTocamuyac());
+                                break;
+                            ///////////////////////////////////////
+                            // Utulus
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Utulu:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createUtuluSubrasseKeine());
+                                break;
+                            ///////////////////////////////////////
+                            // Elfen
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Elf:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createElfSubrasseAuelf());
+                                moeglicheSubrassen.Add(createElfSubrasseWaldelf());
+                                moeglicheSubrassen.Add(createElfSubrasseFirnelf());
+                                break;
+                            ///////////////////////////////////////
+                            // Halbelfen
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Halbelf:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createHalbelfSubrasseKeine());
+                                moeglicheSubrassen.Add(createHalbelfSubrasseFirnelfischeAbstammung());
+                                moeglicheSubrassen.Add(createHalbelfSubrasseNivesischeAbstammung());
+                                moeglicheSubrassen.Add(createHalbelfSubrasseThorwalscheAbstammung());
+                                moeglicheSubrassen.Add(createHalbelfSubrasseAuelfischeSippe());
+                                moeglicheSubrassen.Add(createHalbelfSubrasseElfischeSiedlung());
+                                moeglicheSubrassen.Add(createHalbelfSubrasseFirnelfischeSippe());
+                                moeglicheSubrassen.Add(createHalbelfSubrasseWaldelfischeSippe());
+                                break;
+                            ///////////////////////////////////////
+                            // Zwerge
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Zwerg:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createZwergSubrasseKeine());
+                                moeglicheSubrassen.Add(createZwergSubrasseBrillantzwerg());
+                                moeglicheSubrassen.Add(createZwergSubrasseAmbosszwerg());
+                                moeglicheSubrassen.Add(createZwergSubrasseWilderZwerg());
+                                break;
+                            ///////////////////////////////////////
+                            // Orks
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Ork:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createOrkSubrasseKeine());
+                                moeglicheSubrassen.Add(createOrkSubrasseOrkfrau());
+                                break;
+                            ///////////////////////////////////////
+                            // Halborks
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Halbork:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createHalborkSubrasseKeine());
+                                break;
+                            ///////////////////////////////////////
+                            // Goblins
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Goblin:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createGoblinSubrasseKeine());
+                                moeglicheSubrassen.Add(createGoblinSubrasseGoblinfrau());
+                                break;
+                            ///////////////////////////////////////
+                            // Achaz
+                            ///////////////////////////////////////
+                            case SpielerRassenName.Achaz:
+                                rasse = value;
+                                moeglicheSubrassen = new List<subrasse>();
+                                moeglicheSubrassen.Add(createAchazSubrasseKeine());
+                                moeglicheSubrassen.Add(createAchazSubrasseOrkland());
+                                moeglicheSubrassen.Add(createAchazSubrasseWaldinsel());
+                                moeglicheSubrassen.Add(createAchazSubrasseMaraskan());
+                                break;
 
-                        ///////////////////////////////////////
-                        // Tulamiden
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Tulamiden:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createTulamideSubrasseKeine());
-                            break;
-
-                        ///////////////////////////////////////
-                        // Thorwaler
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Thorwaler:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createThorwalerSubrasseKeine());
-                            moeglicheSubrassen.Add(createThorwalerSubrasseFjarninger());
-                            moeglicheSubrassen.Add(createThorwalerSubrasseGjalskalaender());
-                            break;
-
-                        ///////////////////////////////////////
-                        // Nivese
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Nivese:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createNiveseSubrasseKeine());
-                            break;
-                        ///////////////////////////////////////
-                        // Norbarde
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Norbarde:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createNorbardeSubrasseKeine());
-                            break;
-                        ///////////////////////////////////////
-                        // Trollzacker
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Trollzacker:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createTrollzackerSubrasseKeine());
-                            break;
-                        ///////////////////////////////////////
-                        // Waldmenschen
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Waldmensch:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createWaldmenschenSubrasseKeine());
-                            moeglicheSubrassen.Add(createWaldmenschenSubrasseTocamuyac());
-                            break;
-                        ///////////////////////////////////////
-                        // Utulus
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Utulu:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createUtuluSubrasseKeine());
-                            break;
-                        ///////////////////////////////////////
-                        // Elfen
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Elf:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createElfSubrasseAuelf());
-                            moeglicheSubrassen.Add(createElfSubrasseWaldelf());
-                            moeglicheSubrassen.Add(createElfSubrasseFirnelf());
-                            break;
-                        ///////////////////////////////////////
-                        // Halbelfen
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Halbelf:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createHalbelfSubrasseKeine());
-                            moeglicheSubrassen.Add(createHalbelfSubrasseFirnelfischeAbstammung());
-                            moeglicheSubrassen.Add(createHalbelfSubrasseNivesischeAbstammung());
-                            moeglicheSubrassen.Add(createHalbelfSubrasseThorwalscheAbstammung());
-                            moeglicheSubrassen.Add(createHalbelfSubrasseAuelfischeSippe());
-                            moeglicheSubrassen.Add(createHalbelfSubrasseElfischeSiedlung());
-                            moeglicheSubrassen.Add(createHalbelfSubrasseFirnelfischeSippe());
-                            moeglicheSubrassen.Add(createHalbelfSubrasseWaldelfischeSippe());
-                            break;
-                        ///////////////////////////////////////
-                        // Zwerge
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Zwerg:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createZwergSubrasseKeine());
-                            moeglicheSubrassen.Add(createZwergSubrasseBrillantzwerg());
-                            moeglicheSubrassen.Add(createZwergSubrasseAmbosszwerg());
-                            moeglicheSubrassen.Add(createZwergSubrasseWilderZwerg());
-                            break;
-                        ///////////////////////////////////////
-                        // Orks
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Ork:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createOrkSubrasseKeine());
-                            moeglicheSubrassen.Add(createOrkSubrasseOrkfrau());
-                            break;
-                        ///////////////////////////////////////
-                        // Halborks
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Halbork:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createHalborkSubrasseKeine());
-                            break;
-                        ///////////////////////////////////////
-                        // Goblins
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Goblin:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createGoblinSubrasseKeine());
-                            moeglicheSubrassen.Add(createGoblinSubrasseGoblinfrau());
-                            break;
-                        ///////////////////////////////////////
-                        // Achaz
-                        ///////////////////////////////////////
-                        case SpielerRassenName.Achaz:
-                            rasse = value;
-                            moeglicheSubrassen = new List<subrasse>();
-                            moeglicheSubrassen.Add(createAchazSubrasseKeine());
-                            moeglicheSubrassen.Add(createAchazSubrasseOrkland());
-                            moeglicheSubrassen.Add(createAchazSubrasseWaldinsel());
-                            moeglicheSubrassen.Add(createAchazSubrasseMaraskan());
-                            break;
-
-                        default:
-                            throw new System.ArgumentOutOfRangeException();
+                            default:
+                                throw new System.ArgumentOutOfRangeException();
+                        }
                     }
 
                 }
@@ -436,11 +461,15 @@ namespace rassenStruktur
             var srGjal = createThorwalerSubrasseKeine();
             // Wir brauchen nur die Unterschiede zwischen den Subrassen zu ändern:
             srGjal.name = SpielerSubRassenName.Gjalskerlaender;
+            //srGjal.haarfarbenMap.Clear(); //Tom: Einige der Werte, die unten stehen sind auch schon in der Oberrasse enthalten. 
+                                          //Das gibt einen Absturz. Um den zu verhindern wird die Liste hier geleeert.
+                                          //@Mat: Bitte ansehen
             srGjal.haarfarbenMap.Add(new Range(1, 4), "blond");
             srGjal.haarfarbenMap.Add(new Range(5, 8), "rotblond");
             srGjal.haarfarbenMap.Add(new Range(9, 15), "rot");
             srGjal.haarfarbenMap.Add(new Range(16, 17), "braun");
             srGjal.haarfarbenMap.Add(new Range(18, 20), "schwarz");
+            //srGjal.augenfarbenMap.Clear(); //Tom: Siehe oben, @Mat: Bitte ansehen.
             srGjal.augenfarbenMap.Add(new Range(1, 2), "dunkelbraun");
             srGjal.augenfarbenMap.Add(new Range(3, 10), "braun");
             srGjal.augenfarbenMap.Add(new Range(11, 18), "grün");

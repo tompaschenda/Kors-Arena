@@ -6,6 +6,8 @@ using System.Linq;
 using System.Windows;
 using System.Diagnostics;
 using Listen;
+using heldenStruktur;
+
 namespace GUI
 {
     enum TestEnum { a, b, c };
@@ -17,12 +19,14 @@ namespace GUI
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            /*
             MainWindow mainWindow = new MainWindow();
-            NeuerHeldWizard neuerHeldWindow = new NeuerHeldWizard();
+            
             mainWindow.Show();
-            neuerHeldWindow.Show();
-            //ControlTesterWindow w = new ControlTesterWindow();
-            //w.Show();
+            mainWindow.starteHeldenerstellung();
+            */
+            ControlTesterWindow w = new ControlTesterWindow();
+            w.Show();
         }
 
     }

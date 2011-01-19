@@ -74,9 +74,12 @@
     <Compile Include="NeuerHeldWindow.xaml.cs">
       <DependentUpon>NeuerHeldWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NeuerHeldWizard\NeuerHeldWizard.xaml.cs">
-      <DependentUpon>NeuerHeldWizard.xaml</DependentUpon>
+    <Compile Include="NeuerHeldWizard\NeuerHeldWizard.cs" />
+    <Compile Include="NeuerHeldWizard\NeuerHeldWizardData.cs" />
+    <Compile Include="NeuerHeldWizard\NeuerHeldWizardWindow.xaml.cs">
+      <DependentUpon>NeuerHeldWizardWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NeuerHeldWizard\Wizard.cs" />
     <Compile Include="NeuerHeldWizard\WizardRassenAuswahlControl.xaml.cs">
       <DependentUpon>WizardRassenAuswahlControl.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,9 @@
     </Compile>
     <Compile Include="NeuerHeldWizard\WizardHeaderControl.xaml.cs">
       <DependentUpon>WizardHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RassenAuswahlControl.xaml.cs">
+      <DependentUpon>RassenAuswahlControl.xaml</DependentUpon>
     </Compile>
     <Page Include="BasisdatenControl.xaml">
       <SubType>Designer</SubType>
@@ -139,7 +145,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NeuerHeldWizard\NeuerHeldWizard.xaml">
+    <Page Include="NeuerHeldWizard\NeuerHeldWizardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NeuerHeldWizard\WizardHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RassenAuswahlControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +210,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{8220FD29-2417-44D3-A6C4-6E97CD813F77}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeldTestMat.csproj">
+      <Project>{E029B65B-6B5D-4DC7-800C-21BEEEF85728}</Project>
+      <Name>HeldTestMat</Name>
     </ProjectReference>
     <ProjectReference Include="..\Listen\Listen.csproj">
       <Project>{EB96D371-6B45-4D80-9503-29A7E82B8524}</Project>

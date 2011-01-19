@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using heldenStruktur;
 
 namespace GUI
 {
@@ -28,8 +29,16 @@ namespace GUI
 
         private void NeuerHeld_Click(object sender, RoutedEventArgs e)
         {
-            var w = new NeuerHeldWizard();
-            w.Show();
+            starteHeldenerstellung();
+        }
+
+        public void starteHeldenerstellung()
+        {
+            Held h = new Held();
+            NeuerHeldWizardData d = new NeuerHeldWizardData();
+            d.held = h;
+            NeuerHeldWizardWindow neuerHeldWindow = new NeuerHeldWizardWindow(d);
+            neuerHeldWindow.Show();
         }
 
         private void Beenden_Click(object sender, RoutedEventArgs e)

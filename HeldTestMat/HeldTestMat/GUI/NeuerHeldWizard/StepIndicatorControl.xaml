@@ -6,7 +6,7 @@
              mc:Ignorable="d">
     <StackPanel>
         <Label Content="Heldenerschaffung" Height="28" HorizontalAlignment="Left" Margin="0,0,0,10" Name="label1" VerticalAlignment="Top" />
-        <Label Content="Geschlächt auswählen" Height="28" HorizontalAlignment="Left" Margin="0,0,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Geschlecht auswählen" Height="28" HorizontalAlignment="Left" Margin="0,0,0,0" Name="label2" VerticalAlignment="Top" />
         <Label Content="Rasse auswählen" Height="28" HorizontalAlignment="Left" Margin="0,0,0,0" Name="label3" VerticalAlignment="Top" />
     </StackPanel>
 </UserControl>

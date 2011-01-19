@@ -13,7 +13,7 @@ namespace heldenStruktur
     /// [Tom] Dies ist ein Beispiel für eine C-Sharp-konforme Kommentierungssyntax
     /// Definition der Struktur eines Helden:
     /// </summary>
-    public struct held
+    public class Held
     {
         //////////////////////////////////////
         //  Grundlegendes
@@ -30,7 +30,8 @@ namespace heldenStruktur
         /// <summary>
         /// Das Geschlecht eines Helden. Entweder männlich oder weiblich.
         /// </summary>
-        public GeschlechtNamen geschlecht;
+        public GeschlechtNamen geschlecht {get; set;}
+
         /// <summary>
         /// Gibt an, wie viele AP ein Held bereits ausgegeben hat, bzw. wie viele AP
         /// ein Held noch ausgeben kann.

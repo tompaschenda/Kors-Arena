@@ -1,4 +1,4 @@
-﻿<Window x:Class="GUI.NeuerHeldWizard"
+﻿<Window x:Class="GUI.NeuerHeldWizardWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:GUI"
