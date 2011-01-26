@@ -9,8 +9,16 @@
         <Setter Property="Control.FontFamily" Value="Avalon Quest" />
         <Setter Property="Control.FontSize" Value="18" />
         <Setter Property="Control.FontWeight" Value="Bold" />
-        
     </Style>
+
+    <Style x:Key="DockingBorderStyle" TargetType="Border">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Padding" Value="2" />
+    </Style>
+
 
     <Style x:Key="TabHeaderStyle" TargetType="{x:Type TabItem}">
         <Setter Property="Control.FontFamily" Value="Avalon Quest" />

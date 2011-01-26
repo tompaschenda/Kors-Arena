@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d">
     <StackPanel>
-        <Label Content="Heldenerschaffung" Height="28" HorizontalAlignment="Left" Margin="0,0,0,10" Name="label1" VerticalAlignment="Top" />
-        <Label Content="Geschlecht auswählen" Height="28" HorizontalAlignment="Left" Margin="0,0,0,0" Name="label2" VerticalAlignment="Top" />
-        <Label Content="Rasse auswählen" Height="28" HorizontalAlignment="Left" Margin="0,0,0,0" Name="label3" VerticalAlignment="Top" />
+        <Label Content="1. Geschlecht auswählen" Height="28" HorizontalAlignment="Left" Margin="0,0,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="2. Rasse auswählen" Height="28" HorizontalAlignment="Left" Margin="0,0,0,0" Name="label3" VerticalAlignment="Top" />
     </StackPanel>
 </UserControl>

@@ -15,7 +15,7 @@
         </HierarchicalDataTemplate>
     </UserControl.Resources>
     <Grid>
-        <TreeView HorizontalAlignment="Left" Name="treeViewRassen" VerticalAlignment="Top">
+        <TreeView HorizontalAlignment="Left" Name="treeViewRassen" VerticalAlignment="Top" MinHeight="200">
         </TreeView>
 
     </Grid>

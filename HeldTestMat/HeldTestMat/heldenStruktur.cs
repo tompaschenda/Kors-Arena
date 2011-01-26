@@ -20,17 +20,13 @@ namespace heldenStruktur
         //////////////////////////////////////
 
         /// <summary>
-        /// Grundlegende Eigenschaften eines Helden:
+        /// Der Name eines Helden.
         /// </summary>
-        public string vorname, nachname, titel;
-        /// <summary>
-        /// Der Name eines Helden. Wird zusammen gesetzt aus "Vorname + Titel_ + Nachname"
-        /// </summary>
-        public string name;
+        public string Name { get; set; }
         /// <summary>
         /// Das Geschlecht eines Helden. Entweder männlich oder weiblich.
         /// </summary>
-        public GeschlechtNamen geschlecht {get; set;}
+        public GeschlechtNamen Geschlecht {get; set;}
 
         /// <summary>
         /// Gibt an, wie viele AP ein Held bereits ausgegeben hat, bzw. wie viele AP
@@ -65,10 +61,37 @@ namespace heldenStruktur
 
         /// <summary>
         /// Jeder Held verfügt über GENAU eine Rasse.
-        /// Wir legen die Rasse hier zunächst auf "Mittelreichler" fest.
         /// Die Rasse kann Auswirkungen auf die abgeleiteten Grundwerte, etc. haben!
+        /// Eine Rasse kann wiederum Subrassen besitzen, von denen der Spieler eine (oder keine) annehmen kann.
         /// </summary>
-        public rassenStruct rasse;
+        public rassenStruct Rasse { get; set; }
+
+        /// <summary>
+        /// Der Held kann eine oder keine Subrasse haben. Sie muss zur Rasse passen.
+        /// </summary>
+        public subrasse Subrasse { get; set; }
+
+        /// <summary>
+        /// Die Kombination aus Rasse und Subrasse für die GUI
+        /// </summary>
+        public string RasseAlsString
+        {
+            get
+            {
+                if (Rasse==null)
+                {
+                    return "";
+                }
+                if (Subrasse == null)
+                {
+                    return Rasse.Name;
+                }
+                else
+                {
+                    return Rasse.Name + ", " + Subrasse.Name;
+                }
+            }
+        }
 
         /// <summary>
         /// Jeder Held verfügt über eine Größe - wir gehen hier davon aus, dass ein
@@ -139,12 +162,6 @@ namespace heldenStruktur
             public int xKoord, yKoord, zKoord;
         }
 
-        private bool berechneNamen()
-        {
-            name = (vorname + " " + titel + nachname);
-            return true;
-        }
-
         /// <summary>
         /// Jeder Held verfügt über genau EINE Kultur
         /// </summary>
@@ -157,11 +174,8 @@ namespace heldenStruktur
         /// <returns>[Tom]: Kann nicht fehlschlagen und gibt daher immer 'true' zurück</returns>
         public bool initialsiereHelden()
         {
-            vorname = "Rondran";
-            nachname = "Kartakis";
-            titel = "";
-            berechneNamen();
-            geschlecht = GeschlechtNamen.maennlich;
+            Name = "Rondran Kartakis";
+            Geschlecht = GeschlechtNamen.maennlich;
             apAusgegeben = 0;
             apUebrig = 0;
             art = "Mensch";
@@ -170,9 +184,8 @@ namespace heldenStruktur
             ort.xKoord = 5;
             ort.yKoord = 0;
             ort.zKoord = 0;
-            //[Tom] Hier benutzen wir jetzt die Property für den Rassennamen
-            rasse = new rassenStruct(SpielerRassenName.Waldmensch);
-            rasse.Rasse = SpielerRassenName.Waldmensch;
+            Rasse = rassenStruct.getRasseByIdentifier(SpielerRassenName.Tulamiden);
+            Subrasse = Rasse.moeglicheSubrassen[0];
             kultur.Kultur = KulturName.AndergastUndNostria;
             // TODO: Wähle Subrasse, falls möglich!
             // TODO! Muss an Subrassen gepasst werden!
@@ -201,9 +214,9 @@ namespace heldenStruktur
         public string ToStringSimple()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Name des Helden: " + name);
+            sb.AppendLine("Name des Helden: " + Name);
             sb.AppendLine("Aufenthaltsort des Helden: " + ort.xKoord);
-            sb.AppendLine("Rasse des Helden: " + rasse.Name); //[Tom]: Hier sehen wir den Lesezugriff auf die Property
+            sb.AppendLine("Rasse des Helden: " + Rasse.Name); //[Tom]: Hier sehen wir den Lesezugriff auf die Property
             sb.AppendLine("Haarfarbe des Helden: " + haarfarbe);
             sb.AppendLine("Augenfarbe des Helden: " + augenfarbe);
             sb.AppendLine("Größe (ein Schritt): " + koerpergroesse);

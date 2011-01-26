@@ -39,6 +39,13 @@ namespace rassenStruktur
         /// Identifier der Rasse
         /// </summary>
         private SpielerRassenName rasse;
+        public SpielerRassenName Identifier
+        {
+            get
+            {
+                return rasse;
+            }
+        }
 
         /// <summary>
         /// [Tom]: Der Name der Rasse.
@@ -101,10 +108,10 @@ namespace rassenStruktur
             return nivese;
         }
 
-        private rassenStruct getRasseByName(SpielerRassenName name)
+        static public rassenStruct getRasseByIdentifier(SpielerRassenName identifier)
         {
             var alleRassen = erzeugeAlleRassen();
-            var gesuchteRasse = alleRassen.Find(rasse => rasse.Name.Equals(name));
+            var gesuchteRasse = alleRassen.Find(rasse => rasse.Identifier.Equals(identifier));
             return gesuchteRasse;
         }
 
@@ -120,7 +127,7 @@ namespace rassenStruktur
             {
                 try
                 {
-                    var r = getRasseByName(value);
+                    var r = getRasseByIdentifier(value);
                     if (r != null)
                     {
                         rasse = value;
@@ -2843,17 +2850,25 @@ namespace rassenStruktur
     /// Struktur, die die eigentlichen Informationen zur Subrasse enthält. Jede Rasse wird
     /// als Subrasse "keine" bezeichnet, wenn sie keine Subrasse hat!
     /// </summary>
-    public struct subrasse
+    public class subrasse
     {
         /// <summary>
         /// Name der Subrasse. Ist "keine", falls die Rasse keine Subrasse besitzt.
         /// </summary>
-        public SpielerSubRassenName name {get; set;}
+        public SpielerSubRassenName name;
+        public SpielerSubRassenName Identifier
+        {
+            get
+            {
+                return name;
+            }
+        }
+            
 
         /// <summary>
         /// Der Name der Subrasse als String für die GUI
         /// </summary>
-        public string nameAlsString
+        public string Name
         {
             get
             {

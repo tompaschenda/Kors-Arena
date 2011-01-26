@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using heldenStruktur;
+using Listen;
+using System.Diagnostics;
 
 namespace GUI
 {
@@ -35,6 +37,13 @@ namespace GUI
         public void starteHeldenerstellung()
         {
             Held h = new Held();
+            var Tulamiden = rassenStruktur.rassenStruct.getRasseByIdentifier(SpielerRassenName.Tulamiden);
+            h.Rasse = Tulamiden;
+            h.Subrasse = Tulamiden.moeglicheSubrassen[0];
+            h.Geschlecht = GeschlechtNamen.maennlich;
+            h.Name = "Keiner von Niemand";
+
+
             NeuerHeldWizardData d = new NeuerHeldWizardData();
             d.held = h;
             NeuerHeldWizardWindow neuerHeldWindow = new NeuerHeldWizardWindow(d);

@@ -19,14 +19,12 @@ namespace GUI
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            /*
             MainWindow mainWindow = new MainWindow();
             
             mainWindow.Show();
             mainWindow.starteHeldenerstellung();
-            */
-            ControlTesterWindow w = new ControlTesterWindow();
-            w.Show();
+            //ControlTesterWindow w = new ControlTesterWindow();
+            //w.Show();
         }
 
     }

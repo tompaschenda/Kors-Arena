@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BasisdatenControl.xaml.cs">
+    <Compile Include="HeldenbriefControl\BasisdatenControl.xaml.cs">
       <DependentUpon>BasisdatenControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlTesterWindow.xaml.cs">
@@ -65,8 +65,11 @@
     <Compile Include="GeschlechtControl.xaml.cs">
       <DependentUpon>GeschlechtControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HeaderControl.xaml.cs">
+    <Compile Include="HeldenbriefControl\HeaderControl.xaml.cs">
       <DependentUpon>HeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HeldenbriefControl\HeldenbriefControl.xaml.cs">
+      <DependentUpon>HeldenbriefControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="KulturControl.xaml.cs">
       <DependentUpon>KulturControl.xaml</DependentUpon>
@@ -105,7 +108,7 @@
     <Compile Include="RassenAuswahlControl.xaml.cs">
       <DependentUpon>RassenAuswahlControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="BasisdatenControl.xaml">
+    <Page Include="HeldenbriefControl\BasisdatenControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,7 +124,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HeaderControl.xaml">
+    <Page Include="HeldenbriefControl\HeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeldenbriefControl\HeldenbriefControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

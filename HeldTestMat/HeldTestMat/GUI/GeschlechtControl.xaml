@@ -14,7 +14,7 @@
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <src:EnumComboBox Grid.Row="0" Grid.Column="1" Height="23" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="120" EnumTypeName="Listen.GeschlechtNamen, Listen1" Text="{Binding Path=held.geschlecht}"/>
+        <src:EnumComboBox Grid.Row="0" Grid.Column="1" Height="23" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="120" EnumTypeName="Listen.GeschlechtNamen, Listen1" Text="{Binding Path=held.Geschlecht}"/>
         <!--<ComboBox Grid.Row="0" Grid.Column="1" Height="23" HorizontalAlignment="Right"  Name="comboBox1" VerticalAlignment="Top" Width="120" />-->
         <Label Grid.Row="0" Grid.Column="0" Content="Geschlecht" Height="28" Width="120" HorizontalAlignment="Left" Name="label1" VerticalAlignment="Top" />
     </Grid>
