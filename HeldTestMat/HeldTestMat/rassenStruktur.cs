@@ -78,6 +78,13 @@ namespace rassenStruktur
             return alleRassen;
         }
 
+        static public rassenStruct getRasseByIdentifier(SpielerRassenName identifier)
+        {
+            var alleRassen = erzeugeAlleRassen();
+            var gesuchteRasse = alleRassen.Find(rasse => rasse.Identifier.Equals(identifier));
+            return gesuchteRasse;
+        }
+
         static rassenStruct createMittellaender()
         {
             rassenStruct mittellaender = new rassenStruct(SpielerRassenName.Mittellaender);
@@ -108,13 +115,104 @@ namespace rassenStruktur
             return nivese;
         }
 
-        static public rassenStruct getRasseByIdentifier(SpielerRassenName identifier)
+        static rassenStruct createNorbarde()
         {
-            var alleRassen = erzeugeAlleRassen();
-            var gesuchteRasse = alleRassen.Find(rasse => rasse.Identifier.Equals(identifier));
-            return gesuchteRasse;
+            var norbarde = new rassenStruct(SpielerRassenName.Norbarde);
+            norbarde.moeglicheSubrassen.Add(createNorbardeSubrasseKeine());
+            return norbarde;
         }
 
+        static rassenStruct createTrollzacker()
+        {
+            var trollzacker = new rassenStruct(SpielerRassenName.Trollzacker);
+            trollzacker.moeglicheSubrassen.Add(createTrollzackerSubrasseKeine());
+            return trollzacker;
+        }
+
+        static rassenStruct createWaldmensch()
+        {
+            var waldmensch = new rassenStruct(SpielerRassenName.Waldmensch);
+            waldmensch.moeglicheSubrassen.Add(createWaldmenschenSubrasseKeine());
+            waldmensch.moeglicheSubrassen.Add(createWaldmenschenSubrasseTocamuyac());
+            return waldmensch;
+        }
+
+        static rassenStruct createUtulu()
+        {
+            var utulu = new rassenStruct(SpielerRassenName.Utulu);
+            utulu.moeglicheSubrassen.Add(createUtuluSubrasseKeine());
+            return utulu;
+        }
+
+        static rassenStruct createElf()
+        {
+            var elf = new rassenStruct(SpielerRassenName.Elf);
+            elf.moeglicheSubrassen.Add(createElfSubrasseAuelf());
+            elf.moeglicheSubrassen.Add(createElfSubrasseWaldelf());
+            elf.moeglicheSubrassen.Add(createElfSubrasseFirnelf());
+            return elf;
+        }
+
+        static rassenStruct createHalbElf()
+        {
+            var halbElf = new rassenStruct(SpielerRassenName.Halbelf);
+            halbElf.moeglicheSubrassen.Add(createHalbelfSubrasseKeine());
+            halbElf.moeglicheSubrassen.Add(createHalbelfSubrasseFirnelfischeAbstammung());
+            halbElf.moeglicheSubrassen.Add(createHalbelfSubrasseNivesischeAbstammung());
+            halbElf.moeglicheSubrassen.Add(createHalbelfSubrasseThorwalscheAbstammung());
+            halbElf.moeglicheSubrassen.Add(createHalbelfSubrasseAuelfischeSippe());
+            halbElf.moeglicheSubrassen.Add(createHalbelfSubrasseElfischeSiedlung());
+            halbElf.moeglicheSubrassen.Add(createHalbelfSubrasseFirnelfischeSippe());
+            halbElf.moeglicheSubrassen.Add(createHalbelfSubrasseWaldelfischeSippe());
+            return halbElf;
+        }
+
+        static rassenStruct createZwerg()
+        {
+            var zwerg = new rassenStruct(SpielerRassenName.Zwerg);
+            zwerg.moeglicheSubrassen.Add(createZwergSubrasseKeine());
+            zwerg.moeglicheSubrassen.Add(createZwergSubrasseBrillantzwerg());
+            zwerg.moeglicheSubrassen.Add(createZwergSubrasseAmbosszwerg());
+            zwerg.moeglicheSubrassen.Add(createZwergSubrasseWilderZwerg());
+            return zwerg;
+        }
+
+        static rassenStruct createOrk()
+        {
+            var ork = new rassenStruct(SpielerRassenName.Ork);
+            ork.moeglicheSubrassen.Add(createOrkSubrasseKeine());
+            ork.moeglicheSubrassen.Add(createOrkSubrasseOrkfrau());
+            return ork;
+        }
+
+        static rassenStruct createHalbork()
+        {
+            var ork = new rassenStruct(SpielerRassenName.Ork);
+            ork.moeglicheSubrassen.Add(createHalborkSubrasseKeine());
+            return ork;
+        }
+
+        static rassenStruct createGoblin()
+        {
+            var goblin = new rassenStruct(SpielerRassenName.Goblin);
+            goblin.moeglicheSubrassen.Add(createGoblinSubrasseKeine());
+            goblin.moeglicheSubrassen.Add(createGoblinSubrasseGoblinfrau());
+            return goblin;
+        }
+
+        static rassenStruct createAchaz()
+        {
+            var achaz = new rassenStruct(SpielerRassenName.Achaz);
+            achaz.moeglicheSubrassen.Add(createAchazSubrasseKeine());
+            achaz.moeglicheSubrassen.Add(createAchazSubrasseOrkland());
+            achaz.moeglicheSubrassen.Add(createAchazSubrasseWaldinsel());
+            achaz.moeglicheSubrassen.Add(createAchazSubrasseMaraskan());
+            return achaz;
+        }
+        
+
+
+/*
         /// <summary>
         /// Der Identifier dieser Rasse. Der Setter definiert die Attribute der Rasse
         /// Dazu werden jeweils alle möglichen Subrassen angelegt und mit in der Struktur verankert.
@@ -238,10 +336,10 @@ namespace rassenStruktur
                             case SpielerRassenName.Achaz:
                                 rasse = value;
                                 moeglicheSubrassen = new  ObservableCollection<subrasse>();
-                                moeglicheSubrassen.Add(createAchazSubrasseKeine());
-                                moeglicheSubrassen.Add(createAchazSubrasseOrkland());
-                                moeglicheSubrassen.Add(createAchazSubrasseWaldinsel());
-                                moeglicheSubrassen.Add(createAchazSubrasseMaraskan());
+                                moeglicheSubrassen.Add(());
+                                moeglicheSubrassen.Add(());
+                                moeglicheSubrassen.Add(());
+                                moeglicheSubrassen.Add(());
                                 break;
 
                             default:
@@ -256,6 +354,7 @@ namespace rassenStruktur
                 }
             }
         }
+ * */
 
         private static subrasse createMittellaenderSubrasseKeine()
         {

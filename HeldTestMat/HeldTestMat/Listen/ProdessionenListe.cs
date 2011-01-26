@@ -795,14 +795,18 @@ namespace Listen
         // Edelhandwerker
         [Description("Apothekarius")]
         Apothekarius,
-        [Description("Baumester")]
-        Baumester,
+        [Description("Baumeister")]
+        Baumeister,
         [Description("Deichmeister")]
         Deichmeister,
         [Description("Drucker")]
         Drucker,
-        [Description("Hüttenkundiger/Bronzegießer/Eisengießer")]
-        HuettenkundigerBronze,
+        [Description("Hüttenkundiger")]
+        Huettenkundiger,
+        [Description("Bronzegießer")]
+        Bronzegiesser,
+        [Description("Eisengießer")]
+        Eisengiesser,
         [Description("Mechanikus")]
         Mechanikus,
         [Description("Schiffbauer")]
