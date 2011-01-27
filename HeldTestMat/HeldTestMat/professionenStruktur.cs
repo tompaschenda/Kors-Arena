@@ -921,6 +921,26 @@ namespace professionenStruktur
                             moeglicheSubprofessionen.Add(createEdelSubTresorbauer());
                             moeglicheSubprofessionen.Add(createEdelSubUhrmacher());
                             break;
+                        ///////////////////////////////////////
+                        //  Gelehrter
+                        ///////////////////////////////////////
+                        case ProfessionsName.Gelehrter:
+                            profession = value;
+                            moeglicheSubprofessionen = new List<subprofession>();
+                            moeglicheSubprofessionen.Add(createGelehrterSubAnatom());
+                            moeglicheSubprofessionen.Add(createGelehrterSubHistoriker());
+                            moeglicheSubprofessionen.Add(createGelehrterSubMathe());
+                            moeglicheSubprofessionen.Add(createGelehrterSubMawdli());
+                            moeglicheSubprofessionen.Add(createGelehrterSubMedicus());
+                            moeglicheSubprofessionen.Add(createGelehrterSubPhilo());
+                            moeglicheSubprofessionen.Add(createGelehrterSubMeta());
+                            moeglicheSubprofessionen.Add(createGelehrterSubRechtsgelehrter());
+                            moeglicheSubprofessionen.Add(createGelehrterSubSprachenkundler());
+                            moeglicheSubprofessionen.Add(createGelehrterSubSternkundiger());
+                            moeglicheSubprofessionen.Add(createGelehrterSubVoelker());
+                            moeglicheSubprofessionen.Add(createGelehrterSubSagenkundler());
+                            moeglicheSubprofessionen.Add(createGelehrterSubZahlen());
+                            break;
 
                         default:
                             throw new System.ArgumentOutOfRangeException();
@@ -933,28 +953,591 @@ namespace professionenStruktur
             }
         }
 
+        private subprofession createGelehrterSubZahlen()
+        {
+            throw new NotImplementedException();
+        }
 
+        private subprofession createGelehrterSubSagenkundler()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubVoelker()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubSternkundiger()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubSprachenkundler()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubRechtsgelehrter()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubMeta()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubPhilo()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubMedicus()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubMawdli()
+        {
+            throw new NotImplementedException();
+        }
+
+        private subprofession createGelehrterSubMathe()
+        {
+            var subkeine = createGelehrterSubKeine();
+            subkeine.name = SubProfessionsName.Mathematicus;
+            subkeine.generierungskosten = 0;
+
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Intuition, wert = +13 });
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.BrettUndKartenspiel, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Kryptographie, wert = +4 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +4 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sprachenkunde, wert = +3 });
+
+            // TOCHECK: und nochmal drei Sprachen...
+            var wahlSpracheEins = new wahlmoeglichkeiten();
+            var SprachenSubsets = new SprachKategorien();
+            wahlSpracheEins.sprachen = new List<SprachenIdentifier>() { };
+            wahlSpracheEins.sprachen.AddRange(SprachenSubsets.GetSprachen());
+            wahlSpracheEins.talentWerte = new int[3];
+            wahlSpracheEins.talentWerte[0] = +2;
+            wahlSpracheEins.talentWerte[1] = +2;
+            wahlSpracheEins.talentWerte[2] = +2;
+            wahlSpracheEins.identifier = "SprachenWahlZusaetzlich";
+            wahlSpracheEins.anzahlZuWaehlen = 3;
+            subkeine.wahlen.Add(wahlSpracheEins);
+
+            // TOCHECK: Und nochmal 5 aus x:
+            var wahlExtra = new wahlmoeglichkeiten();
+            var Talente = new Talentkategorien();
+            wahlExtra.talente = Talente.getWissen();
+            wahlExtra.talente.AddRange(Talente.getHandwerk());
+            wahlExtra.talentWerte = new int[3];
+            wahlExtra.talentWerte[0] = +2;
+            wahlExtra.talentWerte[1] = +2;
+            wahlExtra.talentWerte[2] = +1;
+            wahlExtra.anzahlZuWaehlen = 3;
+            subkeine.wahlen.Add(wahlExtra);
+
+            return subkeine;
+        }
+        private subprofession createGelehrterSubHistoriker()
+        {
+            var subkeine = createGelehrterSubKeine();
+            subkeine.name = SubProfessionsName.Historiker;
+            subkeine.generierungskosten = 2;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Etikette, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Geographie, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Geschichtswissen, wert = +5 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Heraldik, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Magiekunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Philosophie, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechtskunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +4 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sprachenkunde, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Staatskunst, wert = +3 });
+
+            // TOCHECK: Bereits aktivierte Sprachen kann man nicht algorithmisch steigern.
+            // Ich setze daher auf die Variante, dass die Wahl überschrieben wird und die Bonuspunkte DIREKT
+            // mit angerechnet werden!
+            // Daher muss ich hier ALLE Wahlen erneuern!
+
+            subkeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            var wahlFecht = new wahlmoeglichkeiten();
+            wahlFecht.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Fechtwaffen}, 
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Staebe},
+            };
+            wahlFecht.talentWerte = new int[1];
+            wahlFecht.talentWerte[0] = +1;
+            wahlFecht.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlFecht);
+
+            var wahlRingen = new wahlmoeglichkeiten();
+            wahlRingen.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Raufen}, 
+                new talentIdentifier(){ name = TalentName.Ringen},
+            };
+            wahlRingen.talentWerte = new int[1];
+            wahlRingen.talentWerte[0] = +1;
+            wahlRingen.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlRingen);
+
+
+            subkeine.sprachen = new List<SprachenIdentifier>() { };
+            subkeine.sprachen.Add(new SprachenIdentifier() { muttersprache = true, wert = +4 });    // +2 Exta!
+
+
+            // TOCHECK: Verwandtschaften von Sprachen sind nicht algorithmisch abbildbar.
+            // Ich erlaube stattdessen die Wahk einer zusätzlichen beliebigen alten Sprache:
+            // Wahl der Schriften:
+            var wahlSpracheEins = new wahlmoeglichkeiten();
+            var SprachenSubsets = new SprachKategorien();
+            wahlSpracheEins.sprachen = new List<SprachenIdentifier>() { };
+            wahlSpracheEins.sprachen.AddRange(SprachenSubsets.GetSprachen());
+            wahlSpracheEins.talentWerte = new int[2];
+            wahlSpracheEins.talentWerte[0] = +8;
+            wahlSpracheEins.talentWerte[1] = +6;
+            wahlSpracheEins.identifier = "SprachenWahlZusaetzlich";
+            wahlSpracheEins.anzahlZuWaehlen = 2;
+            subkeine.wahlen.Add(wahlSpracheEins);
+
+
+            // SCHRIFTEN:
+            subkeine.schriften = new List<SchriftenIdentifier>() { };
+            subkeine.schriften.Add(new SchriftenIdentifier() { schriftZurMuttersprache = true, wert = +6 });
+
+
+            // Eine weitere Schrift darf ausgewählt werden (auch eine alte!)
+            // Wahl der Schriften:
+            var wahlSchriftEins = new wahlmoeglichkeiten();
+            var alleSchriften = new SchriftenKategorien();
+            wahlSchriftEins.schriften = new List<SchriftenIdentifier>() { };
+            wahlSchriftEins.schriften.AddRange(alleSchriften.GetSchriften());
+            wahlSchriftEins.anzahlZuWaehlen = 1;
+            wahlSchriftEins.talentWerte = new int[1];
+            wahlSchriftEins.talentWerte[0] = +7;            // 3 Extra
+            wahlSchriftEins.identifier = "WahlSchrift";
+            subkeine.wahlen.Add(wahlSchriftEins);
+
+
+            // TOCHECK: Nun darf man (genialerweise) noch einmal zwischen Sprachen und
+            // Schriften wählen und obendrein noch 6 Punkte frei verteilen.
+            // Ich lasse hier nur zu, eine weitere Sprache und Schrift um 4, bzw. 2 zu erhöhen. Dafür darf
+            // es jeweils eine beliebige sein.
+            var wahlSchrift2 = new wahlmoeglichkeiten();
+            wahlSchrift2.schriften = new List<SchriftenIdentifier>() { };
+            wahlSchrift2.schriften.AddRange(alleSchriften.GetSchriften());
+            wahlSchrift2.anzahlZuWaehlen = 1;
+            wahlSchrift2.talentWerte = new int[1];
+            wahlSchrift2.talentWerte[0] = +7;           // 3 Extra!
+            wahlSchrift2.identifier = "WahlSchrift2";
+            subkeine.wahlen.Add(wahlSchrift2);
+
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlSprache.sprachen.AddRange(SprachenSubsets.GetSprachen());
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = +2;
+            wahlSprache.identifier = "SprachenWahlZusaetzlich2";
+            wahlSprache.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlSprache);
+
+
+            // TOCHECK: Für die nervigen (!) Auswahlen erlaube ich generell 2 x 2  + 1 x 1 aus ALLEN Talenten!
+            var wahlExtra = new wahlmoeglichkeiten();
+            var Talente = new Talentkategorien();
+            wahlExtra.talente = Talente.getWissen();
+            wahlExtra.talente.AddRange(Talente.getHandwerk());
+            wahlExtra.talentWerte = new int[3];
+            wahlExtra.talentWerte[0] = +2;
+            wahlExtra.talentWerte[1] = +2;
+            wahlExtra.talentWerte[2] = +1;
+            wahlExtra.anzahlZuWaehlen = 3;
+            subkeine.wahlen.Add(wahlExtra);
+
+            return subkeine;
+        }
+        private subprofession createGelehrterSubAnatom()
+        {
+            var subkeine = createGelehrterSubKeine();
+            subkeine.name = SubProfessionsName.Anatom;
+            subkeine.generierungskosten = 2;
+
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Konstitution, wert = +11 });
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Fingerfertigkeit, wert = +11 });
+
+            subkeine.soInterval = new Range() { lower = 6, upper = 11 };
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ringen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.FesselnUndEntfesseln, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Anatomie, wert = +7 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Fleischer, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeKrankheiten, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeWunden, wert = +5 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.MalenUndZeichnen, wert = +2 });
+
+            subkeine.ungeeigneteNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Totenangst });
+
+            // TOCHECK: Für die nervigen (!) Auswahlen erlaube ich generell 3 x 2 aus ALLEN Talenten!
+            var wahlExtra = new wahlmoeglichkeiten();
+            var Talente = new Talentkategorien();
+            wahlExtra.talente = Talente.getWissen();
+            wahlExtra.talente.AddRange(Talente.getHandwerk());
+            wahlExtra.talentWerte = new int[3];
+            wahlExtra.talentWerte[0] = +2;
+            wahlExtra.talentWerte[1] = +2;
+            wahlExtra.talentWerte[2] = +2;
+            wahlExtra.anzahlZuWaehlen = 3;
+            subkeine.wahlen.Add(wahlExtra);
+
+            return subkeine;
+        }
+        private subprofession createGelehrterSubKeine()
+        {
+            var subkeine = new subprofession() { };
+
+            subkeine.name = SubProfessionsName.keine;
+
+            subkeine.zeitaufwaendig = true;
+
+            subkeine.professionenTyp = ProfessionsTyp.HandwerklichUndWissen;
+
+            subkeine.generierungskosten = -1;
+
+            subkeine.voraussetzungen = new professionsVorausssetzungen() { };
+            subkeine.voraussetzungen.eigenschaften = new List<GenericListenNameWertPaar<EigenschaftenName>>()
+            {
+                new GenericListenNameWertPaar<EigenschaftenName>(){ name = EigenschaftenName.Klugheit, wert = +13},
+            };
+
+
+            subkeine.soInterval = new Range() { lower = 7, upper = 12 };
+
+            subkeine.automatischeVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.AkademischeAusbildungGelehrter},
+            };
+
+            subkeine.automatischeNachteile = new List<NachteilsIdentifier>()
+            {
+
+            };
+
+            subkeine.wahlen = new List<wahlmoeglichkeiten>() { };
+
+            subkeine.empfohleneVorteile = new List<VorteilsIdentifier>()
+            {
+                new VorteilsIdentifier(){ name = VorteileName.GutesGedaechtnis},
+            };
+
+            subkeine.empfohleneNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Arroganz},
+                new NachteilsIdentifier(){ name = NachteileName.Vorurteile},
+            };
+
+            subkeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
+            {
+            };
+
+            subkeine.ungeeigneteNachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Unstet},
+            };
+
+            subkeine.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Armbrust, wert = +1},
+                new talentIdentifier(){ name = TalentName.Tanzen, wert = +1},
+                new talentIdentifier(){ name = TalentName.Etikette, wert = +2},
+                new talentIdentifier(){ name = TalentName.Lehren, wert = +3},
+                new talentIdentifier(){ name = TalentName.Menschenkenntnis, wert = +4},
+                new talentIdentifier(){ name = TalentName.SchriftlicherAusdruck, wert = +1},
+                new talentIdentifier(){ name = TalentName.Ueberreden, wert = +2},
+                new talentIdentifier(){ name = TalentName.Ueberzeugen, wert = +2},
+                new talentIdentifier(){ name = TalentName.Geographie, wert = +1},
+                new talentIdentifier(){ name = TalentName.Geschichtswissen, wert = +2},
+                new talentIdentifier(){ name = TalentName.GoetterUndKulte, wert = +1},
+                new talentIdentifier(){ name = TalentName.Philosophie, wert = +1},
+                new talentIdentifier(){ name = TalentName.Rechnen, wert = +4},
+                new talentIdentifier(){ name = TalentName.Rechtskunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.Sprachenkunde, wert = +1},
+                new talentIdentifier(){ name = TalentName.MalenUndZeichnen, wert = +3},
+            };
+
+
+            var wahlFecht = new wahlmoeglichkeiten();
+            wahlFecht.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Fechtwaffen}, 
+                new talentIdentifier(){ name = TalentName.Hiebwaffen},
+                new talentIdentifier(){ name = TalentName.Staebe},
+            };
+            wahlFecht.talentWerte = new int[1];
+            wahlFecht.talentWerte[0] = +1;
+            wahlFecht.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlFecht);
+
+            var wahlRingen = new wahlmoeglichkeiten();
+            wahlRingen.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Raufen}, 
+                new talentIdentifier(){ name = TalentName.Ringen},
+            };
+            wahlRingen.talentWerte = new int[1];
+            wahlRingen.talentWerte[0] = +1;
+            wahlRingen.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlRingen);
+
+
+            subkeine.sprachen = new List<SprachenIdentifier>() { };
+            subkeine.sprachen.Add(new SprachenIdentifier() { muttersprache = true, wert = +2 });
+
+
+            // TOCHECK: Verwandtschaften von Sprachen sind nicht algorithmisch abbildbar.
+            // Ich erlaube stattdessen die Wahk einer zusätzlichen beliebigen alten Sprache:
+            var wahlSpracheEins = new wahlmoeglichkeiten();
+            var SprachenSubsets = new SprachKategorien();
+            wahlSpracheEins.sprachen = new List<SprachenIdentifier>() { };
+            wahlSpracheEins.sprachen.AddRange(SprachenSubsets.GetSprachen());
+            wahlSpracheEins.talentWerte = new int[2];
+            wahlSpracheEins.talentWerte[0] = +8;
+            wahlSpracheEins.talentWerte[1] = +6;
+            wahlSpracheEins.identifier = "SprachenWahlZusaetzlich";
+            wahlSpracheEins.anzahlZuWaehlen = 2;
+            subkeine.wahlen.Add(wahlSpracheEins);
+
+
+            // SCHRIFTEN:
+            subkeine.schriften = new List<SchriftenIdentifier>() { };
+            subkeine.schriften.Add(new SchriftenIdentifier() { schriftZurMuttersprache = true, wert = +6 });
+
+
+            // Eine weitere Schrift darf ausgewählt werden (auch eine alte!)
+            // Wahl der Schriften:
+            var wahlSchriftEins = new wahlmoeglichkeiten();
+            var alleSchriften = new SchriftenKategorien();
+            wahlSchriftEins.schriften = new List<SchriftenIdentifier>() { };
+            wahlSchriftEins.schriften.AddRange(alleSchriften.GetSchriften());
+            wahlSchriftEins.anzahlZuWaehlen = 1;
+            wahlSchriftEins.talentWerte = new int[1];
+            wahlSchriftEins.talentWerte[0] = +4;
+            wahlSchriftEins.identifier = "WahlSchrift";
+            subkeine.wahlen.Add(wahlSchriftEins);
+
+
+            // TOCHECK: Nun darf man (genialerweise) noch einmal zwischen Sprachen und
+            // Schriften wählen und obendrein noch 6 Punkte frei verteilen.
+            // Ich lasse hier nur zu, eine weitere Sprache und Schrift um 4, bzw. 2 zu erhöhen. Dafür darf
+            // es jeweils eine beliebige sein.
+            var wahlSchrift2 = new wahlmoeglichkeiten();
+            wahlSchrift2.schriften = new List<SchriftenIdentifier>() { };
+            wahlSchrift2.schriften.AddRange(alleSchriften.GetSchriften());
+            wahlSchrift2.anzahlZuWaehlen = 1;
+            wahlSchrift2.talentWerte = new int[1];
+            wahlSchrift2.talentWerte[0] = +4;
+            wahlSchrift2.identifier = "WahlSchrift2";
+            subkeine.wahlen.Add(wahlSchrift2);
+
+            var wahlSprache = new wahlmoeglichkeiten();
+            wahlSprache.sprachen = new List<SprachenIdentifier>() { };
+            wahlSprache.sprachen.AddRange(SprachenSubsets.GetSprachen());
+            wahlSprache.talentWerte = new int[1];
+            wahlSprache.talentWerte[0] = +2;
+            wahlSprache.identifier = "SprachenWahlZusaetzlich2";
+            wahlSprache.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlSprache);
+
+            // TOCHECK: Die SF "nandusgefälliges Wesen" muss automatisch aus dem
+            // Vorteil der akademischen Ausbildungen kommen und wir daher
+            // hier nicht (!) hinzugefügt, damit sie hinterher nicht doppelt vorkommt!
+
+            return subkeine;
+        }
 
         private subprofession createEdelSubUhrmacher()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createEdelSubKeine();
+            subkeine.name = SubProfessionsName.Uhrmacher;
+            subkeine.generierungskosten = 3;
 
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Klugheit, wert = +13 });
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Fingerfertigkeit, wert = +14 });
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +4 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Schaetzen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sternkunde, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Feinmechanik, wert = +7 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.MalenUndZeichnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SchloesserKnacken, wert = +3 });
+
+            // TOCHECK: Auswahl 10 aus BLA.
+            var wahlExtra = new wahlmoeglichkeiten();
+            wahlExtra.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Alchimie}, 
+                new talentIdentifier(){ name = TalentName.Anatomie},
+                new talentIdentifier(){ name = TalentName.Etikette},
+                new talentIdentifier(){ name = TalentName.Glaskunst},
+                new talentIdentifier(){ name = TalentName.Gesteinskunde},
+                new talentIdentifier(){ name = TalentName.Handel},
+                new talentIdentifier(){ name = TalentName.Heraldik},
+                new talentIdentifier(){ name = TalentName.MalenUndZeichnen},
+                new talentIdentifier(){ name = TalentName.Metallguss},
+            };
+            wahlExtra.talentWerte = new int[4];
+            wahlExtra.talentWerte[0] = +2;
+            wahlExtra.talentWerte[1] = +2;
+            wahlExtra.talentWerte[2] = +2;
+            wahlExtra.talentWerte[3] = +1;
+            wahlExtra.anzahlZuWaehlen = 4;
+            subkeine.wahlen.Add(wahlExtra);
+
+            return subkeine;
+        }
         private subprofession createEdelSubTresorbauer()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createEdelSubKeine();
+            subkeine.name = SubProfessionsName.Tresorbauer;
+            subkeine.generierungskosten = 4;
 
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Klugheit, wert = +13 });
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Fingerfertigkeit, wert = +13 });
+
+            subkeine.voraussetzungen.Rasse.Add( SpielerRassenName.Zwerg);
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Baukunst, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Huettenkunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +5 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechtskunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Schaetzen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Alchimie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Feinmechanik, wert = +6 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Grobschmied, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.MalenUndZeichnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Metallguss, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SchloesserKnacken, wert = +3 });
+
+            return subkeine;
+        }
         private subprofession createEdelSubSchiffbauer()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createEdelSubKeine();
+            subkeine.name = SubProfessionsName.Schiffbauer;
+            subkeine.generierungskosten = 5;
 
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Klugheit, wert = +13 });
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Intuition, wert = +11 });
+
+            subkeine.soInterval = new Range() { lower = 8, upper = 12 };
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Hiebwaffen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Schwimmen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.FesselnUndEntfesseln, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.BooteFahren, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Holzbearbeitung, wert = +4 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Seefahrt, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Zimmermann, wert = +7 });
+
+            // TOCHECK: Auswahl 7 aus BLA.
+            var wahlExtra = new wahlmoeglichkeiten();
+            wahlExtra.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Lederarbeiten}, 
+                new talentIdentifier(){ name = TalentName.Seiler},
+                new talentIdentifier(){ name = TalentName.Webkunst},
+                new talentIdentifier(){ name = TalentName.StoffeFaerben},
+                new talentIdentifier(){ name = TalentName.Schaetzen},
+                new talentIdentifier(){ name = TalentName.MalenUndZeichnen},
+            };
+            wahlExtra.talentWerte = new int[4];
+            wahlExtra.talentWerte[0] = +2;
+            wahlExtra.talentWerte[1] = +2;
+            wahlExtra.talentWerte[2] = +2;
+            wahlExtra.talentWerte[3] = +1;
+            wahlExtra.anzahlZuWaehlen = 4;
+            subkeine.wahlen.Add(wahlExtra);
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Talentspezialisierung, auspraegung = TalentName.Zimmermann, subAuspraegung = TalentSpezialisierung.Schiffbau });
+
+            return subkeine;
+        }
         private subprofession createEdelSubMechanikus()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createEdelSubKeine();
+            subkeine.name = SubProfessionsName.Mechanikus;
+            subkeine.generierungskosten = 5;
 
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Klugheit, wert = +13 });
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.Fingerfertigkeit, wert = +12 });
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Hiebwaffen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Fallenstellen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Huettenkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +7 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Alchimie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Feinmechanik, wert = +4 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Grobschmied, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Holzbearbeitung, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Lederarbeiten, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.MalenUndZeichnen, wert = +1 });
+
+            // TOCHECK: Auswahl 10 aus BLA.
+            var wahlExtra = new wahlmoeglichkeiten();
+            wahlExtra.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Baukunst}, 
+                new talentIdentifier(){ name = TalentName.Drucker},
+                new talentIdentifier(){ name = TalentName.SchloesserKnacken},
+                new talentIdentifier(){ name = TalentName.Seiler},
+                new talentIdentifier(){ name = TalentName.SteinschneiderUndJuwelier},
+                new talentIdentifier(){ name = TalentName.Zimmermann},
+                new talentIdentifier(){ name = TalentName.Maurer},
+                new talentIdentifier(){ name = TalentName.Bergbau},
+                new talentIdentifier(){ name = TalentName.Glaskunst},
+                new talentIdentifier(){ name = TalentName.Instrumentenbauer},
+                new talentIdentifier(){ name = TalentName.Metallguss},
+                new talentIdentifier(){ name = TalentName.Steinmetz},
+            };
+            wahlExtra.talentWerte = new int[5];
+            wahlExtra.talentWerte[0] = +2;
+            wahlExtra.talentWerte[1] = +2;
+            wahlExtra.talentWerte[2] = +2;
+            wahlExtra.talentWerte[3] = +2;
+            wahlExtra.talentWerte[4] = +2;
+            wahlExtra.anzahlZuWaehlen = 5;
+            subkeine.wahlen.Add(wahlExtra);
+
+            return subkeine;
+        }
         private subprofession createEdelSubEisen()
         {
             var subkeine = createEdelSubHuettenkundiger();

@@ -17,6 +17,10 @@ namespace rassenStruktur
     /// </summary>
     public class rassenStruct
     {
+        /// <summary>
+        /// Eine Struktur die die Rasse und mögliche Subrassen enthält!
+        /// </summary>
+        /// <param name="spielerRassenName"></param>
         public rassenStruct(SpielerRassenName spielerRassenName)
         {
             this.rasse = spielerRassenName;
@@ -30,6 +34,9 @@ namespace rassenStruktur
         /// </summary>
         public ObservableCollection<subrasse> moeglicheSubrassen;
 
+        /// <summary>
+        /// Gibt mögliche Subrassen zurück:
+        /// </summary>
         public ObservableCollection<subrasse> MoeglicheSubrassen
         {
             get { return moeglicheSubrassen; }
@@ -39,6 +46,10 @@ namespace rassenStruktur
         /// Identifier der Rasse
         /// </summary>
         private SpielerRassenName rasse;
+
+        /// <summary>
+        /// Der Identifier der Rasse
+        /// </summary>
         public SpielerRassenName Identifier
         {
             get
@@ -68,6 +79,10 @@ namespace rassenStruktur
             return Name;
         }
 
+        /// <summary>
+        /// Legt alle möglichen Rassen an, die es gibt!
+        /// </summary>
+        /// <returns></returns>
         public static List<rassenStruct> erzeugeAlleRassen()
         {
             List<rassenStruct> alleRassen = new List<rassenStruct>();
@@ -75,9 +90,26 @@ namespace rassenStruktur
             alleRassen.Add(createTulamide());
             alleRassen.Add(createThorwaler());
             alleRassen.Add(createNivese());
+            alleRassen.Add(createNorbarde());
+            alleRassen.Add(createTrollzacker());
+            alleRassen.Add(createWaldmensch());
+            alleRassen.Add(createUtulu());
+            alleRassen.Add(createElf());
+            alleRassen.Add(createHalbElf());
+            alleRassen.Add(createZwerg());
+            alleRassen.Add(createOrk());
+            alleRassen.Add(createHalbork());
+            alleRassen.Add(createGoblin());
+            alleRassen.Add(createAchaz());
+            
             return alleRassen;
         }
 
+        /// <summary>
+        /// Gibt alle Rassenidentifier zurück:
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <returns></returns>
         static public rassenStruct getRasseByIdentifier(SpielerRassenName identifier)
         {
             var alleRassen = erzeugeAlleRassen();
@@ -2196,6 +2228,7 @@ namespace rassenStruktur
             // auch gleich als Vorteil ein!
             var Orkbiss = new natuerlicheWaffenIdentifier();
             Orkbiss.name = natuerlicheWaffenName.Biss;
+            Orkbiss.schadensWuerfel = new wuerfel();
             Orkbiss.schadensWuerfel.wuerfelanzahl = 1;
             Orkbiss.schadensWuerfel.wuerfelaugen = 6;
             Orkbiss.schadensWuerfel.wuerfeloffset = 1;
@@ -2235,11 +2268,7 @@ namespace rassenStruktur
                 new NachteilsIdentifier(){name = NachteileName.UnangenehmeStimme},
                 new NachteilsIdentifier(){name = NachteileName.Unansehnlich},
                 new NachteilsIdentifier(){name = NachteileName.Arkanophobie},
-                new NachteilsIdentifier()
-                {
-                    name = NachteileName.UnfaehigkeitFuerTalentgruppe, 
-                    auspraegung = TalentKategorie.Gesellschaftlich
-                },
+                new NachteilsIdentifier() {name = NachteileName.UnfaehigkeitFuerTalentgruppe, auspraegung = TalentKategorie.Gesellschaftlich},
             };
             srKeine.ungeeigneteVorteile = new List<VorteilsIdentifier>()
             {
@@ -2421,6 +2450,7 @@ namespace rassenStruktur
             // Außerdem müssen wir die natürliche Waffe anlegen:
             var Goblinbiss = new natuerlicheWaffenIdentifier();
             Goblinbiss.name = natuerlicheWaffenName.Biss;
+            Goblinbiss.schadensWuerfel = new wuerfel();
             Goblinbiss.schadensWuerfel.wuerfelanzahl = 1;
             Goblinbiss.schadensWuerfel.wuerfelaugen = 6;
             Goblinbiss.schadensWuerfel.wuerfeloffset = 0;
@@ -2529,6 +2559,7 @@ namespace rassenStruktur
             // Außerdem müssen wir die natürliche Waffe anlegen:
             var Goblinbiss = new natuerlicheWaffenIdentifier();
             Goblinbiss.name = natuerlicheWaffenName.Biss;
+            Goblinbiss.schadensWuerfel = new wuerfel();
             Goblinbiss.schadensWuerfel.wuerfelanzahl = 1;
             Goblinbiss.schadensWuerfel.wuerfelaugen = 6;
             Goblinbiss.schadensWuerfel.wuerfeloffset = 0;
@@ -2733,12 +2764,14 @@ namespace rassenStruktur
             // Wir legen schon einmal die beiden natürlichen Waffen an:
             var Achazbiss = new natuerlicheWaffenIdentifier();
             Achazbiss.name = natuerlicheWaffenName.Biss;
+            Achazbiss.schadensWuerfel = new wuerfel();
             Achazbiss.schadensWuerfel.wuerfelanzahl = 1;
             Achazbiss.schadensWuerfel.wuerfelaugen = 6;
             Achazbiss.schadensWuerfel.wuerfeloffset = 0;
             Achazbiss.machtNurTPA = true;
             var AchazSchwanz = new natuerlicheWaffenIdentifier();
             AchazSchwanz.name = natuerlicheWaffenName.Schwanz;
+            AchazSchwanz.schadensWuerfel = new wuerfel();
             AchazSchwanz.schadensWuerfel.wuerfelanzahl = 1;
             AchazSchwanz.schadensWuerfel.wuerfelaugen = 6;
             AchazSchwanz.schadensWuerfel.wuerfeloffset = 0;
@@ -2822,12 +2855,14 @@ namespace rassenStruktur
             // Wir legen schon einmal die beiden natürlichen Waffen an:
             var Achazbiss = new natuerlicheWaffenIdentifier();
             Achazbiss.name = natuerlicheWaffenName.Biss;
+            Achazbiss.schadensWuerfel = new wuerfel();
             Achazbiss.schadensWuerfel.wuerfelanzahl = 1;
             Achazbiss.schadensWuerfel.wuerfelaugen = 6;
             Achazbiss.schadensWuerfel.wuerfeloffset = 0;
             Achazbiss.machtNurTPA = true;
             var AchazSchwanz = new natuerlicheWaffenIdentifier();
             AchazSchwanz.name = natuerlicheWaffenName.Schwanz;
+            AchazSchwanz.schadensWuerfel = new wuerfel();
             AchazSchwanz.schadensWuerfel.wuerfelanzahl = 1;
             AchazSchwanz.schadensWuerfel.wuerfelaugen = 6;
             AchazSchwanz.schadensWuerfel.wuerfeloffset = 0;
@@ -2955,6 +2990,10 @@ namespace rassenStruktur
         /// Name der Subrasse. Ist "keine", falls die Rasse keine Subrasse besitzt.
         /// </summary>
         public SpielerSubRassenName name;
+
+        /// <summary>
+        /// Identifier der Rasse:
+        /// </summary>
         public SpielerSubRassenName Identifier
         {
             get

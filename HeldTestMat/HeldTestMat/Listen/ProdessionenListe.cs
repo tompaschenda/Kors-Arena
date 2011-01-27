@@ -822,8 +822,8 @@ namespace Listen
         Anatom,
         [Description("Historiker")]
         Historiker,
-        [Description("Mathematixus")]
-        Mathematixus,
+        [Description("Mathematicus")]
+        Mathematicus,
         [Description("Mawdli")]
         Mawdli,
         [Description("Medicus")]
