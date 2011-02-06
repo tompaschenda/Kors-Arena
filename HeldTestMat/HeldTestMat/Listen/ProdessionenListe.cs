@@ -828,16 +828,20 @@ namespace Listen
         Mawdli,
         [Description("Medicus")]
         Medicus,
-        [Description("Philosoph/Metaphysiker")]
-        Philosophetaphysiker,
+        [Description("Philosoph")]
+        Philosoph,
+        [Description("Metaphysiker")]
+        Metaphysiker,        
         [Description("Rechtsgelehrter")]
         Rechtsgelehrter,
         [Description("Sprachenkundler")]
         Sprachenkundler,
         [Description("Sternkundiger")]
         Sternkundiger,
-        [Description("Völkerkundler/Sagenkundler")]
-        VoelkerkundlerSagenkundler,
+        [Description("Völkerkundler")]
+        Voelkerkundler,
+        [Description("Sagenkundler")]
+        Sagenkundler,
         [Description("Zahlenmystiker")]
         Zahlenmystiker,
 

@@ -670,6 +670,8 @@ namespace Listen
         // Götter/Kulte:
         [Description("je nach Glaubensrichtung")]
         JeNachGlaubensrichtung,
+        [Description("Rastullah")]
+        Rastullah,
 
         // Staatskunde:
         [Description("je nach Staat")]
