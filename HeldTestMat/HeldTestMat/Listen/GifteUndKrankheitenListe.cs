@@ -157,6 +157,10 @@ namespace Listen
         KlerikalemWirken,
         [Description("Fliegenden Wesen")]
         FliegendenWesen,
+        [Description("Nagetiere")]
+        Nagetiere,
+        [Description("Ungeziefer")]
+        Ungeziefer,
     }
 
 }
