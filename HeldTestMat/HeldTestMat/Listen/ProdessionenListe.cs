@@ -886,10 +886,10 @@ namespace Listen
         // Schreiber
         [Description("Amtsschreiberin")]
         Amtsschreiberin,
-        [Description("Kopistin")]
-        Kopistin,
-        [Description("Kontoristin")]
-        Kontoristin,
+        [Description("Kopist")]
+        Kopist,
+        [Description("Kontorist")]
+        Kontorist,
         [Description("Sesh'shemet")]
         SeshShemet,
 
