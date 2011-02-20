@@ -922,6 +922,8 @@ namespace Listen
         Hebamme,
         [Description("Quacksalber/Zahnreißer")]
         QuacksalberZahnreisser,
+        [Description("Brutpfleger der Achaz")]
+        Brutpfleger,
 
         // Alchimist:
         [Description("Bund des Roten Salamanders")]
