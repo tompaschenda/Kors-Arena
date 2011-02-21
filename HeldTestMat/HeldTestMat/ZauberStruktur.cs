@@ -22,6 +22,11 @@ namespace zauberStruktur
         /// Ausprägung des Zaubers (z.B. Element, etc.)
         /// </summary>
         public object auspraegung;
+
+        /// <summary>
+        /// Handelt es sich um eine übernatürliche Begabung?
+        /// </summary>
+        public bool istUebernatuerlicheBegabung;
     };
 
     /// <summary>

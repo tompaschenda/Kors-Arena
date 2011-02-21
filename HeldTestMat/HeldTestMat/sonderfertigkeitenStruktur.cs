@@ -156,6 +156,7 @@ namespace sfStruktur
         /// Ausprägung. Kann sein:
         /// - Talent
         /// - Kultur (SF-Kulturkunde)
+        /// - Ritual (z.B. "Weihe der Schale")
         /// </summary>
         public object auspraegung;
 

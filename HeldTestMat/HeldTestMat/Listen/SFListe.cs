@@ -283,6 +283,8 @@ namespace Listen
         Liturgie,
         [Description("Ritualkenntnis")]
         Ritualkenntnis,
+        [Description("Ritualkenntnis (Alchimist)")]
+        RitualkenntnisAlchimist,
         [Description("Spätweihe")]
         Spaetweihe,
 
@@ -311,8 +313,10 @@ namespace Listen
         DruidischeDolchrituale,
         [Description("Druidische Herrschaftsrituale")]
         DruidischeHerrschaftsrituale,
-        [Description("Eiserner Wille")]
-        EisernerWille,
+        [Description("Eiserner Wille 1")]
+        EisernerWille1,
+        [Description("Eiserner Wille 2")]
+        EisernerWille2,
         [Description("Elementarharmonisierte Aura")]
         ElementarharmonisierteAura,
         [Description("Elfenlieder")]
@@ -349,8 +353,10 @@ namespace Listen
         Konzentrationsstaerke,
         [Description("Kraftkontrolle")]
         Kraftkontrolle,
-        [Description("Kraflinienmagie")]
-        Kraflinienmagie,
+        [Description("Kraflinienmagie 1")]
+        Kraflinienmagie1,
+        [Description("Kraflinienmagie 2")]
+        Kraflinienmagie2,
         [Description("Kristallomantische Rituale")]
         KristallomantischeRituale,
         [Description("Kugelzauber")]
@@ -361,8 +367,11 @@ namespace Listen
         Matrixgeber,
         [Description("Matrixkontrolle")]
         Matrixkontrolle,
-        [Description("Matrixregeneration")]
-        Matrixregeneration,
+        [Description("Matrixregeneration 1")]
+        Matrixregeneration1,
+        [Description("Matrixregeneration 2")]
+        Matrixregeneration2,
+
         [Description("Matrixverständnis")]
         Matrixverstaendnis,
         [Description("Meisterliche Regeneration")]
@@ -536,4 +545,24 @@ namespace Listen
         [Description("Lied der Reinheit")]
         LiedDerReinheit,
     };
+
+    public enum Rituale
+    {
+        [Description("undefined")]
+        undefined,
+
+        // Wir beginnen mit den Schalenzaubern:
+        [Description("Weihe der Schale")]
+        WeiheDerSchale,
+        [Description("Allegorische Analyse")]
+        AllegorischeAnalyse,
+        [Description("Chymische Hochzeit")]
+        ChymischeHochzeit,
+        [Description("Mandricons Bindung")]
+        MandriconsBindung,
+        [Description("FeuerUndEis")]
+        FeuerUndEis,
+        [Description("Transmutation der Elemente")]
+        TransmutationDerElemente,
+    }
 }

@@ -1017,22 +1017,44 @@ namespace professionenStruktur
                         //////////////////////////////////////////////////////////////////////////////
 
                         ///////////////////////////////////////
-                        //  Alchimist
+                        //  Alchimist (magiebegabt!)
+                        ///////////////////////////////////////
+                        case ProfessionsName.MagiebegabterAlchimist:
+                            profession = value;
+                            moeglicheSubprofessionen = new List<subprofession>();
+                            moeglicheSubprofessionen.Add(createAlchimistSubMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaAndergastMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaBrabakMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaFasarMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaFestumMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMengbillaMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubAlAnfaMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubDracheneiMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubFestumMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubKammerjaegerMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubUnauMagiebegabt());
+                            break;
+                        ///////////////////////////////////////
+                        //  Alchimist (NICHT magiebegabt!)
                         ///////////////////////////////////////
                         case ProfessionsName.Alchimist:
                             profession = value;
                             moeglicheSubprofessionen = new List<subprofession>();
                             moeglicheSubprofessionen.Add(createAlchimistSubKeine());
-                            moeglicheSubprofessionen.Add(createAlchimistSubMagiebegabt());
-                            moeglicheSubprofessionen.Add(createAlchimistSubMengbilla());
-                            moeglicheSubprofessionen.Add(createAlchimistSubAlAnfa());
-                            moeglicheSubprofessionen.Add(createAlchimistSubDrachenei());
-                            moeglicheSubprofessionen.Add(createAlchimistSubMethumis());
-                            moeglicheSubprofessionen.Add(createAlchimistSubFestum());
-                            moeglicheSubprofessionen.Add(createAlchimistSubZwergisch());
-                            moeglicheSubprofessionen.Add(createAlchimistSubKammerjaeger());
-                            moeglicheSubprofessionen.Add(createAlchimistSubUnau());
+                            moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaAndergastNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaBrabakNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaFasarNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaFestumNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMengbillaNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubAlAnfaNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubFestumNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubKammerjaegerNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubUnauNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubZwergischNichtMagiebegabt());
                             break;
+
 
                         default:
                             throw new System.ArgumentOutOfRangeException();
@@ -1045,51 +1067,402 @@ namespace professionenStruktur
             }
         }
 
-        private subprofession createAlchimistSubUnau()
+       
+        //////////////////////////////////////////////////////////////////
+        // ANMERKUNG von Matthias: Hier gibt es nun zum ersten Mal die Möglichkeit,
+        // dass sich zwei verschiedene Professionen (Alchimist magiebegabt / nicht magiebegabt)
+        // teilweise DIESELBEN Subprofessionen teilen. Damit es keine Code-Duplication gibt,
+        // musste ich aus diesem Grunde teilweise Wrapper-Funktionen einfügen, die dafür sorgen,
+        // dass alle grundlegenden Werte einer Subprofession nur einmalig eingegeben werden müssen.
+        //////////////////////////////////////////////////////////////////
+
+        private subprofession createAlchimistSubUnauNichtMagiebegabt()
+        {
+            throw new NotImplementedException();
+        }
+        private subprofession createAlchimistSubUnauMagiebegabt()
         {
             throw new NotImplementedException();
         }
 
-        private subprofession createAlchimistSubKammerjaeger()
+        private subprofession createAlchimistSubKammerjaegerNichtMagiebegabt()
+        {
+            throw new NotImplementedException();
+        }
+        private subprofession createAlchimistSubKammerjaegerMagiebegabt()
         {
             throw new NotImplementedException();
         }
 
-        private subprofession createAlchimistSubZwergisch()
+        private subprofession createAlchimistSubZwergischNichtMagiebegabt()
         {
             throw new NotImplementedException();
         }
 
-        private subprofession createAlchimistSubFestum()
+        private subprofession createAlchimistSubFestumNichtMagiebegabt()
+        {
+            throw new NotImplementedException();
+        }
+        private subprofession createAlchimistSubFestumMagiebegabt()
         {
             throw new NotImplementedException();
         }
 
-        private subprofession createAlchimistSubMethumis()
+        private subprofession createAlchimistSubMethumisNichtMagiebegabt()
+        {
+            throw new NotImplementedException();
+        }
+        private subprofession createAlchimistSubMethumisMagiebegabt()
         {
             throw new NotImplementedException();
         }
 
-        private subprofession createAlchimistSubDrachenei()
+        private subprofession createAlchimistSubDracheneiMagiebegabt()
         {
             throw new NotImplementedException();
         }
 
-        private subprofession createAlchimistSubAlAnfa()
+
+        private subprofession createAlchimistSubAlAnfaNichtMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubAlAnfaALL(subkeine);
+            return subkeine;  
+        }
+        private subprofession createAlchimistSubAlAnfaMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubAlAnfaALL(subkeine);
+            return subkeine;           
+        }
+        private subprofession createAlchimistSubAlAnfaALL(subprofession subkeine)
+        {
+            subkeine.name = SubProfessionsName.AlchimistischeUniAlAnfa;
+            subkeine.generierungskosten = subkeine.generierungskosten + 1;
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Unfrei });
+
+            subkeine.mrModifikator = +1;
+            subkeine.soInterval = new Range() { lower = 7, upper = 11 };
+
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungGelehrter });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schulden, wert = +500 });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Verpflichtungen, auspraegung = Verpflichtungen.Dienstherr });
+
+            // Keine 8 frei wählbaren Talente mehr!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlInteresse");
+            // Keine Sprachen- und Schriftboni!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "SprachenWahlZusaetzlich");
+            subkeine.sprachen = new List<SprachenIdentifier>();
+            subkeine.schriften = new List<SchriftenIdentifier>();
+
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Etikette, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gassenwissen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Anatomie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Philosophie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeKrankheiten, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeWunden, wert = +1 });
+
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, zweitsprache = true });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano, wert = +6 });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Mohisch, wert = +4 });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Tulamidya, wert = +5 });
+
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = +7 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.Tulamidya, wert = +4 });
+
+            var wahlRaufen = new wahlmoeglichkeiten();
+            wahlRaufen.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Raufen}, 
+                new talentIdentifier(){ name = TalentName.Ringen},
+            };
+            wahlRaufen.talentWerte = new int[1];
+            wahlRaufen.talentWerte[0] = +1;
+            wahlRaufen.anzahlZuWaehlen = 1;
+            wahlRaufen.identifier = "WahlRaufen";
+            subkeine.wahlen.Add(wahlRaufen);
+
+            // TOCHECK: 12 Punkte aus bereits aktivierten (!) Talenten, max. jedoch bis +8 und +3 pro Talent.
+            // Ich lasse es hingegen zu, dass vier beliebige Talente je +3 gesteigert werden dürfen!
+            var wahlInteresse = new wahlmoeglichkeiten();
+            var Talente = new Talentkategorien();
+            wahlInteresse.talente = Talente.getHandwerk();
+            wahlInteresse.talente.AddRange(Talente.getWissen());
+            wahlInteresse.talentWerte = new int[4];
+            wahlInteresse.talentWerte[0] = +3;
+            wahlInteresse.talentWerte[1] = +3;
+            wahlInteresse.talentWerte[2] = +3;
+            wahlInteresse.talentWerte[3] = +3;
+            wahlInteresse.identifier = "wahlInteresse";
+            wahlInteresse.anzahlZuWaehlen = 4;
+            subkeine.wahlen.Add(wahlInteresse);
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+            subkeine.verbilligteSF.Remove(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+
+            return subkeine;
         }
 
-        private subprofession createAlchimistSubMengbilla()
+        private subprofession createAlchimistSubMengbillaNichtMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubMengbillaSubALL(subkeine);
+            return subkeine;   
         }
+        private subprofession createAlchimistSubMengbillaMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubMengbillaSubALL(subkeine);
+            return subkeine;            
+        }
+        private subprofession createAlchimistSubMengbillaSubALL(subprofession subkeine)
+        {
+            subkeine.generierungskosten = +13;
 
+            subkeine.mrModifikator = +1;
+
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.Astralmacht, wert = +2 });
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.ResistenzGegenBestimmteGiftart });
+
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Prinzipientreue, wert = 6, auspraegung = Prinzipien.GehorsamGilde });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Prinzipientreue, wert = 6, auspraegung = Prinzipien.SchweigepflichtGegenueberInterna });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Prinzipientreue, wert = 6, auspraegung = Prinzipien.VerteidigungForschungsfreiheit });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schulden, wert = +1500 });
+
+            // Keine 8 frei wählbaren Talente mehr!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlInteresse");
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Dolche, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Selbstbeherrschung, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Anatomie, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Magiekunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Philosophie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +3 });
+
+            // TOCHECK: Sind die 4 Punkte hier SOWOHL AUF Sprachen ALS AUCH auf Schriften gemeint?
+            // Ich nehme mal an, dass dies der Fall ist!
+            var wahlSpracheEins = new wahlmoeglichkeiten();
+            var SprachenSubsets = new SprachKategorien();
+            wahlSpracheEins.sprachen = new List<SprachenIdentifier>() { };
+            wahlSpracheEins.sprachen.AddRange(SprachenSubsets.GetHandel());
+            wahlSpracheEins.talentWerte = new int[1];
+            wahlSpracheEins.talentWerte[0] = +4;
+            wahlSpracheEins.identifier = "SprachenWahlZusaetzlich";
+            wahlSpracheEins.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlSpracheEins);
+
+            var wahlSchriftEins = new wahlmoeglichkeiten();
+            var alleSchriften = new SchriftenKategorien();
+            wahlSchriftEins.schriften = new List<SchriftenIdentifier>() { };
+            wahlSchriftEins.schriften.AddRange(alleSchriften.GetSchriften());
+            wahlSchriftEins.anzahlZuWaehlen = 1;
+            wahlSchriftEins.talentWerte = new int[1];
+            wahlSchriftEins.talentWerte[0] = +4;
+            wahlSchriftEins.identifier = "WahlSchrift";
+            subkeine.wahlen.Add(wahlSchriftEins);
+
+            // Wahl zwischen Brauer, etc:
+            var wahlBrauer = new wahlmoeglichkeiten();
+            wahlBrauer.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Brauer}, 
+                new talentIdentifier(){ name = TalentName.GerberUndKuerschner},
+                new talentIdentifier(){ name = TalentName.SchnapsBrennen},
+            };
+            wahlBrauer.talentWerte = new int[1];
+            wahlBrauer.talentWerte[0] = +2;
+            wahlBrauer.anzahlZuWaehlen = 1;
+            wahlBrauer.identifier = "WahlBrauer";
+            subkeine.wahlen.Add(wahlBrauer);
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+            subkeine.verbilligteSF.Remove(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaFestumNichtMagiebegabt()
+        {
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubRoterSalamandaFestumSubALL(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaFestumMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubRoterSalamandaFestumSubALL(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaFasarNichtMagiebegabt()
+        {
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubRoterSalamandaFasarSubALL(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaFasarMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubRoterSalamandaFasarSubALL(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaBrabakNichtMagiebegabt()
+        {
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubRoterSalamandaBrabakSubALL(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaBrabakMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubRoterSalamandaBrabakSubALL(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaAndergastNichtMagiebegabt()
+        {
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubRoterSalamandaAndergastSubALL(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaAndergastMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubRoterSalamandaAndergastSubALL(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaFestumSubALL(subprofession subkeine)
+        {
+            subkeine = createAlchimistSubRoterSalamandaSubKeine(subkeine);
+            subkeine.name = SubProfessionsName.BundDesRotenSalamandersFestum;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Handel, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +1 });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaFasarSubALL(subprofession subkeine)
+        {
+            subkeine = createAlchimistSubRoterSalamandaSubKeine(subkeine);
+            subkeine.name = SubProfessionsName.BundDesRotenSalamandersFasar;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Philosophie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +1 });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaBrabakSubALL(subprofession subkeine)
+        {
+            subkeine = createAlchimistSubRoterSalamandaSubKeine(subkeine);
+            subkeine.name = SubProfessionsName.BundDesRotenSalamandersBrabak;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Drucker, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +1 });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaAndergastSubALL(subprofession subkeine)
+        {
+            subkeine = createAlchimistSubRoterSalamandaSubKeine(subkeine);
+            subkeine.name = SubProfessionsName.BundDesRotenSalamandersAndergast;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Handel, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SchnapsBrennen, wert = +1 });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubRoterSalamandaSubKeine(subprofession subkeine)
+        {
+            subkeine.generierungskosten = +12;
+
+            subkeine.mrModifikator = +1;
+            subkeine.soInterval = new Range() { lower = 7, upper = 11 };
+
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungGelehrter });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Verpflichtungen, auspraegung = Verpflichtungen.Dienstherr });
+
+            // Keine 8 frei wählbaren Talente mehr!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlInteresse");
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gassenwissen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Lehren, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Geschichtswissen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Magiekunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Philosophie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechtskunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Alchimie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Handel, wert = +1 });
+
+            return subkeine;
+        }
         private subprofession createAlchimistSubMagiebegabt()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createAlchimistSubKeine();
+           
+            subkeine.generierungskosten = +11;
 
+            subkeine.aspModifikator = -6;
+
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.Viertelzauberer});
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Alchimie, istMeistertalent = true});
+
+            // Jetzt noch zwei beliebige Meistertalente dazu:
+            var wahlInteresse = new wahlmoeglichkeiten();
+            var Talente = new Talentkategorien();
+            wahlInteresse.talente = Talente.getHandwerk();
+            wahlInteresse.istMeisterHandwerk = true;
+            wahlInteresse.anzahlZuWaehlen = 2;
+            subkeine.wahlen.Add(wahlInteresse);
+
+            // Außerdem gibt es nun noch die Wahl der übernatürlichen Begabungen!
+            // Der Analys und Odem sind schon fest!
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier(){ name = ZauberName.Analys, istUebernatuerlicheBegabung = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Odem, istUebernatuerlicheBegabung = true });
+
+            var wahlUbernatuerlich = new wahlmoeglichkeiten();
+            wahlUbernatuerlich.zauber = subkeine.uebernatuerlicheBegabungen;
+            wahlUbernatuerlich.istUebernatuerlicheBegabung = true;
+            wahlUbernatuerlich.anzahlZuWaehlen = 3;
+            subkeine.wahlen.Add(wahlUbernatuerlich);
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier(){ name = SFNamen.RitualkenntnisAlchimist});
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Ritualkenntins, auspraegung = Rituale.WeiheDerSchale });
+
+            subkeine.verbilligteSF.Add(new sfIdentifier() { name = SFNamen.Matrixregeneration1 });
+            subkeine.verbilligteSF.Add(new sfIdentifier() { name = SFNamen.Regeneration1 });
+
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Apport });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.AuraVerhuellen });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Aurapanzer });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Blutmagie });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.EisernerWille1 });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Gedankenschutz });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Konzentrationsstaerke });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Kraflinienmagie1 });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Ottagaldr });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.TanzDerMada });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Regeneration1 });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Schalenzauber });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.VerbotenePforten });
+            subkeine.moeglicheSF.Add(new sfIdentifier() { name = SFNamen.Zauberzeichen });
+
+            return subkeine;
+        }
         private subprofession createAlchimistSubKeine()
         {
             var subkeine = new subprofession() { };
@@ -1282,6 +1655,7 @@ namespace professionenStruktur
             wahlInteresse.talentWerte[1] = +2;
             wahlInteresse.talentWerte[2] = +2;
             wahlInteresse.talentWerte[3] = +2;
+            wahlInteresse.identifier = "wahlInteresse";
             wahlInteresse.anzahlZuWaehlen = 4;
             subkeine.wahlen.Add(wahlInteresse);
 
@@ -21441,6 +21815,17 @@ namespace professionenStruktur
         /// die Alchimisten benötigt.
         /// </summary>
         public List<ZauberIdentifier> uebernatuerlicheBegabungen;
+
+        /// <summary>
+        /// Gibt an, wie hoch der ASP-Modifikator ist (z.B. für Alchimisten mit
+        /// dem Vorteil Viertelzauber, etc.)
+        /// </summary>
+        public int aspModifikator;
+
+        /// <summary>
+        /// Welche (magischen) SF sind erlaubt? Wird z.B. für den Alchimisten benötigt!
+        /// </summary>
+        public List<sfIdentifier> moeglicheSF;
 
     };
 

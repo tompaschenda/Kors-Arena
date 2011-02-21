@@ -916,6 +916,11 @@ namespace talentStruktur
         /// </summary>
         public object auspraegung;
 
+        /// <summary>
+        /// Wird das Talent als Meistertalent verwendet?
+        /// </summary>
+        public bool istMeistertalent;
+
     };
 
     /// <summary>

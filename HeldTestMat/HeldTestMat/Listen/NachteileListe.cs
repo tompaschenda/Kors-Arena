@@ -73,6 +73,12 @@ namespace Listen
         Befehlsempfaenger,
         [Description("Militärischer Geheimnisträger")]
         MilitaerischerGeheimnistraeger,
+        [Description("Gehorsam gegenüber der Gilde")]
+        GehorsamGilde,
+        [Description("Schweigepflicht gegenüber Interna")]
+        SchweigepflichtGegenueberInterna,
+        [Description("Verteidigung absoluter Forschungsfreiheit")]
+        VerteidigungForschungsfreiheit,
     };
 
     public enum Speisegebote

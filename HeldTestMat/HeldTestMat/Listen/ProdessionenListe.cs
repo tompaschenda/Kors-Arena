@@ -928,6 +928,14 @@ namespace Listen
         // Alchimist:
         [Description("Bund des Roten Salamanders")]
         BundDesRotenSalamanders,
+        [Description("Bund des Roten Salamanders (Andergast)")]
+        BundDesRotenSalamandersAndergast,
+        [Description("Bund des Roten Salamanders (Festum)")]
+        BundDesRotenSalamandersFestum,
+        [Description("Bund des Roten Salamanders (Brabak)")]
+        BundDesRotenSalamandersBrabak,
+        [Description("Bund des Roten Salamanders (Fasar)")]
+        BundDesRotenSalamandersFasar,
         [Description("Gilde der Alchimisten zu Mengbilla")]
         GildeDerAlchimistenZuMengbilla,
         [Description("Alchimistische Fakultät der Universität von Al'Anfa")]

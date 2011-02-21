@@ -86,6 +86,16 @@ namespace spielerAuswahl
     {
 
         /// <summary>
+        /// In diesem Fall darf zwischen mehreren übernatürlichen Begabungen gewählt werden.
+        /// </summary>
+        public bool istUebernatuerlicheBegabung;
+
+        /// <summary>
+        /// In diesem Fall darf zwischen mehreren Meisterhandwerken gewählt werden.
+        /// </summary>
+        public bool istMeisterHandwerk;
+
+        /// <summary>
         /// Ein Identifier, mit dem man die Auswahl eindeutig identifizieren kann.
         /// </summary>
         public string identifier;
