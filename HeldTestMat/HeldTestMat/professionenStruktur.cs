@@ -1030,7 +1030,11 @@ namespace professionenStruktur
                             moeglicheSubprofessionen.Add(createAlchimistSubMengbillaMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubAlAnfaMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubDracheneiMagiebegabt());
-                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisArithmetikMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisGeometrieMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisMusikMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisAstronomieMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubNorburgMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubFestumMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubKammerjaegerMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubUnauMagiebegabt());
@@ -1048,8 +1052,11 @@ namespace professionenStruktur
                             moeglicheSubprofessionen.Add(createAlchimistSubRoterSalamandaFestumNichtMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubMengbillaNichtMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubAlAnfaNichtMagiebegabt());
-                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisNichtMagiebegabt());
-                            moeglicheSubprofessionen.Add(createAlchimistSubFestumNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisArithmetikNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisGeometrieNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisMusikNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubMethumisAstronomieNichtMagiebegabt());
+                            moeglicheSubprofessionen.Add(createAlchimistSubNorburgNichtMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubKammerjaegerNichtMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubUnauNichtMagiebegabt());
                             moeglicheSubprofessionen.Add(createAlchimistSubZwergischNichtMagiebegabt());
@@ -1067,6 +1074,8 @@ namespace professionenStruktur
             }
         }
 
+
+
        
         //////////////////////////////////////////////////////////////////
         // ANMERKUNG von Matthias: Hier gibt es nun zum ersten Mal die Möglichkeit,
@@ -1078,50 +1087,535 @@ namespace professionenStruktur
 
         private subprofession createAlchimistSubUnauNichtMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubUnauAlle(subkeine);
+            return subkeine;
         }
         private subprofession createAlchimistSubUnauMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubUnauAlle(subkeine);
+            return subkeine;   
+        }
+        private subprofession createAlchimistSubUnauAlle(subprofession subkeine)
+        {
+            subkeine.name = SubProfessionsName.AlchimistUnau;
+            subkeine.generierungskosten = subkeine.generierungskosten + 2;
+
+            subkeine.voraussetzungen.geschlechtstyp = GeschlechtNamen.maennlich;
+            subkeine.voraussetzungen.kultur.Add(KulturName.TulamidischeStadtstaaten);
+            // TOCHECK: Den Rastullah-Glauben kann ich (noch) nicht als Voraussetzung implementieren...
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.BrettUndKartenspiel, wert = +2 });
+
+            subkeine.schriften.Remove(new SchriftenIdentifier() { name = SchriftName.Nanduria, wert = +5 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.GeheiligteGlyphen, wert = +5 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.UrTulamidya, wert = +5 });
+
+            var wahlGlas = new wahlmoeglichkeiten();
+            wahlGlas.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Glaskunst}, 
+                new talentIdentifier(){ name = TalentName.Toepfern},
+            };
+            wahlGlas.talentWerte = new int[1];
+            wahlGlas.talentWerte[0] = +3;
+            wahlGlas.anzahlZuWaehlen = 1;
+            wahlGlas.identifier = "WahlToepfern";
+            subkeine.wahlen.Add(wahlGlas);
+            
+            return subkeine;
         }
 
         private subprofession createAlchimistSubKammerjaegerNichtMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubKammerjaegerAlle(subkeine);
+            return subkeine;
         }
         private subprofession createAlchimistSubKammerjaegerMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubKammerjaegerAlle(subkeine);
+            return subkeine;     
+        }
+        private subprofession createAlchimistSubKammerjaegerAlle(subprofession subkeine)
+        {
+            subkeine.name = SubProfessionsName.Kammerjaeger;
+            subkeine.generierungskosten = subkeine.generierungskosten + 1;
+
+            subkeine.automatischeNachteile.Remove(new NachteilsIdentifier() { name = NachteileName.Goldgier, wert = +7 });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.KrankhafteReinlichkeit, wert = +5 });
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Etikette, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Fallenstellen, wert = +5});
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.FesselnUndEntfesseln, wert = +1 });
+            subkeine.talente.Remove(new talentIdentifier() { name = TalentName.Huettenkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +1 });
+            subkeine.talente.Remove(new talentIdentifier() { name = TalentName.Philosophie, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sternkunde, wert = -2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeKrankheiten, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Holzbearbeitung, wert = +1 });
+
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "WahlBrauer");
+
+            subkeine.schriften.Remove(new SchriftenIdentifier() { name = SchriftName.Nanduria, wert = +5 });
+
+            return subkeine;
         }
 
         private subprofession createAlchimistSubZwergischNichtMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubKeine();
+            subkeine.name = SubProfessionsName.ZwergischerAlchimist;
+            subkeine.generierungskosten = subkeine.generierungskosten + 3;
+
+            subkeine.voraussetzungen.kultur.Add(KulturName.Zwerge);
+
+            subkeine.automatischeNachteile.Remove(new NachteilsIdentifier() { name = NachteileName.Goldgier, wert = +7 });
+
+            var wahlNachteil = new wahlmoeglichkeiten();
+            wahlNachteil.nachteile = new List<NachteilsIdentifier>()
+            {
+                new NachteilsIdentifier(){ name = NachteileName.Goldgier, wert = +5},
+                new NachteilsIdentifier(){ name = NachteileName.Neugier, wert = +5},
+            };
+            wahlNachteil.anzahlZuWaehlen = 1;
+            wahlNachteil.identifier = "WahlNachteil";
+            subkeine.wahlen.Add(wahlNachteil);
+
+            // Keine 8 frei wählbaren Talente mehr!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlInteresse");
+            // Keine Sprachen- und Schriftboni!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "SprachenWahlZusaetzlich");
+            subkeine.sprachen = new List<SprachenIdentifier>();
+            subkeine.schriften = new List<SchriftenIdentifier>();
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Huettenkunde, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = -2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sternkunde, wert = -2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Kristallzucht, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Metallguss, wert = +3 });
+
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Angram, wert = +8 });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Rogolan, wert = +2 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.Angram, wert = +6 });
+
+            return subkeine;
         }
 
-        private subprofession createAlchimistSubFestumNichtMagiebegabt()
-        {
-            throw new NotImplementedException();
-        }
         private subprofession createAlchimistSubFestumMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine.name = SubProfessionsName.ZinnoberFestum;
+            subkeine.generierungskosten = subkeine.generierungskosten + 4;
+
+            subkeine.aspModifikator = subkeine.aspModifikator + 1;
+            subkeine.mrModifikator = subkeine.mrModifikator + 1;
+            subkeine.soInterval = new Range() { lower = 7, upper = 11 };
+
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungGelehrter });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schulden, wert = +1500 });
+
+                        // Keine 8 frei wählbaren Talente mehr!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlInteresse");
+            // Keine Sprachen- und Schriftboni!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "SprachenWahlZusaetzlich");
+            subkeine.sprachen = new List<SprachenIdentifier>();
+            subkeine.schriften = new List<SchriftenIdentifier>();
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Selbstbeherrschung, wert = -1});
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Etikette, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ueberzeugen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Geographie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Geschichtswissen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Huettenkunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Magiekunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Philosophie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Alchimie, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeWunden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Kochen, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Metallguss, wert = +1 });
+
+            var wahlInteresse = new wahlmoeglichkeiten();
+            var Talente = new Talentkategorien();
+            wahlInteresse.talente = Talente.getHandwerk();
+            wahlInteresse.talente.AddRange(Talente.getWissen());
+            wahlInteresse.talentWerte = new int[2];
+            wahlInteresse.talentWerte[0] = +2;
+            wahlInteresse.talentWerte[1] = +2;
+            wahlInteresse.identifier = "wahlInteresse";
+            wahlInteresse.anzahlZuWaehlen = 2;
+            subkeine.wahlen.Add(wahlInteresse);
+
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano, wert = +5 });
+
+            // Entweder Ur-Tulamidya oder Alaani als Sprache:
+            var wahlSpracheUr = new wahlmoeglichkeiten();
+            wahlSpracheUr.talente.Add(new talentIdentifier() { name = TalentName.SprachenKennen, auspraegung = SprachenName.UrTulamidya, wert = +2 });
+            wahlSpracheUr.talente.Add(new talentIdentifier() { name = TalentName.SprachenKennen, auspraegung = SprachenName.Alaani, wert = +2 });
+            wahlSpracheUr.talentWerte = new int[1];
+            wahlSpracheUr.talentWerte[0] = 2;
+            wahlSpracheUr.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlSpracheUr);
+
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = +8 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.Nanduria, wert = +5 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.Tulamidya, wert = +4 });
+
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+            subkeine.verbilligteSF.Remove(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+
+            return subkeine;
         }
 
-        private subprofession createAlchimistSubMethumisNichtMagiebegabt()
+        private subprofession createAlchimistSubNorburgNichtMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubNorburgAlle(subkeine);
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.Gebildet, wert = +1 });
+            return subkeine;
         }
-        private subprofession createAlchimistSubMethumisMagiebegabt()
+        private subprofession createAlchimistSubNorburgMagiebegabt()
         {
-            throw new NotImplementedException();
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubNorburgAlle(subkeine);
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.Astralmacht, wert = +1 });
+            return subkeine;            
+        }
+        private subprofession createAlchimistSubNorburgAlle(subprofession subkeine)
+        {
+            subkeine.name = SubProfessionsName.Norburg;
+            subkeine.generierungskosten = subkeine.generierungskosten + 4;
+
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.MU, wert = +12 });
+            subkeine.ungeeigneteNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Totenangst });
+
+            subkeine.mrModifikator = subkeine.mrModifikator + 1;
+            subkeine.soInterval = new Range() { lower = 7, upper = 11 };
+
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungGelehrter});
+
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Prinzipientreue, wert = +8, auspraegung = Prinzipien.VermeidungKrieg });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Prinzipientreue, wert = +8, auspraegung = Prinzipien.SchutzDesLebens });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Prinzipientreue, wert = +8, auspraegung = Prinzipien.HilfeFuerKrankeUndSieche });
+
+            // Keine 8 frei wählbaren Talente mehr!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlInteresse");
+            // Keine Sprachen- und Schriftboni!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "SprachenWahlZusaetzlich");
+            subkeine.sprachen = new List<SprachenIdentifier>();
+            subkeine.schriften = new List<SchriftenIdentifier>();
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Dolche, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Selbstbeherrschung, wert = +1 });
+            subkeine.talente.Remove(new talentIdentifier() { name = TalentName.Gassenwissen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ueberzeugen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.FesselnUndEntfesseln, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Anatomie, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Geschichtswissen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +2 });
+            subkeine.talente.Remove(new talentIdentifier() { name = TalentName.Huettenkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sprachenkunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sternkunde, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeKrankheiten, wert = +4 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeSeele, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeWunden, wert = +3 });
+
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano, zweitsprache = true });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Alaani, wert = +6 });
+
+            var wahlSpracheEins = new wahlmoeglichkeiten();
+            var SprachenSubsets = new SprachKategorien();
+            wahlSpracheEins.sprachen = new List<SprachenIdentifier>() { };
+            wahlSpracheEins.sprachen.AddRange(SprachenSubsets.GetHandel());
+            wahlSpracheEins.talentWerte = new int[1];
+            wahlSpracheEins.talentWerte[0] = +4;
+            wahlSpracheEins.identifier = "SprachenWahlZusaetzlich";
+            wahlSpracheEins.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlSpracheEins);
+
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = +7 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+            subkeine.verbilligteSF.Remove(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+
+            return subkeine;
+        }
+
+        // Hier kommen die Wrapper für Methumis:
+        private subprofession createAlchimistSubMethumisArithmetikNichtMagiebegabt()
+        {
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubMethumisArithmetikAll(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisArithmetikMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubMethumisArithmetikAll(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisGeometrieNichtMagiebegabt()
+        {
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubMethumisGeometrieAll(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisGeometrieMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubMethumisGeometrieAll(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisMusikNichtMagiebegabt()
+        {
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubMethumisMusikAll(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisMusikMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubMethumisMusikAll(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisAstronomieNichtMagiebegabt()
+        {
+            var subkeine = createAlchimistSubKeine();
+            subkeine = createAlchimistSubMethumisAstronomieAll(subkeine);
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisAstronomieMagiebegabt()
+        {
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine = createAlchimistSubMethumisAstronomieAll(subkeine);
+            return subkeine;
+        }
+
+        private subprofession createAlchimistSubMethumisAstronomieAll(subprofession subkeine)
+        {
+            subkeine = createAlchimistSubMethumisGenerell(subkeine);
+
+            subkeine.name = SubProfessionsName.MethumisAstronomie;
+            subkeine.generierungskosten = subkeine.generierungskosten + 6;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Orientierung, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Wettervorhersage, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sternkunde, wert = +4 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Kartographie, wert = +3 });
+
+            subkeine.ungeeigneteNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Nachtblind });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisMusikAll(subprofession subkeine)
+        {
+            subkeine = createAlchimistSubMethumisGenerell(subkeine);
+
+            subkeine.name = SubProfessionsName.MethumisMusiklehre;
+            subkeine.generierungskosten = subkeine.generierungskosten + 6;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Singen, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sinnesschaerfe, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Tanzen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Zechen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Betoeren, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Musizieren, wert = +3 });
+
+            subkeine.empfohleneVorteile.Add(new VorteilsIdentifier() { name = VorteileName.Wohlklang });
+            subkeine.ungeeigneteNachteile.Add(new NachteilsIdentifier() { name = NachteileName.EingeschraenkterSinn, auspraegung = SinneName.Gehoer });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisGeometrieAll(subprofession subkeine)
+        {
+            subkeine = createAlchimistSubMethumisGenerell(subkeine);
+
+            subkeine.name = SubProfessionsName.MethumisGeomtrie;
+            subkeine.generierungskosten = subkeine.generierungskosten + 5;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.BrettUndKartenspiel, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Kryptographie, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.MalenUndZeichnen, wert = +2 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Talentspezialisierung, auspraegung = TalentName.Rechnen, subAuspraegung = TalentSpezialisierung.Geometrie });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisArithmetikAll(subprofession subkeine)
+        {
+            subkeine = createAlchimistSubMethumisGenerell(subkeine);
+
+            subkeine.name = SubProfessionsName.MethumisArithmetik;
+            subkeine.generierungskosten = subkeine.generierungskosten + 5;
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.BrettUndKartenspiel, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Kryptographie, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.MalenUndZeichnen, wert = +1 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Talentspezialisierung, auspraegung = TalentName.Rechnen, subAuspraegung = TalentSpezialisierung.Arithmetik });
+
+            return subkeine;
+        }
+        private subprofession createAlchimistSubMethumisGenerell(subprofession subkeine)
+        {
+            subkeine.name = SubProfessionsName.UniMethumis;           
+
+            subkeine.soInterval = new Range() { lower = 7, upper = 11 };
+
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungGelehrter });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Verpflichtungen, auspraegung = Verpflichtungen.Herzog });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Verpflichtungen, auspraegung = Verpflichtungen.Universitaet });
+
+            // Keine 8 frei wählbaren Talente mehr!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlInteresse");
+            // Keine Sprachen- und Schriftboni!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "SprachenWahlZusaetzlich");
+            subkeine.sprachen = new List<SprachenIdentifier>();
+            subkeine.schriften = new List<SchriftenIdentifier>();
+            // Kein Gerber / Schnaps brennen!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlGerber");
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Etikette, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SchriftlicherAusdruck, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ueberzeugen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Geschichtswissen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Gesteinskunde, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Mechanik, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechtskunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Glaskunst, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.MalenUndZeichnen, wert = +1 });
+
+            // Sprachen:
+            // TOCHECK: Ich setze eine Lehrsprache hier mit einer Zweitsprache gleich!
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, zweitsprache = true });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Aureliani, wert = +4 });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano, wert = +8 });
+            
+            //  Schriften:
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.ImperialeZeichen, wert = +6 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = +9 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.Nanduria, wert = +6 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+            subkeine.verbilligteSF.Remove(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+
+            return subkeine;
         }
 
         private subprofession createAlchimistSubDracheneiMagiebegabt()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createAlchimistSubMagiebegabt();
+            subkeine.name = SubProfessionsName.AlchimistischeUniAlAnfa;
+            subkeine.generierungskosten = subkeine.generierungskosten + 5;
 
+            subkeine.aspModifikator = +3;
+            subkeine.mrModifikator = 1;
+            subkeine.soInterval = new Range() { lower = 7, upper = 11 };
+
+            subkeine.automatischeVorteile.Add(new VorteilsIdentifier() { name = VorteileName.AkademischeAusbildungGelehrter });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Schulden, wert = +1500 });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Vorurteile, auspraegung = Vorurteile.Echsen, wert = +6 });
+
+            // Keine 8 frei wählbaren Talente mehr!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlInteresse");
+            // Keine Sprachen- und Schriftboni!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "SprachenWahlZusaetzlich");
+            subkeine.sprachen = new List<SprachenIdentifier>();
+            subkeine.schriften = new List<SchriftenIdentifier>();
+
+            // Keine Kampfboni!
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlRingen");
+            subkeine.wahlen[0].loescheEintrag(subkeine.wahlen, "wahlDolch");
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Dolche, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Reiten, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Selbstbeherrschung, wert = -1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Etikette, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ueberreden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Geschichtswissen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Magiekunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Pflanzenkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechnen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Sternkunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Alchimie, wert = +1 });
+            
+
+            // Wahl eines Talents:
+            var wahlGestein = new wahlmoeglichkeiten();
+            wahlGestein.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Gesteinskunde}, 
+                new talentIdentifier(){ name = TalentName.Huettenkunde},
+                new talentIdentifier(){ name = TalentName.Kryptographie},
+                new talentIdentifier(){ name = TalentName.Glaskunst},
+                new talentIdentifier(){ name = TalentName.Metallguss},
+            };
+            wahlGestein.talentWerte = new int[1];
+            wahlGestein.talentWerte[0] = +3;
+            wahlGestein.anzahlZuWaehlen = 1;
+            wahlGestein.identifier = "WahlGestein";
+            subkeine.wahlen.Add(wahlGestein);    
+            
+            // Sprachen:
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Garethi, wert = +4 });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.Bosparano, wert = +4 });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya, wert = +6 });
+
+            // Schriften:
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.KuslikerZeichen, wert = +6 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.Nanduria, wert = +7 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.Tulamidya, wert = +8 });
+            subkeine.schriften.Add(new SchriftenIdentifier() { name = SchriftName.UrTulamidya, wert = +5 });
+
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Talentspezialisierung, auspraegung = TalentName.Kochen, subAuspraegung = TalentSpezialisierung.Traenke});
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name  = SFNamen.RitualkenntnisAlchimist, wert = +1 });
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen});
+
+            subkeine.verbilligteSF.Remove(new sfIdentifier() { name = SFNamen.Talentspezialisierung, auspraegung = TalentName.Kochen });
+            subkeine.verbilligteSF.Remove(new sfIdentifier() { name = SFNamen.NandusgefaelligesWesen });
+            subkeine.verbilligteSF.Add(new sfIdentifier() { name = SFNamen.Zauberzeichen });
+
+            return subkeine;
+        }
 
         private subprofession createAlchimistSubAlAnfaNichtMagiebegabt()
         {
@@ -1617,6 +2111,18 @@ namespace professionenStruktur
             wahlDolch.anzahlZuWaehlen = 1;
             wahlDolch.identifier = "wahlDolch";
             subkeine.wahlen.Add(wahlDolch);
+
+            var wahlRingen = new wahlmoeglichkeiten();
+            wahlRingen.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.Raufen},
+                new talentIdentifier(){ name = TalentName.Ringen}, 
+            };
+            wahlRingen.talentWerte = new int[1];
+            wahlRingen.talentWerte[0] = +2;
+            wahlRingen.anzahlZuWaehlen = 1;
+            wahlRingen.identifier = "wahlRingen";
+            subkeine.wahlen.Add(wahlRingen);
 
             var wahlGerber = new wahlmoeglichkeiten();
             wahlGerber.talente = new List<talentIdentifier>()

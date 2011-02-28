@@ -35,6 +35,10 @@ namespace Listen
         Diebesbande,
         [Description("Auftraggeber")]
         Auftraggeber,
+        [Description("Universität")]
+        Universitaet,
+        [Description("Herzog")]
+        Herzog,
     };
 
     public enum Moralcodices
@@ -79,6 +83,12 @@ namespace Listen
         SchweigepflichtGegenueberInterna,
         [Description("Verteidigung absoluter Forschungsfreiheit")]
         VerteidigungForschungsfreiheit,
+        [Description("Vermeidung von Krieg und Förderung des Friedens")]
+        VermeidungKrieg,
+        [Description("Schutz des Lebens")]
+        SchutzDesLebens,
+        [Description("Hilfe für Kranke und Sieche")]
+        HilfeFuerKrankeUndSieche,
     };
 
     public enum Speisegebote

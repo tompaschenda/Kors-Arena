@@ -166,6 +166,12 @@ namespace sfStruktur
         /// </summary>
         public object subAuspraegung;
 
+        /// <summary>
+        /// Ein absoluter Sonderfall. Manche SF, wie z.B. die Ritualkenntnis für Alchimisten
+        /// müssen mit einem Bonus versehen werden können...
+        /// </summary>
+        public int wert;
+
     }
 
 }
