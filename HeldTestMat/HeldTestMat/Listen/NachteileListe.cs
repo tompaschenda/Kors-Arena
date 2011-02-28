@@ -39,6 +39,10 @@ namespace Listen
         Universitaet,
         [Description("Herzog")]
         Herzog,
+        [Description("Beni Dervez")]
+        BeniDervez,
+        [Description("Rastullahglauben")]
+        RastullahGlauben,
     };
 
     public enum Moralcodices
@@ -89,6 +93,8 @@ namespace Listen
         SchutzDesLebens,
         [Description("Hilfe für Kranke und Sieche")]
         HilfeFuerKrankeUndSieche,
+        [Description("99 Gebote Rastullahs")]
+        GeboteRastullahs,
     };
 
     public enum Speisegebote
@@ -135,6 +141,8 @@ namespace Listen
         NichtAdlige,
         [Description("Unbekanntes")]
         Unbekanntes,
+        [Description("Zwölfgöttergläubige")]
+        Zwoelfgoetterglaeubige,
     }
 
 

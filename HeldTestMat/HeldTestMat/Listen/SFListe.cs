@@ -448,6 +448,8 @@ namespace Listen
         Zauberzeichen,
         [Description("Zibilja-Rituale")]
         ZibiljaRituale,
+        [Description("Ritualkenntnis (Derwisch)")]
+        RitualkenntnisDerwisch,
     }
 
     public enum SFSubNamen
@@ -546,7 +548,7 @@ namespace Listen
         LiedDerReinheit,
     };
 
-    public enum Rituale
+    public enum Schalenzauber
     {
         [Description("undefined")]
         undefined,
@@ -565,4 +567,22 @@ namespace Listen
         [Description("Transmutation der Elemente")]
         TransmutationDerElemente,
     }
+
+    public enum Trommelzauber
+    {
+        [Description("undefined")]
+        undefined,
+
+        [Description("Ruf des Krieges")]
+        RufdesKrieges,
+        [Description("Sturm der Wüste")]
+        SturmDerWueste,
+        [Description("SchutzRastullahs")]
+        SchutzRastullahs,
+        [Description("Rastullahs Güte")]
+        RastullahsGuete,
+        [Description("Zorn des Gottgefälligen")]
+        ZornDesGottgefaelligen,
+    }
+
 }

@@ -116,7 +116,7 @@ namespace Listen
         [Description("Drakned-Glyphen")]
         DraknedGlyphen,  
         [Description("Geheiligte Glyphen von Unau")]
-        GeheiligteGlyphen,  
+        GeheiligteGlyphenUnau,  
         [Description("Gimaril")]
         Gimaril,  
         [Description("Gjalskisch")]

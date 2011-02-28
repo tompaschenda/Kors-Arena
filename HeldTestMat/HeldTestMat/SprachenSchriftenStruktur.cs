@@ -29,7 +29,7 @@ namespace SprachenUndSchriften
                 new SchriftenIdentifier(){ name = SchriftName.Chuchas},
                 new SchriftenIdentifier(){ name = SchriftName.DrakhadZinken},
                 new SchriftenIdentifier(){ name = SchriftName.DraknedGlyphen},
-                new SchriftenIdentifier(){ name = SchriftName.GeheiligteGlyphen},
+                new SchriftenIdentifier(){ name = SchriftName.GeheiligteGlyphenUnau},
                 new SchriftenIdentifier(){ name = SchriftName.Gimaril},
                 new SchriftenIdentifier(){ name = SchriftName.Gjalskisch},
                 new SchriftenIdentifier(){ name = SchriftName.HjaldingscheRunen},
@@ -58,7 +58,7 @@ namespace SprachenUndSchriften
             var schriften = new List<SchriftenIdentifier>()
             {
                 new SchriftenIdentifier(){ name = SchriftName.DrakhadZinken},
-                new SchriftenIdentifier(){ name = SchriftName.GeheiligteGlyphen},
+                new SchriftenIdentifier(){ name = SchriftName.GeheiligteGlyphenUnau},
                 new SchriftenIdentifier(){ name = SchriftName.Gjalskisch},
                 new SchriftenIdentifier(){ name = SchriftName.HjaldingscheRunen},
                 new SchriftenIdentifier(){ name = SchriftName.ImperialeZeichen},
@@ -256,7 +256,7 @@ namespace SprachenUndSchriften
 
                     case SprachenName.Tulamidya:
                         aktSprache.komplexitaet = 18;
-                        aktSprache.zugehoerigeSchriften.Add(SchriftName.GeheiligteGlyphen);
+                        aktSprache.zugehoerigeSchriften.Add(SchriftName.GeheiligteGlyphenUnau);
                         aktSprache.zugehoerigeSchriften.Add(SchriftName.KuslikerZeichen);
                         aktSprache.zugehoerigeSchriften.Add(SchriftName.Tulamidya);
                         break;
@@ -437,7 +437,7 @@ namespace SprachenUndSchriften
                         aktSchrift.komplexitaet = 15;
                         aktSchrift.steigerungsSpalte = SteigerungsspalteName.B;
                         break;
-                    case SchriftName.GeheiligteGlyphen:
+                    case SchriftName.GeheiligteGlyphenUnau:
                         aktSchrift.komplexitaet = 13;
                         break;
                     case SchriftName.Gimaril:
