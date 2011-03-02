@@ -143,9 +143,25 @@ namespace Listen
         Unbekanntes,
         [Description("Zwölfgöttergläubige")]
         Zwoelfgoetterglaeubige,
+        [Description("Geweihte")]
+        Geweihte,
+        [Description("Handwerker")]
+        Handwerker,
+        [Description("Magier")]
+        Magier,
+        [Description("Stadtbewohner")]
+        Stadtbewohner,
     }
 
-
+    public enum FesteGewohnheit
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("barfüßig")]
+        barfuessig,
+        [Description("erdgebunden")]
+        erdgebunden,
+    }
 
     public enum Weltfremd
     {
@@ -165,6 +181,8 @@ namespace Listen
         StaedtischesLeben,
         [Description("menschliche Ansiedlung und Gewohnheiten")]
         MenschlicheAnsiedlungen,
+        [Description("Götterglaube")]
+        Goetterglaube,
 
     }
 

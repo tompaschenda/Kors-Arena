@@ -450,6 +450,10 @@ namespace Listen
         ZibiljaRituale,
         [Description("Ritualkenntnis (Derwisch)")]
         RitualkenntnisDerwisch,
+        [Description("Ritualkenntnis (Druide)")]
+        RitualkenntnisDruide,
+        [Description("Ritualkenntnis (Hexe)")]
+        RitualkenntnisHexe,
     }
 
     public enum SFSubNamen
@@ -585,4 +589,283 @@ namespace Listen
         ZornDesGottgefaelligen,
     }
 
+    public enum DruidischeDolchrituale
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Weihe des Dolches")]
+        weiheDesDolches,
+        [Description("Gespür des Dolches")]
+        gespuerDesDolches,
+        [Description("Bann des Dolches")]
+        bannDesDolches,
+        [Description("Leib des Dolches")]
+        leibDesDolches,
+        [Description("Schutz des Dolches")]
+        schutzDesDolches,
+        [Description("Weg des Dolches")]
+        wegDesDolches,
+        [Description("Ernte des Dolches")]
+        ernteDesDolches,
+        [Description("Lebenskraft des Dolches")]
+        lebenskraftDesDolches,
+        [Description("Opferdolch")]
+        opferdolch,
+        [Description("Schneide des Dolches")]
+        schneideDesDolches,
+        [Description("Weisung des Dolches")]
+        weisungDesDolches,
+    }
+
+    public enum DruidischeHerrschaftsrituale
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Wachs der Herrschaft")]
+        wachsDerHerrschaft,
+        [Description("Miniatur der Herrschaft")]
+        miniaturDerHerrschaft,
+        [Description("Kristall der Herrschaft")]
+        kristallDerHerrschaft,
+        [Description("Amulett der Herrschaft")]
+        amulettDerHerrschaft,
+        [Description("Wurzel des Blutes")]
+        wurzeslDesBlutes,
+    }
+
+    public enum Hexenflueche
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Ängste mehren")]
+        aengsteMehren,
+        [Description("Beiß auf Granit")]
+        beissAufGranit,
+        [Description("Beute")]
+        beute,
+        [Description("Hagelschlag")]
+        hagelschlag,
+        [Description("Hexenschuss")]
+        hexenschuss,
+        [Description("Kornfäule")]
+        kornfaeule,
+        [Description("Krötenkuss")]
+        kroetenkuss,
+        [Description("Mit Blindheit schlagen")]
+        mitBlindheitSchlagen,
+        [Description("Pech an den Hals")]
+        pechAnDenHals,
+        [Description("Pestilenz")]
+        pestilenz,
+        [Description("Schlaf rauben")]
+        schlafRauben,
+        [Description("Todesfluch")]
+        todesfluch,
+        [Description("Unfruchtbarkeit")]
+        unfruchtbarkeit,
+        [Description("Viehverstümmelung")]
+        viehverstuemmelung,
+        [Description("Warzen sprießen")]
+        warzenSpriessen,
+        [Description("Zunge lähmen")]
+        zungeLaehmen,
+    }
+
+    public enum Geodenrituale
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Gestalt aus Rauch")]
+        gestaltAusRauch,
+        [Description("Trank des ungehinderten Weges")]
+        trankDesUngehindertenWeges,
+    }
+
+    public enum Keulenrituale
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Weihe der Keule")]
+        weiheDerKeule,
+        [Description("Härte der Keule")]
+        haerteDerKeule,
+        [Description("Gespür der Keule")]
+        gespuerDerKeule,
+        [Description("Kraft der Keule")]
+        kraftDerKeule,
+        [Description("Hilfe der Keule")]
+        hilfeDerKeule,
+        [Description("Nähe zur Natur")]
+        naeheZurNatur,
+        [Description("Zauber der Keule")]
+        zauberDerKeule,
+        [Description("Bann der Keule")]
+        bannDerKeule,
+        [Description("Geist der Keule")]
+        geistDerKeule,
+        [Description("Apport der Keule")]
+        apportDerKeule,
+    }
+
+    public enum KristallomantischeRituale
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Kristallbindung")]
+        kristallbindung,
+        [Description("Kristallformung")]
+        kristallformung,
+        [Description("Thesiskristall")]
+        thesiskristall,
+        [Description("Madakristall")]
+        madakristall,
+        [Description("Matrixkristall")]
+        matrixkristall,
+        [Description("Kristallkraft bündeln")]
+        kristallkraftBuendeln,
+    }
+
+    public enum Kugelzauber
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Bindung der Kristallkugel")]
+        bindungDerKugel,
+        [Description("Brennglas und Prisma")]
+        brennglasUndPrisma,
+        [Description("Schutz gegen Untote")]
+        schutzGegenUntote,
+        [Description("Warnendes Leuchten")]
+        warnendesLeuchten,
+        [Description("Kugel des Hellsehers")]
+        kugelDesHellsehers,
+        [Description("Kugel des Illusionisten")]
+        kugelDesIllusionisten,
+        [Description("Orbitarium")]
+        orbitarium,
+        [Description("Bilderspiel")]
+        bilderspiel,
+        [Description("Fernbild")]
+        fernbild,
+        [Description("Bildergalerie")]
+        bildergalerie,
+        [Description("H'Szints Auge")]
+        hszintsAuge,
+        [Description("Farben des Geistes")]
+        farbenDesGeistes,
+        [Description("Wachendes Auge")]
+        wachendesAuge,
+    }
+
+    public enum OdunGaben
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Hauch des Odun")]
+        hauchDesOdun,
+        [Description("Blut des Odun")]
+        blutDesOdun,
+        [Description("Haut des Odun")]
+        hautDesOdun,
+        [Description("Ruf des Odun")]
+        rufDesOdun,
+        [Description("Seele des Odun")]
+        seeleDesOdun,
+    }
+
+    public enum SchlangenRingZauber
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Weihe der Schlange")]
+        weiheDerSchlange,
+        [Description("Magnetismus")]
+        magnetismus,
+        [Description("Wasserbann")]
+        wasserbann,
+        [Description("Macht über den Regen")]
+        machtUeberDenRegen,
+        [Description("Seelenfeuer")]
+        seelenfeuer,
+        [Description("Herr der Flammen")]
+        herrDerFlammen,
+        [Description("Macht des Lebens")]
+        machtDesLebens,
+        [Description("Kräfte der Natur")]
+        kraefteDerNatur,
+        [Description("Wirbelnder Luftschild")]
+        wirbelnderLuftschild,
+        [Description("Launen des Windes")]
+        launenDesWindes,
+        [Description("Weg durch Sumus Leib")]
+        wegDurchSumusLeib,
+    }
+
+    public enum Zaubertaenze
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Tanz der Liebe")]
+        tanzDerLiebe,
+        [Description("Tanz der Freude")]
+        tanzDerFreude,
+        [Description("Tanz der Ermutigung")]
+        tanzDerErmutigung,
+        [Description("Tanz der Wahrheit")]
+        tanzDerWahrheit,
+        [Description("Tanz der Erlösung")]
+        tanzDerErloesung,
+        [Description("Tanz der Bilder")]
+        tanzDerBilder,
+        [Description("Tanz ohne Ende")]
+        tanzOhneEnde,
+        [Description("Tanz des Ungehorsams")]
+        tanzDesUngehorsams,
+        [Description("Tanz der Gemeinschaft")]
+        tanzDerGemeinschaft,
+        [Description("Tanz der Weisheit")]
+        tanzDerWeisheit,
+        [Description("Tanz der Unantastbarkeit")]
+        tanzDerUnantastbarkeit,
+        [Description("Selinata")]
+        selinata,
+        [Description("Madayana")]
+        madayana,
+        [Description("Firuns Jagd")]
+        firunsJagd,
+        [Description("Rahjas Begeheren")]
+        rahjasBegehren,
+    }
+
+    public enum ZibiljaRituale
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Scharmseele")]
+        schwarmseele,
+        [Description("Mackestopp")]
+        mackestopp,
+        [Description("Traumseherin")]
+        Traumseherin,
+        [Description("Weisheit der Schrift")]
+        weisheitDerSchrift,
+        [Description("Siegel der ewigen Ruhe")]
+        siegelDerEwigenRuhe,
+        [Description("Unsichtbare Chronik")]
+        unsichtbareChronik,
+        [Description("Winterlage")]
+        winterlager,
+        [Description("Bienenschwarm")]
+        bienenschwarm,
+        [Description("Wachshaut")]
+        wachshaut,
+        [Description("Bienenkönigin")]
+        bienenkoenigin,
+        [Description("Bienenfleiß")]
+        bienenfleiss,
+        [Description("Bienentanz")]
+        bienentanz,
+        [Description("Traumwissen")]
+        traumwissen,
+    }
 }

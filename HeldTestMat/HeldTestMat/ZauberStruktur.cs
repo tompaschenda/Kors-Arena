@@ -27,6 +27,17 @@ namespace zauberStruktur
         /// Handelt es sich um eine übernatürliche Begabung?
         /// </summary>
         public bool istUebernatuerlicheBegabung;
+
+        /// <summary>
+        /// Mit Welchem Wert wird der Zauber gewählt?
+        /// </summary>
+        public int wert;
+
+        /// <summary>
+        /// Handelt es sich um einen Hauszauber?
+        /// </summary>
+        public bool istHauszauber;
+
     };
 
     /// <summary>
