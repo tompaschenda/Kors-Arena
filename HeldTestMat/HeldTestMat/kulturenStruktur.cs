@@ -3442,16 +3442,14 @@ namespace kulturenStruktur
             wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.PfeilDesElements, auspraegung = Element.Eis });
 
             wahlHausZauber.anzahlZuWaehlen = 3;
-            wahlHausZauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlHausZauber);
 
             // Leitzauber:
             var wahlLeitzauber = new wahlmoeglichkeiten();
             wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
-            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauberAlsHauszauber());
 
             wahlLeitzauber.anzahlZuWaehlen = 3;
-            wahlLeitzauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlLeitzauber);
 
             // Maximal 4 weitere:
@@ -3650,16 +3648,14 @@ namespace kulturenStruktur
             wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Memorabia });
 
             wahlHausZauber.anzahlZuWaehlen = 3;
-            wahlHausZauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlHausZauber);
 
             // Leitzauber:
             var wahlLeitzauber = new wahlmoeglichkeiten();
             wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
-            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauberAlsHauszauber());
 
             wahlLeitzauber.anzahlZuWaehlen = 3;
-            wahlLeitzauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlLeitzauber);
 
             // Maximal 4 weitere:
@@ -3814,18 +3810,15 @@ namespace kulturenStruktur
 
 
             wahlHausZauber.anzahlZuWaehlen = 3;
-            wahlHausZauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlHausZauber);
 
             // Leitzauber:
             var wahlLeitzauber = new wahlmoeglichkeiten();
             wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
-            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
-            wahlLeitzauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.KlarumPurum});
-            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.LeibDesWindes });
-
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauberAlsHauszauber());
+            wahlLeitzauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.KlarumPurum, istHauszauber = true});
+            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.LeibDesWindes, istHauszauber = true });
             wahlLeitzauber.anzahlZuWaehlen = 3;
-            wahlLeitzauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlLeitzauber);
 
             // Maximal 4 weitere:
@@ -4192,18 +4185,16 @@ namespace kulturenStruktur
             var wahlHausZauber = new wahlmoeglichkeiten();
             wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
             wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
-            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.WeisseMaehn });
-            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.Zaubernahrung });
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.WeisseMaehn, istHauszauber = true });
+            wahlHausZauber.zauber.Remove(new ZauberIdentifier() { name = ZauberName.Zaubernahrung, istHauszauber = true });
             wahlHausZauber.anzahlZuWaehlen = 3;
-            wahlHausZauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlHausZauber);
 
             // Leitzauber:
             var wahlLeitzauber = new wahlmoeglichkeiten();
             wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
-            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauberAlsHauszauber());
             wahlLeitzauber.anzahlZuWaehlen = 3;
-            wahlLeitzauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlLeitzauber);
 
             // Maximal 4 weitere:
@@ -4299,20 +4290,18 @@ namespace kulturenStruktur
             wahlHausZauber.zauber = new List<ZauberIdentifier>() { };
             var hauszauber = new zauberVorauswahlen();
             wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
-            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
-            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf, istHauszauber = true });
+            wahlHausZauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform, istHauszauber = true });
             wahlHausZauber.anzahlZuWaehlen = 3;
-            wahlHausZauber.zauberHaus = true;
             subHoch.wahlen.Add(wahlHausZauber);
 
             // Leitzauber:
             var wahlLeitzauber = new wahlmoeglichkeiten();
             wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
-            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
-            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf });
-            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform });
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauberAlsHauszauber());
+            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.Firnlauf, istHauszauber = true });
+            wahlLeitzauber.zauber.Add(new ZauberIdentifier() { name = ZauberName.MetamorphoGletscherform, istHauszauber = true });
             wahlLeitzauber.anzahlZuWaehlen = 3;
-            wahlLeitzauber.zauberHaus = true;
             subHoch.wahlen.Add(wahlLeitzauber);
 
             // Maximal 4 weitere:
@@ -4435,15 +4424,13 @@ namespace kulturenStruktur
             var hauszauber = new zauberVorauswahlen();
             wahlHausZauber.zauber.AddRange(hauszauber.GetElfenHauszauber());
             wahlHausZauber.anzahlZuWaehlen = 3;
-            wahlHausZauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlHausZauber);
 
             // Leitzauber:
             var wahlLeitzauber = new wahlmoeglichkeiten();
             wahlLeitzauber.zauber = new List<ZauberIdentifier>() { };
-            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauber());
+            wahlLeitzauber.zauber.AddRange(hauszauber.GetElfenBasisZauberAlsHauszauber());
             wahlLeitzauber.anzahlZuWaehlen = 3;
-            wahlLeitzauber.zauberHaus = true;
             subKeine.wahlen.Add(wahlLeitzauber);
 
             // Maximal 4 weitere:
@@ -11844,64 +11831,64 @@ namespace kulturenStruktur
         { 
             var elfenHauszauber = new List<ZauberIdentifier>()
             {
-                new ZauberIdentifier(){ name = ZauberName.Abveneum},
-                new ZauberIdentifier(){ name = ZauberName.Adlerauge},
-                new ZauberIdentifier(){ name = ZauberName.Adlerschwinge},
-                new ZauberIdentifier(){ name = ZauberName.Aeolitus},
-                new ZauberIdentifier(){ name = ZauberName.Armatrutz},
-                new ZauberIdentifier(){ name = ZauberName.Attributo},
-                new ZauberIdentifier(){ name = ZauberName.Axxeleratus},
-                new ZauberIdentifier(){ name = ZauberName.Balsam},
-                new ZauberIdentifier(){ name = ZauberName.BandUndFessel},
-                new ZauberIdentifier(){ name = ZauberName.Bannbaladin},
-                new ZauberIdentifier(){ name = ZauberName.Baerenruhe},
-                new ZauberIdentifier(){ name = ZauberName.BeherrschungBrechen},
-                new ZauberIdentifier(){ name = ZauberName.BewegungStoeren},
-                new ZauberIdentifier(){ name = ZauberName.BlickAufsWesen},
-                new ZauberIdentifier(){ name = ZauberName.BlickInDieGedanken},
-                new ZauberIdentifier(){ name = ZauberName.BlitzDichFind},
-                new ZauberIdentifier(){ name = ZauberName.Chamaelioni},
-                new ZauberIdentifier(){ name = ZauberName.EinflussBannen},
-                new ZauberIdentifier(){ name = ZauberName.ExposamiLebenskraft},
-                new ZauberIdentifier(){ name = ZauberName.FalkenaugeMeisterschuss},
-                new ZauberIdentifier(){ name = ZauberName.FlimFlam},
-                new ZauberIdentifier(){ name = ZauberName.Fulminictus},
-                new ZauberIdentifier(){ name = ZauberName.Gedankenbilder},
-                new ZauberIdentifier(){ name = ZauberName.Haselbusch},
-                new ZauberIdentifier(){ name = ZauberName.HellsichtTrueben},
-                new ZauberIdentifier(){ name = ZauberName.HilfreicheTatze},
-                new ZauberIdentifier(){ name = ZauberName.KlarumPurum},
-                new ZauberIdentifier(){ name = ZauberName.Kroetensprung},
-                new ZauberIdentifier(){ name = ZauberName.LeibDerErde},
-                new ZauberIdentifier(){ name = ZauberName.Motoricus},
-                new ZauberIdentifier(){ name = ZauberName.Movimento},
-                new ZauberIdentifier(){ name = ZauberName.Nebelwand},
-                new ZauberIdentifier(){ name = ZauberName.Objectovoco},
-                new ZauberIdentifier(){ name = ZauberName.Odem},
-                new ZauberIdentifier(){ name = ZauberName.Penetrizzel},
-                new ZauberIdentifier(){ name = ZauberName.PestilenzErspueren},
-                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Luft},
-                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Humus},
-                new ZauberIdentifier(){ name = ZauberName.Plumbumbarum},
-                new ZauberIdentifier(){ name = ZauberName.Respondami},
-                new ZauberIdentifier(){ name = ZauberName.RuheKoerper},
-                new ZauberIdentifier(){ name = ZauberName.Sanftmut},
-                new ZauberIdentifier(){ name = ZauberName.SeidenzungeElfenwort},
-                new ZauberIdentifier(){ name = ZauberName.Sensibar},
-                new ZauberIdentifier(){ name = ZauberName.Silentium},
-                new ZauberIdentifier(){ name = ZauberName.Solidirid},
-                new ZauberIdentifier(){ name = ZauberName.Somnigravis},
-                new ZauberIdentifier(){ name = ZauberName.SpurlosTrittlos},
-                new ZauberIdentifier(){ name = ZauberName.Tiergedanken},
-                new ZauberIdentifier(){ name = ZauberName.Traumgestalt},
-                new ZauberIdentifier(){ name = ZauberName.Unitatio},
-                new ZauberIdentifier(){ name = ZauberName.VerstaendigungStoeren},
-                new ZauberIdentifier(){ name = ZauberName.Visibili},
-                new ZauberIdentifier(){ name = ZauberName.Wasseratem},
-                new ZauberIdentifier(){ name = ZauberName.WeisseMaehn},
-                new ZauberIdentifier(){ name = ZauberName.Wellenlauf},
-                new ZauberIdentifier(){ name = ZauberName.Windstille},
-                new ZauberIdentifier(){ name = ZauberName.Zaubernahrung},
+                new ZauberIdentifier(){ name = ZauberName.Abveneum, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Adlerauge, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Adlerschwinge, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Aeolitus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Armatrutz, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Attributo, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Axxeleratus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Balsam, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BandUndFessel, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Bannbaladin, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Baerenruhe, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BeherrschungBrechen, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BewegungStoeren, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BlickAufsWesen, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BlickInDieGedanken, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BlitzDichFind, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Chamaelioni, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.EinflussBannen, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.ExposamiLebenskraft, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.FalkenaugeMeisterschuss, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.FlimFlam, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Fulminictus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Gedankenbilder, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Haselbusch, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.HellsichtTrueben, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.HilfreicheTatze, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.KlarumPurum, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Kroetensprung, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.LeibDerErde, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Motoricus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Movimento, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Nebelwand, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Objectovoco, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Odem, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Penetrizzel, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.PestilenzErspueren, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Luft, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Humus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Plumbumbarum, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Respondami, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.RuheKoerper, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Sanftmut, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.SeidenzungeElfenwort, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Sensibar, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Silentium, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Solidirid, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Somnigravis, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.SpurlosTrittlos, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Tiergedanken, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Traumgestalt, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Unitatio, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.VerstaendigungStoeren, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Visibili, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Wasseratem, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.WeisseMaehn, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Wellenlauf, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Windstille, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Zaubernahrung, istHauszauber = true},
             };
             return elfenHauszauber;
         }
@@ -11964,6 +11951,69 @@ namespace kulturenStruktur
                 new ZauberIdentifier(){ name = ZauberName.Visibili},
                 new ZauberIdentifier(){ name = ZauberName.Wasseratem},
                 new ZauberIdentifier(){ name = ZauberName.Windstille},
+            };
+
+            return elfenBasisZauber;
+        }
+
+        /// <summary>
+        /// Wie oben, aber mit dem Unterschied, dass eine Hauszauber-Auswahl bereit stehen soll!
+        /// </summary>
+        /// <returns></returns>
+        public List<ZauberIdentifier> GetElfenBasisZauberAlsHauszauber()
+        {
+            var elfenBasisZauber = new List<ZauberIdentifier>()
+            {
+                new ZauberIdentifier(){ name = ZauberName.Abveneum, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Adlerauge, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Adlerschwinge, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Aeolitus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Armatrutz, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Attributo, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Axxeleratus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Balsam, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BandUndFessel, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Bannbaladin, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Baerenruhe, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BeherrschungBrechen, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BewegungStoeren, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BlickAufsWesen, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BlickInDieGedanken, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.BlitzDichFind, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Chamaelioni, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Eigenschaft, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.EinflussBannen, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.ExposamiLebenskraft, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.FalkenaugeMeisterschuss, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.FlimFlam, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Fulminictus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Gedankenbilder, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Haselbusch, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.HellsichtTrueben, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.HilfreicheTatze, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Motoricus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Movimento, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Nebelwand, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Objectovoco, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Odem, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Penetrizzel, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Luft, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.PfeilDesElements, auspraegung = Element.Humus, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Plumbumbarum, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Respondami, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.RuheKoerper, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Sanftmut, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Sensibar, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Silentium, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Solidirid, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Somnigravis, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.SpurlosTrittlos, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Tiergedanken, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Unitatio, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.VerstaendigungStoeren, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Visibili, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Wasseratem, istHauszauber = true},
+                new ZauberIdentifier(){ name = ZauberName.Windstille, istHauszauber = true},
             };
 
             return elfenBasisZauber;

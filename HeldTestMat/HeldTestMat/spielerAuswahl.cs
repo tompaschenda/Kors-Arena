@@ -111,12 +111,6 @@ namespace spielerAuswahl
         public List<ZauberIdentifier> zauber;
 
         /// <summary>
-        /// Handelt es sich um einen Hauszauber (Leitzauber bei Elfen!)
-        /// </summary>
-        public bool zauberHaus;
-
-
-        /// <summary>
         /// Liste mit SF, zwischen denen gewählt werden darf (ggfs. mit Ausprägung)
         /// </summary>
         public List<sfIdentifier> sonderfertigkeiten;
