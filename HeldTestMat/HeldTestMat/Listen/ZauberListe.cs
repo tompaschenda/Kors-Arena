@@ -504,6 +504,16 @@ namespace Listen
         Vogelzwitschern,
         [Description("Wand aus Dornen")]
         WandAusDornen,
+        [Description("Wand aus Flammen")]
+        WandAusFlammen,
+        [Description("Wand aus Wogen")]
+        WandAusWogen,
+        [Description("Orkanwand")]
+        Orkanwand,
+        [Description("Wand aus Erz")]
+        WandAusErz,
+        [Description("Gletscherwand")]
+        Gletscherwand,
         [Description("Warmes Blut")]
         WarmesBlut,
         [Description("Wasseratem")]

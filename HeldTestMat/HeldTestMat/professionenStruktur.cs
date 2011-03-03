@@ -1084,7 +1084,7 @@ namespace professionenStruktur
                             moeglicheSubprofessionen.Add(createDruideSubKonzilWasser());
                             moeglicheSubprofessionen.Add(createDruideSubKonzilLuft());
                             moeglicheSubprofessionen.Add(createDruideSubKonzilErz());
-                            moeglicheSubprofessionen.Add(createDruideSubKonzilEisen());
+                            moeglicheSubprofessionen.Add(createDruideSubKonzilEis());
                             break;
 
                         default:
@@ -1098,47 +1098,249 @@ namespace professionenStruktur
             }
         }
 
-        private subprofession createDruideSubKonzilEisen()
+        private subprofession createDruideSubKonzilEis()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createDruideSubKonzilBASIS();
+            subkeine.name = SubProfessionsName.KonzilsdruideEis;
+            subkeine.generierungskosten = 21;
 
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Caldofrigo, wert = +6, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Dunkelheit, wert = +6, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Gletscherwand, wert = +7, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.ZornDerElemente, wert = +2, istHauszauber = true });
+
+            // Nicht die Merkmalskenntnis vergessen!
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Eigenschaften });
+
+            return subkeine;
+        }
         private subprofession createDruideSubKonzilErz()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createDruideSubKonzilBASIS();
+            subkeine.name = SubProfessionsName.KonzilsdruideErz;
+            subkeine.generierungskosten = 22;
 
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.KraftDesErzes, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.LeibDesErzes, wert = +4, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.WandAusErz, wert = +4, istHauszauber = true });
+            // TOCHECK: Adamantium ist nur in magischer Rep. vorhanden!
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Adamantium, wert = +2});
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Eisenrost, wert = +3 });
+
+            // Nicht die Merkmalskenntnis vergessen!
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.ElementarErz });
+
+            return subkeine;
+        }
         private subprofession createDruideSubKonzilLuft()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createDruideSubKonzilBASIS();
+            subkeine.name = SubProfessionsName.KonzilsdruideLuft;
+            subkeine.generierungskosten = 22;
 
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Orkanwand, wert = +4, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Wettermeisterschaft, wert = +7, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Windhose, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.LeibDesWindes, wert = +2 });
+
+            // Nicht die Merkmalskenntnis vergessen!
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.ElementarLuft });
+
+            return subkeine;
+        }
         private subprofession createDruideSubKonzilWasser()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createDruideSubKonzilBASIS();
+            subkeine.name = SubProfessionsName.KonzilsdruideWasser;
+            subkeine.generierungskosten = 22;
 
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Mahlstrom, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Nebelleib, wert = +7, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.WandAusWogen, wert = +4, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Nebelwand, wert = +3});
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Wasseratem, wert = +2 });
+
+            // Nicht die Merkmalskenntnis vergessen!
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.ElementarWasser });
+
+            return subkeine;
+        }
         private subprofession createDruideSubKonzilHumus()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createDruideSubKonzilBASIS();
+            subkeine.name = SubProfessionsName.KonzilsdruideHumus;
+            subkeine.generierungskosten = 21;
 
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.SumusElixiere, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.WandAusDornen, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.WeisheitDerBaeume, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.LeibDerErde, wert = +4});
+
+            // Nicht die Merkmalskenntnis vergessen!
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.ElementarHumus });
+
+            return subkeine;
+        }
         private subprofession createDruideSubKonzilFeuer()
         {
-            throw new NotImplementedException();
+            var subkeine = createDruideSubKonzilBASIS();
+            subkeine.name = SubProfessionsName.KonzilsdruideFeuer;
+            subkeine.generierungskosten = 22;
+
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Caldofrigo, wert = +6, istHauszauber = true });
+            // TOCHECK: Eigentlich ist der Igni in MAGISCHER Repräsentation vorhanden! Das wird noch nicht abgebildet!
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Ignifaxius, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.WandAusFlammen, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.ZornDerElemente, wert = +2, istHauszauber = true });
+
+            // Nicht die Merkmalskenntnis vergessen!
+            subkeine.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.ElementarFeuer });
+
+            return subkeine;
         }
-
-
         private subprofession createDruideSubKonzilBASIS()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createDruideSuKeine();
 
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.KO, wert = 11 });
+            subkeine.voraussetzungen.kultur.Add(KulturName.MittellaendischeLandbevoelkerung);
+            subkeine.voraussetzungen.kultur.Add(KulturName.Mhanadistan);
+
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Weltfremd, auspraegung = Weltfremd.Adelsherrschaft, wert = +6 });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.Weltfremd, auspraegung = Weltfremd.WaherungUndGeld, wert = +6 });
+            subkeine.automatischeNachteile.Add(new NachteilsIdentifier() { name = NachteileName.UnfaehigkeitFuerTalentgruppe, auspraegung = TalentKategorie.Gesellschaftlich});
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Staebe, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Klettern, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Koerperbeherrschung, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Faehrtensuchen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Fallenstellen, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Wettervorhersage, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Wildnisleben, wert = +3 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Philosophie, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Tierkunde, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.HeilkundeGift, wert = +2 });
+
+            subkeine.sprachen.Add(new SprachenIdentifier() { zweitsprache = true, name = SprachenName.Tulamidya });
+            subkeine.sprachen.Add(new SprachenIdentifier() { name = SprachenName.UrTulamidya, wert = +3 });
+
+            var wahlSFMerkmal = new wahlmoeglichkeiten();
+            wahlSFMerkmal.sonderfertigkeiten = new List<sfIdentifier>() { };
+            wahlSFMerkmal.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Eis });
+            wahlSFMerkmal.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Gebirge });
+            wahlSFMerkmal.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Höhle });           
+            wahlSFMerkmal.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlSFMerkmal);
+
+            var wahlVerbSF = new wahlmoeglichkeiten();
+            wahlVerbSF.verbilligteSonderfertigkeiten = new List<sfIdentifier>() { };
+            wahlVerbSF.verbilligteSonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Hellsicht });
+            wahlVerbSF.verbilligteSonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Temporal });
+            wahlVerbSF.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlVerbSF);
+
+            subkeine.verbilligteSF.Add(new sfIdentifier() { name = SFNamen.Repraesentation, auspraegung = Zauberreprasentation.Gildenmagisch });
+
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.BlickInDieVergangenheit, wert = +7, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.EinsMitDerNatur, wert = +7, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.ElementarerDiener, wert = +4, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.ZornDerElemente, wert = +4, istHauszauber = true });
+
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Geisterruf, wert = +3 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.GrosseVerwirrung, wert = +2 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.HerrUeberDasTierreich, wert = +3 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.ManifestoElement, wert = +5 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Odem, wert = +5 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.VeraenderungAufheben, wert = +1 });
+
+            return subkeine;
+        }
         private subprofession createDruideSubSumu()
         {
-            throw new NotImplementedException();
-        }
+            var subkeine = createDruideSuKeine();
+            subkeine.name = SubProfessionsName.Sumupriester;
+            subkeine.generierungskosten = 15;
 
+            subkeine.voraussetzungen.eigenschaften.Add(new GenericListenNameWertPaar<EigenschaftenName>() { name = EigenschaftenName.CH, wert = 11 });
+
+            subkeine.soInterval = new Range() { lower = 6, upper = 13 };
+
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Menschenkenntnis, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ueberzeugen, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.GoetterUndKulte, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Heraldik, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Rechtskunde, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.SagenUndLegenden, wert = +2 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Ackerbau, wert = +1 });
+            subkeine.talente.Add(new talentIdentifier() { name = TalentName.Viehzucht, wert = +1 });
+
+            var wahlGift = new wahlmoeglichkeiten();
+            wahlGift.talente = new List<talentIdentifier>()
+            {
+                new talentIdentifier(){ name = TalentName.HeilkundeGift},
+                new talentIdentifier(){ name = TalentName.HeilkundeSeele},
+            };
+            wahlGift.talentWerte = new int[1];
+            wahlGift.talentWerte[0] = +2;
+            wahlGift.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlGift);
+
+            var wahlSFMerkmal = new wahlmoeglichkeiten();
+            wahlSFMerkmal.sonderfertigkeiten = new List<sfIdentifier>() { };
+            wahlSFMerkmal.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Geisterwesen });
+            wahlSFMerkmal.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Heilung });
+            wahlSFMerkmal.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Herbeirufung });
+            wahlSFMerkmal.sonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Verständigung });
+            wahlSFMerkmal.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlSFMerkmal);
+
+            // Verbilligte SF ergeben sich indirekt aus der vorherigen Wahl:
+            var wahlVerbSF = new wahlmoeglichkeiten();
+            wahlVerbSF.verbilligteSonderfertigkeiten = new List<sfIdentifier>() { };
+            wahlVerbSF.verbilligteSonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Geisterwesen });
+            wahlVerbSF.verbilligteSonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Heilung });
+            wahlVerbSF.verbilligteSonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Herbeirufung });
+            wahlVerbSF.verbilligteSonderfertigkeiten.Add(new sfIdentifier() { name = SFNamen.Merkmalskenntnis, auspraegung = ZauberMerkmal.Verständigung });
+            wahlVerbSF.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlVerbSF);
+
+            subkeine.verbilligteSF.Add(new sfIdentifier() { name = SFNamen.Gelaendekunde, auspraegung = GelaendeArt.Wald});
+
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.BeherrschungBrechen, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.EinflussBannen, wert = +5, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Geisterbann, wert = +4, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Geisterruf, wert = +4, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.PestilenzErspueren, wert = +4, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.SumusElixiere, wert = +6, istHauszauber = true });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Tiergedanken, wert = +7, istHauszauber = true });
+
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.AengsteLindern, wert = +1});
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Atemnot, wert = +2 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.HerrUeberDasTierreich, wert = +2 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.KlarumPurum, wert = +2 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.MeisterDerElemente, wert = +2 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Memorans, wert = +3 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.Odem, wert = +3 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.ZauberwesenDerNatur, wert = +2 });
+            subkeine.zauberfertigkeiten.Add(new ZauberIdentifier() { name = ZauberName.ZungeLaehmen, wert = +2 });
+
+            var wahlZauber1 = new wahlmoeglichkeiten();
+            wahlZauber1.zauber = new List<ZauberIdentifier>() { };
+            wahlZauber1.zauber.Add(new ZauberIdentifier() { name = ZauberName.Balsam, wert = +4});
+            wahlZauber1.zauber.Add(new ZauberIdentifier() { name = ZauberName.RuheKoerper, wert = +4});
+            wahlZauber1.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlZauber1);
+
+            var wahlZauber2 = new wahlmoeglichkeiten();
+            wahlZauber2.zauber = new List<ZauberIdentifier>() { };
+            wahlZauber2.zauber.Add(new ZauberIdentifier() { name = ZauberName.BlickAufsWesen, wert = +2});
+            wahlZauber2.zauber.Add(new ZauberIdentifier() { name = ZauberName.Sensibar, wert = +2 });
+            wahlZauber2.anzahlZuWaehlen = 1;
+            subkeine.wahlen.Add(wahlZauber2);
+
+            return subkeine;
+        }
         private subprofession createDruideSubMehrer()
         {
             var subkeine = createDruideSuKeine();
