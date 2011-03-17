@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heldengenerierung_Allgemeines", "Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines.csproj", "{8EA407E6-C93A-4367-A5B2-49D11FBEC0F0}"
 EndProject
 Global

@@ -5,7 +5,6 @@ C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengener
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\bin\Release\Heldengenerierung_Allgemeines.pdb
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\Heldengenerierung_Allgemeines.g.resources
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\Allgemeines.Properties.Resources.resources
-C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\Heldengenerierung_Allgemeines.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\Heldengenerierung_Allgemeines.exe
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\Heldengenerierung_Allgemeines.pdb
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\SubProfession.baml
@@ -14,3 +13,5 @@ C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengener
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\Window1.g.cs
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\SubProfessionAuswahl.baml
 C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\SubProfessionAuswahl.g.cs
+C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\GenerateResource.read.1.tlog
+C:\Users\Admin\Documents\Projekt\Repo\Ordner\Teilfenster Allgemeines\Heldengenerierung_Allgemeines\Heldengenerierung_Allgemeines\obj\Release\GenerateResource.write.1.tlog
