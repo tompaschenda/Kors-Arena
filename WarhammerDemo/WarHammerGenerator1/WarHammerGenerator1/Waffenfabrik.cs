@@ -1,0 +1,431 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Listen;
+
+namespace Waffenfabrik
+{
+    /// <summary>
+    /// Enthält ALLE Waffenobjekte im Spiel.
+    /// </summary>
+    public class waffenfabrik
+    {
+
+        /// <summary>
+        /// Konstruktor:
+        /// </summary>
+        public waffenfabrik() 
+        {
+            // Wir wollen immer alle Waffen sofort anlegen!
+            // Dadurch sind auch sofort alle Waffengattungen für
+            // ALLE Rassen angelegt worden!
+            createAllWeapons();
+        }
+
+        /// <summary>
+        /// Eine Liste, die alle Waffen enthält.
+        /// </summary>
+        public List<waffe> waffen;
+
+        /// <summary>
+        /// Alle Waffen der Space Mariens
+        /// </summary>
+        public List<waffe> spaceMarineWaffen;
+
+        /// <summary>
+        /// Legt in der Waffenstruktur ALLE Waffen ab!
+        /// </summary>
+        public void createAllWeapons()
+        {
+            this.waffen = new List<waffe>() { };
+            this.waffen.AddRange(createAllSpaceMarineWeapons());
+        }
+
+        /// <summary>
+        /// Gibt ein beliebiges Waffenobjekt zurück, unter der Annahme,
+        /// dass eine Waffe eindeutig über ihren Namen identifizierbar ist.
+        /// </summary>
+        /// <returns></returns>
+        public waffe gibMirFolgendeWaffe(Object waffenName)
+        {
+            var gewuenschteWaffe = waffen.Find(
+                delegate(waffe weap)
+            {
+                return weap.name == waffenName;
+            }
+            );
+
+            return gewuenschteWaffe;
+        }
+
+        private List<waffe> createAllSpaceMarineWeapons() 
+        {
+            var waffenListe = new List<waffe>() { };
+
+            waffenListe.Add(createSpaceMarinesAstartes());
+            waffenListe.Add(createSpaceMarinesAuxilaris());
+            waffenListe.Add(createSpaceMarinesBolter());
+            waffenListe.Add(createSpaceMarinesBoltpistole());
+            waffenListe.Add(createSpaceMarinesCrozius());
+            waffenListe.Add(createSpaceMarinesCyclone());
+            waffenListe.Add(createSpaceMarinesDigital());
+            waffenListe.Add(createSpaceMarinesEhrenklinge());
+            waffenListe.Add(createSpaceMarinesEnergieklaue());
+            waffenListe.Add(createSpaceMarinesEnergiefaust());
+            waffenListe.Add(createSpaceMarinesEnergiewaffe());
+            waffenListe.Add(createSpaceMarinesEnergiehammer());
+            waffenListe.Add(createSpaceMarinesFragment());
+            waffenListe.Add(createSpaceMarinesFlammenwerfer());
+            waffenListe.Add(createSpaceMarinesKettenfaust());
+            waffenListe.Add(createSpaceMarinesKettenschwert());
+            waffenListe.Add(createSpaceMarinesKampfmesser());
+            waffenListe.Add(createSpaceMarinesKombimelter());
+            waffenListe.Add(createSpaceMarinesKombiFlammer());
+            waffenListe.Add(createSpaceMarinesKombiPlasma());
+            waffenListe.Add(createSpaceMarinesKonversion());
+            waffenListe.Add(createSpaceMarinesLaserkanone());
+            waffenListe.Add(createSpaceMarinesMeisterhaft());
+            waffenListe.Add(createSpaceMarinesMelterbomben());
+            waffenListe.Add(createSpaceMarinesMelter());
+            waffenListe.Add(createSpaceMarinesMelter());
+            waffenListe.Add(createSpaceMarinesMultimelter());
+            waffenListe.Add(createSpaceMarinesPsiwaffe());
+            waffenListe.Add(createSpaceMarinesPlasmakanone());
+            waffenListe.Add(createSpaceMarinesPlasmapistole());
+            waffenListe.Add(createSpaceMarinesPlasmawerfer());
+            waffenListe.Add(createSpaceMarinesRaketenwerfer());
+            waffenListe.Add(createSpaceMarinesSchwererBolter());
+            waffenListe.Add(createSpaceMarinesSchwererFlammer());
+            waffenListe.Add(createSpaceMarinesSchrotflinte());
+            waffenListe.Add(createSpaceMarinesScharfschuetze());
+            waffenListe.Add(createSpaceMarinesSprenggranaten());
+            waffenListe.Add(createSpaceMarinesSturmbolter());
+            waffenListe.Add(createSpaceMarinesSturmkanone());
+
+            this.spaceMarineWaffen = waffenListe;
+
+            return waffenListe;
+        }
+
+        private waffe createSpaceMarinesAstartes()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.AstartesGranatwerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesAuxilaris()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.AuxilarisGranatwerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesBolter()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Bolter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesBoltpistole()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Boltpistole;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesCrozius()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Crozius;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesCyclone()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.CycloneRaketenwerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesDigital()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Digitalwaffe;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesEhrenklinge()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Ehrenklinge;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesEnergieklaue()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Energieklaue;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesEnergiefaust()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Energiefaust;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesEnergiewaffe()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Energiewaffe;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesEnergiehammer()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Energiehammer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesFragment()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Fragmentgranaten;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesFlammenwerfer()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Flammenwerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesKettenfaust()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Kettenfaust;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesKettenschwert()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Kettenschwert;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesKampfmesser()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Kampfmesser;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesKombimelter()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.KombiMelter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesKombiFlammer()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.KombiFlammenwerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesKombiPlasma()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.KombiPlasmagewehr;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesKonversion()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Konversionsstrahler;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesLaserkanone()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Laserkanone;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesMeisterhaft()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.MeisterhafteWaffe;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesMelterbomben()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Melterbomben;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesMelter()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Melter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesMultimelter()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Multimelter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesPsiwaffe()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Psiwaffe;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesPlasmakanone()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Plasmakanone;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesPlasmapistole()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Plasmapistole;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesPlasmawerfer()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Plasmawerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesRaketenwerfer()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Raketenwerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSchwererBolter()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.SchwererBolter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSchwererFlammer()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.SchwererFlammer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSchrotflinte()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Schrotflinte;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesScharfschuetze()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Scharfschützengewehr;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSprenggranaten()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Sprenggranaten;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSturmbolter()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Sturmbolter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSturmkanone()
+        {
+            var weap = new waffe(){};
+            weap.name = SpaceMarinesWaffen.Sturmkanone;
+
+            return weap;
+        }
+    }
+
+
+
+    /// <summary>
+    /// Definition einer Waffe:
+    /// </summary>
+    public class waffe
+    {
+        /// <summary>
+        /// Name der Waffe
+        /// </summary>
+        public Object name;
+
+        /// <summary>
+        /// Wie viele Hände brauche ich, um die Waffe zu führen?
+        /// Kann 1 oder 2 sein!
+        /// </summary>
+        public int haendigkeit;
+
+        /// <summary>
+        /// Handelt es sich um eine Schusswaffe?
+        /// </summary>
+        public bool istSchusswaffe;
+
+        /// <summary>
+        /// Eine Waffe kann ggfs. mehrere Ausprägungen haben,
+        /// je nachdem, in welchem Modus sie benutzt wird.
+        /// </summary>
+        public List<waffenAuspraegung> auspraegungen;
+    }
+
+    public struct waffenAuspraegung
+    {
+        /// <summary>
+        /// Reichweite der Waffe
+        /// </summary>
+        public Reichweiten reichweite;
+
+        /// <summary>
+        /// Stärke der Waffe. -1 für nicht vorhanden!
+        /// </summary>
+        public int staerke;
+
+        /// <summary>
+        /// Durschschlag der Waffe
+        /// </summary>
+        public int durchschlag;
+
+        /// <summary>
+        /// Von welchen Typ(en) ist die Waffenausprägung?
+        /// </summary>
+        public List<Waffentypen> waffentypen;
+    }
+}
