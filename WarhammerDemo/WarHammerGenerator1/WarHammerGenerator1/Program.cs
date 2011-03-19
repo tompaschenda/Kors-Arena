@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WaffenfabrikNamespace;
 
 
 namespace WarhammerProgramm
@@ -11,9 +12,6 @@ namespace WarhammerProgramm
 
         static void Main()
         {
-
-
-
             System.Console.WriteLine("----------Ein erster Test---------------");
             System.Console.WriteLine("HALLO WARHAMMER FANS");
             System.Console.WriteLine("----------------------------------------");

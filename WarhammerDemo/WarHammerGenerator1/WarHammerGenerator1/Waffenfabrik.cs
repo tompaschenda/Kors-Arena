@@ -4,18 +4,30 @@ using System.Linq;
 using System.Text;
 using Listen;
 
-namespace Waffenfabrik
+namespace WaffenfabrikNamespace
 {
     /// <summary>
     /// Enthält ALLE Waffenobjekte im Spiel.
     /// </summary>
-    public class waffenfabrik
+    class waffenfabrik
     {
 
+        private static waffenfabrik m_Instance;
+
+        public static waffenfabrik getInstance()
+        {
+            if (m_Instance == null)
+            {
+                m_Instance = new waffenfabrik();
+            }
+            return m_Instance;
+        }
+
         /// <summary>
-        /// Konstruktor:
+        /// Konstruktor: Muss privat bleiben, da wir
+        /// ein Singleton haben wollen!
         /// </summary>
-        public waffenfabrik() 
+        private waffenfabrik() 
         {
             // Wir wollen immer alle Waffen sofort anlegen!
             // Dadurch sind auch sofort alle Waffengattungen für
@@ -75,7 +87,6 @@ namespace Waffenfabrik
             waffenListe.Add(createSpaceMarinesEnergiefaust());
             waffenListe.Add(createSpaceMarinesEnergiewaffe());
             waffenListe.Add(createSpaceMarinesEnergiehammer());
-            waffenListe.Add(createSpaceMarinesFragment());
             waffenListe.Add(createSpaceMarinesFlammenwerfer());
             waffenListe.Add(createSpaceMarinesKettenfaust());
             waffenListe.Add(createSpaceMarinesKettenschwert());
@@ -86,7 +97,6 @@ namespace Waffenfabrik
             waffenListe.Add(createSpaceMarinesKonversion());
             waffenListe.Add(createSpaceMarinesLaserkanone());
             waffenListe.Add(createSpaceMarinesMeisterhaft());
-            waffenListe.Add(createSpaceMarinesMelterbomben());
             waffenListe.Add(createSpaceMarinesMelter());
             waffenListe.Add(createSpaceMarinesMelter());
             waffenListe.Add(createSpaceMarinesMultimelter());
@@ -99,7 +109,6 @@ namespace Waffenfabrik
             waffenListe.Add(createSpaceMarinesSchwererFlammer());
             waffenListe.Add(createSpaceMarinesSchrotflinte());
             waffenListe.Add(createSpaceMarinesScharfschuetze());
-            waffenListe.Add(createSpaceMarinesSprenggranaten());
             waffenListe.Add(createSpaceMarinesSturmbolter());
             waffenListe.Add(createSpaceMarinesSturmkanone());
 
@@ -192,13 +201,6 @@ namespace Waffenfabrik
 
             return weap;
         }
-        private waffe createSpaceMarinesFragment()
-        {
-            var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Fragmentgranaten;
-
-            return weap;
-        }
         private waffe createSpaceMarinesFlammenwerfer()
         {
             var weap = new waffe(){};
@@ -244,7 +246,7 @@ namespace Waffenfabrik
         private waffe createSpaceMarinesKombiPlasma()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.KombiPlasmagewehr;
+            weap.name = SpaceMarinesWaffen.KombiPlasmawerfer;
 
             return weap;
         }
@@ -266,13 +268,6 @@ namespace Waffenfabrik
         {
             var weap = new waffe(){};
             weap.name = SpaceMarinesWaffen.MeisterhafteWaffe;
-
-            return weap;
-        }
-        private waffe createSpaceMarinesMelterbomben()
-        {
-            var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Melterbomben;
 
             return weap;
         }
@@ -350,13 +345,6 @@ namespace Waffenfabrik
         {
             var weap = new waffe(){};
             weap.name = SpaceMarinesWaffen.Scharfschützengewehr;
-
-            return weap;
-        }
-        private waffe createSpaceMarinesSprenggranaten()
-        {
-            var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Sprenggranaten;
 
             return weap;
         }

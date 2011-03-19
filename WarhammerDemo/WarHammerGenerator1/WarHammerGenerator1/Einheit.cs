@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Listen;
-using Waffenfabrik;
+using WaffenfabrikNamespace;
+using spielerAnfragen;
 
 namespace EinheitDefinition
 {
@@ -19,13 +20,6 @@ namespace EinheitDefinition
         /// pro Typ dabei?
         /// </summary>
         public List<Groessenspecifier> basisGroesse;
-
-        /// <summary>
-        /// Wie viele Subeinheiten von jedem Typ sind
-        /// TATSÄCHLICH dabei (NACHDEM der Spieler
-        /// sich dafür entschieden hat!)
-        /// </summary>
-        public List<Groessenspecifier> tatsaechlicheGroesse;
 
         /// <summary>
         /// Wievele Basispunktekosten habe ich automatisch?
@@ -47,25 +41,6 @@ namespace EinheitDefinition
         /// Infanterie, Fahrzeug, etc.
         /// </summary>
         public Einheitstyp einheitentyp;
-
-        /// <summary>
-        /// Basisausrüstung der Einheit.
-        /// ACHTUNG: Dies sagt noch nicht, wie die
-        /// eigentlichen Subeinheiten ausgerüstet sind!
-        /// </summary>
-        public List<Object> basisAusruestung;
-
-        /// <summary>
-        /// Basiswaffen der Einheit. ACHTUNG: Dies sagt noch
-        /// nichts über die Bewaffnung der Subeinheiten!
-        /// </summary>
-        public List<waffe> basisWaffen;
-
-        /// <summary>
-        /// Basisrüstungstyp(en) der Einheit. ACHTUNG: Dies sagt
-        /// noch nichts über die Rüstung der Subeinheiten!
-        /// </summary>
-        public List<Object> basisRüstung;
 
         /// <summary>
         /// Welche Sonderregeln gelten für die Einheit?
@@ -123,7 +98,14 @@ namespace EinheitDefinition
         /// Initialisierungen, etc. von Attributen der
         /// Klasse ab.
         /// </summary>
-        public virtual void createUnit() { }
+        public virtual void createUnit() 
+        {
+            // Wenn wir sowieso nur einen Einheitentyp vorliegen haben,
+            // dann können wir ihn auch sofort festlegen,ohne den
+            // Spieler behelligen zu müssen:
+            if (auswahlTypBasis.Count == 1)
+                auswahlTypSpieler = auswahlTypBasis[0];
+        }
 
         /// <summary>
         /// Hier sind die eigentlichen Subeinheiten
@@ -165,7 +147,6 @@ namespace EinheitDefinition
         /// Eine Einheit kann immer nur EINE Rüstung tragen!
         /// </summary>
         public Object ruestung;
-
     }
 
     /// <summary>

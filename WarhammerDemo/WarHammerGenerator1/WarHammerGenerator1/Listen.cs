@@ -155,8 +155,8 @@ namespace Listen
         Kampftrupps,
         [Description("Orbitales Bombardement")]
         OrbitalesBombardement,
-        [Description("Tod oder Ehre")]
-        TodOderEhre,
+        [Description("Kriegerstolz")]
+        Kriegerstolz,
         [Description("Die Ehre des Ordens")]
         DieEhreDesOrdens,
         [Description("Liturgien der Schlacht")]
@@ -444,8 +444,6 @@ namespace Listen
         Energiewaffe,
         [Description("Energiehammer")]
         Energiehammer,
-        [Description("Fragmentgranaten")]
-        Fragmentgranaten,
         [Description("Flammenwerfer")]
         Flammenwerfer,
         [Description("Kettenfaust")]
@@ -458,16 +456,14 @@ namespace Listen
         KombiMelter,
         [Description("Kombiflammenwerfer")]
         KombiFlammenwerfer,
-        [Description("Kombiplasmagewehr")]
-        KombiPlasmagewehr,
+        [Description("Kombiplasmawerfer")]
+        KombiPlasmawerfer,
         [Description("Konversionsstrahler")]
         Konversionsstrahler,
         [Description("Laserkanone")]
         Laserkanone,
         [Description("Meisterhafte Waffe")]
         MeisterhafteWaffe,
-        [Description("Melterbomben")]
-        Melterbomben,
         [Description("Melter")]
         Melter,
         [Description("Multimelter")]
@@ -490,8 +486,6 @@ namespace Listen
         Schrotflinte,
         [Description("Scharfschützengewehr")]
         Scharfschützengewehr,
-        [Description("Sprenggranaten")]
-        Sprenggranaten,
         [Description("Sturmbolter")]
         Sturmbolter,
         [Description("Sturmkanone")]
@@ -540,6 +534,12 @@ namespace Listen
         Tarnmantel,
         [Description("Teleport-Peilsender")]
         TeleportPeilsender,
+        [Description("Melterbomben")]
+        Melterbomben,
+        [Description("Fragmentgranaten")]
+        Fragmentgranaten,
+        [Description("Sprenggranaten")]
+        Sprenggranaten,
     }
 
     public enum SpaceMarinesRuestungen
