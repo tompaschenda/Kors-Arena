@@ -1,0 +1,30 @@
+﻿<Window x:Class="WarhammerGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ArmyBench" Height="768" Width="1024">
+    <Grid>
+        <Menu Grid.Column="0" Grid.Row="0" Height="23" VerticalAlignment="Top">
+            <MenuItem Header="Datei">
+                <MenuItem Header="Neue Streitmacht"></MenuItem>
+                <MenuItem Header="Streitmacht Öffnen"></MenuItem>
+                <MenuItem Header="Streitmacht Speichern"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Beenden"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Bearbeiten">
+                <MenuItem Header="Neue Auswahlregel"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <ListBox Height="345" HorizontalAlignment="Left" Margin="111,144,0,0" Name="Armeeliste" VerticalAlignment="Top" Width="212" >
+            <ListBoxItem>Beispielarmee 1</ListBoxItem>
+            <ListBoxItem>Beispielarmee 2</ListBoxItem>
+        </ListBox>
+        <Label Content="Eigenschaften der Streitmacht" Height="31" HorizontalAlignment="Left" Margin="404,86,0,0" Name="label1" VerticalAlignment="Top" Width="258" FontWeight="Bold" />
+        <Label Content="Fraktion:" Height="28" HorizontalAlignment="Left" Margin="404,178,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Armeeliste:" FontWeight="Bold" Height="31" HorizontalAlignment="Left" Margin="111,86,0,0" Name="label3" VerticalAlignment="Top" Width="258" />
+        <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="404,144,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Gesamtpunkte:" Height="28" HorizontalAlignment="Left" Margin="404,212,0,0" Name="label5" VerticalAlignment="Top" />
+        <Button Content="Streitmacht bearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,323,0,0" Name="button1" VerticalAlignment="Top" Width="196" />
+        <Button Content="Neue Streitmacht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,372,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickNeueStreitmacht" />
+    </Grid>
+</Window>
