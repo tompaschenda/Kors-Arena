@@ -4,27 +4,33 @@
         Title="ArmyBench" Height="768" Width="1024">
     <Grid>
         <Menu Grid.Column="0" Grid.Row="0" Height="23" VerticalAlignment="Top">
-            <MenuItem Header="Datei">
-                <MenuItem Header="Neue Streitmacht"></MenuItem>
+            <MenuItem Header="Datei" >
+                <MenuItem Header="Neue Streitmacht" Click="klickNeueStreitmachtMenu"></MenuItem>
                 <MenuItem Header="Streitmacht Öffnen"></MenuItem>
+                <MenuItem Header="Streitmacht Kopieren"></MenuItem>
                 <MenuItem Header="Streitmacht Speichern"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Beenden"></MenuItem>
+                <MenuItem Header="Streitmacht Löschen"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Beenden" Click="klickQuitMenu"></MenuItem>
             </MenuItem>
             <MenuItem Header="Bearbeiten">
                 <MenuItem Header="Neue Auswahlregel"></MenuItem>
             </MenuItem>
         </Menu>
-        <ListBox Height="345" HorizontalAlignment="Left" Margin="111,144,0,0" Name="Armeeliste" VerticalAlignment="Top" Width="212" >
-            <ListBoxItem>Beispielarmee 1</ListBoxItem>
-            <ListBoxItem>Beispielarmee 2</ListBoxItem>
+        <ListBox Height="345" HorizontalAlignment="Left" Margin="111,144,0,0" Name="ListBoxArmeeListe" VerticalAlignment="Top" Width="247" SelectionChanged="detailsAktualisieren" >
         </ListBox>
         <Label Content="Eigenschaften der Streitmacht" Height="31" HorizontalAlignment="Left" Margin="404,86,0,0" Name="label1" VerticalAlignment="Top" Width="258" FontWeight="Bold" />
         <Label Content="Fraktion:" Height="28" HorizontalAlignment="Left" Margin="404,178,0,0" Name="label2" VerticalAlignment="Top" />
         <Label Content="Armeeliste:" FontWeight="Bold" Height="31" HorizontalAlignment="Left" Margin="111,86,0,0" Name="label3" VerticalAlignment="Top" Width="258" />
         <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="404,144,0,0" Name="label4" VerticalAlignment="Top" />
         <Label Content="Gesamtpunkte:" Height="28" HorizontalAlignment="Left" Margin="404,212,0,0" Name="label5" VerticalAlignment="Top" />
-        <Button Content="Streitmacht bearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,323,0,0" Name="button1" VerticalAlignment="Top" Width="196" />
-        <Button Content="Neue Streitmacht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,372,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickNeueStreitmacht" />
+        <Button Content="Streitmacht bearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,360,0,0" Name="button1" VerticalAlignment="Top" Width="196" />
+        <Button Content="Neue Streitmacht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,307,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickNeueStreitmacht" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="548,144,0,0" Name="displayArmyName" VerticalAlignment="Top" Width="386" IsEnabled="True" IsReadOnly="True" BorderBrush="White" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="548,183,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="386" IsReadOnly="True" BorderBrush="White" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="548,217,0,0" Name="displayArmyPoints" VerticalAlignment="Top" Width="386" IsReadOnly="True" BorderBrush="White" />
+        <Button Content="Streitmacht löschen" Height="23" HorizontalAlignment="Left" Margin="548,466,0,0" Name="streitmachtLoeschenKnopf" VerticalAlignment="Top" Width="196" />
+        <Button Content="Streitmacht kopieren" Height="23" HorizontalAlignment="Left" Margin="548,413,0,0" Name="streitmachtKopierenKnopf" VerticalAlignment="Top" Width="196" />
     </Grid>
 </Window>

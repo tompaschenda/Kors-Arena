@@ -7,7 +7,9 @@
         <Label Content="Name der Streitmacht:" Height="28" HorizontalAlignment="Left" Margin="47,142,0,0" Name="label1" VerticalAlignment="Top" />
         <Label Content="Bitte eingeben:" Height="41" HorizontalAlignment="Left" Margin="201,63,0,0" Name="label2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
         <Label Content="Fraktion:" Height="28" HorizontalAlignment="Left" Margin="47,188,0,0" Name="label3" VerticalAlignment="Top" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="233,142,0,0" Name="textBox1" VerticalAlignment="Top" Width="232" />
-        <src:EnumComboBox Height="23" HorizontalAlignment="Right"  VerticalAlignment="Top" EnumTypeName="Listen.Fraktionen, Listen" Margin="0,188,113,0" Width="232" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="233,142,0,0" Name="namensTextbox" VerticalAlignment="Top" Width="232" />
+        <src:EnumComboBox Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" EnumTypeName="Listen.Fraktionen, Listen" Margin="233,188,0,0" Width="232" x:Name="fraktionCombo" SelectedIndex="10" />
+        <Button Content="Abbrechen" Height="23" HorizontalAlignment="Left" Margin="159,292,0,0" Name="AbbrechenButton" VerticalAlignment="Top" Width="75" Click="abbrechenKlick" />
+        <Button Content="Ok" Height="23" HorizontalAlignment="Left" Margin="322,292,0,0" Name="OkayButton" VerticalAlignment="Top" Width="75" Click="okayKlick" />
     </Grid>
 </Window>

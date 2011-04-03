@@ -59,9 +59,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EnumComboBox.cs" />
+    <Compile Include="fehlerMessageBox.xaml.cs">
+      <DependentUpon>fehlerMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StreitmachtCreate.xaml.cs">
       <DependentUpon>StreitmachtCreate.xaml</DependentUpon>
     </Compile>
+    <Page Include="fehlerMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -116,6 +123,9 @@
       <Project>{0AF6EE44-7FA7-4050-BAAC-DF526B184F25}</Project>
       <Name>WarHammerGenerator1</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
