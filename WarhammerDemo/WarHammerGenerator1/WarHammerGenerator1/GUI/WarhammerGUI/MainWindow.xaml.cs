@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using spielerArmee;
 using Listen;
 using spielerAnfragen;
+using System.Windows.Forms;
 
 namespace WarhammerGUI
 {
@@ -48,6 +49,37 @@ namespace WarhammerGUI
         }
 
 
+        /// <summary>
+        /// Löscht eine in der GUI ausgewählte Streitmacht!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void klickLoescheStreitMacht(object sender, RoutedEventArgs e)
+        {
+            int selectionIndex = ListBoxArmeeListe.SelectedIndex;
+
+            // Wir zeigen natürlich nur dann etwas an, wenn auch etwas ausgewählt ist! :)
+            if (selectionIndex != -1)
+            {
+                // Zunächst stellen wir eine Sicherheitsabfrage:
+                string message = "Soll die ausgewählte Armee wirklich und endgültig gelöscht werden?";
+                string caption = "Sicherheitsabfrage";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    // Dann löschen wir. Wir wissen ja, dass der Name eindeutig ist!
+                    spielerArmeeListe.getInstance().armeeSammlung.RemoveAt(selectionIndex);
+                    // Refresh des Displays:
+                    updateArmeeListenBox();
+                }
+
+                // Sonst passiert nichts!
+            }
+        }
+          
 
         // Abhängig davon, welche Armee gerade aus der Liste selektiert worden ist, muss ich
         // natürlich noch dafür sorgen, dass die entsprechenden Haupteigenschaften im Fenster
@@ -87,6 +119,43 @@ namespace WarhammerGUI
             for (int i = 0; i < spielerArmeeListe.getInstance().armeeSammlung.Count; ++i)
             {
                 ListBoxArmeeListe.Items.Add(spielerArmeeListe.getInstance().armeeSammlung[i].armeeName);
+            }
+        }
+
+
+        /// <summary>
+        /// Gibt einer Streitmacht einen neuen Namen!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void klickStreitmachtUmbennnen(object sender, RoutedEventArgs e)
+        {
+            int selectionIndex = ListBoxArmeeListe.SelectedIndex;
+
+            if (selectionIndex != -1)
+            {
+                StreitmachtRename streitmachtRenameFenster = new StreitmachtRename(this, selectionIndex);
+                streitmachtRenameFenster.Owner = this;
+                streitmachtRenameFenster.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        /// Kopiert eine bereite vorhandene Streitmacht
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void klickStreitmachtKopieren(object sender, RoutedEventArgs e)
+        {
+            int selectionIndex = ListBoxArmeeListe.SelectedIndex;
+
+            if (selectionIndex != -1)
+            {
+                var blaupauseArmee =  spielerArmeeListe.getInstance().armeeSammlung[selectionIndex];
+                spielerArmeeKlasse neueArmee = new spielerArmeeKlasse(blaupauseArmee);
+                neueArmee.armeeName = "Kopie von " + neueArmee.armeeName;
+                spielerArmeeListe.getInstance().armeeSammlung.Add(neueArmee);
+                updateArmeeListenBox();
             }
         }
 

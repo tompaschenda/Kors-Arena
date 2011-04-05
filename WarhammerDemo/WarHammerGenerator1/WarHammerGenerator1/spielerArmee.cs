@@ -19,6 +19,18 @@ namespace spielerArmee
             gesamtPunkte = 0;
             armeeEinheiten = new List<Einheit>() { };
         }
+
+        /// <summary>
+        /// Copy-Konstruktor a lá Matthias :)
+        /// </summary>
+        /// <param name="alteArmee"></param>
+        public spielerArmeeKlasse(spielerArmeeKlasse alteArmee)
+        {
+            armeeName = alteArmee.armeeName;
+            armeeFraktion = alteArmee.armeeFraktion;
+            gesamtPunkte = alteArmee.gesamtPunkte;
+            armeeEinheiten = alteArmee.armeeEinheiten;
+        }
             
         /// <summary>
         /// Der Name der Armee
