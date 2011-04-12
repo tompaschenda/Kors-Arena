@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 using spielerArmee;
 using Common;
 using Listen;
@@ -48,11 +49,16 @@ namespace WarhammerGUI
                 var richtigerInt = EnumExtentions.GetEnumIntForDescritpion(typeof(Fraktionen), this.fraktionCombo.Text);
                 meineArmee.armeeFraktion = (Fraktionen)richtigerInt;
 
+                var alteArmeeAnzahl = spielerArmeeListe.getInstance().armeeSammlung.Count;
+
                 // Und natürlich schreiben wir diese auch gleich in unsere globale Armee-Liste!
                 spielerArmeeListe.getInstance().armeeSammlung.Add(meineArmee);
 
                 // Außerdem wollen wir, dass die Anzeige-Box des Hauptfensters aktualisiert wird!
                 m_mainWindowParent.updateArmeeListenBox();
+
+                // Und wir möchten gerne die neu erstelle Armee ausgewählt haben!
+                m_mainWindowParent.ListBoxArmeeListe.SelectedIndex = alteArmeeAnzahl;
     
                 this.Close();           
             }
@@ -69,7 +75,7 @@ namespace WarhammerGUI
             string spielerNamensstring = this.namensTextbox.Text;
             if (spielerNamensstring == "")
             {
-                MessageBox.Show("Bitte einen Namen eingeben!", "Kein Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Bitte einen Namen eingeben!", "Kein Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
                 allesOkay = false;
             }
 
@@ -77,7 +83,7 @@ namespace WarhammerGUI
             for (int i = 0; i < spielerArmeeListe.getInstance().armeeSammlung.Count; ++i)
                 if (spielerArmeeListe.getInstance().armeeSammlung[i].armeeName == this.namensTextbox.Text)
                 {
-                    MessageBox.Show("Bitte einen Namen eingeben, der noch nicht vergeben ist!", "Kein einzigartiger Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("Bitte einen Namen eingeben, der noch nicht vergeben ist!", "Kein einzigartiger Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
                     allesOkay = false;
                 }
 
@@ -85,7 +91,7 @@ namespace WarhammerGUI
             string spielerFraktion = this.fraktionCombo.Text;
             if (spielerFraktion == "")
             {
-                MessageBox.Show("Bitte eine Fraktion auswählen!", "Keine Fraktion ausgewählt!", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Bitte eine Fraktion auswählen!", "Keine Fraktion ausgewählt!", MessageBoxButton.OK, MessageBoxImage.Error);
                 allesOkay = false;
             }
 

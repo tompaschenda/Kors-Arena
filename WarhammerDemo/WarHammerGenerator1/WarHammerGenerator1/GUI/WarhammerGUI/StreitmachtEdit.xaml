@@ -1,0 +1,23 @@
+﻿<Window x:Class="WarhammerGUI.StreitmachtEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title ="Armee Bearbeiten" Height="768" Width="1024">
+    <Grid>
+        <Label Content="Fraktion:" Height="28" HorizontalAlignment="Left" Margin="344,8,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="10,10,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Gesamtpunkte:" Height="28" HorizontalAlignment="Left" Margin="677,5,0,0" Name="label5" VerticalAlignment="Top" />
+        <TextBox BorderBrush="Black" Height="23" HorizontalAlignment="Left" IsEnabled="True" IsReadOnly="True" Margin="60,10,0,0" Name="displayArmyName" VerticalAlignment="Top" Width="257" />
+        <TextBox BorderBrush="Black" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="405,8,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="257" />
+        <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="783,10,76,0" Name="displayArmyPoints" VerticalAlignment="Top" />
+        <Label Content="Vorhandene Einheiten:" Height="28" HorizontalAlignment="Left" Margin="30,85,0,0" Name="vorhandeneEinheitenLabel" VerticalAlignment="Top" Width="230" />
+        <TreeView Height="463" HorizontalAlignment="Left" Margin="30,119,0,0" Name="unitTreeView" VerticalAlignment="Top" Width="305" />
+        <Button Content="Neue Einheit hinzufügen" Height="23" HorizontalAlignment="Left" Margin="405,171,0,0" Name="button2" VerticalAlignment="Top" Width="196" />
+        <Button Content="Einheit löschen" Height="23" HorizontalAlignment="Left" Margin="405,224,0,0" Name="button1" VerticalAlignment="Top" Width="196" />
+        <Button Content="Einheit kopieren" Height="23" HorizontalAlignment="Left" Margin="405,277,0,0" Name="button3" VerticalAlignment="Top" Width="196" />
+        <Button Content="Einheit umbenennen" Height="23" HorizontalAlignment="Left" Margin="405,330,0,0" Name="button4" VerticalAlignment="Top" Width="196" />
+        <Button Content="Ansicht schließen" Height="23" HorizontalAlignment="Left" Margin="405,644,0,0" Name="knopfSchliessen" VerticalAlignment="Top" Width="196" Click="klickSchliessen" />
+        <TreeView Height="463" HorizontalAlignment="Left" Margin="663,119,0,0" Name="availableUnitsTreeView" VerticalAlignment="Top" Width="305" />
+        <Label Content="Verfügbare Einheiten:" Height="28" HorizontalAlignment="Left" Margin="663,85,0,0" Name="moeglicheEinheitenLabel" VerticalAlignment="Top" Width="230" />
+        <Button Content="Auswahlregel Prüfen" Height="23" HorizontalAlignment="Left" Margin="405,445,0,0" Name="button6" VerticalAlignment="Top" Width="196" />
+    </Grid>
+</Window>

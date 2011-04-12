@@ -77,12 +77,27 @@ namespace spielerArmee
             // Beim Konstruktor passiert zunächst erst einmal nichts außer der Initialisierung
             // der Armee-Sammlung
             this.armeeSammlung = new List<spielerArmeeKlasse>() { };
+            this.saveString = "";
         }
 
         /// <summary>
         /// Die Sammlung der eigentlichen Armeen.
         /// </summary>
         public List<spielerArmeeKlasse> armeeSammlung;
+
+        /// <summary>
+        /// Merkt sicht, wo die Armeeliste zuletzt abgespeichert wurde.
+        /// </summary>
+        public string saveString;
+
+        /// <summary>
+        /// Löscht eine Spielerarmeeliste vollständig!
+        /// </summary>
+        public void eraseMeTotally()
+        {
+            this.armeeSammlung = new List<spielerArmeeKlasse>() { };
+            this.saveString = "";
+        }
 
     }
 }

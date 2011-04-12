@@ -5,18 +5,23 @@
     <Grid>
         <Menu Grid.Column="0" Grid.Row="0" Height="23" VerticalAlignment="Top">
             <MenuItem Header="Datei" >
+                <MenuItem Header="Streitmachtliste Öffnen" Click="klickStreitmachtlisteOeffnen"></MenuItem>
+                <MenuItem Header="Streitmachtliste Speichern" Click="klickStreitmachtListeSpeichern"></MenuItem>
+                <MenuItem Header="Streitmachtliste Speichern Unter" Click="klickStreitmachtListeSpeichernUnter"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Neue Streitmacht" Click="klickNeueStreitmachtMenu"></MenuItem>
+                <MenuItem Header="Streitmacht in Liste importieren" Click="klickStreitmachtImportieren"></MenuItem>
+                <MenuItem Header="Streitmacht Exportieren" Click="klickStreitmachtExportieren"></MenuItem>
+                <Separator></Separator>
                 <MenuItem Header="Neue Auswahlregel"></MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Beenden" Click="klickQuitMenu"></MenuItem>
             </MenuItem>
             <MenuItem Header="Bearbeiten">
-                <MenuItem Header="Neue Streitmacht" Click="klickNeueStreitmachtMenu"></MenuItem>
-                <MenuItem Header="Streitmacht Öffnen"></MenuItem>
+                <MenuItem Header="Streitmacht Bearbeiten" Click="klickStreitmachtBearbeiten"></MenuItem>
                 <MenuItem Header="Streitmacht Kopieren" Click="klickStreitmachtKopieren"></MenuItem>
-                <MenuItem Header="Streitmacht Speichern"></MenuItem>
-                <MenuItem Header="Streitmacht Umbenennen" Click="klickStreitmachtUmbennnen"></MenuItem>
-                <Separator></Separator>
                 <MenuItem Header="Streitmacht Löschen" Click="klickLoescheStreitMacht"></MenuItem>
+                <MenuItem Header="Streitmacht Umbenennen" Click="klickStreitmachtUmbennnen"></MenuItem>
             </MenuItem>
         </Menu>
         <ListBox Height="345" HorizontalAlignment="Left" Margin="111,144,0,0" Name="ListBoxArmeeListe" VerticalAlignment="Top" Width="247" SelectionChanged="detailsAktualisieren" >
@@ -26,12 +31,13 @@
         <Label Content="Armeeliste:" FontWeight="Bold" Height="31" HorizontalAlignment="Left" Margin="111,86,0,0" Name="label3" VerticalAlignment="Top" Width="258" />
         <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="404,144,0,0" Name="label4" VerticalAlignment="Top" />
         <Label Content="Gesamtpunkte:" Height="28" HorizontalAlignment="Left" Margin="404,212,0,0" Name="label5" VerticalAlignment="Top" />
-        <Button Content="Streitmacht bearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,360,0,0" Name="button1" VerticalAlignment="Top" Width="196" />
-        <Button Content="Neue Streitmacht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,307,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickNeueStreitmacht" />
+        <Button Content="Streitmacht bearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,308,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickStreitmachtBearbeiten" />
+        <Button Content="Neue Streitmacht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,255,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickNeueStreitmacht" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,144,0,0" Name="displayArmyName" VerticalAlignment="Top" Width="386" IsEnabled="True" IsReadOnly="True" BorderBrush="White" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,183,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="386" IsReadOnly="True" BorderBrush="White" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,217,0,0" Name="displayArmyPoints" VerticalAlignment="Top" Width="386" IsReadOnly="True" BorderBrush="White" />
-        <Button Content="Streitmacht löschen" Height="23" HorizontalAlignment="Left" Margin="548,466,0,0" Name="streitmachtLoeschenKnopf" VerticalAlignment="Top" Width="196" Click="klickLoescheStreitMacht"/>
-        <Button Content="Streitmacht kopieren" Height="23" HorizontalAlignment="Left" Margin="548,413,0,0" Name="streitmachtKopierenKnopf" VerticalAlignment="Top" Width="196" />
+        <Button Content="Streitmacht löschen" Height="23" HorizontalAlignment="Left" Margin="548,414,0,0" Name="streitmachtLoeschenKnopf" VerticalAlignment="Top" Width="196" Click="klickLoescheStreitMacht"/>
+        <Button Content="Streitmacht kopieren" Height="23" HorizontalAlignment="Left" Margin="548,361,0,0" Name="streitmachtKopierenKnopf" VerticalAlignment="Top" Width="196" Click="klickStreitmachtKopieren" />
+        <Button Content="Streitmacht umbenennen" Height="23" HorizontalAlignment="Left" Margin="548,466,0,0" Name="buttenSteitmachtUmbenennen" VerticalAlignment="Top" Width="196" Click="klickStreitmachtUmbennnen" />
     </Grid>
 </Window>

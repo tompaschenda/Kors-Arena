@@ -63,6 +63,9 @@
     <Compile Include="fehlerMessageBox.xaml.cs">
       <DependentUpon>fehlerMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StreitmachtEdit.xaml.cs">
+      <DependentUpon>StreitmachtEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StreitmachtRename.xaml.cs">
       <DependentUpon>StreitmachtRename.xaml</DependentUpon>
     </Compile>
@@ -70,6 +73,10 @@
       <DependentUpon>StreitmachtCreate.xaml</DependentUpon>
     </Compile>
     <Page Include="fehlerMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StreitmachtEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
