@@ -14,7 +14,7 @@ namespace Listen
        [Description("Blood Angels")]
         BloodAngels,
         [Description("Chaosdämonen")]
-        Chaeosdaemonen,
+        Chaosdaemonen,
         [Description("Chaos Space Marines")]
         ChaosSpaceMarines,
         [Description("Dark Eldar")]
@@ -39,6 +39,8 @@ namespace Listen
         SternenreichDerTau,
         [Description("Tyraniden")]
         Tyraniden,
+        [Description("Apocalypse (Alle)")]
+        Apocalypse,
     }
 
     public enum Attribute
@@ -290,8 +292,6 @@ namespace Listen
 
     public enum EinheitenAuswahl
     {
-        [Description("undefined")]
-        undefined,
         [Description("HQ")]
         HQ,
         [Description("Standard")]

@@ -71,7 +71,7 @@ namespace WarhammerGUI
                 {
                     int value = (int)enumValues.GetValue(index);
                     Enum enumValue = (Enum)enumValues.GetValue(index);
-                    values.Add(new KeyValuePair<int, string>(value, EnumExtentions.GetDescription(enumValue)));
+                    values.Add(new KeyValuePair<int, string>(value, EnumExtensions.GetDescription(enumValue)));
                 }
                 CachedValues = values;
             }

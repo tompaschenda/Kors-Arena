@@ -16,7 +16,9 @@ namespace WarHammerGenerator1
     {
         public override void createUnit()
         {
-            einheitsname = SpaceMarineEinheiten.TaktischerTrupp;
+            einheitenName = SpaceMarineEinheiten.TaktischerTrupp;
+            //spielerEinheitenName = "MEINSTRING"; // SpaceMarineEinheiten.TaktischerTrupp.ToString();
+            fraktion = Fraktionen.SpaceMarines;
 
             basisGroesse = new List<Groessenspecifier>() { };
             basisGroesse.Add(new Groessenspecifier() { subEinheitenname = SpaceMarinesInfanterie.SpaceMarine , anzahl = 4});
@@ -70,6 +72,7 @@ namespace WarHammerGenerator1
             spaceMarine.ruestung = SpaceMarinesRuestungen.ServoRuestung;
 
             // Jeder Space Marine hat Fragment- und Sprenggranaten (keine Extra-Kosten):
+            spaceMarine.ausruestung = new List<Object>();
             spaceMarine.ausruestung.Add(SpaceMarinesAusruestung.Fragmentgranaten);
             spaceMarine.ausruestung.Add(SpaceMarinesAusruestung.Sprenggranaten);
 
@@ -128,6 +131,7 @@ namespace WarHammerGenerator1
             var spaceMarineSergeant = new subEinheit() { };
             spaceMarineSergeant.name = SpaceMarinesInfanterie.SergeantDerSpaceMarines;
 
+            spaceMarineSergeant.ausruestung = new List<object>() { };
             spaceMarineSergeant.ausruestung.Add(SpaceMarinesAusruestung.Fragmentgranaten);
             spaceMarineSergeant.ausruestung.Add(SpaceMarinesAusruestung.Sprenggranaten);
             spaceMarineSergeant.ruestung = SpaceMarinesRuestungen.ServoRuestung;

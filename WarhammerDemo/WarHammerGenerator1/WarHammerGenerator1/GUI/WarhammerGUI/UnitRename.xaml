@@ -1,10 +1,10 @@
-﻿<Window x:Class="WarhammerGUI.StreitmachtRename"
+﻿<Window x:Class="WarhammerGUI.UnitRename"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:src="clr-namespace:WarhammerGUI"
-        Title="Streitmacht umbenennen" Height="400" Width="600">
+        Title="Unit umbenennen" Height="400" Width="600">
     <Grid>
-        <Label Content="Neuer Name der Streitmacht:" Height="28" HorizontalAlignment="Left" Margin="47,142,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Neuer Name der Unit" Height="28" HorizontalAlignment="Left" Margin="47,142,0,0" Name="label1" VerticalAlignment="Top" />
         <Label Content="Bitte eingeben:" Height="41" HorizontalAlignment="Left" Margin="201,63,0,0" Name="label2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="233,142,0,0" Name="namensTextbox" VerticalAlignment="Top" Width="232" />
         <Button Content="Abbrechen" Height="23" HorizontalAlignment="Left" Margin="159,292,0,0" Name="AbbrechenButton" VerticalAlignment="Top" Width="75" Click="abbrechenKlick" />

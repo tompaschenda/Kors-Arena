@@ -9,7 +9,7 @@ namespace WaffenfabrikNamespace
     /// <summary>
     /// Enthält ALLE Waffenobjekte im Spiel.
     /// </summary>
-    class waffenfabrik
+    public class waffenfabrik
     {
 
         private static waffenfabrik m_Instance;
@@ -61,11 +61,12 @@ namespace WaffenfabrikNamespace
         /// <returns></returns>
         public waffe gibMirFolgendeWaffe(Object waffenName)
         {
-            var gewuenschteWaffe = waffen.Find(
+            var gewuenschteWaffe = waffen.Find
+            (
                 delegate(waffe weap)
-            {
-                return weap.name == waffenName;
-            }
+                {
+                    return weap.name.ToString() == waffenName.ToString();
+                }
             );
 
             return gewuenschteWaffe;

@@ -51,6 +51,30 @@ namespace spielerArmee
         /// Eine Liste, in der alle Einheiten der Armee eingetragen sind!
         /// </summary>
         public List<Einheit> armeeEinheiten;
+
+
+        // Prüft, ob alle Units dieser Armee auch einen einzigartigen Namen haben!       
+        public bool checkUnitNameUniqueness()
+        {
+            var isUnique = true;
+            for (int i = 0; i < armeeEinheiten.Count; ++i )
+            {
+                int counter = 0;
+                var refName = armeeEinheiten[i].einheitenName + " (" + armeeEinheiten[i].spielerEinheitenName + ")";
+                for (int j = 0; j < armeeEinheiten.Count; ++j)
+                {
+                    var aktName = armeeEinheiten[j].einheitenName + " (" + armeeEinheiten[j].spielerEinheitenName + ")";
+                    if (refName == aktName)
+                        counter = counter + 1;
+                }
+                if (counter > 1)
+                    isUnique = false;
+            }
+
+            return isUnique;
+        }
+
+
     }
 
     // Enthält beliebig viele Spieler-Armeen und ist immer ein Singleton.

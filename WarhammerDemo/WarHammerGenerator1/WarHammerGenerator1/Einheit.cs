@@ -11,9 +11,53 @@ namespace EinheitDefinition
     public class Einheit
     {
         /// <summary>
+        /// Konstruktor:
+        /// </summary>
+        public Einheit() 
+        {
+            spielerEinheitenName = "";
+            fraktion = Fraktionen.BloodAngels;
+            einheitenName = "";
+        }
+
+        /// <summary>
+        /// Copy-Konstruktor von Hand!
+        /// WARNUNG! IMMER UP-TO-DATE halten!
+        /// </summary>
+        /// <param name="altEinheit"></param>
+        public Einheit(Einheit alteEinheit)
+        {
+            einheitenName = alteEinheit.einheitenName;
+            spielerEinheitenName = alteEinheit.spielerEinheitenName;
+            fraktion = alteEinheit.fraktion;
+            basisGroesse = alteEinheit.basisGroesse;
+            basispunkteKosten = alteEinheit.basispunkteKosten;
+            totalePunkteKosten = alteEinheit.totalePunkteKosten;
+            einzigartig = alteEinheit.einzigartig;
+            einheitentyp = alteEinheit.einheitentyp;
+            sonderregeln = alteEinheit.sonderregeln;
+            psikraefte = alteEinheit.psikraefte;
+            auswahlTypBasis = alteEinheit.auswahlTypBasis;
+            auswahlTypSpieler = alteEinheit.auswahlTypSpieler;
+            angeschlosseneFahrzeugtypenBasis = alteEinheit.angeschlosseneFahrzeugtypenBasis;
+            angeschlossenesFahrzeug = alteEinheit.angeschlossenesFahrzeug;
+            subEinheiten = alteEinheit.subEinheiten;
+        }
+
+        /// <summary>
         /// Name der Einheit
         /// </summary>
-        public Object einheitsname;
+        public Object einheitenName;
+
+        /// <summary>
+        /// Der Name, den der Nutzer einer Einheit selbst mitgeben möchte!
+        /// </summary>
+        public string spielerEinheitenName;
+
+        /// <summary>
+        /// Zu welcher Fraktion gehört diese Einheit?
+        /// </summary>
+        public Fraktionen fraktion;
 
         /// <summary>
         /// Wie viele Subeinheiten sind automatisch
@@ -82,6 +126,18 @@ namespace EinheitDefinition
         public Object angeschlossenesFahrzeug;
 
         /// <summary>
+        /// Hier sind die eigentlichen Subeinheiten
+        /// eingetragen!
+        /// </summary>
+        public List<subEinheit> subEinheiten;
+
+
+
+
+
+
+
+        /// <summary>
         /// Virtuelle Funktion, die die jeweiligen
         /// Optionen abhandelt, die der Spieler zur Konfiguration 
         /// seines Trupps treffen muss.
@@ -106,14 +162,6 @@ namespace EinheitDefinition
             if (auswahlTypBasis.Count == 1)
                 auswahlTypSpieler = auswahlTypBasis[0];
         }
-
-        /// <summary>
-        /// Hier sind die eigentlichen Subeinheiten
-        /// eingetragen!
-        /// </summary>
-        public List<subEinheit> subEinheiten;
-
-
 
 
     }

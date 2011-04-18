@@ -46,7 +46,7 @@ namespace WarhammerGUI
             {
                 var meineArmee = new spielerArmeeKlasse();
                 meineArmee.armeeName = this.namensTextbox.Text;
-                var richtigerInt = EnumExtentions.GetEnumIntForDescritpion(typeof(Fraktionen), this.fraktionCombo.Text);
+                var richtigerInt = EnumExtensions.GetEnumIntForDescritpion(typeof(Fraktionen), this.fraktionCombo.Text);
                 meineArmee.armeeFraktion = (Fraktionen)richtigerInt;
 
                 var alteArmeeAnzahl = spielerArmeeListe.getInstance().armeeSammlung.Count;
