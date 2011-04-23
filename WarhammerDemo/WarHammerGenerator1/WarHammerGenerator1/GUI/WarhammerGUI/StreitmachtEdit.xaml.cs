@@ -36,13 +36,19 @@ namespace WarhammerGUI
 
             // TODO: TESTCODE! Ich initialisiere hier jetzt ausnahmsweise mal DIREKT eine Einheit, damit ich das testen kann:
             Einheit spaceMarineTrupp = new taktischerTrupp();
-            spaceMarineTrupp.createUnit();
+            spaceMarineTrupp.createUnitBase();
+            spaceMarineTrupp.spielerEinheitenName = "Jepp!";
+            var alterBaseNameReadable = EnumExtensions.getEnumDescription(spaceMarineTrupp.einheitenName.GetType(), spaceMarineTrupp.einheitenName.ToString());
+            spaceMarineTrupp.einheitenUniqueName = alterBaseNameReadable + " (" + spaceMarineTrupp.spielerEinheitenName + ")";
             spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(spaceMarineTrupp);
 
             Einheit spaceTrupp2 = new taktischerTrupp();
-            spaceTrupp2.createUnit();
+            spaceTrupp2.createUnitBase();
             waffenfabrik.getInstance().createAllWeapons();
             spaceTrupp2.spielerEinheitenName = "Jihaa!";
+
+            var alterBaseNameReadable2 = EnumExtensions.getEnumDescription(spaceTrupp2.einheitenName.GetType(), spaceTrupp2.einheitenName.ToString());
+            spaceTrupp2.einheitenUniqueName = alterBaseNameReadable2 + " (" + spaceTrupp2.spielerEinheitenName + ")";
             spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(spaceTrupp2);
 
             /////////////////////////// ENTFERNEN!!!
@@ -131,10 +137,12 @@ namespace WarhammerGUI
                             // gegeben hat, stellen wir ihn in Klammern dahinter mit da. Wenn nicht, erscheint er auch nicht!
                             // Wir prüfen hier nicht extra, ob der Username einzigartig ist, denn das wird schon bei der
                             // Erstellung der Einheit abgefangen!
+                            var baseName = EnumExtensions.getEnumDescription(aktUnit.einheitenName.GetType(), aktUnit.einheitenName.ToString());
+
                             if (aktUnit.spielerEinheitenName == "")
-                                einheitNode.Header = aktUnit.einheitenName;
+                                einheitNode.Header = baseName;
                             else
-                                einheitNode.Header = aktUnit.einheitenName + " (" + aktUnit.spielerEinheitenName + ")";
+                                einheitNode.Header = baseName + " (" + aktUnit.spielerEinheitenName + ")";
                             einheitAuswahlNode.Items.Add(einheitNode);
 
                             // Alle Einheiten besitzen mindestens eine Subeinheit oder sogar mehrere. Diese tragen wir nun ein.
@@ -241,15 +249,51 @@ namespace WarhammerGUI
         }
 
 
-
-
         /// <summary>
         /// Aktualisiert die Ansicht im rechten Tree-View für alle vorhandenen Einheiten der Armee!
         /// </summary>
         private void updateAvailableUnitTree()
         {
-            // MAT: TODO!
-            // Struktur:   Fraktion => Einheitentyp (z.B. "Standard") => Einheit
+            // Alten Tree löschen:
+            availableUnitsTreeView.Items.Clear();
+
+            // Wir tragen natürlich in dieser Ansicht nur diejenigen Fraktionen ein, die für uns relevant sind.
+            // Für den Moment gehe ich davon aus, dass wir kein Apocalypse-Spiel mit gemischten Fraktionen
+            // haben, aber wenn das mal geändert werden sollte, muss hier nicht viel getan werden!
+            if(spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeFraktion == Fraktionen.Apocalypse )
+                MessageBox.Show("Bitte eine andere Fraktion wählen!", "Apocalypse-Modus wird noch nicht unterstützt!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            // Der normale Fall: Es gibt nur eine Fraktion!
+            var aktuelleFraktion = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeFraktion;
+            var aktuelleFraktionsBeschreibung = EnumExtensions.getEnumDescription(typeof(Fraktionen), aktuelleFraktion);
+
+            TreeViewItem fraktionsNode = new TreeViewItem();
+            fraktionsNode.Header = aktuelleFraktionsBeschreibung;
+            fraktionsNode.Focusable = false;
+            fraktionsNode.IsExpanded = true;
+            availableUnitsTreeView.Items.Add(fraktionsNode);
+
+            // Jetzt müssen wir für jeden Auswahltyp einer Fraktion eine neue Node anlegen:
+            int anzahlAuswahlTypen = Enum.GetValues(typeof(EinheitenAuswahl)).Length;
+            for (int aktAuswahlIndex = 0; aktAuswahlIndex < anzahlAuswahlTypen; ++aktAuswahlIndex)
+            {
+                var aktuelleEinheitenAuswahlBeschreibung = EnumExtensions.getEnumDescription(typeof(EinheitenAuswahl), aktAuswahlIndex);
+                EinheitenAuswahl aktuellerEnumWert = (EinheitenAuswahl) EinheitenAuswahl.ToObject(typeof(EinheitenAuswahl), aktAuswahlIndex);
+                TreeViewItem einheitAuswahlNode = new TreeViewItem();
+                einheitAuswahlNode.Header = aktuelleEinheitenAuswahlBeschreibung;
+                einheitAuswahlNode.Focusable = false;   // Soll nicht selektierbar sein!
+                einheitAuswahlNode.IsExpanded = true;
+                fraktionsNode.Items.Add(einheitAuswahlNode);
+                
+                var allePassendenEinheiten = GlobaleEinheitenListe.getInstance().gibMirAlleEinheitenVonFraktionUndAuswahltyp(aktuelleFraktion, aktuellerEnumWert);
+
+                for(int aktUnitIndex =0; aktUnitIndex < allePassendenEinheiten.Count; ++aktUnitIndex)
+                {
+                    TreeViewItem einheitNode = new TreeViewItem();
+                    einheitNode.Header = allePassendenEinheiten[aktUnitIndex].einheitenName.ToString();
+                    einheitAuswahlNode.Items.Add(einheitNode);            
+                }
+            }
         }
 
 
@@ -339,15 +383,14 @@ namespace WarhammerGUI
                 // Wir wissen zum Glück, dass der User-Defined-String der Einheit 
                 // einzigartig sein muss! Daher können wir beim Löschen die komplette
                 // Einheitenliste der zugehörigen Armee durchsuchen.
-                var aktHeader = ausgewaehltesItem.Header;
-                string identifierStringAusTree = aktHeader.ToString();
+                var aktHeader = ausgewaehltesItem.Header.ToString();
+
                 int anzahlUnitsGesamt = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Count;
                 for (int aktUnitIndex = 0; aktUnitIndex < anzahlUnitsGesamt; ++aktUnitIndex)
-                {
-                    string identifierAusArmeeBase = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].einheitenName.ToString();
-                    var identifierAusArmeeUser = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].spielerEinheitenName;
-                    string identifierStringAusArmee = identifierAusArmeeBase + " (" + identifierAusArmeeUser + ")";
-                    if (identifierStringAusArmee == identifierStringAusTree || identifierStringAusArmee == (identifierAusArmeeBase + " ()"))
+                {                  
+                    var identifierAusArmeeUser = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].einheitenUniqueName.ToString();
+
+                    if(aktHeader == identifierAusArmeeUser)
                     {
                         // Jetzt wissen wir den Index der Einheit, die gelöscht werden soll!
                         foundIndex = aktUnitIndex;
@@ -355,6 +398,31 @@ namespace WarhammerGUI
                 }
             }
             return foundIndex;
+        }
+
+
+        /// <summary>
+        /// Fügt der Spieler-Armeeliste eine neue, gerade ausgewählte Einheit hinzu!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void klickEinheitHinzufuegen(object sender, RoutedEventArgs e)
+        {
+            // Erst einmal muss ich sicherstellen, dass überhaupt eine Einheit selektiert ist!
+            TreeViewItem ausgewaehltesItem = (TreeViewItem)availableUnitsTreeView.SelectedItem;
+            if (ausgewaehltesItem == null)
+                return;
+
+            // Okay, dann wollen wir doch mal herausfinden, zu welcher Fraktion das Item gehört!
+            var aktAuswahlParent = VisualTreeHelper.GetParent(availableUnitsTreeView.SelectedItem as DependencyObject);
+            var aktFraktionsParent = VisualTreeHelper.GetParent(aktAuswahlParent);
+            var aktFraktionsItem = (TreeViewItem) aktFraktionsParent;
+            // Der Header ist die Description der Fraktion!
+            var aktuelleFraktion = EnumExtensions.GetEnumValueForDescription(typeof(Fraktionen), aktFraktionsItem.Header.ToString());
+
+            // Jetzt müssen wir uns natürlich noch überlegen, wie die Unit heißt!
+            // Der Header ist ja nur die Description, also müssen wir schauen, welcher 
+            var aktItemHeader = ausgewaehltesItem.Header.ToString();
         }
 
 

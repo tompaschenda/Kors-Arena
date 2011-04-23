@@ -8,6 +8,29 @@ using spielerAnfragen;
 
 namespace EinheitDefinition
 {
+
+    /// <summary>
+    /// Enthält alles, was nötig ist, um eine Einheit eindeutig zu identifizieren und einordnen zu können.
+    /// Das sind:
+    ///     - Fraktion
+    ///     - Einheitenname
+    ///     - (Basis-)Auswahltyp
+    /// </summary>
+    public struct EinheitsIdentifier
+    {
+        /// <summary>
+        /// Name der Einheit
+        /// </summary>
+        public Object einheitName;
+
+        /// <summary>
+        /// Fraktion, zu der die Einheit gehört
+        /// </summary>
+        public Fraktionen einheitFraktion;
+
+        public EinheitenAuswahl einheitAuswahl;
+    }
+
     public class Einheit
     {
         /// <summary>
@@ -21,7 +44,7 @@ namespace EinheitDefinition
         }
 
         /// <summary>
-        /// Copy-Konstruktor von Hand!
+        /// Copy-Konstruktor von Hand! TODO TODO TODO!
         /// WARNUNG! IMMER UP-TO-DATE halten!
         /// </summary>
         /// <param name="altEinheit"></param>
@@ -29,6 +52,7 @@ namespace EinheitDefinition
         {
             einheitenName = alteEinheit.einheitenName;
             spielerEinheitenName = alteEinheit.spielerEinheitenName;
+            einheitenUniqueName = alteEinheit.einheitenUniqueName;
             fraktion = alteEinheit.fraktion;
             basisGroesse = alteEinheit.basisGroesse;
             basispunkteKosten = alteEinheit.basispunkteKosten;
@@ -53,6 +77,11 @@ namespace EinheitDefinition
         /// Der Name, den der Nutzer einer Einheit selbst mitgeben möchte!
         /// </summary>
         public string spielerEinheitenName;
+
+        /// <summary>
+        /// Kombination aus einheitenName + " (spielerEinheitenName)"
+        /// </summary>
+        public string einheitenUniqueName;
 
         /// <summary>
         /// Zu welcher Fraktion gehört diese Einheit?
@@ -131,30 +160,24 @@ namespace EinheitDefinition
         /// </summary>
         public List<subEinheit> subEinheiten;
 
-
-
-
-
-
-
         /// <summary>
         /// Virtuelle Funktion, die die jeweiligen
         /// Optionen abhandelt, die der Spieler zur Konfiguration 
         /// seines Trupps treffen muss.
         /// Erst wenn sie abgehandelt wurden, ist die
         /// Einheit fertig konfiguriert!
+        /// Wird nicht automatisch bei der erstellung der globalen Enheitenliste
+        /// ausgeführt!
         /// </summary>
-        public virtual void spielerOptionen(){ }
+        public virtual void createUnitInteraktion(){ }
 
         /// <summary>
         /// Virtuelle Funktion, die mit Leben gefüllt werden
         /// muss, damit eine Einheit erstellt werden kann.
-        /// Diese muss von Aussen beim Erstellung einer
-        /// Einheit aufgerufen werden und handelt alle
-        /// Initialisierungen, etc. von Attributen der
-        /// Klasse ab.
+        /// Diese Basisfunktion kann automatisch OHNE Spielerinteraktion aufgerufen
+        /// werden und definiert eine Einheit bereits automatisch.
         /// </summary>
-        public virtual void createUnit() 
+        public virtual void createUnitBase() 
         {
             // Wenn wir sowieso nur einen Einheitentyp vorliegen haben,
             // dann können wir ihn auch sofort festlegen,ohne den
@@ -162,7 +185,6 @@ namespace EinheitDefinition
             if (auswahlTypBasis.Count == 1)
                 auswahlTypSpieler = auswahlTypBasis[0];
         }
-
 
     }
 

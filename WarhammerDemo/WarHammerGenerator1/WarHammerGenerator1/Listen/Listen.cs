@@ -292,6 +292,8 @@ namespace Listen
 
     public enum EinheitenAuswahl
     {
+        [Description("keine")]
+        keine,
         [Description("HQ")]
         HQ,
         [Description("Standard")]
@@ -302,52 +304,113 @@ namespace Listen
         Sturm,
         [Description("Unterstützung")]
         Unterstuetzung,
+        [Description("Angeschlossenes Transportfahrzeug")]
+        AngeschlossenesTransportFahrzeug,
     }
 
+
+    // Liste ALLER Space Marine-Einheiten!
     public enum SpaceMarineEinheiten
     {
-        [Description("undefined")]
-        undefined,
+        [Description("Marneus Calgar")]
+        MarneusCalgar,
+        [Description("Captain Cato Sicarius")]
+        CaptainCatoSicarius,
+        [Description("Scriptor-Magister Varro Tigurius")]
+        VarroTigurius,
+        [Description("Ordenspriester Ortan Cassius")]
+        OrtanCassius,
+        [Description("Pedro Kantor")]
+        PedroKantor,
+        [Description("Captain Darnath Lysander")]
+        CaptainLysander,
+        [Description("Captain Kayvaan Shrike")]
+        CaptainShrike,
+        [Description("Schmiedevater Vulkan He'stan")]
+        VulkanHestan,
+        [Description("Kor'sarro Khan")]
+        KorsarroKhan,
+        [Description("Ordensmeister der Space Marines")]
+        Ordensmeister,
         [Description("Ehrengarde-Trupp")]
-        EhrengardeTrupp,
+        Ehrengarde,
+        [Description("Space Marine Captain")]
+        Captain,
         [Description("Kommandotrupp")]
         Kommandotrupp,
+        [Description("Scriptor der Space Marines")]
+        Scriptor,
+        [Description("Ordenspriester der Space Marines")]
+        Ordenspriester,
+        [Description("Meister der Schmeide")]
+        MeisterSchmiede,
         [Description("Taktischer Trupp")]
         TaktischerTrupp,
         [Description("Scouttrupp")]
         Scouttrupp,
-        [Description("Scouttrupp mit Sergeant Telion")]
-        ScouttruppMitSergeantTelion,
+        [Description("Sergeant Tellion")]
+        SergeantTellion,
+        [Description("Rhino")]
+        Rhino,
+        [Description("Razorback")]
+        Razorback,
+        [Description("Landungskapsel")]
+        Landungskapsel,
         [Description("Terminatortrupp")]
         Terminatortrupp,
-        [Description("Terminator Strumtrupp")]
-        TermiantorStrumtrupp,
+        [Description("Terminatorsturmtrupp")]
+        Terminatorsturmtrupp,
         [Description("Protektorgarde")]
         Protektorgarde,
+        [Description("Ehrenwürdiger Cybot")]
+        EhrenwuerdigerCybot,
+        [Description("Cybot")]
+        Cybot,
+        [Description("Ironclad Cybot")]
+        IroncladCybot,
+        [Description("Techmarine")]
+        Techmarine,
+        [Description("Servitor")]
+        Servitor,
         [Description("Legion of the Damned")]
         LegionOfTheDamned,
-        [Description("Sturmtrupp")]
+        [Description("Strumtrupp")]
         Sturmtrupp,
         [Description("Expugnatorgarde")]
         Expugnatorgarde,
-        [Description("Landspeeder-Schwadron")]
-        LandspeederSchwadron,
-        [Description("Bikeschwadron der Space Marines")]
-        Bikeschwadron,
-        [Description("Trike-Schwadron")]
+        [Description("Landspeederschwadron")]
+        Landspeederschwadron,
+        [Description("Bikerschwadron der Space Marines")]
+        Bikerschwadron,
+        [Description("Trikeschwadron")]
         Trikeschwadron,
-        [Description("Scoutbike-Schwadron")]
-        ScoutBikeSchwadron,
+        [Description("Landspeeder Storm")]
+        LandspeederStorm,
+        [Description("Scoutbikeschwadron")]
+        Scoutbikeschwadron,
         [Description("Devastortrupp")]
-        DevastorTrupp,
+        Devastortrupp,
         [Description("Salvenkanone")]
         Salvenkanone,
+        [Description("Land Raider")]
+        LandRaider,
+        [Description("Land Raider Crusader")]
+        LandRaiderCrusader,
+        [Description("Land Raider Redeemer")]
+        LandRaiderRedeemer,
+        [Description("Predator")]
+        Predator,
+        [Description("Whirlwind")]
+        Whirlwind,
+        [Description("Vindicator")]
+        Vindicator,
+        [Description("Sergeant Chronus")]
+        SergeantChronus,
     }
 
-    public enum SpaceMarinesInfanterie
+
+    public enum SpaceMarinesSubUnits
     {
-        [Description("undefined")]
-        undefined,
         [Description("Salvenkanone")]
         Salvenkanone,
         [Description("Apothecarius")]
@@ -416,41 +479,7 @@ namespace Listen
         VulkanHestan,
     }
 
-    public enum SpaceMarinesFahrzeuge
-    {
-        [Description("undefined")]
-        undefined,
-        [Description("Landungskapsel")]
-        Landungskapsel,
-        [Description("Land Raider")]
-        LandRaider,
-        [Description("Land Raider Crusader")]
-        LandRaiderCrusader,
-        [Description("Land Raider Redeemer")]
-        LandRaiderRedeemer,
-        [Description("Landspeeder")]
-        Landspeeder,
-        [Description("Landspeeder Storm")]
-        LandspeederStorm,
-        [Description("Predator")]
-        Predator,
-        [Description("Razorback")]
-        Razorback,
-        [Description("Rhino")]
-        Rhino,
-        [Description("Vindicator")]
-        Vindicator,
-        [Description("Whirlwind")]
-        Whirlwind,
-        [Description("Cybot")]
-        Cybot,
-        [Description("Ironclad-Cybot")]
-        IroncladCybot,
-        [Description("Ehrwürdiger Cybot")]
-        EhrenwuerdigerCybot,
-    }
-
-    public enum SpaceMarinesWaffen
+    public enum alleWaffenNamen
     {
         [Description("undefined")]
         undefined,
@@ -526,7 +555,7 @@ namespace Listen
         Sturmkanone,
     }
 
-    public enum SpaceMarinesAusruestung
+    public enum alleAusruestung
     {
         [Description("undefined")]
         undefined,
@@ -576,7 +605,7 @@ namespace Listen
         Sprenggranaten,
     }
 
-    public enum SpaceMarinesRuestungen
+    public enum alleRuestungen
     {
         [Description("undefined")]
         undefined,
@@ -592,7 +621,7 @@ namespace Listen
         RuestungDesAntilochus,
     }
 
-    public enum SpaceMarinesFahrzeugAusruestung
+    public enum alleFahrzeugAusruestung
     {
         [Description("undefined")]
         undefined,

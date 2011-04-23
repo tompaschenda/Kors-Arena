@@ -121,245 +121,245 @@ namespace WaffenfabrikNamespace
         private waffe createSpaceMarinesAstartes()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.AstartesGranatwerfer;
+            weap.name = alleWaffenNamen.AstartesGranatwerfer;
 
             return weap;
         }
         private waffe createSpaceMarinesAuxilaris()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.AuxilarisGranatwerfer;
+            weap.name = alleWaffenNamen.AuxilarisGranatwerfer;
 
             return weap;
         }
         private waffe createSpaceMarinesBolter()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Bolter;
+            weap.name = alleWaffenNamen.Bolter;
 
             return weap;
         }
         private waffe createSpaceMarinesBoltpistole()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Boltpistole;
+            weap.name = alleWaffenNamen.Boltpistole;
 
             return weap;
         }
         private waffe createSpaceMarinesCrozius()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Crozius;
+            weap.name = alleWaffenNamen.Crozius;
 
             return weap;
         }
         private waffe createSpaceMarinesCyclone()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.CycloneRaketenwerfer;
+            weap.name = alleWaffenNamen.CycloneRaketenwerfer;
 
             return weap;
         }
         private waffe createSpaceMarinesDigital()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Digitalwaffe;
+            weap.name = alleWaffenNamen.Digitalwaffe;
 
             return weap;
         }
         private waffe createSpaceMarinesEhrenklinge()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Ehrenklinge;
+            weap.name = alleWaffenNamen.Ehrenklinge;
 
             return weap;
         }
         private waffe createSpaceMarinesEnergieklaue()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Energieklaue;
+            weap.name = alleWaffenNamen.Energieklaue;
 
             return weap;
         }
         private waffe createSpaceMarinesEnergiefaust()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Energiefaust;
+            weap.name = alleWaffenNamen.Energiefaust;
 
             return weap;
         }
         private waffe createSpaceMarinesEnergiewaffe()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Energiewaffe;
+            weap.name = alleWaffenNamen.Energiewaffe;
 
             return weap;
         }
         private waffe createSpaceMarinesEnergiehammer()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Energiehammer;
+            weap.name = alleWaffenNamen.Energiehammer;
 
             return weap;
         }
         private waffe createSpaceMarinesFlammenwerfer()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Flammenwerfer;
+            weap.name = alleWaffenNamen.Flammenwerfer;
 
             return weap;
         }
         private waffe createSpaceMarinesKettenfaust()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Kettenfaust;
+            weap.name = alleWaffenNamen.Kettenfaust;
 
             return weap;
         }
         private waffe createSpaceMarinesKettenschwert()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Kettenschwert;
+            weap.name = alleWaffenNamen.Kettenschwert;
 
             return weap;
         }
         private waffe createSpaceMarinesKampfmesser()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Kampfmesser;
+            weap.name = alleWaffenNamen.Kampfmesser;
 
             return weap;
         }
         private waffe createSpaceMarinesKombimelter()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.KombiMelter;
+            weap.name = alleWaffenNamen.KombiMelter;
 
             return weap;
         }
         private waffe createSpaceMarinesKombiFlammer()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.KombiFlammenwerfer;
+            weap.name = alleWaffenNamen.KombiFlammenwerfer;
 
             return weap;
         }
         private waffe createSpaceMarinesKombiPlasma()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.KombiPlasmawerfer;
+            weap.name = alleWaffenNamen.KombiPlasmawerfer;
 
             return weap;
         }
         private waffe createSpaceMarinesKonversion()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Konversionsstrahler;
+            weap.name = alleWaffenNamen.Konversionsstrahler;
 
             return weap;
         }
         private waffe createSpaceMarinesLaserkanone()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Laserkanone;
+            weap.name = alleWaffenNamen.Laserkanone;
 
             return weap;
         }
         private waffe createSpaceMarinesMeisterhaft()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.MeisterhafteWaffe;
+            weap.name = alleWaffenNamen.MeisterhafteWaffe;
 
             return weap;
         }
         private waffe createSpaceMarinesMelter()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Melter;
+            weap.name = alleWaffenNamen.Melter;
 
             return weap;
         }
         private waffe createSpaceMarinesMultimelter()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Multimelter;
+            weap.name = alleWaffenNamen.Multimelter;
 
             return weap;
         }
         private waffe createSpaceMarinesPsiwaffe()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Psiwaffe;
+            weap.name = alleWaffenNamen.Psiwaffe;
 
             return weap;
         }
         private waffe createSpaceMarinesPlasmakanone()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Plasmakanone;
+            weap.name = alleWaffenNamen.Plasmakanone;
 
             return weap;
         }
         private waffe createSpaceMarinesPlasmapistole()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Plasmapistole;
+            weap.name = alleWaffenNamen.Plasmapistole;
 
             return weap;
         }
         private waffe createSpaceMarinesPlasmawerfer()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Plasmawerfer;
+            weap.name = alleWaffenNamen.Plasmawerfer;
 
             return weap;
         }
         private waffe createSpaceMarinesRaketenwerfer()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Raketenwerfer;
+            weap.name = alleWaffenNamen.Raketenwerfer;
 
             return weap;
         }
         private waffe createSpaceMarinesSchwererBolter()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.SchwererBolter;
+            weap.name = alleWaffenNamen.SchwererBolter;
 
             return weap;
         }
         private waffe createSpaceMarinesSchwererFlammer()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.SchwererFlammer;
+            weap.name = alleWaffenNamen.SchwererFlammer;
 
             return weap;
         }
         private waffe createSpaceMarinesSchrotflinte()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Schrotflinte;
+            weap.name = alleWaffenNamen.Schrotflinte;
 
             return weap;
         }
         private waffe createSpaceMarinesScharfschuetze()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Scharfschützengewehr;
+            weap.name = alleWaffenNamen.Scharfschützengewehr;
 
             return weap;
         }
         private waffe createSpaceMarinesSturmbolter()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Sturmbolter;
+            weap.name = alleWaffenNamen.Sturmbolter;
 
             return weap;
         }
         private waffe createSpaceMarinesSturmkanone()
         {
             var weap = new waffe(){};
-            weap.name = SpaceMarinesWaffen.Sturmkanone;
+            weap.name = alleWaffenNamen.Sturmkanone;
 
             return weap;
         }

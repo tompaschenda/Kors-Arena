@@ -55,6 +55,11 @@ namespace WarhammerGUI
                 // Ersetze den Namen:
                 spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[m_indexDerUnit].spielerEinheitenName = neuerUnitName;
 
+                // Und aktualisiere den einzigartigen Einheitsnamen!
+                var alterBaseUnitName = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[m_indexDerUnit].einheitenName;
+                var alterBaseNameReadable = EnumExtensions.getEnumDescription(alterBaseUnitName.GetType(), alterBaseUnitName.ToString());
+                spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[m_indexDerUnit].einheitenUniqueName = alterBaseNameReadable + " (" + neuerUnitName + ")";
+
                 // Aktualisieren der Anzeige:
                 m_WindowParent.updateArmyTreeView();
 
