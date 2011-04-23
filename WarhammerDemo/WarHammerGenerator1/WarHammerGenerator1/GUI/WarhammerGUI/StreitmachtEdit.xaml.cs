@@ -290,7 +290,10 @@ namespace WarhammerGUI
                 for(int aktUnitIndex =0; aktUnitIndex < allePassendenEinheiten.Count; ++aktUnitIndex)
                 {
                     TreeViewItem einheitNode = new TreeViewItem();
-                    einheitNode.Header = allePassendenEinheiten[aktUnitIndex].einheitenName.ToString();
+                    var aktEinheit = allePassendenEinheiten[aktUnitIndex];
+
+                    einheitNode.Header = aktEinheit.einheitenName.ToString();
+                    //einheitNode.DataContext = aktEinheit;
                     einheitAuswahlNode.Items.Add(einheitNode);            
                 }
             }
@@ -413,9 +416,10 @@ namespace WarhammerGUI
             if (ausgewaehltesItem == null)
                 return;
 
+            
             // Okay, dann wollen wir doch mal herausfinden, zu welcher Fraktion das Item gehört!
             var aktAuswahlParent = VisualTreeHelper.GetParent(availableUnitsTreeView.SelectedItem as DependencyObject);
-            var aktFraktionsParent = VisualTreeHelper.GetParent(aktAuswahlParent);
+            var aktFraktionsParent = VisualTreeHelper.GetParent(aktAuswahlParent );
             var aktFraktionsItem = (TreeViewItem) aktFraktionsParent;
             // Der Header ist die Description der Fraktion!
             var aktuelleFraktion = EnumExtensions.GetEnumValueForDescription(typeof(Fraktionen), aktFraktionsItem.Header.ToString());
@@ -423,11 +427,9 @@ namespace WarhammerGUI
             // Jetzt müssen wir uns natürlich noch überlegen, wie die Unit heißt!
             // Der Header ist ja nur die Description, also müssen wir schauen, welcher 
             var aktItemHeader = ausgewaehltesItem.Header.ToString();
+
+
+            //var test = ausgewaehltesItem.DataContext;
         }
-
-
-
-
-
     }
 }
