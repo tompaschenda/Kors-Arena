@@ -37,24 +37,22 @@ namespace WarhammerGUI
             // TODO: TESTCODE! Ich initialisiere hier jetzt ausnahmsweise mal DIREKT eine Einheit, damit ich das testen kann:
             Einheit spaceMarineTrupp = new taktischerTrupp();
             spaceMarineTrupp.createUnitBase();
-            spaceMarineTrupp.spielerEinheitenName = "Jepp!";
+            spaceMarineTrupp.spielerEinheitenName = "Jepp";
             var alterBaseNameReadable = EnumExtensions.getEnumDescription(spaceMarineTrupp.einheitenName.GetType(), spaceMarineTrupp.einheitenName.ToString());
-            spaceMarineTrupp.einheitenUniqueName = alterBaseNameReadable + " (" + spaceMarineTrupp.spielerEinheitenName + ")";
             spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(spaceMarineTrupp);
 
             Einheit spaceTrupp2 = new taktischerTrupp();
             spaceTrupp2.createUnitBase();
             waffenfabrik.getInstance().createAllWeapons();
-            spaceTrupp2.spielerEinheitenName = "Jihaa!";
+            spaceTrupp2.spielerEinheitenName = "Jihaa";
 
             var alterBaseNameReadable2 = EnumExtensions.getEnumDescription(spaceTrupp2.einheitenName.GetType(), spaceTrupp2.einheitenName.ToString());
-            spaceTrupp2.einheitenUniqueName = alterBaseNameReadable2 + " (" + spaceTrupp2.spielerEinheitenName + ")";
             spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(spaceTrupp2);
 
             /////////////////////////// ENTFERNEN!!!
 
             // Es sollen auch gleich die korrekten Werte angezeigt werden:
-            updateArmyView();
+            updateEditFenster();
 
             // Außerdem möchte ich alle möglichen Einheiten im rechten Tree-View anzeigen.
             // Diese Anzeige muss nicht aktualisiert werden können, da sie sich nicht ändert!
@@ -67,7 +65,7 @@ namespace WarhammerGUI
         /// <summary>
         /// Aktualisiert die Ansicht der Armee in der GUI
         /// </summary>
-        private void updateArmyView()
+        private void updateEditFenster()
         {
             // Aktualisiere den Namen der Armee (er sollte eigentlich gleich bleiben, aber man weiß ja nie...)
             this.displayArmyName.Clear();
@@ -140,9 +138,10 @@ namespace WarhammerGUI
                             var baseName = EnumExtensions.getEnumDescription(aktUnit.einheitenName.GetType(), aktUnit.einheitenName.ToString());
 
                             if (aktUnit.spielerEinheitenName == "")
-                                einheitNode.Header = baseName;
-                            else
-                                einheitNode.Header = baseName + " (" + aktUnit.spielerEinheitenName + ")";
+                                throw new ArgumentOutOfRangeException("WARNUNG: Kein Spielername in der Einheit mit dem Namen " + aktUnit.einheitenName + " vorhanden!");
+                            
+                            einheitNode.Header = baseName + " (" + aktUnit.spielerEinheitenName + ")";
+                            einheitNode.Name = aktUnit.spielerEinheitenName;
                             einheitAuswahlNode.Items.Add(einheitNode);
 
                             // Alle Einheiten besitzen mindestens eine Subeinheit oder sogar mehrere. Diese tragen wir nun ein.
@@ -248,7 +247,6 @@ namespace WarhammerGUI
             }         
         }
 
-
         /// <summary>
         /// Aktualisiert die Ansicht im rechten Tree-View für alle vorhandenen Einheiten der Armee!
         /// </summary>
@@ -292,13 +290,15 @@ namespace WarhammerGUI
                     TreeViewItem einheitNode = new TreeViewItem();
                     var aktEinheit = allePassendenEinheiten[aktUnitIndex];
 
-                    einheitNode.Header = aktEinheit.einheitenName.ToString();
+                    // Für den Header müssen wir natürlich die Description verwenden:
+                    einheitNode.Header = EnumExtensions.getEnumDescription(aktEinheit.einheitenName.GetType(), aktEinheit.einheitenName.ToString());
+                    einheitNode.Name = aktEinheit.uniqueStringProperty;     // Hier wir der Unique-String für jede Einheit eingetragen!
+
                     //einheitNode.DataContext = aktEinheit;
                     einheitAuswahlNode.Items.Add(einheitNode);            
                 }
             }
         }
-
 
         /// <summary>
         /// Schließt die Bearbeitungs-Ansicht und kehrt zurück zum Parent:
@@ -320,7 +320,7 @@ namespace WarhammerGUI
             var deletionIndex = getChosenUnitTreeIdentifier();
             if(deletionIndex != -1)
                 spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.RemoveAt(deletionIndex);
-            updateArmyView();
+            updateEditFenster();
         }
 
         /// <summary>
@@ -333,11 +333,35 @@ namespace WarhammerGUI
             var renamingIndex = getChosenUnitTreeIdentifier();
             if (renamingIndex != -1)
             {
-                // Neuest Fenster anlegen:
-                UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, renamingIndex, false) { };
-                umbenennungsfenster.Show();
+                // Dazu legen wir zunächst eine Kopie der Unit an.
+                var einheitsKopie = new Einheit(spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[renamingIndex]);
+
+                // Jetzt fragen wir, welchen Namen der Nutzer der Einheit geben möchte!
+                UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, einheitsKopie) { };
+                umbenennungsfenster.ShowDialog();
+
+                // Wir übernehmen nur dann, wenn alles okay war!
+                if (umbenennungsfenster.m_okay == true)
+                {
+                    updateUnitPlayerString(renamingIndex, umbenennungsfenster.m_neuerSpielerString);
+                }               
             }
             
+        }
+
+        /// <summary>
+        /// Aktualisiert den Player-String der Einheit. Keine Konsistenzprüfung!
+        /// Nutze dann klickRename!
+        /// </summary>
+        /// <param name="renamingIndex"></param>
+        /// <param name="neuerSpielerString"></param>
+        private void updateUnitPlayerString(int renamingIndex, string neuerSpielerString)
+        {
+            // Ersetze den Namen:
+            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[renamingIndex].spielerEinheitenName = neuerSpielerString;
+
+            // Anzeige aktualisieren:
+            updateEditFenster();
         }
 
         /// <summary>
@@ -367,14 +391,28 @@ namespace WarhammerGUI
                 // Außerdem müssen wir den Nutzer zwingen, einen neuen, einzigartigen Namen für die Unit zu vergeben!
                 var checkIndex =  spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.IndexOf(kopierteEinheit);
 
-                UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, checkIndex, true) { };
+                UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, kopierteEinheit) { };
                 umbenennungsfenster.ShowDialog();
-                // Update der Anzeige:
-                updateArmyView();
+
+                // Wir übernehmen nur dann, wenn alles okay war!
+                if (umbenennungsfenster.m_okay == true)
+                {
+                    updateUnitPlayerString(checkIndex, umbenennungsfenster.m_neuerSpielerString);
+                }
+                else
+                {
+                    // Dürfte niemals auftreten, es sei denn, der Spieler klickt auf "Abbrechen".
+                    // In diesem Fall wird die Einheit sofort wieder entfernt und wir sind ferig!
+                    spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.RemoveAt(checkIndex);
+                }
+                updateEditFenster();
             }
         }
 
-
+        /// <summary>
+        /// Findet den Index einer Armee aus der Spieler-Armeeliste, indem nach dem einzigartigen Spieler-String gesucht wird!
+        /// </summary>
+        /// <returns></returns>
         private int getChosenUnitTreeIdentifier()
         {
             int foundIndex = -1;
@@ -384,16 +422,15 @@ namespace WarhammerGUI
             if (ausgewaehltesItem != null)
             {
                 // Wir wissen zum Glück, dass der User-Defined-String der Einheit 
-                // einzigartig sein muss! Daher können wir beim Löschen die komplette
-                // Einheitenliste der zugehörigen Armee durchsuchen.
-                var aktHeader = ausgewaehltesItem.Header.ToString();
+                // einzigartig sein muss! Und dieser ist die Name-Property des Items!
+                var zuFindenderString = ausgewaehltesItem.Name;
 
                 int anzahlUnitsGesamt = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Count;
                 for (int aktUnitIndex = 0; aktUnitIndex < anzahlUnitsGesamt; ++aktUnitIndex)
                 {                  
-                    var identifierAusArmeeUser = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].einheitenUniqueName.ToString();
+                    var identifierAusArmeeUser = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].spielerEinheitenName;
 
-                    if(aktHeader == identifierAusArmeeUser)
+                    if (zuFindenderString == identifierAusArmeeUser)
                     {
                         // Jetzt wissen wir den Index der Einheit, die gelöscht werden soll!
                         foundIndex = aktUnitIndex;
@@ -402,7 +439,6 @@ namespace WarhammerGUI
             }
             return foundIndex;
         }
-
 
         /// <summary>
         /// Fügt der Spieler-Armeeliste eine neue, gerade ausgewählte Einheit hinzu!
@@ -416,20 +452,33 @@ namespace WarhammerGUI
             if (ausgewaehltesItem == null)
                 return;
 
-            
-            // Okay, dann wollen wir doch mal herausfinden, zu welcher Fraktion das Item gehört!
-            var aktAuswahlParent = VisualTreeHelper.GetParent(availableUnitsTreeView.SelectedItem as DependencyObject);
-            var aktFraktionsParent = VisualTreeHelper.GetParent(aktAuswahlParent );
-            var aktFraktionsItem = (TreeViewItem) aktFraktionsParent;
-            // Der Header ist die Description der Fraktion!
-            var aktuelleFraktion = EnumExtensions.GetEnumValueForDescription(typeof(Fraktionen), aktFraktionsItem.Header.ToString());
+            // Wir müssen lediglich den einzigartigen String auslesen und uns dann die entsprechende
+            // Einheit aus der globalen Liste geben lassen.
+            var neueUnit = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsKopie(ausgewaehltesItem.Name);
 
-            // Jetzt müssen wir uns natürlich noch überlegen, wie die Unit heißt!
-            // Der Header ist ja nur die Description, also müssen wir schauen, welcher 
-            var aktItemHeader = ausgewaehltesItem.Header.ToString();
+            // Jetzt müssen wir den Spieler zwingen, einen einzigartigen String zur Beschreibung der Unit anzugeben!
+            UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, neueUnit) { };
+            umbenennungsfenster.ShowDialog();
 
+            // Wenn der Nutzer abbrechen wollte, verlassen wir diese Funktion und nichts passiert.
+            if (!umbenennungsfenster.m_okay)
+                return;
 
-            //var test = ausgewaehltesItem.DataContext;
+            // Ansonsten aktualisieren wir den Spielernamen der neuen Einheit:
+            neueUnit.spielerEinheitenName = umbenennungsfenster.m_neuerSpielerString;
+
+            // Wir müssen noch alle Spieleranfragen abhandeln! Dazu müssen wir lediglich die entsprechende Methode 
+            // der Klasse aufrufen!
+            bool allesOkayBool = neueUnit.createUnitInteraktion();
+
+            // Natürlich wird die Klasse nur einsortiert, wenn alles okay ist!
+            if (!allesOkayBool)
+                return;
+
+            // Okay, rein damit:
+            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(neueUnit);
+            // Und noch die Übersicht aktualisieren!
+            updateEditFenster();
         }
     }
 }

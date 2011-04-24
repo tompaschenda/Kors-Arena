@@ -59,35 +59,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="EnumComboBox.cs" />
-    <Compile Include="fehlerMessageBox.xaml.cs">
+    <Compile Include="Gui\AuswahlAnzahlSubunits.xaml.cs">
+      <DependentUpon>AuswahlAnzahlSubunits.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\EnumComboBox.cs" />
+    <Compile Include="Gui\fehlerMessageBox.xaml.cs">
       <DependentUpon>fehlerMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UnitRename.xaml.cs">
+    <Compile Include="Gui\UnitRename.xaml.cs">
       <DependentUpon>UnitRename.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StreitmachtEdit.xaml.cs">
+    <Compile Include="Gui\StreitmachtEdit.xaml.cs">
       <DependentUpon>StreitmachtEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StreitmachtRename.xaml.cs">
+    <Compile Include="Gui\StreitmachtRename.xaml.cs">
       <DependentUpon>StreitmachtRename.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StreitmachtCreate.xaml.cs">
+    <Compile Include="Gui\StreitmachtCreate.xaml.cs">
       <DependentUpon>StreitmachtCreate.xaml</DependentUpon>
     </Compile>
-    <Page Include="fehlerMessageBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UnitRename.xaml">
+    <Page Include="Gui\AuswahlAnzahlSubunits.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="StreitmachtEdit.xaml">
+    <Page Include="Gui\fehlerMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StreitmachtRename.xaml">
+    <Page Include="Gui\UnitRename.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\StreitmachtEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\StreitmachtRename.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -103,7 +110,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="StreitmachtCreate.xaml">
+    <Page Include="Gui\StreitmachtCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Programmlogik\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using spielerArmee;
 using Common;
 using Listen;
+using EinheitDefinition;
 
 namespace WarhammerGUI
 {
@@ -21,28 +22,27 @@ namespace WarhammerGUI
     /// </summary>
     public partial class UnitRename : Window
     {
-        public UnitRename(StreitmachtEdit parentWindow, int indexDerArmee, int indexDerUnit, bool checkOnly)
+        public UnitRename(StreitmachtEdit parentWindow, int indexDerArmee, Einheit testEinheit)
         {
             m_WindowParent = parentWindow;
             InitializeComponent();
+            m_indexDerArmee = indexDerArmee;
 
             // Ich möchte, dass der alte Name direkt als Auswahl erscheint:
-            this.namensTextbox.Text = spielerArmeeListe.getInstance().armeeSammlung[indexDerArmee].armeeEinheiten[indexDerUnit].spielerEinheitenName;
-
-            m_indexDerArmee = indexDerArmee;
-            m_indexDerUnit = indexDerUnit;
-            m_checkOnly = checkOnly;
+            this.namensTextbox.Text = testEinheit.spielerEinheitenName;
         }
 
         private StreitmachtEdit m_WindowParent;
-        private int m_indexDerArmee;
-        private int m_indexDerUnit;
-        private bool m_checkOnly;
+        private int m_indexDerArmee = -1;
+        public bool m_okay = false;
+        public string m_neuerSpielerString = "";
+
 
         private void abbrechenKlick(object sender, RoutedEventArgs e)
         {
-            if(! m_checkOnly)
-                this.Close();
+            m_neuerSpielerString = "";
+            m_okay = false;
+            this.Close();
         }
 
         private void okayKlick(object sender, RoutedEventArgs e)
@@ -50,21 +50,14 @@ namespace WarhammerGUI
             // Wenn alles okay ist, übernehmen wir den Namen!
             if(checkUnitNameValidity())
             {
-                string neuerUnitName = this.namensTextbox.Text;
+                m_neuerSpielerString = this.namensTextbox.Text;
+                m_okay = true;
 
-                // Ersetze den Namen:
-                spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[m_indexDerUnit].spielerEinheitenName = neuerUnitName;
-
-                // Und aktualisiere den einzigartigen Einheitsnamen!
-                var alterBaseUnitName = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[m_indexDerUnit].einheitenName;
-                var alterBaseNameReadable = EnumExtensions.getEnumDescription(alterBaseUnitName.GetType(), alterBaseUnitName.ToString());
-                spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[m_indexDerUnit].einheitenUniqueName = alterBaseNameReadable + " (" + neuerUnitName + ")";
-
-                // Aktualisieren der Anzeige:
-                m_WindowParent.updateArmyTreeView();
-
+                // Das Aktualisieren geschieht außen!
                 this.Close();           
             }
+            // Wenn das Checken nicht geklappt hat, lassen wir den Nutzer niemals aus diesem Dialog heraus!
+            // Es sei denn, er klickt auf abbrechen!
         }
 
         /// <summary>

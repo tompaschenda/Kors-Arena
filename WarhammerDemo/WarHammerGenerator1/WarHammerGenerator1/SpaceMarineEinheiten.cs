@@ -48,6 +48,8 @@ namespace WarHammerGenerator1
             //spielerEinheitenName = "MEINSTRING"; // SpaceMarineEinheiten.TaktischerTrupp.ToString();
             fraktion = Fraktionen.SpaceMarines;
 
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
             basisGroesse = new List<Groessenspecifier>() { };
             basisGroesse.Add(new Groessenspecifier() { subEinheitenname = SpaceMarinesSubUnits.SpaceMarine , anzahl = 4});
             basisGroesse.Add(new Groessenspecifier() { subEinheitenname = SpaceMarinesSubUnits.SergeantDerSpaceMarines, anzahl = 1 });
@@ -81,13 +83,18 @@ namespace WarHammerGenerator1
         /// <summary>
         /// Hier werden alle Spierloptionen abgehandelt
         /// </summary>
-        public override void createUnitInteraktion()
+        public override bool createUnitInteraktion()
         {
             // TODO: Wahl Anzahl übrige Einheiten festlegen:
             var guiMediator = new SpielerAnfragen() { };
-            int anzahlSpaceMarines = guiMediator.spielerAuswahlNumberBox(1, 0, 5, 16, totalePunkteKosten, "Darf bis zu fünf zusätzliche Space Marines erhalten");
+
+            int anzahlSpaceMarines = guiMediator.spielerAuswahlNumberBox(1, 0, 5, 16, totalePunkteKosten, "Trupp darf bis zu fünf zusätzliche Space Marines erhalten");
             // Update der Punktekosten:
             totalePunkteKosten = basispunkteKosten + anzahlSpaceMarines * 16;
+
+
+
+
 
             // Gründen wir unsere Einheit neu:
             subEinheiten = new List<subEinheit>() { };
@@ -209,6 +216,8 @@ namespace WarHammerGenerator1
             // => muss mit generiert werden!
 
             //base.spielerOptionen();
+
+            return true;
         }
     }
 

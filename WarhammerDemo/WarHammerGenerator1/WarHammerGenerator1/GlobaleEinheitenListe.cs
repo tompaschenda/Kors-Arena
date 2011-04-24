@@ -50,6 +50,9 @@ namespace WarHammerGenerator1
             // MAT TODO: Wenn es mehrere Fraktionen gibt, muss ich die natürlich hier eintragen! ;-)
             var spaceMarineallUnits = new SpaceMarineEinheitenListe();
             m_globalUnitList.AddRange(spaceMarineallUnits.gibMirAlleSpaceMarineEinheiten());
+
+            // Für jede der angelegten Einheiten führen wir nun einen Konsistenzcheck durch!
+            einheitenKonsistenzcheck();
         }
 
 
@@ -122,6 +125,27 @@ namespace WarHammerGenerator1
             return listeMitAllenEinheiten;
         }
 
+        /// <summary>
+        /// Liefert eine Einheit zurück, die einen vorgegebenen uniqueString besitzt!
+        /// </summary>
+        /// <param name="uniqueString"></param>
+        /// <returns></returns>
+        public Einheit gibMirEinheitMitFolgendemUniqueStringAlsKopie(string uniqueString)
+        {
+            Einheit kopierteEinheit = null;
+
+            int anzEinheiten = m_globalUnitList.Count;
+            for (int aktUnitIndex = 0; aktUnitIndex < anzEinheiten; ++aktUnitIndex)
+            {
+                var aktUnitBlaupause = m_globalUnitList[aktUnitIndex];
+                if( aktUnitBlaupause.uniqueStringProperty == uniqueString)
+                {
+                    kopierteEinheit = new Einheit(aktUnitBlaupause);
+                }
+            }
+            return kopierteEinheit;
+        }
+
 
         /// <summary>
         /// Gibt eine Liste mit allen Identifiern aller Einheiten aller Fraktionen
@@ -132,6 +156,43 @@ namespace WarHammerGenerator1
         {
             // Mat TODO: Brauche ich das überhaupt noch?
             return m_globalUnitList;
+        }
+
+
+        /// <summary>
+        /// Prüft, ob alle angelegten Einheiten auch vernünftig angelegt wurden!
+        /// </summary>
+        private void einheitenKonsistenzcheck()
+        {
+            int anzEinheiten = m_globalUnitList.Count;
+            for (int aktEinheitIndex = 0; aktEinheitIndex < anzEinheiten; aktEinheitIndex++)
+            {
+                var aktEinheit = m_globalUnitList[aktEinheitIndex];
+
+                // Jede Einheit muss einen Namen haben!
+                if (aktEinheit.einheitenName.ToString() == "")
+                    throw new ArgumentOutOfRangeException("Die aktuelle Einheit hat keinen Namensbezeichner!");
+
+                // Jede Einheit muss über einen einzigartigen String verfügen (der natürlich auch einzigartig sein muss!)
+                if(aktEinheit.uniqueStringProperty == "")
+                    throw new ArgumentOutOfRangeException("Die Einheit mit den Namen " + aktEinheit.einheitenName.ToString() + " hat keine einzigartige String Property!");
+
+                int occurenceCounter = 0;
+                for (int aktIndex = 0; aktIndex < anzEinheiten; aktIndex++)
+                {
+                    if(m_globalUnitList[aktIndex].uniqueStringProperty == aktEinheit.uniqueStringProperty)
+                        occurenceCounter++;
+                }
+                if (occurenceCounter > 1)
+                    throw new ArgumentOutOfRangeException("Der Unique-String der Einheit " +aktEinheit.einheitenName.ToString() + " ist nicht einzigartig!");
+
+                // Jede Einheit muss etwas Kosten - sowohl generell als auch mit Modifikationen!
+                if(aktEinheit.basispunkteKosten == -1)
+                    throw new ArgumentOutOfRangeException("Die Einheit " + aktEinheit.einheitenName.ToString() + " hat keine Basispunktekosten!");
+
+                if(aktEinheit.totalePunkteKosten == -1)
+                    throw new ArgumentOutOfRangeException("Die Einheit " + aktEinheit.einheitenName.ToString() + " hat keine totalen Punktekosten!");
+            }
         }
     }
 }

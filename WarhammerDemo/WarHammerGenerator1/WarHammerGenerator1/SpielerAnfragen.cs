@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WarHammerGenerator1;
+using WarhammerProgramm;
 
 namespace spielerAnfragen
 {
@@ -41,7 +43,10 @@ namespace spielerAnfragen
         /// <returns> Gibt die Anzahl zurück, die der Spieler gewünscht hat</returns>
         public int spielerAuswahlNumberBox(int baseNumber, int minValue, int maxValue, int costPerValuePoint, int totalCostBase, string descriptionString)
         {
-            var anzahl = new int();
+            int anzahl = 1;
+
+            // An dieser Stelle muss ich aus dem Code heraus ein Fenster in WPF basteln, dass die gewünschten 
+
 
             // GUI-Aufbau:
             // TODO!

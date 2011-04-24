@@ -41,6 +41,9 @@ namespace EinheitDefinition
             spielerEinheitenName = "";
             fraktion = Fraktionen.BloodAngels;
             einheitenName = "";
+            uniqueStringProperty = "";
+            basispunkteKosten = -1;
+            totalePunkteKosten = -1;
         }
 
         /// <summary>
@@ -51,8 +54,8 @@ namespace EinheitDefinition
         public Einheit(Einheit alteEinheit)
         {
             einheitenName = alteEinheit.einheitenName;
+            uniqueStringProperty = alteEinheit.uniqueStringProperty;
             spielerEinheitenName = alteEinheit.spielerEinheitenName;
-            einheitenUniqueName = alteEinheit.einheitenUniqueName;
             fraktion = alteEinheit.fraktion;
             basisGroesse = alteEinheit.basisGroesse;
             basispunkteKosten = alteEinheit.basispunkteKosten;
@@ -74,14 +77,15 @@ namespace EinheitDefinition
         public Object einheitenName;
 
         /// <summary>
-        /// Der Name, den der Nutzer einer Einheit selbst mitgeben möchte!
+        /// Jede Warhammer Einheit hat einen einzigartigen Bezeichner, der sich aus
+        /// Fraktion + Einheitenname zusammensetzen sollte als String.
         /// </summary>
-        public string spielerEinheitenName;
+        public string uniqueStringProperty;
 
         /// <summary>
-        /// Kombination aus einheitenName + " (spielerEinheitenName)"
+        /// Der Name, den der Nutzer einer Einheit selbst mitgeben möchte! Muss einzigartig sein!
         /// </summary>
-        public string einheitenUniqueName;
+        public string spielerEinheitenName;
 
         /// <summary>
         /// Zu welcher Fraktion gehört diese Einheit?
@@ -169,7 +173,7 @@ namespace EinheitDefinition
         /// Wird nicht automatisch bei der erstellung der globalen Enheitenliste
         /// ausgeführt!
         /// </summary>
-        public virtual void createUnitInteraktion(){ }
+        public virtual bool createUnitInteraktion() { return false; }
 
         /// <summary>
         /// Virtuelle Funktion, die mit Leben gefüllt werden
