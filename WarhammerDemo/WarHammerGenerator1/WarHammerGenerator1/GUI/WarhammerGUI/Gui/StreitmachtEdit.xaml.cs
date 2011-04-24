@@ -11,13 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 //using System.Windows.Forms;
-using spielerArmee;
 using Listen;
-using spielerAnfragen;
 using Common;
-using EinheitDefinition;
-using WarHammerGenerator1;
-using WaffenfabrikNamespace;
 
 namespace WarhammerGUI
 {
@@ -469,7 +464,9 @@ namespace WarhammerGUI
 
             // Wir müssen noch alle Spieleranfragen abhandeln! Dazu müssen wir lediglich die entsprechende Methode 
             // der Klasse aufrufen!
-            bool allesOkayBool = neueUnit.createUnitInteraktion();
+            // TODO! Ruft nicht die korrekte virtuelle Funktion auf!
+            neueUnit.createUnitInteraktion();
+            bool allesOkayBool = neueUnit.erschaffungOkay;
 
             // Natürlich wird die Klasse nur einsortiert, wenn alles okay ist!
             if (!allesOkayBool)

@@ -11,7 +11,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
-using spielerArmee;
 using Common;
 using Listen;
 

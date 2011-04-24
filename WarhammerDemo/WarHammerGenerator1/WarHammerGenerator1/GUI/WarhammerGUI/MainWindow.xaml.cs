@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
-using spielerArmee;
 using Listen;
-using spielerAnfragen;
 
 namespace WarhammerGUI
 {

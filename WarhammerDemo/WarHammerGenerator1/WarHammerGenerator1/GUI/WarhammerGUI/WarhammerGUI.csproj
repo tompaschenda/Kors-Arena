@@ -116,6 +116,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Programmlogik\Einheit.cs" />
+    <Compile Include="Programmlogik\GlobaleEinheitenListe.cs" />
+    <Compile Include="Programmlogik\SpaceMarineEinheiten.cs" />
+    <Compile Include="Programmlogik\SpielerAnfragen.cs" />
+    <Compile Include="Programmlogik\spielerArmee.cs" />
+    <Compile Include="Programmlogik\Waffenfabrik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -148,17 +154,11 @@
       <Project>{5386AF15-D15A-4FAA-9561-46C460676383}</Project>
       <Name>Listen</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\WarHammerGenerator1.csproj">
-      <Project>{0AF6EE44-7FA7-4050-BAAC-DF526B184F25}</Project>
-      <Name>WarHammerGenerator1</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Programmlogik\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
