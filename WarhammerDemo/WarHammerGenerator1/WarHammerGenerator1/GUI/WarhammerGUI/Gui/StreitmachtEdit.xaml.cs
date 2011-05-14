@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 //using System.Windows.Forms;
 using Listen;
 using Common;
+using System.Xml.Linq;
 
 namespace WarhammerGUI
 {
@@ -29,7 +30,7 @@ namespace WarhammerGUI
 
             /////////////////////////// ENTFERNEN!!!
 
-            // TODO: TESTCODE! Ich initialisiere hier jetzt ausnahmsweise mal DIREKT eine Einheit, damit ich das testen kann:
+        /*    // TODO: TESTCODE! Ich initialisiere hier jetzt ausnahmsweise mal DIREKT eine Einheit, damit ich das testen kann:
             Einheit spaceMarineTrupp = new taktischerTrupp();
             spaceMarineTrupp.createUnitBase();
             spaceMarineTrupp.spielerEinheitenName = "Jepp";
@@ -42,7 +43,7 @@ namespace WarhammerGUI
             spaceTrupp2.spielerEinheitenName = "Jihaa";
 
             var alterBaseNameReadable2 = EnumExtensions.getEnumDescription(spaceTrupp2.einheitenName.GetType(), spaceTrupp2.einheitenName.ToString());
-            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(spaceTrupp2);
+            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(spaceTrupp2);*/
 
             /////////////////////////// ENTFERNEN!!!
 
@@ -73,12 +74,30 @@ namespace WarhammerGUI
             this.displayArmySide.AppendText(neueFraktion);
 
             // Desgleichen für die Punktzahl der Armee:
+            spielerArmeeListe.getInstance().aktualisiereGesamtkosten();
+
             this.displayArmyPoints.Clear();
             string neuePunktzahl = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].gesamtPunkte.ToString();
             this.displayArmyPoints.AppendText(neuePunktzahl);
 
+            // Außerdem wollen wir darstellen, war die aktiv gewählte Einheit wert ist (wenn es denn eine gibt!)
+            updateAktUnitCostView();
+
             // Das Treeview mit allen Einheiten muss auch aktualisiert werden:
             updateArmyTreeView();
+        }
+
+        /// <summary>
+        /// Aktualisiert die Anzeige der aktuell ausgewählten Einheit
+        /// </summary>
+        public void updateAktUnitCostView()
+        {
+            var aktEinheitIndex = getChosenUnitTreeIdentifier();
+            int aktUnitCosts = 0;
+            if (aktEinheitIndex != -1)
+                aktUnitCosts = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktEinheitIndex].einheitKostenGesamt;
+
+            punkteKostenAtkUnit.Text = aktUnitCosts.ToString();
         }
 
         /// <summary>
@@ -136,7 +155,12 @@ namespace WarhammerGUI
                                 throw new ArgumentOutOfRangeException("WARNUNG: Kein Spielername in der Einheit mit dem Namen " + aktUnit.einheitenName + " vorhanden!");
                             
                             einheitNode.Header = baseName + " (" + aktUnit.spielerEinheitenName + ")";
-                            einheitNode.Name = aktUnit.spielerEinheitenName;
+                            // ACHTUNG! An dieser Stelle muss ich noch den Header in die Einheit schrieben, damit ich sie später auf wiederfinen kann!
+                            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].uniqueHeaderProperty = einheitNode.Header.ToString();
+
+                            //XName name = XName.Get(aktUnit.spielerEinheitenName);
+                            //einheitNode.Name = name.ToString(); //aktUnit.spielerEinheitenName;
+                            
                             einheitAuswahlNode.Items.Add(einheitNode);
 
                             // Alle Einheiten besitzen mindestens eine Subeinheit oder sogar mehrere. Diese tragen wir nun ein.
@@ -417,13 +441,13 @@ namespace WarhammerGUI
             if (ausgewaehltesItem != null)
             {
                 // Wir wissen zum Glück, dass der User-Defined-String der Einheit 
-                // einzigartig sein muss! Und dieser ist die Name-Property des Items!
-                var zuFindenderString = ausgewaehltesItem.Name;
+                // einzigartig sein muss! Und dieser ist die (Name) Header-Property des Items!
+                var zuFindenderString = ausgewaehltesItem.Header.ToString();
 
                 int anzahlUnitsGesamt = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Count;
                 for (int aktUnitIndex = 0; aktUnitIndex < anzahlUnitsGesamt; ++aktUnitIndex)
-                {                  
-                    var identifierAusArmeeUser = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].spielerEinheitenName;
+                {
+                    var identifierAusArmeeUser = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].uniqueHeaderProperty;
 
                     if (zuFindenderString == identifierAusArmeeUser)
                     {
@@ -449,10 +473,14 @@ namespace WarhammerGUI
 
             // Wir müssen lediglich den einzigartigen String auslesen und uns dann die entsprechende
             // Einheit aus der globalen Liste geben lassen.
-            var neueUnit = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsKopie(ausgewaehltesItem.Name);
+            // Zunächst jedoch als Referenz, damit wir die Unterfunktionen noch aufrufen können.
+            // DANN können wir erst kopieren!
+
+
+            var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(ausgewaehltesItem.Name);
 
             // Jetzt müssen wir den Spieler zwingen, einen einzigartigen String zur Beschreibung der Unit anzugeben!
-            UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, neueUnit) { };
+            UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, neueUnitOrig) { };
             umbenennungsfenster.ShowDialog();
 
             // Wenn der Nutzer abbrechen wollte, verlassen wir diese Funktion und nichts passiert.
@@ -460,22 +488,35 @@ namespace WarhammerGUI
                 return;
 
             // Ansonsten aktualisieren wir den Spielernamen der neuen Einheit:
-            neueUnit.spielerEinheitenName = umbenennungsfenster.m_neuerSpielerString;
+            neueUnitOrig.spielerEinheitenName = umbenennungsfenster.m_neuerSpielerString;
 
             // Wir müssen noch alle Spieleranfragen abhandeln! Dazu müssen wir lediglich die entsprechende Methode 
             // der Klasse aufrufen!
             // TODO! Ruft nicht die korrekte virtuelle Funktion auf!
-            neueUnit.createUnitInteraktion();
-            bool allesOkayBool = neueUnit.erschaffungOkay;
+            neueUnitOrig.createUnitInteraktion(spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].gesamtPunkte);
+            bool allesOkayBool = neueUnitOrig.erschaffungOkay;
 
             // Natürlich wird die Klasse nur einsortiert, wenn alles okay ist!
             if (!allesOkayBool)
                 return;
 
+            // Jetzt erst mache ich eine Kopie der Einheit!
+            var kopierteEinheit = new Einheit(neueUnitOrig);
+
             // Okay, rein damit:
-            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(neueUnit);
+            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(kopierteEinheit);
             // Und noch die Übersicht aktualisieren!
             updateEditFenster();
+        }
+
+        /// <summary>
+        /// Was passiert, sobald der Spieler eine neue Einheit in seiner Liste anklickt?
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void unitTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            updateAktUnitCostView();
         }
     }
 }

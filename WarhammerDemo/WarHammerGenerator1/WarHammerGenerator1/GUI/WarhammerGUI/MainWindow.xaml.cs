@@ -34,12 +34,15 @@ namespace WarhammerGUI
             StreitmachtCreate streitmachtErzeugenFenster = new StreitmachtCreate(this);
             streitmachtErzeugenFenster.Owner = this;
             streitmachtErzeugenFenster.ShowDialog();
+
+            updateGUI();
         }
 
         private void klickNeueStreitmachtMenu(object sender, RoutedEventArgs e)
         {
             StreitmachtCreate streitmachtErzeugenFenster = new StreitmachtCreate(this);
             streitmachtErzeugenFenster.ShowDialog();
+            updateGUI();
         }
 
 
@@ -92,6 +95,7 @@ namespace WarhammerGUI
 
                 // Sonst passiert nichts!
             }
+            updateGUI();
         }
 
 
@@ -99,26 +103,9 @@ namespace WarhammerGUI
         // natürlich noch dafür sorgen, dass die entsprechenden Haupteigenschaften im Fenster
         // ausgelesen und angezeigt werden!
         // Dazu muss ich erst einmal wissen, welches Item ausgewählt wurde!
-        private void detailsAktualisieren(object sender, SelectionChangedEventArgs e)
+        private void selektionInGUIGeandertEvent(object sender, SelectionChangedEventArgs e)
         {
-            int selectionIndex = ListBoxArmeeListe.SelectedIndex;
-
-            // Wir zeigen natürlich nur dann etwas an, wenn auch etwas ausgewählt ist! :)
-            if (selectionIndex != -1)
-            {
-                displayArmyName.Clear();
-                string neuerName = spielerArmeeListe.getInstance().armeeSammlung[selectionIndex].armeeName;
-                displayArmyName.AppendText(neuerName);
-
-                string neueFraktion = spielerArmeeListe.getInstance().armeeSammlung[selectionIndex].armeeFraktion.ToString();
-                displayArmySide.Clear();
-                displayArmySide.AppendText(neueFraktion);
-
-                string gesamtKosten = spielerArmeeListe.getInstance().armeeSammlung[selectionIndex].gesamtPunkte.ToString();
-                displayArmyPoints.Clear();
-                displayArmyPoints.AppendText(gesamtKosten);
-            }
-
+            updateGUI();
         }
 
         /// <summary>
@@ -134,6 +121,7 @@ namespace WarhammerGUI
             {
                 ListBoxArmeeListe.Items.Add(spielerArmeeListe.getInstance().armeeSammlung[i].armeeName);
             }
+            updateGUI();
         }
 
 
@@ -152,6 +140,7 @@ namespace WarhammerGUI
                 streitmachtRenameFenster.Owner = this;
                 streitmachtRenameFenster.ShowDialog();
             }
+            updateGUI();
         }
 
         /// <summary>
@@ -171,6 +160,7 @@ namespace WarhammerGUI
                 spielerArmeeListe.getInstance().armeeSammlung.Add(neueArmee);
                 updateArmeeListenBox();
             }
+            updateGUI();
         }
 
         /// <summary>
@@ -315,6 +305,7 @@ namespace WarhammerGUI
                     System.Windows.MessageBox.Show("Fehler: Konnte die Armee nicht einlesen! Fehlermeldung: " + ex.Message);
                 }
             }
+            updateGUI();
         }
 
         /// <summary>
@@ -383,6 +374,8 @@ namespace WarhammerGUI
                     }
                 }
             }
+
+            updateGUI();
         }
 
         /// <summary>
@@ -400,9 +393,31 @@ namespace WarhammerGUI
                 streitmachtEditFenster.Owner = this;
                 streitmachtEditFenster.ShowDialog();
             }
+
+            updateGUI();
         }
 
 
+        private void updateGUI()
+        {
+            int selectionIndex = ListBoxArmeeListe.SelectedIndex;
+
+            // Wir zeigen natürlich nur dann etwas an, wenn auch etwas ausgewählt ist! :)
+            if (selectionIndex != -1)
+            {
+                displayArmyName.Clear();
+                string neuerName = spielerArmeeListe.getInstance().armeeSammlung[selectionIndex].armeeName;
+                displayArmyName.AppendText(neuerName);
+
+                string neueFraktion = spielerArmeeListe.getInstance().armeeSammlung[selectionIndex].armeeFraktion.ToString();
+                displayArmySide.Clear();
+                displayArmySide.AppendText(neueFraktion);
+
+                string gesamtKosten = spielerArmeeListe.getInstance().armeeSammlung[selectionIndex].gesamtPunkte.ToString();
+                displayArmyPoints.Clear();
+                displayArmyPoints.AppendText(gesamtKosten);
+            }
+        }
 
     }
 }

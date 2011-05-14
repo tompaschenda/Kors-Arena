@@ -122,5 +122,24 @@ namespace WarhammerGUI
             this.saveString = "";
         }
 
+        /// <summary>
+        /// Berechnet die Gesamtpunkte kosten aller Armeen neu!
+        /// </summary>
+        public void aktualisiereGesamtkosten()
+        {
+            int gesamtkostenProArmee;
+            for (int i = 0; i < this.armeeSammlung.Count; ++i)
+            {
+                gesamtkostenProArmee = 0;
+
+                for (int j = 0; j < this.armeeSammlung[i].armeeEinheiten.Count; ++j)
+                {
+                    gesamtkostenProArmee = gesamtkostenProArmee + this.armeeSammlung[i].armeeEinheiten[j].einheitKostenGesamt;
+                }
+
+                this.armeeSammlung[i].gesamtPunkte = gesamtkostenProArmee;
+            }
+        }
+
     }
 }

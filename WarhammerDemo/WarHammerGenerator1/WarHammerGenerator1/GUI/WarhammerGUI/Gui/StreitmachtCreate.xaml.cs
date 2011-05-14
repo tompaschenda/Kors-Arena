@@ -38,7 +38,7 @@ namespace WarhammerGUI
             this.Close();
         }
 
-        private void okayKlick(object sender, RoutedEventArgs e)
+        private void weiterKlick(object sender, RoutedEventArgs e)
         {
             // Wenn alles okay ist, legen wir eine neue Armee an!
             if(checkValidity())

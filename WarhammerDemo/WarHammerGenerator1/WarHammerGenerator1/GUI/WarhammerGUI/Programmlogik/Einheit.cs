@@ -42,7 +42,7 @@ namespace WarhammerGUI
             einheitenName = "";
             uniqueStringProperty = "";
             basispunkteKosten = -1;
-            totalePunkteKosten = -1;
+            einheitKostenGesamt = -1;
             erschaffungOkay = false;
         }
 
@@ -59,7 +59,7 @@ namespace WarhammerGUI
             fraktion = alteEinheit.fraktion;
             basisGroesse = alteEinheit.basisGroesse;
             basispunkteKosten = alteEinheit.basispunkteKosten;
-            totalePunkteKosten = alteEinheit.totalePunkteKosten;
+            einheitKostenGesamt = alteEinheit.einheitKostenGesamt;
             einzigartig = alteEinheit.einzigartig;
             einheitentyp = alteEinheit.einheitentyp;
             sonderregeln = alteEinheit.sonderregeln;
@@ -70,6 +70,7 @@ namespace WarhammerGUI
             angeschlossenesFahrzeug = alteEinheit.angeschlossenesFahrzeug;
             subEinheiten = alteEinheit.subEinheiten;
             erschaffungOkay = alteEinheit.erschaffungOkay;
+            uniqueHeaderProperty = alteEinheit.uniqueHeaderProperty;
         }
 
         /// <summary>
@@ -82,6 +83,11 @@ namespace WarhammerGUI
         /// Fraktion + Einheitenname zusammensetzen sollte als String.
         /// </summary>
         public string uniqueStringProperty;
+
+        /// <summary>
+        /// Jeder Spieler-Einheit bekommt eine einzigartige String-Property,  unter dem das zugehörige Treeview-Item zu finden ist!
+        /// </summary>
+        public string uniqueHeaderProperty;
 
         /// <summary>
         /// Der Name, den der Nutzer einer Einheit selbst mitgeben möchte! Muss einzigartig sein!
@@ -112,7 +118,7 @@ namespace WarhammerGUI
         /// <summary>
         /// Wieviele Punktekosten hat die Einheit insgesamt?
         /// </summary>
-        public int totalePunkteKosten;
+        public int einheitKostenGesamt;
 
         /// <summary>
         /// Ist die Einheit einzigartig?
@@ -179,7 +185,7 @@ namespace WarhammerGUI
         /// Wird nicht automatisch bei der erstellung der globalen Enheitenliste
         /// ausgeführt!
         /// </summary>
-        public virtual void createUnitInteraktion() {  }
+        public virtual void createUnitInteraktion(int gesamtArmeePunkteKosten) {  }
 
         /// <summary>
         /// Virtuelle Funktion, die mit Leben gefüllt werden

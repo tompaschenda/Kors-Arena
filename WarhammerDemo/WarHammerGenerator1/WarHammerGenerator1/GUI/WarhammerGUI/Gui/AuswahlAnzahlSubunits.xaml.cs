@@ -18,19 +18,40 @@ namespace WarhammerGUI
     /// </summary>
     public partial class AuswahlAnzahlSpieler : Window
     {
-        public AuswahlAnzahlSpieler(int anzMin, int anzMax)
+        public AuswahlAnzahlSpieler(Einheit aktEinheit, int anzMin, int anzMax, string descriptionString, int gesamtArmeeKosten, int kostenProSubeinheit)
         {
             InitializeComponent();
 
-            anzahlSlider.Minimum = anzMin;
-            anzahlSlider.Maximum = anzMax;
+
+            announcementBox.Text = descriptionString;
+            anzahlSlider.Minimum = 0;
+            anzahlSlider.Maximum = anzMax-anzMin;
+            anzahlSlider.TickFrequency = 1;
+            anzahlSlider.IsSnapToTickEnabled = true;
+
+            blockKostenSubeinheit.Text = kostenProSubeinheit.ToString();
+
+            m_gesamtArmeeKosten = gesamtArmeeKosten;
+            m_kostenProSubeinheit = kostenProSubeinheit;
+            m_anzMinSubEinheiten = anzMin;
+
+            anzSubeinheitenGesamt.Text = anzMin.ToString();
+            m_bisherigeEinheitskosten = aktEinheit.basispunkteKosten;
+
+            var gesamtPunkteNeu = m_gesamtArmeeKosten + m_bisherigeEinheitskosten;
+            blockGesamtPunkte.Text = gesamtPunkteNeu.ToString();
+
+            blockKostenEinheit.Text = m_bisherigeEinheitskosten.ToString();
+
+            this.ShowDialog();
         }
-
-
-
 
         public int anzahlGewaehlt;
         public bool allesOkay = false;
+        private int m_gesamtArmeeKosten;
+        private int m_kostenProSubeinheit;
+        private int m_anzMinSubEinheiten;
+        private int m_bisherigeEinheitskosten;
 
 
         /// <summary>
@@ -51,9 +72,31 @@ namespace WarhammerGUI
         /// <param name="e"></param>
         private void klickWeiter(object sender, RoutedEventArgs e)
         {
-            anzahlGewaehlt = (int) anzahlSlider.Value -1;
+            anzahlGewaehlt = (int) anzahlSlider.Value;
             allesOkay = true;
             this.Close();
+        }
+
+
+        /// <summary>
+        /// Wird aufgerufen, sobald sich der Wert für den Slider ändert!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void anzahlSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            blockKostenEinheit.Text = "";
+            var kostenDerEinheitZusaetzlich = anzahlSlider.Value * m_kostenProSubeinheit;
+            var kostenDerEinheitGesamt = m_bisherigeEinheitskosten + kostenDerEinheitZusaetzlich;
+            var gesamtPunkteNeu = m_gesamtArmeeKosten + kostenDerEinheitGesamt;
+            blockGesamtPunkte.Text = gesamtPunkteNeu.ToString();
+
+            var gesamtSubeinheiten = m_anzMinSubEinheiten + anzahlSlider.Value;
+            anzSubeinheitenGesamt.Text = gesamtSubeinheiten.ToString();
+
+            blockKostenEinheit.Text = kostenDerEinheitGesamt.ToString();
+
+            //blockKostenEinheit = 
         }
 
 

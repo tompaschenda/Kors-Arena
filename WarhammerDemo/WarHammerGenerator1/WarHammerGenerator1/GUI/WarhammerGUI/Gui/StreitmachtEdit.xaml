@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title ="Armee Bearbeiten" Height="768" Width="1024">
     <Grid>
-        <Label Content="Fraktion:" Height="28" HorizontalAlignment="Left" Margin="344,8,0,0" Name="label2" VerticalAlignment="Top" />
-        <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="10,10,0,0" Name="label4" VerticalAlignment="Top" />
-        <Label Content="Gesamtpunkte:" Height="28" HorizontalAlignment="Left" Margin="677,5,0,0" Name="label5" VerticalAlignment="Top" />
-        <TextBox BorderBrush="Black" Height="23" HorizontalAlignment="Left" IsEnabled="True" IsReadOnly="True" Margin="60,10,0,0" Name="displayArmyName" VerticalAlignment="Top" Width="257" />
-        <TextBox BorderBrush="Black" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="405,8,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="257" />
-        <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="783,10,76,0" Name="displayArmyPoints" VerticalAlignment="Top" />
+        <Label Content="Fraktion der aktiven Armee:" Height="28" HorizontalAlignment="Left" Margin="317,6,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Name der aktiven Armee:" Height="28" HorizontalAlignment="Left" Margin="35,6,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Gesamtpunkte der aktiven Armee:" Height="28" HorizontalAlignment="Left" Margin="563,3,0,0" Name="label5" VerticalAlignment="Top" />
+        <TextBox BorderBrush="Black" Height="23" HorizontalAlignment="Left" IsEnabled="True" IsReadOnly="True" Margin="35,40,0,0" Name="displayArmyName" VerticalAlignment="Top" Width="225" />
+        <TextBox BorderBrush="Black" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="317,40,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="170" />
+        <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="563,40,364,0" Name="displayArmyPoints" VerticalAlignment="Top" />
         <Label Content="Vorhandene Einheiten:" Height="28" HorizontalAlignment="Left" Margin="30,85,0,0" Name="vorhandeneEinheitenLabel" VerticalAlignment="Top" Width="230" />
-        <TreeView Height="463" HorizontalAlignment="Left" Margin="30,119,0,0" Name="unitTreeView" VerticalAlignment="Top" Width="305" />
+        <TreeView Height="463" HorizontalAlignment="Left" Margin="30,119,0,0" Name="unitTreeView" VerticalAlignment="Top" Width="305" SelectedItemChanged="unitTreeView_SelectedItemChanged"  />
         <Button Content="Neue Einheit hinzufügen" Height="23" HorizontalAlignment="Left" Margin="405,171,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickEinheitHinzufuegen"  />
         <Button Content="Einheit löschen" Height="23" HorizontalAlignment="Left" Margin="405,224,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickLoescheEinheit"/>
         <Button Content="Einheit kopieren" Height="23" HorizontalAlignment="Left" Margin="405,277,0,0" Name="button3" VerticalAlignment="Top" Width="196" Click="klickKopiereEinheit" />
@@ -19,5 +19,7 @@
         <TreeView Height="463" HorizontalAlignment="Left" Margin="663,119,0,0" Name="availableUnitsTreeView" VerticalAlignment="Top" Width="305" />
         <Label Content="Verfügbare Einheiten:" Height="28" HorizontalAlignment="Left" Margin="663,85,0,0" Name="moeglicheEinheitenLabel" VerticalAlignment="Top" Width="230" />
         <Button Content="Auswahlregel Prüfen" Height="23" HorizontalAlignment="Left" Margin="405,445,0,0" Name="button6" VerticalAlignment="Top" Width="196" />
+        <Label Content="Punktekosten der aktiven Einheit:" Height="28" HorizontalAlignment="Left" Margin="791,6,0,0" Name="label1" VerticalAlignment="Top" />
+        <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="791,40,136,0" Name="punkteKostenAtkUnit" VerticalAlignment="Top" />
     </Grid>
 </Window>

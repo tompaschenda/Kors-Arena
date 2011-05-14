@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Gui\Auswahl1AusN.xaml.cs">
+      <DependentUpon>Auswahl1AusN.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gui\AuswahlAnzahlSubunits.xaml.cs">
       <DependentUpon>AuswahlAnzahlSubunits.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
     <Compile Include="Gui\StreitmachtCreate.xaml.cs">
       <DependentUpon>StreitmachtCreate.xaml</DependentUpon>
     </Compile>
+    <Page Include="Gui\Auswahl1AusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gui\AuswahlAnzahlSubunits.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

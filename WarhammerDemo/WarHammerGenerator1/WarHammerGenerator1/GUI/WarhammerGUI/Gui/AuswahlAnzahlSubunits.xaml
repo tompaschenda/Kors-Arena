@@ -3,10 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Bitte Anzahl der Subeinheiten festlegen!" Height="400" Width="600">
     <Grid>
-        <TextBox BorderBrush="Black" Height="54" IsReadOnly="True" Margin="49,64,46,0" Name="announcementBox" VerticalAlignment="Top" TextAlignment="Justify" />
-        <Label Content="Anzahl der Subeinheiten:" Height="28" HorizontalAlignment="Left" Margin="62,144,0,0" Name="label1" VerticalAlignment="Top" />
-        <Slider Height="23" HorizontalAlignment="Left" Margin="79,178,0,0" Name="anzahlSlider" VerticalAlignment="Top" Width="100" DataContext="{Binding}" />
+        <TextBox BorderBrush="Black" Height="54" IsReadOnly="True" Margin="47,27,48,0" Name="announcementBox" VerticalAlignment="Top" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="12" FontWeight="Bold" />
+        <Label Content="Anzahl der Subeinheiten (zusätzlich):" Height="28" HorizontalAlignment="Left" Margin="72,134,0,0" Name="label1" VerticalAlignment="Top" />
+        <Slider Height="23" HorizontalAlignment="Left" Margin="89,168,0,0" Name="anzahlSlider" VerticalAlignment="Top" Width="120" DataContext="{Binding ElementName=textBox1}" SmallChange="1" ValueChanged="anzahlSlider_ValueChanged" />
         <Button Content="Weiter" Height="23" HorizontalAlignment="Right" Margin="0,305,133,0" Name="weiterButton" VerticalAlignment="Top" Width="75" Click="klickWeiter"/>
         <Button Content="Abbrechen" Height="23" HorizontalAlignment="Left" Margin="104,305,0,0" Name="abbrechenButton" VerticalAlignment="Top" Width="75" Click="klickAbbrechen" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="89,197,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" IsReadOnly="True" Text="{Binding ElementName=anzahlSlider, Path=Value}" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="353,0,0,143" Name="blockKostenEinheit" Text="" VerticalAlignment="Bottom" Width="95" DataContext="{Binding ElementName=anzahlSlider, Path=Value}" />
+        <Label Content="Punktekosten der Einheit aktuell:" Height="28" HorizontalAlignment="Left" Margin="353,163,0,0" Name="label2" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="350,0,0,204" Name="blockKostenSubeinheit" Text="" VerticalAlignment="Bottom" Width="95" />
+        <Label Content="Punktekosten pro Subeinheit:" Height="28" HorizontalAlignment="Left" Margin="350,103,0,0" Name="label3" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="353,0,0,77" Name="blockGesamtPunkte" Text="" VerticalAlignment="Bottom" Width="95" />
+        <Label Content="Punktekosten der Armee aktuell:" Height="28" HorizontalAlignment="Left" Margin="353,230,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Anzahl der Subeinheiten (gesamt):" Height="28" HorizontalAlignment="Left" Margin="72,230,0,0" Name="label5" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="89,261,0,0" Name="anzSubeinheitenGesamt" Text="" VerticalAlignment="Top" Width="120" />
     </Grid>
 </Window>

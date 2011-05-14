@@ -124,6 +124,31 @@ namespace WarhammerGUI
             return listeMitAllenEinheiten;
         }
 
+
+
+        /// <summary>
+        /// Liefert eine Referenz auf eine Einheit zurück, die einen vorgegebenen uniqueString besitzt!
+        /// </summary>
+        /// <param name="uniqueString"></param>
+        /// <returns></returns>
+        public Einheit gibMirEinheitMitFolgendemUniqueStringAlsOriginal(string uniqueString)
+        {
+            Einheit original = null;
+
+            int anzEinheiten = m_globalUnitList.Count;
+            for (int aktUnitIndex = 0; aktUnitIndex < anzEinheiten; ++aktUnitIndex)
+            {
+                var aktOriginal = m_globalUnitList[aktUnitIndex];
+                if (aktOriginal.uniqueStringProperty == uniqueString)
+                {
+                    original = aktOriginal;
+                }
+            }
+            return original;
+        }
+
+
+
         /// <summary>
         /// Liefert eine Einheit zurück, die einen vorgegebenen uniqueString besitzt!
         /// </summary>
@@ -189,7 +214,7 @@ namespace WarhammerGUI
                 if(aktEinheit.basispunkteKosten == -1)
                     throw new ArgumentOutOfRangeException("Die Einheit " + aktEinheit.einheitenName.ToString() + " hat keine Basispunktekosten!");
 
-                if(aktEinheit.totalePunkteKosten == -1)
+                if(aktEinheit.einheitKostenGesamt == -1)
                     throw new ArgumentOutOfRangeException("Die Einheit " + aktEinheit.einheitenName.ToString() + " hat keine totalen Punktekosten!");
             }
         }

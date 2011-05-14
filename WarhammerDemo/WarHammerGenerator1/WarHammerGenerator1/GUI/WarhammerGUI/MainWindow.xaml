@@ -24,7 +24,7 @@
                 <MenuItem Header="Streitmacht Umbenennen" Click="klickStreitmachtUmbennnen"></MenuItem>
             </MenuItem>
         </Menu>
-        <ListBox Height="345" HorizontalAlignment="Left" Margin="111,144,0,0" Name="ListBoxArmeeListe" VerticalAlignment="Top" Width="247" SelectionChanged="detailsAktualisieren" >
+        <ListBox Height="345" HorizontalAlignment="Left" Margin="111,144,0,0" Name="ListBoxArmeeListe" VerticalAlignment="Top" Width="247" SelectionChanged="selektionInGUIGeandertEvent" >
         </ListBox>
         <Label Content="Eigenschaften der Streitmacht" Height="31" HorizontalAlignment="Left" Margin="404,86,0,0" Name="label1" VerticalAlignment="Top" Width="258" FontWeight="Bold" />
         <Label Content="Fraktion:" Height="28" HorizontalAlignment="Left" Margin="404,178,0,0" Name="label2" VerticalAlignment="Top" />
