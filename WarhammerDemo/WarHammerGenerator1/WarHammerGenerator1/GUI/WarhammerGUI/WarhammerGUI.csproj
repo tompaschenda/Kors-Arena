@@ -69,6 +69,9 @@
     <Compile Include="Gui\fehlerMessageBox.xaml.cs">
       <DependentUpon>fehlerMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\AuswahlMAusN.xaml.cs">
+      <DependentUpon>AuswahlMAusN.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gui\UnitRename.xaml.cs">
       <DependentUpon>UnitRename.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
     <Page Include="Gui\fehlerMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\AuswahlMAusN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Gui\UnitRename.xaml">
       <Generator>MSBuild:Compile</Generator>
