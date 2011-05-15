@@ -375,7 +375,7 @@ namespace WarhammerGUI
         /// <summary>
         /// Name der Waffe
         /// </summary>
-        public Object name;
+        public alleWaffenNamen name;
 
         /// <summary>
         /// Wie viele Hände brauche ich, um die Waffe zu führen?

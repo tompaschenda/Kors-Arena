@@ -278,8 +278,8 @@ namespace Listen
         undefined,
         [Description("Infanterie")]
         Infanterie,
-        [Description("Fahrzeug")]
-        Fahrzeug,
+        [Description("Fahrzeug (Panzer)")]
+        FahrzeugPanzer,
         [Description("Fahrzeug (Läufer)")]
         FahrzeugLaeuferLaeufer,
         [Description("Fahrzeug (Schnell)")]
@@ -310,7 +310,7 @@ namespace Listen
 
 
     // Liste ALLER Space Marine-Einheiten!
-    public enum SpaceMarineEinheiten
+    public enum alleEinheitenNamen
     {
         [Description("Marneus Calgar")]
         MarneusCalgar,
@@ -409,7 +409,7 @@ namespace Listen
     }
 
 
-    public enum SpaceMarinesSubUnits
+    public enum alleSubeinheitenNamen
     {
         [Description("Salvenkanone")]
         Salvenkanone,
@@ -477,6 +477,8 @@ namespace Listen
         Veteran,
         [Description("Vulkan He'stan")]
         VulkanHestan,
+        [Description("Rhino")]
+        Rhino,
     }
 
     public enum alleWaffenNamen
@@ -603,28 +605,8 @@ namespace Listen
         Fragmentgranaten,
         [Description("Sprenggranaten")]
         Sprenggranaten,
-    }
 
-    public enum alleRuestungen
-    {
-        [Description("undefined")]
-        undefined,
-        [Description("Meisterhafte Rüstung")]
-        MeisterhafteRuestung,
-        [Description("Servorüstung")]
-        ServoRuestung,
-        [Description("Scoutrüstung")]
-        Scoutruestung,
-        [Description("Terminatorrüstung")]
-        TerminatorRuestung,
-        [Description("Rüstung des Antilochus")]
-        RuestungDesAntilochus,
-    }
-
-    public enum alleFahrzeugAusruestung
-    {
-        [Description("undefined")]
-        undefined,
+        // Alle Ausrüstung für Fahrzeuge:
         [Description("Bulldozerschaufel")]
         Bulldozerschaufel,
         [Description("Cerberus-Werfer")]
@@ -657,9 +639,25 @@ namespace Listen
         TyphoonRaketenwerfer,
         [Description("Whirlwind-Mehrfachraketenwerfer")]
         WhirlwindMehrfachRaketenWerfer,
-        [Description("Zusätzlicher Sturmbolter")]
-        ZusaetzlicherSturmbolter,
+        [Description("Sturmbolter")]
+        Sturmbolter,
+        [Description("Zusätzliche Panzerung")]
+        ZusaetzlichePanzerung,
     }
 
-
+    public enum alleRuestungen
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Meisterhafte Rüstung")]
+        MeisterhafteRuestung,
+        [Description("Servorüstung")]
+        ServoRuestung,
+        [Description("Scoutrüstung")]
+        Scoutruestung,
+        [Description("Terminatorrüstung")]
+        TerminatorRuestung,
+        [Description("Rüstung des Antilochus")]
+        RuestungDesAntilochus,
+    }
 }

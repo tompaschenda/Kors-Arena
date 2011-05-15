@@ -471,13 +471,35 @@ namespace WarhammerGUI
             if (ausgewaehltesItem == null)
                 return;
 
+            erschaffeEineNeueEinheit(ausgewaehltesItem.Name);
+
+           
+            // Und noch die Übersicht aktualisieren!
+            updateEditFenster();
+        }
+
+        /// <summary>
+        /// Was passiert, sobald der Spieler eine neue Einheit in seiner Liste anklickt?
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void unitTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            updateAktUnitCostView();
+        }
+
+
+        /// <summary>
+        /// Führt die eigentliche Erschaffung einer neuen Einheit durch!
+        /// </summary>
+        /// <param name="nameDerEinheit"></param>
+        public void erschaffeEineNeueEinheit(string nameDerEinheit)
+        {
             // Wir müssen lediglich den einzigartigen String auslesen und uns dann die entsprechende
             // Einheit aus der globalen Liste geben lassen.
             // Zunächst jedoch als Referenz, damit wir die Unterfunktionen noch aufrufen können.
             // DANN können wir erst kopieren!
-
-
-            var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(ausgewaehltesItem.Name);
+            var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(nameDerEinheit);
 
             // Jetzt müssen wir den Spieler zwingen, einen einzigartigen String zur Beschreibung der Unit anzugeben!
             UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, neueUnitOrig) { };
@@ -505,18 +527,12 @@ namespace WarhammerGUI
 
             // Okay, rein damit:
             spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(kopierteEinheit);
-            // Und noch die Übersicht aktualisieren!
-            updateEditFenster();
-        }
 
-        /// <summary>
-        /// Was passiert, sobald der Spieler eine neue Einheit in seiner Liste anklickt?
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void unitTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            updateAktUnitCostView();
+
+            // Achtung: Es kann nun noch sein, dass ein angeschlossenes Transportfahrzeug mit angelegt werden soll.
+            // Natürlich nur dann, wenn wir uns auch dafür entschieden haben:
+            if (kopierteEinheit.angeschlossenesFahrzeugString != "")
+                erschaffeEineNeueEinheit(kopierteEinheit.angeschlossenesFahrzeugString);
         }
     }
 }

@@ -144,6 +144,9 @@ namespace WarhammerGUI
                     original = aktOriginal;
                 }
             }
+
+            if (original == null)
+                throw new ArgumentOutOfRangeException("Diese Einheit ist mir nicht bekannt.");
             return original;
         }
 
