@@ -1,0 +1,28 @@
+﻿<Window x:Class="WarhammerGUI.AuswahlMAusN"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Bitte eine Auswahl treffen!" Height="600" Width="900">
+    <Grid>
+        <TextBox BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="86" HorizontalContentAlignment="Center" IsReadOnly="True" Margin="42,51,53,0" Name="announcementBox" TextAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="341,0,0,74" Name="textEinheitKostenJetzt" Text="" VerticalAlignment="Bottom" Width="95" />
+        <Label Content="Punktekosten der Einheit aktuell:" Height="28" HorizontalAlignment="Left" Margin="341,430,0,0" Name="label4" VerticalAlignment="Top" Width="204" />
+        <Label Content="Punktekosten für alle Auswahlen:" Height="28" HorizontalAlignment="Left" Margin="614,430,0,0" Name="label1" VerticalAlignment="Top" Width="229" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="614,0,0,74" Name="textAuswahlExtrakosten" Text="" VerticalAlignment="Bottom" Width="95" />
+        <Button Content="Weiter" Height="23" HorizontalAlignment="Left" Margin="503,513,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="klickWeiter" />
+        <Button Content="Abbrechen" Height="23" HorizontalAlignment="Left" Margin="233,513,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="klickAbbrechen" />
+        <Label Content="Punktekosten Armee gesamt aktuell:" Height="28" HorizontalAlignment="Left" Margin="42,430,0,0" Name="label2" VerticalAlignment="Top" Width="204" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="42,0,0,74" Name="textArmeeKostenJetzt" Text="" VerticalAlignment="Bottom" Width="95" />
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="42,201,0,0" Name="checkBox1" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="42,247,0,0" Name="checkBox2" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="42,298,0,0" Name="checkBox3" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="42,357,0,0" Name="checkBox4" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="341,201,0,0" Name="checkBox5" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="341,247,0,0" Name="checkBox6" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="341,298,0,0" Name="checkBox7" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="341,357,0,0" Name="checkBox8" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="614,201,0,0" Name="checkBox9" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="614,247,0,0" Name="checkBox10" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="614,298,0,0" Name="checkBox11" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="614,357,0,0" Name="checkBox12" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+    </Grid>
+</Window>

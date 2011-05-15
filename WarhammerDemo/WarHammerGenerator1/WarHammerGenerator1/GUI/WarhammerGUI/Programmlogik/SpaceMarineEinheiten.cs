@@ -234,23 +234,23 @@ namespace WarhammerGUI
             einheitKostenGesamt = einheitKostenGesamt + auswahlSargePulldown2[wahlIndex].kosten * 1;
 
             // Außerdem darf er sich noch Ausrüstung aussuchen!
-            var auswahlSargeAusruestung = new List<pulldownAuswahl>() { };
-            auswahlSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
-            auswahlSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.TeleportPeilsender, kosten = 15 });
+            var pulldownSargeAusruestung = new List<pulldownAuswahl>() { };
+            pulldownSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
+            pulldownSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.TeleportPeilsender, kosten = 15 });
 
-/*
-            AuswahlMAusN auswahlSargeAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Sergeant darf folgende Optionen wählen:", auswahlSargeAusruestung);
-            if (!auswahlSargeAusruestung.allesOkay)
+
+            AuswahlMAusN wahlSargeAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Sergeant darf folgende Optionen wählen:", pulldownSargeAusruestung);
+            if (!wahlSargeAusruestung.allesOkay)
             {
                 erschaffungOkay = false;
                 return;
             }
-            var wahlVektor = auswahlSargeAusruestung.wahlVektor;
+            var wahlVektor = wahlSargeAusruestung.wahlIndexVektor;
             foreach (int i in wahlVektor)
             {
-                spaceMarineSergeant.ausruestung.Add(auswahlSargeAusruestung[i].auswahl);
+                spaceMarineSergeant.ausruestung.Add(pulldownSargeAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + auswahlSargePulldown2[i].kosten * 1;
-            }*/
+            }
             subEinheiten.Add(spaceMarineSergeant);
 
             // TODO
