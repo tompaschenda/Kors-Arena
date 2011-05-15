@@ -39,7 +39,7 @@ namespace WarhammerGUI
         {
             spielerEinheitenName = "";
             fraktion = Fraktionen.BloodAngels;
-            einheitenName = "";
+            einheitenName = alleEinheitenNamen.CaptainLysander;
             uniqueStringProperty = "";
             basispunkteKosten = -1;
             einheitKostenGesamt = -1;
@@ -67,7 +67,6 @@ namespace WarhammerGUI
             psikraefte = alteEinheit.psikraefte;
             auswahlTypBasis = alteEinheit.auswahlTypBasis;
             auswahlTypSpieler = alteEinheit.auswahlTypSpieler;
-            angeschlosseneFahrzeugtypenBasis = alteEinheit.angeschlosseneFahrzeugtypenBasis;
             angeschlossenesFahrzeugString = alteEinheit.angeschlossenesFahrzeugString;
             subEinheiten = alteEinheit.subEinheiten;
             erschaffungOkay = alteEinheit.erschaffungOkay;
@@ -77,7 +76,7 @@ namespace WarhammerGUI
         /// <summary>
         /// Name der Einheit
         /// </summary>
-        public Object einheitenName;
+        public alleEinheitenNamen einheitenName;
 
         /// <summary>
         /// Jede Warhammer Einheit hat einen einzigartigen Bezeichner, der sich aus
@@ -156,14 +155,6 @@ namespace WarhammerGUI
         public EinheitenAuswahl auswahlTypSpieler;
 
         /// <summary>
-        /// Welche Fahrzeugtypen stehen als angeschlossene
-        /// Fahrzeuge zur Verfügung?
-        /// ACHTUNG: Kann von der Anzahl der Subeinheiten
-        /// abhängen!
-        /// </summary>
-        public List<Object> angeschlosseneFahrzeugtypenBasis;
-
-        /// <summary>
         /// Für welches angeschlossene Fahrzeug hat sich der 
         /// Spieler entschieden?
         /// ACHTUNG: Dies bedingt, dass man das Fahrzeug
@@ -217,13 +208,13 @@ namespace WarhammerGUI
         /// <summary>
         /// Name der Subeinheit
         /// </summary>
-        public Object name;
+        public alleSubeinheitenNamen name;
 
         /// <summary>
         /// Liste mit allen Ausrüstungsgegenständen
         /// der Einheit.
         /// </summary>
-        public List<Object> ausruestung;
+        public List<alleAusruestung> ausruestung;
 
         /// <summary>
         /// Liste mit allen Waffen der Einheit
@@ -233,7 +224,7 @@ namespace WarhammerGUI
         /// <summary>
         /// Eine Einheit kann immer nur EINE Rüstung tragen!
         /// </summary>
-        public Object ruestung;
+        public alleRuestungen ruestung;
 
         /// <summary>
         /// Eigenschaften einer Subeinheit:

@@ -45,14 +45,14 @@ namespace WarhammerGUI
     {
         public override void createUnitBase()
         {
-            einheitenName = SpaceMarineEinheiten.TaktischerTrupp;
+            einheitenName = alleEinheitenNamen.TaktischerTrupp;
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
             basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = SpaceMarinesSubUnits.SpaceMarine , anzahl = 4});
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = SpaceMarinesSubUnits.SergeantDerSpaceMarines, anzahl = 1 });
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarine , anzahl = 4});
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantDerSpaceMarines, anzahl = 1 });
 
             basispunkteKosten = 90;
             einheitKostenGesamt = basispunkteKosten;
@@ -68,10 +68,6 @@ namespace WarhammerGUI
 
             auswahlTypBasis = new List<EinheitenAuswahl>() { };
             auswahlTypBasis.Add(EinheitenAuswahl.Standard);
-
-            angeschlosseneFahrzeugtypenBasis = new List<object>(){ };
-            angeschlosseneFahrzeugtypenBasis.Add(SpaceMarineEinheiten.Rhino);
-            angeschlosseneFahrzeugtypenBasis.Add(SpaceMarineEinheiten.Razorback);
            
             base.createUnitBase();
         }
@@ -111,13 +107,13 @@ namespace WarhammerGUI
             {
                 // Okay, legen wir die Space Marines an:
                 var spaceMarine = new subEinheit() { };
-                spaceMarine.name = SpaceMarinesSubUnits.SpaceMarine;
+                spaceMarine.name = alleSubeinheitenNamen.SpaceMarine;
 
                 // Jeder Space Marine hat eine Servorüstung (keine Extra-Kosten):
                 spaceMarine.ruestung = alleRuestungen.ServoRuestung;
 
                 // Jeder Space Marine hat Fragment- und Sprenggranaten (keine Extra-Kosten):
-                spaceMarine.ausruestung = new List<Object>();
+                spaceMarine.ausruestung = new List<alleAusruestung>();
                 spaceMarine.ausruestung.Add(alleAusruestung.Fragmentgranaten);
                 spaceMarine.ausruestung.Add(alleAusruestung.Sprenggranaten);
 
@@ -199,9 +195,9 @@ namespace WarhammerGUI
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
             var spaceMarineSergeant = new subEinheit() { };
-            spaceMarineSergeant.name = SpaceMarinesSubUnits.SergeantDerSpaceMarines;
+            spaceMarineSergeant.name = alleSubeinheitenNamen.SergeantDerSpaceMarines;
 
-            spaceMarineSergeant.ausruestung = new List<object>() { };
+            spaceMarineSergeant.ausruestung = new List<alleAusruestung>() { };
             spaceMarineSergeant.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             spaceMarineSergeant.ausruestung.Add(alleAusruestung.Sprenggranaten);
             spaceMarineSergeant.ruestung = alleRuestungen.ServoRuestung;
@@ -263,7 +259,7 @@ namespace WarhammerGUI
             var wahlVektor = wahlSargeAusruestung.wahlIndexVektor;
             foreach (int i in wahlVektor)
             {
-                spaceMarineSergeant.ausruestung.Add(pulldownSargeAusruestung[i].auswahl);
+                spaceMarineSergeant.ausruestung.Add( (alleAusruestung) pulldownSargeAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
             }
 
@@ -287,10 +283,10 @@ namespace WarhammerGUI
             // Also müssen wir zunächst den Spieler fragen, ob er überhaupt ein Transportfahrzeug möchte!
             var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
             fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = "Keines", kosten = 0 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = SpaceMarineEinheiten.Rhino, kosten = 40 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = SpaceMarineEinheiten.Razorback, kosten = 45 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 40 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 45 });
             if(anzahlSpaceMarinesGesamt==9)
-                fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = SpaceMarineEinheiten.Landungskapsel, kosten = -10 });
+                fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = -10 });
 
             Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
             if (!auswahlScreen.allesOkay)
@@ -306,13 +302,13 @@ namespace WarhammerGUI
                 case 0: 
                     break;
                 case 1:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + SpaceMarineEinheiten.Rhino.ToString());
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Rhino.ToString());
                     break;
                 case 2:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + SpaceMarineEinheiten.Razorback.ToString());
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Razorback.ToString());
                     break;
                 case 3:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + SpaceMarineEinheiten.Landungskapsel.ToString());
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
                     break;
             }
 
@@ -325,13 +321,13 @@ namespace WarhammerGUI
     {
         public override void createUnitBase()
         {
-            einheitenName = SpaceMarineEinheiten.Rhino;
+            einheitenName = alleEinheitenNamen.Rhino;
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
             basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = SpaceMarineEinheiten.Rhino, anzahl = 1 });
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Rhino, anzahl = 1 });
 
             basispunkteKosten = 40;
             einheitKostenGesamt = basispunkteKosten;
@@ -355,19 +351,19 @@ namespace WarhammerGUI
 
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myRhino = new subEinheit() { };
-            myRhino.name = SpaceMarineEinheiten.Rhino;
-            myRhino.ausruestung = new List<object>() { };
-            myRhino.ausruestung.Add(alleFahrzeugAusruestung.Nebelwerfer);
+            myRhino.name = alleSubeinheitenNamen.Rhino;
+            myRhino.ausruestung = new List<alleAusruestung>() { };
+            myRhino.ausruestung.Add(alleAusruestung.Nebelwerfer);
 
             myRhino.waffen = new List<waffe>() { };
             myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
 
      
             var rhinoAusruestung = new List<pulldownAuswahl>() { };
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleFahrzeugAusruestung.Suchscheinwerfer, kosten = +1 });
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleFahrzeugAusruestung.Bulldozerschaufel, kosten = +5 });
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleFahrzeugAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleFahrzeugAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Suchscheinwerfer, kosten = +1 });
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
 
             AuswahlMAusN wahlRhinoAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", rhinoAusruestung);
             if (!wahlRhinoAusruestung.allesOkay)
@@ -378,7 +374,7 @@ namespace WarhammerGUI
             var wahlVektor = wahlRhinoAusruestung.wahlIndexVektor;
             foreach (int i in wahlVektor)
             {
-                myRhino.ausruestung.Add(rhinoAusruestung[i].auswahl);
+                myRhino.ausruestung.Add( (alleAusruestung) rhinoAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + rhinoAusruestung[i].kosten * 1;
             }
 
