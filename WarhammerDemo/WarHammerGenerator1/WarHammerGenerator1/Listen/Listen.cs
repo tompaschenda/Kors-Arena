@@ -278,8 +278,8 @@ namespace Listen
         undefined,
         [Description("Infanterie")]
         Infanterie,
-        [Description("Fahrzeug")]
-        Fahrzeug,
+        [Description("Fahrzeug (Panzer)")]
+        FahrzeugPanzer,
         [Description("Fahrzeug (Läufer)")]
         FahrzeugLaeuferLaeufer,
         [Description("Fahrzeug (Schnell)")]
@@ -657,8 +657,10 @@ namespace Listen
         TyphoonRaketenwerfer,
         [Description("Whirlwind-Mehrfachraketenwerfer")]
         WhirlwindMehrfachRaketenWerfer,
-        [Description("Zusätzlicher Sturmbolter")]
-        ZusaetzlicherSturmbolter,
+        [Description("Sturmbolter")]
+        Sturmbolter,
+        [Description("Zusätzliche Panzerung")]
+        ZusaetzlichePanzerung,
     }
 
 

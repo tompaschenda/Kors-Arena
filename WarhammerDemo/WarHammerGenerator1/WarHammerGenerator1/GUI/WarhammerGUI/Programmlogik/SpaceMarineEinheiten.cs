@@ -24,6 +24,10 @@ namespace WarhammerGUI
             tTrupp.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(tTrupp);
 
+            var rhino = new rhino() { };
+            rhino.createUnitBase();
+            listeAllerSpaceMarineEinheiten.Add(rhino);
+
             return listeAllerSpaceMarineEinheiten;
         }
     }
@@ -78,8 +82,6 @@ namespace WarhammerGUI
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
             base.createUnitInteraktion(100);
-
-            var guiMediator = new SpielerAnfragen() { };
 
             int punkteKostenProSpaceMarine = 16;
 
@@ -173,6 +175,19 @@ namespace WarhammerGUI
                     spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
                     einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
                 }
+
+                // Fehlen noch die eigentlichen Were für den  Marine:
+                spaceMarine.kg = 4;
+                spaceMarine.bf = 4;
+                spaceMarine.st = 4;
+                spaceMarine.wid = 4;
+                spaceMarine.lp = 1;
+                spaceMarine.at = 1;
+                spaceMarine.mw = 8;
+                spaceMarine.rw = 3;
+
+                spaceMarine.einheitentyp = Einheitstyp.Infanterie;
+
                 // Wenn alles erfolgt ist, darf ich einsortieren:
                 subEinheiten.Add(spaceMarine);                
             }
@@ -249,13 +264,154 @@ namespace WarhammerGUI
             foreach (int i in wahlVektor)
             {
                 spaceMarineSergeant.ausruestung.Add(pulldownSargeAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + auswahlSargePulldown2[i].kosten * 1;
+                einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
             }
+
+
+            // Fehlen noch die eigentlichen Were für den  Marine:
+            spaceMarineSergeant.kg = 4;
+            spaceMarineSergeant.bf = 4;
+            spaceMarineSergeant.st = 4;
+            spaceMarineSergeant.wid = 4;
+            spaceMarineSergeant.lp = 1;
+            spaceMarineSergeant.at = 2;
+            spaceMarineSergeant.mw = 9;
+            spaceMarineSergeant.rw = 3;
+            spaceMarineSergeant.einheitentyp = Einheitstyp.Infanterie;
+
             subEinheiten.Add(spaceMarineSergeant);
 
             // TODO
             // Wahl angeschlossenes Transportfahrzeug
             // => muss mit generiert werden!
+            // Also müssen wir zunächst den Spieler fragen, ob er überhaupt ein Transportfahrzeug möchte!
+            var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = "Keines", kosten = 0 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = SpaceMarineEinheiten.Rhino, kosten = 40 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = SpaceMarineEinheiten.Razorback, kosten = 45 });
+            if(anzahlSpaceMarinesGesamt==9)
+                fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = SpaceMarineEinheiten.Landungskapsel, kosten = -10 });
+
+            Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
+            if (!auswahlScreen.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+            wahlIndex = auswahlScreen.gewaehlterIndexAusN;
+
+            // Jetzt müssen wir abhängig vom Index die richtige neue Einheit erzeugen!
+            switch (wahlIndex)
+            {
+                case 0: 
+                    break;
+                case 1:
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + SpaceMarineEinheiten.Rhino.ToString());
+                    break;
+                case 2:
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + SpaceMarineEinheiten.Razorback.ToString());
+                    break;
+                case 3:
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + SpaceMarineEinheiten.Landungskapsel.ToString());
+                    break;
+            }
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
+    }
+
+    public class rhino : Einheit
+    {
+        public override void createUnitBase()
+        {
+            einheitenName = SpaceMarineEinheiten.Rhino;
+            fraktion = Fraktionen.SpaceMarines;
+
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
+            basisGroesse = new List<Groessenspecifier>() { };
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = SpaceMarineEinheiten.Rhino, anzahl = 1 });
+
+            basispunkteKosten = 40;
+            einheitKostenGesamt = basispunkteKosten;
+
+            einzigartig = false;
+
+            einheitentyp = Einheitstyp.FahrzeugPanzer;
+
+            sonderregeln = new List<Sonderregeln>() { };
+            sonderregeln.Add(Sonderregeln.Reparieren);
+
+            auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            auswahlTypBasis.Add(EinheitenAuswahl.AngeschlossenesTransportFahrzeug);
+
+            base.createUnitBase();            
+        }
+
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
+            base.createUnitInteraktion(100);
+
+            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
+            var myRhino = new subEinheit() { };
+            myRhino.name = SpaceMarineEinheiten.Rhino;
+            myRhino.ausruestung = new List<object>() { };
+            myRhino.ausruestung.Add(alleFahrzeugAusruestung.Nebelwerfer);
+
+            myRhino.waffen = new List<waffe>() { };
+            myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
+
+     
+            var rhinoAusruestung = new List<pulldownAuswahl>() { };
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleFahrzeugAusruestung.Suchscheinwerfer, kosten = +1 });
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleFahrzeugAusruestung.Bulldozerschaufel, kosten = +5 });
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleFahrzeugAusruestung.Radarsuchkopfrakete, kosten = +10 });
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleFahrzeugAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+
+            AuswahlMAusN wahlRhinoAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", rhinoAusruestung);
+            if (!wahlRhinoAusruestung.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+            var wahlVektor = wahlRhinoAusruestung.wahlIndexVektor;
+            foreach (int i in wahlVektor)
+            {
+                myRhino.ausruestung.Add(rhinoAusruestung[i].auswahl);
+                einheitKostenGesamt = einheitKostenGesamt + rhinoAusruestung[i].kosten * 1;
+            }
+
+
+
+            var rhinoWaffen = new List<pulldownAuswahl>() { };
+            rhinoWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
+            AuswahlMAusN wahlRhinoWaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen gewählt werden:", rhinoWaffen);
+            if (!wahlRhinoWaffen.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+            wahlVektor = wahlRhinoWaffen.wahlIndexVektor;
+            foreach (int i in wahlVektor)
+            {
+                myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(rhinoWaffen[i].auswahl));
+                einheitKostenGesamt = einheitKostenGesamt + rhinoWaffen[i].kosten * 1;
+            }
+
+
+            myRhino.einheitentyp = Einheitstyp.FahrzeugPanzer;
+
+            // Setzen der Panzerungswerte:
+            // TODO!!!
+            myRhino.bf = 4;
+            myRhino.front = 11;
+            myRhino.seit = 11;
+            myRhino.heck = 10;
+            myRhino.transportkapazitaet = 10;
+
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(myRhino);
 
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;

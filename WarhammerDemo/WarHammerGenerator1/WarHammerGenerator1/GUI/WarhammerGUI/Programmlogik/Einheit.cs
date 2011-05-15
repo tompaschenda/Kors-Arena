@@ -44,6 +44,7 @@ namespace WarhammerGUI
             basispunkteKosten = -1;
             einheitKostenGesamt = -1;
             erschaffungOkay = false;
+            angeschlossenesFahrzeugString = "";
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace WarhammerGUI
             auswahlTypBasis = alteEinheit.auswahlTypBasis;
             auswahlTypSpieler = alteEinheit.auswahlTypSpieler;
             angeschlosseneFahrzeugtypenBasis = alteEinheit.angeschlosseneFahrzeugtypenBasis;
-            angeschlossenesFahrzeug = alteEinheit.angeschlossenesFahrzeug;
+            angeschlossenesFahrzeugString = alteEinheit.angeschlossenesFahrzeugString;
             subEinheiten = alteEinheit.subEinheiten;
             erschaffungOkay = alteEinheit.erschaffungOkay;
             uniqueHeaderProperty = alteEinheit.uniqueHeaderProperty;
@@ -168,7 +169,7 @@ namespace WarhammerGUI
         /// ACHTUNG: Dies bedingt, dass man das Fahrzeug
         /// gleich mit selektiert und konfiguriert!
         /// </summary>
-        public Object angeschlossenesFahrzeug;
+        public string angeschlossenesFahrzeugString;
 
         /// <summary>
         /// Hier sind die eigentlichen Subeinheiten
@@ -233,6 +234,32 @@ namespace WarhammerGUI
         /// Eine Einheit kann immer nur EINE Rüstung tragen!
         /// </summary>
         public Object ruestung;
+
+        /// <summary>
+        /// Eigenschaften einer Subeinheit:
+        /// </summary>
+        public int kg;
+        public int bf;
+        public int st;
+        public int wid;
+        public int lp;
+        public int at;
+        public int mw;
+        public int rw;
+
+        /// <summary>
+        /// Für den Fall, dass es sich um ein Fahrzeug handelt:
+        /// </summary>
+        public int front;
+        public int seit;
+        public int heck;
+        public int transportkapazitaet;
+
+        /// <summary>
+        /// Von welchem Typ ist die Sub-Einheit?
+        /// Infanterie, Fahrzeug, etc.
+        /// </summary>
+        public Einheitstyp einheitentyp;
     }
 
     /// <summary>
