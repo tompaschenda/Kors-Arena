@@ -83,8 +83,24 @@ namespace WarhammerGUI
             // Außerdem wollen wir darstellen, war die aktiv gewählte Einheit wert ist (wenn es denn eine gibt!)
             updateAktUnitCostView();
 
+            // Den Basis-Kostenwert wollen wir ebenfalls darstellen!
+            updateUnitBaseCostView();
+
             // Das Treeview mit allen Einheiten muss auch aktualisiert werden:
             updateArmyTreeView();
+        }
+
+
+        public void updateUnitBaseCostView()
+        {            
+            TreeViewItem ausgewaehltesItem = (TreeViewItem)availableUnitsTreeView.SelectedItem;
+            int aktUnitBaseCost = 0;
+            if (ausgewaehltesItem != null && ausgewaehltesItem.Name != "")
+            {
+                var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(ausgewaehltesItem.Name);
+                aktUnitBaseCost = neueUnitOrig.basispunkteKosten;
+                unitBaseCostFenster.Text = aktUnitBaseCost.ToString();
+            }
         }
 
         /// <summary>
@@ -211,7 +227,7 @@ namespace WarhammerGUI
 
                                 //  Und ggfs. eine Rüstung!
                                 Object aktRuestung = aktSubEinheit.ruestung;
-                                if (aktRuestung != null)
+                                if (aktRuestung != null && aktRuestung.ToString() != alleRuestungen.undefined.ToString())
                                 {
                                     TreeViewItem subEinheitItemsNode = new TreeViewItem();
                                     subEinheitItemsNode.Header = EnumExtensions.getEnumDescription(aktRuestung.GetType(), aktRuestung.ToString());
@@ -468,7 +484,7 @@ namespace WarhammerGUI
         {
             // Erst einmal muss ich sicherstellen, dass überhaupt eine Einheit selektiert ist!
             TreeViewItem ausgewaehltesItem = (TreeViewItem)availableUnitsTreeView.SelectedItem;
-            if (ausgewaehltesItem == null)
+            if (ausgewaehltesItem == null || ausgewaehltesItem.Name == "")
                 return;
 
             erschaffeEineNeueEinheit(ausgewaehltesItem.Name);
@@ -533,6 +549,17 @@ namespace WarhammerGUI
             // Natürlich nur dann, wenn wir uns auch dafür entschieden haben:
             if (kopierteEinheit.angeschlossenesFahrzeugString != "")
                 erschaffeEineNeueEinheit(kopierteEinheit.angeschlossenesFahrzeugString);
+        }
+
+
+        /// <summary>
+        /// Wird ausgeführt, sobald der Spieler seine Auswahl aus allen vorhandenen Einheiten ändert:
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void availableUnitsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            updateUnitBaseCostView();
         }
     }
 }

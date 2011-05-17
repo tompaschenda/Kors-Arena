@@ -69,6 +69,9 @@ namespace WarhammerGUI
                 }
             );
 
+            if (gewuenschteWaffe == null)
+                throw new ArgumentOutOfRangeException("Konnte die angegebene Waffe nicht finden!");
+
             return gewuenschteWaffe;
         }
 
@@ -112,6 +115,12 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesScharfschuetze());
             waffenListe.Add(createSpaceMarinesSturmbolter());
             waffenListe.Add(createSpaceMarinesSturmkanone());
+            waffenListe.Add(createSpaceMarinesSyncSchwererBolter());
+            waffenListe.Add(createSpaceMarinesSyncSchwererFlammer());
+            waffenListe.Add(createSpaceMarinesSyncSturmkanone());
+            waffenListe.Add(createSpaceMarinesSyncLaserKanone());
+            waffenListe.Add(createSpaceMarinesSyncPlasmawerfer());
+            waffenListe.Add(createSpaceMarinesDeathwind());
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -363,6 +372,51 @@ namespace WarhammerGUI
 
             return weap;
         }
+
+        private waffe createSpaceMarinesSyncSchwererBolter()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncSchwererBolter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSyncSchwererFlammer()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncSchwererFlammenwerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSyncSturmkanone()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Syncsturmkanone;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSyncLaserKanone()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncLaserKanone;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSyncPlasmawerfer()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncPlasmawerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesDeathwind()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.DeathwindSystem;
+
+            return weap;
+        }
+
+
     }
 
 

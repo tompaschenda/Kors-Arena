@@ -28,14 +28,6 @@ namespace WarhammerGUI
             rhino.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(rhino);
 
-            var razorback = new razorback() { };
-            razorback.createUnitBase();
-            listeAllerSpaceMarineEinheiten.Add(razorback);
-
-            var landungskapsel = new landungskapsel() { };
-            landungskapsel.createUnitBase();
-            listeAllerSpaceMarineEinheiten.Add(landungskapsel);
-
             return listeAllerSpaceMarineEinheiten;
         }
     }
@@ -214,7 +206,7 @@ namespace WarhammerGUI
             // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
             var auswahlSargePulldown = new List<pulldownAuswahl>() { };
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-            // auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
+            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
@@ -236,11 +228,10 @@ namespace WarhammerGUI
 
             // Wenn er bereits eine Boltpistole hat, kann er sie nicht noch einmal nehmen, sonst schon!
             var auswahlSargePulldown2 = new List<pulldownAuswahl>() { };
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+            if( (alleWaffenNamen)auswahlSargePulldown[wahlIndex].auswahl != alleWaffenNamen.Boltpistole)
+                auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
+            // Das Kettenschwert geht ansonsten immer:
             auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenschwert, kosten = 0 });
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiewaffe, kosten = 15 });
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
 
             auswahlSarge = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Sergeant muss eine der folgenden Auswahlen für die Zweithand treffen:", auswahlSargePulldown2);
             if (!auswahlSarge.allesOkay)
@@ -257,8 +248,13 @@ namespace WarhammerGUI
             var pulldownSargeAusruestung = new List<pulldownAuswahl>() { };
             pulldownSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
             pulldownSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.TeleportPeilsender, kosten = 15 });
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 2858c3c3f541f71642ca63fda77c1f1a25e06f1a
             AuswahlMAusN wahlSargeAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Sergeant darf folgende Optionen wählen:", pulldownSargeAusruestung);
             if (!wahlSargeAusruestung.allesOkay)
             {
@@ -268,6 +264,11 @@ namespace WarhammerGUI
             var wahlVektor = wahlSargeAusruestung.wahlIndexVektor;
             foreach (int i in wahlVektor)
             {
+<<<<<<< HEAD
+                spaceMarineSergeant.ausruestung.Add(pulldownSargeAusruestung[i].auswahl);
+                einheitKostenGesamt = einheitKostenGesamt + auswahlSargePulldown2[i].kosten * 1;
+            }
+=======
                 spaceMarineSergeant.ausruestung.Add( (alleAusruestung) pulldownSargeAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
             }
@@ -284,17 +285,19 @@ namespace WarhammerGUI
             spaceMarineSergeant.rw = 3;
             spaceMarineSergeant.einheitentyp = Einheitstyp.Infanterie;
 
+>>>>>>> 2858c3c3f541f71642ca63fda77c1f1a25e06f1a
             subEinheiten.Add(spaceMarineSergeant);
 
+            // TODO
             // Wahl angeschlossenes Transportfahrzeug
             // => muss mit generiert werden!
             // Also müssen wir zunächst den Spieler fragen, ob er überhaupt ein Transportfahrzeug möchte!
             var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 35 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = "Keines", kosten = 0 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 40 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 45 });
             if(anzahlSpaceMarinesGesamt==9)
-                fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
+                fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = -10 });
 
             Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
             if (!auswahlScreen.allesOkay)
@@ -325,7 +328,6 @@ namespace WarhammerGUI
         }
     }
 
-
     public class rhino : Einheit
     {
         public override void createUnitBase()
@@ -338,7 +340,7 @@ namespace WarhammerGUI
             basisGroesse = new List<Groessenspecifier>() { };
             basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Rhino, anzahl = 1 });
 
-            basispunkteKosten = 35;
+            basispunkteKosten = 40;
             einheitKostenGesamt = basispunkteKosten;
 
             einzigartig = false;
@@ -363,13 +365,13 @@ namespace WarhammerGUI
             myRhino.name = alleSubeinheitenNamen.Rhino;
             myRhino.ausruestung = new List<alleAusruestung>() { };
             myRhino.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myRhino.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
 
             myRhino.waffen = new List<waffe>() { };
             myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
 
      
             var rhinoAusruestung = new List<pulldownAuswahl>() { };
+            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Suchscheinwerfer, kosten = +1 });
             rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
             rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
             rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
@@ -408,6 +410,7 @@ namespace WarhammerGUI
             myRhino.einheitentyp = Einheitstyp.FahrzeugPanzer;
 
             // Setzen der Panzerungswerte:
+            // TODO!!!
             myRhino.bf = 4;
             myRhino.front = 11;
             myRhino.seit = 11;
@@ -422,215 +425,5 @@ namespace WarhammerGUI
         }
     }
 
-
-    public class razorback : Einheit
-    {
-        public override void createUnitBase()
-        {
-            einheitenName = alleEinheitenNamen.Razorback;
-            fraktion = Fraktionen.SpaceMarines;
-
-            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Razorback, anzahl = 1 });
-
-            basispunkteKosten = 40;
-            einheitKostenGesamt = basispunkteKosten;
-
-            einzigartig = false;
-
-            einheitentyp = Einheitstyp.FahrzeugPanzer;
-
-            sonderregeln = new List<Sonderregeln>() { };
-
-            auswahlTypBasis = new List<EinheitenAuswahl>() { };
-            auswahlTypBasis.Add(EinheitenAuswahl.AngeschlossenesTransportFahrzeug);
-
-            base.createUnitBase();
-        }
-
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
-        {
-            base.createUnitInteraktion(100);
-
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myRazorback = new subEinheit() { };
-            myRazorback.name = alleSubeinheitenNamen.Razorback;
-            myRazorback.ausruestung = new List<alleAusruestung>() { };
-            myRazorback.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myRazorback.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
-
-            myRazorback.waffen = new List<waffe>() { };
-
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var razorbackHauptWaffen = new List<pulldownAuswahl>() { };
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererBolter, kosten = +0 });
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererFlammenwerfer, kosten = +25 });
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Syncsturmkanone, kosten = +35 });
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = +35 });
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.LaserkanoneUndSynchroPlasma, kosten = +35 });
-
-            Auswahl1AusN wahlRazorGrundWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", razorbackHauptWaffen);
-            if (!wahlRazorGrundWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var gewaehlterIndex = wahlRazorGrundWaffen.gewaehlterIndexAusN;
-
-            if (gewaehlterIndex != 4)
-            {
-                myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(razorbackHauptWaffen[gewaehlterIndex].auswahl));
-            }
-            else
-            {
-                myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Laserkanone));
-                myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncPlasmawerfer));
-            }
-            einheitKostenGesamt = einheitKostenGesamt + razorbackHauptWaffen[gewaehlterIndex].kosten * 1;
-
-
-            var razorAusruestung = new List<pulldownAuswahl>() { };
-            razorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
-            razorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            razorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
-
-            AuswahlMAusN wahlRazorAustruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", razorAusruestung);
-            if (!wahlRazorAustruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlRazorAustruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myRazorback.ausruestung.Add((alleAusruestung)razorAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + razorAusruestung[i].kosten * 1;
-            }
-
-
-
-            var razorbackWaffen = new List<pulldownAuswahl>() { };
-            razorbackWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-            AuswahlMAusN wahlRazorbackWaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen zusätzlich gewählt werden:", razorbackWaffen);
-            if (!wahlRazorbackWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlRazorbackWaffen.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(razorbackWaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + razorbackWaffen[i].kosten * 1;
-            }
-
-
-            myRazorback.einheitentyp = Einheitstyp.FahrzeugPanzer;
-
-            // Setzen der Panzerungswerte:
-            myRazorback.bf = 4;
-            myRazorback.front = 11;
-            myRazorback.seit = 11;
-            myRazorback.heck = 10;
-            myRazorback.transportkapazitaet = 6;
-
-            subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myRazorback);
-
-            // Nur jetzt hat die Erschaffung wirklich funktioniert!
-            erschaffungOkay = true;
-        }
-    }
-
-
-    public class landungskapsel : Einheit
-    {
-        public override void createUnitBase()
-        {
-            einheitenName = alleEinheitenNamen.Landungskapsel;
-            fraktion = Fraktionen.SpaceMarines;
-
-            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Landungskapsel, anzahl = 1 });
-
-            basispunkteKosten = 35;
-            einheitKostenGesamt = basispunkteKosten;
-
-            einzigartig = false;
-
-            einheitentyp = Einheitstyp.FahrzeugOffen;
-
-            sonderregeln = new List<Sonderregeln>() { };
-
-            auswahlTypBasis = new List<EinheitenAuswahl>() { };
-            auswahlTypBasis.Add(EinheitenAuswahl.AngeschlossenesTransportFahrzeug);
-
-            base.createUnitBase();
-        }
-
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
-        {
-            base.createUnitInteraktion(100);
-
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myLandungsKapsel = new subEinheit() { };
-            myLandungsKapsel.name = alleSubeinheitenNamen.Landungskapsel;
-            myLandungsKapsel.ausruestung = new List<alleAusruestung>() { };
-            myLandungsKapsel.waffen = new List<waffe>() { };
-
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var landungsKapselHauptwaffen = new List<pulldownAuswahl>() { };
-            landungsKapselHauptwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +0 });
-            landungsKapselHauptwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.DeathwindSystem, kosten = +20 });
-
-            Auswahl1AusN wahlRazorGrundWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", landungsKapselHauptwaffen);
-            if (!wahlRazorGrundWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var gewaehlterIndex = wahlRazorGrundWaffen.gewaehlterIndexAusN;
-            myLandungsKapsel.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(landungsKapselHauptwaffen[gewaehlterIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + landungsKapselHauptwaffen[gewaehlterIndex].kosten * 1;
-
-
-            var kapselAusruestung = new List<pulldownAuswahl>() { };
-            kapselAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Peilsender, kosten = +10 });
-
-            AuswahlMAusN wahlKapselAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", kapselAusruestung);
-            if (!wahlKapselAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlKapselAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myLandungsKapsel.ausruestung.Add((alleAusruestung)kapselAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + kapselAusruestung[i].kosten * 1;
-            }
-
-            myLandungsKapsel.einheitentyp = Einheitstyp.FahrzeugOffen;
-
-            // Setzen der Panzerungswerte:
-            myLandungsKapsel.bf = 4;
-            myLandungsKapsel.front = 12;
-            myLandungsKapsel.seit = 12;
-            myLandungsKapsel.heck = 12;
-            myLandungsKapsel.transportkapazitaet = 12;
-
-            subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myLandungsKapsel);
-
-            // Nur jetzt hat die Erschaffung wirklich funktioniert!
-            erschaffungOkay = true;
-        }
-    }
-
+    
 }

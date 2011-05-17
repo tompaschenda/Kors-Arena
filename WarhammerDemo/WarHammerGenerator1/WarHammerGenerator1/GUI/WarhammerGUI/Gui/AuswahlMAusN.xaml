@@ -12,17 +12,17 @@
         <Button Content="Abbrechen" Height="23" HorizontalAlignment="Left" Margin="233,513,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="klickAbbrechen" />
         <Label Content="Punktekosten Armee gesamt aktuell:" Height="28" HorizontalAlignment="Left" Margin="42,430,0,0" Name="label2" VerticalAlignment="Top" Width="204" />
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="42,0,0,74" Name="textArmeeKostenJetzt" Text="" VerticalAlignment="Bottom" Width="95" />
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="42,201,0,0" Name="checkBox1" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="42,247,0,0" Name="checkBox2" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="42,298,0,0" Name="checkBox3" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="42,357,0,0" Name="checkBox4" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="341,201,0,0" Name="checkBox5" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="341,247,0,0" Name="checkBox6" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="341,298,0,0" Name="checkBox7" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="341,357,0,0" Name="checkBox8" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="614,201,0,0" Name="checkBox9" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="614,247,0,0" Name="checkBox10" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="614,298,0,0" Name="checkBox11" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
-        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="614,357,0,0" Name="checkBox12" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="96,184,0,0" Name="checkBox1" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="96,225,0,0" Name="checkBox2" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="96,266,0,0" Name="checkBox3" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="96,307,0,0" Name="checkBox4" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="96,348,0,0" Name="checkBox5" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="96,389,0,0" Name="checkBox6" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="531,184,0,0" Name="checkBox7" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="531,225,0,0" Name="checkBox8" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="531,266,0,0" Name="checkBox9" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="531,307,0,0" Name="checkBox10" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="531,348,0,0" Name="checkBox11" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
+        <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="531,389,0,0" Name="checkBox12" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked"/>
     </Grid>
 </Window>

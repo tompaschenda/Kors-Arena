@@ -312,6 +312,8 @@ namespace Listen
     // Liste ALLER Space Marine-Einheiten!
     public enum alleEinheitenNamen
     {
+        [Description("Keine Einheit")]
+        KeineEinheit,
         [Description("Marneus Calgar")]
         MarneusCalgar,
         [Description("Captain Cato Sicarius")]
@@ -479,6 +481,10 @@ namespace Listen
         VulkanHestan,
         [Description("Rhino")]
         Rhino,
+        [Description("Razorback")]
+        Razorback,
+        [Description("Landungskapsel")]
+        Landungskapsel,
     }
 
     public enum alleWaffenNamen
@@ -555,6 +561,40 @@ namespace Listen
         Sturmbolter,
         [Description("Sturmkanone")]
         Sturmkanone,
+
+        [Description("Synchronisierter Schwerer Bolter")]
+        SyncSchwererBolter,
+        [Description("Synchronisierter Schwerer Flammenwerfer")]
+        SyncSchwererFlammenwerfer,
+        [Description("Synchronisierte Sturmkanone")]
+        Syncsturmkanone,
+        [Description("Synchronisierte Laserkanone")]
+        SyncLaserKanone,
+        [Description("Synchronisierter Plasmawerfer")]
+        SyncPlasmawerfer,
+
+        [Description("Laserkanone und synchronisierter Plasmawerfer")]
+        LaserkanoneUndSynchroPlasma,
+
+
+        [Description("Deathwind-System")]
+        DeathwindSystem,
+        [Description("Demolishergeschütz")]
+        DemolisherGeschuetz,
+        [Description("Flammensturmkanone")]
+        Flammensturmkanone,
+        [Description("Hurricane-Boltersystem")]
+        HurricaneBolter,
+        [Description("Ironclad-Sturmgranatwerfer")]
+        IroncladSturmGranatwerfer,
+        [Description("Maschinenkanone")]
+        Maschinenkanone,
+        [Description("Cerberus-Werfer")]
+        CerberusWerfer,
+        [Description("Typhoon-Raketenwerfer")]
+        TyphoonRaketenwerfer,
+        [Description("Whirlwind-Mehrfachraketenwerfer")]
+        WhirlwindMehrfachRaketenWerfer,
     }
 
     public enum alleAusruestung
@@ -609,20 +649,6 @@ namespace Listen
         // Alle Ausrüstung für Fahrzeuge:
         [Description("Bulldozerschaufel")]
         Bulldozerschaufel,
-        [Description("Cerberus-Werfer")]
-        CerberusWerfer,
-        [Description("Deathwind-System")]
-        DeathwindSystem,
-        [Description("Demolishergeschütz")]
-        DemolisherGeschuetz,
-        [Description("Flammensturmkanone")]
-        Flammensturmkanone,
-        [Description("Hurricane-Boltersystem")]
-        HurricaneBolter,
-        [Description("Ironclad-Sturmgranatwerfer")]
-        IroncladSturmGranatwerfer,
-        [Description("Maschinenkanone")]
-        Maschinenkanone,
         [Description("Nebelwerfer")]
         Nebelwerfer,
         [Description("Radarsuchkopfrakete")]
@@ -635,12 +661,6 @@ namespace Listen
         Stoersender,
         [Description("Suchscheinwerfer")]
         Suchscheinwerfer,
-        [Description("Typhoon-Raketenwerfer")]
-        TyphoonRaketenwerfer,
-        [Description("Whirlwind-Mehrfachraketenwerfer")]
-        WhirlwindMehrfachRaketenWerfer,
-        [Description("Sturmbolter")]
-        Sturmbolter,
         [Description("Zusätzliche Panzerung")]
         ZusaetzlichePanzerung,
     }

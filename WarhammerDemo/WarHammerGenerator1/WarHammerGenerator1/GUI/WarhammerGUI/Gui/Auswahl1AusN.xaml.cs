@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Common;
 
 namespace WarhammerGUI
 {
@@ -36,7 +37,11 @@ namespace WarhammerGUI
             // Pulldown mit Daten füllen:
             for (int i = 0; i < pulldownAuswahlen.Count; ++i)
             {
-                pullDown.Items.Add(pulldownAuswahlen[i].auswahl.ToString() + "    (+ "+  pulldownAuswahlen[i].kosten.ToString()  + " Punkte)");
+                var aktAuswahl = pulldownAuswahlen[i];
+
+                // Für den Header müssen wir natürlich die Description verwenden:
+                var tempString = EnumExtensions.getEnumDescription(aktAuswahl.auswahl.GetType(), aktAuswahl.auswahl.ToString());
+                pullDown.Items.Add(tempString + "    (+ " + pulldownAuswahlen[i].kosten.ToString() + " Punkte)");
             }
 
 

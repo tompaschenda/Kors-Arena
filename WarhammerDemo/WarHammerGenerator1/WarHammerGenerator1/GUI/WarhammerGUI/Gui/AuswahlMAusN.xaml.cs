@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Common;
 
 namespace WarhammerGUI
 {
@@ -56,8 +57,15 @@ namespace WarhammerGUI
 
             for (int i = 0; i < 12; ++i )
             {
-                if(i < anzAuswahlen)
-                    gesamtListe[i].Content = pulldownAuswahlen[i].auswahl.ToString() + " (+" + pulldownAuswahlen[i].kosten.ToString() +" Punkte)";
+                if (i < anzAuswahlen)
+                {
+                    var aktAuswahl = pulldownAuswahlen[i];
+
+                    // Für den Header müssen wir natürlich die Description verwenden:
+                    var tempString = EnumExtensions.getEnumDescription(aktAuswahl.auswahl.GetType(), aktAuswahl.auswahl.ToString());
+
+                    gesamtListe[i].Content = tempString + " (+" + pulldownAuswahlen[i].kosten.ToString() + " Punkte)";
+                }
                 else
                 {
                     gesamtListe[i].Content = "";
