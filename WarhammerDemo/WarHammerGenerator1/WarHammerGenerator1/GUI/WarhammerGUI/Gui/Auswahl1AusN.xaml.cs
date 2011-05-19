@@ -40,7 +40,13 @@ namespace WarhammerGUI
                 var aktAuswahl = pulldownAuswahlen[i];
 
                 // Für den Header müssen wir natürlich die Description verwenden:
-                var tempString = EnumExtensions.getEnumDescription(aktAuswahl.auswahl.GetType(), aktAuswahl.auswahl.ToString());
+                Type enumTyp = aktAuswahl.auswahl.GetType();
+                
+                string tempString;
+                if (enumTyp.Name != "String")
+                    tempString = EnumExtensions.getEnumDescription(enumTyp, aktAuswahl.auswahl.ToString());
+                else
+                    tempString = aktAuswahl.auswahl.ToString();
                 pullDown.Items.Add(tempString + "    (+ " + pulldownAuswahlen[i].kosten.ToString() + " Punkte)");
             }
 

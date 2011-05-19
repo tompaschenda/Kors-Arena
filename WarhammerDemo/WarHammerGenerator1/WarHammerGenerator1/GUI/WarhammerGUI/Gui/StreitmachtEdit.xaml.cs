@@ -509,13 +509,17 @@ namespace WarhammerGUI
         /// Führt die eigentliche Erschaffung einer neuen Einheit durch!
         /// </summary>
         /// <param name="nameDerEinheit"></param>
-        public void erschaffeEineNeueEinheit(string nameDerEinheit)
+        public void erschaffeEineNeueEinheit(string nameDerEinheit, bool recall=false)
         {
             // Wir müssen lediglich den einzigartigen String auslesen und uns dann die entsprechende
             // Einheit aus der globalen Liste geben lassen.
             // Zunächst jedoch als Referenz, damit wir die Unterfunktionen noch aufrufen können.
             // DANN können wir erst kopieren!
             var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(nameDerEinheit);
+
+            // An dieser Stelle müssen wir prüfen, ob die Einheit einzigartig ist und es sie schon einmal gibt. Falls ja, müssen wir abbrechen!
+            // TODO!!!
+
 
             // Jetzt müssen wir den Spieler zwingen, einen einzigartigen String zur Beschreibung der Unit anzugeben!
             UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, neueUnitOrig) { };
@@ -541,6 +545,15 @@ namespace WarhammerGUI
             // Jetzt erst mache ich eine Kopie der Einheit!
             var kopierteEinheit = new Einheit(neueUnitOrig);
 
+            // Achtung: Wenn diese Funktion zum 2. Mal aufgerufen wird, um ein angeschlossenes Transportfahrzeug zu
+            // generieren, muss ich das Fahrzeug auch als solches markieren!
+            if (recall)
+            {
+                kopierteEinheit.auswahlTypBasis = new List<EinheitenAuswahl>() { };
+                kopierteEinheit.auswahlTypBasis.Add(EinheitenAuswahl.AngeschlossenesTransportFahrzeug);
+                kopierteEinheit.auswahlTypSpieler = EinheitenAuswahl.AngeschlossenesTransportFahrzeug;
+            }
+
             // Okay, rein damit:
             spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(kopierteEinheit);
 
@@ -548,7 +561,7 @@ namespace WarhammerGUI
             // Achtung: Es kann nun noch sein, dass ein angeschlossenes Transportfahrzeug mit angelegt werden soll.
             // Natürlich nur dann, wenn wir uns auch dafür entschieden haben:
             if (kopierteEinheit.angeschlossenesFahrzeugString != "")
-                erschaffeEineNeueEinheit(kopierteEinheit.angeschlossenesFahrzeugString);
+                erschaffeEineNeueEinheit(kopierteEinheit.angeschlossenesFahrzeugString, true);
         }
 
 

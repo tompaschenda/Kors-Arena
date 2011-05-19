@@ -121,6 +121,11 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesSyncLaserKanone());
             waffenListe.Add(createSpaceMarinesSyncPlasmawerfer());
             waffenListe.Add(createSpaceMarinesDeathwind());
+            waffenListe.Add(createSpacemarinesHurricane());
+            waffenListe.Add(createSpacemarinesFlammensturm());
+            waffenListe.Add(createSpaceMarinesEnergieschwert());
+            waffenListe.Add(createSpaceMarinesWhirlwindMehrfach());
+            waffenListe.Add(createSpaceMarinesDemolisher());
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -415,7 +420,41 @@ namespace WarhammerGUI
 
             return weap;
         }
+        private waffe createSpacemarinesHurricane()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.HurricaneBolter;
 
+            return weap;
+        }
+        private waffe createSpacemarinesFlammensturm()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Flammensturmkanone;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesEnergieschwert()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Energieschwert;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesWhirlwindMehrfach()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.WhirlwindMehrfachRaketenWerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesDemolisher()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.DemolisherGeschuetz;
+
+            return weap;
+        }
 
     }
 

@@ -255,6 +255,8 @@ namespace Listen
         UnbeugsameGeister,
         [Description("Wie aus dem Nichts...")]
         WieAusDemNichts,
+        [Description("Lahmgelegt")]
+        Lahmgelegt,
     }
 
 
@@ -485,6 +487,16 @@ namespace Listen
         Razorback,
         [Description("Landungskapsel")]
         Landungskapsel,
+        [Description("Land Raider")]
+        LandRaider,
+        [Description("Land Raider Crusader")]
+        LandRaiderCrusader,
+        [Description("Land Raider Redeemer")]
+        LandRaiderRedeemer,
+        [Description("Whirlwind")]
+        Whirlwind,
+        [Description("Vindicator")]
+        Vindicator,
     }
 
     public enum alleWaffenNamen
@@ -572,6 +584,8 @@ namespace Listen
         SyncLaserKanone,
         [Description("Synchronisierter Plasmawerfer")]
         SyncPlasmawerfer,
+        [Description("Energieschwert")]
+        Energieschwert,
 
         [Description("Laserkanone und synchronisierter Plasmawerfer")]
         LaserkanoneUndSynchroPlasma,
@@ -649,6 +663,8 @@ namespace Listen
         // Alle Ausrüstung für Fahrzeuge:
         [Description("Bulldozerschaufel")]
         Bulldozerschaufel,
+        [Description("Belagerungsschild")]
+        Belagerungsschild,
         [Description("Nebelwerfer")]
         Nebelwerfer,
         [Description("Radarsuchkopfrakete")]

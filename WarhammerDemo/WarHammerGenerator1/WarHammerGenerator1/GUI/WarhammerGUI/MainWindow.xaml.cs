@@ -419,5 +419,25 @@ namespace WarhammerGUI
             }
         }
 
+        // Ich möchte, dass eine Übersicht der Streitmacht erstellt wird!
+        private void buttonStreitmachtuebersicht_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListBoxArmeeListe.SelectedIndex == -1)
+                return;
+
+            // Bevor ich loslege, möchte ich wisen, in welcher Datei die Übersicht abgelegt werden soll!
+            // Wir rufen immer den Export-Dialog extra auf!
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Armeeübersicht|*.tex";
+            saveFileDialog1.Title = "Bitte eine Datei auswählen, um die Armeeüberischt zu exportieren!";
+            saveFileDialog1.ShowDialog();
+            var savePath = saveFileDialog1.FileName;
+
+            FileStream str = new FileStream(@savePath, FileMode.Create);
+            // Jetzt rufen wir unsere Unterklasse auf, die sich nur damit beschäftigt, die Armee auszugeben!
+            armyToTex konverter = new armyToTex() { };
+            str = konverter.generateTexFile(str);
+            str.Close();
+        }
     }
 }

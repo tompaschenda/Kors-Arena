@@ -233,6 +233,7 @@ namespace WarhammerGUI
         public int bf;
         public int st;
         public int wid;
+        public int ini;
         public int lp;
         public int at;
         public int mw;
