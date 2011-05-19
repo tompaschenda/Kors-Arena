@@ -130,6 +130,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Programmlogik\armyToTex.cs" />
     <Compile Include="Programmlogik\Einheit.cs" />
     <Compile Include="Programmlogik\GlobaleEinheitenListe.cs" />
     <Compile Include="Programmlogik\SpaceMarineEinheiten.cs" />

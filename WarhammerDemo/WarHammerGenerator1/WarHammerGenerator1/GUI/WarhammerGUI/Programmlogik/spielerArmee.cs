@@ -73,6 +73,16 @@ namespace WarhammerGUI
             return isUnique;
         }
 
+        public int gibMirDieAnzahlFuerAuswahltyp(EinheitenAuswahl auswahl)
+        {
+            int anzahl = 0;
+            for (int i = 0; i < this.armeeEinheiten.Count; ++i)
+            {
+                if (this.armeeEinheiten[i].auswahlTypSpieler == auswahl)
+                    anzahl = anzahl + 1;
+            }
+            return anzahl;
+        }
 
     }
 

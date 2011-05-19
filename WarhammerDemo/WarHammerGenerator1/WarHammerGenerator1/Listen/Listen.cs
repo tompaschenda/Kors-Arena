@@ -415,6 +415,8 @@ namespace Listen
 
     public enum alleSubeinheitenNamen
     {
+        [Description("undefined")]
+        undefined,
         [Description("Salvenkanone")]
         Salvenkanone,
         [Description("Apothecarius")]

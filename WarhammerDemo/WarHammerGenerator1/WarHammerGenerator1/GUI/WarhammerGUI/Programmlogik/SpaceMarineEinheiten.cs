@@ -218,6 +218,7 @@ namespace WarhammerGUI
                 spaceMarine.at = 1;
                 spaceMarine.mw = 8;
                 spaceMarine.rw = 3;
+                spaceMarine.ret = 0;
 
                 spaceMarine.einheitentyp = Einheitstyp.Infanterie;
 
@@ -312,6 +313,7 @@ namespace WarhammerGUI
             spaceMarineSergeant.at = 2;
             spaceMarineSergeant.mw = 9;
             spaceMarineSergeant.rw = 3;
+            spaceMarineSergeant.ret = 0;
             spaceMarineSergeant.einheitentyp = Einheitstyp.Infanterie;
 
             subEinheiten.Add(spaceMarineSergeant);
@@ -479,6 +481,7 @@ namespace WarhammerGUI
                 terminator.at = 2;
                 terminator.mw = 9;
                 terminator.rw = 2;
+                terminator.ret = 5;
 
                 terminator.einheitentyp = Einheitstyp.Infanterie;
 
@@ -512,6 +515,7 @@ namespace WarhammerGUI
             terminatorSergeant.at = 2;
             terminatorSergeant.mw = 9;
             terminatorSergeant.rw = 2;
+            terminatorSergeant.ret = 5;
             terminatorSergeant.einheitentyp = Einheitstyp.Infanterie;
 
             subEinheiten.Add(terminatorSergeant);
@@ -660,6 +664,7 @@ namespace WarhammerGUI
                 terminator.at = 2;
                 terminator.mw = 9;
                 terminator.rw = 2;
+                terminator.ret = 5;
 
                 terminator.einheitentyp = Einheitstyp.Infanterie;
 
@@ -712,6 +717,7 @@ namespace WarhammerGUI
             terminatorSergeant.at = 2;
             terminatorSergeant.mw = 9;
             terminatorSergeant.rw = 2;
+            terminatorSergeant.ret = 5;
             terminatorSergeant.einheitentyp = Einheitstyp.Infanterie;
 
             subEinheiten.Add(terminatorSergeant);

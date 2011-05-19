@@ -194,6 +194,94 @@ namespace WarhammerGUI
                 auswahlTypSpieler = auswahlTypBasis[0];
         }
 
+
+        /// <summary>
+        /// Gibt für jede existierende Sub-Einheit einen Eintrag in der Liste zurück!
+        /// </summary>
+        /// <returns></returns>
+        public List<alleSubeinheitenNamen> getAllTypesOfSubunits()
+        {
+            var liste = new List<alleSubeinheitenNamen>() { };
+
+            for (int i = 0; i < this.subEinheiten.Count; ++i)
+            {
+                if (!liste.Contains(this.subEinheiten[i].name))
+                    liste.Add(this.subEinheiten[i].name);
+            }
+
+            return liste;
+        }
+
+        /// <summary>
+        /// Gibt zurück, wie häufig der vorgegebene Subeinheitenname in dieser Einheit vorhanden ist!
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public int getNumberOfSubunitsOfType(alleSubeinheitenNamen name)
+        {
+            int anzahl = 0;
+            for (int i = 0; i < this.subEinheiten.Count; ++i)
+                if (this.subEinheiten[i].name == name)
+                    anzahl = anzahl + 1;
+            return anzahl;
+        }
+
+        public subEinheit getFirstSubunitWithName(alleSubeinheitenNamen name)
+        {
+            subEinheit ersteSub = new subEinheit() { };
+            for (int i = 0; i < this.subEinheiten.Count; ++i)
+            {
+                if (this.subEinheiten[i].name == name)
+                {
+                    ersteSub = this.subEinheiten[i];
+                    break;
+                }
+            }
+
+            if (ersteSub.name == alleSubeinheitenNamen.undefined)
+                throw new ArgumentOutOfRangeException("Diese Subeinheit gibt es in der aktuellen Auswahl gar nicht!");
+
+            return ersteSub;
+        }
+
+        /// <summary>
+        /// Gibt zurück, wie häufig eine bestimmte Waffe in einem bestimmten Subunit-Typ vorkommt!
+        /// </summary>
+        /// <param name="nameSubEinheit"></param>
+        /// <param name="nameWaffe"></param>
+        /// <returns></returns>
+        public int getNumberOfWeapsInSubunits(alleSubeinheitenNamen nameSubEinheit, alleWaffenNamen nameWaffe)
+        {
+            int anzahl = 0;
+            for (int i = 0; i < this.subEinheiten.Count; ++i)
+                for (int j = 0; j < this.subEinheiten[i].waffen.Count; ++j)
+                    if (this.subEinheiten[i].waffen[j].name == nameWaffe && this.subEinheiten[i].name == nameSubEinheit)
+                        anzahl = anzahl + 1;
+
+            return anzahl;
+        }
+
+        public int getNumberOfEquipInSubunits(alleSubeinheitenNamen nameSubEinhiet, alleAusruestung nameAusruestung)
+        {
+            int anzahl = 0;
+            for (int i = 0; i < this.subEinheiten.Count; ++i)
+                for (int j = 0; j < this.subEinheiten[i].ausruestung.Count; ++j)
+                    if (this.subEinheiten[i].ausruestung[j] == nameAusruestung && this.subEinheiten[i].name == nameSubEinhiet)
+                        anzahl = anzahl + 1;
+                
+            return anzahl;
+        }
+
+        public int getNumberOfArmorInSubunits(alleSubeinheitenNamen nameSubEinhiet, alleRuestungen nameRuestung)
+        {
+            int anzahl = 0;
+            for (int i = 0; i < this.subEinheiten.Count; ++i)
+                   if (this.subEinheiten[i].ruestung == nameRuestung && this.subEinheiten[i].name == nameSubEinhiet)
+                        anzahl = anzahl + 1;
+
+            return anzahl;
+        }
+
     }
 
     /// <summary>
@@ -203,8 +291,32 @@ namespace WarhammerGUI
     ///     Subeinheit: Space Marine
     ///     Subeinheit: Sergeant
     /// </summary>
-    public struct subEinheit
+    public class subEinheit
     {
+        // Default-Konstruktor:
+        public subEinheit() 
+        { 
+            name = alleSubeinheitenNamen.undefined;
+            ausruestung = new List<alleAusruestung>() { };
+            waffen = new List<waffe>() { };
+            ruestung = alleRuestungen.undefined;
+            kg = -1;
+            bf = -1;
+            st = -1;
+            wid = -1;
+            ini = -1;
+            lp = -1;
+            at = -1;
+            mw = -1;
+            rw = -1;
+            ret = -1;
+            front = -1;
+            seit = -1;
+            heck = -1;
+            transportkapazitaet = 0;
+            einheitentyp = Einheitstyp.undefined;
+        }
+
         /// <summary>
         /// Name der Subeinheit
         /// </summary>
@@ -238,6 +350,7 @@ namespace WarhammerGUI
         public int at;
         public int mw;
         public int rw;
+        public int ret;
 
         /// <summary>
         /// Für den Fall, dass es sich um ein Fahrzeug handelt:

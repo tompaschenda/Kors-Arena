@@ -433,11 +433,12 @@ namespace WarhammerGUI
             saveFileDialog1.ShowDialog();
             var savePath = saveFileDialog1.FileName;
 
-            FileStream str = new FileStream(@savePath, FileMode.Create);
+            if (savePath == "")
+                return;
+
             // Jetzt rufen wir unsere Unterklasse auf, die sich nur damit beschäftigt, die Armee auszugeben!
             armyToTex konverter = new armyToTex() { };
-            str = konverter.generateTexFile(str);
-            str.Close();
+            konverter.generateTexFile(savePath, ListBoxArmeeListe.SelectedIndex);
         }
     }
 }
