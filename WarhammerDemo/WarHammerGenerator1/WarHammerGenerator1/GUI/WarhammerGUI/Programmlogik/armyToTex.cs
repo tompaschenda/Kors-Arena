@@ -118,7 +118,8 @@ namespace WarhammerGUI
             headerString += "% nützliche Funktionen und Kürzel bereit gestellt: \n\n\\usepackage{graphicx} \n% 'Mü' auch im normalen Text verwenden können! \n\\usepackage{textcomp} \n\n";
             headerString += "% Grafik-Erweiterungen bekannt machen: \n\\DeclareGraphicsExtensions{.png, .jpg, .bmp, .eps} \n\n \\newcommand{\\bb}{\\bigbreak} \n\\newcommand{\\msn}{\\footnotesize} \n";
             headerString += "\n% Dafür sorgen, dass die Gleichungen nach Sektionen nummeriert werden (Beisp.: 2.23):\n\\numberwithin{equation}{section} \n% Abbilungen Abschnittsweise nummerieren: \n";
-            headerString += "% usepackage[chngcntr]  \n%\\counterwithin{figure}{section} \n\n% Seitenränder, etc.: \n\\setlength{\\textwidth}{17cm} \n\\setlength{\\oddsidemargin}{0.5cm} \n";
+            headerString += "% usepackage[chngcntr]  \n%\\counterwithin{figure}{section} \n\n% Seitenränder, etc.:\n";
+            headerString += "\\usepackage{geometry}\n\\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=25mm,headsep=7mm, footskip=12mm}\n";
             headerString += "\\setlength{\\evensidemargin}{0.5cm} \n\\setlength{\\topmargin}{0.4cm} \n\\textheight200mm \n\n% Wir möchten, dass auch paragraphs and subparagraphs nummeriert werden: \n";
             headerString += "\\setcounter{secnumdepth}{4}	 \n% Außerdem sollen sie im Index ebenfalls auftauchen: \n\\setcounter{tocdepth}{4} \n";
             return headerString;
@@ -147,6 +148,8 @@ namespace WarhammerGUI
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.Unterstuetzung);
             unitString += "\\newpage\n";
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.AngeschlossenesTransportFahrzeug);
+            unitString += "\\newpage\n";
+            unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.keine);
 
             return unitString;
         }
@@ -321,7 +324,7 @@ namespace WarhammerGUI
                     if(j < alleBewaffnungsstrings.Count -1)
                         entriesString +=  "x), ";
                     else
-                        entriesString += "X)";
+                        entriesString += "x)";
                 }
                 entriesString += "\\\\\n";
 
@@ -333,7 +336,7 @@ namespace WarhammerGUI
                     if(j < alleAusruestungsstrings.Count -1)
                         entriesString +=  "x), ";
                     else
-                        entriesString += "X)";
+                        entriesString += "x)";
                 }
                 entriesString += "\\\\\n";
 
@@ -347,7 +350,7 @@ namespace WarhammerGUI
                         if (j < alleRuestungsstrings.Count - 1)
                             entriesString += "x), ";
                         else
-                            entriesString += "X)";
+                            entriesString += "x)";
                     }
                     entriesString += "\\bb\n";
                 }

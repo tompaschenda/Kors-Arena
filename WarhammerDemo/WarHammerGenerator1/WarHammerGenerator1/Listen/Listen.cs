@@ -223,7 +223,7 @@ namespace Listen
         TitanischeMacht,
         [Description("Kriegsgott")]
         Kriegsgott,
-        [Description("Überrschungsangriff!")]
+        [Description("Überraschungsangriff!")]
         Ueberraschungsangriff,
         [Description("Riten der Schlacht")]
         RitenDerSchlacht,
@@ -257,6 +257,8 @@ namespace Listen
         WieAusDemNichts,
         [Description("Lahmgelegt")]
         Lahmgelegt,
+        [Description("Geschenk der Vorsehung")]
+        GeschenkDerVorsehung,
     }
 
 
@@ -425,8 +427,6 @@ namespace Listen
         Captain,
         [Description("Captain Cato Sicarius")]
         CaptainCatoSicarius,
-        [Description("Sergeant Chronus")]
-        Chronus,
         [Description("Captain Darnath Lysander")]
         CaptainLysander,
         [Description("Ehrengarde")]
@@ -499,6 +499,8 @@ namespace Listen
         Whirlwind,
         [Description("Vindicator")]
         Vindicator,
+        [Description("Sergeant Chronus")]
+        SergeantChronus,
     }
 
     public enum alleWaffenNamen
@@ -575,6 +577,12 @@ namespace Listen
         Sturmbolter,
         [Description("Sturmkanone")]
         Sturmkanone,
+        [Description("Stalker-Schema Bolter")]
+        StalkerSchemaBolter,
+        [Description("Talassarianische Sturmklinge")]
+        TalassarianischeSturmklinge,
+        [Description("Stab des Tigurius")]
+        StabDesTigurius,
 
         [Description("Synchronisierter Schwerer Bolter")]
         SyncSchwererBolter,
@@ -661,6 +669,8 @@ namespace Listen
         Fragmentgranaten,
         [Description("Sprenggranaten")]
         Sprenggranaten,
+        [Description("Höllenfeuermatrix")]
+        Hoellenfeuermatrix,
 
         // Alle Ausrüstung für Fahrzeuge:
         [Description("Bulldozerschaufel")]
@@ -697,5 +707,29 @@ namespace Listen
         TerminatorRuestung,
         [Description("Rüstung des Antilochus")]
         RuestungDesAntilochus,
+    }
+
+    public enum Psikraefte
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("Schetterschlag")]
+        Schmetterschlag,
+        [Description("Psischild")]
+        Psischild,
+        [Description("Maschinenfluch")]
+        Maschinenfluch,
+        [Description("Avatar der Sühne")]
+        AvatarDerSuehne,
+        [Description("Beschleunigung")]
+        Beschleunigung,
+        [Description("Nullzone")]
+        Nullzone,
+        [Description("Macht der Alten")]
+        MachtDerAlten,
+        [Description("Tor zur Unendlichkeit")]
+        TorZurUnendlichkeit,
+        [Description("Vortex der Verdammnis")]
+        VortexDerVerdammnis,
     }
 }

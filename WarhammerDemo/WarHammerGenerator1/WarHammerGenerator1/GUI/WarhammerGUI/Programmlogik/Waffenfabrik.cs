@@ -126,6 +126,9 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesEnergieschwert());
             waffenListe.Add(createSpaceMarinesWhirlwindMehrfach());
             waffenListe.Add(createSpaceMarinesDemolisher());
+            waffenListe.Add(createSpaceMarinesStalker());
+            waffenListe.Add(createSpaceMarinesTalass());
+            waffenListe.Add(createSpaceMarinesStabTigurius());
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -455,6 +458,28 @@ namespace WarhammerGUI
 
             return weap;
         }
+        private waffe createSpaceMarinesStalker()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.StalkerSchemaBolter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesTalass()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.TalassarianischeSturmklinge;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesStabTigurius()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.StabDesTigurius;
+
+            return weap;
+        }
+
 
     }
 

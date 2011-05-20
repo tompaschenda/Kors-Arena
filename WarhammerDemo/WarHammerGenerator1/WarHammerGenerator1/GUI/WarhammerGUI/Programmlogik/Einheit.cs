@@ -315,6 +315,7 @@ namespace WarhammerGUI
             heck = -1;
             transportkapazitaet = 0;
             einheitentyp = Einheitstyp.undefined;
+            psikraefte = new List<Psikraefte>() { };
         }
 
         /// <summary>
@@ -365,6 +366,8 @@ namespace WarhammerGUI
         /// Infanterie, Fahrzeug, etc.
         /// </summary>
         public Einheitstyp einheitentyp;
+
+        public List<Psikraefte> psikraefte;
     }
 
     /// <summary>
