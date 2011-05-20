@@ -285,6 +285,8 @@ namespace Listen
         Ritualkenntnis,
         [Description("Ritualkenntnis (Alchimist)")]
         RitualkenntnisAlchimist,
+        [Description("Ritualkenntnis (Durro Dun)")]
+        RitualkenntnisDurroDun,
         [Description("Spätweihe")]
         Spaetweihe,
 

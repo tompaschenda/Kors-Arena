@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Heldengenerierung">
+</Property><Property Name="Projektmappendatei" Value="C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Heldengenerierung.sln">
+</Property><Property Name="Benutzeroptionendatei" Value="C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Heldengenerierung.suo">
+</Property><Property Name="Date" Value="Sonntag, 8. August 2010">
+</Property><Property Name="Time" Value="11:55">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Heldengenerierung.sln" Description="Datei wurde erfolgreich als &quot;C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung.sln&quot; gesichert">
+</Event><Event ErrorLevel="0" Project="" Source="Heldengenerierung.suo" Description="Datei wurde erfolgreich als &quot;C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung.suo&quot; gesichert">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Heldengenerierung.csproj" Description="Projektdatei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Heldengenerierung.csproj">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Heldengenerierung.csproj.user" Description="Die Projektbenutzerdatei wurde erfolgreich als &quot;C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Heldengenerierung.csproj.user&quot; gesichert.">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\App.xaml.cs" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\App.xaml.cs">
+</Event><Event ErrorLevel="1" Project="Heldengenerierung" Source="..\Heldengenerierung.xaml.cs" Description="Das gesicherte Projekt wird möglicherweise nicht erstellt, da es eine verknüpfte Datei enthält: C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Heldengenerierung.xaml.cs">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="..\Heldengenerierung.xaml.cs" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Heldengenerierung.xaml.cs">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Properties\AssemblyInfo.cs" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Properties\Resources.Designer.cs" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Properties\Settings.Designer.cs" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Properties\Settings.settings" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Properties\Resources.resx" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\App.xaml" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\App.xaml">
+</Event><Event ErrorLevel="1" Project="Heldengenerierung" Source="..\Heldengenerierung.xaml" Description="Das gesicherte Projekt wird möglicherweise nicht erstellt, da es eine verknüpfte Datei enthält: C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Heldengenerierung.xaml">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="..\Heldengenerierung.xaml" Description="Datei erfolgreich gesichert als C:\Users\Admin\Documents\Projekt\Repo\Ordner\Heldengenerierung\Backup\Heldengenerierung\Heldengenerierung.xaml">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Heldengenerierung.csproj" Description="Projekt erfolgreich konvertiert">
+</Event><Event ErrorLevel="3" Project="Heldengenerierung" Source="Heldengenerierung\Heldengenerierung.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Heldengenerierung.sln" Description="Die Projektmappe wurde erfolgreich konvertiert.">
+</Event><Event ErrorLevel="3" Project="" Source="Heldengenerierung.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Heldengenerierung" Source="Heldengenerierung\Heldengenerierung.csproj" Description="Überprüfung abgeschlossen: Upgrade der Projektdateien nicht erforderlich.">
+</Event></UpgradeLog>

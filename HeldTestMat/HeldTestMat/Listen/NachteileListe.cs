@@ -95,6 +95,8 @@ namespace Listen
         HilfeFuerKrankeUndSieche,
         [Description("99 Gebote Rastullahs")]
         GeboteRastullahs,
+        [Description("Odun-Verhalten")]
+        Odunverhalten,
     };
 
     public enum Speisegebote

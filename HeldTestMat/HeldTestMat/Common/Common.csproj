@@ -45,8 +45,8 @@
     <Compile Include="SerializableDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Listen\Listen.csproj">
-      <Project>{EB96D371-6B45-4D80-9503-29A7E82B8524}</Project>
+    <ProjectReference Include="..\..\..\WarhammerDemo\WarHammerGenerator1\WarHammerGenerator1\Listen\Listen.csproj">
+      <Project>{5386AF15-D15A-4FAA-9561-46C460676383}</Project>
       <Name>Listen</Name>
     </ProjectReference>
   </ItemGroup>
