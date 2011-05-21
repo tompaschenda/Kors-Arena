@@ -6,9 +6,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarhammerGUI", "WarhammerGU
 		{8220FD29-2417-44D3-A6C4-6E97CD813F77} = {8220FD29-2417-44D3-A6C4-6E97CD813F77}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listen", "..\..\Listen\Listen.csproj", "{5386AF15-D15A-4FAA-9561-46C460676383}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listen", "Listen\Listen.csproj", "{5386AF15-D15A-4FAA-9561-46C460676383}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\Common\Common.csproj", "{8220FD29-2417-44D3-A6C4-6E97CD813F77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{8220FD29-2417-44D3-A6C4-6E97CD813F77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
