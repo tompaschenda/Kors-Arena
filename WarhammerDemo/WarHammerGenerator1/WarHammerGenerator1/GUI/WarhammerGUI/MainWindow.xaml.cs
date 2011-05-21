@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
 using Listen;
+using System.Diagnostics;
+using Common;
 
 namespace WarhammerGUI
 {
@@ -420,25 +422,224 @@ namespace WarhammerGUI
         }
 
         // Ich möchte, dass eine Übersicht der Streitmacht erstellt wird!
-        private void buttonStreitmachtuebersicht_Click(object sender, RoutedEventArgs e)
+        private void onStreitMachtToTex(object sender, RoutedEventArgs e)
         {
             if (ListBoxArmeeListe.SelectedIndex == -1)
                 return;
 
             // Bevor ich loslege, möchte ich wisen, in welcher Datei die Übersicht abgelegt werden soll!
             // Wir rufen immer den Export-Dialog extra auf!
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Armeeübersicht|*.tex";
-            saveFileDialog1.Title = "Bitte eine Datei auswählen, um die Armeeüberischt zu exportieren!";
-            saveFileDialog1.ShowDialog();
-            var savePath = saveFileDialog1.FileName;
+            string savePath = "";
+            string ordner = "";
+            string dateiname = "";
+            string dateiNameOhneEndung = "";
 
-            if (savePath == "")
-                return;
+            bool allesOkay = false;
+            while(!allesOkay)
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "Armeeübersicht|*.tex";
+                saveFileDialog1.Title = "Bitte eine Datei auswählen, um die Armeeüberischt zu exportieren!";
+                saveFileDialog1.ShowDialog();
+                savePath = saveFileDialog1.FileName;
+
+                if (savePath == "")
+                    return;
+
+                pruefeAufUmlaute checkObj = new pruefeAufUmlaute(){};
+                if (!checkObj.enthaeltDerFolgendeStringUmlaute(savePath) && !checkObj.enthaeltDerFolgendeStringLeerzeichen(savePath))
+                {
+                    ordner = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName);
+                    dateiname = System.IO.Path.GetFileName(saveFileDialog1.FileName);
+                    dateiNameOhneEndung = System.IO.Path.GetFileNameWithoutExtension(saveFileDialog1.FileName);
+                    allesOkay = true;
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Bitte keine Umlaute oder Leerzeichen im Dateinamen wählen!",
+                        "Nicht erlaubte Zeichen im Dateinamen!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+                
 
             // Jetzt rufen wir unsere Unterklasse auf, die sich nur damit beschäftigt, die Armee auszugeben!
             armyToTex konverter = new armyToTex() { };
             konverter.generateTexFile(savePath, ListBoxArmeeListe.SelectedIndex);
+
+            // So, damit existiert unsere .tex-Datei nun. Jetzt müssen wir sie nur noch kompilieren!
+            // Bei einer Installation von LaTeX ist pdflatex.exe normalerweise immer als Pfadvariable eingetragen;
+            // falls nicht, haben wir hier ein Problem!
+            // TODO: Was mache ich dann???
+
+            string pfadBatDatei = ordner + "\\" + "ErstelleArmeePDF" + ".bat";
+            string pfadPDF = ordner + "\\" + dateiNameOhneEndung + ".pdf";
+
+            FileStream str = new FileStream(pfadBatDatei, FileMode.Create);
+            str.Close();
+            StreamWriter sw = new StreamWriter(@pfadBatDatei, true, System.Text.Encoding.GetEncoding("ISO-8859-1"));
+            sw.Write("cd " + ordner);
+            sw.Write("\n");
+            sw.Write("pdflatex.exe " + savePath);
+            sw.Write("\n");
+            sw.Write("pdflatex.exe " + savePath);
+            sw.Write("\n");
+            sw.Write("pdflatex.exe " + savePath);   // dreimal kompilieren, damit alles okay ist!
+            sw.Write("\n");
+            //sw.Write(pfadPDF);
+            //sw.Write("\n");
+            sw.Write("exit");
+            sw.Close();
+            // .bat ausführen!
+            var meinProzess = new Process();
+            var meineProzessInfo = new ProcessStartInfo(pfadBatDatei, "");
+            meinProzess.StartInfo = meineProzessInfo;
+            meinProzess.Start();
+            meinProzess.WaitForExit();
+            meinProzess.Close();
+            meinProzess.Dispose();
+
+            // Aufräumen und den ganzen nicht mehr benötigten Mist löschen!
+            File.Delete(ordner + "\\" + dateiNameOhneEndung + ".aux");
+            File.Delete(ordner + "\\" + dateiNameOhneEndung + ".toc");
+            File.Delete(ordner + "\\" + dateiNameOhneEndung + ".log");
+            File.Delete(ordner + "\\" + dateiNameOhneEndung + ".out");
+            File.Delete(ordner + "\\" + "ErstelleArmeePDF" + ".bat");
+
+            // Jetzt erst die PDF anzeigen:
+            var anzeigePDF = new Process();
+            meineProzessInfo = new ProcessStartInfo(pfadPDF, "");
+            anzeigePDF.StartInfo = meineProzessInfo;
+            anzeigePDF.Start();
+            anzeigePDF.Close();
+            anzeigePDF.Dispose();
+        }
+
+        /// <summary>
+        /// Executes a shell command synchronously. From: http://www.codeproject.com/KB/cs/Execute_Command_in_CSharp.aspx
+        /// </summary>
+        /// <param name="command">string command</param>
+        /// <returns>string, as output of the command.</returns>
+        public void ExecuteCommandSync(object command)
+        {
+            try
+            {
+                // create the ProcessStartInfo using "cmd" as the program to be run,
+                // and "/c " as the parameters.
+                // Incidentally, /c tells cmd that we want it to execute the command that follows,
+                // and then exit.
+                System.Diagnostics.ProcessStartInfo procStartInfo =
+                    new System.Diagnostics.ProcessStartInfo("cmd", "/c " + "pdflatex.exe C:\\Users\\Admin\\Desktop\\Test.tex");
+
+                // The following commands are needed to redirect the standard output.
+                // This means that it will be redirected to the Process.StandardOutput StreamReader.
+                procStartInfo.RedirectStandardOutput = true;
+                procStartInfo.UseShellExecute = false;
+                // Do not create the black window.
+                procStartInfo.CreateNoWindow = false;
+                // Now we create a process, assign its ProcessStartInfo and start it
+                System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                proc.StartInfo = procStartInfo;
+                proc.Start();
+                // Get the output into a string
+                string result = proc.StandardOutput.ReadToEnd();
+                // Display the command output.
+                Console.WriteLine(result);
+            }
+            catch (Exception objException)
+            {
+                throw new ArgumentException(objException.ToString());
+            }
+        }
+
+
+        /// <summary>
+        /// Execute a shell command
+        /// </summary>
+        /// <param name="_FileToExecute">File/Command to execute</param>
+        /// <param name="_CommandLine">Command line parameters to pass</param> 
+        /// <param name="_outputMessage">returned string value after executing shell command</param> 
+        /// <param name="_errorMessage">Error messages generated during shell execution</param> 
+        public string ExecuteShellCommand(string _FileToExecute, string _CommandLine)
+        {
+
+            string _outputMessage = "";
+            string _errorMessage = "";
+
+            // Set process variable
+            // Provides access to local and remote processes and enables you to start and stop local system processes.
+            System.Diagnostics.Process _Process = null;
+            try
+            {
+                _Process = new System.Diagnostics.Process();
+
+                // invokes the cmd process specifying the command to be executed.
+                string _CMDProcess = string.Format(System.Globalization.CultureInfo.InvariantCulture, @"{0}\cmd.exe", new object[] { Environment.SystemDirectory });
+
+                // pass executing file to cmd (Windows command interpreter) as a arguments
+                // /C tells cmd that we want it to execute the command that follows, and then exit.
+                string _Arguments = string.Format(System.Globalization.CultureInfo.InvariantCulture, "/C {0}", new object[] { _FileToExecute });
+
+                // pass any command line parameters for execution
+                if (_CommandLine != null && _CommandLine.Length > 0)
+                {
+                    _Arguments += string.Format(System.Globalization.CultureInfo.InvariantCulture, " {0}", new object[] { _CommandLine, System.Globalization.CultureInfo.InvariantCulture });
+                }
+
+                // Specifies a set of values used when starting a process.
+                System.Diagnostics.ProcessStartInfo _ProcessStartInfo = new System.Diagnostics.ProcessStartInfo(_CMDProcess, _Arguments);
+                // sets a value indicating not to start the process in a new window. 
+                _ProcessStartInfo.CreateNoWindow = false;
+                // sets a value indicating not to use the operating system shell to start the process. 
+                _ProcessStartInfo.UseShellExecute = false;
+                // sets a value that indicates the output/input/error of an application is written to the Process.
+                _ProcessStartInfo.RedirectStandardOutput = true;
+                _ProcessStartInfo.RedirectStandardInput = true;
+                _ProcessStartInfo.RedirectStandardError = true;
+                _Process.StartInfo = _ProcessStartInfo;
+
+                // Starts a process resource and associates it with a Process component.
+                _Process.Start();
+
+                // Instructs the Process component to wait indefinitely for the associated process to exit.
+                _errorMessage = _Process.StandardError.ReadToEnd();
+                _Process.WaitForExit();
+
+                // Instructs the Process component to wait indefinitely for the associated process to exit.
+                _outputMessage = _Process.StandardOutput.ReadToEnd();
+                _Process.WaitForExit();
+            }
+            catch (Exception _Exception)
+            {
+                // Error
+                Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
+            }
+            finally
+            {
+                // close process and do cleanup
+                _Process.Close();
+                _Process.Dispose();
+                _Process = null;
+            }
+
+            return _outputMessage;
+        }
+
+
+        public static int TestCom(string Command, int Timeout)
+        {
+            int ExitCode;
+            System.Diagnostics.ProcessStartInfo ProcessInfo;
+            var Process = new System.Diagnostics.Process();
+
+            ProcessInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", "/C " + Command);
+            ProcessInfo.CreateNoWindow = true;
+            ProcessInfo.UseShellExecute = false;
+            Process.StartInfo = ProcessInfo;
+            Process.WaitForExit(Timeout);
+            ExitCode = Process.ExitCode;
+            Process.Close();
+
+            return ExitCode;
         }
     }
 }

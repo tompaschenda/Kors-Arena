@@ -22,6 +22,7 @@
                 <MenuItem Header="Streitmacht Kopieren" Click="klickStreitmachtKopieren"></MenuItem>
                 <MenuItem Header="Streitmacht Löschen" Click="klickLoescheStreitMacht"></MenuItem>
                 <MenuItem Header="Streitmacht Umbenennen" Click="klickStreitmachtUmbennnen"></MenuItem>
+                <MenuItem Header="Streitmacht PDF-Übersicht erstellen" Click="onStreitMachtToTex"></MenuItem>
             </MenuItem>
         </Menu>
         <ListBox Height="345" HorizontalAlignment="Left" Margin="111,144,0,0" Name="ListBoxArmeeListe" VerticalAlignment="Top" Width="247" SelectionChanged="selektionInGUIGeandertEvent" >
@@ -39,6 +40,6 @@
         <Button Content="Streitmacht löschen" Height="23" HorizontalAlignment="Left" Margin="548,414,0,0" Name="streitmachtLoeschenKnopf" VerticalAlignment="Top" Width="196" Click="klickLoescheStreitMacht"/>
         <Button Content="Streitmacht kopieren" Height="23" HorizontalAlignment="Left" Margin="548,361,0,0" Name="streitmachtKopierenKnopf" VerticalAlignment="Top" Width="196" Click="klickStreitmachtKopieren" />
         <Button Content="Streitmacht umbenennen" Height="23" HorizontalAlignment="Left" Margin="548,466,0,0" Name="buttenSteitmachtUmbenennen" VerticalAlignment="Top" Width="196" Click="klickStreitmachtUmbennnen" />
-        <Button Content="Streitmachtübersicht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,518,0,0" Name="buttonStreitmachtuebersicht" VerticalAlignment="Top" Width="196" Click="buttonStreitmachtuebersicht_Click" />
+        <Button Content="Streitmachtübersicht (PDF)" Height="23" HorizontalAlignment="Left" Margin="548,518,0,0" Name="buttonStreitmachtuebersicht" VerticalAlignment="Top" Width="196" Click="onStreitMachtToTex" />
     </Grid>
 </Window>
