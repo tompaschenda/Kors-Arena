@@ -34,6 +34,18 @@ namespace Common
         }
     }
 
+    public class pruefeAufUmlaute
+    {
+        public bool enthaeltDerFolgendeStringUmlaute(string zuTesten)
+        {
+            return (zuTesten.Contains("ä") || zuTesten.Contains("Ä") || zuTesten.Contains("Ö") || zuTesten.Contains("ö") || zuTesten.Contains("Ü") || zuTesten.Contains("ü"));
+        }
+
+        public bool enthaeltDerFolgendeStringLeerzeichen(string zuTesten)
+        {
+            return (zuTesten.Contains("\r") || zuTesten.Contains("\t") || zuTesten.Contains(" ") || zuTesten.Contains("  "));
+        }
+    }
 
     /// <summary>
     /// Struktur mit einem Name aus einer Liste und einem zugehörigen Wert.
