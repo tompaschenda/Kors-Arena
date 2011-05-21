@@ -446,7 +446,7 @@ namespace WarhammerGUI
                 if (savePath == "")
                     return;
 
-                pruefeAufUmlaute checkObj = new pruefeAufUmlaute(){};
+                pruefeAufVerboteneDateizeichen checkObj = new pruefeAufVerboteneDateizeichen() { };
                 if (!checkObj.enthaeltDerFolgendeStringUmlaute(savePath) && !checkObj.enthaeltDerFolgendeStringLeerzeichen(savePath))
                 {
                     ordner = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName);

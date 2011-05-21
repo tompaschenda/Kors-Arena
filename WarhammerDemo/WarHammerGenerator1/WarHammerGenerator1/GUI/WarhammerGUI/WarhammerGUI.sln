@@ -6,12 +6,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarhammerGUI", "WarhammerGU
 		{8220FD29-2417-44D3-A6C4-6E97CD813F77} = {8220FD29-2417-44D3-A6C4-6E97CD813F77}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\..\..\..\HeldTestMat\HeldTestMat\Common\Common.csproj", "{8220FD29-2417-44D3-A6C4-6E97CD813F77}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5386AF15-D15A-4FAA-9561-46C460676383} = {5386AF15-D15A-4FAA-9561-46C460676383}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listen", "..\..\Listen\Listen.csproj", "{5386AF15-D15A-4FAA-9561-46C460676383}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\Common\Common.csproj", "{8220FD29-2417-44D3-A6C4-6E97CD813F77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,16 +30,6 @@ Global
 		{3D7385F2-C1A8-455F-98A2-6B4267390F2C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{3D7385F2-C1A8-455F-98A2-6B4267390F2C}.Release|x86.ActiveCfg = Release|x86
 		{3D7385F2-C1A8-455F-98A2-6B4267390F2C}.Release|x86.Build.0 = Release|x86
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|x86.ActiveCfg = Release|Any CPU
 		{5386AF15-D15A-4FAA-9561-46C460676383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5386AF15-D15A-4FAA-9561-46C460676383}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5386AF15-D15A-4FAA-9561-46C460676383}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -53,6 +40,16 @@ Global
 		{5386AF15-D15A-4FAA-9561-46C460676383}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5386AF15-D15A-4FAA-9561-46C460676383}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5386AF15-D15A-4FAA-9561-46C460676383}.Release|x86.ActiveCfg = Release|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8220FD29-2417-44D3-A6C4-6E97CD813F77}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

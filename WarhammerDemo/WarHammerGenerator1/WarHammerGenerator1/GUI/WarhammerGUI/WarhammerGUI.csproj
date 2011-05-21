@@ -161,7 +161,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\HeldTestMat\HeldTestMat\Common\Common.csproj">
+    <ProjectReference Include="..\..\Common\Common.csproj">
       <Project>{8220FD29-2417-44D3-A6C4-6E97CD813F77}</Project>
       <Name>Common</Name>
     </ProjectReference>

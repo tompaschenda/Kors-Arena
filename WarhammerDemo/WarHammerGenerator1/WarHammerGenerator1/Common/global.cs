@@ -35,7 +35,7 @@ namespace Common
     }
 
 
-    public class pruefeAufUmlaute
+    public class pruefeAufVerboteneDateizeichen
     {
         public bool enthaeltDerFolgendeStringUmlaute(string zuTesten)
         {
