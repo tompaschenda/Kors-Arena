@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using Common;
 using Listen;
 
@@ -28,6 +28,8 @@ namespace WarhammerGUI
 
             // Ich möchte, dass schon einmal eine Demo-Auswahl vorgegeben wird:
             this.namensTextbox.Text = "NeueArmee";
+            this.namensTextbox.Focus();
+            this.namensTextbox.SelectionLength = this.namensTextbox.Text.Length;  
             this.fraktionCombo.SelectedIndex = 10;
         }
 
@@ -95,6 +97,20 @@ namespace WarhammerGUI
             }
 
             return allesOkay;
+        }
+
+        /// <summary>
+        /// Wird aufgerufen, wenn ich eine Eingabe in das Feld mache.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            // Ein Druck auf Return soll so funktionieren, als hätte ich auf Weiter gedrückt!
+            if (e.Key == Key.Return)
+            {
+                weiterKlick(sender, e);
+            }
         }
     }
 }

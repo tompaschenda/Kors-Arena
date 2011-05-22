@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
 using Listen;
@@ -27,6 +27,7 @@ namespace WarhammerGUI
     {
         public MainWindow()
         {
+            //this.PreviewKeyDown += new KeyEventHandler(this.frmBase_KeyDown);
             InitializeComponent();
             updateArmeeListenBox();
         }
@@ -47,14 +48,13 @@ namespace WarhammerGUI
             updateGUI();
         }
 
-
         private void klickQuitMenu(object sender, RoutedEventArgs e)
         {
             // Zunächst stellen wir eine Sicherheitsabfrage:
             string message = "Soll Army Bench wirklich beendet werden? Nicht gespeicherte Armeen gehen verloren!";
             string caption = "Sicherheitsabfrage";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
+            System.Windows.Forms.MessageBoxButtons buttons = System.Windows.Forms.MessageBoxButtons.YesNo;
+            System.Windows.Forms.DialogResult result;
             result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
 
             if (result == System.Windows.Forms.DialogResult.Yes)
@@ -80,8 +80,8 @@ namespace WarhammerGUI
                 // Zunächst stellen wir eine Sicherheitsabfrage:
                 string message = "Soll die ausgewählte Armee wirklich und endgültig gelöscht werden?";
                 string caption = "Sicherheitsabfrage";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
+                System.Windows.Forms.MessageBoxButtons buttons = System.Windows.Forms.MessageBoxButtons.YesNo;
+                System.Windows.Forms.DialogResult result;
                 result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
@@ -204,7 +204,7 @@ namespace WarhammerGUI
             {
                 // In diesem Fall müssen wir den Dialog anzeigen, um einen validen Pfad zu erhalten:
                 // Dialog anzeigen:
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                System.Windows.Forms.SaveFileDialog saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
                 saveFileDialog1.Filter = "Armee-Liste|*.armylist";
                 saveFileDialog1.Title = "Bitte eine Datei auswählen, um die Armee-Liste speichern!";
                 saveFileDialog1.ShowDialog();
@@ -237,7 +237,7 @@ namespace WarhammerGUI
             if (selectionIndex != -1)
             {
                 // Wir rufen immer den Export-Dialog extra auf!
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                System.Windows.Forms.SaveFileDialog saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
                 saveFileDialog1.Filter = "Armee|*.army";
                 saveFileDialog1.Title = "Bitte eine Datei auswählen, um die Armee zu exportieren!";
                 saveFileDialog1.ShowDialog();
@@ -259,7 +259,7 @@ namespace WarhammerGUI
         {
             // Lassen wir den Spieler zunächst auswählen, wo er die Armee hat:
             Stream myStream = null;
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 
             openFileDialog1.Filter = "Army-Datei (*.army)|*.army";
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -324,8 +324,8 @@ namespace WarhammerGUI
             {
                 string message = "Soll wirklich eine Armeeliste geladen werden? Die aktuelle Armeeliste wird dann überschrieben und nicht gespeicherte Armeen gehen verloren!";
                 string caption = "Sicherheitsabfrage";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
+                System.Windows.Forms.MessageBoxButtons buttons = System.Windows.Forms.MessageBoxButtons.YesNo;
+                System.Windows.Forms.DialogResult result;
                 result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
@@ -335,12 +335,12 @@ namespace WarhammerGUI
             }
 
             // Wenn der Nutzer das nicht möchte, machen wir natürlich nichts!
-            if(wirklichOeffnen)
+            if (wirklichOeffnen)
             {
                 // Okay, welche soll denn importiert werden?
                 // Lassen wir den Spieler zunächst auswählen, wo er die Armee hat:
                 Stream myStream = null;
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 
                 openFileDialog1.Filter = "Armylist-Datei (*.armylist)|*.armylist";
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -368,7 +368,7 @@ namespace WarhammerGUI
                                 updateArmeeListenBox();
 
                                 // Und wir selektieren den ersten Index!
-                                if(spielerArmeeListe.getInstance().armeeSammlung.Count != 0)
+                                if (spielerArmeeListe.getInstance().armeeSammlung.Count != 0)
                                     ListBoxArmeeListe.SelectedIndex = 0;
                             }
                         }
@@ -407,6 +407,10 @@ namespace WarhammerGUI
         {
             int selectionIndex = ListBoxArmeeListe.SelectedIndex;
 
+            // Zunächst einmal will ich, dass die Selektion der Armee mindestens Element null ist!
+            if (selectionIndex == -1)
+                ListBoxArmeeListe.SelectedIndex = 0;
+
             // Wir zeigen natürlich nur dann etwas an, wenn auch etwas ausgewählt ist! :)
             if (selectionIndex != -1)
             {
@@ -438,9 +442,9 @@ namespace WarhammerGUI
             string dateiNameOhneEndung = "";
 
             bool allesOkay = false;
-            while(!allesOkay)
+            while (!allesOkay)
             {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                System.Windows.Forms.SaveFileDialog saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
                 saveFileDialog1.Filter = "Armeeübersicht|*.tex";
                 saveFileDialog1.Title = "Bitte eine Datei auswählen, um die Armeeüberischt zu exportieren!";
                 saveFileDialog1.ShowDialog();
@@ -463,7 +467,7 @@ namespace WarhammerGUI
                         "Nicht erlaubte Zeichen im Dateinamen!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-                
+
 
             // Jetzt rufen wir unsere Unterklasse auf, die sich nur damit beschäftigt, die Armee auszugeben!
             armyToTex konverter = new armyToTex() { };
@@ -627,22 +631,43 @@ namespace WarhammerGUI
             return _outputMessage;
         }
 
-
-        public static int TestCom(string Command, int Timeout)
+        protected override void OnKeyDown(KeyEventArgs e)
         {
-            int ExitCode;
-            System.Diagnostics.ProcessStartInfo ProcessInfo;
-            var Process = new System.Diagnostics.Process();
+            // Zunächst einmal will ich, dass die Selektion der Armee mindestens Element null ist!
+            if (ListBoxArmeeListe.SelectedIndex == -1)
+                ListBoxArmeeListe.SelectedIndex = 0;
 
-            ProcessInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", "/C " + Command);
-            ProcessInfo.CreateNoWindow = true;
-            ProcessInfo.UseShellExecute = false;
-            Process.StartInfo = ProcessInfo;
-            Process.WaitForExit(Timeout);
-            ExitCode = Process.ExitCode;
-            Process.Close();
+            // Wir handeln nun alle relevanten Eingaben ab!
+            if (e.Key == Key.N)
+                klickNeueStreitmacht(this, e);
+            if (e.Key == Key.B)
+                klickStreitmachtBearbeiten(this, e);
+            if (e.Key == Key.K)
+                klickStreitmachtKopieren(this, e);
+            if (e.Key == Key.L || e.Key == Key.Delete)
+                klickLoescheStreitMacht(this, e);
+            if (e.Key == Key.U  || e.Key == Key.F2)
+                klickStreitmachtUmbennnen(this, e);
+            if (e.Key == Key.P)
+                onStreitMachtToTex(this, e);
+            if (e.Key == Key.Escape)
+                this.Close();
+        }
 
-            return ExitCode;
+        /// <summary>
+        /// Wird ausgeführt, wenn das Hauptfenster geschlossen wird!
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void  OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+ 	        string message = "Soll Army Bench wirklich beendet werden? Nicht gespeicherte Armeen gehen verloren!";
+            string caption = "Sicherheitsabfrage";
+            System.Windows.Forms.MessageBoxButtons buttons = System.Windows.Forms.MessageBoxButtons.YesNo;
+            System.Windows.Forms.DialogResult result;
+            result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
+
+            if (result == System.Windows.Forms.DialogResult.No)
+                e.Cancel = true;
         }
     }
 }

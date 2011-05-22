@@ -11,14 +11,14 @@
         <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="522,40,405,0" Name="displayArmyPoints" VerticalAlignment="Top" />
         <Label Content="Vorhandene Einheiten:" Height="28" HorizontalAlignment="Left" Margin="30,85,0,0" Name="vorhandeneEinheitenLabel" VerticalAlignment="Top" Width="230" />
         <TreeView Height="463" HorizontalAlignment="Left" Margin="30,119,0,0" Name="unitTreeView" VerticalAlignment="Top" Width="305" SelectedItemChanged="unitTreeView_SelectedItemChanged"  />
-        <Button Content="Neue Einheit hinzufügen" Height="23" HorizontalAlignment="Left" Margin="405,171,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickEinheitHinzufuegen"  />
-        <Button Content="Einheit löschen" Height="23" HorizontalAlignment="Left" Margin="405,224,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickLoescheEinheit"/>
-        <Button Content="Einheit kopieren" Height="23" HorizontalAlignment="Left" Margin="405,277,0,0" Name="button3" VerticalAlignment="Top" Width="196" Click="klickKopiereEinheit" />
-        <Button Content="Einheit umbenennen" Height="23" HorizontalAlignment="Left" Margin="405,330,0,0" Name="button4" VerticalAlignment="Top" Width="196" Click="klickRename" />
-        <Button Content="Ansicht schließen" Height="23" HorizontalAlignment="Left" Margin="405,644,0,0" Name="knopfSchliessen" VerticalAlignment="Top" Width="196" Click="klickSchliessen" />
+        <Button Content="(N)eue Einheit hinzufügen" Height="23" HorizontalAlignment="Left" Margin="405,171,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickEinheitHinzufuegen"  />
+        <Button Content="Einheit (l)öschen" Height="23" HorizontalAlignment="Left" Margin="405,224,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickLoescheEinheit"/>
+        <Button Content="Einheit (k)opieren" Height="23" HorizontalAlignment="Left" Margin="405,277,0,0" Name="button3" VerticalAlignment="Top" Width="196" Click="klickKopiereEinheit" />
+        <Button Content="Einheit (u)mbenennen" Height="23" HorizontalAlignment="Left" Margin="405,330,0,0" Name="button4" VerticalAlignment="Top" Width="196" Click="klickRename" />
+        <Button Content="Ansicht (s)chließen" Height="23" HorizontalAlignment="Left" Margin="405,644,0,0" Name="knopfSchliessen" VerticalAlignment="Top" Width="196" Click="klickSchliessen" />
         <TreeView Height="463" HorizontalAlignment="Left" Margin="663,119,0,0" Name="availableUnitsTreeView" VerticalAlignment="Top" Width="305" SelectedItemChanged="availableUnitsTreeView_SelectedItemChanged" />
         <Label Content="Verfügbare Einheiten:" Height="28" HorizontalAlignment="Left" Margin="663,85,0,0" Name="moeglicheEinheitenLabel" VerticalAlignment="Top" Width="230" />
-        <Button Content="Auswahlregel Prüfen" Height="23" HorizontalAlignment="Left" Margin="405,445,0,0" Name="button6" VerticalAlignment="Top" Width="196" />
+        <Button Content="Auswahlregel (P)rüfen" Height="23" HorizontalAlignment="Left" Margin="405,445,0,0" Name="buttonPruefeAuswahl" VerticalAlignment="Top" Width="196" />
         <Label Content="Punktekosten der aktiven Einheit:" Height="28" HorizontalAlignment="Left" Margin="761,3,0,0" Name="label1" VerticalAlignment="Top" />
         <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="761,40,166,0" Name="punkteKostenAtkUnit" VerticalAlignment="Top" />
         <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="871,605,56,0" Name="unitBaseCostFenster" VerticalAlignment="Top" />

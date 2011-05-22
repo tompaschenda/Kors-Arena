@@ -28,24 +28,8 @@ namespace WarhammerGUI
             m_indexDerArmee = indexDerArmee;
             InitializeComponent();
 
-            /////////////////////////// ENTFERNEN!!!
 
-        /*    // TODO: TESTCODE! Ich initialisiere hier jetzt ausnahmsweise mal DIREKT eine Einheit, damit ich das testen kann:
-            Einheit spaceMarineTrupp = new taktischerTrupp();
-            spaceMarineTrupp.createUnitBase();
-            spaceMarineTrupp.spielerEinheitenName = "Jepp";
-            var alterBaseNameReadable = EnumExtensions.getEnumDescription(spaceMarineTrupp.einheitenName.GetType(), spaceMarineTrupp.einheitenName.ToString());
-            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(spaceMarineTrupp);
-
-            Einheit spaceTrupp2 = new taktischerTrupp();
-            spaceTrupp2.createUnitBase();
-            waffenfabrik.getInstance().createAllWeapons();
-            spaceTrupp2.spielerEinheitenName = "Jihaa";
-
-            var alterBaseNameReadable2 = EnumExtensions.getEnumDescription(spaceTrupp2.einheitenName.GetType(), spaceTrupp2.einheitenName.ToString());
-            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(spaceTrupp2);*/
-
-            /////////////////////////// ENTFERNEN!!!
+            buttonPruefeAuswahl.IsEnabled = false;
 
             // Es sollen auch gleich die korrekten Werte angezeigt werden:
             updateEditFenster();
@@ -487,6 +471,10 @@ namespace WarhammerGUI
             if (ausgewaehltesItem == null || ausgewaehltesItem.Name == "")
                 return;
 
+            // Jetzt muss ich prüfen, ob die ausgewählte Einheit einzigartig ist und ob es sie schon gibt!
+            if (!pruefeAufEinzigartigkeit(ausgewaehltesItem.Name))
+                return;
+
             erschaffeEineNeueEinheit(ausgewaehltesItem.Name);
 
            
@@ -504,6 +492,35 @@ namespace WarhammerGUI
             updateAktUnitCostView();
         }
 
+        private bool pruefeAufEinzigartigkeit(string nameDerEinheit)
+        {
+            var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(nameDerEinheit);
+            if (neueUnitOrig.einzigartig)
+            {
+                // Hat der Spieler die Einheit schon?
+                foreach( Einheit cand in spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten)
+                {
+                    string namensString = (cand.fraktion.ToString() + cand.einheitenName.ToString());
+                    if ( namensString  == nameDerEinheit)
+                    {
+                        // Dann fragen wir sicherheitshalber noch einmal nach, ob das wirklich okay ist!
+                        string message = "Die gewählte Einheit ist einzigartig und schon vorhanden. Trotzdem hinzufügen?";
+                        string caption = "Sicherheitsabfrage";
+                        System.Windows.Forms.MessageBoxButtons buttons = System.Windows.Forms.MessageBoxButtons.YesNo;
+                        System.Windows.Forms.DialogResult result;
+                        result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
+                        this.Focus();
+
+                        if (result == System.Windows.Forms.DialogResult.No)
+                            return false;
+                        else
+                            return true;
+                    }
+                }
+            }
+
+            return true;
+        }
 
         /// <summary>
         /// Führt die eigentliche Erschaffung einer neuen Einheit durch!
@@ -573,6 +590,30 @@ namespace WarhammerGUI
         private void availableUnitsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             updateUnitBaseCostView();
+        }
+
+        /// <summary>
+        /// Was passiert, wenn ich eine Taste drücke?
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnKeyDown(KeyEventArgs e)
+        {                      
+            // Es funktioniert nur etwas, wenn ich schon eine Einheit selektiert habe!
+            TreeViewItem ausgewaehltesItem = (TreeViewItem)availableUnitsTreeView.SelectedItem;
+            if (e.Key == Key.N   && ( ausgewaehltesItem != null   && ausgewaehltesItem.Name != "" ))
+                klickEinheitHinzufuegen(this, e);
+
+            // Ähnlich sieht es für die anderen Operationen aus!s
+            var copyIndex = getChosenUnitTreeIdentifier();
+            if (  e.Key == Key.L || e.Key == Key.Delete  && copyIndex != -1)
+                klickLoescheEinheit(this, e);
+            if( e.Key == Key.U  || e.Key == Key.F2 && copyIndex != -1)
+                klickRename(this, e);
+            if( e.Key == Key.C || e.Key == Key.K  && copyIndex != -1)
+                klickKopiereEinheit(this, e);
+
+            if (e.Key == Key.A || e.Key == Key.Escape || e.Key == Key.S)
+                this.Close();
         }
     }
 }

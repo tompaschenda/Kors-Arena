@@ -26,8 +26,9 @@ namespace WarhammerGUI
             InitializeComponent();
 
             // Ich möchte, dass der alte Name direkt als Auswahl erscheint:
-            this.namensTextbox.Text = spielerArmeeListe.getInstance().armeeSammlung[indexDerArmee].armeeName;
-
+            this.namensTextbox.Focus();
+            this.namensTextbox.Text = spielerArmeeListe.getInstance().armeeSammlung[indexDerArmee].armeeName;            
+            this.namensTextbox.SelectionLength = this.namensTextbox.Text.Length;  
             m_indexDerArmee = indexDerArmee;
         }
 
@@ -80,6 +81,20 @@ namespace WarhammerGUI
                 }
 
             return allesOkay;
+        }
+
+        /// <summary>
+        /// Wird aufgerufen, wenn ich eine Eingabe in das Feld mache.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            // Ein Druck auf Return soll so funktionieren, als hätte ich auf Weiter gedrückt!
+            if (e.Key == Key.Return)
+            {
+                okayKlick(sender, e);
+            }
         }
     }
 }
