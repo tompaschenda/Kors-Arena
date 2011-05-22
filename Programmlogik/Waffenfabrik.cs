@@ -129,6 +129,10 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesStalker());
             waffenListe.Add(createSpaceMarinesTalass());
             waffenListe.Add(createSpaceMarinesStabTigurius());
+            waffenListe.Add(createSpaceMarinesInfernus());
+            waffenListe.Add(createSpaceMarinesDornsPfeil());
+            waffenListe.Add(createSpaceMarinesDornsFaust());
+            waffenListe.Add(createSpaceMarinesRabenklauen());
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -476,6 +480,34 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.StabDesTigurius;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesInfernus()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Infernus;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesDornsPfeil()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.DornsPfeil;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesDornsFaust()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.DornsFaust;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesRabenklauen()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Rabenklauen;
 
             return weap;
         }

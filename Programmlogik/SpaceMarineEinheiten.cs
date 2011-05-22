@@ -80,6 +80,22 @@ namespace WarhammerGUI
             tigurius.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(tigurius);
 
+            var cass = new cassius() { };
+            cass.createUnitBase();
+            listeAllerSpaceMarineEinheiten.Add(cass);
+
+            var pedro = new kantor() { };
+            pedro.createUnitBase();
+            listeAllerSpaceMarineEinheiten.Add(pedro);
+
+            var lys = new lysander() { };
+            lys.createUnitBase();
+            listeAllerSpaceMarineEinheiten.Add(lys);
+
+            var sh = new shrike() { };
+            sh.createUnitBase();
+            listeAllerSpaceMarineEinheiten.Add(sh);
+
             return listeAllerSpaceMarineEinheiten;
         }
     }
@@ -1897,6 +1913,310 @@ namespace WarhammerGUI
             // Wenn alles erfolgt ist, darf ich einsortieren:
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(tigurius);
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
+    }
+
+    public class cassius : Einheit
+    {
+        public override void createUnitBase()
+        {
+            einheitenName = alleEinheitenNamen.OrtanCassius;
+            fraktion = Fraktionen.SpaceMarines;
+
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
+            basisGroesse = new List<Groessenspecifier>() { };
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.OrtanCassius, anzahl = 1 });
+
+            basispunkteKosten = 125;
+            einheitKostenGesamt = basispunkteKosten;
+
+            einzigartig = true;
+
+            einheitentyp = Einheitstyp.Infanterie;
+
+            sonderregeln = new List<Sonderregeln>() { };
+            sonderregeln.Add(Sonderregeln.DieEhreDesOrdens);
+            sonderregeln.Add(Sonderregeln.Kampftaktiken);
+            sonderregeln.Add(Sonderregeln.UnabhaengigesCharakterModell);
+            sonderregeln.Add(Sonderregeln.LiturgienDerSchlacht);
+            sonderregeln.Add(Sonderregeln.VerletzungenIgnorieren);
+
+            auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            auswahlTypBasis.Add(EinheitenAuswahl.HQ);
+
+            base.createUnitBase();
+        }
+
+        /// <summary>
+        /// Hier werden alle Spierloptionen abgehandelt
+        /// </summary>
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
+            base.createUnitInteraktion(100);
+
+
+            // Update der Punktekosten:
+            einheitKostenGesamt = basispunkteKosten;
+
+            var cassius = new subEinheit() { };
+            cassius.name = alleSubeinheitenNamen.OrtanCassius;
+            cassius.ruestung = alleRuestungen.ServoRuestung;
+            cassius.ausruestung = new List<alleAusruestung>() { };
+            cassius.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            cassius.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            cassius.ausruestung.Add(alleAusruestung.Rosarius);
+            cassius.waffen = new List<waffe>() { };
+            cassius.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Crozius));
+            cassius.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
+            cassius.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Infernus));
+
+            cassius.kg = 5;
+            cassius.bf = 4;
+            cassius.st = 4;
+            cassius.wid = 6;
+            cassius.ini = 4;
+            cassius.lp = 2;
+            cassius.at = 2;
+            cassius.mw = 10;
+            cassius.rw = 3;
+            cassius.ret = 4;
+
+            cassius.einheitentyp = Einheitstyp.Infanterie;
+
+            // Wenn alles erfolgt ist, darf ich einsortieren:
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(cassius);
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
+    }
+
+    public class kantor : Einheit
+    {
+        public override void createUnitBase()
+        {
+            einheitenName = alleEinheitenNamen.PedroKantor;
+            fraktion = Fraktionen.SpaceMarines;
+
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
+            basisGroesse = new List<Groessenspecifier>() { };
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.PedroKantor, anzahl = 1 });
+
+            basispunkteKosten = 175;
+            einheitKostenGesamt = basispunkteKosten;
+
+            einzigartig = true;
+
+            einheitentyp = Einheitstyp.Infanterie;
+
+            sonderregeln = new List<Sonderregeln>() { };
+            sonderregeln.Add(Sonderregeln.DieKeineFurchtKennen);
+            sonderregeln.Add(Sonderregeln.Kampftaktiken);
+            sonderregeln.Add(Sonderregeln.UnabhaengigesCharakterModell);
+            sonderregeln.Add(Sonderregeln.OrbitalesBombardement);
+            sonderregeln.Add(Sonderregeln.InspirierendeGegenwart);
+            sonderregeln.Add(Sonderregeln.Ordenstaktik);
+
+            auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            auswahlTypBasis.Add(EinheitenAuswahl.HQ);
+
+            base.createUnitBase();
+        }
+
+        /// <summary>
+        /// Hier werden alle Spierloptionen abgehandelt
+        /// </summary>
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
+            base.createUnitInteraktion(100);
+
+
+            // Update der Punktekosten:
+            einheitKostenGesamt = basispunkteKosten;
+
+            var cassius = new subEinheit() { };
+            cassius.name = alleSubeinheitenNamen.PedroKantor;
+            cassius.ruestung = alleRuestungen.ServoRuestung;
+            cassius.ausruestung = new List<alleAusruestung>() { };
+            cassius.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            cassius.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            cassius.ausruestung.Add(alleAusruestung.StaehlernerStern);
+            cassius.waffen = new List<waffe>() { };
+            cassius.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.DornsPfeil));
+
+            cassius.kg = 6;
+            cassius.bf = 5;
+            cassius.st = 4;
+            cassius.wid = 4;
+            cassius.ini = 5;
+            cassius.lp = 3;
+            cassius.at = 3;
+            cassius.mw = 10;
+            cassius.rw = 3;
+            cassius.ret = 4;
+
+            cassius.einheitentyp = Einheitstyp.Infanterie;
+
+            // Wenn alles erfolgt ist, darf ich einsortieren:
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(cassius);
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
+    }
+
+    public class lysander : Einheit
+    {
+        public override void createUnitBase()
+        {
+            einheitenName = alleEinheitenNamen.CaptainLysander;
+            fraktion = Fraktionen.SpaceMarines;
+
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
+            basisGroesse = new List<Groessenspecifier>() { };
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.CaptainLysander, anzahl = 1 });
+
+            basispunkteKosten = 200;
+            einheitKostenGesamt = basispunkteKosten;
+
+            einzigartig = true;
+
+            einheitentyp = Einheitstyp.Infanterie;
+
+            sonderregeln = new List<Sonderregeln>() { };
+            sonderregeln.Add(Sonderregeln.DieKeineFurchtKennen);
+            sonderregeln.Add(Sonderregeln.Kampftaktiken);
+            sonderregeln.Add(Sonderregeln.UnabhaengigesCharakterModell);
+            sonderregeln.Add(Sonderregeln.BolterDrill);
+            sonderregeln.Add(Sonderregeln.EwigerKrieger);
+            sonderregeln.Add(Sonderregeln.Ordenstaktik);
+            sonderregeln.Add(Sonderregeln.Befestige);
+
+            auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            auswahlTypBasis.Add(EinheitenAuswahl.HQ);
+
+            base.createUnitBase();
+        }
+
+        /// <summary>
+        /// Hier werden alle Spierloptionen abgehandelt
+        /// </summary>
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
+            base.createUnitInteraktion(100);
+
+
+            // Update der Punktekosten:
+            einheitKostenGesamt = basispunkteKosten;
+
+            var lys = new subEinheit() { };
+            lys.name = alleSubeinheitenNamen.CaptainLysander;
+            lys.ruestung = alleRuestungen.TerminatorRuestung;
+            lys.ausruestung = new List<alleAusruestung>() { };
+            lys.waffen = new List<waffe>() { };
+            lys.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.DornsFaust));
+
+            lys.kg = 6;
+            lys.bf = 5;
+            lys.st = 4;
+            lys.wid = 4;
+            lys.ini = 5;
+            lys.lp = 4;
+            lys.at = 3;
+            lys.mw = 10;
+            lys.rw = 2;
+            lys.ret = 5;
+
+            lys.einheitentyp = Einheitstyp.Infanterie;
+
+            // Wenn alles erfolgt ist, darf ich einsortieren:
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(lys);
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
+    }
+
+    public class shrike : Einheit
+    {
+        public override void createUnitBase()
+        {
+            einheitenName = alleEinheitenNamen.CaptainShrike;
+            fraktion = Fraktionen.SpaceMarines;
+
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
+            basisGroesse = new List<Groessenspecifier>() { };
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.CaptainShrike, anzahl = 1 });
+
+            basispunkteKosten = 195;
+            einheitKostenGesamt = basispunkteKosten;
+
+            einzigartig = true;
+
+            einheitentyp = Einheitstyp.Sprungtruppen;
+
+            sonderregeln = new List<Sonderregeln>() { };
+            sonderregeln.Add(Sonderregeln.DieKeineFurchtKennen);
+            sonderregeln.Add(Sonderregeln.Kampftaktiken);
+            sonderregeln.Add(Sonderregeln.UnabhaengigesCharakterModell);
+            sonderregeln.Add(Sonderregeln.SehenAberNichtGesehen);
+            sonderregeln.Add(Sonderregeln.Ordenstaktik);
+
+            auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            auswahlTypBasis.Add(EinheitenAuswahl.HQ);
+
+            base.createUnitBase();
+        }
+
+        /// <summary>
+        /// Hier werden alle Spierloptionen abgehandelt
+        /// </summary>
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
+            base.createUnitInteraktion(100);
+
+
+            // Update der Punktekosten:
+            einheitKostenGesamt = basispunkteKosten;
+
+            var shrike = new subEinheit() { };
+            shrike.name = alleSubeinheitenNamen.CaptainShrike;
+            shrike.ruestung = alleRuestungen.ServoRuestung;
+            shrike.ausruestung = new List<alleAusruestung>() { };
+            shrike.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            shrike.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            shrike.ausruestung.Add(alleAusruestung.Sprungmodul);
+            shrike.ausruestung.Add(alleAusruestung.StaehlernerStern);
+            shrike.waffen = new List<waffe>() { };
+            shrike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
+            shrike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Rabenklauen));
+
+            shrike.kg = 6;
+            shrike.bf = 5;
+            shrike.st = 4;
+            shrike.wid = 4;
+            shrike.ini = 5;
+            shrike.lp = 3;
+            shrike.at = 3;
+            shrike.mw = 10;
+            shrike.rw = 3;
+            shrike.ret = 4;
+
+            shrike.einheitentyp = Einheitstyp.Sprungtruppen;
+
+            // Wenn alles erfolgt ist, darf ich einsortieren:
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(shrike);
 
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;

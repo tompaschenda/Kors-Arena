@@ -214,12 +214,12 @@ namespace WarhammerGUI
             // Wenn der Nutzer einen validen Pfad angegeben hat, geht's weiter:
             if (savePath != "")
             {
+                // Außerdem wollen wir uns merken, wo die Armeeliste gespeichert wurde!
+                spielerArmeeListe.getInstance().saveString = savePath;
                 XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeListe));
                 FileStream str = new FileStream(@savePath, FileMode.Create);
                 ser.Serialize(str, spielerArmeeListe.getInstance());
                 str.Close();
-                // Außerdem wollen wir uns merken, wo die Armeeliste gespeichert wurde!
-                spielerArmeeListe.getInstance().saveString = savePath;
             }
         }
 
@@ -360,6 +360,9 @@ namespace WarhammerGUI
                                 spielerArmeeListe.getInstance().eraseMeTotally();
                                 spielerArmeeListe.getInstance().saveString = myStream.ToString();
                                 spielerArmeeListe.getInstance().armeeSammlung = zuImportierendeListe.armeeSammlung;
+
+                                // Wir möchten uns außerdem merken, von WO diese Datei geladen wurde!
+                                spielerArmeeListe.getInstance().saveString = openFileDialog1.FileName;
 
                                 // Außerdem wollen wir, dass die Anzeige-Box des Hauptfensters aktualisiert wird!
                                 updateArmeeListenBox();

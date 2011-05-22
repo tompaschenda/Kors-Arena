@@ -119,8 +119,8 @@ namespace WarhammerGUI
             headerString += "% Grafik-Erweiterungen bekannt machen: \n\\DeclareGraphicsExtensions{.png, .jpg, .bmp, .eps} \n\n \\newcommand{\\bb}{\\bigbreak} \n\\newcommand{\\msn}{\\footnotesize} \n";
             headerString += "\n% Dafür sorgen, dass die Gleichungen nach Sektionen nummeriert werden (Beisp.: 2.23):\n\\numberwithin{equation}{section} \n% Abbilungen Abschnittsweise nummerieren: \n";
             headerString += "% usepackage[chngcntr]  \n%\\counterwithin{figure}{section} \n\n% Seitenränder, etc.:\n";
-            headerString += "\\usepackage{geometry}\n\\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=25mm,headsep=7mm, footskip=12mm}\n";
-            headerString += "\\setlength{\\evensidemargin}{0.5cm} \n\\setlength{\\topmargin}{0.4cm} \n\\textheight200mm \n\n% Wir möchten, dass auch paragraphs and subparagraphs nummeriert werden: \n";
+            headerString += "\\usepackage{geometry}\n\\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=25mm,headsep=7mm, footskip=0mm}\n";
+            headerString += "\n\n% Wir möchten, dass auch paragraphs and subparagraphs nummeriert werden: \n";
             headerString += "\\setcounter{secnumdepth}{4}	 \n% Außerdem sollen sie im Index ebenfalls auftauchen: \n\\setcounter{tocdepth}{4} \n";
             return headerString;
         }
@@ -165,20 +165,39 @@ namespace WarhammerGUI
             {
                 if(m_armee.armeeEinheiten[i].auswahlTypSpieler == aktAuswahl)
                 {
+                    Einheit aktEinheit = m_armee.armeeEinheiten[i];
+
                     pageChangeCounter = pageChangeCounter +1;
                     // Wenn wir eine ungerade Anzahl an bisherigen Einträgen > 1 haben, fügen wir
                     // einen Seitenumbruch ein:
-                    if(pageChangeCounter > 1 && pageChangeCounter%2 != 0)
-                        beschreibungsString += "\\newpage\n";
+                    if (aktEinheit.auswahlTypSpieler == EinheitenAuswahl.HQ)
+                    {
+                        if (pageChangeCounter > 1 && pageChangeCounter % 4 == 0)
+                            beschreibungsString += "\\newpage\n";
+                    }
+                    else
+                    {
+                        if (pageChangeCounter > 1 && pageChangeCounter % 2 != 0)
+                            beschreibungsString += "\\newpage\n";
+                    }
 
-                    Einheit aktEinheit = m_armee.armeeEinheiten[i];
 
                     // Als erstes Tragen wir auf dieser Seite ein, um welche Auswahl es sich
                     // handelt. Wir wollen die Sektion jedoch nur beim ersten mal mit nummerieren!
-                    if(pageChangeCounter == 1)
-                        beschreibungsString += getSectionHeading(auswahlString, false);
-                    else if(pageChangeCounter > 1 && pageChangeCounter%2 != 0)
-                        beschreibungsString += getSectionHeading(auswahlString, true);
+                    if (aktEinheit.auswahlTypSpieler == EinheitenAuswahl.HQ)
+                    {
+                        if (pageChangeCounter == 1)
+                            beschreibungsString += getSectionHeading(auswahlString, false);
+                        else if (pageChangeCounter > 1 && pageChangeCounter % 4 == 0)
+                            beschreibungsString += getSectionHeading(auswahlString, true);
+                    }
+                    else
+                    {
+                        if (pageChangeCounter == 1)
+                            beschreibungsString += getSectionHeading(auswahlString, false);
+                        else if (pageChangeCounter > 1 && pageChangeCounter % 2 != 0)
+                            beschreibungsString += getSectionHeading(auswahlString, true);
+                    }
 
                     // Wenn wir damit fertig sind, kommt die Subsektion.
                     var baseName = EnumExtensions.getEnumDescription(aktEinheit.einheitenName.GetType(), aktEinheit.einheitenName.ToString());
@@ -186,7 +205,7 @@ namespace WarhammerGUI
 
                     // Und jetzt die Tabelle mit den jeweiligen Eigenschaftswerten für jede Untereinheit.
                     // Wir müssen uns an dieser Stelle fragen, ob es sich um ein Fahrzeug handelt oder nicht!
-                    if(aktEinheit.einheitentyp == Einheitstyp.Infanterie)
+                    if(aktEinheit.einheitentyp == Einheitstyp.Infanterie  || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen)
                         beschreibungsString += getTabellenHeaderInfanterie();
                     else
                         beschreibungsString += getTabellenHeaderFahrzeug();
@@ -194,7 +213,7 @@ namespace WarhammerGUI
 
                     // Jetzt folgt für jede Untereinheit ein Eintrag in der Tabelle, aber nur dann, wenn wir
                     // die jeweilige Subeinheit nicht schon eingetragen haben!
-                    if(aktEinheit.einheitentyp == Einheitstyp.Infanterie)
+                    if(aktEinheit.einheitentyp == Einheitstyp.Infanterie  || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen)
                         beschreibungsString += getTabellenEntriesInfanterie(aktEinheit);
                     else
                         beschreibungsString += getTabellenEntriesFahrzeug(aktEinheit);
@@ -239,6 +258,8 @@ namespace WarhammerGUI
                 else
                     rulesString += "";
             }
+            if (aktEinheit.sonderregeln.Count == 0)
+                rulesString += "keine";
 
             rulesString += "\\bb";
 
@@ -326,6 +347,9 @@ namespace WarhammerGUI
                     else
                         entriesString += "x)";
                 }
+                if (alleBewaffnungsstrings.Count == 0)
+                    entriesString += "keine";
+
                 entriesString += "\\\\\n";
 
                 // Dito für die Ausrüstung:
@@ -338,10 +362,13 @@ namespace WarhammerGUI
                     else
                         entriesString += "x)";
                 }
+                if (alleAusruestungsstrings.Count == 0)
+                    entriesString += "keine";
+
                 entriesString += "\\\\\n";
 
                 // Dito für die Rüstungen:
-                if (aktEinheit.einheitentyp == Einheitstyp.Infanterie)
+                if (aktEinheit.einheitentyp == Einheitstyp.Infanterie  ||  aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen)
                 {
                     entriesString += "\\textbf{" + ruestPH + "}";
                     for (int j = 0; j < alleRuestungsstrings.Count; ++j)
@@ -352,6 +379,9 @@ namespace WarhammerGUI
                         else
                             entriesString += "x)";
                     }
+                    if (alleRuestungsstrings.Count == 0)
+                        entriesString += "keine";
+
                     entriesString += "\\bb\n";
                 }
                 else
@@ -365,7 +395,28 @@ namespace WarhammerGUI
 
         private string getTabellenEntriesFahrzeug(Einheit aktEinheit)
         {
-            return "TODO!!";
+            string entriesString = "";
+
+            // Wir müssen nun bestimmen, wie viele verschiedene Subeinheiten es gibt und wie diese lauten.
+            List<alleSubeinheitenNamen> liste = aktEinheit.getAllTypesOfSubunits();
+
+            // Für jeden Eintag müssen wir nun die Tabelleninfos setzen:
+            for (int i = 0; i < liste.Count; ++i)
+            {
+                // Ich suche mir eine passende Subunit:
+                subEinheit aktSubUnit = aktEinheit.getFirstSubunitWithName(liste[i]);
+
+                int anzahlVorkommnisse = aktEinheit.getNumberOfSubunitsOfType(liste[i]);
+
+                // Und los geht's:
+                entriesString += EnumExtensions.getEnumDescription(typeof(alleSubeinheitenNamen), aktSubUnit.name) + " (" + anzahlVorkommnisse.ToString() + "x)" + " & ";
+                entriesString +=  aktSubUnit.bf + " & " + aktSubUnit.front + " & " + aktSubUnit.seit + " & " + aktSubUnit.heck + "\\\\\\hline\n";
+            }
+
+            // Und wir müssen die Tabelle noch beenden!
+            entriesString += "\\end{tabular}\n\\end{table}\n";
+
+            return entriesString;
         }
 
         private string getTabellenEntriesInfanterie(Einheit aktEinheit)
@@ -397,7 +448,11 @@ namespace WarhammerGUI
 
         private string getTabellenHeaderFahrzeug()
         {
-            return "TODO!!";
+            string headerString = "";
+
+            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|l|l|l|l|}\n\\hline\n";
+            headerString += "\\textbf{Subeinheit}   &  \\textbf{BF}  &   \\textbf{F}   &  \\textbf{S}  &  \\textbf{H}  \\\\ \\hline \\hline\n";
+            return headerString;
         }
 
         private string getTabellenHeaderInfanterie()

@@ -282,6 +282,8 @@ namespace Listen
         undefined,
         [Description("Infanterie")]
         Infanterie,
+        [Description("Sprungtruppen")]
+        Sprungtruppen,
         [Description("Fahrzeug (Panzer)")]
         FahrzeugPanzer,
         [Description("Fahrzeug (Läufer)")]
@@ -583,6 +585,14 @@ namespace Listen
         TalassarianischeSturmklinge,
         [Description("Stab des Tigurius")]
         StabDesTigurius,
+        [Description("Infernus")]
+        Infernus,
+        [Description("Dorns Pfeil")]
+        DornsPfeil,
+        [Description("Dorns Faust")]
+        DornsFaust,
+        [Description("Die Rabenklauen")]
+        Rabenklauen,
 
         [Description("Synchronisierter Schwerer Bolter")]
         SyncSchwererBolter,
