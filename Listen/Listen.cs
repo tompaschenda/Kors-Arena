@@ -210,7 +210,7 @@ namespace Listen
         [Description("Segen des Omnissiah")]
         SegenDesOmnissiah,
         [Description("Befestigen")]
-        Befestige,
+        Befestigen,
         [Description("Lobotomie")]
         Lobotomie,
         [Description("Reparieren")]
@@ -287,13 +287,17 @@ namespace Listen
         [Description("Fahrzeug (Panzer)")]
         FahrzeugPanzer,
         [Description("Fahrzeug (Läufer)")]
-        FahrzeugLaeuferLaeufer,
+        FahrzeugLaeufer,
         [Description("Fahrzeug (Schnell)")]
         FahrzeugSchnell,
         [Description("Fahrzeug (Antigrav)")]
         FahrzeugAntrigrav,
         [Description("Fahrzeug (Offen)")]
         FahrzeugOffen,
+        [Description("Artillerie")]
+        Artillerie,
+        [Description("Fahrzeug (Schnell, Antrigrav, Offen)")]
+        FahrzeugSAO,
     }
 
     public enum EinheitenAuswahl
@@ -343,7 +347,7 @@ namespace Listen
         [Description("Ehrengarde-Trupp")]
         Ehrengarde,
         [Description("Space Marine Captain")]
-        Captain,
+        CaptainDerSpaceMarines,
         [Description("Kommandotrupp")]
         Kommandotrupp,
         [Description("Scriptor der Space Marines")]
@@ -370,8 +374,8 @@ namespace Listen
         Terminatorsturmtrupp,
         [Description("Protektorgarde")]
         Protektorgarde,
-        [Description("Ehrenwürdiger Cybot")]
-        EhrenwuerdigerCybot,
+        [Description("Ehrwürdiger Cybot")]
+        EhrwuerdigerCybot,
         [Description("Cybot")]
         Cybot,
         [Description("Ironclad Cybot")]
@@ -414,6 +418,11 @@ namespace Listen
         Vindicator,
         [Description("Sergeant Chronus")]
         SergeantChronus,
+
+        [Description("Rhino (kostenlos)")]
+        RhinoKostenlos,
+        [Description("Landungskapsel (kostenlos)")]
+        LandungskapselKostenlos,
     }
 
 
@@ -426,7 +435,7 @@ namespace Listen
         [Description("Apothecarius")]
         Apothecarius,
         [Description("Captain")]
-        Captain,
+        CaptainDerSpaceMarines,
         [Description("Captain Cato Sicarius")]
         CaptainCatoSicarius,
         [Description("Captain Darnath Lysander")]
@@ -481,8 +490,8 @@ namespace Listen
         Trike,
         [Description("Varro Tigurius")]
         VarroTigurius,
-        [Description("Veteran")]
-        Veteran,
+        [Description("Veteran der Space Marines")]
+        VeteranDerSpaceMariens,
         [Description("Vulkan He'stan")]
         VulkanHestan,
         [Description("Rhino")]
@@ -503,6 +512,16 @@ namespace Listen
         Vindicator,
         [Description("Sergeant Chronus")]
         SergeantChronus,
+        [Description("Space Marine Bike")]
+        SpaceMarineBike,
+        [Description("Landspeeder Storm")]
+        LandspeederStorm,
+        [Description("Ehrwürdiger Cybot")]
+        EhrwuerdigerCybot,
+        [Description("Cybot")]
+        Cybot,
+        [Description("Ironclad-Cybot")]
+        IroncladCybot,
     }
 
     public enum alleWaffenNamen
@@ -593,7 +612,19 @@ namespace Listen
         DornsFaust,
         [Description("Die Rabenklauen")]
         Rabenklauen,
+        [Description("Speer des Vulkan")]
+        SpeerDesVulkan,
+        [Description("Schmiedefeuerhandschuh")]
+        Schmiedefeuerhandschuh,
+        [Description("Mondfang")]
+        Mondfang,
+        [Description("Cybotnahkampfwaffe")]
+        CybotNahkampfWaffe,
+        [Description("Seismischer Hammer")]
+        SeismischerHammer,
 
+        [Description("Synchronisierter Bolter")]
+        SyncBolter,
         [Description("Synchronisierter Schwerer Bolter")]
         SyncSchwererBolter,
         [Description("Synchronisierter Schwerer Flammenwerfer")]
@@ -606,6 +637,8 @@ namespace Listen
         SyncPlasmawerfer,
         [Description("Energieschwert")]
         Energieschwert,
+        [Description("Synchronisierter Maschinenkanone")]
+        SyncMaschkanone,
 
         [Description("Laserkanone und synchronisierter Plasmawerfer")]
         LaserkanoneUndSynchroPlasma,
@@ -681,6 +714,10 @@ namespace Listen
         Sprenggranaten,
         [Description("Höllenfeuermatrix")]
         Hoellenfeuermatrix,
+        [Description("Kesares Mantel")]
+        KesaresMantel,
+        [Description("Digitalwaffen")]
+        Digitalwaffen,
 
         // Alle Ausrüstung für Fahrzeuge:
         [Description("Bulldozerschaufel")]
@@ -707,6 +744,8 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("keine")]
+        keine,
         [Description("Meisterhafte Rüstung")]
         MeisterhafteRuestung,
         [Description("Servorüstung")]

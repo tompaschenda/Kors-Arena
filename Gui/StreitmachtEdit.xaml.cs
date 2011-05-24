@@ -309,6 +309,10 @@ namespace WarhammerGUI
                     TreeViewItem einheitNode = new TreeViewItem();
                     var aktEinheit = allePassendenEinheiten[aktUnitIndex];
 
+                    // Falls es sich um eine bestimmte Einheit handelt, die man nicht wählen können soll, gibt es auch keinen Eintag!
+                    if (sollEinheitNichtAuftauchenInAuswahl(aktEinheit.einheitenName))
+                        continue;
+
                     // Für den Header müssen wir natürlich die Description verwenden:
                     einheitNode.Header = EnumExtensions.getEnumDescription(aktEinheit.einheitenName.GetType(), aktEinheit.einheitenName.ToString());
                     einheitNode.Name = aktEinheit.uniqueStringProperty;     // Hier wir der Unique-String für jede Einheit eingetragen!
@@ -318,6 +322,23 @@ namespace WarhammerGUI
                 }
             }
         }
+
+
+        /// <summary>
+        /// Hier tauchen all die Einheiten auf, die man nicht in der Auswahl sehen darf!
+        /// </summary>
+        /// <param name="einheitsName"></param>
+        /// <returns></returns>
+        private bool sollEinheitNichtAuftauchenInAuswahl(alleEinheitenNamen einheitsName)
+        {
+            if (einheitsName.ToString() == alleEinheitenNamen.LandungskapselKostenlos.ToString())
+                return true;
+            if (einheitsName.ToString() == alleEinheitenNamen.RhinoKostenlos.ToString())
+                return true;
+
+            return false;
+        }
+
 
         /// <summary>
         /// Schließt die Bearbeitungs-Ansicht und kehrt zurück zum Parent:

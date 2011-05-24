@@ -103,7 +103,7 @@ namespace WarhammerGUI
             tpString += "Angeschlossene Transportfahrzeuge:  &";
             tpString += m_armee.gibMirDieAnzahlFuerAuswahltyp(EinheitenAuswahl.AngeschlossenesTransportFahrzeug).ToString() + "\\\\ \n";
             tpString += "Generiert am:			&   \\today \\\\ \n\\end{tabular} \n\\end{center} \n\n\\vspace{0.25cm} \n \n\\begin{center} \n\\bb \n\\vspace{0.5cm}  \n";
-            tpString += "\\normalsize{Dokumentsatz mit \\LaTeX by MaWe} \n\\end{center} \n\n\\end{titlepage} \n\\normalsize \n";
+            tpString += "\\normalsize{Dokumentsatz mit \\LaTeX{} by MaWe} \n\\end{center} \n\n\\end{titlepage} \n\\normalsize \n";
 
            return tpString;
         }
@@ -205,16 +205,20 @@ namespace WarhammerGUI
 
                     // Und jetzt die Tabelle mit den jeweiligen Eigenschaftswerten für jede Untereinheit.
                     // Wir müssen uns an dieser Stelle fragen, ob es sich um ein Fahrzeug handelt oder nicht!
-                    if(aktEinheit.einheitentyp == Einheitstyp.Infanterie  || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen)
+                    if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie)
                         beschreibungsString += getTabellenHeaderInfanterie();
+                    else if (aktEinheit.einheitentyp == Einheitstyp.FahrzeugLaeufer)
+                        beschreibungsString += getTabellenHeaderLaeufer();
                     else
                         beschreibungsString += getTabellenHeaderFahrzeug();
 
 
                     // Jetzt folgt für jede Untereinheit ein Eintrag in der Tabelle, aber nur dann, wenn wir
                     // die jeweilige Subeinheit nicht schon eingetragen haben!
-                    if(aktEinheit.einheitentyp == Einheitstyp.Infanterie  || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen)
+                    if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie)
                         beschreibungsString += getTabellenEntriesInfanterie(aktEinheit);
+                    else if (aktEinheit.einheitentyp == Einheitstyp.FahrzeugLaeufer)
+                        beschreibungsString += getTabellenEntriesLaeufer(aktEinheit);
                     else
                         beschreibungsString += getTabellenEntriesFahrzeug(aktEinheit);
 
@@ -368,7 +372,7 @@ namespace WarhammerGUI
                 entriesString += "\\\\\n";
 
                 // Dito für die Rüstungen:
-                if (aktEinheit.einheitentyp == Einheitstyp.Infanterie  ||  aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen)
+                if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie)
                 {
                     entriesString += "\\textbf{" + ruestPH + "}";
                     for (int j = 0; j < alleRuestungsstrings.Count; ++j)
@@ -419,6 +423,34 @@ namespace WarhammerGUI
             return entriesString;
         }
 
+        private string getTabellenEntriesLaeufer(Einheit aktEinheit)
+        {
+            string entriesString = "";
+
+            // Wir müssen nun bestimmen, wie viele verschiedene Subeinheiten es gibt und wie diese lauten.
+            List<alleSubeinheitenNamen> liste = aktEinheit.getAllTypesOfSubunits();
+
+            // Für jeden Eintag müssen wir nun die Tabelleninfos setzen:
+            for (int i = 0; i < liste.Count; ++i)
+            {
+                // Ich suche mir eine passende Subunit:
+                subEinheit aktSubUnit = aktEinheit.getFirstSubunitWithName(liste[i]);
+
+                int anzahlVorkommnisse = aktEinheit.getNumberOfSubunitsOfType(liste[i]);
+
+                // Und los geht's:
+                entriesString += EnumExtensions.getEnumDescription(typeof(alleSubeinheitenNamen), aktSubUnit.name) + " (" + anzahlVorkommnisse.ToString() + "x)" + " & ";
+                entriesString += aktSubUnit.kg + " & " + aktSubUnit.bf + " & " + aktSubUnit.st + " & " + aktSubUnit.front + " & " + aktSubUnit.seit + " & " + aktSubUnit.heck + " & " + aktSubUnit.ini + " & " + aktSubUnit.at + "\\\\\\hline\n";
+            }
+
+            // Und wir müssen die Tabelle noch beenden!
+            entriesString += "\\end{tabular}\n\\end{table}\n";
+
+            return entriesString;
+        }
+
+
+
         private string getTabellenEntriesInfanterie(Einheit aktEinheit)
         {
             string entriesString = "";
@@ -454,6 +486,17 @@ namespace WarhammerGUI
             headerString += "\\textbf{Subeinheit}   &  \\textbf{BF}  &   \\textbf{F}   &  \\textbf{S}  &  \\textbf{H}  \\\\ \\hline \\hline\n";
             return headerString;
         }
+
+        private string getTabellenHeaderLaeufer()
+        {
+            string headerString = "";
+
+            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|l|l|l|l|l|l|l|l|}\n\\hline\n";
+            headerString += "\\textbf{Subeinheit}   &  \\textbf{KG} &   \\textbf{BF}   &   \\textbf{S}  &   \\textbf{F}   &  \\textbf{S}  &  \\textbf{H}  &  \\textbf{I}  &  \\textbf{A}  \\\\ \\hline \\hline\n";
+            return headerString;
+        }
+
+
 
         private string getTabellenHeaderInfanterie()
         {

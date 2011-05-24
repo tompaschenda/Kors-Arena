@@ -133,6 +133,15 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesDornsPfeil());
             waffenListe.Add(createSpaceMarinesDornsFaust());
             waffenListe.Add(createSpaceMarinesRabenklauen());
+            waffenListe.Add(createSpaceMarinesMondfang());
+            waffenListe.Add(createSpaceMarinesSpeerDesVulkan());
+            waffenListe.Add(createSpaceMarinesSchmiedefeuerhandschuh());
+            waffenListe.Add(createSpaceMarinesCerberus());
+            waffenListe.Add(createSpaceMarinesSyncBolter());
+            waffenListe.Add(createSpaceMarinesSyncMaschkan());
+            waffenListe.Add(createSpaceMarinesCybotNah());
+            waffenListe.Add(createSpaceMarinesSeismischerHammer());
+            
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -511,7 +520,62 @@ namespace WarhammerGUI
 
             return weap;
         }
+        private waffe createSpaceMarinesMondfang()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Mondfang;
 
+            return weap;
+        }
+        private waffe createSpaceMarinesSpeerDesVulkan()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SpeerDesVulkan;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSchmiedefeuerhandschuh()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Schmiedefeuerhandschuh;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesCerberus()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.CerberusWerfer;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSyncBolter()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncBolter;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSyncMaschkan()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncMaschkanone;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesCybotNah()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.CybotNahkampfWaffe;
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSeismischerHammer()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SeismischerHammer;
+
+            return weap;
+        }
 
     }
 

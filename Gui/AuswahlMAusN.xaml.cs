@@ -163,7 +163,15 @@ namespace WarhammerGUI
         {
             wahlVektorAktualisieren();
         }
-        
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.A || e.Key == Key.Escape)
+                klickAbbrechen(this, e);
+
+            if (e.Key == Key.W || e.Key == Key.Return)
+                klickWeiter(this, e);
+        }
 
     }
 }
