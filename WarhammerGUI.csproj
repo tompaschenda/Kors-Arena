@@ -133,6 +133,7 @@
     <Compile Include="Programmlogik\armyToTex.cs" />
     <Compile Include="Programmlogik\Einheit.cs" />
     <Compile Include="Programmlogik\GlobaleEinheitenListe.cs" />
+    <Compile Include="Programmlogik\Sonderregeln.cs" />
     <Compile Include="Programmlogik\SpaceMarineEinheiten.cs" />
     <Compile Include="Programmlogik\SpielerAnfragen.cs" />
     <Compile Include="Programmlogik\spielerArmee.cs" />

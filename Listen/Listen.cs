@@ -83,12 +83,44 @@ namespace Listen
         Zoll48,
         [Description("unbeschränkt")]
         unbeschraenkt,
+        [Description("Nahkampf")]
+        Nahkampf,
+        [Description("bis zu 18 Zoll")]
+        Bis18Zoll,
+        [Description("18-42 Zoll")]
+        Von18Bis42Zoll,
+        [Description("42-72 Zoll")]
+        Von42Bis27Zoll,
+        [Description("12-48 Zoll")]
+        Von12Bis48Zoll,
     }
 
-    public enum Waffentypen
+    public enum WaffenRegeln
     {
         [Description("undefined")]
         undefined,
+        [Description("Moralverlust von -2 beim Gegner")]
+        MoralverlustBeimGegnerM2,
+        [Description("Plus 1 Schaden auf Fahrzeugtabelle")]
+        FahrzeugtabellePlus1,
+        [Description("Sofort ausgeschaltet")]
+        SofotAusgeschaltet,
+        [Description("Stun-Angriff")]
+        StunAngriff,
+        [Description("Ini-Verlust")]
+        IniVerlust,
+        [Description("Panzerungsdurchsclag 2W6")]
+        ExtraPanzerungsDurchschlag2W6,
+        [Description("Energiewaffe")]
+        Energiewaffe,
+        [Description("Meisterhaft")]
+        Meisterhaft,
+        [Description("Psiwaffe")]
+        Psiwaffe,
+        [Description("Höllenfeuermunition")]
+        Hoellenfeuermunition,
+        [Description("Niederhalten")]
+        Niederhalten,
         [Description("Sturm 1")]
         Sturm1,
         [Description("Sturm 2")]
@@ -123,6 +155,16 @@ namespace Listen
         Explosiv,
         [Description("Explosiv (5 Zoll)")]
         Explosiv5Zoll,
+        [Description("Scharfschütze")]
+        Scharfschuetze,
+        [Description("Synchronisiert")]
+        Synchronisiert,
+        [Description("Sperrfeuer")]
+        Sperrfeuer,
+        [Description("Geschütz 1")]
+        Geschuetz1,
+        [Description("Deckung ignorieren")]
+        DeckungIgnorieren,
     }
 
     public enum Sonderregeln
@@ -261,6 +303,30 @@ namespace Listen
         GeschenkDerVorsehung,
     }
 
+    public enum WaffenSubTypen
+    {
+        [Description("undefined")]
+        undefined,
+        [Description("")]
+        blank,
+        [Description("Fragmentgranate")]
+        Fragmentgranate,
+        [Description("Sprenggranate")]
+        Sprenggranate,
+        [Description("Bolter")]
+        Bolter,
+        [Description("Melter")]
+        Melter,
+        [Description("Flammenwerfer")]
+        Flammenwerfer,
+        [Description("Plasmawerfer")]
+        Plasmawerfer,
+        [Description("Vergelterrakete")]
+        Vergelterrakete,
+        [Description("Kastellan-Brandrakete")]
+        Kastellan,
+
+    }
 
     public enum Armeetyp
     {
@@ -528,6 +594,8 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("Orbitales Bombardement")]
+        OrbitalesBombardement,
         [Description("Astartes-Granatwerfer")]
         AstartesGranatwerfer,
         [Description("Auxilaris-Granatwerfer")]
@@ -548,8 +616,8 @@ namespace Listen
         Energieklaue,
         [Description("Energiefaust")]
         Energiefaust,
-        [Description("Energiewaffe")]
-        Energiewaffe,
+        /*[Description("Energiewaffe")]
+        Energiewaffe,*/
         [Description("Energiehammer")]
         Energiehammer,
         [Description("Flammenwerfer")]
@@ -570,8 +638,8 @@ namespace Listen
         Konversionsstrahler,
         [Description("Laserkanone")]
         Laserkanone,
-        [Description("Meisterhafte Waffe")]
-        MeisterhafteWaffe,
+        /*[Description("Meisterhafte Waffe")]
+        MeisterhafteWaffe,*/
         [Description("Melter")]
         Melter,
         [Description("Multimelter")]
@@ -623,6 +691,11 @@ namespace Listen
         [Description("Seismischer Hammer")]
         SeismischerHammer,
 
+
+        [Description("Synchronisierter Melter")]
+        SyncMelter,
+        [Description("Synchronisierter Multimelter")]
+        SyncMultiMelter,
         [Description("Synchronisierter Bolter")]
         SyncBolter,
         [Description("Synchronisierter Schwerer Bolter")]
@@ -637,7 +710,7 @@ namespace Listen
         SyncPlasmawerfer,
         [Description("Energieschwert")]
         Energieschwert,
-        [Description("Synchronisierter Maschinenkanone")]
+        [Description("Synchronisierte Maschinenkanone")]
         SyncMaschkanone,
 
         [Description("Laserkanone und synchronisierter Plasmawerfer")]

@@ -89,7 +89,6 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesEhrenklinge());
             waffenListe.Add(createSpaceMarinesEnergieklaue());
             waffenListe.Add(createSpaceMarinesEnergiefaust());
-            waffenListe.Add(createSpaceMarinesEnergiewaffe());
             waffenListe.Add(createSpaceMarinesEnergiehammer());
             waffenListe.Add(createSpaceMarinesFlammenwerfer());
             waffenListe.Add(createSpaceMarinesKettenfaust());
@@ -100,7 +99,6 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesKombiPlasma());
             waffenListe.Add(createSpaceMarinesKonversion());
             waffenListe.Add(createSpaceMarinesLaserkanone());
-            waffenListe.Add(createSpaceMarinesMeisterhaft());
             waffenListe.Add(createSpaceMarinesMelter());
             waffenListe.Add(createSpaceMarinesMelter());
             waffenListe.Add(createSpaceMarinesMultimelter());
@@ -141,7 +139,8 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesSyncMaschkan());
             waffenListe.Add(createSpaceMarinesCybotNah());
             waffenListe.Add(createSpaceMarinesSeismischerHammer());
-            
+            waffenListe.Add(createSpaceMarinesMaschkan());
+            waffenListe.Add(createSpaceMarinesOrbital());
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -152,6 +151,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.AstartesGranatwerfer;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Fragmentgranate,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 3,
+                durchschlag = 6,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer, WaffenRegeln.Explosiv  },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Sprenggranate,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 6,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer },
+            });
 
             return weap;
         }
@@ -159,6 +176,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.AuxilarisGranatwerfer;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Sprenggranate,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 6,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1 },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Fragmentgranate,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 3,
+                durchschlag = 6,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1, WaffenRegeln.Explosiv },
+            });
 
             return weap;
         }
@@ -166,6 +201,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Bolter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer },
+            });
 
             return weap;
         }
@@ -173,6 +218,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Boltpistole;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Pistole },
+            });
 
             return weap;
         }
@@ -180,6 +235,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Crozius;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe },
+            });
 
             return weap;
         }
@@ -187,6 +252,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.CycloneRaketenwerfer;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Sprenggranate,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 8,
+                durchschlag = 3,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer2 },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Fragmentgranate,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 4,
+                durchschlag = 6,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer2, WaffenRegeln.Explosiv },
+            });
 
             return weap;
         }
@@ -194,6 +277,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Digitalwaffe;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = -1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Meisterhaft },
+            });
 
             return weap;
         }
@@ -201,6 +294,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Ehrenklinge;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = 6,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe },
+            });
 
             return weap;
         }
@@ -208,6 +311,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Energieklaue;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe /*TODO!*/ },
+            });
 
             return weap;
         }
@@ -215,13 +328,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Energiefaust;
-
-            return weap;
-        }
-        private waffe createSpaceMarinesEnergiewaffe()
-        {
-            var weap = new waffe(){};
-            weap.name = alleWaffenNamen.Energiewaffe;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.IniVerlust },
+            });
 
             return weap;
         }
@@ -229,6 +345,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Energiehammer;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.IniVerlust, WaffenRegeln.StunAngriff },
+            });
 
             return weap;
         }
@@ -236,6 +362,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Flammenwerfer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Flammen,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1 },
+            });
 
             return weap;
         }
@@ -243,6 +379,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Kettenfaust;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.ExtraPanzerungsDurchschlag2W6, WaffenRegeln.IniVerlust },
+            });
 
             return weap;
         }
@@ -250,6 +396,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Kettenschwert;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = -1,
+                waffenRegeln = new List<WaffenRegeln>() { },
+            });
 
             return weap;
         }
@@ -257,6 +413,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Kampfmesser;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = -1,
+                waffenRegeln = new List<WaffenRegeln>() { },
+            });
 
             return weap;
         }
@@ -264,6 +430,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.KombiMelter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Bolter,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Melter,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 8,
+                durchschlag = 1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1, WaffenRegeln.Melter },
+            });
 
             return weap;
         }
@@ -271,6 +455,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.KombiFlammenwerfer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Bolter,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Flammenwerfer,
+                reichweite = Reichweiten.Flammen,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1 },
+            });
 
             return weap;
         }
@@ -278,6 +480,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.KombiPlasmawerfer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Bolter,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Plasmawerfer,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 7,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer, WaffenRegeln.Ueberhitzen },
+            });
 
             return weap;
         }
@@ -285,6 +505,32 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Konversionsstrahler;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Bis18Zoll,
+                staerke = 6,
+                durchschlag = -1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Explosiv },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Von18Bis42Zoll,
+                staerke = 8,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Explosiv },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Von42Bis27Zoll,
+                staerke = 10,
+                durchschlag = 1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Explosiv },
+            });
 
             return weap;
         }
@@ -292,13 +538,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Laserkanone;
-
-            return weap;
-        }
-        private waffe createSpaceMarinesMeisterhaft()
-        {
-            var weap = new waffe(){};
-            weap.name = alleWaffenNamen.MeisterhafteWaffe;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 9,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1 },
+            });
 
             return weap;
         }
@@ -306,6 +555,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Melter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 8,
+                durchschlag = 1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1, WaffenRegeln.Melter },
+            });
 
             return weap;
         }
@@ -313,6 +572,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Multimelter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 8,
+                durchschlag = 1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Melter },
+            });
 
             return weap;
         }
@@ -320,6 +589,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Psiwaffe;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = -1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Psiwaffe },
+            });
 
             return weap;
         }
@@ -327,6 +606,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Plasmakanone;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll36,
+                staerke = 7,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Explosiv, WaffenRegeln.Ueberhitzen },
+            });
 
             return weap;
         }
@@ -334,6 +623,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Plasmapistole;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 7,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Pistole, WaffenRegeln.Ueberhitzen },
+            });
 
             return weap;
         }
@@ -341,6 +640,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Plasmawerfer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 7,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer, WaffenRegeln.Ueberhitzen },
+            });
 
             return weap;
         }
@@ -348,6 +657,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Raketenwerfer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Sprenggranate,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 8,
+                durchschlag = 3,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1 },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Fragmentgranate,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 4,
+                durchschlag = 6,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Explosiv },
+            });
 
             return weap;
         }
@@ -355,6 +682,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.SchwererBolter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll36,
+                staerke = 5,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer3 },
+            });
 
             return weap;
         }
@@ -362,6 +699,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.SchwererFlammer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Flammen,
+                staerke = 5,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1 },
+            });
 
             return weap;
         }
@@ -369,6 +716,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Schrotflinte;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 4,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1 },
+            });
 
             return weap;
         }
@@ -376,6 +733,17 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Scharfschützengewehr;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll36,
+                staerke = -1,
+                durchschlag = 6,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Scharfschuetze },
+            });
+
 
             return weap;
         }
@@ -383,6 +751,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Sturmbolter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm2 },
+            });
 
             return weap;
         }
@@ -390,14 +768,72 @@ namespace WarhammerGUI
         {
             var weap = new waffe(){};
             weap.name = alleWaffenNamen.Sturmkanone;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 6,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer4, WaffenRegeln.Ruestungsbrechend },
+            });
 
             return weap;
         }
+
+
+        private waffe createSpaceMarinesSyncMelter()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncMelter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 8,
+                durchschlag = 1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1, WaffenRegeln.Melter , WaffenRegeln.Synchronisiert},
+            });
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSyncMultiMelter()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncMultiMelter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 8,
+                durchschlag = 1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Melter, WaffenRegeln.Synchronisiert },
+            });
+
+            return weap;
+        }
+
 
         private waffe createSpaceMarinesSyncSchwererBolter()
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.SyncSchwererBolter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll36,
+                staerke = 5,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer3, WaffenRegeln.Synchronisiert },
+            });
+
 
             return weap;
         }
@@ -405,6 +841,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.SyncSchwererFlammenwerfer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Flammen,
+                staerke = 5,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1, WaffenRegeln.Synchronisiert },
+            });
 
             return weap;
         }
@@ -412,6 +858,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.Syncsturmkanone;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 6,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer4, WaffenRegeln.Ruestungsbrechend, WaffenRegeln.Synchronisiert },
+            });
 
             return weap;
         }
@@ -419,6 +875,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.SyncLaserKanone;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 9,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Synchronisiert },
+            });
 
             return weap;
         }
@@ -426,13 +892,35 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.SyncPlasmawerfer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 7,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer, WaffenRegeln.Ueberhitzen, WaffenRegeln.Synchronisiert },
+            });
 
             return weap;
         }
+
+
         private waffe createSpaceMarinesDeathwind()
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.DeathwindSystem;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 5,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1, WaffenRegeln.Explosiv5Zoll },
+            });
 
             return weap;
         }
@@ -440,6 +928,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.HurricaneBolter;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer, WaffenRegeln.Synchronisiert },
+            });
 
             return weap;
         }
@@ -447,6 +945,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.Flammensturmkanone;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Flammen,
+                staerke = 6,
+                durchschlag = 6,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1 },
+            });
 
             return weap;
         }
@@ -454,6 +962,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.Energieschwert;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe},
+            });
 
             return weap;
         }
@@ -461,6 +979,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.WhirlwindMehrfachRaketenWerfer;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Vergelterrakete,
+                reichweite = Reichweiten.Von12Bis48Zoll,
+                staerke = 5,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Geschuetz1, WaffenRegeln.Sperrfeuer },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Kastellan,
+                reichweite = Reichweiten.Von12Bis48Zoll,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Geschuetz1, WaffenRegeln.Sperrfeuer , WaffenRegeln.DeckungIgnorieren},
+            });
 
             return weap;
         }
@@ -468,6 +1004,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.DemolisherGeschuetz;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 10,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Geschuetz1 },
+            });
 
             return weap;
         }
@@ -475,6 +1021,17 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.StalkerSchemaBolter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll36,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer2, WaffenRegeln.Ruestungsbrechend, WaffenRegeln.Niederhalten },
+            });
+
 
             return weap;
         }
@@ -482,6 +1039,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.TalassarianischeSturmklinge;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = 6,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Meisterhaft, WaffenRegeln.Energiewaffe, WaffenRegeln.SofotAusgeschaltet },
+            });
 
             return weap;
         }
@@ -489,6 +1056,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.StabDesTigurius;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = -1,
+                waffenRegeln = new List<WaffenRegeln>() {  WaffenRegeln.Meisterhaft, WaffenRegeln.Psiwaffe },
+            });
 
             return weap;
         }
@@ -496,6 +1073,24 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.Infernus;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Bolter,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer, WaffenRegeln.Meisterhaft, WaffenRegeln.Hoellenfeuermunition },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Flammenwerfer,
+                reichweite = Reichweiten.Flammen,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1, WaffenRegeln.Meisterhaft, WaffenRegeln.Hoellenfeuermunition },
+            });
 
             return weap;
         }
@@ -503,6 +1098,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.DornsPfeil;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm4 },
+            });
 
             return weap;
         }
@@ -510,6 +1115,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.DornsFaust;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = 10,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.IniVerlust, WaffenRegeln.StunAngriff, WaffenRegeln.FahrzeugtabellePlus1 },
+            });
 
             return weap;
         }
@@ -517,6 +1132,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.Rabenklauen;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.Meisterhaft, WaffenRegeln.Ruestungsbrechend} /*TODO!*/,
+            });
 
             return weap;
         }
@@ -524,6 +1149,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.Mondfang;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.SofotAusgeschaltet },
+            });
 
             return weap;
         }
@@ -531,6 +1166,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.SpeerDesVulkan;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = 0,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Meisterhaft, WaffenRegeln.SofotAusgeschaltet, WaffenRegeln.Energiewaffe },
+            });
 
             return weap;
         }
@@ -538,6 +1183,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.Schmiedefeuerhandschuh;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Flammen,
+                staerke = 5,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1 },
+            });
 
             return weap;
         }
@@ -545,6 +1200,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.CerberusWerfer;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = -1,
+                durchschlag = -1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm1 },
+            });
 
             return weap;
         }
@@ -552,6 +1217,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.SyncBolter;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 5,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer, WaffenRegeln.Synchronisiert },
+            });
 
             return weap;
         }
@@ -559,6 +1234,33 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.SyncMaschkanone;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 7,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer2, WaffenRegeln.Synchronisiert },
+            });
+
+            return weap;
+        }
+        private waffe createSpaceMarinesMaschkan()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Maschinenkanone;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 7,
+                durchschlag = 4,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer2 },
+            });
 
             return weap;
         }
@@ -566,6 +1268,16 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.CybotNahkampfWaffe;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = 10,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { /*TODO!*/ },
+            });
 
             return weap;
         }
@@ -573,6 +1285,33 @@ namespace WarhammerGUI
         {
             var weap = new waffe() { };
             weap.name = alleWaffenNamen.SeismischerHammer;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = 10,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.FahrzeugtabellePlus1 /*TODO!*/ },
+            });
+
+            return weap;
+        }
+        private waffe createSpaceMarinesOrbital()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.OrbitalesBombardement;
+            weap.haendigkeit = 0;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.unbeschraenkt,
+                staerke = 10,
+                durchschlag = 1,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Geschuetz1, WaffenRegeln.Explosiv5Zoll},
+            });
 
             return weap;
         }
@@ -587,6 +1326,17 @@ namespace WarhammerGUI
     public class waffe
     {
         /// <summary>
+        /// Konstruktor einer Waffe:
+        /// </summary>
+        public waffe() 
+        {
+            name = alleWaffenNamen.undefined;
+            haendigkeit = 1;
+            istSchusswaffe = true;
+            auspraegungen = new List<waffenAuspraegung>() { };
+        }
+
+        /// <summary>
         /// Name der Waffe
         /// </summary>
         public alleWaffenNamen name;
@@ -598,7 +1348,7 @@ namespace WarhammerGUI
         public int haendigkeit;
 
         /// <summary>
-        /// Handelt es sich um eine Schusswaffe?
+        /// Handelt es sich um eine Schusswaffe? (sonst: Nahkampfwaffe!)
         /// </summary>
         public bool istSchusswaffe;
 
@@ -611,6 +1361,11 @@ namespace WarhammerGUI
 
     public struct waffenAuspraegung
     {
+        /// <summary>
+        /// Beschreibung der jeweiligen Ausprägung. Z.B. "Spenggranaten"
+        /// </summary>
+        public WaffenSubTypen beschreibung;
+
         /// <summary>
         /// Reichweite der Waffe
         /// </summary>
@@ -629,6 +1384,6 @@ namespace WarhammerGUI
         /// <summary>
         /// Von welchen Typ(en) ist die Waffenausprägung?
         /// </summary>
-        public List<Waffentypen> waffentypen;
+        public List<WaffenRegeln> waffenRegeln;
     }
 }

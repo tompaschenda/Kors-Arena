@@ -74,6 +74,9 @@ namespace WarhammerGUI
             // Eigentliche Einheitenübersicht erstellen!
             sw.Write(getUnits());
 
+            // Sonderseite mit der Waffentabelle erstellen!
+            sw.Write(getWeaponOverview());
+
             // Dokument abschließen:
             sw.Write("\\end{document}");
 
@@ -271,6 +274,104 @@ namespace WarhammerGUI
         }
 
         /// <summary>
+        /// Erzeugt einen Überblick über alle vorkommenden Waffen in der Armee des Spielers!
+        /// </summary>
+        /// <returns></returns>
+        private string getWeaponOverview()
+        {
+            string woString = "";
+
+            // Neue Seite:
+            woString += "\\newpage\n\n";
+
+            // Neue Sektion:
+            woString += "\\subsection{Waffenliste}\n";
+
+            List<waffe> alleWaffen = gibMirDieEinmaligeWaffenliste();
+
+            // Jetzt müssen wir einmalig den Header der Tabelle erstellen:
+            woString += getWeapenHeaderString();
+
+            // Jede Waffe muss eingetragen werden!
+            for (int i = 0; i < alleWaffen.Count; ++i)
+            {
+                waffe aktWeap =  waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffen[i].name);
+
+                // Es gibt generell zwei Möglichkeiten: Entweder, wir haben nur eine
+                // Ausprägung, dann ist alles okay. ODER wir haben mehrere, dann müssen
+                // wir erst eine Leerzeile schreiben mit dem Namen und danach alle Ausprägungen!
+                if(aktWeap.auspraegungen.Count == 1)
+                {
+                    var aktAuspraegung = aktWeap.auspraegungen[0];
+                    woString += EnumExtensions.getEnumDescription(typeof(alleWaffenNamen), aktWeap.name)  + "  &  ";
+                    woString += EnumExtensions.getEnumDescription(typeof(Reichweiten), aktAuspraegung.reichweite) + "  &  " + aktAuspraegung.staerke.ToString() + "  &  ";
+                    woString += aktAuspraegung.durchschlag.ToString() +  "  &  ";
+                    for (int j = 0; j < aktAuspraegung.waffenRegeln.Count; ++j)
+                    {
+                        if (j == 3)
+                        {
+                            woString += "\\\\ \\hline\n";    // Leerzeile
+                            woString += " & & & & ";
+                        }
+                        
+                        woString += EnumExtensions.getEnumDescription(typeof(WaffenRegeln), aktAuspraegung.waffenRegeln[j]);
+                        if (j < aktAuspraegung.waffenRegeln.Count - 1)
+                            woString += ", ";
+                    }
+                    // Nun müssen wir die Zeile natürlich noch abschließen!
+                    woString += "\\\\\\hline\n";
+                }
+                else
+                {
+                    // Wir grenzen uns durch einen Extra-Strich ab:
+                    woString += "\\hline\n";
+
+                    // Gut, dann erst einmal eine Leerzeile:
+                    woString += EnumExtensions.getEnumDescription(typeof(alleWaffenNamen), aktWeap.name) + "  &  & & &  " + "\\\\\\hline\n";
+
+                    // Jetzt über alle 
+                    for (int k = 0; k < aktWeap.auspraegungen.Count; ++k )
+                    {
+                        var aktAuspraegung = aktWeap.auspraegungen[k];
+                        woString += "\\quad ";   // Einrücken!
+                        woString += EnumExtensions.getEnumDescription(typeof(WaffenSubTypen),  aktAuspraegung.beschreibung) + "  &  ";
+                        woString += EnumExtensions.getEnumDescription(typeof(Reichweiten), aktAuspraegung.reichweite) + "  &  " + aktAuspraegung.staerke.ToString() + "  &  ";
+                        woString += aktAuspraegung.durchschlag.ToString()  +   "   &  ";
+                        for (int j = 0; j < aktAuspraegung.waffenRegeln.Count; ++j)
+                        {
+                            if (j == 3)
+                            {
+                                woString += "\\\\ \\hline\n";    // Leerzeile
+                                woString += " & & & & ";
+                            }
+
+                            woString += EnumExtensions.getEnumDescription(typeof(WaffenRegeln), aktAuspraegung.waffenRegeln[j]);
+                            if (j < aktAuspraegung.waffenRegeln.Count - 1)
+                                woString += ", ";
+                        }
+                        // Nun müssen wir die Zeile natürlich noch abschließen!
+                        woString += "\\\\\\hline\\hline\n";
+                    }
+                }                
+            }
+
+            // Jetzt muss ich die Tabelle natürlich noch abschließen:
+            woString += "\\end{tabular}\n\\end{table}\n";
+
+            return woString;
+        }
+
+        private string getWeapenHeaderString()
+        {
+            string headerString = "";
+
+            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|l|l|l|l|}\n\\hline\n";
+            headerString += "  \\textbf{Waffenname}   &  \\textbf{Reichweite}   & \\textbf{S}   &  \\textbf{DS}   &  \\textbf{Regeln}  \\\\ \\hline  \\hline\n";
+
+            return headerString;
+        }
+
+        /// <summary>
         /// Gibt die Ausrüstung und Bewaffnung für alle Subeinheiten der jeweiligen Einheit aus:
         /// </summary>
         /// <returns></returns>
@@ -449,8 +550,6 @@ namespace WarhammerGUI
             return entriesString;
         }
 
-
-
         private string getTabellenEntriesInfanterie(Einheit aktEinheit)
         {
             string entriesString = "";
@@ -496,8 +595,6 @@ namespace WarhammerGUI
             return headerString;
         }
 
-
-
         private string getTabellenHeaderInfanterie()
         {
  	        string headerString = "";
@@ -524,5 +621,43 @@ namespace WarhammerGUI
             return sectionHeading;
         }
 
+        private List<waffe> gibMirDieEinmaligeWaffenliste()
+        {
+            List<waffe> listeAllerWaffen = new List<waffe>() { };
+
+            for (int j = 0; j < m_armee.armeeEinheiten.Count; ++j)
+            {
+                Einheit aktEinheit = m_armee.armeeEinheiten[j];
+                for (int i = 0; i < aktEinheit.subEinheiten.Count; ++i)
+                {
+                    subEinheit aktSub = aktEinheit.subEinheiten[i];
+
+                    // Wir gehen immer über alle Waffen der Subeinheit:
+                    for (int k = 0; k < aktSub.waffen.Count; ++k)
+                    {
+                        waffe aktWaffe = aktSub.waffen[k];
+
+                        // Jede Waffe soll nur einmal auftauchen. Wenn diese Waffe noch nicht
+                        // in meiner Liste ist, kommt sie dazu:
+                        bool vorhanden = false;
+                        for (int sig = 0; sig < listeAllerWaffen.Count; ++sig)
+                        {
+                            if (listeAllerWaffen[sig].name == aktWaffe.name)
+                                vorhanden = true;
+                        }
+
+
+                        if (!vorhanden)
+                        {
+                            listeAllerWaffen.Add(aktWaffe);
+                        }
+                    }
+                }
+            }
+
+            // TODO: Alphabetische Liste durch Sort-Befehl!
+
+            return listeAllerWaffen;
+        }
     }
 }
