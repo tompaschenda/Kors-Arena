@@ -314,7 +314,7 @@ namespace WarhammerGUI
 
                 spaceMarine.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(spaceMarine);                
             }
 
@@ -577,7 +577,7 @@ namespace WarhammerGUI
 
                 terminator.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(terminator);
             }
 
@@ -760,7 +760,7 @@ namespace WarhammerGUI
 
                 terminator.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(terminator);
             }
 
@@ -1916,7 +1916,7 @@ namespace WarhammerGUI
 
             sarge.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(sarge);
 
@@ -1991,7 +1991,7 @@ namespace WarhammerGUI
 
             sarge.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(sarge);
 
@@ -2069,7 +2069,7 @@ namespace WarhammerGUI
 
             cap.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cap);
 
@@ -2156,7 +2156,7 @@ namespace WarhammerGUI
 
             tigurius.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(tigurius);
 
@@ -2233,7 +2233,7 @@ namespace WarhammerGUI
 
             cassius.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cassius);
 
@@ -2309,7 +2309,7 @@ namespace WarhammerGUI
 
             cassius.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cassius);
 
@@ -2383,7 +2383,7 @@ namespace WarhammerGUI
 
             lys.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(lys);
 
@@ -2457,7 +2457,7 @@ namespace WarhammerGUI
 
             shrike.einheitentyp = Einheitstyp.Sprungtruppen;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(shrike);
 
@@ -2533,7 +2533,7 @@ namespace WarhammerGUI
 
             vulkan.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(vulkan);
 
@@ -2624,7 +2624,7 @@ namespace WarhammerGUI
 
             khan.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(khan);
 
@@ -2701,7 +2701,7 @@ namespace WarhammerGUI
             techmarine.ret = 0;
             techmarine.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten.Add(techmarine);
 
             // Jetzt die eigentliche Salvenkanone: Für sie setzen wir die Werte gleich null.
@@ -2880,7 +2880,7 @@ namespace WarhammerGUI
 
                 spaceMarine.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(spaceMarine);
             }
 
@@ -3215,7 +3215,7 @@ namespace WarhammerGUI
 
                 scout.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(scout);
 
 
@@ -3264,7 +3264,7 @@ namespace WarhammerGUI
 
                 scoutBike.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(scoutBike);
                 if(i==0)
                     subEinheiten.Add(scoutBike); // Das Extra-Bike für den Sarge!
@@ -3496,7 +3496,7 @@ namespace WarhammerGUI
                 else
                     spaceMarine.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(spaceMarine);
             }
 
@@ -3877,7 +3877,7 @@ namespace WarhammerGUI
 
                 veteran.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(veteran);
             }
 
@@ -4655,7 +4655,7 @@ namespace WarhammerGUI
 
                 scout.einheitentyp = Einheitstyp.Infanterie;
 
-                // Wenn alles erfolgt ist, darf ich einsortieren:
+ 
                 subEinheiten.Add(scout);
             }
 
@@ -5054,7 +5054,7 @@ namespace WarhammerGUI
 
             cap.einheitentyp = Einheitstyp.Infanterie;
 
-            // Wenn alles erfolgt ist, darf ich einsortieren:
+
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cap);
 

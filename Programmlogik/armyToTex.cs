@@ -42,7 +42,6 @@ namespace WarhammerGUI
         private string angPH = "Angeschlossenes Transportfahrzeug: ";
         private spielerArmeeKlasse m_armee;
 
-
         /// <summary>
         /// Schreibt in einen bereits geöffneten Filestream den Latex-Code!
         /// </summary>
@@ -76,6 +75,9 @@ namespace WarhammerGUI
 
             // Sonderseite mit der Waffentabelle erstellen!
             sw.Write(getWeaponOverview());
+
+            // Sonderseite mit den Sonderregeln erstellen!
+            sw.Write(getSpecialRuleDescriptions());
 
             // Dokument abschließen:
             sw.Write("\\end{document}");
@@ -119,7 +121,7 @@ namespace WarhammerGUI
             headerString += "\\usepackage{listings} \n\\usepackage[linkbordercolor={0 0 0}, citebordercolor={0 0 0}, pdfborder={0 0 0}]{hyperref} \n\\usepackage[nottoc]{tocbibind} \n";
             headerString += "\\usepackage{subfig} \n\\usepackage{trsym} \n\\usepackage{multirow} \n% Style-Datei liegt um MPN-Verzeichnis. In dieser Datei werden einige \n";
             headerString += "% nützliche Funktionen und Kürzel bereit gestellt: \n\n\\usepackage{graphicx} \n% 'Mü' auch im normalen Text verwenden können! \n\\usepackage{textcomp} \n\n";
-            headerString += "% Grafik-Erweiterungen bekannt machen: \n\\DeclareGraphicsExtensions{.png, .jpg, .bmp, .eps} \n\n \\newcommand{\\bb}{\\bigbreak} \n\\newcommand{\\msn}{\\footnotesize} \n";
+            headerString += "% Grafik-Erweiterungen bekannt machen: \n\\DeclareGraphicsExtensions{.png, .jpg, .bmp, .eps} \n\n \\newcommand{\\bb}{\\bigbreak} \n\\newcommand{\\msn}{\\normalsize} \n";
             headerString += "\n% Dafür sorgen, dass die Gleichungen nach Sektionen nummeriert werden (Beisp.: 2.23):\n\\numberwithin{equation}{section} \n% Abbilungen Abschnittsweise nummerieren: \n";
             headerString += "% usepackage[chngcntr]  \n%\\counterwithin{figure}{section} \n\n% Seitenränder, etc.:\n";
             headerString += "\\usepackage{geometry}\n\\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=25mm,headsep=7mm, footskip=0mm}\n";
@@ -131,7 +133,7 @@ namespace WarhammerGUI
         private string getTOC()
         {
             string tocString;
-            tocString = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \n%   Inhaltsverzeichnis: \n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  \n\\newpage \n\\tableofcontents \n\\newpage \n \n";
+            tocString = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \n%   Inhaltsverzeichnis: \n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  \n\\newpage\n \n\\tableofcontents \n\\newpage \n \n";
             return tocString;
         }
 
@@ -141,17 +143,25 @@ namespace WarhammerGUI
 
             // Für jeden Auswahltyp gibt es immer eine neue Seite!
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.HQ);
-            unitString += "\\newpage\n";
+
+            //unitString += "\\newpage\n\n";
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.Standard);
-            unitString += "\\newpage\n";
+
+            //unitString += "\\newpage\n\n";
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.Elite);
-            unitString += "\\newpage\n";
+
+
+            //unitString += "\\newpage\n\n";
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.Sturm);
-            unitString += "\\newpage\n";
+
+
+            //unitString += "\\newpage\n\n";
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.Unterstuetzung);
-            unitString += "\\newpage\n";
+
+            //unitString += "\\newpage\n\n";
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.AngeschlossenesTransportFahrzeug);
-            unitString += "\\newpage\n";
+
+            //unitString += "\\newpage\n\n";
             unitString += getAllUnitsForChosenSelection(EinheitenAuswahl.keine);
 
             return unitString;
@@ -162,45 +172,26 @@ namespace WarhammerGUI
             string beschreibungsString = "";
             string auswahlString = EnumExtensions.getEnumDescription(typeof(EinheitenAuswahl), aktAuswahl);
 
-            int pageChangeCounter =0;
+            bool sectionHasHeadingHasBeenPlaced = false;
+
 
             for(int i = 0; i < m_armee.armeeEinheiten.Count; ++ i)
             {
                 if(m_armee.armeeEinheiten[i].auswahlTypSpieler == aktAuswahl)
                 {
+
+                    // Ich fange immer eine Minipage an, damit die Seitenumbrüche intelligten erfolgen!
+                    beschreibungsString += "\\begin{minipage}[\\textwidth]{\\textwidth} \n";
+
+                    if (!sectionHasHeadingHasBeenPlaced)
+                    {
+                        beschreibungsString += getSectionHeading(auswahlString, false);
+                        sectionHasHeadingHasBeenPlaced = true;
+                    }
+
                     Einheit aktEinheit = m_armee.armeeEinheiten[i];
 
-                    pageChangeCounter = pageChangeCounter +1;
-                    // Wenn wir eine ungerade Anzahl an bisherigen Einträgen > 1 haben, fügen wir
-                    // einen Seitenumbruch ein:
-                    if (aktEinheit.auswahlTypSpieler == EinheitenAuswahl.HQ)
-                    {
-                        if (pageChangeCounter > 1 && pageChangeCounter % 4 == 0)
-                            beschreibungsString += "\\newpage\n";
-                    }
-                    else
-                    {
-                        if (pageChangeCounter > 1 && pageChangeCounter % 2 != 0)
-                            beschreibungsString += "\\newpage\n";
-                    }
 
-
-                    // Als erstes Tragen wir auf dieser Seite ein, um welche Auswahl es sich
-                    // handelt. Wir wollen die Sektion jedoch nur beim ersten mal mit nummerieren!
-                    if (aktEinheit.auswahlTypSpieler == EinheitenAuswahl.HQ)
-                    {
-                        if (pageChangeCounter == 1)
-                            beschreibungsString += getSectionHeading(auswahlString, false);
-                        else if (pageChangeCounter > 1 && pageChangeCounter % 4 == 0)
-                            beschreibungsString += getSectionHeading(auswahlString, true);
-                    }
-                    else
-                    {
-                        if (pageChangeCounter == 1)
-                            beschreibungsString += getSectionHeading(auswahlString, false);
-                        else if (pageChangeCounter > 1 && pageChangeCounter % 2 != 0)
-                            beschreibungsString += getSectionHeading(auswahlString, true);
-                    }
 
                     // Wenn wir damit fertig sind, kommt die Subsektion.
                     var baseName = EnumExtensions.getEnumDescription(aktEinheit.einheitenName.GetType(), aktEinheit.einheitenName.ToString());
@@ -236,6 +227,12 @@ namespace WarhammerGUI
 
                     // Zuletzt kommt noch ein Abgrenzungsstrich:
                     beschreibungsString += "\n\\hrule\n";
+
+                    // Beenden unserer Minipage. Erst jetzt darf Latex wieder umbrechen!
+                    beschreibungsString += "\\end{minipage} \n\n";
+
+                    // Und ein bisschen Luft lassen:
+                    beschreibungsString += "\\vspace{1cm}";
                 }
             }
 
@@ -247,7 +244,7 @@ namespace WarhammerGUI
  	        // TODO: Ich schreibe hier erst einmal nur den Auswahltyp hin!
             string typeString = "\\noindent \\textbf{" + einhPH + "} "  + EnumExtensions.getEnumDescription(typeof(Einheitstyp), aktEinheit.einheitentyp);
 
-            typeString += "\\\\";
+            typeString += "\\\\ \n\n";
 
             return typeString;
         }
@@ -268,7 +265,7 @@ namespace WarhammerGUI
             if (aktEinheit.sonderregeln.Count == 0)
                 rulesString += "keine";
 
-            rulesString += "\\bb";
+            rulesString += "\\bb \n";
 
             return rulesString;
         }
@@ -285,7 +282,7 @@ namespace WarhammerGUI
             woString += "\\newpage\n\n";
 
             // Neue Sektion:
-            woString += "\\subsection{Waffenliste}\n";
+            woString += getSectionHeading("Waffenliste");
 
             List<waffe> alleWaffen = gibMirDieEinmaligeWaffenliste();
 
@@ -365,7 +362,7 @@ namespace WarhammerGUI
         {
             string headerString = "";
 
-            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|l|l|l|l|}\n\\hline\n";
+            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|l|c|c|l|}\n\\hline\n";
             headerString += "  \\textbf{Waffenname}   &  \\textbf{Reichweite}   & \\textbf{S}   &  \\textbf{DS}   &  \\textbf{Regeln}  \\\\ \\hline  \\hline\n";
 
             return headerString;
@@ -581,7 +578,7 @@ namespace WarhammerGUI
         {
             string headerString = "";
 
-            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|l|l|l|l|}\n\\hline\n";
+            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|c|c|c|c|}\n\\hline\n";
             headerString += "\\textbf{Subeinheit}   &  \\textbf{BF}  &   \\textbf{F}   &  \\textbf{S}  &  \\textbf{H}  \\\\ \\hline \\hline\n";
             return headerString;
         }
@@ -590,7 +587,7 @@ namespace WarhammerGUI
         {
             string headerString = "";
 
-            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|l|l|l|l|l|l|l|l|}\n\\hline\n";
+            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|c|c|c|c|c|c|c|c|}\n\\hline\n";
             headerString += "\\textbf{Subeinheit}   &  \\textbf{KG} &   \\textbf{BF}   &   \\textbf{S}  &   \\textbf{F}   &  \\textbf{S}  &  \\textbf{H}  &  \\textbf{I}  &  \\textbf{A}  \\\\ \\hline \\hline\n";
             return headerString;
         }
@@ -599,7 +596,7 @@ namespace WarhammerGUI
         {
  	        string headerString = "";
 
-            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}\n\\hline\n";
+            headerString += "\\begin{table}[H]\n\\msn\n\\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}\n\\hline\n";
             headerString += "\\textbf{Subeinheit}  &   \\textbf{KG}  &  \\textbf{BF}  & \\textbf{S}  &  \\textbf{W}  &  \\textbf{LP}  & \\textbf{I}  &  \\textbf{A}  &  \\textbf{MW}   &  \\textbf{RW}  &  \\textbf{RET}  \\\\ \\hline \\hline\n";
             return headerString;
         }
@@ -616,7 +613,7 @@ namespace WarhammerGUI
             if(suppressSection)
                 sec += "*";
 
-            string sectionHeading = "\\begin{center}\\LARGE{\\section" + sec + "{" + headingString + "}}\n\\end{center}\n";
+            string sectionHeading = "\\begin{center}\n\\LARGE{\\section" + sec + "{" + headingString + "}}\n\\end{center}\n";
 
             return sectionHeading;
         }
@@ -655,9 +652,76 @@ namespace WarhammerGUI
                 }
             }
 
-            // TODO: Alphabetische Liste durch Sort-Befehl!
+            // Wir möchten, dass die Waffenliste auch entsprechend sortiert ist. Dafür nehmen wir
+            // natürlich die String-Beschreibung des Enums (also den Namen der Waffe):
+            listeAllerWaffen.Sort(delegate(waffe w1, waffe w2) 
+            { 
+                string nameString1 = EnumExtensions.getEnumDescription(typeof(alleWaffenNamen), w1.name);
+                string nameString2 = EnumExtensions.getEnumDescription(typeof(alleWaffenNamen), w2.name);
+                return nameString1.CompareTo(nameString2); 
+            }
+            );
 
             return listeAllerWaffen;
+        }
+
+        /// <summary>
+        /// Gibt die Sonderregeln aller Einheiten als LaTeX-Beschreibung aus:
+        /// </summary>
+        /// <returns></returns>
+        private string getSpecialRuleDescriptions()
+        {
+            string beschreibungsString = "";
+
+            // Wir wollen eine neue Seite:
+            beschreibungsString += "\n \\newpage \n\n";
+
+            // Und eine Überschrift:
+            beschreibungsString += getSectionHeading("Sonderregeln");
+
+            // Zunächst einmal brauche ich die Liste, in der alle Sonderregeln einmalig auftauchen.
+            // die in allen Einheiten vertreten sind:
+            var alleSR = gibMirDieEinmaligeSonderregelliste();
+
+            // Ich gehe über alle Regeln und schreibe sie Weg:
+            for (int i = 0; i < alleSR.Count; ++i )
+            {
+                string aktSRNamensstring = EnumExtensions.getEnumDescription(typeof(Sonderregeln), alleSR[i]);
+                string aktSRString = sonderregelKlasse.getInstance().gibMirFolgendeSonderregel(alleSR[i]);
+                beschreibungsString +=   "\\noindent \\textbf{" + aktSRNamensstring +": } "  +   aktSRString  +  "\\bb \n\n";
+            }
+
+            return beschreibungsString;
+        }
+
+        private List<Sonderregeln> gibMirDieEinmaligeSonderregelliste()
+        {
+            List<Sonderregeln> listeAllerSonderregeln = new List<Sonderregeln>() { };
+
+            for (int j = 0; j < m_armee.armeeEinheiten.Count; ++j)
+            {
+                Einheit aktEinheit = m_armee.armeeEinheiten[j];
+
+                for (int i=0; i < aktEinheit.sonderregeln.Count; ++i)
+                {
+                    if(!listeAllerSonderregeln.Contains(aktEinheit.sonderregeln[i]))
+                    {
+                        listeAllerSonderregeln.Add(aktEinheit.sonderregeln[i]);
+                    }
+
+                }
+            }
+
+            // Jetzt sortiere ich die Regeln natürlich noch alphabetisch:
+            listeAllerSonderregeln.Sort(delegate(Sonderregeln r1, Sonderregeln r2)
+            {
+                string nameString1 = EnumExtensions.getEnumDescription(typeof(Sonderregeln), r1);
+                string nameString2 = EnumExtensions.getEnumDescription(typeof(Sonderregeln), r2);
+                return nameString1.CompareTo(nameString2);
+            }
+            );
+
+            return listeAllerSonderregeln;
         }
     }
 }
