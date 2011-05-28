@@ -9,7 +9,7 @@
         <Label Content="Fraktion:" Height="28" HorizontalAlignment="Left" Margin="47,188,0,0" Name="label3" VerticalAlignment="Top" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="233,142,0,0" Name="namensTextbox" VerticalAlignment="Top" Width="232" KeyDown="OnKeyDownHandler"  />
         <src:EnumComboBox Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" EnumTypeName="Listen.Fraktionen, Listen" Margin="233,188,0,0" Width="232" x:Name="fraktionCombo" SelectedIndex="10" />
-        <Button Content="Abbrechen" Height="23" HorizontalAlignment="Left" Margin="159,292,0,0" Name="AbbrechenButton" VerticalAlignment="Top" Width="75" Click="abbrechenKlick" />
-        <Button Content="Weiter" Height="23" HorizontalAlignment="Left" Margin="322,292,0,0" Name="OkayButton" VerticalAlignment="Top" Width="75" Click="weiterKlick" />
+        <Button Content="_Abbrechen" Height="23" HorizontalAlignment="Left" Margin="159,292,0,0" Name="AbbrechenButton" VerticalAlignment="Top" Width="75" Click="abbrechenKlick" />
+        <Button Content="_Weiter" Height="23" HorizontalAlignment="Left" Margin="322,292,0,0" Name="OkayButton" VerticalAlignment="Top" Width="75" Click="weiterKlick" />
     </Grid>
 </Window>

@@ -613,6 +613,8 @@ namespace WarhammerGUI
             updateUnitBaseCostView();
         }
 
+
+        /*
         /// <summary>
         /// Was passiert, wenn ich eine Taste drücke?
         /// </summary>
@@ -635,6 +637,6 @@ namespace WarhammerGUI
 
             if (e.Key == Key.A || e.Key == Key.Escape || e.Key == Key.S)
                 this.Close();
-        }
+        }*/
     }
 }

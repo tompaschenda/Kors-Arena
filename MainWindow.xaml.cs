@@ -631,6 +631,7 @@ namespace WarhammerGUI
             return _outputMessage;
         }
 
+        /*
         protected override void OnKeyDown(KeyEventArgs e)
         {
             // Zunächst einmal will ich, dass die Selektion der Armee mindestens Element null ist!
@@ -652,7 +653,7 @@ namespace WarhammerGUI
                 onStreitMachtToTex(this, e);
             if (e.Key == Key.Escape)
                 this.Close();
-        }
+        }*/
 
         /// <summary>
         /// Wird ausgeführt, wenn das Hauptfenster geschlossen wird!
@@ -668,6 +669,16 @@ namespace WarhammerGUI
 
             if (result == System.Windows.Forms.DialogResult.No)
                 e.Cancel = true;
+        }
+
+        private void KlickInfo(object sender, RoutedEventArgs e)
+        {
+            string message = "Army Bench Version 0.72 \n\n All programming and design by MaWe  (c) 2011 \n\n 'Warhammer', 'Games Worksop' und alle anderen Namen, etc. sind";
+            message += " eingetragene Warenzeichen von 'Games Workshop'. \n\n Benutzung dieser Software geschieht auf eigene Gefahr. Diese Software darf nicht weiter kopiert ";
+            message += " oder verbreitet werden. \n\n Nutzung der Software ist ausschließlich für private, nichtkommerzielle Zwecke gestattet!";
+            string caption = "Info";
+            System.Windows.Forms.MessageBoxButtons buttons = System.Windows.Forms.MessageBoxButtons.OK;
+            System.Windows.Forms.MessageBox.Show(message, caption, buttons);
         }
     }
 }
