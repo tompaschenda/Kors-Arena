@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//using System.Windows.Forms;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
 using Listen;
@@ -25,11 +25,20 @@ namespace WarhammerGUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Dieser Hook überwacht das Keyboard auf Tastaturkürzel!
+        private KeyboardHook hook = new KeyboardHook();
+
         public MainWindow()
         {
             //this.PreviewKeyDown += new KeyEventHandler(this.frmBase_KeyDown);
             InitializeComponent();
             updateArmeeListenBox();
+
+
+            hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
+            hook.RegisterHotKey(ModifierBeys.Control, Keys.C);
+            hook.RegisterHotKey(ModifierBeys.Control, Keys.N);
+
         }
 
         private void klickNeueStreitmacht(object sender, RoutedEventArgs e)
@@ -631,13 +640,17 @@ namespace WarhammerGUI
             return _outputMessage;
         }
 
-        /*
-        protected override void OnKeyDown(KeyEventArgs e)
+        
+        protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
         {
             // Zunächst einmal will ich, dass die Selektion der Armee mindestens Element null ist!
             if (ListBoxArmeeListe.SelectedIndex == -1)
                 ListBoxArmeeListe.SelectedIndex = 0;
 
+            if(e.Key == Key.Delete)
+                 klickLoescheStreitMacht(this, e);
+
+            /*
             // Wir handeln nun alle relevanten Eingaben ab!
             if (e.Key == Key.N)
                 klickNeueStreitmacht(this, e);
@@ -652,8 +665,8 @@ namespace WarhammerGUI
             if (e.Key == Key.P)
                 onStreitMachtToTex(this, e);
             if (e.Key == Key.Escape)
-                this.Close();
-        }*/
+                this.Close();*/
+        }
 
         /// <summary>
         /// Wird ausgeführt, wenn das Hauptfenster geschlossen wird!
@@ -679,6 +692,29 @@ namespace WarhammerGUI
             string caption = "Info";
             System.Windows.Forms.MessageBoxButtons buttons = System.Windows.Forms.MessageBoxButtons.OK;
             System.Windows.Forms.MessageBox.Show(message, caption, buttons);
+        }
+
+
+        /// <summary>
+        /// Wird aktiv, sobald ein Tastenkombo oder eine Taste gedürckt wurde, die beim Hook
+        /// angemeldet wurde!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void hook_KeyPressed(object sender, KeyPressedEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case (Keys.C):
+                    klickStreitmachtKopieren(null, null);
+                    break;
+                case (Keys.N):
+                    klickNeueStreitmacht(null, null);
+                    break;
+                case(Keys.Delete):
+                    klickLoescheStreitMacht(null, null);
+                    break;
+            }
         }
     }
 }

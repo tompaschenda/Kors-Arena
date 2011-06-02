@@ -214,13 +214,15 @@ namespace Listen
         [Description("Panzerjäger")]
         Panzerjaeger,
         [Description("Turbo-Booster")]
-        TurboBooser,
+        TurboBooster,
         [Description("Verwundbar gegen Explosiv- und Flammenwaffen")]
         VerwundbarExplosivFlamme,
         [Description("Schocktruppen")]
         Schocktruppen,
         [Description("Psioniker")]
         Psioniker,
+        [Description("Flankenangriff")]
+        Flankenangriff,
 
         // An dieser Stelle folgen die Sonderregeln der Space Marines:
         [Description("Die keine Furcht kennen")]
@@ -452,7 +454,7 @@ namespace Listen
         Servitor,
         [Description("Legion of the Damned")]
         LegionOfTheDamned,
-        [Description("Strumtrupp")]
+        [Description("Sturmtrupp")]
         Sturmtrupp,
         [Description("Expugnatorgarde")]
         Expugnatorgarde,

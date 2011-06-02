@@ -173,19 +173,6 @@ namespace WarhammerGUI
             return kopierteEinheit;
         }
 
-
-        /// <summary>
-        /// Gibt eine Liste mit allen Identifiern aller Einheiten aller Fraktionen
-        /// zurück.
-        /// </summary>
-        /// <returns></returns>
-        public List<Einheit> gibMirDieEinheitenliste()
-        {
-            // Mat TODO: Brauche ich das überhaupt noch?
-            return m_globalUnitList;
-        }
-
-
         /// <summary>
         /// Prüft, ob alle angelegten Einheiten auch vernünftig angelegt wurden!
         /// </summary>

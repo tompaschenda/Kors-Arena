@@ -604,6 +604,7 @@ namespace WarhammerGUI
             terminatorSergeant.st = 4;
             terminatorSergeant.wid = 4;
             terminatorSergeant.lp = 1;
+            terminatorSergeant.ini = 4;
             terminatorSergeant.at = 2;
             terminatorSergeant.mw = 9;
             terminatorSergeant.rw = 2;
@@ -806,6 +807,7 @@ namespace WarhammerGUI
             terminatorSergeant.st = 4;
             terminatorSergeant.wid = 4;
             terminatorSergeant.lp = 1;
+            terminatorSergeant.ini = 4;
             terminatorSergeant.at = 2;
             terminatorSergeant.mw = 9;
             terminatorSergeant.rw = 2;

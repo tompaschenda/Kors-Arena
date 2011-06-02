@@ -122,6 +122,7 @@ namespace WarhammerGUI
             regelListe.Add(createWieAusDemNichts());
             regelListe.Add(createLahmgelegt());
             regelListe.Add(createGeschenkDerVorsehung());
+            regelListe.Add(createFlankenangriff());
         }
 
 
@@ -361,7 +362,8 @@ namespace WarhammerGUI
         private sonderRegelKombo createLahmgelegt()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Lahmgelegt };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Fahrzeug darf sich nicht bewegen oder drehen. Turm- oder Seitengeschütze dürfen sich drehen. ";
+            kombo.beschreibung += "Waffen, die Gegner in Sichtbereich haben, dürfen feuern.";
             return kombo;
         }
         private sonderRegelKombo createGeschenkDerVorsehung()
@@ -377,139 +379,163 @@ namespace WarhammerGUI
         private sonderRegelKombo createGegenschlag()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Gegenschlag };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Wird die Einheit im Nahkampf angegriffen, darf sie einen Moraltest ablegen. Besteht sie ihn, erhält sie +1 Attacke, ";
+            kombo.beschreibung += " falls sie nicht von vorher im Nahkampf gebunden ist.";
             return kombo;
         }
         private sonderRegelKombo createEwigerKrieger()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.EwigerKrieger };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Modell ist immun gegen die Regel \\emph{sofort ausgeschaltet}";
             return kombo;
         }
         private sonderRegelKombo createFurchtlos()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Furchtlos };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheit besteht automatisch alle Moral- und Niederhaltentests und zieht sich nie zurück; kann aber freiwillig Schutz suchen. ";
             return kombo;
         }
         private sonderRegelKombo createVerletzungenIgnorieren()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.VerletzungenIgnorieren };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Wird Modell einen LP, darf W6 geworfen werden. Bei 4-6 verliert es keinen LP. Geht nicht gegen sofort ausschaltende Waffe ";
+            kombo.beschreibung += " oder gegen Nahkampfwafen, die keinen Rüstungswurf erlauben oder Gefahren des Warp, verpatzte Tests für gefählriches Gelände ";
+            kombo.beschreibung += " oder Waffen mit DS 1 oder DS 2";
             return kombo;
         }
         private sonderRegelKombo createSprinten()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Sprinten };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheit darf in dem Spielzug, in dem sie rennt, auch im Nahkampf angreifen.";
             return kombo;
         }
         private sonderRegelKombo createRasenderAngriff()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.RasenderAngriff };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Wenn die Einheit angreift, erhält diese Einheit +1 Stärke und +1 Ini. Gilt nicht beim Vorstürmen.";
             return kombo;
         }
         private sonderRegelKombo createZurueckfallen()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Zurueckfallen };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Am Ende der Nahkampfphase darf Einheit einen Initest ablegen. Bei Misslingen passiert nichts. ";
+            kombo.beschreibung += "Bei Bestehen löst sich Einheit aus Nahkampf und darf sich um 3W6 Zoll in gerade Linie bewegen, wobei ";
+            kombo.beschreibung += "bekämpfte Einheit ignoriert wird. Es gibt kein Vorstürmen. Gegner darf sich neu positionieren. Keine ";
+            kombo.beschreibung += "Beeinflussung durch schwieriges Gelände aber Tests für gefährliches Gelände müssen abgelegt werden.";
             return kombo;
         }
         private sonderRegelKombo createInfiltratoren()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Infiltratoren };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheiten werden als letztes aufgestellt. Wenn beide Seiten Infiltratoren haben, wird gewürfelt wer anfängt. ";
+            kombo.beschreibung += "Danach wird abwechselnd aufgestellt. Infiltratoren dürfen irgendwo aufgestellt werden, so lange 12 Zoll ";
+            kombo.beschreibung += "zur Feindeinheit vorhanden sind, falls sie keine Sichtlinie ziehen kann. Kann sie eine Sichtlinie ziehen, ";
+            kombo.beschreibung += " muss sie mehr als 18 Zoll vom Feind positioniert werden. Einheit kann nicht in Transportfahrzeug infiltrieren. ";
             return kombo;
         }
         private sonderRegelKombo createDurchDeckungBewegen()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.DurchDeckungBewegen };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheiten werfen 1 Extra-W6 in unwegsamem Gelände und dürfen höchstes Ergebnis wählen.";
             return kombo;
         }
         private sonderRegelKombo createNachtsicht()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Nachtsicht };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Bei Nachtkampf darf Wurf auf Sichtweite wiederholt werden; der 2. Wurf muss aber genommen werden. ";
+            kombo.beschreibung += "Sonderregel wird zwischen Charaktermodell und Einheit geteilt.";
             return kombo;
         }
         private sonderRegelKombo createScharfeSinne()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.ScharfeSinne };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Bei Nachtkampf darf Wurf auf Sichtweite wiederholt werden; der 2. Wurf muss aber genommen werden. ";
+            kombo.beschreibung += "Sonderregel wird zwischen Charaktermodell und Einheit geteilt.";
             return kombo;
         }
         private sonderRegelKombo createErzfeind()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Erzfeind };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Im Nahkampf dürfen Trefferwürfe gegen Erzfeinde wiederholt werden. wirkt nicht gegen Fahrzeuge ohne KG.";
             return kombo;
         }
         private sonderRegelKombo createBlutruenstig()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Blutruenstig };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheit muss sich auf nächsten Feind zu bewegen, darf aber auch rennen. Müssen im Nahkampf immer die ";
+            kombo.beschreibung += "nächste sichtbare Einheit angreifen. Regel hat keine Wirkung bei Rückzug, in Transportfahrzeug oder ";
+            kombo.beschreibung += "wenn kein Feind in Sicht ist.";
             return kombo;
         }
         private sonderRegelKombo createWaffenexperte()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Waffenexperten };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheit kann schwere und Schnellfeuerwaffen so abfeuern, als sei sie stationär geblieben. ";
+            kombo.beschreibung += "Einheit darf danach noch in den Nahkampf.";
             return kombo;
         }
         private sonderRegelKombo createScouts()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Scouts };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheit wird erst aufgestellt, wenn beide Seiten inklusive Infiltratoren aufgestellt haben. ";
+            kombo.beschreibung += "Dürfen dann eine normale Bewegung durchführen, aber nicht näher als 12 Zoll an feindliche Modelle. ";
+            kombo.beschreibung += "Haben beide Seiten Scouts, entscheidet ein Würfelwurf, wer anfängt, dann abwechselnd. ";
+            kombo.beschreibung += "Scouts-Sonderregel überträgt sich auch auf Transportfahrzeug, wenn es angeschlossen ist. ";
+            kombo.beschreibung += "In Reserve gehaltene Scouts erhalten die Sonderregel Flankenangriffsbewegung. ";
             return kombo;
         }
         private sonderRegelKombo createGelaendeErfahrung()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.GelaendeErfahrung };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheit darf verpatzte Tests für gefährliches Gelände wiederholen, solange der Typ Bike oder Kavallerie ist.";
             return kombo;
         }
         private sonderRegelKombo createLangsamUndEntschlossen()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.LangsamUndEntschlossen };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Modell ist Waffenexperte. Einheit bewegt sich aber immer, als wäre sie in schwierigem Gelände.";
             return kombo;
         }
         private sonderRegelKombo createDeckungNutzen()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.DeckungNutzen };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Deckungswurf wird um +1 verbessert, falls Einheit in Deckung ist.";
             return kombo;
         }
         private sonderRegelKombo createUnnachgiebig()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Unnachgiebig };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Wenn Einheit einen Moraltest ablegen muss, hat sie keine Abzüge auf den Test. ";
+            kombo.beschreibung += "Regel wird zwischen Charaktermodell und Einheit ausgetauscht.";
             return kombo;
         }
         private sonderRegelKombo createSchwaerme()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Schwaerme };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Sonderregeln \\emph{Deckung Nutzen}, \\emph{Verwundbar gegen Flammen und Explosivwaffen}. ";
+            kombo.beschreibung += "Bietet niemals Deckung für monströse Kreaturen oder Fahrzeuge";
             return kombo;
         }
         private sonderRegelKombo createPanzerjaeger()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Panzerjaeger };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Einheit addiert +1 auf Panzerungsdurchschlag, egal ob im Nah- oder Fernkampf. ";
+            kombo.beschreibung += "Einheit besteht automatisch alle Moraltests durch Panzerschock.";
             return kombo;
         }
         private sonderRegelKombo createTubroBooster()
         {
-            sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.TurboBooser };
-            kombo.beschreibung = "";
+            sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.TurboBooster };
+            kombo.beschreibung = "Einheit darf sich bis zu 24 Zoll weit bewegen, aber nicht durch schwieriges Gelände. ";
+            kombo.beschreibung += "Schießen, angreifen oder freiwillig Schutz suchen ist verboten. In folgender Schussphase des Gegners ";
+            kombo.beschreibung += "erhält Modell Deckungswurf von +3. Einheit muss mindestens 18 Zoll bewegt worden sein, um Deckungswurf zu erhalten. ";
             return kombo;
         }
         private sonderRegelKombo createVerwundbar()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.VerwundbarExplosivFlamme };
-            kombo.beschreibung = "";
+            kombo.beschreibung = "Jeder Treffer von Explosiv- oder Flammenwaffen zählt doppelt. Wenn Einheit kein Fahrzeug ist, verursacht ";
+            kombo.beschreibung += "jede nicht verhinderte Verwundung einen Lebenspunktverlust von zwei LP. ";
             return kombo;
         }
         private sonderRegelKombo createSchocktruppen()
@@ -527,6 +553,12 @@ namespace WarhammerGUI
         private sonderRegelKombo createUnabhaengigesCharaktermodell()
         {
             sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.UnabhaengigesCharakterModell };
+            kombo.beschreibung = "";
+            return kombo;
+        }
+        private sonderRegelKombo createFlankenangriff()
+        {
+            sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Flankenangriff };
             kombo.beschreibung = "";
             return kombo;
         }

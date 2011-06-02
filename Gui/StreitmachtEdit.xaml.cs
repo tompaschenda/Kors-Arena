@@ -555,10 +555,6 @@ namespace WarhammerGUI
             // DANN können wir erst kopieren!
             var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(nameDerEinheit);
 
-            // An dieser Stelle müssen wir prüfen, ob die Einheit einzigartig ist und es sie schon einmal gibt. Falls ja, müssen wir abbrechen!
-            // TODO!!!
-
-
             // Jetzt müssen wir den Spieler zwingen, einen einzigartigen String zur Beschreibung der Unit anzugeben!
             UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, neueUnitOrig) { };
             umbenennungsfenster.ShowDialog();
@@ -572,7 +568,6 @@ namespace WarhammerGUI
 
             // Wir müssen noch alle Spieleranfragen abhandeln! Dazu müssen wir lediglich die entsprechende Methode 
             // der Klasse aufrufen!
-            // TODO! Ruft nicht die korrekte virtuelle Funktion auf!
             neueUnitOrig.createUnitInteraktion(spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].gesamtPunkte);
             bool allesOkayBool = neueUnitOrig.erschaffungOkay;
 
