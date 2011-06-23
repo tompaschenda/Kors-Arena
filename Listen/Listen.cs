@@ -99,6 +99,11 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("verdoppelt Stärke (max. 10)")]
+        verdoppeltStaerke,
+        [Description("Verwundungswürfe wiederholen")]
+        VerwundungswuerfeWiederholen,
+
         [Description("Moralverlust von -2 beim Gegner")]
         MoralverlustBeimGegnerM2,
         [Description("Plus 1 Schaden auf Fahrzeugtabelle")]
@@ -109,7 +114,7 @@ namespace Listen
         StunAngriff,
         [Description("Ini-Verlust")]
         IniVerlust,
-        [Description("Panzerungsdurchsclag 2W6")]
+        [Description("Panzerungsds+ 2W6")]
         ExtraPanzerungsDurchschlag2W6,
         [Description("Energiewaffe")]
         Energiewaffe,
@@ -411,7 +416,7 @@ namespace Listen
         [Description("Kor'sarro Khan")]
         KorsarroKhan,
         [Description("Ordensmeister der Space Marines")]
-        Ordensmeister,
+        OrdensmeisterDerSpaceMarines,
         [Description("Ehrengarde-Trupp")]
         Ehrengarde,
         [Description("Space Marine Captain")]
@@ -743,6 +748,8 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("Spezialmunition")]
+        Spezialmunition,
         [Description("Höllenfeuergeschosse")]
         Hoellenfeuergeschosse,
         [Description("Höllenfeuermunition")]

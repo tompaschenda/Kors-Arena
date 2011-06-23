@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Listen;
+using Common;
+using System.IO;
 
 namespace WarhammerGUI
 {
@@ -155,6 +157,16 @@ namespace WarhammerGUI
             var cap = new spaceMarineCaptain() { };
             cap.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(cap);
+
+            var ordnesmeist = new spaceMarineOrdensmeister() { };
+            ordnesmeist.createUnitBase();
+            listeAllerSpaceMarineEinheiten.Add(ordnesmeist);
+
+            var protekt = new protektorGarde() { };
+            protekt.createUnitBase();
+            listeAllerSpaceMarineEinheiten.Add(protekt);
+
+            listeAllerSpaceMarineEinheiten.Sort();
 
             return listeAllerSpaceMarineEinheiten;
         }
@@ -4368,13 +4380,14 @@ namespace WarhammerGUI
                     return;
                 }
                 myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
+                myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
             }         
 
             // Wahl des Multimelters:
             wahlBolter = new List<pulldownAuswahl>() { };
             wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererFlammenwerfer, kosten = 5 });
+            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 5 });
             wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
             if (!wahlBolterWaffen.allesOkay)
             {
@@ -5059,6 +5072,589 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cap);
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
+    }
+
+    public class spaceMarineOrdensmeister : Einheit
+    {
+        public override void createUnitBase()
+        {
+            einheitenName = alleEinheitenNamen.OrdensmeisterDerSpaceMarines;
+            fraktion = Fraktionen.SpaceMarines;
+
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
+            basisGroesse = new List<Groessenspecifier>() { };
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.CaptainDerSpaceMarines, anzahl = 1 });
+
+            basispunkteKosten = 125;
+            einheitKostenGesamt = basispunkteKosten;
+
+            einzigartig = false;
+
+            einheitentyp = Einheitstyp.Infanterie;
+
+            sonderregeln = new List<Sonderregeln>() { };
+            sonderregeln.Add(Sonderregeln.DieKeineFurchtKennen);
+            sonderregeln.Add(Sonderregeln.Kampftaktiken);
+            sonderregeln.Add(Sonderregeln.UnabhaengigesCharakterModell);
+            sonderregeln.Add(Sonderregeln.OrbitalesBombardement);
+
+            auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            auswahlTypBasis.Add(EinheitenAuswahl.HQ);
+
+            base.createUnitBase();
+        }
+
+        /// <summary>
+        /// Hier werden alle Spierloptionen abgehandelt
+        /// </summary>
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
+            base.createUnitInteraktion(100);
+
+
+            // Update der Punktekosten:
+            einheitKostenGesamt = basispunkteKosten;
+
+
+            var cap = new subEinheit() { };
+            cap.name = alleSubeinheitenNamen.CaptainDerSpaceMarines;
+
+            cap.ausruestung = new List<alleAusruestung>() { };
+            cap.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            cap.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            cap.ausruestung.Add(alleAusruestung.StaehlernerStern);
+
+            bool hasSturmschild = false;
+            bool hasMeisterhafteRuestung = false;
+
+            // Wahl der Rüstung:
+            var auswahlFuerRuestung = new List<pulldownAuswahl>() { };
+            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.ServoRuestung, kosten = 0 });
+            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.MeisterhafteRuestung, kosten = 15 });
+            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.TerminatorRuestung, kosten = 40 });
+
+            Auswahl1AusN auswahlRuestung = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Rüstungen wählen:", auswahlFuerRuestung);
+            if (!auswahlRuestung.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+
+            var wahlIndex = auswahlRuestung.gewaehlterIndexAusN;
+            if (wahlIndex == 0 || wahlIndex == 1)
+            {
+                // SERVO
+                if (wahlIndex == 0)
+                    cap.ruestung = alleRuestungen.ServoRuestung;
+                else
+                {
+                    cap.ruestung = alleRuestungen.MeisterhafteRuestung;
+                    hasMeisterhafteRuestung = true;
+                }
+
+                // Dann darf ich jetzt auch noch Sprungmodul oder Bike erhalten!
+                var auswahlFuerMobil = new List<pulldownAuswahl>() { };
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = "keine Auswahl", kosten = 0 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sprungmodul, kosten = 25 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.SpaceMarineBike, kosten = 35 });
+
+                Auswahl1AusN auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Rüstungen wählen:", auswahlFuerMobil);
+                if (!auswahlMobil.allesOkay)
+                {
+                    erschaffungOkay = false;
+                    return;
+                }
+
+                var intIndex = auswahlMobil.gewaehlterIndexAusN;
+                switch (intIndex)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        cap.ausruestung.Add(alleAusruestung.Sprungmodul);
+                        break;
+                    case 2:
+                        cap.ausruestung.Add(alleAusruestung.SpaceMarineBike);
+                        break;
+                }
+
+                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
+
+
+                // Normale Waffen ersetzen:
+                auswahlFuerMobil = new List<pulldownAuswahl>() { };
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 3 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
+
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 15 });
+
+                auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlFuerMobil);
+                if (!auswahlMobil.allesOkay)
+                {
+                    erschaffungOkay = false;
+                    return;
+                }
+
+                intIndex = auswahlMobil.gewaehlterIndexAusN;
+                switch (intIndex)
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                        cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlFuerMobil[intIndex].auswahl));
+                        break;
+                    case 12:
+                        cap.ausruestung.Add(alleAusruestung.Sturmschild);
+                        hasSturmschild = true;
+                        break;
+                }
+                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
+
+
+                // Und jetzt denselben Spaß noch einmal für die andere Hand:
+                auswahlFuerMobil = new List<pulldownAuswahl>() { };
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
+                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
+
+
+                auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen für die Offhand wählen:", auswahlFuerMobil);
+                if (!auswahlMobil.allesOkay)
+                {
+                    erschaffungOkay = false;
+                    return;
+                }
+
+                intIndex = auswahlMobil.gewaehlterIndexAusN;
+                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlFuerMobil[intIndex].auswahl));
+                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
+
+
+            }
+            else
+            {
+                // TERMIE
+                cap.ruestung = alleRuestungen.TerminatorRuestung;
+                hasMeisterhafteRuestung = true;
+                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerRuestung[wahlIndex].kosten * 1;
+
+                // Auswahl: Ich darf den Sturmbolter ersetzen!
+
+                var auswahlSturmbolterListe = new List<pulldownAuswahl>() { };
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 5 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 5 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 5 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 10 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 20 });
+
+                Auswahl1AusN auswahlSturm = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlSturmbolterListe);
+                if (!auswahlSturm.allesOkay)
+                {
+                    erschaffungOkay = false;
+                    return;
+                }
+                var neuerIndex = auswahlSturm.gewaehlterIndexAusN;
+
+                // Auswahl nutzen und Kosten aktualisieren:
+                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSturmbolterListe[neuerIndex].auswahl));
+                einheitKostenGesamt = einheitKostenGesamt + auswahlSturmbolterListe[neuerIndex].kosten * 1;
+
+                // Und das E-Schwert!
+                auswahlSturmbolterListe = new List<pulldownAuswahl>() { };
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 0 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 5 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 10 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 15 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenfaust, kosten = 15 });
+                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 10 });
+
+                auswahlSturm = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlSturmbolterListe);
+                if (!auswahlSturm.allesOkay)
+                {
+                    erschaffungOkay = false;
+                    return;
+                }
+                neuerIndex = auswahlSturm.gewaehlterIndexAusN;
+
+                switch (neuerIndex)
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                        cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSturmbolterListe[neuerIndex].auswahl));
+                        break;
+                    case 5:
+                        cap.ausruestung.Add(alleAusruestung.Sturmschild);
+                        hasSturmschild = true;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException("Space Marine Cap OOR!");
+                }
+
+            }
+
+            // Restliche Auswahlen:
+            var pulldownCapAusruestung = new List<pulldownAuswahl>() { };
+            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
+            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Digitalwaffen, kosten = 10 });
+            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Hoellenfeuermunition, kosten = 10 });
+
+            AuswahlMAusN wahlCapAusreustung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Captain darf folgende Optionen wählen:", pulldownCapAusruestung);
+            if (!wahlCapAusreustung.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+            var wahlVektor = wahlCapAusreustung.wahlIndexVektor;
+            foreach (int i in wahlVektor)
+            {
+                cap.ausruestung.Add((alleAusruestung)pulldownCapAusruestung[i].auswahl);
+                einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
+            }
+
+
+            pulldownCapAusruestung = new List<pulldownAuswahl>() { };
+            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.AuxilarisGranatwerfer, kosten = 15 });
+            wahlCapAusreustung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Captain darf folgende Waffen zusätzlich wählen:", pulldownCapAusruestung);
+            if (!wahlCapAusreustung.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+            wahlVektor = wahlCapAusreustung.wahlIndexVektor;
+            foreach (int i in wahlVektor)
+            {
+                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(pulldownCapAusruestung[i].auswahl));
+                einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
+            }
+
+            cap.kg = 6;
+            cap.bf = 5;
+            cap.st = 4;
+            cap.wid = 4;
+            cap.ini = 5;
+            cap.lp = 3;
+            cap.at = 3;
+            cap.mw = 10;
+            if (!hasMeisterhafteRuestung)
+                cap.rw = 3;
+            else
+                cap.rw = 2;
+            cap.ret = 4;
+            if (hasSturmschild)
+                cap.ret = 3;
+
+            cap.einheitentyp = Einheitstyp.Infanterie;
+
+
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(cap);
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
+    }
+
+    public class protektorGarde : Einheit
+    {
+        public override void createUnitBase()
+        {
+            einheitenName = alleEinheitenNamen.Protektorgarde;
+            fraktion = Fraktionen.SpaceMarines;
+
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
+            basisGroesse = new List<Groessenspecifier>() { };
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarine, anzahl = 4 });
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantDerSpaceMarines, anzahl = 1 });
+
+            basispunkteKosten = 125;
+            einheitKostenGesamt = basispunkteKosten;
+
+            einzigartig = false;
+
+            einheitentyp = Einheitstyp.Infanterie;
+
+            sonderregeln = new List<Sonderregeln>() { };
+            sonderregeln.Add(Sonderregeln.DieKeineFurchtKennen);
+            sonderregeln.Add(Sonderregeln.Kampftaktiken);
+            sonderregeln.Add(Sonderregeln.Kampftrupps);
+
+            auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            auswahlTypBasis.Add(EinheitenAuswahl.Elite);
+
+            base.createUnitBase();
+        }
+
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
+            base.createUnitInteraktion(100);
+
+            int punkteKostenProVeteran = 25;
+
+            AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Veteranen erhalten", gesamtArmeePunkteKosten, punkteKostenProVeteran) { };
+
+            // Okay, wie viele Space Marines sollen dazu? Wenn abgebrochen wurde, hören wir auf!
+            if (!auswahlAnzahl.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+
+            int zusaetzlicheVeteranen = auswahlAnzahl.anzahlGewaehlt;
+            int anzahlVeteranenGesamt = 4 + zusaetzlicheVeteranen;
+            // Update der Punktekosten:
+            einheitKostenGesamt = basispunkteKosten + zusaetzlicheVeteranen * punkteKostenProVeteran;
+
+            // Gründen wir unsere Einheit neu:
+            subEinheiten = new List<subEinheit>() { };
+
+
+            // Auswahl vorbereiten:
+            var wahlIndex = new int();
+
+            // Genau soviele einordnen, wie vom Spieler gewünscht:
+            for (int i = 0; i < anzahlVeteranenGesamt; ++i)
+            {
+                var veteran = new subEinheit() { };
+                veteran.name = alleSubeinheitenNamen.VeteranDerSpaceMariens;
+                veteran.ruestung = alleRuestungen.ServoRuestung;
+
+                veteran.ausruestung = new List<alleAusruestung>();
+                veteran.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+                veteran.ausruestung.Add(alleAusruestung.Sprenggranaten);
+                veteran.ausruestung.Add(alleAusruestung.Spezialmunition);
+
+
+                veteran.waffen = new List<waffe>() { };
+                veteran.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));               
+
+                // Bolter darf immer ersetzt werden! Für die ersten beiden Modelle sogar durch noch mehr Extras!
+                if (i < 2)
+                {
+                    var auswahlKonstrukt = new List<pulldownAuswahl>() { };
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 5 });
+
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Flammenwerfer, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Melter, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmawerfer, kosten = 10 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 10 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 10 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Laserkanone, kosten = 15 });
+
+                    Auswahl1AusN auswahlWaffe1 = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Ein Veteran darf eine der folgenden Waffen wählen:", auswahlKonstrukt);
+                    if (!auswahlWaffe1.allesOkay)
+                    {
+                        erschaffungOkay = false;
+                        return;
+                    }
+
+                    wahlIndex = auswahlWaffe1.gewaehlterIndexAusN;
+
+                    // Auswahl nutzen und Kosten aktualisieren:
+                    veteran.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
+                    einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
+                }
+                else
+                {
+                    // Jetzt nur die Variante ohne Extras:
+                    var auswahlKonstrukt = new List<pulldownAuswahl>() { };
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 5 });
+                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 5 });
+
+                    Auswahl1AusN auswahlWaffe1 = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Ein Veteran darf eine der folgenden Waffen wählen:", auswahlKonstrukt);
+                    if (!auswahlWaffe1.allesOkay)
+                    {
+                        erschaffungOkay = false;
+                        return;
+                    }
+
+                    wahlIndex = auswahlWaffe1.gewaehlterIndexAusN;
+
+                    // Auswahl nutzen und Kosten aktualisieren:
+                    veteran.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
+                    einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
+                }             
+
+                veteran.kg = 4;
+                veteran.bf = 4;
+                veteran.st = 4;
+                veteran.wid = 4;                
+                veteran.lp = 1;
+                veteran.ini = 4;
+                veteran.at = 2;
+                veteran.mw = 9;
+                veteran.rw = 3;
+                veteran.ret = 0;
+
+                veteran.einheitentyp = Einheitstyp.Infanterie;
+
+                subEinheiten.Add(veteran);     
+            }
+
+            // Sarge:
+            var sarge = new subEinheit() { };
+            sarge.name = alleSubeinheitenNamen.SergeantDerSpaceMarines;
+            sarge.ruestung = alleRuestungen.ServoRuestung;
+
+            sarge.ausruestung = new List<alleAusruestung>();
+            sarge.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            sarge.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            sarge.ausruestung.Add(alleAusruestung.Spezialmunition);
+
+
+            sarge.waffen = new List<waffe>() { };
+
+            // Zunächst einmal darf der Bolter ersetzt werden:
+            var auswSarge1 = new List<pulldownAuswahl>() { };
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 5 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 5 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 5 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 5 });
+
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenschwert, kosten = 0 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+
+            Auswahl1AusN auswahlWaffeS1 = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Sargeant darf eine der folgenden Waffen wählen:", auswSarge1);
+            if (!auswahlWaffeS1.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+
+            wahlIndex = auswahlWaffeS1.gewaehlterIndexAusN;
+            sarge.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswSarge1[wahlIndex].auswahl));
+            einheitKostenGesamt = einheitKostenGesamt + auswSarge1[wahlIndex].kosten * 1;
+
+            // Desgleichen für die zweite Hand:
+            auswSarge1 = new List<pulldownAuswahl>() { };
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenschwert, kosten = 0 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+            auswSarge1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+
+            Auswahl1AusN auswahlWaffeS2 = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Sargeant darf eine der folgenden Waffen wählen:", auswSarge1);
+            if (!auswahlWaffeS1.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+
+            wahlIndex = auswahlWaffeS2.gewaehlterIndexAusN;
+            sarge.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswSarge1[wahlIndex].auswahl));
+            einheitKostenGesamt = einheitKostenGesamt + auswSarge1[wahlIndex].kosten * 1;
+
+            // Außerdem darf er sich noch Ausrüstung aussuchen!
+            var pulldownSargeAusruestung = new List<pulldownAuswahl>() { };
+            pulldownSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
+
+            // Ausrüstung:
+            AuswahlMAusN wahlSargeAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Sergeant darf folgende Optionen wählen:", pulldownSargeAusruestung);
+            if (!wahlSargeAusruestung.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+            var wahlVektor = wahlSargeAusruestung.wahlIndexVektor;
+            foreach (int i in wahlVektor)
+            {
+                sarge.ausruestung.Add((alleAusruestung)pulldownSargeAusruestung[i].auswahl);
+                einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
+            }
+
+
+            // Fehlen noch die eigentlichen Were für den  Marine:
+            sarge.kg = 4;
+            sarge.bf = 4;
+            sarge.st = 4;
+            sarge.wid = 4;            
+            sarge.lp = 1;
+            sarge.ini = 4;
+            sarge.at = 2;
+            sarge.mw = 9;
+            sarge.rw = 3;
+            sarge.ret = 0;
+            sarge.einheitentyp = Einheitstyp.Infanterie;
+
+            subEinheiten.Add(sarge);
+                        
+            // Wahl angeschlossenes Transportfahrzeug
+            // => muss mit generiert werden!
+            // Also müssen wir zunächst den Spieler fragen, ob er überhaupt ein Transportfahrzeug möchte!
+            var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 35 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
+            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
+
+            Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
+            if (!auswahlScreen.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+            wahlIndex = auswahlScreen.gewaehlterIndexAusN;
+
+            // Jetzt müssen wir abhängig vom Index die richtige neue Einheit erzeugen!
+            switch (wahlIndex)
+            {
+                case 0: 
+                    break;
+                case 1:
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Rhino.ToString());
+                    break;
+                case 2:
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Razorback.ToString());
+                    break;
+                case 3:
+                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
+                    break;
+            }
 
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;

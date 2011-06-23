@@ -127,6 +127,7 @@ namespace WarhammerGUI
             headerString += "\\usepackage{geometry}\n\\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=25mm,headsep=7mm, footskip=0mm}\n";
             headerString += "\n\n% Wir möchten, dass auch paragraphs and subparagraphs nummeriert werden: \n";
             headerString += "\\setcounter{secnumdepth}{4}	 \n% Außerdem sollen sie im Index ebenfalls auftauchen: \n\\setcounter{tocdepth}{4} \n";
+            headerString += "\\newcommand{\\WHTableWidth}{440pt} \n";
             return headerString;
         }
 

@@ -319,7 +319,7 @@ namespace WarhammerGUI
                 reichweite = Reichweiten.Nahkampf,
                 staerke = -1,
                 durchschlag = 0,
-                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe /*TODO!*/ },
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.VerwundungswuerfeWiederholen },
             });
 
             return weap;
@@ -336,7 +336,7 @@ namespace WarhammerGUI
                 reichweite = Reichweiten.Nahkampf,
                 staerke = -1,
                 durchschlag = 0,
-                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.IniVerlust },
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.IniVerlust, WaffenRegeln.verdoppeltStaerke },
             });
 
             return weap;
@@ -353,7 +353,7 @@ namespace WarhammerGUI
                 reichweite = Reichweiten.Nahkampf,
                 staerke = -1,
                 durchschlag = 0,
-                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.IniVerlust, WaffenRegeln.StunAngriff },
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.IniVerlust, WaffenRegeln.StunAngriff, WaffenRegeln.verdoppeltStaerke },
             });
 
             return weap;
@@ -387,7 +387,7 @@ namespace WarhammerGUI
                 reichweite = Reichweiten.Nahkampf,
                 staerke = -1,
                 durchschlag = 0,
-                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.ExtraPanzerungsDurchschlag2W6, WaffenRegeln.IniVerlust },
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.ExtraPanzerungsDurchschlag2W6, WaffenRegeln.IniVerlust, WaffenRegeln.verdoppeltStaerke },
             });
 
             return weap;
@@ -952,7 +952,7 @@ namespace WarhammerGUI
                 beschreibung = WaffenSubTypen.blank,
                 reichweite = Reichweiten.Flammen,
                 staerke = 6,
-                durchschlag = 6,
+                durchschlag = 3,
                 waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer1 },
             });
 
@@ -1140,7 +1140,7 @@ namespace WarhammerGUI
                 reichweite = Reichweiten.Nahkampf,
                 staerke = -1,
                 durchschlag = 0,
-                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.Meisterhaft, WaffenRegeln.Ruestungsbrechend} /*TODO!*/,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.Meisterhaft, WaffenRegeln.Ruestungsbrechend, WaffenRegeln.VerwundungswuerfeWiederholen},
             });
 
             return weap;
@@ -1276,7 +1276,7 @@ namespace WarhammerGUI
                 reichweite = Reichweiten.Nahkampf,
                 staerke = 10,
                 durchschlag = 0,
-                waffenRegeln = new List<WaffenRegeln>() { /*TODO!*/ },
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.verdoppeltStaerke},
             });
 
             return weap;
@@ -1293,7 +1293,7 @@ namespace WarhammerGUI
                 reichweite = Reichweiten.Nahkampf,
                 staerke = 10,
                 durchschlag = 0,
-                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.FahrzeugtabellePlus1 /*TODO!*/ },
+                waffenRegeln = new List<WaffenRegeln>() {WaffenRegeln.Energiewaffe, WaffenRegeln.verdoppeltStaerke, WaffenRegeln.FahrzeugtabellePlus1 },
             });
 
             return weap;

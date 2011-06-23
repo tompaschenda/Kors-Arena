@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Listen;
+using Common;
 
 
 namespace WarhammerGUI
@@ -30,7 +31,7 @@ namespace WarhammerGUI
         public EinheitenAuswahl einheitAuswahl;
     }
 
-    public class Einheit
+    public class Einheit : IComparable<Einheit>
     {
         /// <summary>
         /// Konstruktor:
@@ -71,6 +72,15 @@ namespace WarhammerGUI
             subEinheiten = alteEinheit.subEinheiten;
             erschaffungOkay = alteEinheit.erschaffungOkay;
             uniqueHeaderProperty = alteEinheit.uniqueHeaderProperty;
+        }
+
+
+        public int CompareTo(Einheit obj)
+        {
+            string nameKlasse = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), einheitenName);
+            string nameDelegat = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), obj.einheitenName);
+
+            return  nameKlasse.CompareTo(nameDelegat);
         }
 
         /// <summary>

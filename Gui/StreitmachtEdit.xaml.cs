@@ -108,6 +108,10 @@ namespace WarhammerGUI
             // In jedem Fall muss ich den View erst einmal löschen!
             unitTreeView.Items.Clear();
 
+            // Außerdem müssen wir die Einheiten in der Spieler-Armeeliste schon einmal alphabetisch sortieren!
+            List<Einheit> meineListe = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten;
+            meineListe.Sort();
+
             // Wir unterscheiden: Haben wir eine Fraktion oder ein Apokalypse-Spiel?
             if (spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeFraktion != Fraktionen.Apocalypse)
             {                
