@@ -141,6 +141,8 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesSeismischerHammer());
             waffenListe.Add(createSpaceMarinesMaschkan());
             waffenListe.Add(createSpaceMarinesOrbital());
+            waffenListe.Add(createSpaceMarinesServoarm());
+            waffenListe.Add(createSpaceMarinesSyncPlasmapistole());
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -678,6 +680,7 @@ namespace WarhammerGUI
 
             return weap;
         }
+
         private waffe createSpaceMarinesSchwererBolter()
         {
             var weap = new waffe(){};
@@ -901,6 +904,23 @@ namespace WarhammerGUI
                 staerke = 7,
                 durchschlag = 2,
                 waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schnellfeuer, WaffenRegeln.Ueberhitzen, WaffenRegeln.Synchronisiert },
+            });
+
+            return weap;
+        }
+        private waffe createSpaceMarinesSyncPlasmapistole()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.SyncPlasmapistole;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll12,
+                staerke = 7,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Pistole, WaffenRegeln.Ueberhitzen, WaffenRegeln.Synchronisiert },
             });
 
             return weap;
@@ -1277,6 +1297,23 @@ namespace WarhammerGUI
                 staerke = 10,
                 durchschlag = 0,
                 waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Energiewaffe, WaffenRegeln.verdoppeltStaerke},
+            });
+
+            return weap;
+        }
+        private waffe createSpaceMarinesServoarm()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.Servoarm;
+            weap.haendigkeit = 1;
+            weap.istSchusswaffe = false;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Nahkampf,
+                staerke = 8,
+                durchschlag = 0,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.IniVerlust, WaffenRegeln.IgnoriertRuestungswuerfe },
             });
 
             return weap;

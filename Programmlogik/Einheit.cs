@@ -65,7 +65,6 @@ namespace WarhammerGUI
             einzigartig = alteEinheit.einzigartig;
             einheitentyp = alteEinheit.einheitentyp;
             sonderregeln = alteEinheit.sonderregeln;
-            psikraefte = alteEinheit.psikraefte;
             auswahlTypBasis = alteEinheit.auswahlTypBasis;
             auswahlTypSpieler = alteEinheit.auswahlTypSpieler;
             angeschlossenesFahrzeugString = alteEinheit.angeschlossenesFahrzeugString;
@@ -145,11 +144,6 @@ namespace WarhammerGUI
         /// Welche Sonderregeln gelten für die Einheit?
         /// </summary>
         public List<Sonderregeln> sonderregeln;
-
-        /// <summary>
-        /// Welche Psikräfte stehen zur Auswahl?
-        /// </summary>
-        public List<Object> psikraefte;
 
         /// <summary>
         /// Zu welchem Auswahltyp gehört die Einheit?

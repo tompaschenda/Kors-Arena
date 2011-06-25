@@ -61,9 +61,18 @@ namespace WarhammerGUI
                 {
                     var aktAuswahl = pulldownAuswahlen[i];
 
-                    // Für den Header müssen wir natürlich die Description verwenden:
-                    var tempString = EnumExtensions.getEnumDescription(aktAuswahl.auswahl.GetType(), aktAuswahl.auswahl.ToString());
+                    var auswahlTyp = aktAuswahl.auswahl.GetType();
+                    string tempString = "";
 
+                    if (auswahlTyp == tempString.GetType())
+                    {
+                        tempString = (aktAuswahl.auswahl).ToString();
+                    }
+                    else
+                    {
+                        // Für den Header müssen wir natürlich die Description verwenden:
+                        tempString = EnumExtensions.getEnumDescription(aktAuswahl.auswahl.GetType(), aktAuswahl.auswahl.ToString());
+                    }
                     gesamtListe[i].Content = tempString + " (+" + pulldownAuswahlen[i].kosten.ToString() + " Punkte)";
                 }
                 else
@@ -164,7 +173,7 @@ namespace WarhammerGUI
             wahlVektorAktualisieren();
         }
 
-        /*
+        
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.A || e.Key == Key.Escape)
@@ -172,7 +181,7 @@ namespace WarhammerGUI
 
             if (e.Key == Key.W || e.Key == Key.Return)
                 klickWeiter(this, e);
-        }*/
+        }
 
     }
 }

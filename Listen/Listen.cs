@@ -99,6 +99,8 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("Ignoriert Rüstungswürfe")]
+        IgnoriertRuestungswuerfe,
         [Description("verdoppelt Stärke (max. 10)")]
         verdoppeltStaerke,
         [Description("Verwundungswürfe wiederholen")]
@@ -176,6 +178,8 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("Epistolarius")]
+        Epistolarius,
         [Description("Gegenschlag")]
         Gegenschlag,
         [Description("Ewiger Krieger")]
@@ -355,6 +359,8 @@ namespace Listen
         undefined,
         [Description("Infanterie")]
         Infanterie,
+        [Description("Bike")]
+        Bike,
         [Description("Sprungtruppen")]
         Sprungtruppen,
         [Description("Fahrzeug (Panzer)")]
@@ -371,6 +377,8 @@ namespace Listen
         Artillerie,
         [Description("Fahrzeug (Schnell, Antrigrav, Offen)")]
         FahrzeugSAO,
+        [Description("Fahrzeug (Schnell, Antrigrav)")]
+        FahrzeugSchnellAntigrav,
     }
 
     public enum EinheitenAuswahl
@@ -426,7 +434,7 @@ namespace Listen
         [Description("Scriptor der Space Marines")]
         Scriptor,
         [Description("Ordenspriester der Space Marines")]
-        Ordenspriester,
+        OrdenspriesterDerSpaceMarines,
         [Description("Meister der Schmeide")]
         MeisterSchmiede,
         [Description("Taktischer Trupp")]
@@ -503,6 +511,10 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("Scriptor der Space Marines")]
+        ScriptorSpaceMarines,
+        [Description("Predator")]
+        Predator,
         [Description("Salvenkanone")]
         Salvenkanone,
         [Description("Apothecarius")]
@@ -523,6 +535,8 @@ namespace Listen
         KorsarroKhan,
         [Description("Legion (Legionär)")]
         LegionLegionaer,
+        [Description("Legion (Sergeant)")]
+        LegionSergeant,
         [Description("Marneus Calgar")]
         MarneusCalgar,
         [Description("Meister der Schmeide")]
@@ -531,8 +545,8 @@ namespace Listen
         Ordenschampion,
         [Description("Ordensmeister")]
         Ordensmeister,
-        [Description("Ordenspriester")]
-        Ordenspriester,
+        [Description("Ordenspriester der Space Marines")]
+        OrdenspriesterDerSpaceMarines,
         [Description("Ortan Cassius")]
         OrtanCassius,
         [Description("Pedro Kantor")]
@@ -543,8 +557,12 @@ namespace Listen
         ScoutAufBike,
         [Description("Scoutsergeant")]
         Scoutsergeant,
+        [Description("Scoutsergeant auf Bike")]
+        ScoutsergeantAufBike,
         [Description("Sergeant der Space Marines")]
         SergeantDerSpaceMarines,
+        [Description("Sergeant der Space Marines auf Bike")]
+        SergeantDerSpaceMarinesAufBike,
         [Description("Sergeant Telion")]
         SergeantTelion,
         [Description("Servitor")]
@@ -589,6 +607,8 @@ namespace Listen
         SpaceMarineBike,
         [Description("Landspeeder Storm")]
         LandspeederStorm,
+        [Description("Landspeeder")]
+        Landspeeder,
         [Description("Ehrwürdiger Cybot")]
         EhrwuerdigerCybot,
         [Description("Cybot")]
@@ -601,6 +621,10 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("Servoarm")]
+        Servoarm,
+        [Description("Servoharnisch")]
+        Servoharnisch,
         [Description("Orbitales Bombardement")]
         OrbitalesBombardement,
         [Description("Astartes-Granatwerfer")]
@@ -715,6 +739,8 @@ namespace Listen
         SyncLaserKanone,
         [Description("Synchronisierter Plasmawerfer")]
         SyncPlasmawerfer,
+        [Description("Synchronisierte Plasmapistole")]
+        SyncPlasmapistole,
         [Description("Energieschwert")]
         Energieschwert,
         [Description("Synchronisierte Maschinenkanone")]
@@ -844,7 +870,7 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
-        [Description("Schetterschlag")]
+        [Description("Schmetterschlag")]
         Schmetterschlag,
         [Description("Psischild")]
         Psischild,

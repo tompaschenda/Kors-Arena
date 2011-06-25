@@ -38,6 +38,7 @@ namespace WarhammerGUI
         private string ausPH = "Ausrüstung: ";
         private string ruestPH = "Rüstung: ";
         private string sondPH = "Sonderregeln: ";
+        private string psiPH = "Psikräfte: ";
         private string einhPH = "Einheitentyp: ";
         private string angPH = "Angeschlossenes Transportfahrzeug: ";
         private spielerArmeeKlasse m_armee;
@@ -200,7 +201,7 @@ namespace WarhammerGUI
 
                     // Und jetzt die Tabelle mit den jeweiligen Eigenschaftswerten für jede Untereinheit.
                     // Wir müssen uns an dieser Stelle fragen, ob es sich um ein Fahrzeug handelt oder nicht!
-                    if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie)
+                    if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie || aktEinheit.einheitentyp == Einheitstyp.Bike)
                         beschreibungsString += getTabellenHeaderInfanterie();
                     else if (aktEinheit.einheitentyp == Einheitstyp.FahrzeugLaeufer)
                         beschreibungsString += getTabellenHeaderLaeufer();
@@ -210,7 +211,7 @@ namespace WarhammerGUI
 
                     // Jetzt folgt für jede Untereinheit ein Eintrag in der Tabelle, aber nur dann, wenn wir
                     // die jeweilige Subeinheit nicht schon eingetragen haben!
-                    if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie)
+                    if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie || aktEinheit.einheitentyp == Einheitstyp.Bike)
                         beschreibungsString += getTabellenEntriesInfanterie(aktEinheit);
                     else if (aktEinheit.einheitentyp == Einheitstyp.FahrzeugLaeufer)
                         beschreibungsString += getTabellenEntriesLaeufer(aktEinheit);
@@ -219,6 +220,9 @@ namespace WarhammerGUI
 
                     // Nun sind die Ausrüstungsgegenstände der jeweiligen Subunits dran:
                     beschreibungsString +=  getSubUnitEquip(aktEinheit);
+
+                    // Gegebenenfalls gibt es noch Psi-Kräfte!
+                    beschreibungsString += getSubUnitPsiKräfte(aktEinheit);
 
                     // Und nun die Sonderregeln:
                     beschreibungsString += getSpecialRules(aktEinheit);
@@ -252,6 +256,10 @@ namespace WarhammerGUI
 
         private string getSpecialRules(Einheit aktEinheit)
         {
+            // Wenn es keine Sonderregeln gibt, führen wir sie auch nicht auf!
+            if (aktEinheit.sonderregeln.Count == 0)
+                return "";
+
  	        string rulesString = "";
             rulesString += "\\noindent \\textbf{" + sondPH + "}";
 
@@ -263,9 +271,6 @@ namespace WarhammerGUI
                 else
                     rulesString += "";
             }
-            if (aktEinheit.sonderregeln.Count == 0)
-                rulesString += "keine";
-
             rulesString += "\\bb \n";
 
             return rulesString;
@@ -471,7 +476,7 @@ namespace WarhammerGUI
                 entriesString += "\\\\\n";
 
                 // Dito für die Rüstungen:
-                if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie)
+                if (aktEinheit.einheitentyp == Einheitstyp.Infanterie || aktEinheit.einheitentyp == Einheitstyp.Sprungtruppen || aktEinheit.einheitentyp == Einheitstyp.Artillerie || aktEinheit.einheitentyp == Einheitstyp.Bike)
                 {
                     entriesString += "\\textbf{" + ruestPH + "}";
                     for (int j = 0; j < alleRuestungsstrings.Count; ++j)
@@ -494,6 +499,29 @@ namespace WarhammerGUI
 
 
             return entriesString;
+        }
+
+        private string getSubUnitPsiKräfte(Einheit aktEinheit)
+        {
+            string forcesString = "";
+            forcesString += "\\noindent \\textbf{" + psiPH + "}";
+
+            var listePsikrafte = gibMirDiePsikraefteDerAktuellenEinheit(aktEinheit);
+            if (listePsikrafte.Count == 0)
+                return "";
+
+            for (int i = 0; i < listePsikrafte.Count; ++i)
+            {
+                forcesString += EnumExtensions.getEnumDescription(typeof(Psikraefte), listePsikrafte[i]).ToString();
+                if (i < listePsikrafte.Count - 1)
+                    forcesString += ", ";
+                else
+                    forcesString += "";
+            }
+
+            forcesString += "\\bb \n";
+
+            return forcesString;
         }
 
         private string getTabellenEntriesFahrzeug(Einheit aktEinheit)
@@ -723,6 +751,58 @@ namespace WarhammerGUI
             );
 
             return listeAllerSonderregeln;
+        }
+
+
+        private List<Psikraefte> gibMirDiePsikraefteDerAktuellenEinheit(Einheit aktEinheit)
+        {
+            List<Psikraefte> listeAllerPsikraefte = new List<Psikraefte>() { };
+
+            for (int k = 0; k < aktEinheit.subEinheiten.Count; ++k)
+            {
+                var aktSubeinheit = aktEinheit.subEinheiten[k];
+
+                for (int l = 0; l < aktSubeinheit.psikraefte.Count; ++l)
+                {
+                    if (!listeAllerPsikraefte.Contains(aktSubeinheit.psikraefte[l]))
+                    {
+                        listeAllerPsikraefte.Add(aktSubeinheit.psikraefte[l]);
+                    }
+                }
+            }
+
+            // Jetzt sortiere ich die Regeln natürlich noch alphabetisch:
+            listeAllerPsikraefte.Sort(delegate(Psikraefte r1, Psikraefte r2)
+            {
+                string nameString1 = EnumExtensions.getEnumDescription(typeof(Psikraefte), r1);
+                string nameString2 = EnumExtensions.getEnumDescription(typeof(Psikraefte), r2);
+                return nameString1.CompareTo(nameString2);
+            }
+            );
+
+            return listeAllerPsikraefte;
+        }
+
+        private List<Psikraefte> gibMIrdieEinmaligePsikraftListe()
+        {
+            List<Psikraefte> listeAllerPsikraefte = new List<Psikraefte>() { };
+
+            for (int j = 0; j < m_armee.armeeEinheiten.Count; ++j)
+            {
+                var aktEinheit = m_armee.armeeEinheiten[j];
+                listeAllerPsikraefte.AddRange(gibMirDiePsikraefteDerAktuellenEinheit(aktEinheit));
+            }
+
+            // Jetzt sortiere ich die Regeln natürlich noch alphabetisch:
+            listeAllerPsikraefte.Sort(delegate(Psikraefte r1, Psikraefte r2)
+            {
+                string nameString1 = EnumExtensions.getEnumDescription(typeof(Psikraefte), r1);
+                string nameString2 = EnumExtensions.getEnumDescription(typeof(Psikraefte), r2);
+                return nameString1.CompareTo(nameString2);
+            }
+            );
+
+            return listeAllerPsikraefte;
         }
     }
 }

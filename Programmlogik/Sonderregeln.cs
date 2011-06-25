@@ -121,8 +121,8 @@ namespace WarhammerGUI
             regelListe.Add(createUnbeugsameGeister());
             regelListe.Add(createWieAusDemNichts());
             regelListe.Add(createLahmgelegt());
-            regelListe.Add(createGeschenkDerVorsehung());
             regelListe.Add(createFlankenangriff());
+            regelListe.Add(createEpisto());
         }
 
 
@@ -366,10 +366,10 @@ namespace WarhammerGUI
             kombo.beschreibung += "Waffen, die Gegner in Sichtbereich haben, dürfen feuern.";
             return kombo;
         }
-        private sonderRegelKombo createGeschenkDerVorsehung()
+        private sonderRegelKombo createEpisto()
         {
-            sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.GeschenkDerVorsehung };
-            kombo.beschreibung = "";
+            sonderRegelKombo kombo = new sonderRegelKombo() { name = Sonderregeln.Epistolarius };
+            kombo.beschreibung = "Darf pro Runde zwei Psikräfte benutzen. ";
             return kombo;
         }
 
