@@ -46,6 +46,7 @@ namespace WarhammerGUI
             einheitKostenGesamt = -1;
             erschaffungOkay = false;
             angeschlossenesFahrzeugString = "";
+            zugehoerigeEinheit = "";
         }
 
         /// <summary>
@@ -59,7 +60,6 @@ namespace WarhammerGUI
             uniqueStringProperty = alteEinheit.uniqueStringProperty;
             spielerEinheitenName = alteEinheit.spielerEinheitenName;
             fraktion = alteEinheit.fraktion;
-            basisGroesse = alteEinheit.basisGroesse;
             basispunkteKosten = alteEinheit.basispunkteKosten;
             einheitKostenGesamt = alteEinheit.einheitKostenGesamt;
             einzigartig = alteEinheit.einzigartig;
@@ -71,6 +71,7 @@ namespace WarhammerGUI
             subEinheiten = alteEinheit.subEinheiten;
             erschaffungOkay = alteEinheit.erschaffungOkay;
             uniqueHeaderProperty = alteEinheit.uniqueHeaderProperty;
+            zugehoerigeEinheit = alteEinheit.zugehoerigeEinheit;
         }
 
 
@@ -104,6 +105,12 @@ namespace WarhammerGUI
         public string spielerEinheitenName;
 
         /// <summary>
+        /// Der unique identifier einer zugehörigen Einheit. Das kann entweder ein angeschlossenes Transportfahrzeug sein ODER
+        /// umgekehrt die Einheit, der das Transportfahrzeug gehört.
+        /// </summary>
+        public string zugehoerigeEinheit;
+
+        /// <summary>
         /// Wurde die Einheit korrekt inklusive aller Spielerabfragen erzeugt?
         /// </summary>
         public bool erschaffungOkay;
@@ -112,12 +119,6 @@ namespace WarhammerGUI
         /// Zu welcher Fraktion gehört diese Einheit?
         /// </summary>
         public Fraktionen fraktion;
-
-        /// <summary>
-        /// Wie viele Subeinheiten sind automatisch
-        /// pro Typ dabei?
-        /// </summary>
-        public List<Groessenspecifier> basisGroesse;
 
         /// <summary>
         /// Wievele Basispunktekosten habe ich automatisch?
