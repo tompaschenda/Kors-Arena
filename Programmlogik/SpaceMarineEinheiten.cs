@@ -361,10 +361,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarine , anzahl = 4});
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantDerSpaceMarines, anzahl = 1 });
-
             basispunkteKosten = 90;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -596,10 +592,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarineTerminator, anzahl = 4 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Terminatorsergeant, anzahl = 1 });
-
             basispunkteKosten = 200;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -756,10 +748,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarineTerminator, anzahl = 4 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Terminatorsergeant, anzahl = 1 });
 
             basispunkteKosten = 200;
             einheitKostenGesamt = basispunkteKosten;
@@ -920,9 +908,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Rhino, anzahl = 1 });
-
             basispunkteKosten = 35;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1016,9 +1001,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.RhinoKostenlos, anzahl = 1 });
-
             basispunkteKosten = 0;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1111,9 +1093,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Razorback, anzahl = 1 });
 
             basispunkteKosten = 40;
             einheitKostenGesamt = basispunkteKosten;
@@ -1234,9 +1213,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Landungskapsel, anzahl = 1 });
-
             basispunkteKosten = 35;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1324,9 +1300,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.LandungskapselKostenlos, anzahl = 1 });
-
             basispunkteKosten = 0;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1413,9 +1386,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.LandRaiderCrusader, anzahl = 1 });
 
             basispunkteKosten = 250;
             einheitKostenGesamt = basispunkteKosten;
@@ -1517,9 +1487,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.LandRaider, anzahl = 1 });
-
             basispunkteKosten = 250;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1619,9 +1586,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.LandRaiderRedeemer, anzahl = 1 });
 
             basispunkteKosten = 240;
             einheitKostenGesamt = basispunkteKosten;
@@ -1724,9 +1688,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Whirlwind, anzahl = 1 });
-
             basispunkteKosten = 85;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1821,9 +1782,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Vindicator, anzahl = 1 });
 
             basispunkteKosten = 115;
             einheitKostenGesamt = basispunkteKosten;
@@ -1922,9 +1880,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantChronus, anzahl = 1 });
-
             basispunkteKosten = 70;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1992,9 +1947,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantTelion, anzahl = 1 });
 
             basispunkteKosten = 50;
             einheitKostenGesamt = basispunkteKosten;
@@ -2067,9 +2019,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.CaptainCatoSicarius, anzahl = 1 });
 
             basispunkteKosten = 200;
             einheitKostenGesamt = basispunkteKosten;
@@ -2145,9 +2094,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.VarroTigurius, anzahl = 1 });
 
             basispunkteKosten = 230;
             einheitKostenGesamt = basispunkteKosten;
@@ -2233,9 +2179,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.OrtanCassius, anzahl = 1 });
-
             basispunkteKosten = 125;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2310,9 +2253,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.PedroKantor, anzahl = 1 });
-
             basispunkteKosten = 175;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2386,9 +2326,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.CaptainLysander, anzahl = 1 });
-
             basispunkteKosten = 200;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2460,9 +2397,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.CaptainShrike, anzahl = 1 });
-
             basispunkteKosten = 195;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2533,9 +2467,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.VulkanHestan, anzahl = 1 });
 
             basispunkteKosten = 190;
             einheitKostenGesamt = basispunkteKosten;
@@ -2609,9 +2540,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.KorsarroKhan, anzahl = 1 });
 
             basispunkteKosten = 160;
             einheitKostenGesamt = basispunkteKosten;
@@ -2706,10 +2634,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Salvenkanone, anzahl = 1 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Techmarine, anzahl = 1 });
 
             basispunkteKosten = 100;
             einheitKostenGesamt = basispunkteKosten;
@@ -2829,10 +2753,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarine, anzahl = 4 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantDerSpaceMarines, anzahl = 1 });
 
             basispunkteKosten = 90;
             einheitKostenGesamt = basispunkteKosten;
@@ -3041,9 +2961,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.LandspeederStorm, anzahl = 1 });
-
             basispunkteKosten = 50;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -3121,10 +3038,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.ScoutAufBike, anzahl = 2 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Scoutsergeant, anzahl = 1 });
 
             basispunkteKosten = 70;
             einheitKostenGesamt = basispunkteKosten;
@@ -3331,10 +3244,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarine, anzahl = 4 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantDerSpaceMarines, anzahl = 1 });
 
             basispunkteKosten = 100;
             einheitKostenGesamt = basispunkteKosten;
@@ -3617,10 +3526,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.VeteranDerSpaceMariens, anzahl = 4 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantDerSpaceMarines, anzahl = 1 });
-
             basispunkteKosten = 125;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -3880,9 +3785,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.EhrwuerdigerCybot, anzahl = 1 });
-
             basispunkteKosten = 165;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -4039,9 +3941,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Cybot, anzahl = 1 });
-
             basispunkteKosten = 105;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -4196,9 +4095,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.IroncladCybot, anzahl = 1 });
 
             basispunkteKosten = 135;
             einheitKostenGesamt = basispunkteKosten;
@@ -4371,10 +4267,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Scout, anzahl = 4 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Scoutsergeant, anzahl = 1 });
 
             basispunkteKosten = 75;
             einheitKostenGesamt = basispunkteKosten;
@@ -4626,9 +4518,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.CaptainDerSpaceMarines, anzahl = 1 });
 
             basispunkteKosten = 100;
             einheitKostenGesamt = basispunkteKosten;
@@ -4932,9 +4821,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.CaptainDerSpaceMarines, anzahl = 1 });
 
             basispunkteKosten = 125;
             einheitKostenGesamt = basispunkteKosten;
@@ -5241,10 +5127,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarine, anzahl = 4 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SergeantDerSpaceMarines, anzahl = 1 });
-
             basispunkteKosten = 125;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -5476,9 +5358,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleEinheitenNamen.Predator, anzahl = 1 });
-
             basispunkteKosten = 60;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -5612,9 +5491,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Landspeeder, anzahl = 1 });
-
             basispunkteKosten = 50;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -5725,9 +5601,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Trike, anzahl = 1 });
-
             basispunkteKosten = 40;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -5829,9 +5702,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarineBike, anzahl = 1 });
 
             basispunkteKosten = 90;
             einheitKostenGesamt = basispunkteKosten;
@@ -6069,10 +5939,6 @@ namespace WarhammerGUI
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.LegionLegionaer, anzahl = 4 });
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.LegionSergeant, anzahl = 1 });
-
             basispunkteKosten = 155;
             einheitKostenGesamt = basispunkteKosten;
 
@@ -6243,9 +6109,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Techmarine, anzahl = 1 });
 
             basispunkteKosten = 50;
             einheitKostenGesamt = basispunkteKosten;
@@ -6480,9 +6343,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.ScriptorSpaceMarines, anzahl = 1 });
 
             basispunkteKosten = 100;
             einheitKostenGesamt = basispunkteKosten;
@@ -6724,9 +6584,6 @@ namespace WarhammerGUI
             fraktion = Fraktionen.SpaceMarines;
 
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.OrdenspriesterDerSpaceMarines, anzahl = 1 });
 
             basispunkteKosten = 100;
             einheitKostenGesamt = basispunkteKosten;
