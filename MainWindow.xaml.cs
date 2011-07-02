@@ -40,7 +40,7 @@ namespace WarhammerGUI
             hook.RegisterHotKey(ModifierBeys.Control, Keys.N);
 
         }
-
+        
         private void klickNeueStreitmacht(object sender, RoutedEventArgs e)
         {
             StreitmachtCreate streitmachtErzeugenFenster = new StreitmachtCreate(this);
@@ -438,7 +438,7 @@ namespace WarhammerGUI
         }
 
         // Ich möchte, dass eine Übersicht der Streitmacht erstellt wird!
-        private void onStreitMachtToTex(object sender, RoutedEventArgs e)
+        public void onStreitMachtToTex(object sender, RoutedEventArgs e)
         {
             if (ListBoxArmeeListe.SelectedIndex == -1)
                 return;
@@ -686,7 +686,7 @@ namespace WarhammerGUI
 
         private void KlickInfo(object sender, RoutedEventArgs e)
         {
-            string message = "Army Bench Version 0.72 \n\n All programming and design by MaWe  (c) 2011 \n\n 'Warhammer', 'Games Worksop' und alle anderen Namen, etc. sind";
+            string message = "Army Bench Version 0.8 \n\n All programming and design by MaWe  (c) 2011 \n\n 'Warhammer', 'Games Workshop' und alle anderen Namen, etc. sind";
             message += " eingetragene Warenzeichen von 'Games Workshop'. \n\n Benutzung dieser Software geschieht auf eigene Gefahr. Diese Software darf nicht weiter kopiert ";
             message += " oder verbreitet werden. \n\n Nutzung der Software ist ausschließlich für private, nichtkommerzielle Zwecke gestattet!";
             string caption = "Info";
@@ -707,9 +707,6 @@ namespace WarhammerGUI
             {
                 case (Keys.C):
                     klickStreitmachtKopieren(null, null);
-                    break;
-                case (Keys.N):
-                    klickNeueStreitmacht(null, null);
                     break;
                 case(Keys.Delete):
                     klickLoescheStreitMacht(null, null);

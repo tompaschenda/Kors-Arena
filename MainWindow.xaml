@@ -35,8 +35,8 @@
         <Label Content="Armeeliste:" FontWeight="Bold" Height="31" HorizontalAlignment="Left" Margin="111,86,0,0" Name="label3" VerticalAlignment="Top" Width="258" />
         <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="404,144,0,0" Name="label4" VerticalAlignment="Top" />
         <Label Content="Gesamtpunkte:" Height="28" HorizontalAlignment="Left" Margin="404,212,0,0" Name="label5" VerticalAlignment="Top" />
-        <Button Content="Streitmacht _bearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,308,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickStreitmachtBearbeiten" />
-        <Button Content="_Neue Streitmacht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,255,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickNeueStreitmacht"   />
+        <Button Content="Streitmacht bearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,308,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickStreitmachtBearbeiten" />
+        <Button Content="Neue Streitmacht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,255,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickNeueStreitmacht"   />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,144,0,0" Name="displayArmyName" VerticalAlignment="Top" Width="386" IsEnabled="True" IsReadOnly="True" BorderBrush="White" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,183,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="386" IsReadOnly="True" BorderBrush="White" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,217,0,0" Name="displayArmyPoints" VerticalAlignment="Top" Width="386" IsReadOnly="True" BorderBrush="White" />
