@@ -28,7 +28,16 @@ namespace WarhammerGUI
             armeeName = alteArmee.armeeName;
             armeeFraktion = alteArmee.armeeFraktion;
             gesamtPunkte = alteArmee.gesamtPunkte;
-            armeeEinheiten = alteArmee.armeeEinheiten;
+
+            // Achtung! Für die Einheiten der Armee muss ich natürlich den speziellen
+            // Copy-Konstruktor benutzen, sonst gibt es keine Deep-Copy!
+            armeeEinheiten = new List<Einheit>() { };
+            for (int i = 0; i < alteArmee.armeeEinheiten.Count; ++i)
+            {
+                var vorlageEinheit = alteArmee.armeeEinheiten[i];
+                Einheit kopierteEinheit = new Einheit(vorlageEinheit); // Copy-Konstruktor!
+                armeeEinheiten.Add(kopierteEinheit);
+            }
         }
             
         /// <summary>
