@@ -72,6 +72,7 @@ namespace WarhammerGUI
 
             // Das Treeview mit allen Einheiten muss auch aktualisiert werden:
             updateArmyTreeView();
+            updateArmyTreeView(); // Zweimal aktualisieren, damit die Einheiten richtig sortiert werden!
         }
 
 
@@ -559,17 +560,13 @@ namespace WarhammerGUI
             // DANN können wir erst kopieren!
             var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(nameDerEinheit);
 
-            // Jetzt müssen wir den Spieler zwingen, einen einzigartigen String zur Beschreibung der Unit anzugeben!
+            // An dieser Stelle generieren wir automatisch einen einzigartigen String zur Beschreibung der Unit.
+            // Der Spieler wird nicht dazu gezwungen, einen eigenen Namen anzugeben, kann dies aber jederzeit tun, indem er
+            // die Einheit umbenennt.
             UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, neueUnitOrig) { };
-            umbenennungsfenster.ShowDialog();
 
-            // Wenn der Nutzer abbrechen wollte, verlassen wir diese Funktion und nichts passiert.
-            if (!umbenennungsfenster.m_okay)
-                return;
-
-            // Ansonsten aktualisieren wir den Spielernamen der neuen Einheit:
-            neueUnitOrig.spielerEinheitenName = umbenennungsfenster.m_neuerSpielerString;
-
+            // Ansonsten aktualisieren wir den Spielernamen der neuen Einheit erst dann, wenn wir die Einheit "deep" kopiert haben!
+           
             // Wir müssen noch alle Spieleranfragen abhandeln! Dazu müssen wir lediglich die entsprechende Methode 
             // der Klasse aufrufen!
             neueUnitOrig.createUnitBase();
@@ -582,6 +579,8 @@ namespace WarhammerGUI
 
             // Jetzt erst mache ich eine Kopie der Einheit!
             var kopierteEinheit = new Einheit(neueUnitOrig);
+
+            kopierteEinheit.spielerEinheitenName = umbenennungsfenster.m_neuerSpielerString;
 
             // Achtung: Wenn diese Funktion zum 2. Mal aufgerufen wird, um ein angeschlossenes Transportfahrzeug zu
             // generieren, muss ich das Fahrzeug auch als solches markieren!
@@ -638,9 +637,15 @@ namespace WarhammerGUI
                 klickRename(this, e);
             if( e.Key == Key.C || e.Key == Key.K  && copyIndex != -1)
                 klickKopiereEinheit(this, e);
+            */
 
             if (e.Key == Key.A || e.Key == Key.Escape || e.Key == Key.S)
-                this.Close();*/
+                this.Close();
+        }
+
+        private void erstelleArmeeuebersicht(object sender, RoutedEventArgs e)
+        {
+            m_mainWindowParent.onStreitMachtToTex(sender, e);
         }
     }
 }
