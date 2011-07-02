@@ -77,8 +77,14 @@ namespace WarhammerGUI
 
         public int CompareTo(Einheit obj)
         {
-            string nameKlasse = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), einheitenName);
-            string nameDelegat = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), obj.einheitenName);
+            // Verglichen wird natürlich auf den Spieler-Einheitennamen!
+            string nameKlasse = uniqueHeaderProperty;
+            string nameDelegat = obj.uniqueHeaderProperty;
+
+            if(nameKlasse == null)
+                nameKlasse = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), einheitenName);
+            if(nameDelegat == null)
+                nameDelegat = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), obj.einheitenName);
 
             return  nameKlasse.CompareTo(nameDelegat);
         }
