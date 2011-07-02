@@ -27,10 +27,26 @@ namespace WarhammerGUI
             InitializeComponent();
             m_indexDerArmee = indexDerArmee;
 
-            // Ich möchte, dass der alte Name direkt als Auswahl erscheint:
-            this.namensTextbox.Text = testEinheit.spielerEinheitenName;
+            // Ich möchte, dass der alte Name direkt als Auswahl erscheint, wenn es einen gibt!
+            if (testEinheit.spielerEinheitenName != "")
+            {
+                this.namensTextbox.Text = testEinheit.spielerEinheitenName;
+            }
+            else
+            {
+                // Ist das nicht der Fall, soll automatisch ein Name generiert werden, der eine Zahl hochzählt!
+                int testZahl = 0;
+                while (true)
+                {
+                    testZahl++;
+                    this.namensTextbox.Text = testZahl.ToString();
+                    if(checkUnitNameValidity(false))
+                        break;
+                }
+            }
             this.namensTextbox.SelectionLength = this.namensTextbox.Text.Length;  
             this.namensTextbox.Focus();
+            this.m_neuerSpielerString = this.namensTextbox.Text;
         }
 
         private StreitmachtEdit m_WindowParent;
@@ -64,7 +80,7 @@ namespace WarhammerGUI
         /// <summary>
         /// Prüft, ob die Eingabe des Nutzers in das Textfeld erfolgt ist und diese gültig ist!
         /// </summary>
-        public bool checkUnitNameValidity()
+        public bool checkUnitNameValidity(bool showGUIAnnouncement = true)
         {
             bool allesOkay = true;         
             
@@ -72,7 +88,8 @@ namespace WarhammerGUI
             string spielerNamensstring = this.namensTextbox.Text;
             if (spielerNamensstring == "")
             {
-                MessageBox.Show("Bitte einen Namen eingeben!", "Kein Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if(showGUIAnnouncement)
+                    MessageBox.Show("Bitte einen Namen eingeben!", "Kein Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
                 allesOkay = false;
             }
 
@@ -80,7 +97,8 @@ namespace WarhammerGUI
             for (int i = 0; i < spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Count; ++i)
                 if (spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[i].spielerEinheitenName == this.namensTextbox.Text)
                 {
-                    MessageBox.Show("Bitte einen Namen eingeben, der noch nicht vergeben ist!", "Kein einzigartiger Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    if (showGUIAnnouncement)
+                        MessageBox.Show("Bitte einen Namen eingeben, der noch nicht vergeben ist!", "Kein einzigartiger Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
                     allesOkay = false;
                 }
 
