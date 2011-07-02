@@ -205,10 +205,133 @@ namespace WarhammerGUI
         }
     }
 
+    public static class spaceMarineHelperClass
+    {
+        // Erzeugt die Subeinheit "Space Marine"
+        public static subEinheit createSpaceMarine()
+        {
+            var spaceMarine = new subEinheit() { };
+            spaceMarine.name = alleSubeinheitenNamen.SpaceMarine;
 
+            // Jeder Space Marine hat eine Servorüstung (keine Extra-Kosten):
+            spaceMarine.ruestung = alleRuestungen.ServoRuestung;
 
+            // Jeder Space Marine hat Fragment- und Sprenggranaten (keine Extra-Kosten):
+            spaceMarine.ausruestung = new List<alleAusruestung>();
+            spaceMarine.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            spaceMarine.ausruestung.Add(alleAusruestung.Sprenggranaten);
 
+            // Das Gleiche gilt für die Boltpistole!
+            spaceMarine.waffen = new List<waffe>() { };
+            spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
+            spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
 
+            // Fehlen noch die eigentlichen Were für den  Marine:
+            spaceMarine.kg = 4;
+            spaceMarine.bf = 4;
+            spaceMarine.st = 4;
+            spaceMarine.wid = 4;
+            spaceMarine.lp = 1;
+            spaceMarine.ini = 4;
+            spaceMarine.at = 1;
+            spaceMarine.mw = 8;
+            spaceMarine.rw = 3;
+            spaceMarine.ret = 0;
+
+            spaceMarine.einheitentyp = Einheitstyp.Infanterie;
+
+            return spaceMarine;
+        }
+
+        public static subEinheit createSpaceMarineSergeant()
+        {
+            // Außerdem gibt es ja noch den Sergeant:
+            // Erstellen wir ihn:
+            var spaceMarineSergeant = new subEinheit() { };
+            spaceMarineSergeant.name = alleSubeinheitenNamen.SergeantDerSpaceMarines;
+
+            spaceMarineSergeant.ausruestung = new List<alleAusruestung>() { };
+            spaceMarineSergeant.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            spaceMarineSergeant.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            spaceMarineSergeant.ruestung = alleRuestungen.ServoRuestung;
+
+            spaceMarineSergeant.waffen = new List<waffe>() { };
+            spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
+            spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
+
+            // Fehlen noch die eigentlichen Were für den  Marine:
+            spaceMarineSergeant.kg = 4;
+            spaceMarineSergeant.bf = 4;
+            spaceMarineSergeant.st = 4;
+            spaceMarineSergeant.wid = 4;
+            spaceMarineSergeant.lp = 1;
+            spaceMarineSergeant.ini = 4;
+            spaceMarineSergeant.at = 2;
+            spaceMarineSergeant.mw = 9;
+            spaceMarineSergeant.rw = 3;
+            spaceMarineSergeant.ret = 0;
+            spaceMarineSergeant.einheitentyp = Einheitstyp.Infanterie;
+
+            return spaceMarineSergeant;
+        }
+
+        public static subEinheit createScout()
+        {
+            var scout = createSpaceMarine();
+            scout.kg = 3;
+            scout.bf = 3;
+            scout.ruestung = alleRuestungen.Scoutruestung;
+            return scout;
+        }
+
+        public static subEinheit createTerminator()
+        {
+            var terminator = new subEinheit() { };
+            terminator.name = alleSubeinheitenNamen.SpaceMarineTerminator;
+
+            terminator.ruestung = alleRuestungen.TerminatorRuestung;
+
+            terminator.ausruestung = new List<alleAusruestung>();
+
+            terminator.waffen = new List<waffe>() { };
+
+            // Fehlen noch die eigentlichen Were für den Terminator:
+            terminator.kg = 4;
+            terminator.bf = 4;
+            terminator.st = 4;
+            terminator.wid = 4;
+            terminator.ini = 4;
+            terminator.lp = 1;
+            terminator.at = 2;
+            terminator.mw = 9;
+            terminator.rw = 2;
+            terminator.ret = 5;
+
+            terminator.einheitentyp = Einheitstyp.Infanterie;
+
+            return terminator;
+        }
+
+        public static subEinheit createTermiantorSergeant()
+        {
+            var sarge = createTerminator();
+            sarge.name = alleSubeinheitenNamen.Terminatorsergeant;
+            return sarge;
+        }
+
+        public static subEinheit createVeteran()
+        {
+            var veteran = createSpaceMarine();
+            veteran.name = alleSubeinheitenNamen.VeteranDerSpaceMariens;
+            veteran.at = 2;
+            veteran.mw = 9;
+
+            veteran.ausruestung.Add(alleAusruestung.Spezialmunition);
+
+            return veteran;
+        }
+
+    }
 
 
     /// <summary>
@@ -279,27 +402,14 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlSpaceMarinesGesamt; ++i )
             {
                 // Okay, legen wir die Space Marines an:
-                var spaceMarine = new subEinheit() { };
-                spaceMarine.name = alleSubeinheitenNamen.SpaceMarine;
-
-                // Jeder Space Marine hat eine Servorüstung (keine Extra-Kosten):
-                spaceMarine.ruestung = alleRuestungen.ServoRuestung;
-
-                // Jeder Space Marine hat Fragment- und Sprenggranaten (keine Extra-Kosten):
-                spaceMarine.ausruestung = new List<alleAusruestung>();
-                spaceMarine.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-                spaceMarine.ausruestung.Add(alleAusruestung.Sprenggranaten);
-
-                // Das Gleiche gilt für die Boltpistole!
-                spaceMarine.waffen = new List<waffe>() { };
-                spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));  
-
+                var spaceMarine = spaceMarineHelperClass.createSpaceMarine();                
 
                 // Von 1 bis 8 nur Standard und keine weiteren Kosten!
-                if(i < 7)
-                    spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
                 if(i == 7)
                 {
+                    // Bolter 'raus:
+                    spaceMarine.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
+
                     // Jetzt darf ich auch andere Auswahlen durchühren:
                     var auswahlKonstrukt = new List<pulldownAuswahl>() { };
                     auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
@@ -322,6 +432,9 @@ namespace WarhammerGUI
                 }
                 else if (i == 8)
                 {
+                    // Bolter 'raus:
+                    spaceMarine.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
+
                     var auswahlKonstrukt = new List<pulldownAuswahl>() { };
                     auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
                     auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = 0 });
@@ -329,7 +442,6 @@ namespace WarhammerGUI
                     auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 0 });
                     auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 5 });
                     auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Laserkanone, kosten = 10 });
-
 
                     Auswahl1AusN auswahlWaffe2 = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Ein Space Marine darf eine der folgenden Waffen wählen:", auswahlKonstrukt);
                     if (!auswahlWaffe2.allesOkay)
@@ -344,21 +456,6 @@ namespace WarhammerGUI
                     spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
                     einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
                 }
-
-                // Fehlen noch die eigentlichen Were für den  Marine:
-                spaceMarine.kg = 4;
-                spaceMarine.bf = 4;
-                spaceMarine.st = 4;
-                spaceMarine.wid = 4;                
-                spaceMarine.lp = 1;
-                spaceMarine.ini = 4;
-                spaceMarine.at = 1;
-                spaceMarine.mw = 8;
-                spaceMarine.rw = 3;
-                spaceMarine.ret = 0;
-
-                spaceMarine.einheitentyp = Einheitstyp.Infanterie;
-
  
                 subEinheiten.Add(spaceMarine);                
             }
@@ -369,19 +466,14 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var spaceMarineSergeant = new subEinheit() { };
-            spaceMarineSergeant.name = alleSubeinheitenNamen.SergeantDerSpaceMarines;
-
-            spaceMarineSergeant.ausruestung = new List<alleAusruestung>() { };
-            spaceMarineSergeant.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-            spaceMarineSergeant.ausruestung.Add(alleAusruestung.Sprenggranaten);
-            spaceMarineSergeant.ruestung = alleRuestungen.ServoRuestung;
-            spaceMarineSergeant.waffen = new List<waffe>() { };
+            var spaceMarineSergeant = spaceMarineHelperClass.createSpaceMarineSergeant();
 
             // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
+            spaceMarineSergeant.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
+            spaceMarineSergeant.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
+
             var auswahlSargePulldown = new List<pulldownAuswahl>() { };
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-            // auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
@@ -439,20 +531,6 @@ namespace WarhammerGUI
                 einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
             }
 
-
-            // Fehlen noch die eigentlichen Were für den  Marine:
-            spaceMarineSergeant.kg = 4;
-            spaceMarineSergeant.bf = 4;
-            spaceMarineSergeant.st = 4;
-            spaceMarineSergeant.wid = 4;            
-            spaceMarineSergeant.lp = 1;
-            spaceMarineSergeant.ini = 4;
-            spaceMarineSergeant.at = 2;
-            spaceMarineSergeant.mw = 9;
-            spaceMarineSergeant.rw = 3;
-            spaceMarineSergeant.ret = 0;
-            spaceMarineSergeant.einheitentyp = Einheitstyp.Infanterie;
-
             subEinheiten.Add(spaceMarineSergeant);
 
             // Wahl angeschlossenes Transportfahrzeug
@@ -504,7 +582,7 @@ namespace WarhammerGUI
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
             basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Terminator, anzahl = 4 });
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarineTerminator, anzahl = 4 });
             basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Terminatorsergeant, anzahl = 1 });
 
             basispunkteKosten = 200;
@@ -559,15 +637,7 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlTerminatorenGesamt; ++i)
             {
                 // Okay, legen wir die Space Marines an:
-                var terminator = new subEinheit() { };
-                terminator.name = alleSubeinheitenNamen.Terminator;
-
-                terminator.ruestung = alleRuestungen.TerminatorRuestung;
-
-                terminator.ausruestung = new List<alleAusruestung>();
-
-                terminator.waffen = new List<waffe>() { };
-
+                var terminator = spaceMarineHelperClass.createTerminator();               
 
                 var terminatorNahkampfWaffen = new List<pulldownAuswahl>() { };
                 terminatorNahkampfWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = +0 });
@@ -607,22 +677,7 @@ namespace WarhammerGUI
                     terminator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
                     einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
                 }
-
-                // Fehlen noch die eigentlichen Were für den Terminator:
-                terminator.kg = 4;
-                terminator.bf = 4;
-                terminator.st = 4;
-                terminator.wid = 4;
-                terminator.ini = 4;
-                terminator.lp = 1;
-                terminator.at = 2;
-                terminator.mw = 9;
-                terminator.rw = 2;
-                terminator.ret = 5;
-
-                terminator.einheitentyp = Einheitstyp.Infanterie;
-
- 
+               
                 subEinheiten.Add(terminator);
             }
 
@@ -632,29 +687,11 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var terminatorSergeant = new subEinheit() { };
-            terminatorSergeant.name = alleSubeinheitenNamen.Terminatorsergeant;
-
-            terminatorSergeant.ausruestung = new List<alleAusruestung>() { };
-
-            terminatorSergeant.ruestung = alleRuestungen.TerminatorRuestung;
-            terminatorSergeant.waffen = new List<waffe>() { };
+            var terminatorSergeant = spaceMarineHelperClass.createTermiantorSergeant();           
 
             // Der Sarge hat immer den Sturmbolter und ein E-Schwert!
             terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
             terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieschwert));
-
-            terminatorSergeant.kg = 4;
-            terminatorSergeant.bf = 4;
-            terminatorSergeant.st = 4;
-            terminatorSergeant.wid = 4;
-            terminatorSergeant.lp = 1;
-            terminatorSergeant.ini = 4;
-            terminatorSergeant.at = 2;
-            terminatorSergeant.mw = 9;
-            terminatorSergeant.rw = 2;
-            terminatorSergeant.ret = 5;
-            terminatorSergeant.einheitentyp = Einheitstyp.Infanterie;
 
             subEinheiten.Add(terminatorSergeant);
 
@@ -706,7 +743,7 @@ namespace WarhammerGUI
             uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
 
             basisGroesse = new List<Groessenspecifier>() { };
-            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Terminator, anzahl = 4 });
+            basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.SpaceMarineTerminator, anzahl = 4 });
             basisGroesse.Add(new Groessenspecifier() { subEinheitenname = alleSubeinheitenNamen.Terminatorsergeant, anzahl = 1 });
 
             basispunkteKosten = 200;
@@ -760,14 +797,7 @@ namespace WarhammerGUI
             // Genau soviele einordnen, wie vom Spieler gewünscht:
             for (int i = 0; i < anzahlTerminatorenGesamt; ++i)
             {
-                var terminator = new subEinheit() { };
-                terminator.name = alleSubeinheitenNamen.Terminator;
-
-                terminator.ruestung = alleRuestungen.TerminatorRuestung;
-
-                terminator.ausruestung = new List<alleAusruestung>();
-
-                terminator.waffen = new List<waffe>() { };
+                var terminator = spaceMarineHelperClass.createTerminator();                
 
                 var terminatorNahkampfWaffen = new List<pulldownAuswahl>() { };
                 terminatorNahkampfWaffen.Add(new pulldownAuswahl() { auswahl = "Ein Paar Energieklauen", kosten = +0 });
@@ -791,21 +821,6 @@ namespace WarhammerGUI
                     terminator.ausruestung.Add(alleAusruestung.Sturmschild);
                 }
                 einheitKostenGesamt = einheitKostenGesamt + terminatorNahkampfWaffen[gewaehlterIndex].kosten * 1;
-
-                // Fehlen noch die eigentlichen Were für den Terminator:
-                terminator.kg = 4;
-                terminator.bf = 4;
-                terminator.st = 4;
-                terminator.wid = 4;
-                terminator.ini = 4;
-                terminator.lp = 1;
-                terminator.at = 2;
-                terminator.mw = 9;
-                terminator.rw = 2;
-                terminator.ret = 5;
-
-                terminator.einheitentyp = Einheitstyp.Infanterie;
-
  
                 subEinheiten.Add(terminator);
             }
@@ -816,14 +831,8 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var terminatorSergeant = new subEinheit() { };
-            terminatorSergeant.name = alleSubeinheitenNamen.Terminatorsergeant;
-
-            terminatorSergeant.ausruestung = new List<alleAusruestung>() { };
-
-            terminatorSergeant.ruestung = alleRuestungen.TerminatorRuestung;
-            terminatorSergeant.waffen = new List<waffe>() { };
-
+            var terminatorSergeant = spaceMarineHelperClass.createTermiantorSergeant();
+            
             var sargeNah = new List<pulldownAuswahl>() { };
             sargeNah.Add(new pulldownAuswahl() { auswahl = "Ein Paar Energieklauen", kosten = +0 });
             sargeNah.Add(new pulldownAuswahl() { auswahl = "Energiehammer und Sturmschild", kosten = +0 });
@@ -845,19 +854,7 @@ namespace WarhammerGUI
                 terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energiehammer));
                 terminatorSergeant.ausruestung.Add(alleAusruestung.Sturmschild);
             }
-            einheitKostenGesamt = einheitKostenGesamt + sargeNah[aktIndex].kosten * 1;
-
-            terminatorSergeant.kg = 4;
-            terminatorSergeant.bf = 4;
-            terminatorSergeant.st = 4;
-            terminatorSergeant.wid = 4;
-            terminatorSergeant.lp = 1;
-            terminatorSergeant.ini = 4;
-            terminatorSergeant.at = 2;
-            terminatorSergeant.mw = 9;
-            terminatorSergeant.rw = 2;
-            terminatorSergeant.ret = 5;
-            terminatorSergeant.einheitentyp = Einheitstyp.Infanterie;
+            einheitKostenGesamt = einheitKostenGesamt + sargeNah[aktIndex].kosten * 1;          
 
             subEinheiten.Add(terminatorSergeant);
 
@@ -4565,22 +4562,12 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlScoutsGesamt; ++i)
             {
                 // Okay, legen wir die Space Marines an:
-                var scout = new subEinheit() { };
-                scout.name = alleSubeinheitenNamen.Scout;
+                var scout = spaceMarineHelperClass.createScout();
 
-                // Jeder Space Marine hat eine Servorüstung (keine Extra-Kosten):
-                scout.ruestung = alleRuestungen.Scoutruestung;
-
-                // Jeder Space Marine hat Fragment- und Sprenggranaten (keine Extra-Kosten):
-                scout.ausruestung = new List<alleAusruestung>();
-                scout.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-                scout.ausruestung.Add(alleAusruestung.Sprenggranaten);
                 if (habenTarnmaentel)
                     scout.ausruestung.Add(alleAusruestung.Tarnmantel);
 
-                // Das Gleiche gilt für die Boltpistole!
                 scout.waffen = new List<waffe>() { };
-                scout.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
 
                 // Der erste Scout darf eine Extra-Auswahl treffen:
                 if (i == 0)
@@ -4651,22 +4638,7 @@ namespace WarhammerGUI
                     // Auswahl nutzen und Kosten aktualisieren:
                     scout.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
                     einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
-                }               
-
-                // Fehlen noch die eigentlichen Were für den  Marine:
-                scout.kg = 3;
-                scout.bf = 3;
-                scout.st = 4;
-                scout.wid = 4;
-                scout.ini = 4;
-                scout.lp = 1;
-                scout.at = 1;
-                scout.mw = 8;
-                scout.rw = 4;
-                scout.ret = 0;
-
-                scout.einheitentyp = Einheitstyp.Infanterie;
-
+                }                            
  
                 subEinheiten.Add(scout);
             }
@@ -4677,12 +4649,8 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var scoutSarge = new subEinheit() { };
-            scoutSarge.name = alleSubeinheitenNamen.SergeantDerSpaceMarines;
+            var scoutSarge = spaceMarineHelperClass.createSpaceMarineSergeant();
 
-            scoutSarge.ausruestung = new List<alleAusruestung>() { };
-            scoutSarge.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-            scoutSarge.ausruestung.Add(alleAusruestung.Sprenggranaten);
             if (habenTarnmaentel)
                 scoutSarge.ausruestung.Add(alleAusruestung.Tarnmantel);
 
@@ -4692,7 +4660,9 @@ namespace WarhammerGUI
             // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
             var auswahlSargePulldown = new List<pulldownAuswahl>() { };
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-            // auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
+            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Schrotflinte, kosten = 0 });
+            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Scharfschützengewehr, kosten = 0 });
+            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kampfmesser, kosten = 0 });            
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
             auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
@@ -4749,19 +4719,6 @@ namespace WarhammerGUI
                 scoutSarge.ausruestung.Add((alleAusruestung)pulldownSargeAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
             }
-
-            // Fehlen noch die eigentlichen Were für den  Marine:
-            scoutSarge.kg = 4;
-            scoutSarge.bf = 4;
-            scoutSarge.st = 4;
-            scoutSarge.wid = 4;
-            scoutSarge.ini = 4;
-            scoutSarge.lp = 1;
-            scoutSarge.at = 2;
-            scoutSarge.mw = 9;
-            scoutSarge.rw = 4;
-            scoutSarge.ret = 0;
-            scoutSarge.einheitentyp = Einheitstyp.Infanterie;
 
             subEinheiten.Add(scoutSarge);         
 
@@ -5445,15 +5402,7 @@ namespace WarhammerGUI
             // Genau soviele einordnen, wie vom Spieler gewünscht:
             for (int i = 0; i < anzahlVeteranenGesamt; ++i)
             {
-                var veteran = new subEinheit() { };
-                veteran.name = alleSubeinheitenNamen.VeteranDerSpaceMariens;
-                veteran.ruestung = alleRuestungen.ServoRuestung;
-
-                veteran.ausruestung = new List<alleAusruestung>();
-                veteran.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-                veteran.ausruestung.Add(alleAusruestung.Sprenggranaten);
-                veteran.ausruestung.Add(alleAusruestung.Spezialmunition);
-
+                var veteran = spaceMarineHelperClass.createVeteran();              
 
                 veteran.waffen = new List<waffe>() { };
                 veteran.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));               
@@ -5513,34 +5462,14 @@ namespace WarhammerGUI
                     // Auswahl nutzen und Kosten aktualisieren:
                     veteran.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
                     einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
-                }             
-
-                veteran.kg = 4;
-                veteran.bf = 4;
-                veteran.st = 4;
-                veteran.wid = 4;                
-                veteran.lp = 1;
-                veteran.ini = 4;
-                veteran.at = 2;
-                veteran.mw = 9;
-                veteran.rw = 3;
-                veteran.ret = 0;
-
-                veteran.einheitentyp = Einheitstyp.Infanterie;
+                }                          
 
                 subEinheiten.Add(veteran);     
             }
 
             // Sarge:
-            var sarge = new subEinheit() { };
-            sarge.name = alleSubeinheitenNamen.SergeantDerSpaceMarines;
-            sarge.ruestung = alleRuestungen.ServoRuestung;
-
-            sarge.ausruestung = new List<alleAusruestung>();
-            sarge.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-            sarge.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            var sarge = spaceMarineHelperClass.createSpaceMarineSergeant();            
             sarge.ausruestung.Add(alleAusruestung.Spezialmunition);
-
 
             sarge.waffen = new List<waffe>() { };
 
@@ -5606,20 +5535,6 @@ namespace WarhammerGUI
                 sarge.ausruestung.Add((alleAusruestung)pulldownSargeAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
             }
-
-
-            // Fehlen noch die eigentlichen Were für den  Marine:
-            sarge.kg = 4;
-            sarge.bf = 4;
-            sarge.st = 4;
-            sarge.wid = 4;            
-            sarge.lp = 1;
-            sarge.ini = 4;
-            sarge.at = 2;
-            sarge.mw = 9;
-            sarge.rw = 3;
-            sarge.ret = 0;
-            sarge.einheitentyp = Einheitstyp.Infanterie;
 
             subEinheiten.Add(sarge);
                         
@@ -5878,7 +5793,7 @@ namespace WarhammerGUI
                 speederWaffen2.Add(new pulldownAuswahl() { auswahl = "keine Zusatzwaffen", kosten = +0 });
                 speederWaffen2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.TyphoonRaketenwerfer, kosten = +40 });
                 speederWaffen2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = +10 });
-                speederWaffen2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererBolter, kosten = +10 });
+                speederWaffen2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = +10 });
                 speederWaffen2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = +20 });
                 speederWaffen2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = +40 });
 
