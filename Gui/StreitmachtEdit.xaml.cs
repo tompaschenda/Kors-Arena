@@ -572,6 +572,7 @@ namespace WarhammerGUI
 
             // Wir müssen noch alle Spieleranfragen abhandeln! Dazu müssen wir lediglich die entsprechende Methode 
             // der Klasse aufrufen!
+            neueUnitOrig.createUnitBase();
             neueUnitOrig.createUnitInteraktion(spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].gesamtPunkte);
             bool allesOkayBool = neueUnitOrig.erschaffungOkay;
 

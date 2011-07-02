@@ -143,6 +143,7 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesOrbital());
             waffenListe.Add(createSpaceMarinesServoarm());
             waffenListe.Add(createSpaceMarinesSyncPlasmapistole());
+            waffenListe.Add(createSpaceMarinesTyphoon());
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -1348,6 +1349,31 @@ namespace WarhammerGUI
                 staerke = 10,
                 durchschlag = 1,
                 waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Geschuetz1, WaffenRegeln.Explosiv5Zoll},
+            });
+
+            return weap;
+        }
+        private waffe createSpaceMarinesTyphoon()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.TyphoonRaketenwerfer;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Fragmentgranate,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 4,
+                durchschlag = 6,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer2, WaffenRegeln.Explosiv },
+            });
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.Sprenggranate,
+                reichweite = Reichweiten.Zoll48,
+                staerke = 8,
+                durchschlag = 3,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Schwer2},
             });
 
             return weap;

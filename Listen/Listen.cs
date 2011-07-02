@@ -574,7 +574,7 @@ namespace Listen
         [Description("Techmarine")]
         Techmarine,
         [Description("Terminator")]
-        Terminator,
+        SpaceMarineTerminator,
         [Description("Terminatorsergeant")]
         Terminatorsergeant,
         [Description("Trike")]

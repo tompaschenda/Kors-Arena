@@ -19,6 +19,7 @@ namespace WarhammerGUI
         public armyToTex() {}
 
         // Definition von Platzhaltern, damit es schneller geht:
+        /*
         private string stPH = "S";
         private string bfPH = "BF";
         private string kgPH = "KG";
@@ -31,16 +32,16 @@ namespace WarhammerGUI
         private string hpPH = "Heck";
         private string retPH = "RET";
         private string iniPH = "I";
-        private string mwPH = "MW";
+        private string mwPH = "MW";*/
 
-        private string spacePH = " ";
+        //private string spacePH = " ";
         private string bewPH = "Bewaffnung: ";
         private string ausPH = "Ausrüstung: ";
         private string ruestPH = "Rüstung: ";
         private string sondPH = "Sonderregeln: ";
         private string psiPH = "Psikräfte: ";
         private string einhPH = "Einheitentyp: ";
-        private string angPH = "Angeschlossenes Transportfahrzeug: ";
+        //private string angPH = "Angeschlossenes Transportfahrzeug: ";
         private spielerArmeeKlasse m_armee;
 
         /// <summary>

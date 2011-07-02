@@ -650,7 +650,7 @@ namespace WarhammerGUI
             if(e.Key == Key.Delete)
                  klickLoescheStreitMacht(this, e);
 
-            /*
+            
             // Wir handeln nun alle relevanten Eingaben ab!
             if (e.Key == Key.N)
                 klickNeueStreitmacht(this, e);
@@ -665,7 +665,7 @@ namespace WarhammerGUI
             if (e.Key == Key.P)
                 onStreitMachtToTex(this, e);
             if (e.Key == Key.Escape)
-                this.Close();*/
+                this.Close();
         }
 
         /// <summary>
