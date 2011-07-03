@@ -497,6 +497,34 @@ namespace WarhammerGUI
             meister.name = alleSubeinheitenNamen.Ordensmeister;
             return meister;
         }
+
+        public static subEinheit createSpaceMarineTrike()
+        {
+            var trike = new subEinheit() { };
+            trike.name = alleSubeinheitenNamen.Trike;
+            trike.ausruestung = new List<alleAusruestung>() { };
+            trike.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            trike.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            trike.ausruestung.Add(alleAusruestung.SpaceMarineBike);
+
+            trike.waffen = new List<waffe>() { };
+            trike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
+
+            trike.einheitentyp = Einheitstyp.Bike;
+
+            // Setzen der Panzerungswerte:
+            trike.kg = 4;
+            trike.bf = 4;
+            trike.st = 4;
+            trike.wid = 5;
+            trike.lp = 2;
+            trike.ini = 4;
+            trike.at = 2;
+            trike.mw = 8;
+            trike.rw = 3;
+
+            return trike;
+        }
     }
 
     /// <summary>
@@ -5620,18 +5648,7 @@ namespace WarhammerGUI
             for (int k = 0; k < anzahlTrikesGesamt; ++k)
             {
                 // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-                var trike = new subEinheit() { };
-                trike.name = alleSubeinheitenNamen.Trike;
-                trike.ausruestung = new List<alleAusruestung>() { };
-                trike.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-                trike.ausruestung.Add(alleAusruestung.Sprenggranaten);
-                trike.ausruestung.Add(alleAusruestung.SpaceMarineBike);
-
-                trike.waffen = new List<waffe>() { };
-                trike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
-                trike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
-
-                trike.ruestung = alleRuestungen.ServoRuestung;
+                var trike = ultraMarineHelperClass.createSpaceMarineTrike();                
 
                 // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
                 var trikeWaffen1 = new List<pulldownAuswahl>() { };
@@ -5648,22 +5665,8 @@ namespace WarhammerGUI
                 trike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(trikeWaffen1[myIndex].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + trikeWaffen1[myIndex].kosten * 1;
 
-                trike.einheitentyp = Einheitstyp.Bike;
-
-                // Setzen der Panzerungswerte:
-                trike.kg = 4;
-                trike.bf = 4;
-                trike.st = 4;
-                trike.wid = 5;
-                trike.lp = 2;
-                trike.ini = 4;
-                trike.at = 2;
-                trike.mw = 8;
-                trike.rw = 3;
-
                 subEinheiten.Add(trike);
             }
-
 
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
@@ -5758,7 +5761,6 @@ namespace WarhammerGUI
                 {
                     bike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
                 }
-
 
                 bike.einheitentyp = Einheitstyp.Bike;
 
@@ -5857,18 +5859,7 @@ namespace WarhammerGUI
             if (myIndex2 != 0)
             {
                 // Also noch ein Trike rein!
-                var trike = new subEinheit() { };
-                trike.name = alleSubeinheitenNamen.Trike;
-                trike.ausruestung = new List<alleAusruestung>() { };
-                trike.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-                trike.ausruestung.Add(alleAusruestung.Sprenggranaten);
-                trike.ausruestung.Add(alleAusruestung.SpaceMarineBike);
-
-                trike.waffen = new List<waffe>() { };
-                trike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
-                trike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
-
-                trike.ruestung = alleRuestungen.ServoRuestung;
+                var trike = ultraMarineHelperClass.createSpaceMarineTrike();              
 
                 // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
                 var trikeWaffen1 = new List<pulldownAuswahl>() { };
@@ -5884,19 +5875,6 @@ namespace WarhammerGUI
                 var myIndex = wahlTrikeWaffen1.gewaehlterIndexAusN;
                 trike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(trikeWaffen1[myIndex].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + trikeWaffen1[myIndex].kosten * 1;
-
-                trike.einheitentyp = Einheitstyp.Bike;
-
-                // Setzen der Panzerungswerte:
-                trike.kg = 4;
-                trike.bf = 4;
-                trike.st = 4;
-                trike.wid = 5;
-                trike.lp = 2;
-                trike.ini = 4;
-                trike.at = 2;
-                trike.mw = 8;
-                trike.rw = 3;
 
                 subEinheiten.Add(trike);
             }
