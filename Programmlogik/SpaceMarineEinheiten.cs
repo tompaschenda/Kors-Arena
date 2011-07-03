@@ -525,6 +525,68 @@ namespace WarhammerGUI
 
             return trike;
         }
+
+        public static subEinheit createSpaceMarineBiker()
+        {
+            var bike = new subEinheit() { };
+            bike.name = alleSubeinheitenNamen.SpaceMarineAufBike;
+            bike.ausruestung = new List<alleAusruestung>() { };
+            bike.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            bike.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            bike.ausruestung.Add(alleAusruestung.SpaceMarineBike);
+
+            bike.waffen = new List<waffe>() { };
+            bike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
+
+            bike.ruestung = alleRuestungen.ServoRuestung;
+            bike.einheitentyp = Einheitstyp.Bike;
+
+            // Setzen der Panzerungswerte:
+            bike.kg = 4;
+            bike.bf = 4;
+            bike.st = 4;
+            bike.wid = 5;
+            bike.lp = 1;
+            bike.ini = 4;
+            bike.at = 1;
+            bike.mw = 8;
+            bike.rw = 3;
+
+            return bike;
+        }
+
+        public static subEinheit createSpaceMarineBikerSarge()
+        {
+            var sarge = createSpaceMarineBiker();
+            sarge.name = alleSubeinheitenNamen.SergeantDerSpaceMarinesAufBike;
+            sarge.at = 2;
+            sarge.mw = 9;
+            return sarge;
+        }
+
+        public static subEinheit createScoutBiker()
+        {
+            var scoutBiker = new subEinheit() { };
+            scoutBiker.name = alleSubeinheitenNamen.ScoutAufBike;
+            scoutBiker.ruestung = alleRuestungen.keine;
+            scoutBiker.ausruestung = new List<alleAusruestung>() { };
+
+            scoutBiker.waffen = new List<waffe>() { };
+            scoutBiker.kg = 3;
+            scoutBiker.bf = 3;
+            scoutBiker.st = 4;
+            scoutBiker.wid = 5;
+            scoutBiker.lp = 1;
+            scoutBiker.ini = 4;
+            scoutBiker.at = 1;
+            scoutBiker.mw = 8;
+            scoutBiker.rw = 4;
+            scoutBiker.ret = 0;
+
+            scoutBiker.einheitentyp = Einheitstyp.Bike;
+
+            return scoutBiker;
+        }
     }
 
     /// <summary>
@@ -3232,14 +3294,9 @@ namespace WarhammerGUI
             // Genau soviele einordnen, wie vom Spieler gewünscht:
             for (int i = 0; i < anzahlScoutsGesamt; ++i)
             {
-                var scoutBike = new subEinheit() { };
-                scoutBike.name = alleSubeinheitenNamen.ScoutAufBike;
-                scoutBike.ruestung = alleRuestungen.keine;
-                scoutBike.ausruestung = new List<alleAusruestung>() { };
+                var scoutBike = ultraMarineHelperClass.createScoutBiker();              
                 if (hatSplitterminen)
-                    scoutBike.ausruestung.Add(alleAusruestung.Splitterminen);
-
-                scoutBike.waffen = new List<waffe>() { };
+                    scoutBike.ausruestung.Add(alleAusruestung.Splitterminen);            
 
                 if (i < 3)
                 {
@@ -3264,20 +3321,6 @@ namespace WarhammerGUI
                 {
                     scoutBike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
                 }
-
-                // Fehlen noch die eigentlichen Were für den  Marine:
-                scoutBike.kg = 3;
-                scoutBike.bf = 3;
-                scoutBike.st = 4;
-                scoutBike.wid = 5;
-                scoutBike.lp = 1;
-                scoutBike.ini = 4;
-                scoutBike.at = 1;
-                scoutBike.mw = 8;
-                scoutBike.rw = 4;
-                scoutBike.ret = 0;
-
-                scoutBike.einheitentyp = Einheitstyp.Bike;
  
                 subEinheiten.Add(scoutBike);
             }
@@ -3286,18 +3329,13 @@ namespace WarhammerGUI
             // SARGE:
             ///
 
-            var scoutSarge = new subEinheit() { };
+            var scoutSarge = ultraMarineHelperClass.createSpaceMarineBikerSarge();
             scoutSarge.name = alleSubeinheitenNamen.ScoutsergeantAufBike;
-
-            scoutSarge.ausruestung = new List<alleAusruestung>() { };
-            scoutSarge.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-            scoutSarge.ausruestung.Add(alleAusruestung.Sprenggranaten);
+        
             if (hatSplitterminen)
                 scoutSarge.ausruestung.Add(alleAusruestung.Splitterminen);
 
-            scoutSarge.ruestung = alleRuestungen.Scoutruestung;
-            scoutSarge.waffen = new List<waffe>() { };
-            scoutSarge.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
+            scoutSarge.ruestung = alleRuestungen.Scoutruestung;         
 
             // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
             var auswahlSargePulldown = new List<pulldownAuswahl>() { };
@@ -3337,20 +3375,6 @@ namespace WarhammerGUI
                 scoutSarge.ausruestung.Add((alleAusruestung)sargeExtras[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + sargeExtras[i].kosten * 1;
             }
-
-
-            // Fehlen noch die eigentlichen Were für den  Marine:
-            scoutSarge.kg = 4;
-            scoutSarge.bf = 4;
-            scoutSarge.st = 4;
-            scoutSarge.wid = 5;
-            scoutSarge.lp = 1;
-            scoutSarge.ini = 4;
-            scoutSarge.at = 2;
-            scoutSarge.mw = 9;
-            scoutSarge.rw = 4;
-            scoutSarge.ret = 0;
-            scoutSarge.einheitentyp = Einheitstyp.Bike;
 
             subEinheiten.Add(scoutSarge);
 
@@ -5726,18 +5750,8 @@ namespace WarhammerGUI
             for (int k = 0; k < anzahlBikesGesamt; ++k)
             {
                 // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-                var bike = new subEinheit() { };
-                bike.name = alleSubeinheitenNamen.SpaceMarineAufBike;
-                bike.ausruestung = new List<alleAusruestung>() { };
-                bike.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-                bike.ausruestung.Add(alleAusruestung.Sprenggranaten);
-                bike.ausruestung.Add(alleAusruestung.SpaceMarineBike);
-
-                bike.waffen = new List<waffe>() { };
-                bike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));                
-
-                bike.ruestung = alleRuestungen.ServoRuestung;
-
+                var bike = ultraMarineHelperClass.createSpaceMarineBiker();
+              
                 if (k < 2)
                 {
                     // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
@@ -5762,36 +5776,13 @@ namespace WarhammerGUI
                     bike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
                 }
 
-                bike.einheitentyp = Einheitstyp.Bike;
-
-                // Setzen der Panzerungswerte:
-                bike.kg = 4;
-                bike.bf = 4;
-                bike.st = 4;
-                bike.wid = 5;
-                bike.lp = 1;
-                bike.ini = 4;
-                bike.at = 1;
-                bike.mw = 8;
-                bike.rw = 3;
-
                 subEinheiten.Add(bike);
             }
 
             // Sarge:
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var sarge = new subEinheit() { };
-            sarge.name = alleSubeinheitenNamen.SergeantDerSpaceMarinesAufBike;
-            sarge.ausruestung = new List<alleAusruestung>() { };
-            sarge.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-            sarge.ausruestung.Add(alleAusruestung.Sprenggranaten);
-            sarge.ausruestung.Add(alleAusruestung.SpaceMarineBike);
-
-            sarge.waffen = new List<waffe>() { };
-            sarge.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
-
-            sarge.ruestung = alleRuestungen.ServoRuestung;
-
+            var sarge = ultraMarineHelperClass.createSpaceMarineBikerSarge();
+           
             // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
             var sargeWaffen1 = new List<pulldownAuswahl>() { };
             sargeWaffen1.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = +0 });
@@ -5828,19 +5819,6 @@ namespace WarhammerGUI
                 sarge.ausruestung.Add((alleAusruestung)listeAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + listeAusruestung[i].kosten * 1;
             }
-
-            sarge.einheitentyp = Einheitstyp.Bike;
-
-            // Setzen der Panzerungswerte:
-            sarge.kg = 4;
-            sarge.bf = 4;
-            sarge.st = 4;
-            sarge.wid = 5;
-            sarge.lp = 2;
-            sarge.ini = 4;
-            sarge.at = 2;
-            sarge.mw = 9;
-            sarge.rw = 3;
 
             subEinheiten.Add(sarge);
 
