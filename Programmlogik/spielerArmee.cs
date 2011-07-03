@@ -35,7 +35,7 @@ namespace WarhammerGUI
             for (int i = 0; i < alteArmee.armeeEinheiten.Count; ++i)
             {
                 var vorlageEinheit = alteArmee.armeeEinheiten[i];
-                Einheit kopierteEinheit = new Einheit(vorlageEinheit); // Copy-Konstruktor!
+                var kopierteEinheit = vorlageEinheit.CloneEinheit(vorlageEinheit);
                 armeeEinheiten.Add(kopierteEinheit);
             }
         }

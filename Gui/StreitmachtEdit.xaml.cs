@@ -147,22 +147,20 @@ namespace WarhammerGUI
                     {
                         var aktUnit = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex];
                         // Wenn wir eine Übereinstimmung haben, tragen wir direkt ein:
-                        if( aktuellerEinheitnAuswahlEnum.ToString() == aktUnit.auswahlTypSpieler.ToString())
+                        if( aktuellerEinheitnAuswahlEnum.ToString() == aktUnit.auswahlTypBasis[0].ToString() /* TODO HOTFIX!!!.auswahlTypSpieler.ToString()*/)
                         {
                             TreeViewItem einheitNode = new TreeViewItem();
                             // Jetzt unterscheiden wir in der Darstellung. Wenn der Spieler der Einheit einen eigenen Namen
                             // gegeben hat, stellen wir ihn in Klammern dahinter mit da. Wenn nicht, erscheint er auch nicht!
                             // Wir prüfen hier nicht extra, ob der Username einzigartig ist, denn das wird schon bei der
                             // Erstellung der Einheit abgefangen!
-                            var baseName = EnumExtensions.getEnumDescription(aktUnit.einheitenName.GetType(), aktUnit.einheitenName.ToString());
-
+                            einheitNode.Header = aktUnit.getUniqueHeaderProperty();
+                            // ACHTUNG! An dieser Stelle muss ich noch den Header in die Einheit schrieben, damit ich sie später auf wiederfinen kann!
+                            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].uniqueHeaderProperty = aktUnit.getUniqueHeaderProperty();
+                          
                             if (aktUnit.spielerEinheitenName == "")
                                 throw new ArgumentOutOfRangeException("WARNUNG: Kein Spielername in der Einheit mit dem Namen " + aktUnit.einheitenName + " vorhanden!");
-                            
-                            einheitNode.Header = baseName + " (" + aktUnit.spielerEinheitenName + ")";
-                            // ACHTUNG! An dieser Stelle muss ich noch den Header in die Einheit schrieben, damit ich sie später auf wiederfinen kann!
-                            spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktUnitIndex].uniqueHeaderProperty = einheitNode.Header.ToString();
-
+                                                     
                             //XName name = XName.Get(aktUnit.spielerEinheitenName);
                             //einheitNode.Name = name.ToString(); //aktUnit.spielerEinheitenName;
                             
@@ -379,7 +377,8 @@ namespace WarhammerGUI
             if (renamingIndex != -1)
             {
                 // Dazu legen wir zunächst eine Kopie der Unit an.
-                var einheitsKopie = new Einheit(spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[renamingIndex]);
+                var einheitsOriginal = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[renamingIndex];
+                var einheitsKopie = einheitsOriginal.CloneEinheit(einheitsOriginal);
 
                 // Jetzt fragen wir, welchen Namen der Nutzer der Einheit geben möchte!
                 UnitRename umbenennungsfenster = new UnitRename(this, m_indexDerArmee, einheitsKopie) { };
@@ -430,7 +429,8 @@ namespace WarhammerGUI
                 // Erst einmal kopieren wir die ausgewählte Einheit, indem wir den CUSTOM-Copy-Konstruktor
                 // nutzen. ACHTUNG! Er muss natürlich up-to-date sein und alle Properties kopieren!
                 var vorlageEinheit = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[copyIndex];
-                Einheit kopierteEinheit = new Einheit(vorlageEinheit); // Copy-Konstruktor!
+
+                var kopierteEinheit = vorlageEinheit.CloneEinheit(vorlageEinheit);
                 // Wir fügen die Einheit hinzu!
                 spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Add(kopierteEinheit);
                 // Außerdem müssen wir den Nutzer zwingen, einen neuen, einzigartigen Namen für die Unit zu vergeben!
@@ -578,7 +578,7 @@ namespace WarhammerGUI
                 return;
 
             // Jetzt erst mache ich eine Kopie der Einheit!
-            var kopierteEinheit = new Einheit(neueUnitOrig);
+            var kopierteEinheit = neueUnitOrig.CloneEinheit(neueUnitOrig);
 
             kopierteEinheit.spielerEinheitenName = umbenennungsfenster.m_neuerSpielerString;
 

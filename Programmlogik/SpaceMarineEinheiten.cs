@@ -593,7 +593,104 @@ namespace WarhammerGUI
     /// Taktischer Trupp der Space Marines!
     /// </summary>
     public class taktischerTrupp : Einheit
-    {
+    {                
+        /// <summary>
+        /// Definieren der Auswahlen des Spielers:
+        /// </summary>
+        public override void declareChoices()
+        {
+            auswahlen = new List<choiceDefinition>() { };
+
+            var anzahlChoice = new zusSubeinheitenAuswahl() { };
+            anzahlChoice.minimaleAnzahl = 5;
+            anzahlChoice.minimaleAnzahl = 10;
+            anzahlChoice.unitBaseCost = basispunkteKosten;
+            auswahlen.Add(anzahlChoice);
+
+            var waffenChoice01 = new waffenAuswahl() { };
+            waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+            waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() {auswahl = alleWaffenNamen.Flammenwerfer, kosten = 0  });
+            waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() {auswahl = alleWaffenNamen.Melter, kosten = 5  });
+            waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmawerfer, kosten = 10 });
+            waffenChoice01.labelString = "Auswahl der 1. Spezialwaffe: ";
+            auswahlen.Add(waffenChoice01);
+
+            var waffenChoice02 = new waffenAuswahl() { };
+            waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = 0 });
+            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
+            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 0 });
+            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 5 });
+            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Laserkanone, kosten = 10 });
+            waffenChoice01.labelString = "Auswahl der 2. Spezialwaffe: ";
+            auswahlen.Add(waffenChoice02);
+
+            var waffenChoice03 = new waffenAuswahl() { };
+            waffenChoice03.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe03;
+            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
+            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
+            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
+            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+            waffenChoice03.labelString = "Auswahl der 1. Waffe des Sergeants: ";
+            auswahlen.Add(waffenChoice03);
+
+            var waffenChoice04 = new waffenAuswahl() { };
+            waffenChoice04.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe04;
+            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
+            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenschwert, kosten = 0 });
+            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+            waffenChoice04.labelString = "Auswahl der 2. Waffe des Sergeants: ";
+            auswahlen.Add(waffenChoice03);
+
+            var ausruestungChoice01 = new ausruestungsAuswahl() { };
+            ausruestungChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
+            ausruestungChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.TeleportPeilsender, kosten = 15 });
+            ausruestungChoice01.labelString = "Auswahl der Ausrüstung des Sergeants: ";
+            auswahlen.Add(ausruestungChoice01);
+
+            var transChoice01 = new transportfahrzeugWahl() { };
+            transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
+            transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 35 });
+            transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
+            transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
+            auswahlen.Add(transChoice01);
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            // Die Auswahl der Spezialwaffen gibt es nur, wenn genau 10 Space Marines gewählt wurden!
+            var anzahlMarines = ((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).getTotalSubUnits();
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).isActive = (anzahlMarines != 10);
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).isActive = (anzahlMarines != 10);
+
+            var wahlAngeschlossen = (transportfahrzeugWahl)getSpecificChoice(ChoiceAuswahlIdentifier.Trans01);
+            if (anzahlMarines == 10)
+            {
+                wahlAngeschlossen.auswahlOptionen = new List<pulldownAuswahl>() { };
+                wahlAngeschlossen.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
+                wahlAngeschlossen.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 35 });
+                wahlAngeschlossen.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
+                wahlAngeschlossen.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
+            }
+            else
+            {
+                wahlAngeschlossen.auswahlOptionen = new List<pulldownAuswahl>() { };
+                wahlAngeschlossen.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
+                wahlAngeschlossen.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 35 });
+                wahlAngeschlossen.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
+                // Die Kapsel gibt es nicht (mehr). Wenn der Spieler sie vorher selektiert hatte, setzen wir die Auswahl zurück und bleiben valide.
+                if (wahlAngeschlossen.getSelectedVehicle() == alleEinheitenNamen.Landungskapsel)
+                    wahlAngeschlossen.setChosenIndex(0);
+            }
+        }
+
+
         public override void createUnitBase()
         {
             einheitenName = alleEinheitenNamen.TaktischerTrupp;
@@ -624,8 +721,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProSpaceMarine = 16;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Space Marines erhalten", gesamtArmeePunkteKosten, punkteKostenProSpaceMarine) { };
@@ -855,8 +950,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProTerminator = 40;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Terminatoren erhalten", gesamtArmeePunkteKosten, punkteKostenProTerminator) { };
@@ -1012,8 +1105,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProTerminator = 40;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Terminatoren erhalten", gesamtArmeePunkteKosten, punkteKostenProTerminator) { };
@@ -1166,8 +1257,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myRhino = ultraMarineHelperClass.createRhino();           
      
@@ -1241,8 +1330,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myRhino = ultraMarineHelperClass.createRhino();           
 
@@ -1315,8 +1402,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myRazorback = ultraMarineHelperClass.createRazorback();           
 
@@ -1417,9 +1502,7 @@ namespace WarhammerGUI
         }
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
-        {
-            base.createUnitInteraktion(100);
-
+        {            
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myLandungsKapsel = new subEinheit() { };
             myLandungsKapsel.name = alleSubeinheitenNamen.Landungskapsel;
@@ -1505,8 +1588,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myLandungsKapsel = new subEinheit() { };
             myLandungsKapsel.name = alleSubeinheitenNamen.Landungskapsel;
@@ -1591,8 +1672,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myCrusader = new subEinheit() { };
             myCrusader.name = alleSubeinheitenNamen.LandRaiderCrusader;
@@ -1691,8 +1770,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myLandRaider = new subEinheit() { };
             myLandRaider.name = alleSubeinheitenNamen.LandRaider;
@@ -1791,8 +1868,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myLandRaider = new subEinheit() { };
             myLandRaider.name = alleSubeinheitenNamen.LandRaiderRedeemer;
@@ -1890,8 +1965,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myWhirlwind = new subEinheit() { };
             myWhirlwind.name = alleSubeinheitenNamen.Whirlwind;
@@ -1985,8 +2058,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myVindi = new subEinheit() { };
             myVindi.name = alleSubeinheitenNamen.Vindicator;
@@ -2085,10 +2156,7 @@ namespace WarhammerGUI
         /// Hier werden alle Spierloptionen abgehandelt
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
-        {
-            base.createUnitInteraktion(100);
-
-          
+        {          
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2158,9 +2226,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2232,9 +2297,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2305,9 +2367,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2389,9 +2448,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2464,9 +2520,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2538,9 +2591,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2604,9 +2654,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2674,9 +2721,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2748,8 +2792,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2844,8 +2886,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -2962,8 +3002,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProSpaceMarine = 16;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Space Marines erhalten", gesamtArmeePunkteKosten, punkteKostenProSpaceMarine) { };
@@ -3165,8 +3203,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var storm = new subEinheit() { };
             storm.name = alleSubeinheitenNamen.LandspeederStorm;
@@ -3249,8 +3285,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProSpaceMarine = 20;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 3, 10, "Trupp darf bis zu sieben zusätzliche Scouts erhalten", gesamtArmeePunkteKosten, punkteKostenProSpaceMarine) { };
@@ -3415,8 +3449,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProSpaceMarine = 18;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Space Marines erhalten", gesamtArmeePunkteKosten, punkteKostenProSpaceMarine) { };
@@ -3697,8 +3729,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProVeteran = 20;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Veteranen erhalten", gesamtArmeePunkteKosten, punkteKostenProVeteran) { };
@@ -3950,8 +3980,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myCybot = ultraMarineHelperClass.createEhrwuerdigerCybot();
          
@@ -4079,8 +4107,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myCybot = ultraMarineHelperClass.createCybot();
            
@@ -4209,8 +4235,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myCybot = ultraMarineHelperClass.createIronclad();
 
@@ -4363,8 +4387,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProSpaceMarine = 13;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Scouts erhalten", gesamtArmeePunkteKosten, punkteKostenProSpaceMarine) { };
@@ -4611,8 +4633,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -4897,8 +4917,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -5175,8 +5193,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProVeteran = 25;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Veteranen erhalten", gesamtArmeePunkteKosten, punkteKostenProVeteran) { };
@@ -5403,8 +5419,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
             var myPredator = new subEinheit() { };
             myPredator.name = alleSubeinheitenNamen.Predator;
@@ -5537,8 +5551,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             subEinheiten = new List<subEinheit>() { };
 
             // Wie viele Speeder wollen wir haben?
@@ -5648,8 +5660,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             subEinheiten = new List<subEinheit>() { };
 
             // Wie viele Speeder wollen wir haben?
@@ -5726,8 +5736,6 @@ namespace WarhammerGUI
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             subEinheiten = new List<subEinheit>() { };
 
             // Wie viele Speeder wollen wir haben?
@@ -5895,8 +5903,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProLegionaer = 30;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Legionäre erhalten", gesamtArmeePunkteKosten, punkteKostenProLegionaer) { };
@@ -6067,8 +6073,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
             int punkteKostenProServitor = 15;
 
             AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 0, 5, "Trupp darf bis zu fünf Servitoren erhalten", gesamtArmeePunkteKosten, punkteKostenProServitor) { };
@@ -6300,9 +6304,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
@@ -6541,9 +6542,6 @@ namespace WarhammerGUI
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            base.createUnitInteraktion(100);
-
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 

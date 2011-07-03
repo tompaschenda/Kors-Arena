@@ -9,8 +9,14 @@ namespace WarhammerGUI
     /// <summary>
     /// Eine Auswahloption für ein Pulldownmenü
     /// </summary>
-    public struct pulldownAuswahl
+    public struct pulldownAuswahl : ICloneable
     {
+        public object Clone()
+        {
+            var copy = (pulldownAuswahl)this.MemberwiseClone();
+            return copy;
+        }
+
         /// <summary>
         /// Punktekosten der Auswahl
         /// </summary>
