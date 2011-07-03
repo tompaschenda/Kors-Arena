@@ -467,6 +467,36 @@ namespace WarhammerGUI
             clad.ausruestung.Add(alleAusruestung.ZusaetzlichePanzerung);
             return clad;
         }
+
+        public static subEinheit createSpaceMarinesCaptain()
+        {
+            var cap = new subEinheit() { };
+            cap.name = alleSubeinheitenNamen.CaptainDerSpaceMarines;
+
+            cap.ausruestung = new List<alleAusruestung>() { };
+            cap.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            cap.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            cap.ausruestung.Add(alleAusruestung.StaehlernerStern);
+
+            cap.kg = 6;
+            cap.bf = 5;
+            cap.st = 4;
+            cap.wid = 4;
+            cap.ini = 5;
+            cap.lp = 3;
+            cap.at = 3;
+            cap.mw = 10;
+            cap.ruestung = alleRuestungen.ServoRuestung;
+
+            return cap;
+        }
+
+        public static subEinheit createSpaceMarineOrdensmeister()
+        {
+            var meister = createSpaceMarinesCaptain();
+            meister.name = alleSubeinheitenNamen.Ordensmeister;
+            return meister;
+        }
     }
 
     /// <summary>
@@ -4531,19 +4561,11 @@ namespace WarhammerGUI
         {
             base.createUnitInteraktion(100);
 
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
-
-            var cap = new subEinheit() { };
-            cap.name = alleSubeinheitenNamen.CaptainDerSpaceMarines;
-
-            cap.ausruestung = new List<alleAusruestung>() { };
-            cap.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-            cap.ausruestung.Add(alleAusruestung.Sprenggranaten);
-            cap.ausruestung.Add(alleAusruestung.StaehlernerStern);
-
+            var cap = ultraMarineHelperClass.createSpaceMarinesCaptain();
+            
             bool hasSturmschild = false;
             bool hasMeisterhafteRuestung = false;
 
@@ -4673,8 +4695,6 @@ namespace WarhammerGUI
                 intIndex = auswahlMobil.gewaehlterIndexAusN;
                 cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlFuerMobil[intIndex].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
-
-
             }
             else
             {
@@ -4776,14 +4796,6 @@ namespace WarhammerGUI
                 einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
             }
 
-            cap.kg = 6;
-            cap.bf = 5;
-            cap.st = 4;
-            cap.wid = 4;
-            cap.ini = 5;
-            cap.lp = 3;
-            cap.at = 3;
-            cap.mw = 10;
             if (!hasMeisterhafteRuestung)
                 cap.rw = 3;
             else
@@ -4835,22 +4847,11 @@ namespace WarhammerGUI
         {
             base.createUnitInteraktion(100);
 
-
             // Update der Punktekosten:
             einheitKostenGesamt = basispunkteKosten;
 
-
-            var cap = new subEinheit() { };
-            cap.name = alleSubeinheitenNamen.CaptainDerSpaceMarines;
-
-            cap.ausruestung = new List<alleAusruestung>() { };
-            cap.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-            cap.ausruestung.Add(alleAusruestung.Sprenggranaten);
-            cap.ausruestung.Add(alleAusruestung.StaehlernerStern);
-
-            cap.einheitentyp = Einheitstyp.Infanterie;
-
-
+            var cap = ultraMarineHelperClass.createSpaceMarineOrdensmeister();
+           
             bool hasSturmschild = false;
             bool hasMeisterhafteRuestung = false;
 
@@ -4978,8 +4979,6 @@ namespace WarhammerGUI
                 intIndex = auswahlMobil.gewaehlterIndexAusN;
                 cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlFuerMobil[intIndex].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
-
-
             }
             else
             {
@@ -5043,7 +5042,6 @@ namespace WarhammerGUI
                     default:
                         throw new ArgumentOutOfRangeException("Space Marine Cap OOR!");
                 }
-
             }
 
             // Restliche Auswahlen:
@@ -5065,7 +5063,6 @@ namespace WarhammerGUI
                 einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
             }
 
-
             pulldownCapAusruestung = new List<pulldownAuswahl>() { };
             pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.AuxilarisGranatwerfer, kosten = 15 });
             wahlCapAusreustung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Captain darf folgende Waffen zusätzlich wählen:", pulldownCapAusruestung);
@@ -5081,14 +5078,6 @@ namespace WarhammerGUI
                 einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
             }
 
-            cap.kg = 6;
-            cap.bf = 5;
-            cap.st = 4;
-            cap.wid = 4;
-            cap.ini = 5;
-            cap.lp = 3;
-            cap.at = 3;
-            cap.mw = 10;
             if (!hasMeisterhafteRuestung)
                 cap.rw = 3;
             else
