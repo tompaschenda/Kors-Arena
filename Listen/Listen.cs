@@ -525,8 +525,8 @@ namespace Listen
         CaptainCatoSicarius,
         [Description("Captain Darnath Lysander")]
         CaptainLysander,
-        [Description("Ehrengarde")]
-        Ehrengarde,
+        [Description("Ehrengardist")]
+        Ehrengardist,
         [Description("Captain Kayvaan Shrike")]
         CaptainShrike,
         [Description("Kompaniechampion")]

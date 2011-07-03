@@ -347,6 +347,47 @@ namespace WarhammerGUI
             leg.kg = 4;
             return leg;
         }
+
+        public static subEinheit createEhrengardist()
+        {
+            var gardist = createSpaceMarine();
+            gardist.name = alleSubeinheitenNamen.Ehrengardist;
+            gardist.mw = 10;
+            gardist.rw = 2;
+            gardist.at = 2;
+            gardist.ruestung = alleRuestungen.MeisterhafteRuestung;
+            gardist.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieschwert));
+
+            return gardist;
+        }
+
+        public static subEinheit createOrdenschampion()
+        {
+            var champ = createEhrengardist();
+            champ.name = alleSubeinheitenNamen.Ordenschampion;
+            champ.at = 3;
+            champ.kg = 5;
+            return champ;
+        }
+
+        public static subEinheit createKompaniechampion()
+        {
+            var champ = createSpaceMarine();
+            champ.name = alleSubeinheitenNamen.Kompaniechampion;
+            champ.kg = 5;
+            champ.at = 2;
+            champ.mw = 9;
+            return champ;
+        }
+
+        public static subEinheit createApothecarius()
+        {
+            var apo = createSpaceMarine();
+            apo.name = alleSubeinheitenNamen.Apothecarius;
+            apo.mw = 9;
+            apo.at = 2;
+            return apo;
+        }
     }
 
     /// <summary>
