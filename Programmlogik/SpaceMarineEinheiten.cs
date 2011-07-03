@@ -205,7 +205,7 @@ namespace WarhammerGUI
         }
     }
 
-    public static class spaceMarineHelperClass
+    public static class ultraMarineHelperClass
     {
         // Erzeugt die Subeinheit "Space Marine"
         public static subEinheit createSpaceMarine()
@@ -388,6 +388,85 @@ namespace WarhammerGUI
             apo.at = 2;
             return apo;
         }
+
+        public static subEinheit createRhino()
+        {
+            var rhino = new subEinheit() { };
+            rhino.name = alleSubeinheitenNamen.Rhino;
+
+            rhino.ausruestung = new List<alleAusruestung>() { };
+            rhino.ausruestung.Add(alleAusruestung.Nebelwerfer);
+            rhino.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
+
+            rhino.waffen = new List<waffe>() { };
+            rhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
+
+            rhino.einheitentyp = Einheitstyp.FahrzeugPanzer;
+
+            rhino.bf = 4;
+            rhino.front = 11;
+            rhino.seit = 11;
+            rhino.heck = 10;
+            rhino.transportkapazitaet = 10;
+
+            return rhino;
+        }
+
+        public static subEinheit createRazorback()
+        {
+            var razor = createRhino();
+            razor.name = alleSubeinheitenNamen.Razorback;
+            razor.waffen = new List<waffe>() { };
+            razor.transportkapazitaet = 6;
+            return razor;
+        }
+
+        public static subEinheit createCybot()
+        {
+            var cybot = new subEinheit() { };
+            cybot.name = alleSubeinheitenNamen.Cybot;
+            cybot.ausruestung = new List<alleAusruestung>() { };
+            cybot.waffen = new List<waffe>() { };
+
+            // Die folgende Ausrüstung gibt es immer:
+            cybot.ausruestung.Add(alleAusruestung.Nebelwerfer);
+            cybot.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
+
+            cybot.einheitentyp = Einheitstyp.FahrzeugLaeufer;
+
+            // Setzen der Panzerungswerte:
+            cybot.kg = 4;
+            cybot.bf = 4;
+            cybot.st = 6;
+            cybot.front = 12;
+            cybot.seit = 12;
+            cybot.heck = 10;
+            cybot.ini = 4;
+            cybot.at = 2;
+            cybot.transportkapazitaet = 0;
+
+            return cybot;
+        }
+
+        public static subEinheit createEhrwuerdigerCybot()
+        {
+            var ehrw = createCybot();
+            ehrw.name = alleSubeinheitenNamen.EhrwuerdigerCybot;
+            ehrw.kg = 5;
+            ehrw.bf = 5;
+            return ehrw;
+        }
+
+        public static subEinheit createIronclad()
+        {
+            var clad = createCybot();
+            clad.name = alleSubeinheitenNamen.IroncladCybot;
+            clad.front = 13;
+            clad.seit = 13;
+            clad.at = 3;
+            clad.ausruestung.Add(alleAusruestung.ZusaetzlichePanzerung);
+            return clad;
+        }
     }
 
     /// <summary>
@@ -454,7 +533,7 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlSpaceMarinesGesamt; ++i )
             {
                 // Okay, legen wir die Space Marines an:
-                var spaceMarine = spaceMarineHelperClass.createSpaceMarine();                
+                var spaceMarine = ultraMarineHelperClass.createSpaceMarine();                
 
                 // Von 1 bis 8 nur Standard und keine weiteren Kosten!
                 if(i == 7)
@@ -518,7 +597,7 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var spaceMarineSergeant = spaceMarineHelperClass.createSpaceMarineSergeant();
+            var spaceMarineSergeant = ultraMarineHelperClass.createSpaceMarineSergeant();
 
             // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
             spaceMarineSergeant.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
@@ -685,7 +764,7 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlTerminatorenGesamt; ++i)
             {
                 // Okay, legen wir die Space Marines an:
-                var terminator = spaceMarineHelperClass.createTerminator();               
+                var terminator = ultraMarineHelperClass.createTerminator();               
 
                 var terminatorNahkampfWaffen = new List<pulldownAuswahl>() { };
                 terminatorNahkampfWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = +0 });
@@ -735,7 +814,7 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var terminatorSergeant = spaceMarineHelperClass.createTermiantorSergeant();           
+            var terminatorSergeant = ultraMarineHelperClass.createTermiantorSergeant();           
 
             // Der Sarge hat immer den Sturmbolter und ein E-Schwert!
             terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
@@ -841,7 +920,7 @@ namespace WarhammerGUI
             // Genau soviele einordnen, wie vom Spieler gewünscht:
             for (int i = 0; i < anzahlTerminatorenGesamt; ++i)
             {
-                var terminator = spaceMarineHelperClass.createTerminator();                
+                var terminator = ultraMarineHelperClass.createTerminator();                
 
                 var terminatorNahkampfWaffen = new List<pulldownAuswahl>() { };
                 terminatorNahkampfWaffen.Add(new pulldownAuswahl() { auswahl = "Ein Paar Energieklauen", kosten = +0 });
@@ -875,7 +954,7 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var terminatorSergeant = spaceMarineHelperClass.createTermiantorSergeant();
+            var terminatorSergeant = ultraMarineHelperClass.createTermiantorSergeant();
             
             var sargeNah = new List<pulldownAuswahl>() { };
             sargeNah.Add(new pulldownAuswahl() { auswahl = "Ein Paar Energieklauen", kosten = +0 });
@@ -970,15 +1049,7 @@ namespace WarhammerGUI
             base.createUnitInteraktion(100);
 
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myRhino = new subEinheit() { };
-            myRhino.name = alleSubeinheitenNamen.Rhino;
-            myRhino.ausruestung = new List<alleAusruestung>() { };
-            myRhino.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myRhino.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
-
-            myRhino.waffen = new List<waffe>() { };
-            myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
-
+            var myRhino = ultraMarineHelperClass.createRhino();           
      
             var rhinoAusruestung = new List<pulldownAuswahl>() { };
             rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
@@ -1014,16 +1085,6 @@ namespace WarhammerGUI
                 myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(rhinoWaffen[i].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + rhinoWaffen[i].kosten * 1;
             }
-
-
-            myRhino.einheitentyp = Einheitstyp.FahrzeugPanzer;
-
-            // Setzen der Panzerungswerte:
-            myRhino.bf = 4;
-            myRhino.front = 11;
-            myRhino.seit = 11;
-            myRhino.heck = 10;
-            myRhino.transportkapazitaet = 10;
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myRhino);
@@ -1063,15 +1124,7 @@ namespace WarhammerGUI
             base.createUnitInteraktion(100);
 
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myRhino = new subEinheit() { };
-            myRhino.name = alleSubeinheitenNamen.Rhino;
-            myRhino.ausruestung = new List<alleAusruestung>() { };
-            myRhino.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myRhino.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
-
-            myRhino.waffen = new List<waffe>() { };
-            myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
-
+            var myRhino = ultraMarineHelperClass.createRhino();           
 
             var rhinoAusruestung = new List<pulldownAuswahl>() { };
             rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
@@ -1107,16 +1160,6 @@ namespace WarhammerGUI
                 myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(rhinoWaffen[i].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + rhinoWaffen[i].kosten * 1;
             }
-
-
-            myRhino.einheitentyp = Einheitstyp.FahrzeugPanzer;
-
-            // Setzen der Panzerungswerte:
-            myRhino.bf = 4;
-            myRhino.front = 11;
-            myRhino.seit = 11;
-            myRhino.heck = 10;
-            myRhino.transportkapazitaet = 10;
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myRhino);
@@ -1155,14 +1198,7 @@ namespace WarhammerGUI
             base.createUnitInteraktion(100);
 
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myRazorback = new subEinheit() { };
-            myRazorback.name = alleSubeinheitenNamen.Razorback;
-            myRazorback.ausruestung = new List<alleAusruestung>() { };
-            myRazorback.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myRazorback.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
-
-            myRazorback.waffen = new List<waffe>() { };
-
+            var myRazorback = ultraMarineHelperClass.createRazorback();           
 
             // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
             var razorbackHauptWaffen = new List<pulldownAuswahl>() { };
@@ -1210,8 +1246,6 @@ namespace WarhammerGUI
                 einheitKostenGesamt = einheitKostenGesamt + razorAusruestung[i].kosten * 1;
             }
 
-
-
             var razorbackWaffen = new List<pulldownAuswahl>() { };
             razorbackWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
             AuswahlMAusN wahlRazorbackWaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen zusätzlich gewählt werden:", razorbackWaffen);
@@ -1226,16 +1260,6 @@ namespace WarhammerGUI
                 myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(razorbackWaffen[i].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + razorbackWaffen[i].kosten * 1;
             }
-
-
-            myRazorback.einheitentyp = Einheitstyp.FahrzeugPanzer;
-
-            // Setzen der Panzerungswerte:
-            myRazorback.bf = 4;
-            myRazorback.front = 11;
-            myRazorback.seit = 11;
-            myRazorback.heck = 10;
-            myRazorback.transportkapazitaet = 6;
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myRazorback);
@@ -2847,7 +2871,7 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlSpaceMarinesGesamt; ++i)
             {
                 // Okay, legen wir die Space Marines an:
-                var spaceMarine = spaceMarineHelperClass.createSpaceMarine();
+                var spaceMarine = ultraMarineHelperClass.createSpaceMarine();
                 
                 // Das Gleiche gilt für die Boltpistole!
                 spaceMarine.waffen = new List<waffe>() { };
@@ -2889,7 +2913,7 @@ namespace WarhammerGUI
             ///
             // SARGE:
             ///
-            var spaceMarineSergeant = spaceMarineHelperClass.createSpaceMarineSergeant();
+            var spaceMarineSergeant = ultraMarineHelperClass.createSpaceMarineSergeant();
            
             spaceMarineSergeant.ausruestung.Add(alleAusruestung.Signum);
             spaceMarineSergeant.waffen = new List<waffe>() { };
@@ -3360,7 +3384,7 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlSpaceMarinesGesamt; ++i)
             {
                 // Okay, legen wir die Space Marines an:
-                var spaceMarine = spaceMarineHelperClass.createSpaceMarine();
+                var spaceMarine = ultraMarineHelperClass.createSpaceMarine();
                 
                 // Jeder Space Marine hat Fragment- und Sprenggranaten (keine Extra-Kosten):
                 if(hatSprungmodule)
@@ -3412,7 +3436,7 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var spaceMarineSergeant = spaceMarineHelperClass.createSpaceMarineSergeant();
+            var spaceMarineSergeant = ultraMarineHelperClass.createSpaceMarineSergeant();
             
             if(hatSprungmodule)
                 spaceMarineSergeant.ausruestung.Add(alleAusruestung.Sprungmodul);
@@ -3659,7 +3683,7 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlVeteranenGesamt; ++i)
             {
                 // Okay, legen wir die Space Marines an:
-                var veteran = spaceMarineHelperClass.createVeteran();
+                var veteran = ultraMarineHelperClass.createVeteran();
                 veteran.name = alleSubeinheitenNamen.VeteranDerSpaceMariens;
 
                 if (hatSprungmodule)
@@ -3750,7 +3774,7 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var spaceMarineSergeant = spaceMarineHelperClass.createSpaceMarineSergeant();
+            var spaceMarineSergeant = ultraMarineHelperClass.createSpaceMarineSergeant();
             
             if (hatSprungmodule)
                 spaceMarineSergeant.ausruestung.Add(alleAusruestung.Sprungmodul);
@@ -3847,15 +3871,8 @@ namespace WarhammerGUI
             base.createUnitInteraktion(100);
 
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myCybot = new subEinheit() { };
-            myCybot.name = alleSubeinheitenNamen.EhrwuerdigerCybot;
-            myCybot.ausruestung = new List<alleAusruestung>() { };
-            myCybot.waffen = new List<waffe>() { };
-
-            // Die folgende Ausrüstung gibt es immer:
-            myCybot.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myCybot.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
-
+            var myCybot = ultraMarineHelperClass.createEhrwuerdigerCybot();
+         
             // Wahl des Sturmbolters:
             var wahlBolter = new List<pulldownAuswahl>() { };
             wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0});
@@ -3870,8 +3887,6 @@ namespace WarhammerGUI
             var myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
             myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
             einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-
 
             // Wahl des Multimelters:
             wahlBolter = new List<pulldownAuswahl>() { };
@@ -3926,23 +3941,8 @@ namespace WarhammerGUI
                 einheitKostenGesamt = einheitKostenGesamt + landRaiderAusruestung[i].kosten * 1;
             }
 
-            myCybot.einheitentyp = Einheitstyp.FahrzeugLaeufer;
-
-            // Setzen der Panzerungswerte:
-            myCybot.kg = 5;
-            myCybot.bf = 5;
-            myCybot.st = 6;
-            myCybot.front = 12;
-            myCybot.seit = 12;
-            myCybot.heck = 10;
-            myCybot.ini = 4;
-            myCybot.at = 2;
-            myCybot.transportkapazitaet = 0;
-
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myCybot);
-
-
 
             var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
             fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = "kein Transportfahrzeug", kosten = 0 });
@@ -3965,8 +3965,6 @@ namespace WarhammerGUI
                     angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
                     break;
             }
-
-
 
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
@@ -4002,15 +4000,8 @@ namespace WarhammerGUI
             base.createUnitInteraktion(100);
 
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myCybot = new subEinheit() { };
-            myCybot.name = alleSubeinheitenNamen.Cybot;
-            myCybot.ausruestung = new List<alleAusruestung>() { };
-            myCybot.waffen = new List<waffe>() { };
-
-            // Die folgende Ausrüstung gibt es immer:
-            myCybot.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myCybot.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
-
+            var myCybot = ultraMarineHelperClass.createCybot();
+           
             // Wahl des Sturmbolters:
             var wahlBolter = new List<pulldownAuswahl>() { };
             wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
@@ -4025,8 +4016,6 @@ namespace WarhammerGUI
             var myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
             myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
             einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-
 
             // Wahl des Multimelters:
             wahlBolter = new List<pulldownAuswahl>() { };
@@ -4081,23 +4070,8 @@ namespace WarhammerGUI
                 einheitKostenGesamt = einheitKostenGesamt + landRaiderAusruestung[i].kosten * 1;
             }
 
-            myCybot.einheitentyp = Einheitstyp.FahrzeugLaeufer;
-
-            // Setzen der Panzerungswerte:
-            myCybot.kg = 4;
-            myCybot.bf = 4;
-            myCybot.st = 6;
-            myCybot.front = 12;
-            myCybot.seit = 12;
-            myCybot.heck = 10;
-            myCybot.ini = 4;
-            myCybot.at = 2;
-            myCybot.transportkapazitaet = 0;
-
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myCybot);
-
-
 
             var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
             fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = "kein Transportfahrzeug", kosten = 0 });
@@ -4120,8 +4094,6 @@ namespace WarhammerGUI
                     angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
                     break;
             }
-
-
 
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
@@ -4158,16 +4130,7 @@ namespace WarhammerGUI
             base.createUnitInteraktion(100);
 
             // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myCybot = new subEinheit() { };
-            myCybot.name = alleSubeinheitenNamen.IroncladCybot;
-            myCybot.ausruestung = new List<alleAusruestung>() { };
-            myCybot.waffen = new List<waffe>() { };
-
-            // Die folgende Ausrüstung gibt es immer:
-            myCybot.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myCybot.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
-            myCybot.ausruestung.Add(alleAusruestung.ZusaetzlichePanzerung);
-
+            var myCybot = ultraMarineHelperClass.createIronclad();
 
             // Frage: Will ich ein Hurricano statt Cybotnahkampfwaffe und Sturmbolter?
             var wahlBolter = new List<pulldownAuswahl>() { };
@@ -4220,8 +4183,6 @@ namespace WarhammerGUI
             myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
             einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
 
-
-
             // Wahl der Nahkampfwaffe:
             wahlBolter = new List<pulldownAuswahl>() { };
             wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SeismischerHammer, kosten = 0 });
@@ -4255,19 +4216,6 @@ namespace WarhammerGUI
                 einheitKostenGesamt = einheitKostenGesamt + landRaiderAusruestung[i].kosten * 1;
             }
 
-            myCybot.einheitentyp = Einheitstyp.FahrzeugLaeufer;
-
-            // Setzen der Panzerungswerte:
-            myCybot.kg = 4;
-            myCybot.bf = 4;
-            myCybot.st = 6;
-            myCybot.front = 13;
-            myCybot.seit = 13;
-            myCybot.heck = 10;
-            myCybot.ini = 4;
-            myCybot.at = 2;
-            myCybot.transportkapazitaet = 0;
-
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myCybot);
 
@@ -4292,8 +4240,6 @@ namespace WarhammerGUI
                     angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
                     break;
             }
-
-
 
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
@@ -4386,7 +4332,7 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlScoutsGesamt; ++i)
             {
                 // Okay, legen wir die Space Marines an:
-                var scout = spaceMarineHelperClass.createScout();
+                var scout = ultraMarineHelperClass.createScout();
 
                 if (habenTarnmaentel)
                     scout.ausruestung.Add(alleAusruestung.Tarnmantel);
@@ -4473,7 +4419,7 @@ namespace WarhammerGUI
 
             // Außerdem gibt es ja noch den Sergeant:
             // Erstellen wir ihn:
-            var scoutSarge = spaceMarineHelperClass.createSpaceMarineSergeant();
+            var scoutSarge = ultraMarineHelperClass.createSpaceMarineSergeant();
 
             if (habenTarnmaentel)
                 scoutSarge.ausruestung.Add(alleAusruestung.Tarnmantel);
@@ -5216,7 +5162,7 @@ namespace WarhammerGUI
             // Genau soviele einordnen, wie vom Spieler gewünscht:
             for (int i = 0; i < anzahlVeteranenGesamt; ++i)
             {
-                var veteran = spaceMarineHelperClass.createVeteran();              
+                var veteran = ultraMarineHelperClass.createVeteran();              
 
                 veteran.waffen = new List<waffe>() { };
                 veteran.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));               
@@ -5282,7 +5228,7 @@ namespace WarhammerGUI
             }
 
             // Sarge:
-            var sarge = spaceMarineHelperClass.createSpaceMarineSergeant();            
+            var sarge = ultraMarineHelperClass.createSpaceMarineSergeant();            
             sarge.ausruestung.Add(alleAusruestung.Spezialmunition);
 
             sarge.waffen = new List<waffe>() { };
@@ -6033,7 +5979,7 @@ namespace WarhammerGUI
             for (int i = 0; i < anzahlLegionaereGesamt; ++i)
             {
                 // Okay, legen wir die Space Marines an:
-                var legionaer = spaceMarineHelperClass.createLegionaerLegionaer();
+                var legionaer = ultraMarineHelperClass.createLegionaerLegionaer();
 
                 if (i == 0)
                 {
@@ -6090,7 +6036,7 @@ namespace WarhammerGUI
             ///
             // SARGE:
             ///
-            var legionSarge = spaceMarineHelperClass.createLegionaerSarge();
+            var legionSarge = ultraMarineHelperClass.createLegionaerSarge();
             
             legionSarge.waffen = new List<waffe>() { };
 
