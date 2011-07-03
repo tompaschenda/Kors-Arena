@@ -1,8 +1,9 @@
 ﻿<Window x:Class="WarhammerGUI.StreitmachtEdit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title ="Armee Bearbeiten" Height="768" Width="1024">
-    <Grid>
+        xmlns:Controls="clr-namespace:WarhammerGUI.Gui"
+        Title ="Armee Bearbeiten" Height="768" Width="1025">
+    <Grid Width="999">
         <Label Content="Fraktion der aktiven Armee:" Height="28" HorizontalAlignment="Left" Margin="312,6,0,0" Name="label2" VerticalAlignment="Top" />
         <Label Content="Name der aktiven Armee:" Height="28" HorizontalAlignment="Left" Margin="35,6,0,0" Name="label4" VerticalAlignment="Top" />
         <Label Content="Gesamtpunkte der aktiven Armee:" Height="28" HorizontalAlignment="Left" Margin="522,3,0,0" Name="label5" VerticalAlignment="Top" />
@@ -10,7 +11,7 @@
         <TextBox BorderBrush="Black" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="312,40,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="170" />
         <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="522,40,405,0" Name="displayArmyPoints" VerticalAlignment="Top" />
         <Label Content="Vorhandene Einheiten:" Height="28" HorizontalAlignment="Left" Margin="30,85,0,0" Name="vorhandeneEinheitenLabel" VerticalAlignment="Top" Width="230" />
-        <TreeView Height="463" HorizontalAlignment="Left" Margin="30,119,0,0" Name="unitTreeView" VerticalAlignment="Top" Width="305" SelectedItemChanged="unitTreeView_SelectedItemChanged"  />
+        <TreeView Height="223" HorizontalAlignment="Left" Margin="30,119,0,0" Name="unitTreeView" VerticalAlignment="Top" Width="305" SelectedItemChanged="unitTreeView_SelectedItemChanged"  />
         <Button Content="_Neue Einheit hinzufügen" Height="23" HorizontalAlignment="Left" Margin="405,171,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickEinheitHinzufuegen"  />
         <Button Content="Einheit _löschen" Height="23" HorizontalAlignment="Left" Margin="405,224,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickLoescheEinheit"/>
         <Button Content="Einheit _kopieren" Height="23" HorizontalAlignment="Left" Margin="405,277,0,0" Name="button3" VerticalAlignment="Top" Width="196" Click="klickKopiereEinheit" />
@@ -24,5 +25,6 @@
         <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="871,605,56,0" Name="unitBaseCostFenster" VerticalAlignment="Top" />
         <Label Content="Basiskosten der markierten Einheit:" Height="28" HorizontalAlignment="Left" Margin="663,605,0,0" Name="label3" VerticalAlignment="Top" />
         <Button Content="Armeeübersicht erstellen (PDF)" Height="23" HorizontalAlignment="Left" Margin="405,377,0,0" Name="button5" VerticalAlignment="Top" Width="196" Click="erstelleArmeeuebersicht" />
+        <Controls:ControlEinheitEdit HorizontalAlignment="Left" Margin="30,348,0,147" Width="305" Content="{Binding Path=MyValue}" ></Controls:ControlEinheitEdit>
     </Grid>
 </Window>

@@ -65,6 +65,12 @@
     <Compile Include="Gui\AuswahlAnzahlSubunits.xaml.cs">
       <DependentUpon>AuswahlAnzahlSubunits.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\ControlAuswahl1AusN.xaml.cs">
+      <DependentUpon>ControlAuswahl1AusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlEinheitEdit.xaml.cs">
+      <DependentUpon>ControlEinheitEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gui\EnumComboBox.cs" />
     <Compile Include="Gui\fehlerMessageBox.xaml.cs">
       <DependentUpon>fehlerMessageBox.xaml</DependentUpon>
@@ -91,6 +97,14 @@
     <Page Include="Gui\AuswahlAnzahlSubunits.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\ControlAuswahl1AusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlEinheitEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gui\fehlerMessageBox.xaml">
       <SubType>Designer</SubType>

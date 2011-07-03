@@ -1,6 +1,7 @@
 ﻿<Window x:Class="WarhammerGUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:WarhammerGUI.Gui"
         Title="ArmyBench" Height="768" Width="1024">
     <Grid>
         <Menu Grid.Column="0" Grid.Row="0" Height="23" VerticalAlignment="Top">

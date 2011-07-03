@@ -88,6 +88,15 @@ namespace WarhammerGUI
             }
         }
 
+        public Einheit gewaehlteEinheit
+        {
+            get
+            {
+                var aktEinheitIndex = getChosenUnitTreeIdentifier();
+                return spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktEinheitIndex];
+            }
+        }
+
         /// <summary>
         /// Aktualisiert die Anzeige der aktuell ausgewählten Einheit
         /// </summary>
