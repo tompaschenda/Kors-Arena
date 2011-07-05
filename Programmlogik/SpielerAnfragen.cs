@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Common;
 
 namespace WarhammerGUI
 {
@@ -11,6 +12,22 @@ namespace WarhammerGUI
     /// </summary>
     public struct pulldownAuswahl
     {
+        public string GUIText
+        {
+            get
+            {
+                Type enumTyp = auswahl.GetType();
+
+                string tempString;
+                if (enumTyp.Name != "String")
+                    tempString = EnumExtensions.getEnumDescription(enumTyp, auswahl.ToString());
+                else
+                    tempString = auswahl.ToString();
+                return (tempString + "    (+ " + kosten.ToString() + " Punkte)");
+            }
+        }
+
+
         /// <summary>
         /// Punktekosten der Auswahl
         /// </summary>

@@ -90,6 +90,10 @@
     <Compile Include="Gui\StreitmachtCreate.xaml.cs">
       <DependentUpon>StreitmachtCreate.xaml</DependentUpon>
     </Compile>
+    <Page Include="Gui\ArmyBenchStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gui\Auswahl1AusN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

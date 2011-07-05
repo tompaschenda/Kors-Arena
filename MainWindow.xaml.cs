@@ -36,8 +36,8 @@ namespace WarhammerGUI
 
 
             hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
-            hook.RegisterHotKey(ModifierBeys.Control, Keys.C);
-            hook.RegisterHotKey(ModifierBeys.Control, Keys.N);
+            //hook.RegisterHotKey(ModifierBeys.Control, Keys.C);
+            //hook.RegisterHotKey(ModifierBeys.Control, Keys.N);
 
         }
         

@@ -25,6 +25,6 @@
         <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="871,605,56,0" Name="unitBaseCostFenster" VerticalAlignment="Top" />
         <Label Content="Basiskosten der markierten Einheit:" Height="28" HorizontalAlignment="Left" Margin="663,605,0,0" Name="label3" VerticalAlignment="Top" />
         <Button Content="Armeeübersicht erstellen (PDF)" Height="23" HorizontalAlignment="Left" Margin="405,377,0,0" Name="button5" VerticalAlignment="Top" Width="196" Click="erstelleArmeeuebersicht" />
-        <Controls:ControlEinheitEdit HorizontalAlignment="Left" Margin="30,348,0,147" Width="305" Content="{Binding Path=MyValue}" ></Controls:ControlEinheitEdit>
+        <Controls:ControlEinheitEdit x:Name="einheitEdit" HorizontalAlignment="Left" Margin="30,348,0,147" Width="305"></Controls:ControlEinheitEdit>
     </Grid>
 </Window>

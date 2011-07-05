@@ -90,6 +90,17 @@ namespace WarhammerGUI
         }
 
         /// <summary>
+        /// Der Name, der im GUI angezeigt wird
+        /// </summary>
+        public string GUIName
+        {
+            get
+            {
+                return EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), einheitenName) + spielerEinheitenName;
+            }
+        }
+
+        /// <summary>
         /// Name der Einheit
         /// </summary>
         public alleEinheitenNamen einheitenName;

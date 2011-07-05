@@ -5,11 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:Controls="clr-namespace:WarhammerGUI.Gui"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="620" d:DesignWidth="300">
     <Grid>
         <StackPanel>
-            <TextBox Name="nameBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="86" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center" Text="Einheit: " />
+            <TextBox Text="{Binding Path=GUIName, Mode=OneWay}" Name="nameBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="24" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center" />
             <Controls:ControlAuswahl1AusN HorizontalAlignment="Left" ></Controls:ControlAuswahl1AusN>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Punkte Einheit:" Height="28" Name="label4" Width="204" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Height="23" Name="textEinheitKostenJetzt" Text="" Width="95" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Punkte Auswahl:" Height="28" Name="label1" Width="204" />
+                <TextBlock Grid.Row="1" Grid.Column="1"  Height="23" Name="textAuswahlExtrakosten" Text="" Width="95" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Punkte Armee:" Height="28" Margin="6,6,0,0" Name="label2" Width="204" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Height="23" Name="textArmeeKostenJetzt" Text="" Width="95" />
+                
+            </Grid>
         </StackPanel>
         
     </Grid>

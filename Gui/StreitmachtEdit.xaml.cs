@@ -525,6 +525,16 @@ namespace WarhammerGUI
         private void unitTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             updateAktUnitCostView();
+            updateEinheitEdit();
+        }
+
+        /// <summary>
+        /// Teilt dem Edit-Feld mit, dass sich die aktuelle Einheit geändert hat
+        /// TODO: Das kann auch per DataBinding gemacht werden.
+        /// </summary>
+        private void updateEinheitEdit()
+        {
+            einheitEdit.DataContext = gewaehlteEinheit;
         }
 
         private bool pruefeAufEinzigartigkeit(string nameDerEinheit)

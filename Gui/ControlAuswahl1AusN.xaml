@@ -4,11 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ArmyBenchStyles.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <StackPanel>
         <TextBox Name="announcementBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="86" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center" Text="Bitte eine Auswahl treffen!" />
         <StackPanel Name="StackPanelRadioButtons">
             <RadioButton Content="Option 1"></RadioButton>
             <RadioButton Content="Option 2"></RadioButton>
         </StackPanel>
+        <ListBox Style="{StaticResource RadioButtonListStyle}" Height="100" DisplayMemberPath="GUIText" Name="listBox1" ItemsSource="{Binding PulldownAuswahlen}" />
     </StackPanel>
 </UserControl>
