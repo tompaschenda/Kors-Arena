@@ -80,8 +80,8 @@ namespace WarhammerGUI
                 }
             }
 
-            if(blaupauseGewuenscht != null)
-                gewuenschteEinheit = new Einheit(blaupauseGewuenscht); // Copy-Konstruktor!
+            if (blaupauseGewuenscht != null)
+                gewuenschteEinheit = blaupauseGewuenscht.CloneEinheit(blaupauseGewuenscht);
 
             if(gewuenschteEinheit == null)
                 throw new ArgumentException("Die gewünschte Einheit existiert nicht!", "kopiereMirFolgendeEinheit");
@@ -116,7 +116,7 @@ namespace WarhammerGUI
                     var aktAuswahlMoeglichkeit = aktUnitBlaupause.auswahlTypBasis[aktAuswahlIndex];
                     if (aktUnitBlaupause.fraktion == einheitsFraktion && aktAuswahlMoeglichkeit == einheitenAuswahl)
                     {
-                        var aktUnitKopie = new Einheit(aktUnitBlaupause); // Copy-Konstruktor!
+                        var aktUnitKopie = aktUnitBlaupause.CloneEinheit(aktUnitBlaupause);                        
                         listeMitAllenEinheiten.Add(aktUnitKopie);
                     }
                 }
@@ -167,7 +167,7 @@ namespace WarhammerGUI
                 var aktUnitBlaupause = m_globalUnitList[aktUnitIndex];
                 if( aktUnitBlaupause.uniqueStringProperty == uniqueString)
                 {
-                    kopierteEinheit = new Einheit(aktUnitBlaupause);
+                    kopierteEinheit = aktUnitBlaupause.CloneEinheit(aktUnitBlaupause);
                 }
             }
             return kopierteEinheit;

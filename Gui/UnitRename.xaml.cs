@@ -26,6 +26,7 @@ namespace WarhammerGUI
             m_WindowParent = parentWindow;
             InitializeComponent();
             m_indexDerArmee = indexDerArmee;
+            m_RefUnit = testEinheit;
 
             // Ich möchte, dass der alte Name direkt als Auswahl erscheint, wenn es einen gibt!
             if (testEinheit.spielerEinheitenName != "")
@@ -53,6 +54,7 @@ namespace WarhammerGUI
         private int m_indexDerArmee = -1;
         public bool m_okay = false;
         public string m_neuerSpielerString = "";
+        private Einheit m_RefUnit;
 
 
         private void abbrechenKlick(object sender, RoutedEventArgs e)
@@ -95,12 +97,18 @@ namespace WarhammerGUI
 
             // Außerdem darf der Name noch nicht vergeben sein!
             for (int i = 0; i < spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten.Count; ++i)
-                if (spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[i].spielerEinheitenName == this.namensTextbox.Text)
+            {
+                var aktUnit = spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[i];
+                var uniqueHeaderExistent = aktUnit.getUniqueHeaderProperty();
+                var uniqueHeaderNeu = m_RefUnit.getUniqueHeaderProperty(this.namensTextbox.Text);
+
+                if (uniqueHeaderExistent == uniqueHeaderNeu)
                 {
                     if (showGUIAnnouncement)
                         MessageBox.Show("Bitte einen Namen eingeben, der noch nicht vergeben ist!", "Kein einzigartiger Name eingegeben!", MessageBoxButton.OK, MessageBoxImage.Error);
                     allesOkay = false;
                 }
+            }
 
             return allesOkay;
         }

@@ -1386,7 +1386,7 @@ namespace WarhammerGUI
     /// <summary>
     /// Definition einer Waffe:
     /// </summary>
-    public class waffe
+    public class waffe : ICloneable
     {
         /// <summary>
         /// Konstruktor einer Waffe:
@@ -1398,6 +1398,18 @@ namespace WarhammerGUI
             istSchusswaffe = true;
             auspraegungen = new List<waffenAuspraegung>() { };
         }
+
+        public object Clone()
+        {
+            var copy = (waffe)this.MemberwiseClone();
+            copy.auspraegungen = new List<waffenAuspraegung>() { };
+            for (int i = 0; i < this.auspraegungen.Count; ++i)
+            {
+                copy.auspraegungen.Add((waffenAuspraegung)this.auspraegungen[i].Clone());
+            }
+            return copy;
+        }
+
 
         /// <summary>
         /// Name der Waffe
@@ -1422,8 +1434,15 @@ namespace WarhammerGUI
         public List<waffenAuspraegung> auspraegungen;
     }
 
-    public struct waffenAuspraegung
+    public struct waffenAuspraegung : ICloneable
     {
+        public object Clone()
+        {
+            var copy = (waffenAuspraegung)this.MemberwiseClone();
+            copy.waffenRegeln = new List<WaffenRegeln>(this.waffenRegeln);
+            return copy;
+        }
+
         /// <summary>
         /// Beschreibung der jeweiligen Ausprägung. Z.B. "Spenggranaten"
         /// </summary>

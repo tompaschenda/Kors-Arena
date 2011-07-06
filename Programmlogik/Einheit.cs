@@ -5,9 +5,12 @@ using System.Text;
 using Listen;
 using Common;
 
-
 namespace WarhammerGUI
 {
+    public class foo
+    {
+
+    }
 
     /// <summary>
     /// Enthält alles, was nötig ist, um eine Einheit eindeutig zu identifizieren und einordnen zu können.
@@ -31,7 +34,7 @@ namespace WarhammerGUI
         public EinheitenAuswahl einheitAuswahl;
     }
 
-    public class Einheit : IComparable<Einheit>
+    public abstract class Einheit : IComparable<Einheit>
     {
         /// <summary>
         /// Konstruktor:
@@ -47,46 +50,32 @@ namespace WarhammerGUI
             erschaffungOkay = false;
             angeschlossenesFahrzeugString = "";
             zugehoerigeEinheit = "";
+            auswahlen = new List<choiceDefinition>() { };
+            subEinheiten = new List<subEinheit>() { };
         }
 
-        /// <summary>
-        /// Copy-Konstruktor von Hand! TODO TODO TODO!
-        /// WARNUNG! IMMER UP-TO-DATE halten!
-        /// </summary>
-        /// <param name="altEinheit"></param>
-        public Einheit(Einheit alteEinheit)
+        public T CloneEinheit<T>(T alteEinheit) where T : Einheit
         {
-            einheitenName = alteEinheit.einheitenName;
-            uniqueStringProperty = alteEinheit.uniqueStringProperty;
-            spielerEinheitenName = alteEinheit.spielerEinheitenName;
-            fraktion = alteEinheit.fraktion;
-            basispunkteKosten = alteEinheit.basispunkteKosten;
-            einheitKostenGesamt = alteEinheit.einheitKostenGesamt;
-            einzigartig = alteEinheit.einzigartig;
-            einheitentyp = alteEinheit.einheitentyp;
-            sonderregeln = alteEinheit.sonderregeln;
-            auswahlTypBasis = alteEinheit.auswahlTypBasis;
-            auswahlTypSpieler = alteEinheit.auswahlTypSpieler;
-            angeschlossenesFahrzeugString = alteEinheit.angeschlossenesFahrzeugString;
-            subEinheiten = alteEinheit.subEinheiten;
-            erschaffungOkay = alteEinheit.erschaffungOkay;
-            uniqueHeaderProperty = alteEinheit.uniqueHeaderProperty;
-            zugehoerigeEinheit = alteEinheit.zugehoerigeEinheit;
-        }
+            var copy = (T)alteEinheit.MemberwiseClone();
+            copy.sonderregeln = new List<Sonderregeln>(alteEinheit.sonderregeln);
+            copy.auswahlTypBasis = new List<EinheitenAuswahl>(alteEinheit.auswahlTypBasis);
+            copy.subEinheiten = new List<subEinheit>() { };
+            for (int i = 0; i < alteEinheit.subEinheiten.Count; ++i)
+            {
+                copy.subEinheiten.Add((subEinheit)alteEinheit.subEinheiten[i].Clone());
+            }
+            copy.auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            for (int i = 0; i < alteEinheit.auswahlTypBasis.Count; ++i)
+            {
+                copy.auswahlTypBasis.Add(alteEinheit.auswahlTypBasis[i]);
+            }
 
-
-        public int CompareTo(Einheit obj)
-        {
-            // Verglichen wird natürlich auf den Spieler-Einheitennamen!
-            string nameKlasse = uniqueHeaderProperty;
-            string nameDelegat = obj.uniqueHeaderProperty;
-
-            if(nameKlasse == null)
-                nameKlasse = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), einheitenName);
-            if(nameDelegat == null)
-                nameDelegat = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), obj.einheitenName);
-
-            return  nameKlasse.CompareTo(nameDelegat);
+            copy.auswahlen = new List<choiceDefinition>() { };
+            for (int i = 0; i < alteEinheit.auswahlen.Count; ++i)
+            {
+                copy.auswahlen.Add((choiceDefinition)alteEinheit.auswahlen[i].Clone());
+            }
+            return copy;
         }
 
         /// <summary>
@@ -126,6 +115,11 @@ namespace WarhammerGUI
         /// umgekehrt die Einheit, der das Transportfahrzeug gehört.
         /// </summary>
         public string zugehoerigeEinheit;
+
+        /// <summary>
+        /// Die Auswahlen, die man per declareChoices() deklariert und die der Spieler treffen kann/muss.
+        /// </summary>
+        public List<choiceDefinition> auswahlen;
 
         /// <summary>
         /// Wurde die Einheit korrekt inklusive aller Spielerabfragen erzeugt?
@@ -191,33 +185,6 @@ namespace WarhammerGUI
         public List<subEinheit> subEinheiten;
 
         /// <summary>
-        /// Virtuelle Funktion, die die jeweiligen
-        /// Optionen abhandelt, die der Spieler zur Konfiguration 
-        /// seines Trupps treffen muss.
-        /// Erst wenn sie abgehandelt wurden, ist die
-        /// Einheit fertig konfiguriert!
-        /// Wird nicht automatisch bei der erstellung der globalen Enheitenliste
-        /// ausgeführt!
-        /// </summary>
-        public virtual void createUnitInteraktion(int gesamtArmeePunkteKosten) {  }
-
-        /// <summary>
-        /// Virtuelle Funktion, die mit Leben gefüllt werden
-        /// muss, damit eine Einheit erstellt werden kann.
-        /// Diese Basisfunktion kann automatisch OHNE Spielerinteraktion aufgerufen
-        /// werden und definiert eine Einheit bereits automatisch.
-        /// </summary>
-        public virtual void createUnitBase() 
-        {
-            // Wenn wir sowieso nur einen Einheitentyp vorliegen haben,
-            // dann können wir ihn auch sofort festlegen,ohne den
-            // Spieler behelligen zu müssen:
-            if (auswahlTypBasis.Count == 1)
-                auswahlTypSpieler = auswahlTypBasis[0];
-        }
-
-
-        /// <summary>
         /// Gibt für jede existierende Sub-Einheit einen Eintrag in der Liste zurück!
         /// </summary>
         /// <returns></returns>
@@ -232,6 +199,62 @@ namespace WarhammerGUI
             }
 
             return liste;
+        }
+
+
+        //////////
+        //
+        //
+        //    METHODEN DER KLASSE!
+        //
+        //
+        /////////
+
+        /// <summary>
+        /// Virtuelle Funktion, die die jeweiligen
+        /// Optionen abhandelt, die der Spieler zur Konfiguration 
+        /// seines Trupps treffen muss.
+        /// Erst wenn sie abgehandelt wurden, ist die
+        /// Einheit fertig konfiguriert!
+        /// Wird nicht automatisch bei der erstellung der globalen Enheitenliste
+        /// ausgeführt!
+        /// </summary>
+        public abstract void createUnitInteraktion(int gesamtArmeePunkteKosten);
+
+        /// <summary>
+        /// Virtuelle Funktion, die mit Leben gefüllt werden
+        /// muss, damit eine Einheit erstellt werden kann.
+        /// Diese Basisfunktion kann automatisch OHNE Spielerinteraktion aufgerufen
+        /// werden und definiert eine Einheit bereits automatisch.
+        /// </summary>
+        public virtual void createUnitBase() { }
+
+        /// <summary>
+        /// Hier werden alle vom Spieler zu treffenden Auswahlen definiert.
+        /// </summary>
+        public virtual void declareChoices() { }
+
+        /// <summary>
+        /// Hier werden die Abhängigkeiten der Auswahlen unter einander abhängig von vorherigen Auswahlen
+        /// umgesetzt. Eine Auswahl kann eine andere invalidieren oder die auszuwählenden Optionen ändern.
+        /// </summary>
+        public virtual void updateChoiceDependencies() { }
+
+        /// <summary>
+        /// Führt die ausgewählten Auswahlen durch.
+        /// </summary>
+        public virtual void evaluateChoives() { }
+
+        public choiceDefinition getSpecificChoice( ChoiceAuswahlIdentifier ziel)
+        {
+            for (int i = 0; i < auswahlen.Count; ++i)
+            {
+                if (auswahlen[i].auswahlIdentifier == ziel)
+                {
+                    return auswahlen[i];
+                }
+            }
+            throw new ArgumentOutOfRangeException("Die angegebene Auswahl existiert nicht in der Auswahlliste der Einheit!");
         }
 
         /// <summary>
@@ -304,6 +327,57 @@ namespace WarhammerGUI
             return anzahl;
         }
 
+        public string getUniqueHeaderProperty()
+        {
+            var baseName = EnumExtensions.getEnumDescription(this.einheitenName.GetType(), this.einheitenName.ToString());
+            return baseName + " (" + this.spielerEinheitenName + ")";
+        }
+        public string getUniqueHeaderProperty(string spielerEinheitenName)
+        {
+            var baseName = EnumExtensions.getEnumDescription(this.einheitenName.GetType(), this.einheitenName.ToString());
+            return baseName + " (" + spielerEinheitenName + ")";
+        }
+
+        /// <summary>
+        /// Prüft, ob alle deklarierten Auswahlen auch in allen Bereichen korrekt initialisiert wurden!
+        /// </summary>
+        public void checkDeclaredChoicesValidity()
+        {
+            for (int i = 0; i < auswahlen.Count; ++i)
+            {
+                var aktAuswahl = auswahlen[i];
+                aktAuswahl.validate();
+                
+                // Ist der Identifier der Auswahl einzigartig?
+                for (int j = 0; j < auswahlen.Count; ++j)
+                {
+                    if (j == i)
+                        continue;
+
+                    if (aktAuswahl.auswahlIdentifier == auswahlen[j].auswahlIdentifier)
+                        throw new ArgumentOutOfRangeException("Der Auswahl-Identifier war nicht einzigartig!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sortierfunktion für Subeinheiten.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public int CompareTo(Einheit obj)
+        {
+            // Verglichen wird natürlich auf den Spieler-Einheitennamen!
+            string nameKlasse = uniqueHeaderProperty;
+            string nameDelegat = obj.uniqueHeaderProperty;
+
+            if (nameKlasse == null)
+                nameKlasse = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), einheitenName);
+            if (nameDelegat == null)
+                nameDelegat = EnumExtensions.getEnumDescription(typeof(alleEinheitenNamen), obj.einheitenName);
+
+            return nameKlasse.CompareTo(nameDelegat);
+        }
     }
 
     /// <summary>
@@ -313,7 +387,7 @@ namespace WarhammerGUI
     ///     Subeinheit: Space Marine
     ///     Subeinheit: Sergeant
     /// </summary>
-    public class subEinheit
+    public class subEinheit : ICloneable
     {
         // Default-Konstruktor:
         public subEinheit() 
@@ -338,6 +412,24 @@ namespace WarhammerGUI
             transportkapazitaet = 0;
             einheitentyp = Einheitstyp.undefined;
             psikraefte = new List<Psikraefte>() { };
+        }
+
+        /// <summary>
+        /// Klone-Methode für die Subeinheit!
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            var copy = (subEinheit) this.MemberwiseClone();
+            copy.ausruestung = new List<alleAusruestung>(this.ausruestung);
+            copy.waffen = new List<waffe>() { };
+            for (int i = 0; i < this.waffen.Count; ++i)
+            {
+                copy.waffen.Add((waffe) this.waffen[i].Clone());
+            }
+            copy.psikraefte = new List<Psikraefte>(this.psikraefte);
+
+            return copy;
         }
 
         /// <summary>
@@ -390,17 +482,5 @@ namespace WarhammerGUI
         public Einheitstyp einheitentyp;
 
         public List<Psikraefte> psikraefte;
-    }
-
-    /// <summary>
-    /// Gibt für jede Subeinheit einer Einheit die
-    /// zugehörigen möglichen oder tatsächlichen
-    /// Anzahlen an.
-    /// </summary>
-    public struct Groessenspecifier
-    {
-        public Object subEinheitenname;
-
-        public int anzahl;
     }
 }
