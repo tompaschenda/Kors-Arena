@@ -83,6 +83,17 @@ namespace WarhammerGUI
         public AuswahlTyp artDerAuswahl;
         public AuswahlTool toolDerAuswahl;
 
+        /// <summary>
+        /// Die Auswahlen, die in der GUI angezeigt werden.
+        /// </summary>
+        public List<pulldownAuswahl> AuswahlOptionen
+        {
+            get
+            {
+                return auswahlOptionen;
+            }
+        }
+
         public List<pulldownAuswahl> auswahlOptionen;
 
         public ChoiceAuswahlIdentifier auswahlIdentifier;
@@ -98,13 +109,24 @@ namespace WarhammerGUI
         public string labelString;
 
         /// <summary>
+        /// Der Text, der in der GUI angezeigt werden soll.
+        /// </summary>
+        public string GUIText
+        {
+            get
+            {
+                return labelString;
+            }
+        }
+
+        /// <summary>
         /// Virtuelle Funktion, die das Validieren der Unterklassen-Auswahlen übernimmt.
         /// </summary>
         public abstract void validate();
 
         public virtual object Clone()
         {
-            var copy = (waffenAuswahl)this.MemberwiseClone();
+            var copy = (choiceDefinition)this.MemberwiseClone();
             copy.auswahlOptionen = new List<pulldownAuswahl>() { };
             for (int i = 0; i < auswahlOptionen.Count; ++i)
             {

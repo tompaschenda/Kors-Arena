@@ -68,6 +68,12 @@
     <Compile Include="Gui\ControlAuswahl1AusN.xaml.cs">
       <DependentUpon>ControlAuswahl1AusN.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\ControlAuswahlAnzahl.xaml.cs">
+      <DependentUpon>ControlAuswahlAnzahl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlAuswahlMAusN.xaml.cs">
+      <DependentUpon>ControlAuswahlMAusN.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gui\ControlEinheitEdit.xaml.cs">
       <DependentUpon>ControlEinheitEdit.xaml</DependentUpon>
     </Compile>
@@ -103,6 +109,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Gui\ControlAuswahl1AusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlAuswahlAnzahl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlAuswahlMAusN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

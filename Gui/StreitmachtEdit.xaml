@@ -11,7 +11,7 @@
         <TextBox BorderBrush="Black" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="312,40,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="170" />
         <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="522,40,405,0" Name="displayArmyPoints" VerticalAlignment="Top" />
         <Label Content="Vorhandene Einheiten:" Height="28" HorizontalAlignment="Left" Margin="30,85,0,0" Name="vorhandeneEinheitenLabel" VerticalAlignment="Top" Width="230" />
-        <TreeView Height="223" HorizontalAlignment="Left" Margin="30,119,0,0" Name="unitTreeView" VerticalAlignment="Top" Width="305" SelectedItemChanged="unitTreeView_SelectedItemChanged"  />
+        <TreeView Height="181" HorizontalAlignment="Left" Margin="30,119,0,0" Name="unitTreeView" VerticalAlignment="Top" Width="305" SelectedItemChanged="unitTreeView_SelectedItemChanged"  />
         <Button Content="_Neue Einheit hinzufügen" Height="23" HorizontalAlignment="Left" Margin="405,171,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickEinheitHinzufuegen"  />
         <Button Content="Einheit _löschen" Height="23" HorizontalAlignment="Left" Margin="405,224,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickLoescheEinheit"/>
         <Button Content="Einheit _kopieren" Height="23" HorizontalAlignment="Left" Margin="405,277,0,0" Name="button3" VerticalAlignment="Top" Width="196" Click="klickKopiereEinheit" />
@@ -25,6 +25,6 @@
         <TextBox BorderBrush="Black" Height="23" IsReadOnly="True" Margin="871,605,56,0" Name="unitBaseCostFenster" VerticalAlignment="Top" />
         <Label Content="Basiskosten der markierten Einheit:" Height="28" HorizontalAlignment="Left" Margin="663,605,0,0" Name="label3" VerticalAlignment="Top" />
         <Button Content="Armeeübersicht erstellen (PDF)" Height="23" HorizontalAlignment="Left" Margin="405,377,0,0" Name="button5" VerticalAlignment="Top" Width="196" Click="erstelleArmeeuebersicht" />
-        <Controls:ControlEinheitEdit x:Name="einheitEdit" HorizontalAlignment="Left" Margin="30,348,0,147" Width="305"></Controls:ControlEinheitEdit>
+        <Controls:ControlEinheitEdit x:Name="einheitEdit" HorizontalAlignment="Left" Margin="30,306,0,147" Width="305"></Controls:ControlEinheitEdit>
     </Grid>
 </Window>

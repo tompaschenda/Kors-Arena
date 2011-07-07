@@ -25,7 +25,9 @@ namespace WarhammerGUI.Gui
         public ControlAuswahl1AusN()
         {
             InitializeComponent();
+            /*
             removeAllRadioButtons();
+            
             DataContext = this;
             //Testcode
             
@@ -38,9 +40,10 @@ namespace WarhammerGUI.Gui
             setAuswahl(500, 100, 1, "Ein Space Marine darf eine der folgenden Waffen wählen:", auswahlKonstrukt);
 
             pulldownAuswahlen = new ObservableCollection<pulldownAuswahl>(auswahlKonstrukt);
+             */
             //testcode
         }
-
+        /*
         public void setAuswahl(int totalCostArmy, int totalCostBase, int anzahlElemente, string descriptionString, List<pulldownAuswahl> pdownAuswahlen)
         {
             announcementBox.Text = descriptionString;
@@ -61,7 +64,7 @@ namespace WarhammerGUI.Gui
                 addRadioButton(tempString + "    (+ " + pdownAuswahlen[i].kosten.ToString() + " Punkte)");
             }
         }
-
+        
         public ObservableCollection<pulldownAuswahl> PulldownAuswahlen
         {
             get 
@@ -89,5 +92,6 @@ namespace WarhammerGUI.Gui
         {
             StackPanelRadioButtons.Children.Clear();
         }
+         * */
     }
 }

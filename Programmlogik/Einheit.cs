@@ -117,9 +117,25 @@ namespace WarhammerGUI
         public string zugehoerigeEinheit;
 
         /// <summary>
+        /// [Tom] Empfehle, diese Variable private zu machen und Zugriffe von außen nur über die Property zu machen.
         /// Die Auswahlen, die man per declareChoices() deklariert und die der Spieler treffen kann/muss.
         /// </summary>
         public List<choiceDefinition> auswahlen;
+
+        /// <summary>
+        /// Für die GUI brauchen wir eine Property
+        /// </summary>
+        public List<choiceDefinition> Auswahlen
+        {
+            get
+            {
+                return auswahlen;
+            }
+            set
+            {
+                auswahlen = value;
+            }
+        }
 
         /// <summary>
         /// Wurde die Einheit korrekt inklusive aller Spielerabfragen erzeugt?

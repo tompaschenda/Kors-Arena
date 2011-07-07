@@ -579,6 +579,9 @@ namespace WarhammerGUI
             // DANN können wir erst kopieren!
             var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(nameDerEinheit);
 
+            //Tom: Nur zum Testen.
+            neueUnitOrig.declareChoices();
+
             // An dieser Stelle generieren wir automatisch einen einzigartigen String zur Beschreibung der Unit.
             // Der Spieler wird nicht dazu gezwungen, einen eigenen Namen anzugeben, kann dies aber jederzeit tun, indem er
             // die Einheit umbenennt.

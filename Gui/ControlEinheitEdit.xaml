@@ -5,11 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:Controls="clr-namespace:WarhammerGUI.Gui"
-             d:DesignHeight="620" d:DesignWidth="300">
+             xmlns:local="clr-namespace:WarhammerGUI.Gui"
+             d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DataTemplate x:Key="AuswahlTemplate1AusN">
+            <Controls:ControlAuswahl1AusN DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" ></Controls:ControlAuswahl1AusN>
+        </DataTemplate>
+        <DataTemplate x:Key="AuswahlTemplateMAusN">
+            <Controls:ControlAuswahlMAusN DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" ></Controls:ControlAuswahlMAusN>
+        </DataTemplate>
+        <DataTemplate x:Key="AuswahlTemplateAnzahl">
+            <Controls:ControlAuswahlAnzahl DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" ></Controls:ControlAuswahlAnzahl>
+        </DataTemplate>
+        <local:AuswahlTemplateSelector x:Key="auswahlTemplateSelector" 
+                                       Auswahl1AusN="{StaticResource AuswahlTemplate1AusN}"
+                                       AuswahlMAusN="{StaticResource AuswahlTemplateMAusN}"
+                                       AuswahlSlider="{StaticResource AuswahlTemplateAnzahl}"/>
+    </UserControl.Resources>
     <Grid>
         <StackPanel>
             <TextBox Text="{Binding Path=GUIName, Mode=OneWay}" Name="nameBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="24" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center" />
-            <Controls:ControlAuswahl1AusN HorizontalAlignment="Left" ></Controls:ControlAuswahl1AusN>
+            <ListBox Height="300" Name="listBoxChoices2" ItemsSource="{Binding Auswahlen}" 
+                     ItemTemplateSelector="{StaticResource auswahlTemplateSelector}">
+            </ListBox>
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
