@@ -19,6 +19,8 @@ namespace WarhammerGUI.Gui
     /// </summary>
     public partial class ControlAuswahlAnzahl : UserControl
     {
+        public static readonly RoutedEvent ValueChanged;
+
         public ControlAuswahlAnzahl()
         {
             InitializeComponent();
@@ -31,6 +33,10 @@ namespace WarhammerGUI.Gui
         /// <param name="e"></param>
         private void anzahlSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            /*
+            RoutedEventArgs eventArgs = new RoutedEventArgs(ControlAuswahlAnzahl.ValueChanged, this);
+            base.RaiseEvent(eventArgs);
+             */
         }
     }
 }

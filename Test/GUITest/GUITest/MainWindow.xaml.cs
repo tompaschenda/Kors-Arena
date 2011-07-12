@@ -26,10 +26,12 @@ namespace GUITest
             InitializeComponent();
             var e =new taktischerTrupp();
             e.declareChoices();
+            ((zusSubeinheitenAuswahl)e.getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).TotalSubUnits = 3;
+            e.updateChoiceDependencies();
             DataContext = e;
             foreach (var a in e.Auswahlen)
             {
-                Debug.WriteLine(a.GUIText);
+                Debug.WriteLine(a.GUIText + ", Aktiv: "+ a.IsActive);
             }
 
 

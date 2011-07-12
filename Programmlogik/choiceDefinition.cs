@@ -103,6 +103,14 @@ namespace WarhammerGUI
         /// </summary>
         public bool isActive;
 
+        public bool IsActive
+        {
+            get
+            {
+                return isActive;
+            }
+        }
+
         /// <summary>
         /// Mit welchem Label soll die Auswahl ausgestattet werden?
         /// </summary>
@@ -431,16 +439,21 @@ namespace WarhammerGUI
         /// </summary>
         public int costPerAditionalSubUnit;
 
-        private int selectedAdditionalSubUnits;
         private int totalSubUnits;
 
-        public int getAdditionalSubUnits()
+        /// <summary>
+        /// Property für die gewählte Anzahl der Subeinheiten
+        /// </summary>
+        public int TotalSubUnits
         {
-            return selectedAdditionalSubUnits;
-        }
-        public int getTotalSubUnits()
-        {
-            return totalSubUnits;
+            get
+            {
+                return totalSubUnits;
+            }
+            set
+            {
+                totalSubUnits = value;
+            }
         }
 
         public override void validate()

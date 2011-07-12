@@ -7,7 +7,10 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
         <TextBox Text="{Binding GUIText, Mode=OneWay}" Name="announcementBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="20" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center"  />
-        <Slider Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" Height="23" HorizontalAlignment="Left" Name="anzahlSlider" VerticalAlignment="Top" Width="120" DataContext="{Binding ElementName=textBox1}" SmallChange="1" ValueChanged="anzahlSlider_ValueChanged" />
+        <Slider Name="anzahlSlider" 
+                Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" SmallChange="1" 
+                Value="{Binding Path=TotalSubUnits}"
+                ValueChanged="anzahlSlider_ValueChanged" />
         <TextBox Height="23" HorizontalAlignment="Left" Name="textBox1" VerticalAlignment="Top" Width="120" IsReadOnly="True" Text="{Binding ElementName=anzahlSlider, Path=Value}" />
     </StackPanel>
 </UserControl>

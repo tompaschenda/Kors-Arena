@@ -259,7 +259,7 @@ namespace WarhammerGUI
         /// <summary>
         /// Führt die ausgewählten Auswahlen durch.
         /// </summary>
-        public virtual void evaluateChoives() { }
+        public virtual void evaluateChoices() { }
 
         public choiceDefinition getSpecificChoice( ChoiceAuswahlIdentifier ziel)
         {

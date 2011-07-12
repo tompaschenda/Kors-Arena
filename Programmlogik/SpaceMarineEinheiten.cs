@@ -606,68 +606,81 @@ namespace WarhammerGUI
             anzahlChoice.minimaleAnzahl = 10;
             anzahlChoice.unitBaseCost = basispunkteKosten;
             auswahlen.Add(anzahlChoice);
+            //Tip von Tom: Wenn du hier einen Block benutzt (gewschweifte Klammer), dann 
+            //kann "waffenChoice01" nicht versehentlich per copy-paste-Fehler unten nochmal benutzt werden
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Flammenwerfer, kosten = 0 });
+                waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Melter, kosten = 5 });
+                waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmawerfer, kosten = 10 });
+                waffenChoice01.labelString = "Auswahl der 1. Spezialwaffe: ";
+                auswahlen.Add(waffenChoice01);
+            }
 
-            var waffenChoice01 = new waffenAuswahl() { };
-            waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-            waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() {auswahl = alleWaffenNamen.Flammenwerfer, kosten = 0  });
-            waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() {auswahl = alleWaffenNamen.Melter, kosten = 5  });
-            waffenChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmawerfer, kosten = 10 });
-            waffenChoice01.labelString = "Auswahl der 1. Spezialwaffe: ";
-            auswahlen.Add(waffenChoice01);
+            {
+                var waffenChoice02 = new waffenAuswahl() { };
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+                waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = 0 });
+                waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
+                waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 0 });
+                waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 5 });
+                waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Laserkanone, kosten = 10 });
+                waffenChoice02.labelString = "Auswahl der 2. Spezialwaffe: ";
+                auswahlen.Add(waffenChoice02);
+            }
 
-            var waffenChoice02 = new waffenAuswahl() { };
-            waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
-            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = 0 });
-            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
-            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 0 });
-            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 5 });
-            waffenChoice02.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Laserkanone, kosten = 10 });
-            waffenChoice01.labelString = "Auswahl der 2. Spezialwaffe: ";
-            auswahlen.Add(waffenChoice02);
+            {
+                var waffenChoice03 = new waffenAuswahl() { };
+                waffenChoice03.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe03;
+                waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
+                waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
+                waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
+                waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+                waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                waffenChoice03.labelString = "Auswahl der 1. Waffe des Sergeants: ";
+                auswahlen.Add(waffenChoice03);
+            }
 
-            var waffenChoice03 = new waffenAuswahl() { };
-            waffenChoice03.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe03;
-            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
-            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
-            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
-            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
-            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-            waffenChoice03.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-            waffenChoice03.labelString = "Auswahl der 1. Waffe des Sergeants: ";
-            auswahlen.Add(waffenChoice03);
+            {
+                var waffenChoice04 = new waffenAuswahl() { };
+                waffenChoice04.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe04;
+                waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
+                waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+                waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenschwert, kosten = 0 });
+                waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                waffenChoice04.labelString = "Auswahl der 2. Waffe des Sergeants: ";
+                auswahlen.Add(waffenChoice04);
+            }
 
-            var waffenChoice04 = new waffenAuswahl() { };
-            waffenChoice04.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe04;
-            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
-            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
-            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenschwert, kosten = 0 });
-            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-            waffenChoice04.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-            waffenChoice04.labelString = "Auswahl der 2. Waffe des Sergeants: ";
-            auswahlen.Add(waffenChoice03);
+            {
+                var ausruestungChoice01 = new ausruestungsAuswahl() { };
+                ausruestungChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
+                ausruestungChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.TeleportPeilsender, kosten = 15 });
+                ausruestungChoice01.labelString = "Auswahl der Ausrüstung des Sergeants: ";
+                auswahlen.Add(ausruestungChoice01);
+            }
 
-            var ausruestungChoice01 = new ausruestungsAuswahl() { };
-            ausruestungChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
-            ausruestungChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.TeleportPeilsender, kosten = 15 });
-            ausruestungChoice01.labelString = "Auswahl der Ausrüstung des Sergeants: ";
-            auswahlen.Add(ausruestungChoice01);
-
-            var transChoice01 = new transportfahrzeugWahl() { };
-            transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
-            transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 35 });
-            transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
-            transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
-            auswahlen.Add(transChoice01);
+            {
+                var transChoice01 = new transportfahrzeugWahl() { };
+                transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
+                transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 35 });
+                transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
+                transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
+                auswahlen.Add(transChoice01);
+            }
         }
 
         public override void updateChoiceDependencies()
         {
             // Die Auswahl der Spezialwaffen gibt es nur, wenn genau 10 Space Marines gewählt wurden!
-            var anzahlMarines = ((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).getTotalSubUnits();
-            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).isActive = (anzahlMarines != 10);
-            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).isActive = (anzahlMarines != 10);
+            var anzahlMarines = ((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).TotalSubUnits;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).isActive = (anzahlMarines == 10);
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).isActive = (anzahlMarines == 10);
 
             var wahlAngeschlossen = (transportfahrzeugWahl)getSpecificChoice(ChoiceAuswahlIdentifier.Trans01);
             if (anzahlMarines == 10)

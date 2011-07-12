@@ -12,8 +12,18 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    <!--
+    <UserControl.Resources>
+        <DataTemplate x:Key="RadioButtonAuswahl">
+            <RadioButton Focusable="False" 
+                         Content="{Binding GUIText}" 
+                         IsChecked="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem} }">
+            </RadioButton>
+        </DataTemplate>
+    </UserControl.Resources>
+    -->
     <StackPanel>
         <TextBox Text="{Binding GUIText, Mode=OneWay}" Name="announcementBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="20" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center"  />
-        <ListBox Style="{StaticResource RadioButtonListStyle}" DisplayMemberPath="GUIText" Name="listBox1" ItemsSource="{Binding AuswahlOptionen, Mode=OneWay}" />
+        <ListBox Style="{StaticResource RadioButtonListStyle}" DisplayMemberPath="GUIText" Name="listBox1" ItemsSource="{Binding AuswahlOptionen, Mode=OneWay}" IsEnabled="{Binding IsActive, Mode=OneWay}" />
     </StackPanel>
 </UserControl>
