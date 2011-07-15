@@ -78,8 +78,18 @@ namespace WarhammerGUI
         Trans01,
     }
 
-    public abstract class choiceDefinition : ICloneable
+    public abstract class choiceDefinition : ICloneable, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Den folgenden Event brauchen wir, um der GUI Bescheid zu sagen.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, e);
+        }
+
         public AuswahlTyp artDerAuswahl;
         public AuswahlTool toolDerAuswahl;
 
@@ -101,13 +111,18 @@ namespace WarhammerGUI
         /// <summary>
         /// Ist die Auswahl gerade aktiv?
         /// </summary>
-        public bool isActive;
+        private bool isActive;
 
         public bool IsActive
         {
             get
             {
                 return isActive;
+            }
+            set
+            {
+                isActive = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("IsActive"));
             }
         }
 
@@ -149,6 +164,8 @@ namespace WarhammerGUI
     /// </summary>
     public class waffenAuswahl : choiceDefinition
     {
+        private const int InvalidIndex = -1;
+
         public override object Clone()
         {
             var copy = base.Clone();           
@@ -161,12 +178,24 @@ namespace WarhammerGUI
             toolDerAuswahl = AuswahlTool.EinsAusN;
             auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
-            isActive = true;
+            IsActive = true;
             labelString = "Bewaffnung: ";
-            chosenIndex = 0;
+            chosenIndex = InvalidIndex;
         }
-
+        
         private int chosenIndex;
+
+        public int ChosenIndex
+        {
+            get
+            {
+                return chosenIndex;
+            }
+            set
+            {
+                setChosenIndex(value);
+            }
+        }
 
         public void setChosenIndex(int newIndex)
         {
@@ -182,6 +211,7 @@ namespace WarhammerGUI
 
             if(chosenIndex == -1 || chosenIndex >= auswahlOptionen.Count)
                 throw new ArgumentOutOfRangeException("Falscher Index für Waffenauswahl selektiert!");
+
         }
 
         public alleWaffenNamen getSelectedWeaponName()
@@ -230,7 +260,7 @@ namespace WarhammerGUI
             toolDerAuswahl = AuswahlTool.EinsAusN;
             auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.Trans01;
-            isActive = true;
+            IsActive = true;
             labelString = "Angeschlossenes Transportfahrzeug: ";
             chosenIndex = 0;
         }
@@ -280,7 +310,7 @@ namespace WarhammerGUI
             toolDerAuswahl = AuswahlTool.MAusN;
             auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
-            isActive = true;
+            IsActive = true;
             labelString = "Ausrüstung: ";
             selectedIndices = new List<int>() { };
         }
@@ -354,7 +384,7 @@ namespace WarhammerGUI
             toolDerAuswahl = AuswahlTool.EinsAusN;
             auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.Ruest01;
-            isActive = true;
+            IsActive = true;
             labelString = "Rüstung: ";
             chosenIndex = 0;
         }
@@ -411,7 +441,7 @@ namespace WarhammerGUI
             unitBaseCost = -1;
             costPerAditionalSubUnit = -1000;
 
-            isActive = true;
+            IsActive = true;
 
             labelString = "Anzahl der Subeinheiten: ";
         }

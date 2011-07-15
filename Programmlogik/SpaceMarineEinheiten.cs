@@ -599,7 +599,7 @@ namespace WarhammerGUI
         /// </summary>
         public override void declareChoices()
         {
-            auswahlen = new List<choiceDefinition>() { };
+            var auswahlen = new List<choiceDefinition>() { };
 
             var anzahlChoice = new zusSubeinheitenAuswahl() { };
             anzahlChoice.minimaleAnzahl = 5;
@@ -673,14 +673,16 @@ namespace WarhammerGUI
                 transChoice01.auswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
                 auswahlen.Add(transChoice01);
             }
+
+            Auswahlen = auswahlen;
         }
 
         public override void updateChoiceDependencies()
         {
             // Die Auswahl der Spezialwaffen gibt es nur, wenn genau 10 Space Marines gewählt wurden!
             var anzahlMarines = ((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).TotalSubUnits;
-            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).isActive = (anzahlMarines == 10);
-            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).isActive = (anzahlMarines == 10);
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = (anzahlMarines == 10);
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).IsActive = (anzahlMarines == 10);
 
             var wahlAngeschlossen = (transportfahrzeugWahl)getSpecificChoice(ChoiceAuswahlIdentifier.Trans01);
             if (anzahlMarines == 10)

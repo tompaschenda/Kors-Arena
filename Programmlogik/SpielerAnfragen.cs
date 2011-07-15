@@ -10,8 +10,14 @@ namespace WarhammerGUI
     /// <summary>
     /// Eine Auswahloption für ein Pulldownmenü
     /// </summary>
-    public struct pulldownAuswahl : ICloneable
+    public class pulldownAuswahl : ICloneable
     {
+        public pulldownAuswahl()
+        {
+            kosten = 0;
+            auswahl = null;
+        }
+
         public object Clone()
         {
             var copy = (pulldownAuswahl)this.MemberwiseClone();
@@ -32,7 +38,6 @@ namespace WarhammerGUI
                 return (tempString + "    (+ " + kosten.ToString() + " Punkte)");
             }
         }
-
 
         /// <summary>
         /// Punktekosten der Auswahl

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Listen;
 using Common;
+using System.ComponentModel;
 
 namespace WarhammerGUI
 {
@@ -34,7 +35,7 @@ namespace WarhammerGUI
         public EinheitenAuswahl einheitAuswahl;
     }
 
-    public abstract class Einheit : IComparable<Einheit>
+    public abstract class Einheit : IComparable<Einheit>, INotifyPropertyChanged
     {
         /// <summary>
         /// Konstruktor:
@@ -79,6 +80,16 @@ namespace WarhammerGUI
         }
 
         /// <summary>
+        /// Den folgenden Event brauchen wir, um der GUI Bescheid zu sagen.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, e);
+        }
+
+        /// <summary>
         /// Der Name, der im GUI angezeigt wird
         /// </summary>
         public string GUIName
@@ -120,7 +131,7 @@ namespace WarhammerGUI
         /// [Tom] Empfehle, diese Variable private zu machen und Zugriffe von außen nur über die Property zu machen.
         /// Die Auswahlen, die man per declareChoices() deklariert und die der Spieler treffen kann/muss.
         /// </summary>
-        public List<choiceDefinition> auswahlen;
+        private List<choiceDefinition> auswahlen;
 
         /// <summary>
         /// Für die GUI brauchen wir eine Property
@@ -134,6 +145,7 @@ namespace WarhammerGUI
             set
             {
                 auswahlen = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Auswahlen")); //Der GUI Bescheid sagen, dass sich etwas geändert hat
             }
         }
 

@@ -24,6 +24,12 @@
     -->
     <StackPanel>
         <TextBox Text="{Binding GUIText, Mode=OneWay}" Name="announcementBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="20" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center"  />
-        <ListBox Style="{StaticResource RadioButtonListStyle}" DisplayMemberPath="GUIText" Name="listBox1" ItemsSource="{Binding AuswahlOptionen, Mode=OneWay}" IsEnabled="{Binding IsActive, Mode=OneWay}" />
+        <ListBox Style="{StaticResource RadioButtonListStyle}" 
+                 DisplayMemberPath="GUIText" Name="listBox1" 
+                 ItemsSource="{Binding AuswahlOptionen, Mode=OneWay}" 
+                 IsEnabled="{Binding IsActive, Mode=OneWay}"
+                 SelectedIndex="{Binding ChosenIndex}">
+            <!-- <ListBoxItem IsSelected="{Binding IstGewaehlt}"></ListBoxItem> -->
+        </ListBox>
     </StackPanel>
 </UserControl>

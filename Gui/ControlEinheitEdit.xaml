@@ -15,7 +15,11 @@
             <Controls:ControlAuswahlMAusN DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" ></Controls:ControlAuswahlMAusN>
         </DataTemplate>
         <DataTemplate x:Key="AuswahlTemplateAnzahl">
-            <Controls:ControlAuswahlAnzahl DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" ></Controls:ControlAuswahlAnzahl>
+            <Controls:ControlAuswahlAnzahl 
+                DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" 
+                   
+                ></Controls:ControlAuswahlAnzahl>
+            
         </DataTemplate>
         <local:AuswahlTemplateSelector x:Key="auswahlTemplateSelector" 
                                        Auswahl1AusN="{StaticResource AuswahlTemplate1AusN}"
@@ -23,10 +27,11 @@
                                        AuswahlSlider="{StaticResource AuswahlTemplateAnzahl}"/>
     </UserControl.Resources>
     <Grid>
-        <StackPanel>
+        <StackPanel  >
             <TextBox Text="{Binding Path=GUIName, Mode=OneWay}" Name="nameBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="24" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center" />
             <ListBox Height="300" Name="listBoxChoices2" ItemsSource="{Binding Auswahlen}" 
-                     ItemTemplateSelector="{StaticResource auswahlTemplateSelector}">
+                     ItemTemplateSelector="{StaticResource auswahlTemplateSelector}"
+                     Controls:ControlAuswahlAnzahl.ValueChanged ="ControlAuswahlAnzahl_ValueChanged">
             </ListBox>
             <Grid >
                 <Grid.RowDefinitions>

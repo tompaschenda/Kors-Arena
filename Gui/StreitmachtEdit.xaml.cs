@@ -93,7 +93,14 @@ namespace WarhammerGUI
             get
             {
                 var aktEinheitIndex = getChosenUnitTreeIdentifier();
-                return spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktEinheitIndex];
+                if (aktEinheitIndex > 0)
+                {
+                    return spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktEinheitIndex];
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 

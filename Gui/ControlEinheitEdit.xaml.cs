@@ -15,6 +15,30 @@ using System.Diagnostics;
 
 namespace WarhammerGUI.Gui
 {
+    /// <summary>
+    /// Interaction logic for ControlEinheitEdit.xaml
+    /// </summary>
+    public partial class ControlEinheitEdit : UserControl
+    {
+        public ControlEinheitEdit()
+        {
+            InitializeComponent();
+        }
+
+        private void ControlAuswahlAnzahl_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (getEinheit() != null)
+            {
+                getEinheit().updateChoiceDependencies();
+            }
+        }
+
+        private Einheit getEinheit()
+        {
+            return (Einheit)DataContext;
+        }
+    }
+
     public class AuswahlTemplateSelector : DataTemplateSelector
     {
         public DataTemplate Auswahl1AusN
@@ -52,16 +76,6 @@ namespace WarhammerGUI.Gui
                     Debug.Assert(false);
                     return null;
             }
-        }
-    }
-    /// <summary>
-    /// Interaction logic for ControlEinheitEdit.xaml
-    /// </summary>
-    public partial class ControlEinheitEdit : UserControl
-    {
-        public ControlEinheitEdit()
-        {
-            InitializeComponent();
         }
     }
 }
