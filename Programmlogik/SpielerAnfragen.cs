@@ -16,6 +16,7 @@ namespace WarhammerGUI
         {
             kosten = 0;
             auswahl = null;
+            IstGewaehlt = false;
         }
 
         public object Clone()
@@ -37,6 +38,15 @@ namespace WarhammerGUI
                     tempString = auswahl.ToString();
                 return (tempString + "    (+ " + kosten.ToString() + " Punkte)");
             }
+        }
+
+        /// <summary>
+        /// Ist die Auswahl selektiert?
+        /// </summary>
+        public bool IstGewaehlt
+        {
+            set;
+            get;
         }
 
         /// <summary>

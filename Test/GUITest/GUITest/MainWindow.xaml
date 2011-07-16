@@ -4,6 +4,9 @@
         xmlns:Controls="clr-namespace:WarhammerGUI.Gui;assembly=WarhammerGUI"
         Title="MainWindow" Height="509" Width="530">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
         <Controls:ControlEinheitEdit x:Name="einheitEdit" HorizontalAlignment="Left" Width="305"></Controls:ControlEinheitEdit>
     </Grid>
 </Window>

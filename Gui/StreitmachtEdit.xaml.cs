@@ -93,7 +93,7 @@ namespace WarhammerGUI
             get
             {
                 var aktEinheitIndex = getChosenUnitTreeIdentifier();
-                if (aktEinheitIndex > 0)
+                if (aktEinheitIndex >= 0)
                 {
                     return spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].armeeEinheiten[aktEinheitIndex];
                 }
@@ -586,9 +586,6 @@ namespace WarhammerGUI
             // DANN können wir erst kopieren!
             var neueUnitOrig = GlobaleEinheitenListe.getInstance().gibMirEinheitMitFolgendemUniqueStringAlsOriginal(nameDerEinheit);
 
-            //Tom: Nur zum Testen.
-            neueUnitOrig.declareChoices();
-
             // An dieser Stelle generieren wir automatisch einen einzigartigen String zur Beschreibung der Unit.
             // Der Spieler wird nicht dazu gezwungen, einen eigenen Namen anzugeben, kann dies aber jederzeit tun, indem er
             // die Einheit umbenennt.
@@ -599,12 +596,19 @@ namespace WarhammerGUI
             // Wir müssen noch alle Spieleranfragen abhandeln! Dazu müssen wir lediglich die entsprechende Methode 
             // der Klasse aufrufen!
             neueUnitOrig.createUnitBase();
-            neueUnitOrig.createUnitInteraktion(spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].gesamtPunkte);
-            bool allesOkayBool = neueUnitOrig.erschaffungOkay;
+            neueUnitOrig.declareChoices();
+            neueUnitOrig.updateChoiceDependencies();
 
-            // Natürlich wird die Klasse nur einsortiert, wenn alles okay ist!
-            if (!allesOkayBool)
-                return;
+            //Tom: Falls die Einheit schon auf das neue Choice-Modell umgesetllt wurde, brauchen wir die Interaktion nicht
+            if (neueUnitOrig.Auswahlen.Count == 0)
+            {
+                neueUnitOrig.createUnitInteraktion(spielerArmeeListe.getInstance().armeeSammlung[m_indexDerArmee].gesamtPunkte);
+                bool allesOkayBool = neueUnitOrig.erschaffungOkay;
+
+                // Natürlich wird die Klasse nur einsortiert, wenn alles okay ist!
+                if (!allesOkayBool)
+                    return;
+            }
 
             // Jetzt erst mache ich eine Kopie der Einheit!
             var kopierteEinheit = neueUnitOrig.CloneEinheit(neueUnitOrig);

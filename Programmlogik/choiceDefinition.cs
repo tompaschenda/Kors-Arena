@@ -5,6 +5,7 @@ using System.Text;
 using Listen;
 using Common;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace WarhammerGUI
 {
@@ -92,20 +93,6 @@ namespace WarhammerGUI
 
         public AuswahlTyp artDerAuswahl;
         public AuswahlTool toolDerAuswahl;
-
-        /// <summary>
-        /// Die Auswahlen, die in der GUI angezeigt werden.
-        /// </summary>
-        public List<pulldownAuswahl> AuswahlOptionen
-        {
-            get
-            {
-                return auswahlOptionen;
-            }
-        }
-
-        public List<pulldownAuswahl> auswahlOptionen;
-
         public ChoiceAuswahlIdentifier auswahlIdentifier;
 
         /// <summary>
@@ -149,20 +136,128 @@ namespace WarhammerGUI
 
         public virtual object Clone()
         {
-            var copy = (choiceDefinition)this.MemberwiseClone();
-            copy.auswahlOptionen = new List<pulldownAuswahl>() { };
-            for (int i = 0; i < auswahlOptionen.Count; ++i)
-            {
-                copy.auswahlOptionen.Add((pulldownAuswahl)this.auswahlOptionen[i].Clone());
-            }
+            var copy = this.MemberwiseClone();
             return copy;
         }
     }
 
+    public class ChoiceDefinitionForSelection : choiceDefinition
+    {
+        public ChoiceDefinitionForSelection(AuswahlTool tool)
+        {
+            auswahlOptionen = new List<pulldownAuswahl>() { };
+            toolDerAuswahl = tool;
+            switch (tool)
+            {
+                case AuswahlTool.EinsAusN:
+                    multiSelect =false;
+                    break;
+                case AuswahlTool.MAusN:
+                    multiSelect =true;
+                    break;
+                default:
+                    Debug.Assert(false);
+                    break;
+            }
+        }
+
+        public override object Clone()
+        {
+            var copy = this.MemberwiseClone();
+            ((ChoiceDefinitionForSelection)copy).auswahlOptionen = new List<pulldownAuswahl>() { };
+            for (int i = 0; i < auswahlOptionen.Count; ++i)
+            {
+                ((ChoiceDefinitionForSelection)copy).auswahlOptionen.Add((pulldownAuswahl)this.auswahlOptionen[i].Clone());
+            }
+            return copy;
+        }
+
+        /// <summary>
+        /// Die Auswahlen, die in der GUI angezeigt werden.
+        /// </summary>
+        public List<pulldownAuswahl> AuswahlOptionen
+        {
+            get
+            {
+                return auswahlOptionen;
+            }
+        }
+
+        public void setChosenIndex(int newIndex)
+        {
+            if (newIndex >= auswahlOptionen.Count)
+                throw new ArgumentOutOfRangeException("Index für Waffenwahl ist out of range!");
+            if (!multiSelect)
+                resetAuswahl();
+            auswahlOptionen[newIndex].IstGewaehlt=true;
+        }
+        
+        public void setChosenIndices(List<int> newIndices)
+        {
+            if (!multiSelect)
+                throw new ArgumentOutOfRangeException("Mehrfachauswahl nicht erlaubt.");
+
+            if (newIndices.Count >= auswahlOptionen.Count)
+                throw new ArgumentOutOfRangeException("Index für Fahrzeugwahl ist out of range!");
+
+            
+            foreach (var i in newIndices)
+            {
+                auswahlOptionen[i].IstGewaehlt=true;
+            }
+        }
+
+        public Object getChosenItem()
+        {
+            var chosenItems = getChosenItems();
+            if (chosenItems.Count>0)
+                return chosenItems[0];
+            else
+                return null;
+        }
+
+        public List<Object> getChosenItems()
+        {
+            var chosenItems = new List<Object>();
+            foreach (var i in auswahlOptionen)
+            {
+                if (i.IstGewaehlt)
+                    chosenItems.Add(i.auswahl);
+            }
+            return chosenItems;
+        }
+
+        public bool removeItem(Object item)
+        {
+            if (auswahlOptionen.RemoveAll(i => i.auswahl==item) >0 )
+                return true;
+            else
+                return false;
+        }
+
+        public override void validate()
+        {
+            if (!multiSelect && getChosenItems().Count > 1)
+                throw new ArgumentOutOfRangeException("Mehrfachauswahl nicht erlaubt.");
+        }
+
+        private void resetAuswahl()
+        {
+            foreach (var i in auswahlOptionen)
+            {
+                i.IstGewaehlt = false;
+            }
+        }
+
+        private bool multiSelect;
+        private List<pulldownAuswahl> auswahlOptionen;
+    }
+
+
     /// <summary>
     /// Auswahl einer Waffe
     /// </summary>
-    public class waffenAuswahl : choiceDefinition
+    public class waffenAuswahl : ChoiceDefinitionForSelection
     {
         private const int InvalidIndex = -1;
 
@@ -172,72 +267,37 @@ namespace WarhammerGUI
             return copy;
         }
 
-        public waffenAuswahl() 
+        public waffenAuswahl() : base(AuswahlTool.EinsAusN)
         {
             artDerAuswahl = AuswahlTyp.Waffenauswahl;
-            toolDerAuswahl = AuswahlTool.EinsAusN;
-            auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
             IsActive = true;
             labelString = "Bewaffnung: ";
-            chosenIndex = InvalidIndex;
-        }
-        
-        private int chosenIndex;
-
-        public int ChosenIndex
-        {
-            get
-            {
-                return chosenIndex;
-            }
-            set
-            {
-                setChosenIndex(value);
-            }
-        }
-
-        public void setChosenIndex(int newIndex)
-        {
-            if (newIndex >= auswahlOptionen.Count)
-                throw new ArgumentOutOfRangeException("Index für Waffenwahl ist out of range!");
-            chosenIndex = newIndex;
         }
 
         public override void validate()
         {
+            base.validate();
             if(toolDerAuswahl != AuswahlTool.EinsAusN)
                 throw new ArgumentOutOfRangeException("Falsche Auswahlart für waffenAuswahl!");
-
-            if(chosenIndex == -1 || chosenIndex >= auswahlOptionen.Count)
-                throw new ArgumentOutOfRangeException("Falscher Index für Waffenauswahl selektiert!");
-
         }
 
         public alleWaffenNamen getSelectedWeaponName()
         {
-            var gewSelection = auswahlOptionen[chosenIndex];
-            return (alleWaffenNamen) gewSelection.auswahl;
+            if (getChosenItem() != null)
+                return (alleWaffenNamen)getChosenItem();
+            else
+                return alleWaffenNamen.undefined;
         }
 
         public void removeWeapon(alleWaffenNamen waffenName)
         {
-            bool found = false;
-            for (int i = 0; i < auswahlOptionen.Count; ++i)
-            {
-                if ((alleWaffenNamen)auswahlOptionen[i].auswahl == waffenName)
-                {
-                    auswahlOptionen.RemoveAt(i);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
+            if (!removeItem(waffenName))
                 throw new ArgumentOutOfRangeException("Die angegebene Waffe gibt es nicht!");
         }
     }
 
-    public class transportfahrzeugWahl : choiceDefinition
+    public class transportfahrzeugWahl : ChoiceDefinitionForSelection
     {
         public override object Clone()
         {
@@ -245,58 +305,37 @@ namespace WarhammerGUI
             return copy;
         }
 
-        private int chosenIndex;
-
-        public void setChosenIndex(int newIndex)
-        {
-            if (newIndex >= auswahlOptionen.Count)
-                throw new ArgumentOutOfRangeException("Index für Fahrzeugwahl ist out of range!");
-            chosenIndex = newIndex;
-        }
-
-        public transportfahrzeugWahl()
+        public transportfahrzeugWahl() : base(AuswahlTool.EinsAusN)
         {
             artDerAuswahl = AuswahlTyp.Transportfahrzeugwahl;
-            toolDerAuswahl = AuswahlTool.EinsAusN;
-            auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.Trans01;
             IsActive = true;
             labelString = "Angeschlossenes Transportfahrzeug: ";
-            chosenIndex = 0;
         }
 
         public override void validate()
         {
+            base.validate();
             if (toolDerAuswahl != AuswahlTool.EinsAusN)
                 throw new ArgumentOutOfRangeException("Falsche Auswahlart für transportfahrzeugWahl!");
-            if (chosenIndex == -1 || chosenIndex >= auswahlOptionen.Count)
-                throw new ArgumentOutOfRangeException("Falscher Index für Transportfahrzeug selektiert!");
         }
 
         public alleEinheitenNamen getSelectedVehicle()
         {
-            var gewSelection = auswahlOptionen[chosenIndex];
-            return (alleEinheitenNamen)gewSelection.auswahl;
+            if (getChosenItem() != null)
+                return (alleEinheitenNamen)getChosenItem();
+            else
+                return alleEinheitenNamen.KeineEinheit;
         }
 
         public void removeVehicle(alleEinheitenNamen fahrzeugName)
         {
-            bool found = false;
-            for (int i = 0; i < auswahlOptionen.Count; ++i)
-            {
-                if ((alleEinheitenNamen)auswahlOptionen[i].auswahl == fahrzeugName)
-                {
-                    auswahlOptionen.RemoveAt(i);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
+            if (!removeItem(fahrzeugName))
                 throw new ArgumentOutOfRangeException("Das angegebene Fahrzeug gibt es nicht!");
         }
     }
 
-    public class ausruestungsAuswahl : choiceDefinition
+    public class ausruestungsAuswahl : ChoiceDefinitionForSelection
     {
         public override object Clone()
         {
@@ -304,64 +343,41 @@ namespace WarhammerGUI
             return copy;
         }
 
-        public ausruestungsAuswahl()
+        public ausruestungsAuswahl() : base(AuswahlTool.MAusN)
         {
             artDerAuswahl = AuswahlTyp.Ausruestungsauswahl;
-            toolDerAuswahl = AuswahlTool.MAusN;
-            auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
             IsActive = true;
             labelString = "Ausrüstung: ";
-            selectedIndices = new List<int>() { };
-        }
-
-        private List<int> selectedIndices;
-
-        public void setChosenIndices(List<int> newIndices)
-        {
-            if (newIndices.Count >= auswahlOptionen.Count)
-                throw new ArgumentOutOfRangeException("Index für Fahrzeugwahl ist out of range!");
-
-            for (int i = 0; i < newIndices.Count; ++i)
-            {
-                selectedIndices[i] = newIndices[i];
-            }
+            
         }
 
         public List<alleAusruestung> getSelectedEquip()
         {
             var selectedEquip = new List<alleAusruestung>() { };
 
-            for (int i = 0; i < selectedIndices.Count; ++i)
-                selectedEquip.Add((alleAusruestung) auswahlOptionen[i].auswahl);
-
+            foreach (var i in getChosenItems())
+            {
+                selectedEquip.Add((alleAusruestung)i);
+            }
             return selectedEquip;
         }
 
         public void removeEquip(alleAusruestung ausruestungsname)
         {
-            bool found = false;
-            for (int i = 0; i < auswahlOptionen.Count; ++i)
-            {
-                if ((alleAusruestung)auswahlOptionen[i].auswahl == ausruestungsname)
-                {
-                    auswahlOptionen.RemoveAt(i);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
+            if (!removeItem(ausruestungsname))
                 throw new ArgumentOutOfRangeException("Das angegebene Equip gibt es nicht!");
         }
 
         public override void validate()
         {
+            base.validate();
             if(toolDerAuswahl != AuswahlTool.MAusN)
                 throw new ArgumentOutOfRangeException("Falsche Auswahlart für ausruestungsAuswahl!");
         }
     }
 
-    public class ruestungsAuswahl : choiceDefinition
+    public class ruestungsAuswahl : ChoiceDefinitionForSelection
     {
         public override object Clone()
         {
@@ -369,54 +385,33 @@ namespace WarhammerGUI
             return copy;
         }
 
-        private int chosenIndex;
-
-        public void setChosenIndex(int newIndex)
-        {
-            if (newIndex >= auswahlOptionen.Count)
-                throw new ArgumentOutOfRangeException("Index für Rüstungswahl ist out of range!");
-            chosenIndex = newIndex;
-        }
-
-        public ruestungsAuswahl()
+        public ruestungsAuswahl() : base(AuswahlTool.EinsAusN)
         {
             artDerAuswahl = AuswahlTyp.Ruestungsauswahl;
-            toolDerAuswahl = AuswahlTool.EinsAusN;
-            auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.Ruest01;
             IsActive = true;
             labelString = "Rüstung: ";
-            chosenIndex = 0;
         }
 
         public alleRuestungen getSelectedArmor()
         {
-            var selectedArmor = (alleRuestungen)auswahlOptionen[chosenIndex].auswahl;
-            return selectedArmor;
+            if (getChosenItem() != null)
+                return (alleRuestungen)getChosenItem();
+            else
+                return alleRuestungen.keine;
         }
 
         public void removeEquip(ruestungsAuswahl ruestungsname)
         {
-            bool found = false;
-            for (int i = 0; i < auswahlOptionen.Count; ++i)
-            {
-                if ((ruestungsAuswahl)auswahlOptionen[i].auswahl == ruestungsname)
-                {
-                    auswahlOptionen.RemoveAt(i);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
+            if (!removeItem(ruestungsname))
                 throw new ArgumentOutOfRangeException("Die angegebene Rüstung gibt es nicht!");
         }
 
         public override void validate()
         {
+            base.validate();
             if (toolDerAuswahl != AuswahlTool.EinsAusN)
                 throw new ArgumentOutOfRangeException("Falsche Auswahlart für ruestungsAuswahl!");
-            if(chosenIndex == -1)
-                throw new ArgumentOutOfRangeException("Falscher Index für ruestungsAuswahl!");
         }
     }
 
@@ -432,7 +427,6 @@ namespace WarhammerGUI
         {
             artDerAuswahl = AuswahlTyp.ZusSubeinheitenAuswahl;
             toolDerAuswahl = AuswahlTool.AnzahlSlider;
-            auswahlOptionen = new List<pulldownAuswahl>() { };
             auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
 
             minimaleAnzahl = -1;

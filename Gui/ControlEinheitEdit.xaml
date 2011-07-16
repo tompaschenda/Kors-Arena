@@ -6,19 +6,27 @@
              mc:Ignorable="d" 
              xmlns:Controls="clr-namespace:WarhammerGUI.Gui"
              xmlns:local="clr-namespace:WarhammerGUI.Gui"
-             d:DesignHeight="450" d:DesignWidth="300">
+             d:DesignHeight="375" d:DesignWidth="300">
     <UserControl.Resources>
         <DataTemplate x:Key="AuswahlTemplate1AusN">
-            <Controls:ControlAuswahl1AusN DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" ></Controls:ControlAuswahl1AusN>
+            <Controls:ControlAuswahl1AusN DataContext="{Binding Path=DataContext, 
+                RelativeSource={RelativeSource TemplatedParent} }" 
+                HorizontalAlignment="Stretch"> 
+            </Controls:ControlAuswahl1AusN>
         </DataTemplate>
         <DataTemplate x:Key="AuswahlTemplateMAusN">
-            <Controls:ControlAuswahlMAusN DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" ></Controls:ControlAuswahlMAusN>
+            <Controls:ControlAuswahlMAusN 
+                DataContext="{Binding Path=DataContext, 
+                RelativeSource={RelativeSource TemplatedParent} }" 
+                HorizontalAlignment="Stretch" >
+            </Controls:ControlAuswahlMAusN>
         </DataTemplate>
         <DataTemplate x:Key="AuswahlTemplateAnzahl">
             <Controls:ControlAuswahlAnzahl 
-                DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource TemplatedParent} }" HorizontalAlignment="Left" 
-                   
-                ></Controls:ControlAuswahlAnzahl>
+                DataContext="{Binding Path=DataContext, 
+                RelativeSource={RelativeSource TemplatedParent} }" 
+                HorizontalAlignment="Stretch" >
+            </Controls:ControlAuswahlAnzahl>
             
         </DataTemplate>
         <local:AuswahlTemplateSelector x:Key="auswahlTemplateSelector" 
@@ -26,32 +34,18 @@
                                        AuswahlMAusN="{StaticResource AuswahlTemplateMAusN}"
                                        AuswahlSlider="{StaticResource AuswahlTemplateAnzahl}"/>
     </UserControl.Resources>
-    <Grid>
-        <StackPanel  >
-            <TextBox Text="{Binding Path=GUIName, Mode=OneWay}" Name="nameBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="24" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center" />
-            <ListBox Height="300" Name="listBoxChoices2" ItemsSource="{Binding Auswahlen}" 
-                     ItemTemplateSelector="{StaticResource auswahlTemplateSelector}"
-                     Controls:ControlAuswahlAnzahl.ValueChanged ="ControlAuswahlAnzahl_ValueChanged">
-            </ListBox>
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="Punkte Einheit:" Height="28" Name="label4" Width="204" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Height="23" Name="textEinheitKostenJetzt" Text="" Width="95" />
-                <Label Grid.Row="1" Grid.Column="0" Content="Punkte Auswahl:" Height="28" Name="label1" Width="204" />
-                <TextBlock Grid.Row="1" Grid.Column="1"  Height="23" Name="textAuswahlExtrakosten" Text="" Width="95" />
-                <Label Grid.Row="2" Grid.Column="0" Content="Punkte Armee:" Height="28" Margin="6,6,0,0" Name="label2" Width="204" />
-                <TextBlock Grid.Row="2" Grid.Column="1" Height="23" Name="textArmeeKostenJetzt" Text="" Width="95" />
-                
-            </Grid>
-        </StackPanel>
-        
+    <Grid  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Text="{Binding Path=GUIName, Mode=OneWay}" Name="nameBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center" MaxHeight="24" VerticalAlignment="Top" />
+        <ListBox Grid.Row="1" MinHeight="50" Name="listBoxChoices2" ItemsSource="{Binding Auswahlen}" 
+                    ItemTemplateSelector="{StaticResource auswahlTemplateSelector}"
+                    Controls:ControlAuswahlAnzahl.ValueChanged ="ControlAuswahlAnzahl_ValueChanged" 
+                 VerticalAlignment="Bottom"
+                 HorizontalContentAlignment="Stretch"
+                 >
+        </ListBox>
     </Grid>
 </UserControl>

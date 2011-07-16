@@ -4,13 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <TextBox Text="{Binding GUIText, Mode=OneWay}" Name="announcementBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" Height="20" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center"  />
-        <Slider Name="anzahlSlider" 
-                Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" SmallChange="1" 
-                Value="{Binding Path=TotalSubUnits}"
-                ValueChanged="anzahlSlider_ValueChanged" />
-        <TextBox Height="23" HorizontalAlignment="Left" Name="textBox1" VerticalAlignment="Top" Width="120" IsReadOnly="True" Text="{Binding ElementName=anzahlSlider, Path=Value}" />
-    </StackPanel>
+             d:DesignHeight="300" d:DesignWidth="300" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding GUIText, Mode=OneWay}" Name="announcementBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center"  />
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Slider Grid.Column="0" Name="anzahlSlider" 
+                    Minimum="0" TickFrequency="1" IsSnapToTickEnabled="True" 
+                    HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" SmallChange="1" 
+                    Value="{Binding Path=TotalSubUnits}"
+                    ValueChanged="anzahlSlider_ValueChanged" />
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Name="textBox1" VerticalAlignment="Stretch" IsReadOnly="True" Text="{Binding ElementName=anzahlSlider, Path=Value}" />
+        </Grid>
+    </Grid>
 </UserControl>
