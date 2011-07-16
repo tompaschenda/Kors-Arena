@@ -65,6 +65,7 @@
     <Compile Include="Gui\AuswahlAnzahlSubunits.xaml.cs">
       <DependentUpon>AuswahlAnzahlSubunits.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Commands.cs" />
     <Compile Include="Gui\ControlAuswahl1AusN.xaml.cs">
       <DependentUpon>ControlAuswahl1AusN.xaml</DependentUpon>
     </Compile>

@@ -1,8 +1,31 @@
 ﻿<Window x:Class="WarhammerGUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Controls="clr-namespace:WarhammerGUI.Gui"
+        xmlns:local="clr-namespace:WarhammerGUI.Gui"
         Title="ArmyBench" Height="768" Width="1024">
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="New"
+                        Executed="klickNeueStreitmachtMenu">
+        </CommandBinding>
+        <CommandBinding Command="Close"
+                        Executed="CommandBinding_Executed_Close">
+        </CommandBinding>
+        <CommandBinding Command="local:Commands.StreitmachtBearbeiten"
+                        Executed="klickStreitmachtBearbeiten">
+        </CommandBinding>
+        <CommandBinding Command="local:Commands.StreitmachtLoeschen"
+                        Executed="klickLoescheStreitMacht">
+        </CommandBinding>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="New" Key="N"/>
+        <KeyBinding Command="local:Commands.StreitmachtBearbeiten" Key="B"/>
+        <KeyBinding Command="local:Commands.StreitmachtLoeschen" Key="L"/>
+        <KeyBinding Command="local:Commands.StreitmachtLoeschen" Key="Delete"/>
+        <KeyBinding Command="Close" Key="Esc"/>
+    </Window.InputBindings>
+    
     <Grid>
         <Menu Grid.Column="0" Grid.Row="0" Height="23" VerticalAlignment="Top">
             <MenuItem Header="Datei" >
@@ -10,7 +33,7 @@
                 <MenuItem Header="Streitmachtliste Speichern" Click="klickStreitmachtListeSpeichern"></MenuItem>
                 <MenuItem Header="Streitmachtliste Speichern Unter" Click="klickStreitmachtListeSpeichernUnter"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Neue Streitmacht" Click="klickNeueStreitmachtMenu"></MenuItem>
+                <MenuItem Header="Neue Streitmacht" Command="New"></MenuItem>
                 <MenuItem Header="Streitmacht in Liste importieren" Click="klickStreitmachtImportieren"></MenuItem>
                 <MenuItem Header="Streitmacht Exportieren" Click="klickStreitmachtExportieren"></MenuItem>
                 <Separator></Separator>
@@ -19,9 +42,9 @@
                 <MenuItem Header="Beenden" Click="klickQuitMenu"></MenuItem>
             </MenuItem>
             <MenuItem Header="Bearbeiten">
-                <MenuItem Header="Streitmacht Bearbeiten" Click="klickStreitmachtBearbeiten"></MenuItem>
+                <MenuItem Header="Streitmacht Bearbeiten" Command="local:Commands.StreitmachtBearbeiten"></MenuItem>
                 <MenuItem Header="Streitmacht Kopieren" Click="klickStreitmachtKopieren"></MenuItem>
-                <MenuItem Header="Streitmacht Löschen" Click="klickLoescheStreitMacht"></MenuItem>
+                <MenuItem Header="Streitmacht Löschen" Command="local:Commands.StreitmachtLoeschen"></MenuItem>
                 <MenuItem Header="Streitmacht Umbenennen" Click="klickStreitmachtUmbennnen"></MenuItem>
                 <MenuItem Header="Streitmacht PDF-Übersicht erstellen" Click="onStreitMachtToTex"></MenuItem>
             </MenuItem>
@@ -36,12 +59,12 @@
         <Label Content="Armeeliste:" FontWeight="Bold" Height="31" HorizontalAlignment="Left" Margin="111,86,0,0" Name="label3" VerticalAlignment="Top" Width="258" />
         <Label Content="Name:" Height="28" HorizontalAlignment="Left" Margin="404,144,0,0" Name="label4" VerticalAlignment="Top" />
         <Label Content="Gesamtpunkte:" Height="28" HorizontalAlignment="Left" Margin="404,212,0,0" Name="label5" VerticalAlignment="Top" />
-        <Button Content="Streitmacht bearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,308,0,0" Name="button1" VerticalAlignment="Top" Width="196" Click="klickStreitmachtBearbeiten" />
-        <Button Content="Neue Streitmacht erstellen" Height="23" HorizontalAlignment="Left" Margin="548,255,0,0" Name="button2" VerticalAlignment="Top" Width="196" Click="klickNeueStreitmacht"   />
+        <Button Content="Streitmacht _bearbeiten" Command="local:Commands.StreitmachtBearbeiten" Height="23" HorizontalAlignment="Left" Margin="548,308,0,0" Name="button1" VerticalAlignment="Top" Width="196" />
+        <Button Content="_Neue Streitmacht erstellen" Command="New" Height="23" HorizontalAlignment="Left" Margin="548,255,0,0" Name="button2" VerticalAlignment="Top" Width="196" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,144,0,0" Name="displayArmyName" VerticalAlignment="Top" Width="386" IsEnabled="True" IsReadOnly="True" BorderBrush="White" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,183,0,0" Name="displayArmySide" VerticalAlignment="Top" Width="386" IsReadOnly="True" BorderBrush="White" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="548,217,0,0" Name="displayArmyPoints" VerticalAlignment="Top" Width="386" IsReadOnly="True" BorderBrush="White" />
-        <Button Content="Streitmacht _löschen" Height="23" HorizontalAlignment="Left" Margin="548,414,0,0" Name="streitmachtLoeschenKnopf" VerticalAlignment="Top" Width="196" Click="klickLoescheStreitMacht" />
+        <Button Content="Streitmacht _löschen" Height="23" HorizontalAlignment="Left" Margin="548,414,0,0" Name="streitmachtLoeschenKnopf" VerticalAlignment="Top" Width="196" Command="local:Commands.StreitmachtLoeschen" />
         <Button Content="Streitmacht _kopieren" Height="23" HorizontalAlignment="Left" Margin="548,361,0,0" Name="streitmachtKopierenKnopf" VerticalAlignment="Top" Width="196" Click="klickStreitmachtKopieren"  />
         <Button Content="Streitmacht _umbenennen" Height="23" HorizontalAlignment="Left" Margin="548,466,0,0" Name="buttenSteitmachtUmbenennen" VerticalAlignment="Top" Width="196" Click="klickStreitmachtUmbennnen"  />
         <Button Content="Streitmacht _PDF" Height="23" HorizontalAlignment="Left" Margin="548,518,0,0" Name="buttonStreitmachtuebersicht" VerticalAlignment="Top" Width="196" Click="onStreitMachtToTex"  />
