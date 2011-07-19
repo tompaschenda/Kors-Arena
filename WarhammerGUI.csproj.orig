@@ -1,0 +1,439 @@
+<<<<<<< HEAD
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D7385F2-C1A8-455F-98A2-6B4267390F2C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WarhammerGUI</RootNamespace>
+    <AssemblyName>WarhammerGUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WarhammerGUI.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Gui\Auswahl1AusN.xaml.cs">
+      <DependentUpon>Auswahl1AusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\AuswahlAnzahlSubunits.xaml.cs">
+      <DependentUpon>AuswahlAnzahlSubunits.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlAuswahl1AusN.xaml.cs">
+      <DependentUpon>ControlAuswahl1AusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlAuswahlAnzahl.xaml.cs">
+      <DependentUpon>ControlAuswahlAnzahl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlAuswahlMAusN.xaml.cs">
+      <DependentUpon>ControlAuswahlMAusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlEinheitEdit.xaml.cs">
+      <DependentUpon>ControlEinheitEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\EnumComboBox.cs" />
+    <Compile Include="Gui\fehlerMessageBox.xaml.cs">
+      <DependentUpon>fehlerMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\AuswahlMAusN.xaml.cs">
+      <DependentUpon>AuswahlMAusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\UnitRename.xaml.cs">
+      <DependentUpon>UnitRename.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\StreitmachtEdit.xaml.cs">
+      <DependentUpon>StreitmachtEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\StreitmachtRename.xaml.cs">
+      <DependentUpon>StreitmachtRename.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\StreitmachtCreate.xaml.cs">
+      <DependentUpon>StreitmachtCreate.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Gui\ArmyBenchStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Auswahl1AusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\AuswahlAnzahlSubunits.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\ControlAuswahl1AusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlAuswahlAnzahl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlAuswahlMAusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlEinheitEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\fehlerMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\AuswahlMAusN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\UnitRename.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\StreitmachtEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\StreitmachtRename.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Gui\StreitmachtCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Programmlogik\armyToTex.cs" />
+    <Compile Include="Programmlogik\choiceDefinition.cs" />
+    <Compile Include="Programmlogik\Einheit.cs" />
+    <Compile Include="Programmlogik\GlobaleEinheitenListe.cs" />
+    <Compile Include="Programmlogik\Sonderregeln.cs" />
+    <Compile Include="Programmlogik\SpaceMarineEinheiten.cs" />
+    <Compile Include="Programmlogik\SpielerAnfragen.cs" />
+    <Compile Include="Programmlogik\spielerArmee.cs" />
+    <Compile Include="Programmlogik\Waffenfabrik.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Common\Common.csproj">
+      <Project>{8220FD29-2417-44D3-A6C4-6E97CD813F77}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="Listen\Listen.csproj">
+      <Project>{5386AF15-D15A-4FAA-9561-46C460676383}</Project>
+      <Name>Listen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+=======
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D7385F2-C1A8-455F-98A2-6B4267390F2C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WarhammerGUI</RootNamespace>
+    <AssemblyName>WarhammerGUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WarhammerGUI.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Gui\Auswahl1AusN.xaml.cs">
+      <DependentUpon>Auswahl1AusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\AuswahlAnzahlSubunits.xaml.cs">
+      <DependentUpon>AuswahlAnzahlSubunits.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Commands.cs" />
+    <Compile Include="Gui\ControlAuswahl1AusN.xaml.cs">
+      <DependentUpon>ControlAuswahl1AusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlAuswahlAnzahl.xaml.cs">
+      <DependentUpon>ControlAuswahlAnzahl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlAuswahlMAusN.xaml.cs">
+      <DependentUpon>ControlAuswahlMAusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ControlEinheitEdit.xaml.cs">
+      <DependentUpon>ControlEinheitEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\EnumComboBox.cs" />
+    <Compile Include="Gui\fehlerMessageBox.xaml.cs">
+      <DependentUpon>fehlerMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\AuswahlMAusN.xaml.cs">
+      <DependentUpon>AuswahlMAusN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\UnitRename.xaml.cs">
+      <DependentUpon>UnitRename.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\StreitmachtEdit.xaml.cs">
+      <DependentUpon>StreitmachtEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\StreitmachtRename.xaml.cs">
+      <DependentUpon>StreitmachtRename.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\StreitmachtCreate.xaml.cs">
+      <DependentUpon>StreitmachtCreate.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Gui\ArmyBenchStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Auswahl1AusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\AuswahlAnzahlSubunits.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\ControlAuswahl1AusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlAuswahlAnzahl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlAuswahlMAusN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\ControlEinheitEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\fehlerMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\AuswahlMAusN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\UnitRename.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\StreitmachtEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\StreitmachtRename.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Gui\StreitmachtCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Programmlogik\armyToTex.cs" />
+    <Compile Include="Programmlogik\choiceDefinition.cs" />
+    <Compile Include="Programmlogik\Einheit.cs" />
+    <Compile Include="Programmlogik\GlobaleEinheitenListe.cs" />
+    <Compile Include="Programmlogik\Sonderregeln.cs" />
+    <Compile Include="Programmlogik\SpaceMarineEinheiten.cs" />
+    <Compile Include="Programmlogik\SpielerAnfragen.cs" />
+    <Compile Include="Programmlogik\spielerArmee.cs" />
+    <Compile Include="Programmlogik\Waffenfabrik.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Common\Common.csproj">
+      <Project>{8220FD29-2417-44D3-A6C4-6E97CD813F77}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="Listen\Listen.csproj">
+      <Project>{5386AF15-D15A-4FAA-9561-46C460676383}</Project>
+      <Name>Listen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+>>>>>>> f31ff41c306a9fe27f1af291214b0b1adb08de99
+</Project>
