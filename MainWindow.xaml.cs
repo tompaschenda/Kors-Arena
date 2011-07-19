@@ -26,7 +26,7 @@ namespace WarhammerGUI
     public partial class MainWindow : Window
     {
         // Dieser Hook überwacht das Keyboard auf Tastaturkürzel!
-        private KeyboardHook hook = new KeyboardHook();
+        // private KeyboardHook hook = new KeyboardHook();
 
         public MainWindow()
         {
@@ -35,7 +35,7 @@ namespace WarhammerGUI
             updateArmeeListenBox();
 
 
-            hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
+            // hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
             //hook.RegisterHotKey(ModifierBeys.Control, Keys.C);
             //hook.RegisterHotKey(ModifierBeys.Control, Keys.N);
 
@@ -640,7 +640,7 @@ namespace WarhammerGUI
             return _outputMessage;
         }
 
-        
+        /*
         protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
         {
             // Zunächst einmal will ich, dass die Selektion der Armee mindestens Element null ist!
@@ -667,6 +667,7 @@ namespace WarhammerGUI
             if (e.Key == Key.Escape)
                 this.Close();
         }
+         * */
 
         /// <summary>
         /// Wird ausgeführt, wenn das Hauptfenster geschlossen wird!
@@ -694,13 +695,19 @@ namespace WarhammerGUI
             System.Windows.Forms.MessageBox.Show(message, caption, buttons);
         }
 
+        private void CommandBinding_Executed_Close(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
 
+        /*
         /// <summary>
         /// Wird aktiv, sobald ein Tastenkombo oder eine Taste gedürckt wurde, die beim Hook
         /// angemeldet wurde!
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// /*
         private void hook_KeyPressed(object sender, KeyPressedEventArgs e)
         {
             switch (e.Key)
@@ -713,5 +720,6 @@ namespace WarhammerGUI
                     break;
             }
         }
+         */
     }
 }

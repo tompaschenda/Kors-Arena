@@ -646,7 +646,7 @@ namespace WarhammerGUI
         }
 
 
-        
+        /*
         /// <summary>
         /// Was passiert, wenn ich eine Taste drücke?
         /// </summary>
@@ -656,25 +656,23 @@ namespace WarhammerGUI
             // Es funktioniert nur etwas, wenn ich schon eine Einheit selektiert habe!
             TreeViewItem ausgewaehltesItem = (TreeViewItem)availableUnitsTreeView.SelectedItem;
 
-            /*
             if (e.Key == Key.N   && ( ausgewaehltesItem != null   && ausgewaehltesItem.Name != "" ))
-                klickEinheitHinzufuegen(this, e);*/
+                klickEinheitHinzufuegen(this, e);
 
             // Ähnlich sieht es für die anderen Operationen aus!s
             var copyIndex = getChosenUnitTreeIdentifier();
             if (  e.Key == Key.L || e.Key == Key.Delete  && copyIndex != -1)
                 klickLoescheEinheit(this, e);
 
-            /*
             if( e.Key == Key.U  || e.Key == Key.F2 && copyIndex != -1)
                 klickRename(this, e);
             if( e.Key == Key.C || e.Key == Key.K  && copyIndex != -1)
                 klickKopiereEinheit(this, e);
-            */
 
             if (e.Key == Key.A || e.Key == Key.Escape || e.Key == Key.S)
                 this.Close();
         }
+            */
 
         private void erstelleArmeeuebersicht(object sender, RoutedEventArgs e)
         {
