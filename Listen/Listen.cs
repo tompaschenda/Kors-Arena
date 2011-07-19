@@ -99,6 +99,10 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+
+        [Description("Paar Energiefäuste")]
+        PaarEFaeuste,
+
         [Description("Ignoriert Rüstungswürfe")]
         IgnoriertRuestungswuerfe,
         [Description("verdoppelt Stärke (max. 10)")]
@@ -717,6 +721,8 @@ namespace Listen
         Schmiedefeuerhandschuh,
         [Description("Mondfang")]
         Mondfang,
+        [Description("Die Fäuste von Ultramar")]
+        FaeusteVonUltramar,
         [Description("Cybotnahkampfwaffe")]
         CybotNahkampfWaffe,
         [Description("Seismischer Hammer")]
