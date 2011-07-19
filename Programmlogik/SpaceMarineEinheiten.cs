@@ -198,6 +198,11 @@ namespace WarhammerGUI
             priest.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(priest);
 
+            /*
+            var calgar = new marneusCalgar() { };
+            calgar.createUnitBase();
+            listeAllerSpaceMarineEinheiten.Add(calgar);*/
+
 
             listeAllerSpaceMarineEinheiten.Sort();
 
@@ -755,7 +760,6 @@ namespace WarhammerGUI
             // Gründen wir unsere Einheit neu:
             subEinheiten = new List<subEinheit>() { };
    
-
             // Auswahl vorbereiten:
             var wahlIndex = new int();
 
@@ -2275,6 +2279,108 @@ namespace WarhammerGUI
             erschaffungOkay = true;
         }
     }
+
+    public class marneusCalgar : Einheit
+    {
+        public override void createUnitBase()
+        {
+            einheitenName = alleEinheitenNamen.MarneusCalgar;
+            fraktion = Fraktionen.SpaceMarines;
+
+            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+
+            basispunkteKosten = 250;
+            einheitKostenGesamt = basispunkteKosten;
+
+            einzigartig = true;
+
+            einheitentyp = Einheitstyp.Infanterie;
+
+            sonderregeln = new List<Sonderregeln>() { };
+            sonderregeln.Add(Sonderregeln.DieKeineFurchtKennen);
+            sonderregeln.Add(Sonderregeln.Kampftaktiken);
+            sonderregeln.Add(Sonderregeln.UnabhaengigesCharakterModell);
+            sonderregeln.Add(Sonderregeln.TitanischeMacht);
+            sonderregeln.Add(Sonderregeln.Kriegsgott);
+            sonderregeln.Add(Sonderregeln.OrbitalesBombardement);
+            sonderregeln.Add(Sonderregeln.EwigerKrieger);
+
+            auswahlTypBasis = new List<EinheitenAuswahl>() { };
+            auswahlTypBasis.Add(EinheitenAuswahl.HQ);
+
+            base.createUnitBase();
+        }
+
+        /// <summary>
+        /// Hier werden alle Spierloptionen abgehandelt
+        /// </summary>
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
+            // Update der Punktekosten:
+            einheitKostenGesamt = basispunkteKosten;
+
+            var calgar = new subEinheit() { };
+            calgar.name = alleSubeinheitenNamen.MarneusCalgar;
+            calgar.ruestung = alleRuestungen.ServoRuestung;
+            calgar.ausruestung = new List<alleAusruestung>() { };
+            calgar.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            calgar.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            calgar.ausruestung.Add(alleAusruestung.StaehlernerStern);
+
+            calgar.waffen = new List<waffe>() { };
+            calgar.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieschwert));
+            calgar.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.FaeusteVonUltramar));
+
+
+            // Wollen wir die Rüstung des Antilochus haben?
+            var auswahlKonstrukt = new List<pulldownAuswahl>() { };
+            auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = "normale Servorüstung", kosten = 0 });
+            auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleRuestungen.RuestungDesAntilochus, kosten = 15 });
+            Auswahl1AusN auswahlSprung = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Bitte die Rüstung auswählen:", auswahlKonstrukt);
+            if (!auswahlSprung.allesOkay)
+            {
+                erschaffungOkay = false;
+                return;
+            }
+
+            calgar.kg = 6;
+            calgar.bf = 5;
+            calgar.st = 4;
+            calgar.wid = 4;
+            calgar.lp = 4;
+            calgar.ini = 5;            
+            calgar.at = 4;
+            calgar.mw = 10;
+            calgar.rw = 3;
+            calgar.ret = 4;
+
+            var wahlIndex = auswahlSprung.gewaehlterIndexAusN;
+            bool hatAntilochus = false;
+            if (wahlIndex == 1)
+            {
+                hatAntilochus = true;
+                einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
+            }
+            if (hatAntilochus)
+            {
+                calgar.ruestung = alleRuestungen.RuestungDesAntilochus;
+                calgar.rw = 2;
+                calgar.ausruestung.Add(alleAusruestung.TeleportPeilsender);
+            }
+
+
+
+            calgar.einheitentyp = Einheitstyp.Infanterie;
+
+
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(calgar);
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
+    }
+
 
     public class capSicarius : Einheit
     {

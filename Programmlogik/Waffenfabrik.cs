@@ -144,6 +144,7 @@ namespace WarhammerGUI
             waffenListe.Add(createSpaceMarinesServoarm());
             waffenListe.Add(createSpaceMarinesSyncPlasmapistole());
             waffenListe.Add(createSpaceMarinesTyphoon());
+            waffenListe.Add(createSpaceMarinesFaeuste());
 
             this.spaceMarineWaffen = waffenListe;
 
@@ -327,6 +328,26 @@ namespace WarhammerGUI
 
             return weap;
         }
+
+        private waffe createSpaceMarinesFaeuste()
+        {
+            var weap = new waffe() { };
+            weap.name = alleWaffenNamen.FaeusteVonUltramar;
+            weap.haendigkeit = 2;
+            weap.istSchusswaffe = true;
+            weap.auspraegungen.Add(new waffenAuspraegung()
+            {
+                beschreibung = WaffenSubTypen.blank,
+                reichweite = Reichweiten.Zoll24,
+                staerke = 4,
+                durchschlag = 2,
+                waffenRegeln = new List<WaffenRegeln>() { WaffenRegeln.Sturm2, WaffenRegeln.PaarEFaeuste },
+            });
+
+            return weap;
+        }
+
+
         private waffe createSpaceMarinesEnergiefaust()
         {
             var weap = new waffe(){};
