@@ -292,6 +292,7 @@ namespace WarhammerGUI
         public static subEinheit createScout()
         {
             var scout = createSpaceMarine();
+            scout.name = alleSubeinheitenNamen.Scout;
             scout.kg = 3;
             scout.bf = 3;
             scout.ruestung = alleRuestungen.Scoutruestung;
@@ -619,7 +620,10 @@ namespace WarhammerGUI
             anzahlChoice.minimaleAnzahl = 5;
             anzahlChoice.minimaleAnzahl = 10;
             anzahlChoice.unitBaseCost = basispunkteKosten;
+            anzahlChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
             auswahlen.Add(anzahlChoice);
+
+
             //Tip von Tom: Wenn du hier einen Block benutzt (gewschweifte Klammer), dann 
             //kann "waffenChoice01" nicht versehentlich per copy-paste-Fehler unten nochmal benutzt werden
             {
@@ -719,6 +723,75 @@ namespace WarhammerGUI
             }
         }
 
+        public override void evaluateChoices()
+        {            
+            base.evaluateChoices();
+
+            int punkteKostenProSpaceMarine = 16;
+            int zusaetlicheSpaceMariens = (int)getSpecificChoiceValues(ChoiceAuswahlIdentifier.AnzSub01);
+            int anzahlSpaceMarinesGesamt = 4 + zusaetlicheSpaceMariens;
+
+            // Update der Punktekosten:
+            einheitKostenGesamt = basispunkteKosten + zusaetlicheSpaceMariens * punkteKostenProSpaceMarine;
+
+            // Gründen wir unsere Einheit neu:
+            subEinheiten = new List<subEinheit>() { };
+
+            // Genau soviele einordnen, wie vom Spieler gewünscht:
+            for (int i = 0; i < anzahlSpaceMarinesGesamt; ++i)
+            {
+                // Okay, legen wir die Space Marines an:
+                var spaceMarine = ultraMarineHelperClass.createSpaceMarine();
+
+                // Von 1 bis 8 nur Standard und keine weiteren Kosten!
+                if (i == 7)
+                {
+                    // Bolter 'raus:
+                    spaceMarine.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
+                    // Und jetzt die Waffe rein, die der Spieler wollte:
+                    spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Waffe01)));
+                    // Und die Kosten abrechnen:
+                    einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe01);
+                }
+                else if (i == 8)
+                {
+                    // Bolter 'raus:
+                    spaceMarine.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
+
+                    spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Waffe02)));
+                    einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe02);
+                }
+                subEinheiten.Add(spaceMarine);
+            }
+
+            ///
+            // SARGE:
+            ///
+
+            // Außerdem gibt es ja noch den Sergeant:
+            var spaceMarineSergeant = ultraMarineHelperClass.createSpaceMarineSergeant();
+
+            spaceMarineSergeant.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
+            spaceMarineSergeant.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
+
+            // Auswahl linke Hand:
+            spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Waffe03)));
+            einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe03);
+
+            // Auswahl rechte Hand:
+            spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Waffe04)));
+            einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe04);
+
+            // Außerdem darf er sich noch Ausrüstung aussuchen!
+            spaceMarineSergeant.ausruestung.AddRange((List<alleAusruestung>)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Ausruest01));
+            einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Ausruest01);
+
+            // Mat TODO:
+            // Die Auswahl eines Transportfahrzeuges legen wir erst einmal auf Eis!
+
+            // Nur jetzt hat die Erschaffung wirklich funktioniert!
+            erschaffungOkay = true;
+        }
 
         public override void createUnitBase()
         {
@@ -745,204 +818,9 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            int punkteKostenProSpaceMarine = 16;
-
-            AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Space Marines erhalten", gesamtArmeePunkteKosten, punkteKostenProSpaceMarine) { };
-
-            // Okay, wie viele Space Marines sollen dazu? Wenn abgebrochen wurde, hören wir auf!
-            if(!auswahlAnzahl.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-
-            int zusaetlicheSpaceMariens = auswahlAnzahl.anzahlGewaehlt;
-            int anzahlSpaceMarinesGesamt = 4 + zusaetlicheSpaceMariens;
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten + zusaetlicheSpaceMariens * punkteKostenProSpaceMarine;
-
-            // Gründen wir unsere Einheit neu:
-            subEinheiten = new List<subEinheit>() { };
-   
-            // Auswahl vorbereiten:
-            var wahlIndex = new int();
-
-            // Genau soviele einordnen, wie vom Spieler gewünscht:
-            for (int i = 0; i < anzahlSpaceMarinesGesamt; ++i )
-            {
-                // Okay, legen wir die Space Marines an:
-                var spaceMarine = ultraMarineHelperClass.createSpaceMarine();                
-
-                // Von 1 bis 8 nur Standard und keine weiteren Kosten!
-                if(i == 7)
-                {
-                    // Bolter 'raus:
-                    spaceMarine.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
-
-                    // Jetzt darf ich auch andere Auswahlen durchühren:
-                    var auswahlKonstrukt = new List<pulldownAuswahl>() { };
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Flammenwerfer, kosten = 0 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Melter, kosten = 5 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmawerfer, kosten = 10 });
-
-                    Auswahl1AusN auswahlWaffe1 = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Ein Space Marine darf eine der folgenden Waffen wählen:", auswahlKonstrukt);
-                    if (!auswahlWaffe1.allesOkay)
-                    {
-                        erschaffungOkay = false;
-                        return;
-                    }
-
-                    wahlIndex = auswahlWaffe1.gewaehlterIndexAusN;
-
-                    // Auswahl nutzen und Kosten aktualisieren:
-                    spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
-                    einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
-                }
-                else if (i == 8)
-                {
-                    // Bolter 'raus:
-                    spaceMarine.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
-
-                    var auswahlKonstrukt = new List<pulldownAuswahl>() { };
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = 0 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 0 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 5 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Laserkanone, kosten = 10 });
-
-                    Auswahl1AusN auswahlWaffe2 = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Ein Space Marine darf eine der folgenden Waffen wählen:", auswahlKonstrukt);
-                    if (!auswahlWaffe2.allesOkay)
-                    {
-                        erschaffungOkay = false;
-                        return;
-                    }
-
-                    wahlIndex = auswahlWaffe2.gewaehlterIndexAusN;
-
-                    // Auswahl nutzen und Kosten aktualisieren:
-                    spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
-                    einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
-                }
- 
-                subEinheiten.Add(spaceMarine);                
-            }
-
-            ///
-            // SARGE:
-            ///
-
-            // Außerdem gibt es ja noch den Sergeant:
-            // Erstellen wir ihn:
-            var spaceMarineSergeant = ultraMarineHelperClass.createSpaceMarineSergeant();
-
-            // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
-            spaceMarineSergeant.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
-            spaceMarineSergeant.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
-
-            var auswahlSargePulldown = new List<pulldownAuswahl>() { };
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-
-            Auswahl1AusN auswahlSarge = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Sergeant muss eine der folgenden Auswahlen treffen:", auswahlSargePulldown);
-            if (!auswahlSarge.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-
-            wahlIndex = auswahlSarge.gewaehlterIndexAusN;
-            spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSargePulldown[wahlIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + auswahlSargePulldown[wahlIndex].kosten * 1;
-
-
-            // Wenn er bereits eine Boltpistole hat, kann er sie nicht noch einmal nehmen, sonst schon!
-            var auswahlSargePulldown2 = new List<pulldownAuswahl>() { };
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenschwert, kosten = 0 });
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-            auswahlSargePulldown2.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-
-            auswahlSarge = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Sergeant muss eine der folgenden Auswahlen für die Zweithand treffen:", auswahlSargePulldown2);
-            if (!auswahlSarge.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlIndex = auswahlSarge.gewaehlterIndexAusN;
-
-            spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSargePulldown2[wahlIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + auswahlSargePulldown2[wahlIndex].kosten * 1;
-
-            // Außerdem darf er sich noch Ausrüstung aussuchen!
-            var pulldownSargeAusruestung = new List<pulldownAuswahl>() { };
-            pulldownSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
-            pulldownSargeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.TeleportPeilsender, kosten = 15 });
-
-
-            AuswahlMAusN wahlSargeAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Sergeant darf folgende Optionen wählen:", pulldownSargeAusruestung);
-            if (!wahlSargeAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlSargeAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                spaceMarineSergeant.ausruestung.Add( (alleAusruestung) pulldownSargeAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
-            }
-
-            subEinheiten.Add(spaceMarineSergeant);
-
-            // Wahl angeschlossenes Transportfahrzeug
-            // => muss mit generiert werden!
-            // Also müssen wir zunächst den Spieler fragen, ob er überhaupt ein Transportfahrzeug möchte!
-            var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Rhino, kosten = 35 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
-            if(anzahlSpaceMarinesGesamt==9)
-                fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
-
-            Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
-            if (!auswahlScreen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlIndex = auswahlScreen.gewaehlterIndexAusN;
-
-            // Jetzt müssen wir abhängig vom Index die richtige neue Einheit erzeugen!
-            switch (wahlIndex)
-            {
-                case 0: 
-                    break;
-                case 1:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Rhino.ToString());
-                    break;
-                case 2:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Razorback.ToString());
-                    break;
-                case 3:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
-                    break;
-            }
-
-            // Nur jetzt hat die Erschaffung wirklich funktioniert!
-            erschaffungOkay = true;
+            throw new NotImplementedException();
         }
     }
 

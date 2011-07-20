@@ -30,6 +30,17 @@ namespace WarhammerGUI.Gui
             if (getEinheit() != null)
             {
                 getEinheit().updateChoiceDependencies();
+
+                // Matt TODO:
+                // Wir müssen nicht nur die Abhängigkeiten aktualisieren, sondern auch
+                // dafür sorgen, dass die gewählten Items tatsächlich 
+                // der Einheit zugeschrieben werden. Dazu muss die Einheit intern jeweils immer
+                // von Grund auf neu generiert werden. Ausnahme: Der Name, den der Nutzer vorgegeben hat,
+                // denn der sollte sich nicht jedesmal ändern, wenn eine Auswahl geändert wird.
+                getEinheit().evaluateChoices();
+                // Außerdem müssen wir die Gesamtkosten der Armee updaten!
+                // TODO!!!!
+                // ????
             }
         }
 

@@ -9,6 +9,7 @@ using System.Diagnostics;
 
 namespace WarhammerGUI
 {
+
     public enum AuswahlTyp
     {
         [Description("Waffenauswahl")]
@@ -139,6 +140,11 @@ namespace WarhammerGUI
             var copy = this.MemberwiseClone();
             return copy;
         }
+
+        public abstract Object getChoiceValues();
+
+        public abstract int getChoiceCost();
+
     }
 
     public class ChoiceDefinitionForSelection : choiceDefinition
@@ -170,6 +176,15 @@ namespace WarhammerGUI
                 ((ChoiceDefinitionForSelection)copy).auswahlOptionen.Add((pulldownAuswahl)this.auswahlOptionen[i].Clone());
             }
             return copy;
+        }
+
+        public override object getChoiceValues()
+        {
+            throw new NotImplementedException();
+        }
+        public override int getChoiceCost()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -259,6 +274,19 @@ namespace WarhammerGUI
     /// </summary>
     public class waffenAuswahl : ChoiceDefinitionForSelection
     {
+
+        public override object getChoiceValues()
+        {
+            return getSelectedWeaponName();
+        }
+
+        public override int getChoiceCost()
+        {
+            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
+            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
+            return -1;
+        }
+
         private const int InvalidIndex = -1;
 
         public override object Clone()
@@ -304,6 +332,21 @@ namespace WarhammerGUI
             var copy = base.Clone();
             return copy;
         }
+
+        public override object getChoiceValues()
+        {
+            return getSelectedVehicle();
+        }
+
+
+        public override int getChoiceCost()
+        {
+            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
+            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
+            return -1;
+        }
+
+
 
         public transportfahrzeugWahl() : base(AuswahlTool.EinsAusN)
         {
@@ -352,6 +395,19 @@ namespace WarhammerGUI
             
         }
 
+        public override object getChoiceValues()
+        {
+            return getSelectedEquip();
+        }
+
+        public override int getChoiceCost()
+        {
+            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
+            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
+            return -1;
+        }
+
+
         public List<alleAusruestung> getSelectedEquip()
         {
             var selectedEquip = new List<alleAusruestung>() { };
@@ -385,6 +441,19 @@ namespace WarhammerGUI
             return copy;
         }
 
+        public override object getChoiceValues()
+        {
+            return getSelectedArmor();
+        }
+
+        public override int getChoiceCost()
+        {
+            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
+            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
+            return -1;
+        }
+
+
         public ruestungsAuswahl() : base(AuswahlTool.EinsAusN)
         {
             artDerAuswahl = AuswahlTyp.Ruestungsauswahl;
@@ -417,10 +486,38 @@ namespace WarhammerGUI
 
     public class zusSubeinheitenAuswahl : choiceDefinition
     {
+        public int getChosenNumberOfAdditionalUnits()
+        {
+            // Mat: TODO!!
+            // Hier muss natürlich die tatsächlich durchgeführte Auswahl zurückgegeben werden und NICHT
+            // ein statischer Wert. Wie geht das?
+            // Etwa ungefähr so: (?)
+            /*
+            if (getChosenUnits() != null)
+                return (int)getChosenUnits();
+            else
+                return -1;
+             * */
+
+            return 0;
+        }
+
+        public override int getChoiceCost()
+        {
+            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
+            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
+            return -1;
+        }
+
         public override object Clone()
         {
             var copy = base.Clone();
             return copy;
+        }
+
+        public override object getChoiceValues()
+        {
+            return getChosenNumberOfAdditionalUnits();
         }
 
         public zusSubeinheitenAuswahl()

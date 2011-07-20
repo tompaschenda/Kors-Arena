@@ -273,6 +273,38 @@ namespace WarhammerGUI
         /// </summary>
         public virtual void evaluateChoices() { }
 
+        /// <summary>
+        /// Gibt den oder die Auswahlwerte zurück. Abhängig davon, um was für eine Auswahl es
+        /// sich beim "Ziel" handelt.
+        /// </summary>
+        /// <param name="ziel"></param>
+        /// <returns></returns>
+        public Object getSpecificChoiceValues(ChoiceAuswahlIdentifier ziel)
+        {
+            // Erst einmal suchen wir die gewünschte Auswahl heraus:
+            var aktWahl = getSpecificChoice(ziel);
+            // Und jetzt brauchen wir das jeweilige Objekt
+            // und geben es zurück. Das kann je nach gewünschter Auswahl etwas unterschiedliches sein!
+            return aktWahl.getChoiceValues();
+        }
+
+        /// <summary>
+        /// Gibt zurück, wie teuer den Spieler die jeweilige Auswahl kommt:
+        /// </summary>
+        /// <param name="ziel"></param>
+        /// <returns></returns>
+        public int getSpecificChoiceCost(ChoiceAuswahlIdentifier ziel)
+        {
+            var aktWahl = getSpecificChoice(ziel);
+            return aktWahl.getChoiceCost();
+        }
+
+
+        /// <summary>
+        /// Gibt die gewünschte Wahl zurück!
+        /// </summary>
+        /// <param name="ziel"></param>
+        /// <returns></returns>
         public choiceDefinition getSpecificChoice( ChoiceAuswahlIdentifier ziel)
         {
             for (int i = 0; i < auswahlen.Count; ++i)
