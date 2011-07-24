@@ -540,11 +540,11 @@ namespace WarhammerGUI
         /// <summary>
         /// Wie viele Subeinheiten muss ich mindestens selektieren?
         /// </summary>
-        public int minimaleAnzahl;
+        private int minimaleAnzahl;
         /// <summary>
         /// Wie viele Subeinheiten darf ich maximal selektieren?
         /// </summary>
-        public int maximaleAnzahl;
+        private int maximaleAnzahl;
         /// <summary>
         /// Um wieviele Subeinheiten "pro Schritt" darf ich erhöhen oder senken?
         /// </summary>
@@ -561,6 +561,36 @@ namespace WarhammerGUI
         public int costPerAditionalSubUnit;
 
         private int totalSubUnits;
+
+        /// <summary>
+        /// Property für den Minimalen Slider-Wert:
+        /// </summary>
+        public int MinimaleAnzahl
+        {
+            get
+            {
+                return minimaleAnzahl;
+            }
+            set
+            {
+                minimaleAnzahl = value;
+            }
+        }
+
+        /// <summary>
+        /// Property für die maximale Anzahl:
+        /// </summary>
+        public int MaximaleAnzahl
+        {
+            get
+            {
+                return maximaleAnzahl;
+            }
+            set
+            {
+                maximaleAnzahl = value;
+            }
+        }
 
         /// <summary>
         /// Property für die gewählte Anzahl der Subeinheiten

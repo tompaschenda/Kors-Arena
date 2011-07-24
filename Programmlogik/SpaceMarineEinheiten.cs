@@ -617,8 +617,8 @@ namespace WarhammerGUI
             var auswahlen = new List<choiceDefinition>() { };
 
             var anzahlChoice = new zusSubeinheitenAuswahl() { };
-            anzahlChoice.minimaleAnzahl = 5;
-            anzahlChoice.maximaleAnzahl = 10;
+            anzahlChoice.MinimaleAnzahl = 5;
+            anzahlChoice.MaximaleAnzahl = 10;
             anzahlChoice.costPerAditionalSubUnit = 16;
             anzahlChoice.unitBaseCost = basispunkteKosten;
             anzahlChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
@@ -634,6 +634,7 @@ namespace WarhammerGUI
                 waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Melter, kosten = 5 });
                 waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmawerfer, kosten = 10 });
                 waffenChoice01.labelString = "Auswahl der 1. Spezialwaffe: ";
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
                 auswahlen.Add(waffenChoice01);
             }
 
@@ -647,6 +648,7 @@ namespace WarhammerGUI
                 waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 5 });
                 waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Laserkanone, kosten = 10 });
                 waffenChoice02.labelString = "Auswahl der 2. Spezialwaffe: ";
+                waffenChoice02.AuswahlOptionen[0].IstGewaehlt = true;
                 auswahlen.Add(waffenChoice02);
             }
 
@@ -661,6 +663,7 @@ namespace WarhammerGUI
                 waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
                 waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
                 waffenChoice03.labelString = "Auswahl der 1. Waffe des Sergeants: ";
+                waffenChoice03.AuswahlOptionen[0].IstGewaehlt = true;
                 auswahlen.Add(waffenChoice03);
             }
 
@@ -673,6 +676,7 @@ namespace WarhammerGUI
                 waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
                 waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
                 waffenChoice04.labelString = "Auswahl der 2. Waffe des Sergeants: ";
+                waffenChoice04.AuswahlOptionen[0].IstGewaehlt = true;
                 auswahlen.Add(waffenChoice04);
             }
 
@@ -684,6 +688,7 @@ namespace WarhammerGUI
                 auswahlen.Add(ausruestungChoice01);
             }
 
+            /*
             {
                 var transChoice01 = new transportfahrzeugWahl() { };
                 transChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
@@ -691,7 +696,7 @@ namespace WarhammerGUI
                 transChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Razorback, kosten = 40 });
                 transChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
                 auswahlen.Add(transChoice01);
-            }
+            }*/
 
             Auswahlen = auswahlen;
         }
@@ -703,6 +708,8 @@ namespace WarhammerGUI
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = (anzahlMarines == 10);
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).IsActive = (anzahlMarines == 10);
 
+
+            /*
             var wahlAngeschlossen = (transportfahrzeugWahl)getSpecificChoice(ChoiceAuswahlIdentifier.Trans01);
             if (anzahlMarines == 10)
             {
@@ -721,7 +728,7 @@ namespace WarhammerGUI
                 // Die Kapsel gibt es nicht (mehr). Wenn der Spieler sie vorher selektiert hatte, setzen wir die Auswahl zurück und bleiben valide.
                 if (wahlAngeschlossen.getSelectedVehicle() == alleEinheitenNamen.Landungskapsel)
                     wahlAngeschlossen.setChosenIndex(0);
-            }
+            }*/
         }
 
         public override void evaluateChoices()
@@ -786,6 +793,8 @@ namespace WarhammerGUI
             // Außerdem darf er sich noch Ausrüstung aussuchen!
             spaceMarineSergeant.ausruestung.AddRange((List<alleAusruestung>)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Ausruest01));
             einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Ausruest01);
+
+            subEinheiten.Add(spaceMarineSergeant);
 
             // Mat TODO:
             // Die Auswahl eines Transportfahrzeuges legen wir erst einmal auf Eis!
@@ -859,8 +868,8 @@ namespace WarhammerGUI
             var auswahlen = new List<choiceDefinition>() { };
 
             var anzahlChoice = new zusSubeinheitenAuswahl() { };
-            anzahlChoice.minimaleAnzahl = 5;
-            anzahlChoice.maximaleAnzahl = 10;
+            anzahlChoice.MinimaleAnzahl = 5;
+            anzahlChoice.MaximaleAnzahl = 10;
             anzahlChoice.costPerAditionalSubUnit = 40;
             anzahlChoice.unitBaseCost = basispunkteKosten;
             anzahlChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
