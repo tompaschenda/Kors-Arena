@@ -27,6 +27,21 @@ namespace WarhammerGUI.Gui
 
         private void ControlAuswahlAnzahl_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            updateEinheit();
+        }
+
+        private Einheit getEinheit()
+        {
+            return (Einheit)DataContext;
+        }
+
+        private void listBoxChoices2_Checked(object sender, RoutedEventArgs e)
+        {
+            updateEinheit();
+        }
+
+        private void updateEinheit()
+        {
             if (getEinheit() != null)
             {
                 getEinheit().updateChoiceDependencies();
@@ -42,11 +57,6 @@ namespace WarhammerGUI.Gui
                 // TODO!!!!
                 // ????
             }
-        }
-
-        private Einheit getEinheit()
-        {
-            return (Einheit)DataContext;
         }
     }
 

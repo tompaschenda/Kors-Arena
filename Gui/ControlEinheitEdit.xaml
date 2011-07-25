@@ -42,7 +42,9 @@
         <TextBox Grid.Row="0" Text="{Binding Path=GUIName, Mode=OneWay}" Name="nameBox"  BorderBrush="Black" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center" MaxHeight="24" VerticalAlignment="Top" />
         <ListBox Grid.Row="1" MinHeight="50" Name="listBoxChoices2" ItemsSource="{Binding Auswahlen}" 
                     ItemTemplateSelector="{StaticResource auswahlTemplateSelector}"
+                    CheckBox.Checked="listBoxChoices2_Checked"
                     Controls:ControlAuswahlAnzahl.ValueChanged ="ControlAuswahlAnzahl_ValueChanged" 
+                    
                  VerticalAlignment="Bottom"
                  HorizontalContentAlignment="Stretch"
                  >
