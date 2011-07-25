@@ -708,7 +708,6 @@ namespace WarhammerGUI
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = (anzahlMarines == 10);
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).IsActive = (anzahlMarines == 10);
 
-
             /*
             var wahlAngeschlossen = (transportfahrzeugWahl)getSpecificChoice(ChoiceAuswahlIdentifier.Trans01);
             if (anzahlMarines == 10)
@@ -735,12 +734,13 @@ namespace WarhammerGUI
         {            
             base.evaluateChoices();
 
-            int punkteKostenProSpaceMarine = 16;
-            int zusaetlicheSpaceMariens = (int)getSpecificChoiceValues(ChoiceAuswahlIdentifier.AnzSub01);
-            int anzahlSpaceMarinesGesamt = 4 + zusaetlicheSpaceMariens;
+            einheitKostenGesamt = basispunkteKosten;
+
+            int totaleEinheitenGroesse = (int)getSpecificChoiceValues(ChoiceAuswahlIdentifier.AnzSub01);
+            int anzahlSpaceMarinesGesamt = totaleEinheitenGroesse - 1;
 
             // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten + zusaetlicheSpaceMariens * punkteKostenProSpaceMarine;
+            ChoiceExecuter.execChoice((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01), this);
 
             // Gründen wir unsere Einheit neu:
             subEinheiten = new List<subEinheit>() { };
@@ -756,18 +756,14 @@ namespace WarhammerGUI
                 {
                     // Bolter 'raus:
                     spaceMarine.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
-                    // Und jetzt die Waffe rein, die der Spieler wollte:
-                    spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Waffe01)));
-                    // Und die Kosten abrechnen:
-                    einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe01);
+                    // Wahl abhandeln:
+                    ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, spaceMarine);
                 }
                 else if (i == 8)
                 {
                     // Bolter 'raus:
                     spaceMarine.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
-
-                    spaceMarine.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Waffe02)));
-                    einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe02);
+                    ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02), this, spaceMarine);
                 }
                 subEinheiten.Add(spaceMarine);
             }
@@ -783,16 +779,13 @@ namespace WarhammerGUI
             spaceMarineSergeant.waffen.Remove(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Bolter));
 
             // Auswahl linke Hand:
-            spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Waffe03)));
-            einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe03);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03), this, spaceMarineSergeant);
 
             // Auswahl rechte Hand:
-            spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Waffe04)));
-            einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe04);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe04), this, spaceMarineSergeant);
 
             // Außerdem darf er sich noch Ausrüstung aussuchen!
-            spaceMarineSergeant.ausruestung.AddRange((List<alleAusruestung>)getSpecificChoiceValues(ChoiceAuswahlIdentifier.Ausruest01));
-            einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Ausruest01);
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, spaceMarineSergeant);
 
             subEinheiten.Add(spaceMarineSergeant);
 
