@@ -43,6 +43,31 @@ namespace WarhammerGUI
             dieSubEinheit.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(aktWaffenName));
         }
 
+
+        /// <summary>
+        /// Führt eine optionale Waffenauswahl durch!
+        /// </summary>
+        /// <param name="auswahl"></param>
+        /// <param name="dieEinheit"></param>
+        /// <param name="dieSubEinheit"></param>
+        public static void execChoice(optWaffenAuswahl auswahl, Einheit dieEinheit, subEinheit dieSubEinheit)
+        {
+            // Wenn die aktuelle Auswahl gar nicht aktiv ist, machen wir natürlich nichts:
+            if (!auswahl.IsActive)
+                return;
+
+            // Holen wir uns alle ausgewählten Waffen:
+            List<pulldownAuswahl> waffenChoices = (List<pulldownAuswahl>)auswahl.getChoiceValues();
+
+            // Rein damit und die Kosten updaten!
+            foreach (var i in waffenChoices)
+            {
+                dieEinheit.einheitKostenGesamt += i.kosten;
+                dieSubEinheit.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe((alleWaffenNamen) i.auswahl));
+            }
+        }
+
+
         /// <summary>
         /// Führt eine Ausrüstungs-Auswahl durch!
         /// </summary>

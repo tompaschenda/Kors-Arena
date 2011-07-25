@@ -14,6 +14,10 @@ namespace WarhammerGUI
     {
         [Description("Waffenauswahl")]
         Waffenauswahl,
+
+        [Description("Optionale Waffenauswahl")]
+        OptWaffenauswahl,
+
         [Description("Transportfahrzeugwahl")]
         Transportfahrzeugwahl,
         [Description("Ausrüstungsauswahl")]
@@ -359,6 +363,65 @@ namespace WarhammerGUI
                 throw new ArgumentOutOfRangeException("Die angegebene Waffe gibt es nicht!");
         }
     }
+
+    public class optWaffenAuswahl : ChoiceDefinitionForSelection
+    {
+
+        public override object getChoiceValues()
+        {
+            List<pulldownAuswahl> gewaehlteWaffenChoices = new List<pulldownAuswahl>() { };
+            foreach (var i in AuswahlOptionen)
+            {
+                if (i.IstGewaehlt)
+                {
+                    gewaehlteWaffenChoices.Add(i);
+                }
+            }
+
+            return gewaehlteWaffenChoices;
+        }
+
+        public override int getChoiceCost()
+        {
+            int totalCosts = 0;
+            pulldownAuswahl aktAuswahl = new pulldownAuswahl() { };
+            foreach (var i in AuswahlOptionen)
+            {
+                if (i.IstGewaehlt)
+                {
+                    totalCosts += i.kosten;
+                }
+            }
+            return totalCosts;
+        }
+
+        private const int InvalidIndex = -1;
+
+        public override object Clone()
+        {
+            var copy = base.Clone();
+            return copy;
+        }
+
+        public optWaffenAuswahl()
+            : base(AuswahlTool.MAusN)
+        {
+            artDerAuswahl = AuswahlTyp.OptWaffenauswahl;
+            auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+            IsActive = true;
+            labelString = "Optionale Bewaffnung: ";
+        }
+
+        public override void validate()
+        {
+            base.validate();
+            if (toolDerAuswahl != AuswahlTool.MAusN)
+                throw new ArgumentOutOfRangeException("Falsche Auswahlart für waffenAuswahl!");
+        }
+    }
+
+
+
 
     public class transportfahrzeugWahl : ChoiceDefinitionForSelection
     {
