@@ -471,6 +471,7 @@ namespace Common
         Win = 8
     }
 
+    /*
     /// <summary>
     /// Ermöglicht es, Tastatureingaben/Tastenkombos abzufangen und darauf korrekt zu reagieren!s
     /// </summary>
@@ -528,7 +529,7 @@ namespace Common
 
             #endregion
         }
-
+    
         private Window _window = new Window();
         private int _currentId;
 
@@ -579,5 +580,5 @@ namespace Common
         #endregion
     }
 
-
+    */
 }
