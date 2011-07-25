@@ -38,7 +38,7 @@ namespace WarhammerGUI.Gui
                 // von Grund auf neu generiert werden. Ausnahme: Der Name, den der Nutzer vorgegeben hat,
                 // denn der sollte sich nicht jedesmal ändern, wenn eine Auswahl geändert wird.
                 getEinheit().evaluateChoices();
-                // Außerdem müssen wir die Gesamtkosten der Armee updaten!
+                // Außerdem müssen wir die Gesamtkosten der Armee und die Ansicht der Subeinheit updaten!
                 // TODO!!!!
                 // ????
             }
