@@ -1201,75 +1201,80 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myRazorback = ultraMarineHelperClass.createRazorback();           
+            base.declareChoices();
 
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var razorbackHauptWaffen = new List<pulldownAuswahl>() { };
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererBolter, kosten = +0 });
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererFlammenwerfer, kosten = +25 });
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Syncsturmkanone, kosten = +35 });
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = +35 });
-            razorbackHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.LaserkanoneUndSynchroPlasma, kosten = +35 });
+            var auswahlen = new List<choiceDefinition>() { };
 
-            Auswahl1AusN wahlRazorGrundWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", razorbackHauptWaffen);
-            if (!wahlRazorGrundWaffen.allesOkay)
             {
-                erschaffungOkay = false;
-                return;
-            }
-            var gewaehlterIndex = wahlRazorGrundWaffen.gewaehlterIndexAusN;
-
-            if (gewaehlterIndex != 4)
-            {
-                myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(razorbackHauptWaffen[gewaehlterIndex].auswahl));
-            }
-            else
-            {
-                myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Laserkanone));
-                myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncPlasmawerfer));
-            }
-            einheitKostenGesamt = einheitKostenGesamt + razorbackHauptWaffen[gewaehlterIndex].kosten * 1;
-
-
-            var razorAusruestung = new List<pulldownAuswahl>() { };
-            razorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
-            razorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            razorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
-
-            AuswahlMAusN wahlRazorAustruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", razorAusruestung);
-            if (!wahlRazorAustruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlRazorAustruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myRazorback.ausruestung.Add((alleAusruestung)razorAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + razorAusruestung[i].kosten * 1;
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
             }
 
-            var razorbackWaffen = new List<pulldownAuswahl>() { };
-            razorbackWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-            AuswahlMAusN wahlRazorbackWaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen zusätzlich gewählt werden:", razorbackWaffen);
-            if (!wahlRazorbackWaffen.allesOkay)
             {
-                erschaffungOkay = false;
-                return;
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererBolter, kosten = +0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererFlammenwerfer, kosten = +25 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Syncsturmkanone, kosten = +35 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = +35 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.LaserkanoneUndSynchroPlasma, kosten = +35 });
+                waffenChoice01.labelString = "Auswahl der Hauptwaffe: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
             }
-            wahlVektor = wahlRazorbackWaffen.wahlIndexVektor;
-            foreach (int i in wahlVektor)
             {
-                myRazorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(razorbackWaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + razorbackWaffen[i].kosten * 1;
+                var waffenChoice02 = new optWaffenAuswahl() { };
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+                auswahlen.Add(waffenChoice02);
             }
+
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+
+            einheitKostenGesamt = basispunkteKosten;
 
             subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myRazorback);
 
+            var razorback = ultraMarineHelperClass.createRazorback();
+
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, razorback);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02), this, razorback);
+
+            // Waffe 01 können wir nur automatisiert setzen, wenn es sich nicht um die letzte Option handelt, weil dort ZWEI
+            // Waffen gesetzt werden müssen:
+            var waffenChoice01 = (waffenAuswahl) getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01);
+            if (waffenChoice01.getSelectedWeaponName() == alleWaffenNamen.LaserkanoneUndSynchroPlasma)
+            {
+                einheitKostenGesamt += 35;
+                razorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Laserkanone));
+                razorback.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncPlasmawerfer));
+            }
+            else
+                ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, razorback);
+
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(razorback);
+        }
+
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
