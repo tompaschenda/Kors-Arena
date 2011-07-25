@@ -1124,49 +1124,54 @@ namespace WarhammerGUI
             base.createUnitBase();            
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myRhino = ultraMarineHelperClass.createRhino();           
-     
-            var rhinoAusruestung = new List<pulldownAuswahl>() { };
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+            base.declareChoices();
 
-            AuswahlMAusN wahlRhinoAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", rhinoAusruestung);
-            if (!wahlRhinoAusruestung.allesOkay)
+            var auswahlen = new List<choiceDefinition>() { };
+
             {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlRhinoAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myRhino.ausruestung.Add( (alleAusruestung) rhinoAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + rhinoAusruestung[i].kosten * 1;
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
             }
 
-
-
-            var rhinoWaffen = new List<pulldownAuswahl>() { };
-            rhinoWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-            AuswahlMAusN wahlRhinoWaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen gewählt werden:", rhinoWaffen);
-            if (!wahlRhinoWaffen.allesOkay)
             {
-                erschaffungOkay = false;
-                return;
+                var waffenChoice02 = new optWaffenAuswahl() { };
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 10 });
+                waffenChoice02.labelString = "Auswahl zusätzlicher Waffen: ";
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                auswahlen.Add(waffenChoice02);
             }
-            wahlVektor = wahlRhinoWaffen.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(rhinoWaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + rhinoWaffen[i].kosten * 1;
-            }
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+
+            einheitKostenGesamt = basispunkteKosten;
 
             subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myRhino);
 
+            var rhino = ultraMarineHelperClass.createRhino();
+
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, rhino);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, rhino);
+
+            subEinheiten.Add(rhino);
+        }
+
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
