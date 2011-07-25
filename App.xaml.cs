@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using System.Configuration;
 
 namespace GUI
 {
@@ -12,5 +13,13 @@ namespace GUI
     /// </summary>
     public partial class App : Application
     {
+        public App() 
+        {
+            string section = "Settings";
+            System.Configuration.Configuration roamingConfig =
+       ConfigurationManager.OpenExeConfiguration(
+        ConfigurationUserLevel.PerUserRoaming);
+
+        }
     }
 }
