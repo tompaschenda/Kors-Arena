@@ -126,10 +126,6 @@ namespace WarhammerGUI
             sturm.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(sturm);
 
-            var kRhino = new kostenloserRhino() { };
-            kRhino.createUnitBase();
-            listeAllerSpaceMarineEinheiten.Add(kRhino);
-
             var kLand = new kostenloseLandungskapsel() { };
             kLand.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(kLand);
@@ -917,19 +913,20 @@ namespace WarhammerGUI
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).IsActive = (anzahlTermies == 10);
 
             var wahlKettenfaust = ((waffenProSubUnitWahl)getSpecificChoice(ChoiceAuswahlIdentifier.SubWep01));
-            wahlKettenfaust.MaximaleAnzahl = anzahlTermies;
+            wahlKettenfaust.MaximaleAnzahl = anzahlTermies-1;
         }
 
         public override void evaluateChoices()
         {
             base.evaluateChoices();
 
-            int punkteKostenProTermie = 16;
-            int zusaetlicheTermies = (int)getSpecificChoiceValues(ChoiceAuswahlIdentifier.AnzSub01);
-            int anzahlTermiesGesamt = 4 + zusaetlicheTermies;
+            einheitKostenGesamt = basispunkteKosten;
+
+            int totaleEinheitenGroesse = (int)getSpecificChoiceValues(ChoiceAuswahlIdentifier.AnzSub01);
+            int anzahlTermiesGesamt = totaleEinheitenGroesse - 1;
 
             // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten + zusaetlicheTermies * punkteKostenProTermie;
+            ChoiceExecuter.execChoice((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01), this);
 
             subEinheiten = new List<subEinheit>() { };
 
@@ -937,8 +934,6 @@ namespace WarhammerGUI
             {
                 // Okay, legen wir die Space Marines an:
                 var terminator = ultraMarineHelperClass.createTerminator();
-
-                subEinheiten.Add(terminator);
 
                 // Fünf Termies haben wir immer. Also auch immer eine Spezialwaffe.
                 if (i == 0)
@@ -954,7 +949,9 @@ namespace WarhammerGUI
                     einheitKostenGesamt += getSpecificChoiceCost(ChoiceAuswahlIdentifier.Waffe02);
                 }
 
-                // TODO: Ketten- oder E-Faust für jeden Termie möglich außer Sarge.
+                // Auswahl der Kettenfaust oder E-Faust:
+                ChoiceExecuter.execChoice((waffenProSubUnitWahl)getSpecificChoice(ChoiceAuswahlIdentifier.SubWep01), this, terminator, i);
+
                 subEinheiten.Add(terminator);
             }
 
@@ -964,6 +961,7 @@ namespace WarhammerGUI
             // Der Sarge hat immer den Sturmbolter und ein E-Schwert!
             terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
             terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieschwert));
+
             subEinheiten.Add(terminatorSergeant);
         }
 
@@ -977,6 +975,42 @@ namespace WarhammerGUI
 
     public class terminatorSturmTrupp : Einheit
     {
+        public override void declareChoices()
+        {
+            var auswahlen = new List<choiceDefinition>() { };
+
+            var anzahlChoice = new zusSubeinheitenAuswahl() { };
+            anzahlChoice.MinimaleAnzahl = 5;
+            anzahlChoice.MaximaleAnzahl = 10;
+            anzahlChoice.costPerAditionalSubUnit = 40;
+            anzahlChoice.unitBaseCost = basispunkteKosten;
+            anzahlChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
+            anzahlChoice.TotalSubUnits = 5;
+            auswahlen.Add(anzahlChoice);
+
+            {
+                var anzahlKlauenChoice = new zusSubeinheitenAuswahl() { };
+                anzahlKlauenChoice.MinimaleAnzahl = 0;
+                anzahlKlauenChoice.MaximaleAnzahl = 10;
+                anzahlKlauenChoice.costPerAditionalSubUnit = 0;
+                anzahlKlauenChoice.unitBaseCost = basispunkteKosten;
+                anzahlKlauenChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub02;
+                anzahlKlauenChoice.TotalSubUnits = 0;
+                anzahlKlauenChoice.labelString = "Jeder Terminator darf seine Energieklauen\ndurch E-Hammer und Sturmschild\nersetzen (0 Punkte):";
+                auswahlen.Add(anzahlKlauenChoice);
+            }         
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            // Wir müssen sagen, wie viele Termies ihre Klauen umwandeln dürfen:
+            var anzahlTermies = (int)((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).getChoiceValues();
+            var wahlKettenfaust = ((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub02));
+            wahlKettenfaust.MaximaleAnzahl = anzahlTermies;
+        }
+
         public override void createUnitBase()
         {
             einheitenName = alleEinheitenNamen.Terminatorsturmtrupp;
@@ -1002,131 +1036,64 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+
+            einheitKostenGesamt = basispunkteKosten;
+
+            int totaleEinheitenGroesse = (int)getSpecificChoiceValues(ChoiceAuswahlIdentifier.AnzSub01);
+            int anzahlTermiesGesamt = totaleEinheitenGroesse - 1;
+
+            // Update der Punktekosten:
+            ChoiceExecuter.execChoice((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01), this);
+
+            subEinheiten = new List<subEinheit>() { };
+
+            int anzahlSturmschilder = (int)((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub02)).getChoiceValues();
+            for (int i = 0; i < anzahlTermiesGesamt; ++i)
+            {
+                // Okay, legen wir die Space Marines an:
+                var terminator = ultraMarineHelperClass.createTerminator();
+
+                // Für jeden Terminator, den der Spieler sich aussucht, fügen wir E-Hammer und Sturmschild hinzu:
+                if (i < anzahlSturmschilder)
+                {
+                    terminator.ausruestung.Add(alleAusruestung.Sturmschild);
+                    terminator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energiehammer));
+                }
+                else
+                {
+                    terminator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieklaue));
+                    terminator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieklaue));
+                }             
+
+                subEinheiten.Add(terminator);
+            }
+
+            // Sarge:
+            var terminatorSergeant = ultraMarineHelperClass.createTermiantorSergeant();
+            terminatorSergeant.waffen = new List<waffe>() { };
+            if (anzahlSturmschilder == anzahlTermiesGesamt)
+            {
+                terminatorSergeant.ausruestung.Add(alleAusruestung.Sturmschild);
+                terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energiehammer));
+            }
+            else
+            {
+                terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieklaue));
+                terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieklaue));
+            }
+            subEinheiten.Add(terminatorSergeant);
+        }
+
+
         /// <summary>
         /// Hier werden alle Spierloptionen abgehandelt
         /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
-            int punkteKostenProTerminator = 40;
-
-            AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 5, 10, "Trupp darf bis zu fünf zusätzliche Terminatoren erhalten", gesamtArmeePunkteKosten, punkteKostenProTerminator) { };
-
-            // Okay, wie viele Terminatoren sollen dazu? Wenn abgebrochen wurde, hören wir auf!
-            if (!auswahlAnzahl.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-
-            int zusaetlicheTerminatoren = auswahlAnzahl.anzahlGewaehlt;
-            int anzahlTerminatorenGesamt = 4 + zusaetlicheTerminatoren;
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten + zusaetlicheTerminatoren * punkteKostenProTerminator;
-
-            // Gründen wir unsere Einheit neu:
-            subEinheiten = new List<subEinheit>() { };
-
-
-            // Auswahl vorbereiten:
-            var wahlIndex = new int();
-
-            // Genau soviele einordnen, wie vom Spieler gewünscht:
-            for (int i = 0; i < anzahlTerminatorenGesamt; ++i)
-            {
-                var terminator = ultraMarineHelperClass.createTerminator();                
-
-                var terminatorNahkampfWaffen = new List<pulldownAuswahl>() { };
-                terminatorNahkampfWaffen.Add(new pulldownAuswahl() { auswahl = "Ein Paar Energieklauen", kosten = +0 });
-                terminatorNahkampfWaffen.Add(new pulldownAuswahl() { auswahl = "Energiehammer und Sturmschild", kosten = +0 });
-
-                Auswahl1AusN wahlTerminatorNahkampf = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", terminatorNahkampfWaffen);
-                if (!wahlTerminatorNahkampf.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-                var gewaehlterIndex = wahlTerminatorNahkampf.gewaehlterIndexAusN;
-                if (gewaehlterIndex == 0)
-                {
-                    terminator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieklaue));
-                    terminator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieklaue));
-                }
-                else
-                {
-                    terminator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energiehammer));
-                    terminator.ausruestung.Add(alleAusruestung.Sturmschild);
-                }
-                einheitKostenGesamt = einheitKostenGesamt + terminatorNahkampfWaffen[gewaehlterIndex].kosten * 1;
- 
-                subEinheiten.Add(terminator);
-            }
-
-            ///
-            // SARGE:
-            ///
-
-            // Außerdem gibt es ja noch den Sergeant:
-            // Erstellen wir ihn:
-            var terminatorSergeant = ultraMarineHelperClass.createTermiantorSergeant();
-            
-            var sargeNah = new List<pulldownAuswahl>() { };
-            sargeNah.Add(new pulldownAuswahl() { auswahl = "Ein Paar Energieklauen", kosten = +0 });
-            sargeNah.Add(new pulldownAuswahl() { auswahl = "Energiehammer und Sturmschild", kosten = +0 });
-
-            Auswahl1AusN wahlSargeNah = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", sargeNah);
-            if (!wahlSargeNah.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var aktIndex = wahlSargeNah.gewaehlterIndexAusN;
-            if (aktIndex == 0)
-            {
-                terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieklaue));
-                terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieklaue));
-            }
-            else
-            {
-                terminatorSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energiehammer));
-                terminatorSergeant.ausruestung.Add(alleAusruestung.Sturmschild);
-            }
-            einheitKostenGesamt = einheitKostenGesamt + sargeNah[aktIndex].kosten * 1;          
-
-            subEinheiten.Add(terminatorSergeant);
-
-            // Wahl angeschlossenes Transportfahrzeug
-            // => muss mit generiert werden!
-            // Also müssen wir zunächst den Spieler fragen, ob er überhaupt ein Transportfahrzeug möchte!
-            var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.LandRaider, kosten = 250 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.LandRaiderCrusader, kosten = 250 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.LandRaiderRedeemer, kosten = 240 });
-
-            Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
-            if (!auswahlScreen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlIndex = auswahlScreen.gewaehlterIndexAusN;
-
-            // Jetzt müssen wir abhängig vom Index die richtige neue Einheit erzeugen!
-            switch (wahlIndex)
-            {
-                case 0:
-                    break;
-                case 1:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.LandRaider.ToString());
-                    break;
-                case 2:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.LandRaiderCrusader.ToString());
-                    break;
-                case 3:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.LandRaiderRedeemer.ToString());
-                    break;
-            }
-
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -1177,79 +1144,6 @@ namespace WarhammerGUI
             foreach (int i in wahlVektor)
             {
                 myRhino.ausruestung.Add( (alleAusruestung) rhinoAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + rhinoAusruestung[i].kosten * 1;
-            }
-
-
-
-            var rhinoWaffen = new List<pulldownAuswahl>() { };
-            rhinoWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-            AuswahlMAusN wahlRhinoWaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen gewählt werden:", rhinoWaffen);
-            if (!wahlRhinoWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlRhinoWaffen.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myRhino.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(rhinoWaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + rhinoWaffen[i].kosten * 1;
-            }
-
-            subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myRhino);
-
-            // Nur jetzt hat die Erschaffung wirklich funktioniert!
-            erschaffungOkay = true;
-        }
-    }
-
-    public class kostenloserRhino : Einheit
-    {
-        public override void createUnitBase()
-        {
-            einheitenName = alleEinheitenNamen.RhinoKostenlos;
-            fraktion = Fraktionen.SpaceMarines;
-
-            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
-
-            basispunkteKosten = 0;
-            einheitKostenGesamt = basispunkteKosten;
-
-            einzigartig = false;
-
-            einheitentyp = Einheitstyp.FahrzeugPanzer;
-
-            sonderregeln = new List<Sonderregeln>() { };
-            sonderregeln.Add(Sonderregeln.Reparieren);
-
-            auswahlTypBasis = new List<EinheitenAuswahl>() { };
-            auswahlTypBasis.Add(EinheitenAuswahl.AngeschlossenesTransportFahrzeug);
-
-            base.createUnitBase();
-        }
-
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
-        {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myRhino = ultraMarineHelperClass.createRhino();           
-
-            var rhinoAusruestung = new List<pulldownAuswahl>() { };
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            rhinoAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
-
-            AuswahlMAusN wahlRhinoAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", rhinoAusruestung);
-            if (!wahlRhinoAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlRhinoAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myRhino.ausruestung.Add((alleAusruestung)rhinoAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + rhinoAusruestung[i].kosten * 1;
             }
 
