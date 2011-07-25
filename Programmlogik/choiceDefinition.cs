@@ -567,6 +567,8 @@ namespace WarhammerGUI
 
             IsActive = true;
 
+            totalSubUnits = -1;
+
             labelString = "Anzahl der Subeinheiten: ";
         }
 

@@ -866,6 +866,7 @@ namespace WarhammerGUI
             anzahlChoice.costPerAditionalSubUnit = 40;
             anzahlChoice.unitBaseCost = basispunkteKosten;
             anzahlChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
+            anzahlChoice.TotalSubUnits = 5;
             auswahlen.Add(anzahlChoice);
 
             {
@@ -875,6 +876,7 @@ namespace WarhammerGUI
                 waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.CycloneRaketenwerfer, kosten = +30 });
                 waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = +30 });
                 waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
                 waffenChoice01.labelString = "Auswahl der 1. Spezialwaffe: ";
                 auswahlen.Add(waffenChoice01);
             }
@@ -886,23 +888,36 @@ namespace WarhammerGUI
                 waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.CycloneRaketenwerfer, kosten = +30 });
                 waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = +30 });
                 waffenChoice02.labelString = "Auswahl der 2. Spezialwaffe: ";
+                waffenChoice02.AuswahlOptionen[0].IstGewaehlt = true;
                 waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
                 auswahlen.Add(waffenChoice02);
             }
+
+            {
+                var subWaffenChoice01 = new waffenProSubUnitWahl() { };
+                subWaffenChoice01.defaultWep = alleWaffenNamen.Energiefaust;
+                subWaffenChoice01.upgradeWep = alleWaffenNamen.Kettenfaust;
+                subWaffenChoice01.costForNonUpgrade = 0;
+                subWaffenChoice01.costForUpgrade = 5;
+                subWaffenChoice01.labelString = "Jeder Terminator darf seine Energiefaust duch eine Kettenfaust ersetzen (+5 Punkte): ";
+                subWaffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.SubWep01;
+                subWaffenChoice01.MinimaleAnzahl = 0;
+                subWaffenChoice01.MaximaleAnzahl = 10;
+                auswahlen.Add(subWaffenChoice01);
+            }
+
+            Auswahlen = auswahlen;
         }
 
         public override void updateChoiceDependencies()
         {
-            base.updateChoiceDependencies();
-
             // Extrawaffen nur bei genau 5 und 10 Termies!
-            var anzahlTermies = ((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).TotalSubUnits;
+            var anzahlTermies = (int)((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).getChoiceValues();
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = (anzahlTermies >= 5);
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).IsActive = (anzahlTermies == 10);
 
-            // E-Fäuste-Anzahl ist immer gleich derjenigen der Terminatoren.
-            // MAT: TODO: Auswahl mit Anzahlslider. "Kettenfäuste statt E-Fäuste"
-
+            var wahlKettenfaust = ((waffenProSubUnitWahl)getSpecificChoice(ChoiceAuswahlIdentifier.SubWep01));
+            wahlKettenfaust.MaximaleAnzahl = anzahlTermies;
         }
 
         public override void evaluateChoices()
@@ -940,7 +955,6 @@ namespace WarhammerGUI
                 }
 
                 // TODO: Ketten- oder E-Faust für jeden Termie möglich außer Sarge.
-
                 subEinheiten.Add(terminator);
             }
 
