@@ -899,7 +899,7 @@ namespace WarhammerGUI
                 subWaffenChoice01.upgradeWep = alleWaffenNamen.Kettenfaust;
                 subWaffenChoice01.costForNonUpgrade = 0;
                 subWaffenChoice01.costForUpgrade = 5;
-                subWaffenChoice01.labelString = "Jeder Terminator darf seine Energiefaust duch eine Kettenfaust ersetzen (+5 Punkte): ";
+                subWaffenChoice01.labelString = "Jeder Terminator darf seine Energiefaust\n duch eine Kettenfaust ersetzen (+5 Punkte): ";
                 subWaffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.SubWep01;
                 subWaffenChoice01.MinimaleAnzahl = 0;
                 subWaffenChoice01.MaximaleAnzahl = 10;
