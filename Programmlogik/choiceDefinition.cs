@@ -22,6 +22,11 @@ namespace WarhammerGUI
         Ruestungsauswahl,
         [Description("Zusätzliche Subeinheiten-Auswahl")]
         ZusSubeinheitenAuswahl,
+
+        [Description("WaffeProSubunitWahl")]
+        WaffeProSubunitWahl,
+        [Description("AusrüstungProSubunitWahl")]
+        AusruestungProSubunitWahl,
     }
 
     public enum AuswahlTool
@@ -78,6 +83,29 @@ namespace WarhammerGUI
 
         [Description("Transportfahrzeugwahl01")]
         Trans01,
+
+        [Description("SubunitAusrüstungswahl01")]
+        SubEquip01,
+        [Description("SubunitAusrüstungswahl02")]
+        SubEquip02,
+        [Description("SubunitAusrüstungswahl03")]
+        SubEquip03,
+        [Description("SubunitAusrüstungswahl04")]
+        SubEquip04,
+        [Description("SubunitAusrüstungswahl05")]
+        SubEquip05,
+
+        [Description("SubunitWaffenwahl01")]
+        SubWep01,
+        [Description("SubunitWaffenwahl02")]
+        SubWep02,
+        [Description("SubunitWaffenwahl03")]
+        SubWep03,
+        [Description("SubunitWaffenwahl04")]
+        SubWep04,
+        [Description("SubunitWaffenwahl05")]
+        SubWep05,
+
     }
 
     public abstract class choiceDefinition : ICloneable, INotifyPropertyChanged
@@ -221,7 +249,7 @@ namespace WarhammerGUI
                 auswahlOptionen[i].IstGewaehlt=true;
             }
         }
-
+        
         public Object getChosenItem()
         {
             var chosenItems = getChosenItems();
@@ -282,9 +310,16 @@ namespace WarhammerGUI
 
         public override int getChoiceCost()
         {
-            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
-            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
-            return -1;
+            pulldownAuswahl aktAuswahl = new pulldownAuswahl() { };
+            foreach (var i in AuswahlOptionen)
+            {
+                if (i.IstGewaehlt)
+                {
+                    aktAuswahl = i;
+                    break;
+                }
+            }
+            return  aktAuswahl.kosten;
         }
 
         private const int InvalidIndex = -1;
@@ -343,6 +378,7 @@ namespace WarhammerGUI
         {
             // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
             // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
+            Debug.Assert(false);
             return -1;
         }
 
@@ -402,11 +438,15 @@ namespace WarhammerGUI
 
         public override int getChoiceCost()
         {
-            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
-            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
-            return -1;
-        }
+            int totalCosts = 0;
 
+            foreach (var i in AuswahlOptionen)
+            {
+                if (i.IstGewaehlt)
+                    totalCosts += i.kosten;
+            }
+            return totalCosts;
+        }
 
         public List<alleAusruestung> getSelectedEquip()
         {
@@ -448,9 +488,13 @@ namespace WarhammerGUI
 
         public override int getChoiceCost()
         {
-            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
-            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
-            return -1;
+            int totalCosts = 0;
+            foreach (var i in AuswahlOptionen)
+            {
+                if (i.IstGewaehlt)
+                    totalCosts += i.kosten;
+            }
+            return totalCosts;
         }
 
 
@@ -486,27 +530,16 @@ namespace WarhammerGUI
 
     public class zusSubeinheitenAuswahl : choiceDefinition
     {
-        public int getChosenNumberOfAdditionalUnits()
-        {
-            // Mat: TODO!!
-            // Hier muss natürlich die tatsächlich durchgeführte Auswahl zurückgegeben werden und NICHT
-            // ein statischer Wert. Wie geht das?
-            // Etwa ungefähr so: (?)
-            /*
-            if (getChosenUnits() != null)
-                return (int)getChosenUnits();
-            else
-                return -1;
-             * */
-
-            return 0;
-        }
-
         public override int getChoiceCost()
         {
-            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
-            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
-            return -1;
+            // Die Kosten für die Auswahl ergeben sich aus den ZUSÄTZLICHEN Subeinheiten mal
+            // der Kosten pro zusätzlicher Einheit!
+            int anzNeueEinheiten = 0;
+            if(totalSubUnits != 0)
+             anzNeueEinheiten =  totalSubUnits-minimaleAnzahl;
+
+            int gesamtKosten = anzNeueEinheiten * costPerAditionalSubUnit;
+            return gesamtKosten;
         }
 
         public override object Clone()
@@ -517,7 +550,7 @@ namespace WarhammerGUI
 
         public override object getChoiceValues()
         {
-            return getChosenNumberOfAdditionalUnits();
+            return totalSubUnits;
         }
 
         public zusSubeinheitenAuswahl()
@@ -629,4 +662,312 @@ namespace WarhammerGUI
         }
     }
 
+
+    public class ausruestungProSubUnitWahl : choiceDefinition
+    {
+
+        public int getNumberOfNonUpgrades()
+        {
+            int upgradesNichtGewaehlt = maximaleAnzahl - totalSelections;
+            return upgradesNichtGewaehlt;
+        }
+
+        public int getNumberOfUpgrades()
+        {
+            int upgradesGewaehlt = totalSelections - minimaleAnzahl;
+            return upgradesGewaehlt;
+        }
+
+        public override int getChoiceCost()
+        {
+            // Die Kosten errechnen sich natürlich aus beiden Anteilen:
+            int kosten = getNumberOfUpgrades() * costForUpgrade + getNumberOfNonUpgrades() * costForNonUpgrade;
+
+            return kosten;
+        }
+
+        public override object getChoiceValues()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public override object Clone()
+        {
+            var copy = base.Clone();
+            return copy;
+        }
+
+        public ausruestungProSubUnitWahl()
+        {
+            artDerAuswahl = AuswahlTyp.AusruestungProSubunitWahl;
+            toolDerAuswahl = AuswahlTool.AnzahlSlider;
+            auswahlIdentifier = ChoiceAuswahlIdentifier.SubEquip01;
+
+            minimaleAnzahl = -1;
+            maximaleAnzahl = -1;
+            stepsize = 1;
+
+            costForNonUpgrade = -1;
+            costForUpgrade = -1;
+
+            dieAusruestung = alleAusruestung.undefined;
+
+            IsActive = true;
+
+            labelString = "ICH BRAUCHE EIN LABEL!: ";
+        }
+
+        /// <summary>
+        /// Minimal möglicher Slider-Wert
+        /// </summary>
+        private int minimaleAnzahl;
+        /// <summary>
+        /// Maximal möglicher Slider-Wert
+        /// </summary>
+        private int maximaleAnzahl;
+        /// <summary>
+        /// Schrittweite des Sliders:
+        /// </summary>
+        public int stepsize;
+
+        /// <summary>
+        /// Was kostet die Option, die NICHT durch Selektion gewählt wird (i.d.R. 0)?
+        /// </summary>
+        public int costForNonUpgrade;
+
+        /// <summary>
+        /// Was kostet die Option, DIE durch Selektion gewählt wird?
+        /// </summary>
+        public int costForUpgrade;
+
+
+        private int totalSelections;
+
+        /// <summary>
+        /// Property für den Minimalen Slider-Wert:
+        /// </summary>
+        public int MinimaleAnzahl
+        {
+            get
+            {
+                return minimaleAnzahl;
+            }
+            set
+            {
+                minimaleAnzahl = value;
+            }
+        }
+
+        /// <summary>
+        /// Property für die maximale Anzahl:
+        /// </summary>
+        public int MaximaleAnzahl
+        {
+            get
+            {
+                return maximaleAnzahl;
+            }
+            set
+            {
+                maximaleAnzahl = value;
+            }
+        }
+
+        /// <summary>
+        /// Property für die gewählte Anzahl der Subeinheiten
+        /// </summary>
+        public int TotalSubUnits
+        {
+            get
+            {
+                return totalSelections;
+            }
+            set
+            {
+                totalSelections = value;
+            }
+        }
+
+        public alleAusruestung dieAusruestung = alleAusruestung.undefined;
+
+        public override void validate()
+        {
+            if (dieAusruestung == alleAusruestung.undefined)
+                throw new ArgumentOutOfRangeException("Keine Ausrüstung spezifiziert!");
+
+            if (toolDerAuswahl != AuswahlTool.AnzahlSlider)
+                throw new ArgumentOutOfRangeException("Falsche Auswahlart für zusSubeinheitenAuswahl!");
+
+            if (minimaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die minimale Auswahlanzahl!");
+
+            if (maximaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die maximale Auswahlanzahl!");
+
+            if (costForUpgrade < 0)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Basiskosten der Einheit!");
+
+            if (costForNonUpgrade < 0)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Subunit-Costs!");
+
+            if (stepsize < 1)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Slider-Stepsize!");
+        }
+    }
+
+    public class waffenProSubUnitWahl : choiceDefinition
+    {
+
+        public int getNumberOfNonUpgrades()
+        {
+            int upgradesNichtGewaehlt = maximaleAnzahl - totalSelections;
+            return upgradesNichtGewaehlt;
+        }
+
+        public int getNumberOfUpgrades()
+        {
+            int upgradesGewaehlt = totalSelections - minimaleAnzahl;
+            return upgradesGewaehlt;
+        }
+
+        public override int getChoiceCost()
+        {
+            // Die Kosten errechnen sich natürlich aus beiden Anteilen:
+            int kosten = getNumberOfUpgrades() * costForUpgrade + getNumberOfNonUpgrades() * costForNonUpgrade;
+
+            return kosten;
+        }
+
+        public override object getChoiceValues()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public override object Clone()
+        {
+            var copy = base.Clone();
+            return copy;
+        }
+
+        public waffenProSubUnitWahl()
+        {
+            artDerAuswahl = AuswahlTyp.WaffeProSubunitWahl;
+            toolDerAuswahl = AuswahlTool.AnzahlSlider;
+            auswahlIdentifier = ChoiceAuswahlIdentifier.SubWep01;
+
+            minimaleAnzahl = -1;
+            maximaleAnzahl = -1;
+            stepsize = 1;
+
+            costForNonUpgrade = -1;
+            costForUpgrade = -1;
+
+            defaultWep = alleWaffenNamen.undefined;
+            upgradeWep = alleWaffenNamen.undefined;
+
+            IsActive = true;
+
+            labelString = "ICH BRAUCHE EIN LABEL!: ";
+        }
+
+        /// <summary>
+        /// Minimal möglicher Slider-Wert
+        /// </summary>
+        private int minimaleAnzahl;
+        /// <summary>
+        /// Maximal möglicher Slider-Wert
+        /// </summary>
+        private int maximaleAnzahl;
+        /// <summary>
+        /// Schrittweite des Sliders:
+        /// </summary>
+        public int stepsize;
+
+        /// <summary>
+        /// Was kostet die Option, die NICHT durch Selektion gewählt wird (i.d.R. 0)?
+        /// </summary>
+        public int costForNonUpgrade;
+
+        /// <summary>
+        /// Was kostet die Option, DIE durch Selektion gewählt wird?
+        /// </summary>
+        public int costForUpgrade;
+
+
+        private int totalSelections;
+
+        /// <summary>
+        /// Property für den Minimalen Slider-Wert:
+        /// </summary>
+        public int MinimaleAnzahl
+        {
+            get
+            {
+                return minimaleAnzahl;
+            }
+            set
+            {
+                minimaleAnzahl = value;
+            }
+        }
+
+        /// <summary>
+        /// Property für die maximale Anzahl:
+        /// </summary>
+        public int MaximaleAnzahl
+        {
+            get
+            {
+                return maximaleAnzahl;
+            }
+            set
+            {
+                maximaleAnzahl = value;
+            }
+        }
+
+        /// <summary>
+        /// Property für die gewählte Anzahl der Subeinheiten
+        /// </summary>
+        public int TotalSubUnits
+        {
+            get
+            {
+                return totalSelections;
+            }
+            set
+            {
+                totalSelections = value;
+            }
+        }
+
+        public alleWaffenNamen defaultWep = alleWaffenNamen.undefined;
+        public alleWaffenNamen upgradeWep = alleWaffenNamen.undefined;
+
+        public override void validate()
+        {
+            if (defaultWep == alleWaffenNamen.undefined || upgradeWep == alleWaffenNamen.undefined)
+                throw new ArgumentOutOfRangeException("Keine Waffe(n) spezifiziert!");
+
+            if (toolDerAuswahl != AuswahlTool.AnzahlSlider)
+                throw new ArgumentOutOfRangeException("Falsche Auswahlart für zusSubeinheitenAuswahl!");
+
+            if (minimaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die minimale Auswahlanzahl!");
+
+            if (maximaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die maximale Auswahlanzahl!");
+
+            if (costForUpgrade < 0)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Basiskosten der Einheit!");
+
+            if (costForNonUpgrade < 0)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Subunit-Costs!");
+
+            if (stepsize < 1)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Slider-Stepsize!");
+        }
+    }
 }
