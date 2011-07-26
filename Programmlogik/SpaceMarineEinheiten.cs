@@ -755,7 +755,7 @@ namespace WarhammerGUI
         public override void updateChoiceDependencies()
         {
             // Die Auswahl der Spezialwaffen gibt es nur, wenn genau 10 Space Marines gewählt wurden!
-            var anzahlMarines = ((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).TotalSubUnits;
+            var anzahlMarines = ((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01)).GewaehlteAnzahl;
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = (anzahlMarines == 10);
             ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).IsActive = (anzahlMarines == 10);
 
@@ -917,7 +917,7 @@ namespace WarhammerGUI
             anzahlChoice.costPerAditionalSubUnit = 40;
             anzahlChoice.unitBaseCost = basispunkteKosten;
             anzahlChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
-            anzahlChoice.TotalSubUnits = 5;
+            anzahlChoice.GewaehlteAnzahl = 5;
             auswahlen.Add(anzahlChoice);
 
             {
@@ -1040,7 +1040,7 @@ namespace WarhammerGUI
             anzahlChoice.costPerAditionalSubUnit = 40;
             anzahlChoice.unitBaseCost = basispunkteKosten;
             anzahlChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
-            anzahlChoice.TotalSubUnits = 5;
+            anzahlChoice.GewaehlteAnzahl = 5;
             auswahlen.Add(anzahlChoice);
 
             {
@@ -1050,7 +1050,7 @@ namespace WarhammerGUI
                 anzahlKlauenChoice.costPerAditionalSubUnit = 0;
                 anzahlKlauenChoice.unitBaseCost = basispunkteKosten;
                 anzahlKlauenChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub02;
-                anzahlKlauenChoice.TotalSubUnits = 0;
+                anzahlKlauenChoice.GewaehlteAnzahl = 0;
                 anzahlKlauenChoice.labelString = "Jeder Terminator darf seine Energieklauen\ndurch E-Hammer und Sturmschild\nersetzen (0 Punkte):";
                 auswahlen.Add(anzahlKlauenChoice);
             }         

@@ -591,74 +591,59 @@ namespace WarhammerGUI
         }
     }
 
-    public class zusSubeinheitenAuswahl : choiceDefinition
+    public abstract class ChoiceDefinitionForNumber : choiceDefinition
     {
-        public override int getChoiceCost()
+        public ChoiceDefinitionForNumber()
         {
-            // Die Kosten für die Auswahl ergeben sich aus den ZUSÄTZLICHEN Subeinheiten mal
-            // der Kosten pro zusätzlicher Einheit!
-            int anzNeueEinheiten = 0;
-            if(totalSubUnits != 0)
-             anzNeueEinheiten =  totalSubUnits-minimaleAnzahl;
-
-            int gesamtKosten = anzNeueEinheiten * costPerAditionalSubUnit;
-            return gesamtKosten;
+            toolDerAuswahl = AuswahlTool.AnzahlSlider;
+            minimaleAnzahl = -1;
+            maximaleAnzahl = -1;
+            gewaehlteAnzahl = -1;
+            stepsize = 1;
         }
 
         public override object Clone()
         {
-            var copy = base.Clone();
+            var copy = this.MemberwiseClone();
             return copy;
+        }
+
+        /// <summary>
+        /// Minimal selektierbarer Wert?
+        /// </summary>
+        private int minimaleAnzahl;
+        /// <summary>
+        /// Maximal selektierbarer Wert?
+        /// </summary>
+        private int maximaleAnzahl;
+
+        private int gewaehlteAnzahl;
+
+        /// <summary>
+        /// Property für die gewählte Anzahl der Subeinheiten
+        /// </summary>
+        public int GewaehlteAnzahl
+        {
+            get
+            {
+                return gewaehlteAnzahl;
+            }
+            set
+            {
+                gewaehlteAnzahl = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("GewaehlteAnzahl"));
+            }
         }
 
         public override object getChoiceValues()
         {
-            return totalSubUnits;
-        }
-
-        public zusSubeinheitenAuswahl()
-        {
-            artDerAuswahl = AuswahlTyp.ZusSubeinheitenAuswahl;
-            toolDerAuswahl = AuswahlTool.AnzahlSlider;
-            auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
-
-            minimaleAnzahl = -1;
-            maximaleAnzahl = -1;
-            stepsize = 1;
-            unitBaseCost = -1;
-            costPerAditionalSubUnit = -1000;
-
-            IsActive = true;
-
-            totalSubUnits = -1;
-
-            labelString = "Anzahl der Subeinheiten: ";
+            return GewaehlteAnzahl;
         }
 
         /// <summary>
-        /// Wie viele Subeinheiten muss ich mindestens selektieren?
-        /// </summary>
-        private int minimaleAnzahl;
-        /// <summary>
-        /// Wie viele Subeinheiten darf ich maximal selektieren?
-        /// </summary>
-        private int maximaleAnzahl;
-        /// <summary>
-        /// Um wieviele Subeinheiten "pro Schritt" darf ich erhöhen oder senken?
+        /// Um wieviele Einheiten "pro Schritt" darf ich erhöhen oder senken?
         /// </summary>
         public int stepsize;
-
-        /// <summary>
-        /// Wie teuer ist die Einheit für die minimale Anzahl an Subeinheiten
-        /// </summary>
-        public int unitBaseCost;
-
-        /// <summary>
-        /// Wie teuer ist es, EINE zusätzliche Subeinheit hinzuzufügen?
-        /// </summary>
-        public int costPerAditionalSubUnit;
-
-        private int totalSubUnits;
 
         /// <summary>
         /// Property für den Minimalen Slider-Wert:
@@ -672,6 +657,7 @@ namespace WarhammerGUI
             set
             {
                 minimaleAnzahl = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("MinimaleAnzahl"));
             }
         }
 
@@ -691,56 +677,83 @@ namespace WarhammerGUI
             }
         }
 
-        /// <summary>
-        /// Property für die gewählte Anzahl der Subeinheiten
-        /// </summary>
-        public int TotalSubUnits
-        {
-            get
-            {
-                return totalSubUnits;
-            }
-            set
-            {
-                totalSubUnits = value;
-            }
-        }
-
         public override void validate()
         {
             if (toolDerAuswahl != AuswahlTool.AnzahlSlider)
-                throw new ArgumentOutOfRangeException("Falsche Auswahlart für zusSubeinheitenAuswahl!");
+                throw new ArgumentOutOfRangeException("Falsche Auswahlart für Anzahl!");
 
-            if(minimaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
+            if (minimaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
                 throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die minimale Auswahlanzahl!");
 
             if (maximaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
                 throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die maximale Auswahlanzahl!");
 
-            if(unitBaseCost < 0)
-                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Basiskosten der Einheit!");
-
-            if (costPerAditionalSubUnit < 0)
-                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Subunit-Costs!");
-
-            if(stepsize < 1)
+            if (stepsize < 1)
                 throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Slider-Stepsize!");
         }
     }
 
+    public class zusSubeinheitenAuswahl : ChoiceDefinitionForNumber
+    {
+        public override int getChoiceCost()
+        {
+            // Die Kosten für die Auswahl ergeben sich aus den ZUSÄTZLICHEN Subeinheiten mal
+            // der Kosten pro zusätzlicher Einheit!
+            int anzNeueEinheiten = 0;
+            if(GewaehlteAnzahl != 0)
+                anzNeueEinheiten = GewaehlteAnzahl - MinimaleAnzahl;
 
-    public class ausruestungProSubUnitWahl : choiceDefinition
+            int gesamtKosten = anzNeueEinheiten * costPerAditionalSubUnit;
+            return gesamtKosten;
+        }
+
+        public zusSubeinheitenAuswahl()
+        {
+            artDerAuswahl = AuswahlTyp.ZusSubeinheitenAuswahl;
+            auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
+
+            unitBaseCost = -1;
+            costPerAditionalSubUnit = -1000;
+
+            IsActive = true;
+
+            labelString = "Anzahl der Subeinheiten: ";
+        }
+
+        /// <summary>
+        /// Wie teuer ist die Einheit für die minimale Anzahl an Subeinheiten
+        /// </summary>
+        public int unitBaseCost;
+
+        /// <summary>
+        /// Wie teuer ist es, EINE zusätzliche Subeinheit hinzuzufügen?
+        /// </summary>
+        public int costPerAditionalSubUnit;
+
+        public override void validate()
+        {
+            base.validate();
+            if(unitBaseCost < 0)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Basiskosten der Einheit!");
+
+            if (costPerAditionalSubUnit < 0)
+                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Subunit-Costs!"); 
+        }
+    }
+
+
+    public class ausruestungProSubUnitWahl : ChoiceDefinitionForNumber
     {
 
         public int getNumberOfNonUpgrades()
         {
-            int upgradesNichtGewaehlt = maximaleAnzahl - totalSelections;
+            int upgradesNichtGewaehlt = MaximaleAnzahl - GewaehlteAnzahl;
             return upgradesNichtGewaehlt;
         }
 
         public int getNumberOfUpgrades()
         {
-            int upgradesGewaehlt = totalSelections - minimaleAnzahl;
+            int upgradesGewaehlt = GewaehlteAnzahl - MinimaleAnzahl;
             return upgradesGewaehlt;
         }
 
@@ -752,27 +765,10 @@ namespace WarhammerGUI
             return kosten;
         }
 
-        public override object getChoiceValues()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public override object Clone()
-        {
-            var copy = base.Clone();
-            return copy;
-        }
-
         public ausruestungProSubUnitWahl()
         {
             artDerAuswahl = AuswahlTyp.AusruestungProSubunitWahl;
-            toolDerAuswahl = AuswahlTool.AnzahlSlider;
             auswahlIdentifier = ChoiceAuswahlIdentifier.SubEquip01;
-
-            minimaleAnzahl = -1;
-            maximaleAnzahl = -1;
-            stepsize = 1;
 
             costForNonUpgrade = -1;
             costForUpgrade = -1;
@@ -785,19 +781,6 @@ namespace WarhammerGUI
         }
 
         /// <summary>
-        /// Minimal möglicher Slider-Wert
-        /// </summary>
-        private int minimaleAnzahl;
-        /// <summary>
-        /// Maximal möglicher Slider-Wert
-        /// </summary>
-        private int maximaleAnzahl;
-        /// <summary>
-        /// Schrittweite des Sliders:
-        /// </summary>
-        public int stepsize;
-
-        /// <summary>
         /// Was kostet die Option, die NICHT durch Selektion gewählt wird (i.d.R. 0)?
         /// </summary>
         public int costForNonUpgrade;
@@ -807,55 +790,6 @@ namespace WarhammerGUI
         /// </summary>
         public int costForUpgrade;
 
-
-        private int totalSelections;
-
-        /// <summary>
-        /// Property für den Minimalen Slider-Wert:
-        /// </summary>
-        public int MinimaleAnzahl
-        {
-            get
-            {
-                return minimaleAnzahl;
-            }
-            set
-            {
-                minimaleAnzahl = value;
-            }
-        }
-
-        /// <summary>
-        /// Property für die maximale Anzahl:
-        /// </summary>
-        public int MaximaleAnzahl
-        {
-            get
-            {
-                return maximaleAnzahl;
-            }
-            set
-            {
-                maximaleAnzahl = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("MaximaleAnzahl"));
-            }
-        }
-
-        /// <summary>
-        /// Property für die gewählte Anzahl der Subeinheiten
-        /// </summary>
-        public int TotalSubUnits
-        {
-            get
-            {
-                return totalSelections;
-            }
-            set
-            {
-                totalSelections = value;
-            }
-        }
-
         public alleAusruestung dieAusruestung = alleAusruestung.undefined;
 
         public override void validate()
@@ -863,38 +797,26 @@ namespace WarhammerGUI
             if (dieAusruestung == alleAusruestung.undefined)
                 throw new ArgumentOutOfRangeException("Keine Ausrüstung spezifiziert!");
 
-            if (toolDerAuswahl != AuswahlTool.AnzahlSlider)
-                throw new ArgumentOutOfRangeException("Falsche Auswahlart für zusSubeinheitenAuswahl!");
-
-            if (minimaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
-                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die minimale Auswahlanzahl!");
-
-            if (maximaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
-                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die maximale Auswahlanzahl!");
-
             if (costForUpgrade < 0)
                 throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Basiskosten der Einheit!");
 
             if (costForNonUpgrade < 0)
                 throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Subunit-Costs!");
-
-            if (stepsize < 1)
-                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Slider-Stepsize!");
         }
     }
 
-    public class waffenProSubUnitWahl : choiceDefinition
+    public class waffenProSubUnitWahl : ChoiceDefinitionForNumber
     {
 
         public int getNumberOfNonUpgrades()
         {
-            int upgradesNichtGewaehlt = maximaleAnzahl - totalSelections;
+            int upgradesNichtGewaehlt = MaximaleAnzahl - GewaehlteAnzahl;
             return upgradesNichtGewaehlt;
         }
 
         public int getNumberOfUpgrades()
         {
-            int upgradesGewaehlt = totalSelections - minimaleAnzahl;
+            int upgradesGewaehlt = GewaehlteAnzahl - MinimaleAnzahl;
             return upgradesGewaehlt;
         }
 
@@ -906,27 +828,10 @@ namespace WarhammerGUI
             return kosten;
         }
 
-        public override object getChoiceValues()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public override object Clone()
-        {
-            var copy = base.Clone();
-            return copy;
-        }
-
         public waffenProSubUnitWahl()
         {
             artDerAuswahl = AuswahlTyp.WaffeProSubunitWahl;
-            toolDerAuswahl = AuswahlTool.AnzahlSlider;
             auswahlIdentifier = ChoiceAuswahlIdentifier.SubWep01;
-
-            minimaleAnzahl = -1;
-            maximaleAnzahl = -1;
-            stepsize = 1;
 
             costForNonUpgrade = -1;
             costForUpgrade = -1;
@@ -940,19 +845,6 @@ namespace WarhammerGUI
         }
 
         /// <summary>
-        /// Minimal möglicher Slider-Wert
-        /// </summary>
-        private int minimaleAnzahl;
-        /// <summary>
-        /// Maximal möglicher Slider-Wert
-        /// </summary>
-        private int maximaleAnzahl;
-        /// <summary>
-        /// Schrittweite des Sliders:
-        /// </summary>
-        public int stepsize;
-
-        /// <summary>
         /// Was kostet die Option, die NICHT durch Selektion gewählt wird (i.d.R. 0)?
         /// </summary>
         public int costForNonUpgrade;
@@ -962,55 +854,6 @@ namespace WarhammerGUI
         /// </summary>
         public int costForUpgrade;
 
-
-        private int totalSelections;
-
-        /// <summary>
-        /// Property für den Minimalen Slider-Wert:
-        /// </summary>
-        public int MinimaleAnzahl
-        {
-            get
-            {
-                return minimaleAnzahl;
-            }
-            set
-            {
-                minimaleAnzahl = value;
-            }
-        }
-
-        /// <summary>
-        /// Property für die maximale Anzahl:
-        /// </summary>
-        public int MaximaleAnzahl
-        {
-            get
-            {
-                return maximaleAnzahl;
-            }
-            set
-            {
-                maximaleAnzahl = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("MaximaleAnzahl"));
-            }
-        }
-
-        /// <summary>
-        /// Property für die gewählte Anzahl der Subeinheiten
-        /// </summary>
-        public int TotalSubUnits
-        {
-            get
-            {
-                return totalSelections;
-            }
-            set
-            {
-                totalSelections = value;
-            }
-        }
-
         public alleWaffenNamen defaultWep = alleWaffenNamen.undefined;
         public alleWaffenNamen upgradeWep = alleWaffenNamen.undefined;
 
@@ -1019,23 +862,11 @@ namespace WarhammerGUI
             if (defaultWep == alleWaffenNamen.undefined || upgradeWep == alleWaffenNamen.undefined)
                 throw new ArgumentOutOfRangeException("Keine Waffe(n) spezifiziert!");
 
-            if (toolDerAuswahl != AuswahlTool.AnzahlSlider)
-                throw new ArgumentOutOfRangeException("Falsche Auswahlart für zusSubeinheitenAuswahl!");
-
-            if (minimaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
-                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die minimale Auswahlanzahl!");
-
-            if (maximaleAnzahl < 0 || minimaleAnzahl >= maximaleAnzahl)
-                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die maximale Auswahlanzahl!");
-
             if (costForUpgrade < 0)
                 throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Basiskosten der Einheit!");
 
             if (costForNonUpgrade < 0)
                 throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Subunit-Costs!");
-
-            if (stepsize < 1)
-                throw new ArgumentOutOfRangeException("Schwachsinnige Definition für die Slider-Stepsize!");
         }
     }
 }

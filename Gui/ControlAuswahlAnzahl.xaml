@@ -24,7 +24,7 @@
                     Maximum="{Binding Path=MaximaleAnzahl}" 
                     TickFrequency="1" IsSnapToTickEnabled="True" 
                     HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" SmallChange="1" 
-                    Value="{Binding Path=TotalSubUnits}"
+                    Value="{Binding Path=GewaehlteAnzahl}"
                     ValueChanged="anzahlSlider_ValueChanged" />
             <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Name="textBox1" VerticalAlignment="Stretch" IsReadOnly="True" Text="{Binding ElementName=anzahlSlider, Path=Value}" />
         </Grid>
