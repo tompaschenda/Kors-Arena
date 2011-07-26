@@ -687,6 +687,7 @@ namespace WarhammerGUI
             set
             {
                 maximaleAnzahl = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("MaximaleAnzahl"));
             }
         }
 
@@ -836,6 +837,7 @@ namespace WarhammerGUI
             set
             {
                 maximaleAnzahl = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("MaximaleAnzahl"));
             }
         }
 
@@ -990,6 +992,7 @@ namespace WarhammerGUI
             set
             {
                 maximaleAnzahl = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("MaximaleAnzahl"));
             }
         }
 
