@@ -271,7 +271,10 @@ namespace WarhammerGUI
         /// <summary>
         /// Führt die ausgewählten Auswahlen durch.
         /// </summary>
-        public virtual void evaluateChoices() { }
+        public virtual void evaluateChoices() 
+        {
+            einheitKostenGesamt = basispunkteKosten;
+        }
 
         /// <summary>
         /// Gibt den oder die Auswahlwerte zurück. Abhängig davon, um was für eine Auswahl es
@@ -381,7 +384,7 @@ namespace WarhammerGUI
         {
             int anzahl = 0;
             for (int i = 0; i < this.subEinheiten.Count; ++i)
-                   if (this.subEinheiten[i].ruestung == nameRuestung && this.subEinheiten[i].name == nameSubEinhiet)
+                   if (this.subEinheiten[i].ruestung.name == nameRuestung && this.subEinheiten[i].name == nameSubEinhiet)
                         anzahl = anzahl + 1;
 
             return anzahl;
@@ -455,7 +458,7 @@ namespace WarhammerGUI
             name = alleSubeinheitenNamen.undefined;
             ausruestung = new List<alleAusruestung>() { };
             waffen = new List<waffe>() { };
-            ruestung = alleRuestungen.undefined;
+            ruestung = new Ruestung() { };
             kg = -1;
             bf = -1;
             st = -1;
@@ -487,6 +490,9 @@ namespace WarhammerGUI
             {
                 copy.waffen.Add((waffe) this.waffen[i].Clone());
             }
+            copy.ruestung = new Ruestung() { };
+            copy.ruestung = this.ruestung.Clone();
+
             copy.psikraefte = new List<Psikraefte>(this.psikraefte);
 
             return copy;
@@ -511,7 +517,7 @@ namespace WarhammerGUI
         /// <summary>
         /// Eine Einheit kann immer nur EINE Rüstung tragen!
         /// </summary>
-        public alleRuestungen ruestung;
+        public Ruestung ruestung;
 
         /// <summary>
         /// Eigenschaften einer Subeinheit:

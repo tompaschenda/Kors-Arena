@@ -229,11 +229,11 @@ namespace WarhammerGUI
                                 }
 
                                 //  Und ggfs. eine Rüstung!
-                                Object aktRuestung = aktSubEinheit.ruestung;
+                                Ruestung aktRuestung = aktSubEinheit.ruestung;
                                 if (aktRuestung != null && aktRuestung.ToString() != alleRuestungen.undefined.ToString())
                                 {
                                     TreeViewItem subEinheitItemsNode = new TreeViewItem();
-                                    subEinheitItemsNode.Header = EnumExtensions.getEnumDescription(aktRuestung.GetType(), aktRuestung.ToString());
+                                    subEinheitItemsNode.Header = EnumExtensions.getEnumDescription(aktRuestung.name.GetType(), aktRuestung.name.ToString());
                                     subeinheitNode.Items.Add(subEinheitItemsNode);
                                     subeinheitNode.Focusable = false;
                                     subEinheitItemsNode.Focusable = false;

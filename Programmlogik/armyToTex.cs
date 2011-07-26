@@ -429,11 +429,11 @@ namespace WarhammerGUI
 
                     // Rüstung, aber nur, wenn es sich nicht um ein Fahrzeug handelt!
                     var aktRuestung = aktSubeinheit.ruestung;
-                    var aktRuestungsString = EnumExtensions.getEnumDescription(typeof(alleRuestungen), aktRuestung);
+                    var aktRuestungsString = EnumExtensions.getEnumDescription(typeof(alleRuestungen), aktRuestung.name);
                     if(!alleRuestungsstrings.Contains(aktRuestungsString))
                     {
                         alleRuestungsstrings.Add(aktRuestungsString);
-                        alleRuestunsnamen.Add(aktRuestung);
+                        alleRuestunsnamen.Add(aktRuestung.name);
                     }
 
                 }

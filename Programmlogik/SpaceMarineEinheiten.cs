@@ -126,10 +126,6 @@ namespace WarhammerGUI
             sturm.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(sturm);
 
-            var kLand = new kostenloseLandungskapsel() { };
-            kLand.createUnitBase();
-            listeAllerSpaceMarineEinheiten.Add(kLand);
-
             var expu = new expugnatorGarde() { };
             expu.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(expu);
@@ -207,8 +203,6 @@ namespace WarhammerGUI
             ehre.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(ehre);
 
-
-
             listeAllerSpaceMarineEinheiten.Sort();
 
             return listeAllerSpaceMarineEinheiten;
@@ -224,7 +218,7 @@ namespace WarhammerGUI
             spaceMarine.name = alleSubeinheitenNamen.SpaceMarine;
 
             // Jeder Space Marine hat eine Servorüstung (keine Extra-Kosten):
-            spaceMarine.ruestung = alleRuestungen.ServoRuestung;
+            spaceMarine.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
 
             // Jeder Space Marine hat Fragment- und Sprenggranaten (keine Extra-Kosten):
             spaceMarine.ausruestung = new List<alleAusruestung>();
@@ -263,7 +257,7 @@ namespace WarhammerGUI
             spaceMarineSergeant.ausruestung = new List<alleAusruestung>() { };
             spaceMarineSergeant.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             spaceMarineSergeant.ausruestung.Add(alleAusruestung.Sprenggranaten);
-            spaceMarineSergeant.ruestung = alleRuestungen.ServoRuestung;
+            spaceMarineSergeant.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
 
             spaceMarineSergeant.waffen = new List<waffe>() { };
             spaceMarineSergeant.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
@@ -291,7 +285,7 @@ namespace WarhammerGUI
             scout.name = alleSubeinheitenNamen.Scout;
             scout.kg = 3;
             scout.bf = 3;
-            scout.ruestung = alleRuestungen.Scoutruestung;
+            scout.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.Scoutruestung);
             return scout;
         }
 
@@ -300,7 +294,7 @@ namespace WarhammerGUI
             var terminator = new subEinheit() { };
             terminator.name = alleSubeinheitenNamen.SpaceMarineTerminator;
 
-            terminator.ruestung = alleRuestungen.TerminatorRuestung;
+            terminator.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
 
             terminator.ausruestung = new List<alleAusruestung>();
 
@@ -366,7 +360,7 @@ namespace WarhammerGUI
             gardist.mw = 10;
             gardist.rw = 2;
             gardist.at = 2;
-            gardist.ruestung = alleRuestungen.MeisterhafteRuestung;
+            gardist.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
             gardist.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieschwert));
 
             return gardist;
@@ -497,7 +491,7 @@ namespace WarhammerGUI
             cap.lp = 3;
             cap.at = 3;
             cap.mw = 10;
-            cap.ruestung = alleRuestungen.ServoRuestung;
+            cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
 
             return cap;
         }
@@ -549,7 +543,7 @@ namespace WarhammerGUI
             bike.waffen = new List<waffe>() { };
             bike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
 
-            bike.ruestung = alleRuestungen.ServoRuestung;
+            bike.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
             bike.einheitentyp = Einheitstyp.Bike;
 
             // Setzen der Panzerungswerte:
@@ -579,7 +573,7 @@ namespace WarhammerGUI
         {
             var scoutBiker = new subEinheit() { };
             scoutBiker.name = alleSubeinheitenNamen.ScoutAufBike;
-            scoutBiker.ruestung = alleRuestungen.keine;
+            scoutBiker.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.Scoutruestung);
             scoutBiker.ausruestung = new List<alleAusruestung>() { };
 
             scoutBiker.waffen = new List<waffe>() { };
@@ -598,6 +592,67 @@ namespace WarhammerGUI
 
             return scoutBiker;
         }
+
+        public static subEinheit createLandungskapsel()
+        {
+            var kapsel = new subEinheit() { };
+            kapsel.name = alleSubeinheitenNamen.Landungskapsel;
+            kapsel.ausruestung = new List<alleAusruestung>() { };
+            kapsel.waffen = new List<waffe>() { };
+            kapsel.einheitentyp = Einheitstyp.FahrzeugOffen;
+            kapsel.bf = 4;
+            kapsel.front = 12;
+            kapsel.seit = 12;
+            kapsel.heck = 12;
+            kapsel.transportkapazitaet = 12;
+            return kapsel;
+        }
+
+        public static subEinheit createLandraider()
+        {
+            var raider = new subEinheit() { };
+            raider.name = alleSubeinheitenNamen.LandRaider;
+            raider.ausruestung = new List<alleAusruestung>() { };
+            raider.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
+            raider.ausruestung.Add(alleAusruestung.Nebelwerfer);
+            raider.waffen = new List<waffe>() { };
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncSchwererBolter));
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncLaserKanone));
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncLaserKanone));
+            raider.einheitentyp = Einheitstyp.FahrzeugPanzer;
+            raider.bf = 4;
+            raider.front = 14;
+            raider.seit = 14;
+            raider.heck = 14;
+            raider.transportkapazitaet = 12;
+            return raider;
+        }
+
+        public static subEinheit createLandRaiderCrusader()
+        {
+            var raider = ultraMarineHelperClass.createLandraider();
+            raider.name = alleSubeinheitenNamen.LandRaiderCrusader;
+            raider.ausruestung.Add(alleAusruestung.Splittergranatwerfer);
+            raider.waffen = new List<waffe>() { };
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.HurricaneBolter));
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.HurricaneBolter));
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Syncsturmkanone));
+            raider.transportkapazitaet = 16;
+            return raider;
+        }
+
+        public static subEinheit createLandRaiderRedeemer()
+        {
+            var raider = ultraMarineHelperClass.createLandraider();
+            raider.name = alleSubeinheitenNamen.LandRaiderRedeemer;
+            raider.ausruestung.Add(alleAusruestung.Splittergranatwerfer);
+            raider.waffen = new List<waffe>() { };
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Flammensturmkanone));
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Flammensturmkanone));
+            raider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Syncsturmkanone));
+            return raider;
+        }
+
     }
 
     /// <summary>
@@ -1307,144 +1362,50 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
-        {            
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myLandungsKapsel = new subEinheit() { };
-            myLandungsKapsel.name = alleSubeinheitenNamen.Landungskapsel;
-            myLandungsKapsel.ausruestung = new List<alleAusruestung>() { };
-            myLandungsKapsel.waffen = new List<waffe>() { };
-
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var landungsKapselHauptwaffen = new List<pulldownAuswahl>() { };
-            landungsKapselHauptwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +0 });
-            landungsKapselHauptwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.DeathwindSystem, kosten = +20 });
-
-            Auswahl1AusN wahlRazorGrundWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", landungsKapselHauptwaffen);
-            if (!wahlRazorGrundWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var gewaehlterIndex = wahlRazorGrundWaffen.gewaehlterIndexAusN;
-            myLandungsKapsel.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(landungsKapselHauptwaffen[gewaehlterIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + landungsKapselHauptwaffen[gewaehlterIndex].kosten * 1;
-
-
-            var kapselAusruestung = new List<pulldownAuswahl>() { };
-            kapselAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Peilsender, kosten = +10 });
-
-            AuswahlMAusN wahlKapselAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", kapselAusruestung);
-            if (!wahlKapselAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlKapselAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myLandungsKapsel.ausruestung.Add((alleAusruestung)kapselAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + kapselAusruestung[i].kosten * 1;
-            }
-
-            myLandungsKapsel.einheitentyp = Einheitstyp.FahrzeugOffen;
-
-            // Setzen der Panzerungswerte:
-            myLandungsKapsel.bf = 4;
-            myLandungsKapsel.front = 12;
-            myLandungsKapsel.seit = 12;
-            myLandungsKapsel.heck = 12;
-            myLandungsKapsel.transportkapazitaet = 12;
-
-            subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myLandungsKapsel);
-
-            // Nur jetzt hat die Erschaffung wirklich funktioniert!
-            erschaffungOkay = true;
-        }
-    }
-
-    public class kostenloseLandungskapsel : Einheit
-    {
-        public override void createUnitBase()
+        public override void declareChoices()
         {
-            einheitenName = alleEinheitenNamen.LandungskapselKostenlos;
-            fraktion = Fraktionen.SpaceMarines;
+            base.declareChoices();
 
-            uniqueStringProperty = fraktion.ToString() + einheitenName.ToString();
+            var auswahlen = new List<choiceDefinition>() { };
 
-            basispunkteKosten = 0;
-            einheitKostenGesamt = basispunkteKosten;
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.DeathwindSystem, kosten = +20 });
+                waffenChoice01.labelString = "Auswahl der Bewaffnung: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Peilsender, kosten = +10 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
 
-            einzigartig = false;
+            Auswahlen = auswahlen;
+        }
 
-            einheitentyp = Einheitstyp.FahrzeugOffen;
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
 
-            sonderregeln = new List<Sonderregeln>() { };
-            sonderregeln.Add(Sonderregeln.InertialLeitsystem);
-            sonderregeln.Add(Sonderregeln.Lahmgelegt);
-            sonderregeln.Add(Sonderregeln.LandungskapselAngriff);
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
-            auswahlTypBasis = new List<EinheitenAuswahl>() { };
-            auswahlTypBasis.Add(EinheitenAuswahl.AngeschlossenesTransportFahrzeug);
-
-            base.createUnitBase();
+            var kapsel = ultraMarineHelperClass.createLandungskapsel();
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, kapsel);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, kapsel);
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(kapsel);
         }
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
-        {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myLandungsKapsel = new subEinheit() { };
-            myLandungsKapsel.name = alleSubeinheitenNamen.Landungskapsel;
-            myLandungsKapsel.ausruestung = new List<alleAusruestung>() { };
-            myLandungsKapsel.waffen = new List<waffe>() { };
-
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var landungsKapselHauptwaffen = new List<pulldownAuswahl>() { };
-            landungsKapselHauptwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +0 });
-            landungsKapselHauptwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.DeathwindSystem, kosten = +20 });
-
-            Auswahl1AusN wahlRazorGrundWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", landungsKapselHauptwaffen);
-            if (!wahlRazorGrundWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var gewaehlterIndex = wahlRazorGrundWaffen.gewaehlterIndexAusN;
-            myLandungsKapsel.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(landungsKapselHauptwaffen[gewaehlterIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + landungsKapselHauptwaffen[gewaehlterIndex].kosten * 1;
-
-
-            var kapselAusruestung = new List<pulldownAuswahl>() { };
-            kapselAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Peilsender, kosten = +10 });
-
-            AuswahlMAusN wahlKapselAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", kapselAusruestung);
-            if (!wahlKapselAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlKapselAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myLandungsKapsel.ausruestung.Add((alleAusruestung)kapselAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + kapselAusruestung[i].kosten * 1;
-            }
-
-            myLandungsKapsel.einheitentyp = Einheitstyp.FahrzeugOffen;
-
-            // Setzen der Panzerungswerte:
-            myLandungsKapsel.bf = 4;
-            myLandungsKapsel.front = 12;
-            myLandungsKapsel.seit = 12;
-            myLandungsKapsel.heck = 12;
-            myLandungsKapsel.transportkapazitaet = 12;
-
-            subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myLandungsKapsel);
-
+        {                        
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -1476,73 +1437,51 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myCrusader = new subEinheit() { };
-            myCrusader.name = alleSubeinheitenNamen.LandRaiderCrusader;
-            myCrusader.ausruestung = new List<alleAusruestung>() { };
-            myCrusader.waffen = new List<waffe>() { };
+            base.declareChoices();
 
-            // Die folgende Ausrüstung gibt es immer:
-            myCrusader.ausruestung.Add(alleAusruestung.Splittergranatwerfer);
-            myCrusader.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myCrusader.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
+            var auswahlen = new List<choiceDefinition>() { };
 
-            // Die folgende Bewaffnung gibt es immer:
-            myCrusader.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Syncsturmkanone));
-            myCrusader.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.HurricaneBolter));
-            myCrusader.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.HurricaneBolter));
-
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var crusaderZusatzWaffen = new List<pulldownAuswahl>() { };
-            crusaderZusatzWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-            crusaderZusatzWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = +10 });
-
-            AuswahlMAusN wahlCrusaderZusatzwaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen gewählt werden:", crusaderZusatzWaffen);
-            if (!wahlCrusaderZusatzwaffen.allesOkay)
             {
-                erschaffungOkay = false;
-                return;
+                var waffenChoice01 = new optWaffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = +10 });
+                waffenChoice01.labelString = "Auswahl der Bewaffnung: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                auswahlen.Add(waffenChoice01);
             }
-            var wahlVektor = wahlCrusaderZusatzwaffen.wahlIndexVektor;
-            foreach (int i in wahlVektor)
             {
-                myCrusader.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(crusaderZusatzWaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + crusaderZusatzWaffen[i].kosten * 1;
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
             }
 
+            Auswahlen = auswahlen;
+        }
 
-            var crusaderAusruestung = new List<pulldownAuswahl>() { };
-            crusaderAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            crusaderAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
 
-            AuswahlMAusN wahlCrusaderAusruesutng = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", crusaderAusruestung);
-            if (!wahlCrusaderAusruesutng.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlCrusaderAusruesutng.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myCrusader.ausruestung.Add((alleAusruestung)crusaderAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + crusaderAusruestung[i].kosten * 1;
-            }
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+            var crusader = ultraMarineHelperClass.createLandRaiderCrusader();
 
-            myCrusader.einheitentyp = Einheitstyp.FahrzeugPanzer;
-
-            // Setzen der Panzerungswerte:
-            myCrusader.bf = 4;
-            myCrusader.front = 14;
-            myCrusader.seit = 14;
-            myCrusader.heck = 14;
-            myCrusader.transportkapazitaet = 16;
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, crusader);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, crusader);
 
             subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myCrusader);
+            subEinheiten.Add(crusader);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {          
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -1572,6 +1511,49 @@ namespace WarhammerGUI
             auswahlTypBasis.Add(EinheitenAuswahl.Unterstuetzung);
 
             base.createUnitBase();
+        }
+
+        public override void declareChoices()
+        {
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var waffenChoice01 = new optWaffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = +10 });
+                waffenChoice01.labelString = "Auswahl der Bewaffnung: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+            var raider = ultraMarineHelperClass.createLandraider();
+
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, raider);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, raider);
+
+            subEinheiten = new List<subEinheit>() { };
+            subEinheiten.Add(raider);
         }
 
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
@@ -1672,74 +1654,51 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
-            var myLandRaider = new subEinheit() { };
-            myLandRaider.name = alleSubeinheitenNamen.LandRaiderRedeemer;
-            myLandRaider.ausruestung = new List<alleAusruestung>() { };
-            myLandRaider.waffen = new List<waffe>() { };
+            base.declareChoices();
 
-            // Die folgende Ausrüstung gibt es immer:
-            myLandRaider.ausruestung.Add(alleAusruestung.Nebelwerfer);
-            myLandRaider.ausruestung.Add(alleAusruestung.Splittergranatwerfer);
-            myLandRaider.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
+            var auswahlen = new List<choiceDefinition>() { };
 
-            // Die folgende Bewaffnung gibt es immer:
-            myLandRaider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Syncsturmkanone));
-            myLandRaider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Flammensturmkanone));
-            myLandRaider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Flammensturmkanone));
-
-
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var landRaiderZusatzwaffen = new List<pulldownAuswahl>() { };
-            landRaiderZusatzwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-            landRaiderZusatzwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = +10 });
-
-            AuswahlMAusN wahlLandRaiderZusatzwaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen gewählt werden:", landRaiderZusatzwaffen);
-            if (!wahlLandRaiderZusatzwaffen.allesOkay)
             {
-                erschaffungOkay = false;
-                return;
+                var waffenChoice01 = new optWaffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = +10 });
+                waffenChoice01.labelString = "Auswahl der Bewaffnung: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                auswahlen.Add(waffenChoice01);
             }
-            var wahlVektor = wahlLandRaiderZusatzwaffen.wahlIndexVektor;
-            foreach (int i in wahlVektor)
             {
-                myLandRaider.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(landRaiderZusatzwaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + landRaiderZusatzwaffen[i].kosten * 1;
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
             }
 
+            Auswahlen = auswahlen;
+        }
 
-            var landRaiderAusruestung = new List<pulldownAuswahl>() { };
-            landRaiderAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            landRaiderAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
 
-            AuswahlMAusN wahlLandRaiderAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", landRaiderAusruestung);
-            if (!wahlLandRaiderAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlLandRaiderAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myLandRaider.ausruestung.Add((alleAusruestung)landRaiderAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + landRaiderAusruestung[i].kosten * 1;
-            }
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+            var redeemer = ultraMarineHelperClass.createLandRaiderRedeemer();
 
-            myLandRaider.einheitentyp = Einheitstyp.FahrzeugPanzer;
-
-            // Setzen der Panzerungswerte:
-            myLandRaider.bf = 4;
-            myLandRaider.front = 14;
-            myLandRaider.seit = 14;
-            myLandRaider.heck = 14;
-            myLandRaider.transportkapazitaet = 12;
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, redeemer);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, redeemer);
 
             subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(myLandRaider);
+            subEinheiten.Add(redeemer);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {          
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -1769,9 +1728,41 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var waffenChoice01 = new optWaffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
+                waffenChoice01.labelString = "Auswahl der Bewaffnung: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+
             var myWhirlwind = new subEinheit() { };
             myWhirlwind.name = alleSubeinheitenNamen.Whirlwind;
             myWhirlwind.ausruestung = new List<alleAusruestung>() { };
@@ -1784,42 +1775,8 @@ namespace WarhammerGUI
             // Die folgende Bewaffnung gibt es immer:
             myWhirlwind.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.WhirlwindMehrfachRaketenWerfer));
 
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var zusatzwaffen = new List<pulldownAuswahl>() { };
-            zusatzwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-
-            AuswahlMAusN wahlZusatzwaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen gewählt werden:", zusatzwaffen);
-            if (!wahlZusatzwaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlZusatzwaffen.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myWhirlwind.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(zusatzwaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + zusatzwaffen[i].kosten * 1;
-            }
-
-
-            var listeAusruestung = new List<pulldownAuswahl>() { };
-            listeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            listeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
-            listeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
-
-            AuswahlMAusN wahlAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", listeAusruestung);
-            if (!wahlAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myWhirlwind.ausruestung.Add((alleAusruestung)listeAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + listeAusruestung[i].kosten * 1;
-            }
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, myWhirlwind);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, myWhirlwind);
 
             myWhirlwind.einheitentyp = Einheitstyp.FahrzeugPanzer;
 
@@ -1832,7 +1789,10 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myWhirlwind);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -1862,9 +1822,42 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var waffenChoice01 = new optWaffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
+                waffenChoice01.labelString = "Auswahl der Bewaffnung: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Belagerungsschild, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+
             var myVindi = new subEinheit() { };
             myVindi.name = alleSubeinheitenNamen.Vindicator;
             myVindi.ausruestung = new List<alleAusruestung>() { };
@@ -1878,43 +1871,8 @@ namespace WarhammerGUI
             myVindi.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.DemolisherGeschuetz));
             myVindi.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
 
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var zusatzwaffen = new List<pulldownAuswahl>() { };
-            zusatzwaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-
-            AuswahlMAusN wahlZusatzwaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen gewählt werden:", zusatzwaffen);
-            if (!wahlZusatzwaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlZusatzwaffen.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myVindi.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(zusatzwaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + zusatzwaffen[i].kosten * 1;
-            }
-
-
-            var listeAusruestung = new List<pulldownAuswahl>() { };
-            listeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            listeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
-            listeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Belagerungsschild, kosten = +10 });
-            listeAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
-
-            AuswahlMAusN wahlAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", listeAusruestung);
-            if (!wahlAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myVindi.ausruestung.Add((alleAusruestung)listeAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + listeAusruestung[i].kosten * 1;
-            }
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, myVindi);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, myVindi);
 
             myVindi.einheitentyp = Einheitstyp.FahrzeugPanzer;
 
@@ -1927,7 +1885,10 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myVindi);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -1958,17 +1919,28 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
-        {          
-            // Update der Punktekosten:
+        public override void declareChoices()
+        {
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
             einheitKostenGesamt = basispunkteKosten;
 
             var sarge = new subEinheit() { };
             sarge.name = alleSubeinheitenNamen.SergeantChronus;
-            sarge.ruestung = alleRuestungen.ServoRuestung;
+            sarge.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
             sarge.ausruestung = new List<alleAusruestung>() { };
             sarge.ausruestung.Add(alleAusruestung.Servoarm);
             sarge.ausruestung.Add(alleAusruestung.Fragmentgranaten);
@@ -1989,10 +1961,12 @@ namespace WarhammerGUI
 
             sarge.einheitentyp = Einheitstyp.Infanterie;
 
-
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(sarge);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {                     
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2027,17 +2001,27 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var sarge = new subEinheit() { };
             sarge.name = alleSubeinheitenNamen.SergeantTelion;
-            sarge.ruestung = alleRuestungen.Scoutruestung;
+            sarge.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.Scoutruestung);
             sarge.ausruestung = new List<alleAusruestung>() { };
             sarge.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             sarge.ausruestung.Add(alleAusruestung.Sprenggranaten);
@@ -2058,10 +2042,12 @@ namespace WarhammerGUI
 
             sarge.einheitentyp = Einheitstyp.Infanterie;
 
-
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(sarge);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2098,17 +2084,36 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var ruestChoice01 = new ruestungsAuswahl() { };
+                ruestChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleRuestungen.ServoRuestung, kosten = 0 });
+                ruestChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleRuestungen.RuestungDesAntilochus, kosten = +15 });
+                ruestChoice01.labelString = "Auswahl der Rüstung: ";
+                ruestChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ruest01;
+                ruestChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(ruestChoice01);
+            }
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var calgar = new subEinheit() { };
             calgar.name = alleSubeinheitenNamen.MarneusCalgar;
-            calgar.ruestung = alleRuestungen.ServoRuestung;
             calgar.ausruestung = new List<alleAusruestung>() { };
             calgar.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             calgar.ausruestung.Add(alleAusruestung.Sprenggranaten);
@@ -2118,51 +2123,29 @@ namespace WarhammerGUI
             calgar.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieschwert));
             calgar.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.FaeusteVonUltramar));
 
-
-            // Wollen wir die Rüstung des Antilochus haben?
-            var auswahlKonstrukt = new List<pulldownAuswahl>() { };
-            auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = "normale Servorüstung", kosten = 0 });
-            auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleRuestungen.RuestungDesAntilochus, kosten = 15 });
-            Auswahl1AusN auswahlSprung = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Bitte die Rüstung auswählen:", auswahlKonstrukt);
-            if (!auswahlSprung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
+            ChoiceExecuter.execChoice((ruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ruest01), this, calgar);
 
             calgar.kg = 6;
             calgar.bf = 5;
             calgar.st = 4;
             calgar.wid = 4;
             calgar.lp = 4;
-            calgar.ini = 5;            
+            calgar.ini = 5;
             calgar.at = 4;
             calgar.mw = 10;
             calgar.rw = 3;
             calgar.ret = 4;
-
-            var wahlIndex = auswahlSprung.gewaehlterIndexAusN;
-            bool hatAntilochus = false;
-            if (wahlIndex == 1)
-            {
-                hatAntilochus = true;
-                einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
-            }
-            if (hatAntilochus)
-            {
-                calgar.ruestung = alleRuestungen.RuestungDesAntilochus;
-                calgar.rw = 2;
-                calgar.ausruestung.Add(alleAusruestung.TeleportPeilsender);
-            }
-
-
-
             calgar.einheitentyp = Einheitstyp.Infanterie;
-
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(calgar);
+        }
 
+        /// <summary>
+        /// Hier werden alle Spierloptionen abgehandelt
+        /// </summary>
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2210,7 +2193,7 @@ namespace WarhammerGUI
 
             var cap = new subEinheit() { };
             cap.name = alleSubeinheitenNamen.CaptainCatoSicarius;
-            cap.ruestung = alleRuestungen.MeisterhafteRuestung;
+            cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
             cap.ausruestung = new List<alleAusruestung>() { };
             cap.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             cap.ausruestung.Add(alleAusruestung.Sprenggranaten);
@@ -2280,7 +2263,7 @@ namespace WarhammerGUI
 
             var tigurius = new subEinheit() { };
             tigurius.name = alleSubeinheitenNamen.VarroTigurius;
-            tigurius.ruestung = alleRuestungen.ServoRuestung;
+            tigurius.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
             tigurius.ausruestung = new List<alleAusruestung>() { };
             tigurius.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             tigurius.ausruestung.Add(alleAusruestung.Sprenggranaten);
@@ -2361,7 +2344,7 @@ namespace WarhammerGUI
 
             var cassius = new subEinheit() { };
             cassius.name = alleSubeinheitenNamen.OrtanCassius;
-            cassius.ruestung = alleRuestungen.ServoRuestung;
+            cassius.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
             cassius.ausruestung = new List<alleAusruestung>() { };
             cassius.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             cassius.ausruestung.Add(alleAusruestung.Sprenggranaten);
@@ -2433,7 +2416,7 @@ namespace WarhammerGUI
 
             var cassius = new subEinheit() { };
             cassius.name = alleSubeinheitenNamen.PedroKantor;
-            cassius.ruestung = alleRuestungen.ServoRuestung;
+            cassius.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
             cassius.ausruestung = new List<alleAusruestung>() { };
             cassius.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             cassius.ausruestung.Add(alleAusruestung.Sprenggranaten);
@@ -2504,7 +2487,7 @@ namespace WarhammerGUI
 
             var lys = new subEinheit() { };
             lys.name = alleSubeinheitenNamen.CaptainLysander;
-            lys.ruestung = alleRuestungen.TerminatorRuestung;
+            lys.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
             lys.ausruestung = new List<alleAusruestung>() { };
             lys.waffen = new List<waffe>() { };
             lys.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.DornsFaust));
@@ -2567,7 +2550,7 @@ namespace WarhammerGUI
 
             var shrike = new subEinheit() { };
             shrike.name = alleSubeinheitenNamen.CaptainShrike;
-            shrike.ruestung = alleRuestungen.ServoRuestung;
+            shrike.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
             shrike.ausruestung = new List<alleAusruestung>() { };
             shrike.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             shrike.ausruestung.Add(alleAusruestung.Sprenggranaten);
@@ -2634,7 +2617,7 @@ namespace WarhammerGUI
 
             var vulkan = new subEinheit() { };
             vulkan.name = alleSubeinheitenNamen.VulkanHestan;
-            vulkan.ruestung = alleRuestungen.MeisterhafteRuestung;
+            vulkan.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
 
             vulkan.ausruestung = new List<alleAusruestung>() { };
             vulkan.ausruestung.Add(alleAusruestung.Fragmentgranaten);
@@ -2705,7 +2688,7 @@ namespace WarhammerGUI
 
             var khan = new subEinheit() { };
             khan.name = alleSubeinheitenNamen.KorsarroKhan;
-            khan.ruestung = alleRuestungen.ServoRuestung;
+            khan.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
 
             khan.ausruestung = new List<alleAusruestung>() { };
             khan.ausruestung.Add(alleAusruestung.Fragmentgranaten);
@@ -2803,7 +2786,7 @@ namespace WarhammerGUI
 
             var techmarine = new subEinheit() { };
             techmarine.name = alleSubeinheitenNamen.Techmarine;
-            techmarine.ruestung = alleRuestungen.MeisterhafteRuestung;
+            techmarine.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
             techmarine.ausruestung = new List<alleAusruestung>();
             techmarine.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             techmarine.ausruestung.Add(alleAusruestung.Sprenggranaten);
@@ -2829,7 +2812,7 @@ namespace WarhammerGUI
             // Jetzt die eigentliche Salvenkanone: Für sie setzen wir die Werte gleich null.
             var savle = new subEinheit() { };
             savle.name = alleSubeinheitenNamen.Salvenkanone;
-            savle.ruestung = alleRuestungen.keine;
+            savle.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.keine);
             savle.ausruestung = new List<alleAusruestung>();
             savle.waffen = new List<waffe>() { };
 
@@ -3277,7 +3260,7 @@ namespace WarhammerGUI
             if (hatSplitterminen)
                 scoutSarge.ausruestung.Add(alleAusruestung.Splitterminen);
 
-            scoutSarge.ruestung = alleRuestungen.Scoutruestung;         
+            scoutSarge.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.Scoutruestung);  
 
             // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
             var auswahlSargePulldown = new List<pulldownAuswahl>() { };
@@ -4438,7 +4421,7 @@ namespace WarhammerGUI
             if (habenTarnmaentel)
                 scoutSarge.ausruestung.Add(alleAusruestung.Tarnmantel);
 
-            scoutSarge.ruestung = alleRuestungen.Scoutruestung;
+            scoutSarge.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.Scoutruestung);
             scoutSarge.waffen = new List<waffe>() { };
 
             // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
@@ -4571,10 +4554,10 @@ namespace WarhammerGUI
             {
                 // SERVO
                 if (wahlIndex == 0)
-                    cap.ruestung = alleRuestungen.ServoRuestung;
+                    cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
                 else
                 {
-                    cap.ruestung = alleRuestungen.MeisterhafteRuestung;
+                    cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
                     hasMeisterhafteRuestung = true;
                 }
 
@@ -4681,7 +4664,7 @@ namespace WarhammerGUI
             else
             {
                 // TERMIE
-                cap.ruestung = alleRuestungen.TerminatorRuestung;
+                cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
                 hasMeisterhafteRuestung = true;
                 einheitKostenGesamt = einheitKostenGesamt + auswahlFuerRuestung[wahlIndex].kosten * 1;
 
@@ -4853,10 +4836,10 @@ namespace WarhammerGUI
             {
                 // SERVO
                 if (wahlIndex == 0)
-                    cap.ruestung = alleRuestungen.ServoRuestung;
+                    cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
                 else
                 {
-                    cap.ruestung = alleRuestungen.MeisterhafteRuestung;
+                    cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
                     hasMeisterhafteRuestung = true;
                 }
 
@@ -4963,7 +4946,7 @@ namespace WarhammerGUI
             else
             {
                 // TERMIE
-                cap.ruestung = alleRuestungen.TerminatorRuestung;
+                cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
                 hasMeisterhafteRuestung = true;
                 einheitKostenGesamt = einheitKostenGesamt + auswahlFuerRuestung[wahlIndex].kosten * 1;
 
@@ -6011,7 +5994,7 @@ namespace WarhammerGUI
                 var servitor = new subEinheit() { };
                 servitor.name = alleSubeinheitenNamen.Servitor;
 
-                servitor.ruestung = alleRuestungen.Scoutruestung;
+                servitor.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.Scoutruestung);
 
                 servitor.ausruestung = new List<alleAusruestung>();
 
@@ -6072,7 +6055,7 @@ namespace WarhammerGUI
             techmar.ausruestung = new List<alleAusruestung>() { };
             techmar.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             techmar.ausruestung.Add(alleAusruestung.Sprenggranaten);
-            techmar.ruestung = alleRuestungen.MeisterhafteRuestung;
+            techmar.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
             techmar.waffen = new List<waffe>() { };
 
             // Servoarm aufwerten?
@@ -6245,10 +6228,10 @@ namespace WarhammerGUI
             int wahlIndex = auswahlRuestung.gewaehlterIndexAusN;
             bool hasTermieRuestung = (wahlIndex==1);
             if (!hasTermieRuestung)
-                scriptor.ruestung = alleRuestungen.ServoRuestung;
+                scriptor.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
             else
             {
-                scriptor.ruestung = alleRuestungen.TerminatorRuestung;
+                scriptor.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
                 einheitKostenGesamt = einheitKostenGesamt + 40;
             }
 
@@ -6486,13 +6469,13 @@ namespace WarhammerGUI
             bool hasTermieRuestung = (wahlIndex > 0);
             if (!hasTermieRuestung)
             {
-                ordenspriester.ruestung = alleRuestungen.ServoRuestung;
+                ordenspriester.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
                 ordenspriester.ausruestung.Add(alleAusruestung.Fragmentgranaten);
                 ordenspriester.ausruestung.Add(alleAusruestung.Sprenggranaten);
             }
             else
             {
-                ordenspriester.ruestung = alleRuestungen.TerminatorRuestung;
+                ordenspriester.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
                 ordenspriester.rw = 2;
                 ordenspriester.ret = 5;
 
@@ -6704,7 +6687,7 @@ namespace WarhammerGUI
                 var champ = ultraMarineHelperClass.createKompaniechampion();
                 champ.ausruestung = new List<alleAusruestung>() { };
                 champ.ausruestung.Add(alleAusruestung.Parierschield);
-                champ.ruestung = alleRuestungen.ServoRuestung;
+                champ.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
                 champ.ausruestung.Add(alleAusruestung.Fragmentgranaten);
                 champ.ausruestung.Add(alleAusruestung.Sprenggranaten);
 
@@ -6938,7 +6921,7 @@ namespace WarhammerGUI
                 veteran.ausruestung = new List<alleAusruestung>() { };
                 veteran.ausruestung.Add(alleAusruestung.Fragmentgranaten);
                 veteran.ausruestung.Add(alleAusruestung.Sprenggranaten);
-                veteran.ruestung = alleRuestungen.MeisterhafteRuestung;
+                veteran.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
 
                 veteran.waffen = new List<waffe>() { };
                 veteran.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));

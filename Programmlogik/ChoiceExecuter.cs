@@ -115,8 +115,20 @@ namespace WarhammerGUI
             int neueKosten = auswahl.getChoiceCost();
             dieEinheit.einheitKostenGesamt = dieEinheit.einheitKostenGesamt + neueKosten;
 
+            // Jetzt lasse ich mir die Rüstung geben:
+            var aktRuestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(auswahl.getSelectedArmor());
+
             // Und jetzt setze ich die Rüstung:
-            dieSubEinheit.ruestung = auswahl.getSelectedArmor();
+            dieSubEinheit.ruestung = aktRuestung;
+
+            // Eventuell muss ich auch noch die Ausrüstung hinzufügen, die durch die Rüstung definiert wird:
+            for (int i = 0; i < aktRuestung.ausruestung.Count; ++i)
+            {
+                dieSubEinheit.ausruestung.Add(aktRuestung.ausruestung[i]);
+            }
+
+            // Der RS der Subunit und der Rettungswurf werden automatisch abhängig vom Rest der Ausrüstung aktualisiert
+            // an anderer Stelle!
         }
 
         /// <summary>
