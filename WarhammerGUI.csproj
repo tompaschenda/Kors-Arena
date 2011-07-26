@@ -168,6 +168,7 @@
     <Compile Include="Programmlogik\ChoiceExecuter.cs" />
     <Compile Include="Programmlogik\Einheit.cs" />
     <Compile Include="Programmlogik\GlobaleEinheitenListe.cs" />
+    <Compile Include="Programmlogik\ruestungsfabrik.cs" />
     <Compile Include="Programmlogik\Sonderregeln.cs" />
     <Compile Include="Programmlogik\SpaceMarineEinheiten.cs" />
     <Compile Include="Programmlogik\SpielerAnfragen.cs" />
