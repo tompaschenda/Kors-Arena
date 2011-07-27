@@ -274,6 +274,11 @@ namespace WarhammerGUI
         public virtual void createSubunitsAndEvalChoices() 
         {
             einheitKostenGesamt = basispunkteKosten;
+
+            // Falls eine Einheit lediglich von einem Auswahltyp sein kann, macht es Sinn, diesen
+            // direkt zu setzen!
+            if (auswahlTypBasis.Count == 1)
+                auswahlTypSpieler = auswahlTypBasis[0];
         }
 
         /// <summary>

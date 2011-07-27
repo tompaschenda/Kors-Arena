@@ -183,7 +183,7 @@ namespace WarhammerGUI
                 if(m_armee.armeeEinheiten[i].auswahlTypSpieler == aktAuswahl)
                 {
 
-                    // Ich fange immer eine Minipage an, damit die Seitenumbrüche intelligten erfolgen!
+                    // Ich fange immer eine Minipage an, damit die Seitenumbrüche intelligent erfolgen!
                     beschreibungsString += "\\begin{minipage}[\\textwidth]{\\textwidth} \n";
 
                     if (!sectionHasHeadingHasBeenPlaced)
