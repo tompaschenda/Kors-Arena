@@ -3095,9 +3095,6 @@ namespace WarhammerGUI
             subEinheiten.Add(spaceMarineSergeant);
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {            
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
@@ -3222,138 +3219,116 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            int punkteKostenProSpaceMarine = 20;
+            var auswahlen = new List<choiceDefinition>() { };
 
-            AuswahlAnzahlSpieler auswahlAnzahl = new AuswahlAnzahlSpieler(this, 3, 10, "Trupp darf bis zu sieben zusätzliche Scouts erhalten", gesamtArmeePunkteKosten, punkteKostenProSpaceMarine) { };
+            var anzahlChoice = new zusSubeinheitenAuswahl() { };
+            anzahlChoice.MinimaleAnzahl = 3;
+            anzahlChoice.MaximaleAnzahl = 10;
+            anzahlChoice.GewaehlteAnzahl = 3;
+            anzahlChoice.costPerAditionalSubUnit = 20;
+            anzahlChoice.unitBaseCost = basispunkteKosten;
+            anzahlChoice.auswahlIdentifier = ChoiceAuswahlIdentifier.AnzSub01;
+            auswahlen.Add(anzahlChoice);
 
-            // Okay, wie viele Space Marines sollen dazu? Wenn abgebrochen wurde, hören wir auf!
-            if (!auswahlAnzahl.allesOkay)
             {
-                erschaffungOkay = false;
-                return;
+                var waffenChoice01 = new waffenProSubUnitWahl() { };
+                waffenChoice01.defaultWep = alleWaffenNamen.SyncBolter;
+                waffenChoice01.upgradeWep = alleWaffenNamen.AstartesGranatwerfer;
+                waffenChoice01.MinimaleAnzahl = 0;
+                waffenChoice01.MaximaleAnzahl = 3;
+                waffenChoice01.GewaehlteAnzahl = 0;
+                waffenChoice01.costForNonUpgrade = 0;
+                waffenChoice01.costForUpgrade = 10;
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.SubWep01;
+                waffenChoice01.labelString = "Hauptwaffe von Sync-Bolter\nauf Astartes-Granatwerfer\numrüsten (10 Punkte pro Auswahl): ";
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var ausruestungChoice02 = new ausruestungsAuswahl() { };
+                ausruestungChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Splitterminen, kosten = 10 });
+                ausruestungChoice02.labelString = "Auswahl der Ausrüstung des Trupps: ";
+                ausruestungChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest02;
+                auswahlen.Add(ausruestungChoice02);
+            }
+            {
+                var waffenChoice04 = new waffenAuswahl() { };
+                waffenChoice04.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe04;
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                waffenChoice04.labelString = "Auswahl der Waffe des Sergeants: ";
+                waffenChoice04.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice04);
+            }
+            {
+                var ausruestungChoice01 = new ausruestungsAuswahl() { };
+                ausruestungChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
+                ausruestungChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Peilsender, kosten = 25 });
+                ausruestungChoice01.labelString = "Auswahl der Ausrüstung des Sergeants: ";
+                auswahlen.Add(ausruestungChoice01);
             }
 
-            int zusaetlicheScouts = auswahlAnzahl.anzahlGewaehlt;
-            int anzahlScoutsGesamt = 3 + zusaetlicheScouts;
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+        }
+
+        public override void createSubunitsAndEvalChoices()
+        {
+            base.createSubunitsAndEvalChoices();
+
+            int totaleEinheitenGroesse = (int)getSpecificChoiceValues(ChoiceAuswahlIdentifier.AnzSub01);
+            int anzahlSpaceMarinesGesamt = totaleEinheitenGroesse - 1;
+
             // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten + zusaetlicheScouts * punkteKostenProSpaceMarine;
+            ChoiceExecuter.execChoice((zusSubeinheitenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.AnzSub01), this);
 
             // Gründen wir unsere Einheit neu:
             subEinheiten = new List<subEinheit>() { };
 
-
-            // Soll es Splitterminen geben?
-            var scoutExtras = new List<pulldownAuswahl>() { };
-            scoutExtras.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Splitterminen, kosten = 10 });
-            AuswahlMAusN wahlExtraAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die Scouts dürfen folgende Optionen wählen:", scoutExtras);
-            if (!wahlExtraAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlExtraAusruestung.wahlIndexVektor;
-            bool hatSplitterminen = false;
-            foreach (int i in wahlVektor)
-            {
-                hatSplitterminen = true;
-                einheitKostenGesamt = einheitKostenGesamt + scoutExtras[i].kosten * 1;
-            }
-
-            // Auswahl vorbereiten:
-            var wahlIndex = new int();
-
             // Genau soviele einordnen, wie vom Spieler gewünscht:
-            for (int i = 0; i < anzahlScoutsGesamt; ++i)
+            for (int i = 0; i < anzahlSpaceMarinesGesamt; ++i)
             {
-                var scoutBike = ultraMarineHelperClass.createScoutBiker();              
-                if (hatSplitterminen)
-                    scoutBike.ausruestung.Add(alleAusruestung.Splitterminen);            
+                var scoutBike = ultraMarineHelperClass.createScoutBiker();
+                scoutBike.waffen = new List<waffe>() { };
+
+                // Splitterminen:
+                ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest02), this, scoutBike, false); 
 
                 if (i < 3)
-                {
-                    var auswahlKonstrukt = new List<pulldownAuswahl>() { };
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncBolter, kosten = 0 });
-                    auswahlKonstrukt.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.AstartesGranatwerfer, kosten = 10 });
-
-                    Auswahl1AusN auswahlWaffe1 = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", auswahlKonstrukt);
-                    if (!auswahlWaffe1.allesOkay)
-                    {
-                        erschaffungOkay = false;
-                        return;
-                    }
-
-                    wahlIndex = auswahlWaffe1.gewaehlterIndexAusN;
-
-                    // Auswahl nutzen und Kosten aktualisieren:
-                    scoutBike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
-                    einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
-                }
+                    ChoiceExecuter.execChoice((waffenProSubUnitWahl)getSpecificChoice(ChoiceAuswahlIdentifier.SubWep01), this, scoutBike, i);
                 else
-                {
                     scoutBike.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
-                }
- 
+
                 subEinheiten.Add(scoutBike);
             }
 
-            ///
             // SARGE:
-            ///
-
             var scoutSarge = ultraMarineHelperClass.createSpaceMarineBikerSarge();
             scoutSarge.name = alleSubeinheitenNamen.ScoutsergeantAufBike;
-        
-            if (hatSplitterminen)
-                scoutSarge.ausruestung.Add(alleAusruestung.Splitterminen);
+            // Splitterminen?
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest02), this, scoutSarge); 
+            scoutSarge.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.Scoutruestung);
 
-            scoutSarge.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.Scoutruestung);  
-
-            // Erst einmal lassen wir den Spieler die Wahl für die erste Hand treffen:
-            var auswahlSargePulldown = new List<pulldownAuswahl>() { };
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-            auswahlSargePulldown.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-
-            Auswahl1AusN auswahlSarge = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Scout Sergeant muss eine der folgenden Auswahlen treffen:", auswahlSargePulldown);
-            if (!auswahlSarge.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-
-            wahlIndex = auswahlSarge.gewaehlterIndexAusN;
-            scoutSarge.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSargePulldown[wahlIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + auswahlSargePulldown[wahlIndex].kosten * 1;
-
+            // Waffe:
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe04), this, scoutSarge);            
 
             // Außerdem darf er sich noch Ausrüstung aussuchen!
-            var sargeExtras = new List<pulldownAuswahl>() { };
-            sargeExtras.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
-            sargeExtras.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Peilsender, kosten = 25 });
-
-            AuswahlMAusN wahlSargeAus = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Scout Sergeant darf folgende Optionen wählen:", sargeExtras);
-            if (!wahlSargeAus.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlSargeAus.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                scoutSarge.ausruestung.Add((alleAusruestung)sargeExtras[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + sargeExtras[i].kosten * 1;
-            }
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, scoutSarge);            
 
             subEinheiten.Add(scoutSarge);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }

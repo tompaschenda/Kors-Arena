@@ -74,7 +74,7 @@ namespace WarhammerGUI
         /// <param name="auswahl"></param>
         /// <param name="dieEinheit"></param>
         /// <param name="dieSubEinheit"></param>
-        public static void execChoice(ausruestungsAuswahl auswahl, Einheit dieEinheit, subEinheit dieSubEinheit)
+        public static void execChoice(ausruestungsAuswahl auswahl, Einheit dieEinheit, subEinheit dieSubEinheit, bool abrechnen=true)
         {
             // Wenn die aktuelle Auswahl gar nicht aktiv ist, machen wir natürlich nichts:
             if (!auswahl.IsActive)
@@ -82,11 +82,15 @@ namespace WarhammerGUI
 
             // Zunächst einmal errechnen wir die neuen Kosten und tragen sie in der Einheit ein:
             int neueKosten = auswahl.getChoiceCost();
-            dieEinheit.einheitKostenGesamt = dieEinheit.einheitKostenGesamt + neueKosten;
+
+            // Wir rechnen aber nur ab, wenn es gewünscht ist (Default).
+            if(abrechnen)
+                dieEinheit.einheitKostenGesamt = dieEinheit.einheitKostenGesamt + neueKosten;
 
             // Und jetzt müssen wir alle Ausrüstungsgegenstände hinzufügen:
             dieSubEinheit.ausruestung.AddRange(auswahl.getSelectedEquip());
         }
+
 
         /// <summary>
         /// Führt eine Auswahl eines Transportfahrzeuges durch!
