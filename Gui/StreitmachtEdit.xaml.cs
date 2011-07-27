@@ -598,6 +598,7 @@ namespace WarhammerGUI
             neueUnitOrig.createUnitBase();
             neueUnitOrig.declareChoices();
             neueUnitOrig.updateChoiceDependencies();
+            neueUnitOrig.evaluateChoices(); // Wir müssen die Choices natürlich auch ausführen, selbst wenn es keine gibt.
 
             //Tom: Falls die Einheit schon auf das neue Choice-Modell umgesetllt wurde, brauchen wir die Interaktion nicht
             if (neueUnitOrig.Auswahlen.Count == 0)
