@@ -2850,17 +2850,23 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
 
-            // Gründen wir unsere Einheit neu:
-            subEinheiten = new List<subEinheit>() { };
+            var auswahlen = new List<choiceDefinition>() { };
 
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var techmarine = new subEinheit() { };
             techmarine.name = alleSubeinheitenNamen.Techmarine;
@@ -2875,61 +2881,38 @@ namespace WarhammerGUI
             techmarine.kg = 4;
             techmarine.bf = 4;
             techmarine.st = 4;
-            techmarine.wid = 4;            
+            techmarine.wid = 4;
             techmarine.lp = 1;
             techmarine.ini = 4;
             techmarine.at = 1;
             techmarine.mw = 8;
             techmarine.einheitentyp = Einheitstyp.Infanterie;
-
-
             subEinheiten.Add(techmarine);
 
-            // Jetzt die eigentliche Salvenkanone: Für sie setzen wir die Werte gleich null.
+            // Jetzt die eigentliche Salvenkanone: Für sie setzen wir die Werte gleich -1.
             var savle = new subEinheit() { };
             savle.name = alleSubeinheitenNamen.Salvenkanone;
             savle.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.keine);
             savle.ausruestung = new List<alleAusruestung>();
             savle.waffen = new List<waffe>() { };
 
-            savle.kg = 0;
-            savle.bf = 0;
-            savle.st = 0;
-            savle.wid = 0;
-            savle.lp = 0;
-            savle.ini = 0;
-            savle.at = 0;
-            savle.mw = 0;
+            savle.kg = -1;
+            savle.bf = -1;
+            savle.st = -1;
+            savle.wid = -1;
+            savle.lp = -1;
+            savle.ini = -1;
+            savle.at = -1;
+            savle.mw = -1;
             savle.einheitentyp = Einheitstyp.Artillerie;
             subEinheiten.Add(savle);
+        }
 
-
-
-            // Wahl angeschlossenes Transportfahrzeug
-            // => muss mit generiert werden!
-            // Also müssen wir zunächst den Spieler fragen, ob er überhaupt ein Transportfahrzeug möchte!
-            var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.KeineEinheit, kosten = 0 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
-
-            Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
-            if (!auswahlScreen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlIndex = auswahlScreen.gewaehlterIndexAusN;
-
-            // Jetzt müssen wir abhängig vom Index die richtige neue Einheit erzeugen!
-            switch (wahlIndex)
-            {
-                case 0:
-                    break;
-                case 1:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
-                    break;
-            }
-
+        /// <summary>
+        /// Hier werden alle Spierloptionen abgehandelt
+        /// </summary>
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
