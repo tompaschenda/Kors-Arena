@@ -98,7 +98,7 @@ namespace WarhammerGUI
             sh.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(sh);
 
-            var vuk = new vukan() { };
+            var vuk = new vulkan() { };
             vuk.createUnitBase();
             listeAllerSpaceMarineEinheiten.Add(vuk);
 
@@ -514,7 +514,8 @@ namespace WarhammerGUI
             trike.kg = 4;
             trike.bf = 4;
             trike.st = 4;
-            trike.wid = 5;
+            trike.wid = 4;
+            trike.bikeWid = 5;
             trike.lp = 2;
             trike.ini = 4;
             trike.at = 2;
@@ -542,7 +543,8 @@ namespace WarhammerGUI
             bike.kg = 4;
             bike.bf = 4;
             bike.st = 4;
-            bike.wid = 5;
+            bike.wid = 4;
+            bike.bikeWid = 5;
             bike.lp = 1;
             bike.ini = 4;
             bike.at = 1;
@@ -557,6 +559,7 @@ namespace WarhammerGUI
             sarge.name = alleSubeinheitenNamen.SergeantDerSpaceMarinesAufBike;
             sarge.at = 2;
             sarge.mw = 9;
+            sarge.bikeWid = 5;
             return sarge;
         }
 
@@ -571,7 +574,8 @@ namespace WarhammerGUI
             scoutBiker.kg = 3;
             scoutBiker.bf = 3;
             scoutBiker.st = 4;
-            scoutBiker.wid = 5;
+            scoutBiker.wid = 4;
+            scoutBiker.bikeWid = 5;
             scoutBiker.lp = 1;
             scoutBiker.ini = 4;
             scoutBiker.at = 1;
@@ -2166,13 +2170,23 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var cap = new subEinheit() { };
             cap.name = alleSubeinheitenNamen.CaptainCatoSicarius;
@@ -2199,7 +2213,11 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cap);
+            
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {           
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2234,13 +2252,23 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var tigurius = new subEinheit() { };
             tigurius.name = alleSubeinheitenNamen.VarroTigurius;
@@ -2275,10 +2303,12 @@ namespace WarhammerGUI
 
             tigurius.einheitentyp = Einheitstyp.Infanterie;
 
-
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(tigurius);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2313,13 +2343,23 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var cassius = new subEinheit() { };
             cassius.name = alleSubeinheitenNamen.OrtanCassius;
@@ -2347,7 +2387,10 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cassius);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2383,39 +2426,52 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
 
-            var cassius = new subEinheit() { };
-            cassius.name = alleSubeinheitenNamen.PedroKantor;
-            cassius.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
-            cassius.ausruestung = new List<alleAusruestung>() { };
-            cassius.ausruestung.Add(alleAusruestung.Fragmentgranaten);
-            cassius.ausruestung.Add(alleAusruestung.Sprenggranaten);
-            cassius.ausruestung.Add(alleAusruestung.StaehlernerStern);
-            cassius.waffen = new List<waffe>() { };
-            cassius.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.DornsPfeil));
+            var auswahlen = new List<choiceDefinition>() { };
 
-            cassius.kg = 6;
-            cassius.bf = 5;
-            cassius.st = 4;
-            cassius.wid = 4;
-            cassius.ini = 5;
-            cassius.lp = 3;
-            cassius.at = 3;
-            cassius.mw = 10;
+            Auswahlen = auswahlen;
+        }
 
-            cassius.einheitentyp = Einheitstyp.Infanterie;
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
+
+            var kantor = new subEinheit() { };
+            kantor.name = alleSubeinheitenNamen.PedroKantor;
+            kantor.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
+            kantor.ausruestung = new List<alleAusruestung>() { };
+            kantor.ausruestung.Add(alleAusruestung.Fragmentgranaten);
+            kantor.ausruestung.Add(alleAusruestung.Sprenggranaten);
+            kantor.ausruestung.Add(alleAusruestung.StaehlernerStern);
+            kantor.waffen = new List<waffe>() { };
+            kantor.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.DornsPfeil));
+
+            kantor.kg = 6;
+            kantor.bf = 5;
+            kantor.st = 4;
+            kantor.wid = 4;
+            kantor.ini = 5;
+            kantor.lp = 3;
+            kantor.at = 3;
+            kantor.mw = 10;
+
+            kantor.einheitentyp = Einheitstyp.Infanterie;
 
 
             subEinheiten = new List<subEinheit>() { };
-            subEinheiten.Add(cassius);
+            subEinheiten.Add(kantor);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2452,13 +2508,23 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var lys = new subEinheit() { };
             lys.name = alleSubeinheitenNamen.CaptainLysander;
@@ -2481,7 +2547,10 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(lys);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2516,10 +2585,23 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var shrike = new subEinheit() { };
             shrike.name = alleSubeinheitenNamen.CaptainShrike;
@@ -2544,16 +2626,18 @@ namespace WarhammerGUI
 
             shrike.einheitentyp = Einheitstyp.Sprungtruppen;
 
-
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(shrike);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
     }
 
-    public class vukan : Einheit
+    public class vulkan : Einheit
     {
         public override void createUnitBase()
         {
@@ -2581,10 +2665,23 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var vulkan = new subEinheit() { };
             vulkan.name = alleSubeinheitenNamen.VulkanHestan;
@@ -2615,7 +2712,10 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(vulkan);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -2650,10 +2750,31 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.SpaceMarineBike, kosten = +45} );
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            base.updateChoiceDependencies();
+        }
+
+        public override void evaluateChoices()
+        {
+            base.evaluateChoices();
 
             var khan = new subEinheit() { };
             khan.name = alleSubeinheitenNamen.KorsarroKhan;
@@ -2663,32 +2784,6 @@ namespace WarhammerGUI
             khan.ausruestung.Add(alleAusruestung.Fragmentgranaten);
             khan.ausruestung.Add(alleAusruestung.Sprenggranaten);
             khan.ausruestung.Add(alleAusruestung.StaehlernerStern);
-
-
-            var listeSubeinheit = new List<pulldownAuswahl>(){};
-            listeSubeinheit.Add(new pulldownAuswahl(){auswahl = alleSubeinheitenNamen.SpaceMarineBike, kosten = +45});
-            AuswahlMAusN wahlAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", listeSubeinheit);
-            if (!wahlAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            // Ggfs. müssen wir noch ein Bike dazu nehmen!
-            var wahlVektor = wahlAusruestung.wahlIndexVektor;
-            if (wahlVektor.Count != 0)
-            {
-                khan.ausruestung.Add(alleAusruestung.SpaceMarineBike);
-                khan.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
-                einheitKostenGesamt = einheitKostenGesamt + listeSubeinheit[0].kosten;
-
-                khan.wid = 5;
-                khan.einheitentyp = Einheitstyp.Bike;
-            }
-            else
-            {
-                khan.einheitentyp = Einheitstyp.Infanterie;
-                khan.wid = 4;
-            }
 
             khan.waffen = new List<waffe>() { };
             khan.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Boltpistole));
@@ -2701,11 +2796,27 @@ namespace WarhammerGUI
             khan.ini = 5;
             khan.at = 3;
             khan.mw = 10;
+            khan.wid = 4;
+            khan.einheitentyp = Einheitstyp.Infanterie;
 
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, khan);
+            // Wenn wir uns hier für ein Bike entschieden haben, müssen wir an den Waffen etwas ändern:
+            khan.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
+
+            var meineAuswahl = (ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01);
+
+            if (meineAuswahl.AuswahlOptionen[0].IstGewaehlt)
+            {
+                khan.bikeWid = 5;
+                khan.einheitentyp = Einheitstyp.Bike;
+            }
            
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(khan);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }

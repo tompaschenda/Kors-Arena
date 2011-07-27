@@ -471,6 +471,7 @@ namespace WarhammerGUI
             front = -1;
             seit = -1;
             heck = -1;
+            bikeWid = -1;
             transportkapazitaet = 0;
             einheitentyp = Einheitstyp.undefined;
             psikraefte = new List<Psikraefte>() { };
@@ -529,6 +530,7 @@ namespace WarhammerGUI
         public int lp;
         public int at;
         public int mw;
+        public int bikeWid; // Eventuell gibt es durch ein Fahrzeug einen höheren Widerstand!
 
         /// <summary>
         /// Für den Fall, dass es sich um ein Fahrzeug handelt:

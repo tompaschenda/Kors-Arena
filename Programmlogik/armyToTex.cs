@@ -603,10 +603,22 @@ namespace WarhammerGUI
                 if ((aktSubUnit.ruestung.name != alleRuestungen.keine) && (aktSubUnit.ruestung.rettungswurf != 99) && aktSubUnit.ruestung.rettungswurf >= 2)
                     ret = aktSubUnit.ruestung.rettungswurf.ToString();
 
+                // Beim Widerstand sieht es ähnlich aus. Es kann sein, dass die Subeinheit in einem Fahrzeug sitzt,
+                // das ihr einen erhöhten Widerstand verleiht. In diesem Fall schreiben wir den Widerstand anders.
+                string wid = aktSubUnit.wid.ToString();
+                if (aktSubUnit.bikeWid != -1)
+                    wid = wid + " (" + aktSubUnit.bikeWid.ToString() + ")";
+
+                // Es kann sein, dass eine Einheit keine Nahkampfattacken hat "0" oder dass sie eine variable Anzahl an AT hat.
+                // in diesem Fall müssen wir spezielle Abfragen durchführen.
+                string at = aktSubUnit.at.ToString();
+                if (aktSubUnit.at < 1)
+                    at = "-";
+
                 // Und los geht's:
                 entriesString += EnumExtensions.getEnumDescription(typeof(alleSubeinheitenNamen), aktSubUnit.name) + " (" + anzahlVorkommnisse.ToString() +"x)" + " & " ;
-                entriesString += aktSubUnit.kg + " & " + aktSubUnit.bf + " & " + aktSubUnit.st + " & " + aktSubUnit.wid + " & " + aktSubUnit.lp + " & ";
-                entriesString += aktSubUnit.ini + " & " + aktSubUnit.at + " & " + aktSubUnit.mw + " & " + rs + " & " + ret + "\\\\\\hline\n";
+                entriesString += aktSubUnit.kg + " & " + aktSubUnit.bf + " & " + aktSubUnit.st + " & " + wid + " & " + aktSubUnit.lp + " & ";
+                entriesString += aktSubUnit.ini + " & " + at + " & " + aktSubUnit.mw + " & " + rs + " & " + ret + "\\\\\\hline\n";
             }
 
             // Und wir müssen die Tabelle noch beenden!
