@@ -269,9 +269,9 @@ namespace WarhammerGUI
         public virtual void updateChoiceDependencies() { }
 
         /// <summary>
-        /// Führt die ausgewählten Auswahlen durch.
+        /// Legt die Subeinheiten an und führt die ausgewählten Auswahlen durch.
         /// </summary>
-        public virtual void evaluateChoices() 
+        public virtual void createSubunitsAndEvalChoices() 
         {
             einheitKostenGesamt = basispunkteKosten;
         }

@@ -774,9 +774,9 @@ namespace WarhammerGUI
             }*/
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {            
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             einheitKostenGesamt = basispunkteKosten;
 
@@ -964,9 +964,9 @@ namespace WarhammerGUI
             wahlKettenfaust.MaximaleAnzahl = anzahlTermies-1;
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1085,9 +1085,9 @@ namespace WarhammerGUI
         }
 
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1202,9 +1202,9 @@ namespace WarhammerGUI
         {
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1292,9 +1292,9 @@ namespace WarhammerGUI
         {
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             einheitKostenGesamt = basispunkteKosten;
 
@@ -1386,9 +1386,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var kapsel = ultraMarineHelperClass.createLandungskapsel();
             ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, kapsel);
@@ -1461,9 +1461,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
             var crusader = ultraMarineHelperClass.createLandRaiderCrusader();
 
             ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, crusader);
@@ -1537,9 +1537,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
             var raider = ultraMarineHelperClass.createLandraider();
 
             ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, raider);
@@ -1678,9 +1678,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
             var redeemer = ultraMarineHelperClass.createLandRaiderRedeemer();
 
             ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, redeemer);
@@ -1752,9 +1752,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var myWhirlwind = new subEinheit() { };
             myWhirlwind.name = alleSubeinheitenNamen.Whirlwind;
@@ -1847,9 +1847,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var myVindi = new subEinheit() { };
             myVindi.name = alleSubeinheitenNamen.Vindicator;
@@ -1926,9 +1926,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
             einheitKostenGesamt = basispunkteKosten;
 
             var sarge = new subEinheit() { };
@@ -2006,9 +2006,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var sarge = new subEinheit() { };
             sarge.name = alleSubeinheitenNamen.SergeantTelion;
@@ -2097,9 +2097,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var calgar = new subEinheit() { };
             calgar.name = alleSubeinheitenNamen.MarneusCalgar;
@@ -2184,9 +2184,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var cap = new subEinheit() { };
             cap.name = alleSubeinheitenNamen.CaptainCatoSicarius;
@@ -2266,9 +2266,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var tigurius = new subEinheit() { };
             tigurius.name = alleSubeinheitenNamen.VarroTigurius;
@@ -2357,9 +2357,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var cassius = new subEinheit() { };
             cassius.name = alleSubeinheitenNamen.OrtanCassius;
@@ -2440,9 +2440,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var kantor = new subEinheit() { };
             kantor.name = alleSubeinheitenNamen.PedroKantor;
@@ -2522,9 +2522,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var lys = new subEinheit() { };
             lys.name = alleSubeinheitenNamen.CaptainLysander;
@@ -2599,9 +2599,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var shrike = new subEinheit() { };
             shrike.name = alleSubeinheitenNamen.CaptainShrike;
@@ -2679,9 +2679,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var vulkan = new subEinheit() { };
             vulkan.name = alleSubeinheitenNamen.VulkanHestan;
@@ -2772,9 +2772,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var khan = new subEinheit() { };
             khan.name = alleSubeinheitenNamen.KorsarroKhan;
@@ -2864,9 +2864,9 @@ namespace WarhammerGUI
             base.updateChoiceDependencies();
         }
 
-        public override void evaluateChoices()
+        public override void createSubunitsAndEvalChoices()
         {
-            base.evaluateChoices();
+            base.createSubunitsAndEvalChoices();
 
             var techmarine = new subEinheit() { };
             techmarine.name = alleSubeinheitenNamen.Techmarine;
