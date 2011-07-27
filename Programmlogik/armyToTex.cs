@@ -615,10 +615,36 @@ namespace WarhammerGUI
                 if (aktSubUnit.at < 1)
                     at = "-";
 
+                // Falls kg, bf, st, wid, lp, ini oder mw kleiner als 1 sind, setzen wir sie auf "-":
+                string kg = aktSubUnit.kg.ToString();
+                if (aktSubUnit.kg < 1)
+                    kg = "-";
+
+                string bf = aktSubUnit.bf.ToString();
+                if (aktSubUnit.bf < 1)
+                    bf = "-";
+
+                string st = aktSubUnit.st.ToString();
+                if (aktSubUnit.st < 1)
+                    st = "-";
+
+                string lp = aktSubUnit.lp.ToString();
+                if (aktSubUnit.lp < 1)
+                    lp = "-";
+
+                string ini = aktSubUnit.ini.ToString();
+                if (aktSubUnit.ini < 1)
+                    ini = "-";
+
+                string mw = aktSubUnit.mw.ToString();
+                if (aktSubUnit.mw < 1)
+                    mw = "-";
+
+
                 // Und los geht's:
                 entriesString += EnumExtensions.getEnumDescription(typeof(alleSubeinheitenNamen), aktSubUnit.name) + " (" + anzahlVorkommnisse.ToString() +"x)" + " & " ;
-                entriesString += aktSubUnit.kg + " & " + aktSubUnit.bf + " & " + aktSubUnit.st + " & " + wid + " & " + aktSubUnit.lp + " & ";
-                entriesString += aktSubUnit.ini + " & " + at + " & " + aktSubUnit.mw + " & " + rs + " & " + ret + "\\\\\\hline\n";
+                entriesString += kg + " & " + bf + " & " + st + " & " + wid + " & " + lp + " & ";
+                entriesString += ini + " & " + at + " & " + mw + " & " + rs + " & " + ret + "\\\\\\hline\n";
             }
 
             // Und wir müssen die Tabelle noch beenden!
