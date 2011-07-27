@@ -55,6 +55,8 @@ namespace WarhammerGUI
         Waffe04,
         [Description("Waffenwahl05")]
         Waffe05,
+        [Description("Waffenwahl06")]
+        Waffe06,
 
         [Description("Rüstungswahl01")]
         Ruest01,
