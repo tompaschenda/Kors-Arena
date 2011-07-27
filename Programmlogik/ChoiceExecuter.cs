@@ -92,6 +92,33 @@ namespace WarhammerGUI
         }
 
 
+
+        /// <summary>
+        /// Führt eine exklusive Ausrüstungs-Auswahl durch!
+        /// </summary>
+        /// <param name="auswahl"></param>
+        /// <param name="dieEinheit"></param>
+        /// <param name="dieSubEinheit"></param>
+        public static void execChoice(exklusiveAusruestungsAuswahl auswahl, Einheit dieEinheit, subEinheit dieSubEinheit)
+        {
+            // Wenn die aktuelle Auswahl gar nicht aktiv ist, machen wir natürlich nichts:
+            if (!auswahl.IsActive)
+                return;
+
+            // Zunächst einmal errechnen wir die neuen Kosten und tragen sie in der Einheit ein:
+            int neueKosten = auswahl.getChoiceCost();
+
+            dieEinheit.einheitKostenGesamt = dieEinheit.einheitKostenGesamt + neueKosten;
+
+            alleAusruestung gewaehlteAusruestung = auswahl.getSelectedAusruestung();
+            if (gewaehlteAusruestung == alleAusruestung.keine || gewaehlteAusruestung == alleAusruestung.undefined)
+                return;
+
+            // Und jetzt müssen wir alle Ausrüstungsgegenstände hinzufügen:
+            dieSubEinheit.ausruestung.Add(gewaehlteAusruestung);
+        }
+
+
         /// <summary>
         /// Führt eine Auswahl eines Transportfahrzeuges durch!
         /// </summary>

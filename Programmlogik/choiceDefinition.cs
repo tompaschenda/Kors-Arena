@@ -22,6 +22,10 @@ namespace WarhammerGUI
         Transportfahrzeugwahl,
         [Description("Ausrüstungsauswahl")]
         Ausruestungsauswahl,
+        [Description("Exklusive Ausrüstungsauswahl")]
+        ExklusiveAusruestungsauswahl,
+
+
         [Description("Rüstungsauswahl")]
         Ruestungsauswahl,
         [Description("Zusätzliche Subeinheiten-Auswahl")]
@@ -537,6 +541,58 @@ namespace WarhammerGUI
                 throw new ArgumentOutOfRangeException("Falsche Auswahlart für ausruestungsAuswahl!");
         }
     }
+
+    public class exklusiveAusruestungsAuswahl : ChoiceDefinitionForSelection
+    {
+        public override object Clone()
+        {
+            var copy = base.Clone();
+            return copy;
+        }
+
+        public exklusiveAusruestungsAuswahl() : base(AuswahlTool.EinsAusN)
+        {
+            artDerAuswahl = AuswahlTyp.ExklusiveAusruestungsauswahl;
+            auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+            IsActive = true;
+            labelString = "Ausrüstung: ";
+        }
+
+        public override object getChoiceValues()
+        {
+            return getSelectedAusruestung();
+        }
+
+        public override int getChoiceCost()
+        {
+            pulldownAuswahl aktAuswahl = new pulldownAuswahl() { };
+            foreach (var i in AuswahlOptionen)
+            {
+                if (i.IstGewaehlt)
+                {
+                    aktAuswahl = i;
+                    break;
+                }
+            }
+            return aktAuswahl.kosten;
+        }
+
+        public alleAusruestung getSelectedAusruestung()
+        {
+            if (getChosenItem() != null)
+                return (alleAusruestung)getChosenItem();
+            else
+                return alleAusruestung.undefined;
+        }
+
+        public override void validate()
+        {
+            base.validate();
+            if (toolDerAuswahl != AuswahlTool.EinsAusN)
+                throw new ArgumentOutOfRangeException("Falsche Auswahlart für ausruestungsAuswahl!");
+        }
+    }
+
 
     public class ruestungsAuswahl : ChoiceDefinitionForSelection
     {

@@ -780,6 +780,8 @@ namespace Listen
     {
         [Description("undefined")]
         undefined,
+        [Description("keine")]
+        keine,
         [Description("Spezialmunition")]
         Spezialmunition,
         [Description("Höllenfeuergeschosse")]
