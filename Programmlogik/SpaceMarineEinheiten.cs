@@ -3528,9 +3528,10 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
+        // TODO MAT: Hier brauche ich noch den Quantitätsslider pro 
+        // Modell.
+        // Pro Modell (n mal) darf ich Boltpistole UND Kettenschwert ersetzen...
+
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
             int punkteKostenProVeteran = 20;
@@ -3784,104 +3785,77 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+            {
+                var waffenChoice02 = new waffenAuswahl() { };
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererFlammenwerfer, kosten = 0 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererBolter, kosten = 5 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncMaschkanone, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = 30 });
+                waffenChoice02.labelString = "Auswahl der Hauptwaffe: ";
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+                waffenChoice02.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice02);
+            }
+            {
+                var waffenChoice03 = new waffenAuswahl() { };
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.CybotNahkampfWaffe, kosten = 0 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncMaschkanone, kosten = 10 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 10 });
+                waffenChoice03.labelString = "Auswahl der Zweithandwaffe: ";
+                waffenChoice03.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe03;
+                waffenChoice03.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice03);
+            }
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 10 });
+                waffenChoice01.labelString = "Auswahl der eingebauten Waffe: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            // Die eingebaute Waffe kann ich nur dann wählen,w enn ich mich für eine Cybot-Nahkampfwaffe entschieden habe!
+            bool wurdeCybotNahkampfgewaehlt = ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03)).AuswahlOptionen[0].IstGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = wurdeCybotNahkampfgewaehlt;
+        }
+
+        public override void createSubunitsAndEvalChoices()
+        {
+            base.createSubunitsAndEvalChoices();
+
             var myCybot = ultraMarineHelperClass.createEhrwuerdigerCybot();
-         
-            // Wahl des Sturmbolters:
-            var wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0});
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 10 });
-
-            Auswahl1AusN wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-            // Wahl des Multimelters:
-            wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererFlammenwerfer, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererBolter, kosten = 5 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncMaschkanone, kosten = 10 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 10 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = 10 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = 30 });
-
-            wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-            // Wahl der Nahkampfwaffe:
-            wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.CybotNahkampfWaffe, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncMaschkanone, kosten = 10 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 10 });
-            wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-
-            // Wahl der Extra-Ausrüstung:
-            var landRaiderAusruestung = new List<pulldownAuswahl>() { };
-            landRaiderAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
-
-            AuswahlMAusN wahlLandRaiderAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", landRaiderAusruestung);
-            if (!wahlLandRaiderAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlLandRaiderAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myCybot.ausruestung.Add((alleAusruestung)landRaiderAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + landRaiderAusruestung[i].kosten * 1;
-            }
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, myCybot);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02), this, myCybot);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03), this, myCybot);
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, myCybot);
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myCybot);
+        }
 
-            var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = "kein Transportfahrzeug", kosten = 0 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
-
-            Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
-            if (!auswahlScreen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlIndex = auswahlScreen.gewaehlterIndexAusN;
-
-            // Jetzt müssen wir abhängig vom Index die richtige neue Einheit erzeugen!
-            switch (wahlIndex)
-            {
-                case 0:
-                    break;
-                case 1:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
-                    break;
-            }
-
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -3911,104 +3885,77 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+            {
+                var waffenChoice02 = new waffenAuswahl() { };
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererFlammenwerfer, kosten = 0 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererBolter, kosten = 5 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncMaschkanone, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = 30 });
+                waffenChoice02.labelString = "Auswahl der Hauptwaffe: ";
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+                waffenChoice02.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice02);
+            }
+            {
+                var waffenChoice03 = new waffenAuswahl() { };
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.CybotNahkampfWaffe, kosten = 0 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncMaschkanone, kosten = 10 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 10 });
+                waffenChoice03.labelString = "Auswahl der Zweithandwaffe: ";
+                waffenChoice03.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe03;
+                waffenChoice03.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice03);
+            }
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 10 });
+                waffenChoice01.labelString = "Auswahl der eingebauten Waffe: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            // Die eingebaute Waffe kann ich nur dann wählen,w enn ich mich für eine Cybot-Nahkampfwaffe entschieden habe!
+            bool wurdeCybotNahkampfgewaehlt = ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03)).AuswahlOptionen[0].IstGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = wurdeCybotNahkampfgewaehlt;
+        }
+
+        public override void createSubunitsAndEvalChoices()
+        {
+            base.createSubunitsAndEvalChoices();
+
             var myCybot = ultraMarineHelperClass.createCybot();
-           
-            // Wahl des Sturmbolters:
-            var wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 10 });
-
-            Auswahl1AusN wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-            // Wahl des Multimelters:
-            wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererFlammenwerfer, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncSchwererBolter, kosten = 5 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncMaschkanone, kosten = 10 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmakanone, kosten = 10 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = 10 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = 30 });
-
-            wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-            // Wahl der Nahkampfwaffe:
-            wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.CybotNahkampfWaffe, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncMaschkanone, kosten = 10 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Raketenwerfer, kosten = 10 });
-            wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-
-            // Wahl der Extra-Ausrüstung:
-            var landRaiderAusruestung = new List<pulldownAuswahl>() { };
-            landRaiderAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
-
-            AuswahlMAusN wahlLandRaiderAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", landRaiderAusruestung);
-            if (!wahlLandRaiderAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlLandRaiderAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myCybot.ausruestung.Add((alleAusruestung)landRaiderAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + landRaiderAusruestung[i].kosten * 1;
-            }
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, myCybot);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02), this, myCybot);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03), this, myCybot);
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, myCybot);
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myCybot);
+        }
 
-            var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = "kein Transportfahrzeug", kosten = 0 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
-
-            Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
-            if (!auswahlScreen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlIndex = auswahlScreen.gewaehlterIndexAusN;
-
-            // Jetzt müssen wir abhängig vom Index die richtige neue Einheit erzeugen!
-            switch (wahlIndex)
-            {
-                case 0:
-                    break;
-                case 1:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
-                    break;
-            }
-
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -4039,120 +3986,91 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var waffenChoice03 = new waffenAuswahl() { };
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.CybotNahkampfWaffe, kosten = 0 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.HurricaneBolter, kosten = 0 });
+                waffenChoice03.labelString = "Auswahl Waffenarm 1: ";
+                waffenChoice03.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe03;
+                waffenChoice03.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice03);
+            }
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 10 });
+                waffenChoice01.labelString = "Auswahl der Zusatzwaffe Waffenarm 1: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var waffenChoice04 = new waffenAuswahl() { };
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SeismischerHammer, kosten = 0 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenfaust, kosten = 0 });
+                waffenChoice04.labelString = "Auswahl Waffenarm 2: ";
+                waffenChoice04.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe04;
+                waffenChoice04.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice04);
+            }
+            {
+                var waffenChoice02 = new waffenAuswahl() { };
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Melter, kosten = 0 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 5 });
+                waffenChoice02.labelString = "Auswahl der Zusatzwaffe Waffenarm 2: ";
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+                waffenChoice02.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice02);
+            }
+            {
+                var waffenChoice05 = new optWaffenAuswahl() { };
+                waffenChoice05.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.IroncladSturmGranatwerfer, kosten = 15 });
+                waffenChoice05.labelString = "Auswahl Zusatzwaffe: ";
+                waffenChoice05.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe05;
+                auswahlen.Add(waffenChoice05);
+            }
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            // Die eingebaute Waffe kann ich nur dann wählen,w enn ich mich für eine Cybot-Nahkampfwaffe entschieden habe!
+            bool wurdeCybotNahkampfgewaehlt = ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03)).AuswahlOptionen[0].IstGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = wurdeCybotNahkampfgewaehlt;
+        }
+
+        public override void createSubunitsAndEvalChoices()
+        {
+            base.createSubunitsAndEvalChoices();
+
             var myCybot = ultraMarineHelperClass.createIronclad();
-
-            // Frage: Will ich ein Hurricano statt Cybotnahkampfwaffe und Sturmbolter?
-            var wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = "Cybotnahkampfwaffe und Sturmbolter", kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.HurricaneBolter, kosten = 0 });
-
-            Auswahl1AusN wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-            if (myIndex == 1)
-            {
-                myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.HurricaneBolter));
-            }
-            else
-            {
-                // Jetzt darf ich mir noch überlegen, den Sturmbolter zu ersetzen. Die Nahkampfwaffe gibt es immer!
-                myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.CybotNahkampfWaffe));
-
-                wahlBolter = new List<pulldownAuswahl>() { };
-                wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
-                wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 10 });
-
-                wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-                if (!wahlBolterWaffen.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-                myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-                myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-            }         
-
-            // Wahl des Multimelters:
-            wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = 5 });
-            wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-            // Wahl der Nahkampfwaffe:
-            wahlBolter = new List<pulldownAuswahl>() { };
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SeismischerHammer, kosten = 0 });
-            wahlBolter.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenfaust, kosten = 0 });
-            wahlBolterWaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", wahlBolter);
-            if (!wahlBolterWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            myIndex = wahlBolterWaffen.gewaehlterIndexAusN;
-            myCybot.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(wahlBolter[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + wahlBolter[myIndex].kosten * 1;
-
-
-            // Wahl der Extra-Ausrüstung:
-            var landRaiderAusruestung = new List<pulldownAuswahl>() { };
-            landRaiderAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            landRaiderAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-
-            AuswahlMAusN wahlLandRaiderAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", landRaiderAusruestung);
-            if (!wahlLandRaiderAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlLandRaiderAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myCybot.ausruestung.Add((alleAusruestung)landRaiderAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + landRaiderAusruestung[i].kosten * 1;
-            }
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, myCybot);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02), this, myCybot);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03), this, myCybot);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe04), this, myCybot);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe05), this, myCybot);
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, myCybot);
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myCybot);
+        }
 
-            var fahrzeugAuswahl = new List<pulldownAuswahl>() { };
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = "kein Transportfahrzeug", kosten = 0 });
-            fahrzeugAuswahl.Add(new pulldownAuswahl() { auswahl = alleEinheitenNamen.Landungskapsel, kosten = 35 });
-
-            Auswahl1AusN auswahlScreen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Trupp darf eines der folgenden Transportfahrzeuge erhalten:", fahrzeugAuswahl);
-            if (!auswahlScreen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlIndex = auswahlScreen.gewaehlterIndexAusN;
-
-            // Jetzt müssen wir abhängig vom Index die richtige neue Einheit erzeugen!
-            switch (wahlIndex)
-            {
-                case 0:
-                    break;
-                case 1:
-                    angeschlossenesFahrzeugString = (Fraktionen.SpaceMarines.ToString() + alleEinheitenNamen.Landungskapsel.ToString());
-                    break;
-            }
-
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
