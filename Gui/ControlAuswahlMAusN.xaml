@@ -36,6 +36,7 @@
         <ListBox Style="{StaticResource CheckBoxListStyleForSelection}" 
                  DisplayMemberPath="GUIText" 
                  Name="listBox1" 
-                 ItemsSource="{Binding AuswahlOptionen, Mode=OneWay}" />
+                 ItemsSource="{Binding AuswahlOptionen, Mode=OneWay}"
+                 IsEnabled="{Binding IsActive, Mode=OneWay}"/>
     </StackPanel>
 </UserControl>
