@@ -4106,9 +4106,9 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
+        // TODO: Hier muss ich ebenfalls einen neuen Auswahltyp haben für die Wahl der
+        // Waffe statt des Bolters!
+
         public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
         {
             int punkteKostenProSpaceMarine = 13;
@@ -4352,248 +4352,161 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var ruestChoice01 = new ruestungsAuswahl() { };
+                ruestChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleRuestungen.ServoRuestung, kosten = 0 });
+                ruestChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleRuestungen.MeisterhafteRuestung, kosten = 15 });
+                ruestChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleRuestungen.TerminatorRuestung, kosten = 40 });
+                ruestChoice01.labelString = "Auswahl der Rüstung: ";
+                ruestChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ruest01;
+                ruestChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(ruestChoice01);
+            }
+
+            // Waffen für den Fall, dass keine Termie-Rüstung gewählt wurde! Für linken UND rechten Arm!
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 3 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 15 });
+                waffenChoice01.labelString = "Auswahl rechter Arm: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var waffenChoice02 = new waffenAuswahl() { };
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 3 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 15 });
+                waffenChoice02.labelString = "Auswahl linker Arm: ";
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+                waffenChoice02.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice02);
+            }
+
+            // Jetzt der Fall für die Entscheidung FÜR eine Termie-Rüstung. Für linken UND rechten Arm!
+            {
+                var waffenChoice03 = new waffenAuswahl() { };
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 5 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 5 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 5 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 10 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 20 });
+
+                waffenChoice03.labelString = "Auswahl rechter Arm: ";
+                waffenChoice03.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe03;
+                waffenChoice03.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice03);
+            }
+            {
+                var waffenChoice04 = new waffenAuswahl() { };
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 0 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 5 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 10 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 15 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenfaust, kosten = 15 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 10 });
+                waffenChoice04.labelString = "Auswahl linker Arm: ";
+                waffenChoice04.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe04;
+                waffenChoice04.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice04);
+            }
+
+            // Jetzt gibt es noch die optionale Bewaffnung durch den Auxilaris:
+            {
+                var waffenChoice05 = new optWaffenAuswahl() { };
+                waffenChoice05.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.AuxilarisGranatwerfer, kosten = 15 });
+                waffenChoice05.labelString = "Zusatzwaffe: ";
+                waffenChoice05.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe05;
+                auswahlen.Add(waffenChoice05);
+            }
+
+            // Und hier noch die Auswahl der Ausrüstung:
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Digitalwaffen, kosten = 10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Hoellenfeuermunition, kosten = 10 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+            // Und die exklusiv zu wählende Ausrüstung:
+            {
+                var ausruest02 = new exklusiveAusruestungsAuswahl() { };
+                ausruest02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.keine, kosten = 0 });
+                ausruest02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.SpaceMarineBike, kosten = 35 });
+                ausruest02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sprungmodul, kosten = 25 });
+                ausruest02.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest02;
+                ausruest02.labelString = "Optionale Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest02);
+            }
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            // Abhängig von der Wahl der Rüstung schalten wir die entsprechenden Waffenauswahlen frei!
+            bool istTermieGewaehlt = ((ruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ruest01)).AuswahlOptionen[2].IstGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = !istTermieGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).IsActive = !istTermieGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03)).IsActive = istTermieGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe04)).IsActive = istTermieGewaehlt;
+            // Mobilität nur dann auswählen lassen, wenn erlaubt:
+            ((exklusiveAusruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest02)).IsActive = !istTermieGewaehlt;
+        }
+
+        public override void createSubunitsAndEvalChoices()
+        {
+            base.createSubunitsAndEvalChoices();
 
             var cap = ultraMarineHelperClass.createSpaceMarinesCaptain();
-            
-            bool hasSturmschild = false;
-            bool hasMeisterhafteRuestung = false;
 
-            // Wahl der Rüstung:
-            var auswahlFuerRuestung = new List<pulldownAuswahl>() { };
-            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.ServoRuestung, kosten = 0 });
-            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.MeisterhafteRuestung, kosten = 15 });
-            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.TerminatorRuestung, kosten = 40});
+            ChoiceExecuter.execChoice((ruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ruest01), this, cap);
 
-            cap.einheitentyp = Einheitstyp.Infanterie;
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, cap);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02), this, cap);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03), this, cap);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe04), this, cap);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe05), this, cap);
 
-            Auswahl1AusN auswahlRuestung = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Rüstungen wählen:", auswahlFuerRuestung);
-            if (!auswahlRuestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, cap);
+            ChoiceExecuter.execChoice((exklusiveAusruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest02), this, cap);
 
-            var wahlIndex = auswahlRuestung.gewaehlterIndexAusN;
-            if (wahlIndex == 0 || wahlIndex == 1)
-            {
-                // SERVO
-                if (wahlIndex == 0)
-                    cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
-                else
-                {
-                    cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
-                    hasMeisterhafteRuestung = true;
-                }
+            // Abhänig von den gewählten Auswahlen muss ich noch anpassen, ob es sich um eine Sprungruppe oder Infanterie handelt!
+            if(cap.ausruestung.Contains(alleAusruestung.Sprungmodul))
+                cap.einheitentyp = Einheitstyp.Sprungtruppen;
 
-                // Dann darf ich jetzt auch noch Sprungmodul oder Bike erhalten!
-                var auswahlFuerMobil = new List<pulldownAuswahl>() { };
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = "keine Auswahl", kosten = 0 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sprungmodul, kosten = 25 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.SpaceMarineBike, kosten = 35 });
-
-                Auswahl1AusN auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Rüstungen wählen:", auswahlFuerMobil);
-                if (!auswahlMobil.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-
-                var intIndex = auswahlMobil.gewaehlterIndexAusN;
-                switch (intIndex)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        cap.ausruestung.Add(alleAusruestung.Sprungmodul);
-                        break;
-                    case 2:
-                        cap.ausruestung.Add(alleAusruestung.SpaceMarineBike);
-                        cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
-                        cap.einheitentyp = Einheitstyp.Bike;
-                        break;
-                }
-
-                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
-
-
-                // Normale Waffen ersetzen:
-                auswahlFuerMobil = new List<pulldownAuswahl>() { };
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 3 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
-
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 15 });
-
-                auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlFuerMobil);
-                if (!auswahlMobil.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-
-                intIndex = auswahlMobil.gewaehlterIndexAusN;
-                switch (intIndex)
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 10:
-                    case 11:
-                        cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlFuerMobil[intIndex].auswahl));
-                        break;
-                    case 12:
-                        cap.ausruestung.Add(alleAusruestung.Sturmschild);
-                        hasSturmschild = true;
-                        break;
-                }
-                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
-
-
-                // Und jetzt denselben Spaß noch einmal für die andere Hand:
-                auswahlFuerMobil = new List<pulldownAuswahl>() { };
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });               
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
-
-
-                auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen für die Offhand wählen:", auswahlFuerMobil);
-                if (!auswahlMobil.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-
-                intIndex = auswahlMobil.gewaehlterIndexAusN;
-                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlFuerMobil[intIndex].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
-            }
-            else
-            {
-                // TERMIE
-                cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
-                hasMeisterhafteRuestung = true;
-                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerRuestung[wahlIndex].kosten * 1;
-
-                // Auswahl: Ich darf den Sturmbolter ersetzen!
-
-                var auswahlSturmbolterListe = new List<pulldownAuswahl>() { };
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 5 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 5 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 5 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 10 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 20 });
-
-                Auswahl1AusN auswahlSturm = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlSturmbolterListe);
-                if (!auswahlSturm.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-                var neuerIndex = auswahlSturm.gewaehlterIndexAusN;
-
-                // Auswahl nutzen und Kosten aktualisieren:
-                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSturmbolterListe[neuerIndex].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + auswahlSturmbolterListe[neuerIndex].kosten * 1;
-
-                // Und das E-Schwert!
-                auswahlSturmbolterListe = new List<pulldownAuswahl>() { };
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 0 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 5 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 10 });               
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 15 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenfaust, kosten = 15 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 10 });
-
-                auswahlSturm = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlSturmbolterListe);
-                if (!auswahlSturm.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-                neuerIndex = auswahlSturm.gewaehlterIndexAusN;
-
-                switch (neuerIndex)
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                        cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSturmbolterListe[neuerIndex].auswahl));
-                        break;
-                    case 5:
-                        cap.ausruestung.Add(alleAusruestung.Sturmschild);
-                        hasSturmschild = true;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException("Space Marine Cap OOR!");
-                }
-
-            }
-
-            // Restliche Auswahlen:
-            var pulldownCapAusruestung = new List<pulldownAuswahl>() { };
-            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
-            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Digitalwaffen, kosten = 10 });
-            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Hoellenfeuermunition, kosten = 10 });
-
-            AuswahlMAusN wahlCapAusreustung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Captain darf folgende Optionen wählen:", pulldownCapAusruestung);
-            if (!wahlCapAusreustung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlCapAusreustung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                cap.ausruestung.Add((alleAusruestung)pulldownCapAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
-            }
-
-
-            pulldownCapAusruestung = new List<pulldownAuswahl>() { };
-            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.AuxilarisGranatwerfer, kosten = 15 });
-            wahlCapAusreustung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Captain darf folgende Waffen zusätzlich wählen:", pulldownCapAusruestung);
-            if (!wahlCapAusreustung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlCapAusreustung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(pulldownCapAusruestung[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
-            }
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cap);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {           
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
@@ -4627,245 +4540,162 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        /// <summary>
-        /// Hier werden alle Spierloptionen abgehandelt
-        /// </summary>
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+
+        public override void declareChoices()
         {
-            // Update der Punktekosten:
-            einheitKostenGesamt = basispunkteKosten;
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var ruestChoice01 = new ruestungsAuswahl() { };
+                ruestChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleRuestungen.ServoRuestung, kosten = 0 });
+                ruestChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleRuestungen.MeisterhafteRuestung, kosten = 15 });
+                ruestChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleRuestungen.TerminatorRuestung, kosten = 40 });
+                ruestChoice01.labelString = "Auswahl der Rüstung: ";
+                ruestChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ruest01;
+                ruestChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(ruestChoice01);
+            }
+
+            // Waffen für den Fall, dass keine Termie-Rüstung gewählt wurde! Für linken UND rechten Arm!
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 3 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 15 });
+                waffenChoice01.labelString = "Auswahl rechter Arm: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var waffenChoice02 = new waffenAuswahl() { };
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 3 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 15 });
+                waffenChoice02.labelString = "Auswahl linker Arm: ";
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+                waffenChoice02.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice02);
+            }
+
+            // Jetzt der Fall für die Entscheidung FÜR eine Termie-Rüstung. Für linken UND rechten Arm!
+            {
+                var waffenChoice03 = new waffenAuswahl() { };
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 5 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 5 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 5 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 10 });
+                waffenChoice03.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 20 });
+
+                waffenChoice03.labelString = "Auswahl rechter Arm: ";
+                waffenChoice03.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe03;
+                waffenChoice03.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice03);
+            }
+            {
+                var waffenChoice04 = new waffenAuswahl() { };
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 0 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 5 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 10 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 15 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenfaust, kosten = 15 });
+                waffenChoice04.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 10 });
+                waffenChoice04.labelString = "Auswahl linker Arm: ";
+                waffenChoice04.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe04;
+                waffenChoice04.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice04);
+            }
+
+            // Jetzt gibt es noch die optionale Bewaffnung durch den Auxilaris:
+            {
+                var waffenChoice05 = new optWaffenAuswahl() { };
+                waffenChoice05.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.AuxilarisGranatwerfer, kosten = 15 });
+                waffenChoice05.labelString = "Zusatzwaffe: ";
+                waffenChoice05.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe05;
+                auswahlen.Add(waffenChoice05);
+            }
+
+            // Und hier noch die Auswahl der Ausrüstung:
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Digitalwaffen, kosten = 10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Hoellenfeuermunition, kosten = 10 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+            // Und die exklusiv zu wählende Ausrüstung:
+            {
+                var ausruest02 = new exklusiveAusruestungsAuswahl() { };
+                ausruest02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.keine, kosten = 0 });
+                ausruest02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.SpaceMarineBike, kosten = 35 });
+                ausruest02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sprungmodul, kosten = 25 });
+                ausruest02.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest02;
+                ausruest02.labelString = "Optionale Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest02);
+            }
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+            // Abhängig von der Wahl der Rüstung schalten wir die entsprechenden Waffenauswahlen frei!
+            bool istTermieGewaehlt = ((ruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ruest01)).AuswahlOptionen[2].IstGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01)).IsActive = !istTermieGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02)).IsActive = !istTermieGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03)).IsActive = istTermieGewaehlt;
+            ((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe04)).IsActive = istTermieGewaehlt;
+            // Mobilität nur dann auswählen lassen, wenn erlaubt:
+            ((exklusiveAusruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest02)).IsActive = !istTermieGewaehlt;
+        }
+
+        public override void createSubunitsAndEvalChoices()
+        {
+            base.createSubunitsAndEvalChoices();
 
             var cap = ultraMarineHelperClass.createSpaceMarineOrdensmeister();
-           
-            bool hasSturmschild = false;
-            bool hasMeisterhafteRuestung = false;
 
-            // Wahl der Rüstung:
-            var auswahlFuerRuestung = new List<pulldownAuswahl>() { };
-            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.ServoRuestung, kosten = 0 });
-            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.MeisterhafteRuestung, kosten = 15 });
-            auswahlFuerRuestung.Add(new pulldownAuswahl() { auswahl = alleRuestungen.TerminatorRuestung, kosten = 40 });
+            ChoiceExecuter.execChoice((ruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ruest01), this, cap);
 
-            Auswahl1AusN auswahlRuestung = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Rüstungen wählen:", auswahlFuerRuestung);
-            if (!auswahlRuestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, cap);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02), this, cap);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe03), this, cap);
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe04), this, cap);
+            ChoiceExecuter.execChoice((optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe05), this, cap);
 
-            var wahlIndex = auswahlRuestung.gewaehlterIndexAusN;
-            if (wahlIndex == 0 || wahlIndex == 1)
-            {
-                // SERVO
-                if (wahlIndex == 0)
-                    cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.ServoRuestung);
-                else
-                {
-                    cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
-                    hasMeisterhafteRuestung = true;
-                }
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, cap);
+            ChoiceExecuter.execChoice((exklusiveAusruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest02), this, cap);
 
-                // Dann darf ich jetzt auch noch Sprungmodul oder Bike erhalten!
-                var auswahlFuerMobil = new List<pulldownAuswahl>() { };
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = "keine Auswahl", kosten = 0 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sprungmodul, kosten = 25 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.SpaceMarineBike, kosten = 35 });
-
-                Auswahl1AusN auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Rüstungen wählen:", auswahlFuerMobil);
-                if (!auswahlMobil.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-
-                var intIndex = auswahlMobil.gewaehlterIndexAusN;
-                switch (intIndex)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        cap.ausruestung.Add(alleAusruestung.Sprungmodul);
-                        break;
-                    case 2:
-                        cap.ausruestung.Add(alleAusruestung.SpaceMarineBike);
-                        cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncBolter));
-                        cap.einheitentyp = Einheitstyp.Bike;
-                        break;
-                }
-
-                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
-
-
-                // Normale Waffen ersetzen:
-                auswahlFuerMobil = new List<pulldownAuswahl>() { };
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Bolter, kosten = 0 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 3 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 10 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 10 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 10 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
-
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 15 });
-
-                auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlFuerMobil);
-                if (!auswahlMobil.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-
-                intIndex = auswahlMobil.gewaehlterIndexAusN;
-                switch (intIndex)
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 10:
-                    case 11:
-                        cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlFuerMobil[intIndex].auswahl));
-                        break;
-                    case 12:
-                        cap.ausruestung.Add(alleAusruestung.Sturmschild);
-                        hasSturmschild = true;
-                        break;
-                }
-                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
-
-
-                // Und jetzt denselben Spaß noch einmal für die andere Hand:
-                auswahlFuerMobil = new List<pulldownAuswahl>() { };
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Boltpistole, kosten = 0 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Plasmapistole, kosten = 15 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 25 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Ehrenklinge, kosten = 30 });
-                auswahlFuerMobil.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 30 });
-
-
-                auswahlMobil = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen für die Offhand wählen:", auswahlFuerMobil);
-                if (!auswahlMobil.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-
-                intIndex = auswahlMobil.gewaehlterIndexAusN;
-                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlFuerMobil[intIndex].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerMobil[intIndex].kosten * 1;
-            }
-            else
-            {
-                // TERMIE
-                cap.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
-                hasMeisterhafteRuestung = true;
-                einheitKostenGesamt = einheitKostenGesamt + auswahlFuerRuestung[wahlIndex].kosten * 1;
-
-                // Auswahl: Ich darf den Sturmbolter ersetzen!
-
-                var auswahlSturmbolterListe = new List<pulldownAuswahl>() { };
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 0 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiFlammenwerfer, kosten = 5 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiMelter, kosten = 5 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.KombiPlasmawerfer, kosten = 5 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 10 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 20 });
-
-                Auswahl1AusN auswahlSturm = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlSturmbolterListe);
-                if (!auswahlSturm.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-                var neuerIndex = auswahlSturm.gewaehlterIndexAusN;
-
-                // Auswahl nutzen und Kosten aktualisieren:
-                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSturmbolterListe[neuerIndex].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + auswahlSturmbolterListe[neuerIndex].kosten * 1;
-
-                // Und das E-Schwert!
-                auswahlSturmbolterListe = new List<pulldownAuswahl>() { };
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieschwert, kosten = 0 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energieklaue, kosten = 5 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiefaust, kosten = 10 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Energiehammer, kosten = 15 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Kettenfaust, kosten = 15 });
-                auswahlSturmbolterListe.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Sturmschild, kosten = 10 });
-
-                auswahlSturm = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Muss eine der folgenden Waffen wählen:", auswahlSturmbolterListe);
-                if (!auswahlSturm.allesOkay)
-                {
-                    erschaffungOkay = false;
-                    return;
-                }
-                neuerIndex = auswahlSturm.gewaehlterIndexAusN;
-
-                switch (neuerIndex)
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                        cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlSturmbolterListe[neuerIndex].auswahl));
-                        break;
-                    case 5:
-                        cap.ausruestung.Add(alleAusruestung.Sturmschild);
-                        hasSturmschild = true;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException("Space Marine Cap OOR!");
-                }
-            }
-
-            // Restliche Auswahlen:
-            var pulldownCapAusruestung = new List<pulldownAuswahl>() { };
-            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Melterbomben, kosten = 5 });
-            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Digitalwaffen, kosten = 10 });
-            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Hoellenfeuermunition, kosten = 10 });
-
-            AuswahlMAusN wahlCapAusreustung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Captain darf folgende Optionen wählen:", pulldownCapAusruestung);
-            if (!wahlCapAusreustung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlCapAusreustung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                cap.ausruestung.Add((alleAusruestung)pulldownCapAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
-            }
-
-            pulldownCapAusruestung = new List<pulldownAuswahl>() { };
-            pulldownCapAusruestung.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.AuxilarisGranatwerfer, kosten = 15 });
-            wahlCapAusreustung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Der Space Marine Captain darf folgende Waffen zusätzlich wählen:", pulldownCapAusruestung);
-            if (!wahlCapAusreustung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlCapAusreustung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(pulldownCapAusruestung[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
-            }
+            // Abhänig von den gewählten Auswahlen muss ich noch anpassen, ob es sich um eine Sprungruppe oder Infanterie handelt!
+            if (cap.ausruestung.Contains(alleAusruestung.Sprungmodul))
+                cap.einheitentyp = Einheitstyp.Sprungtruppen;
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cap);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
