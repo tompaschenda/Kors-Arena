@@ -46,7 +46,6 @@ namespace WarhammerGUI
 
 
             // Hier tragen wir nun nach einander alle Einheiten einer Fraktion ein!
-            // MAT TODO: Wenn es mehrere Fraktionen gibt, muss ich die natürlich hier eintragen! ;-)
             var spaceMarineallUnits = new SpaceMarineEinheitenListe();
             m_globalUnitList.AddRange(spaceMarineallUnits.gibMirAlleSpaceMarineEinheiten());
 

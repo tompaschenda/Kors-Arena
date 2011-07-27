@@ -375,22 +375,22 @@ namespace WarhammerGUI
             return anzahl;
         }
 
-        public int getNumberOfEquipInSubunits(alleSubeinheitenNamen nameSubEinhiet, alleAusruestung nameAusruestung)
+        public int getNumberOfEquipInSubunits(alleSubeinheitenNamen nameSubEinheit, alleAusruestung nameAusruestung)
         {
             int anzahl = 0;
             for (int i = 0; i < this.subEinheiten.Count; ++i)
                 for (int j = 0; j < this.subEinheiten[i].ausruestung.Count; ++j)
-                    if (this.subEinheiten[i].ausruestung[j] == nameAusruestung && this.subEinheiten[i].name == nameSubEinhiet)
+                    if (this.subEinheiten[i].ausruestung[j] == nameAusruestung && this.subEinheiten[i].name == nameSubEinheit)
                         anzahl = anzahl + 1;
                 
             return anzahl;
         }
 
-        public int getNumberOfArmorInSubunits(alleSubeinheitenNamen nameSubEinhiet, alleRuestungen nameRuestung)
+        public int getNumberOfArmorInSubunits(alleSubeinheitenNamen nameSubEinheit, alleRuestungen nameRuestung)
         {
             int anzahl = 0;
             for (int i = 0; i < this.subEinheiten.Count; ++i)
-                   if (this.subEinheiten[i].ruestung.name == nameRuestung && this.subEinheiten[i].name == nameSubEinhiet)
+                   if (this.subEinheiten[i].ruestung.name == nameRuestung && this.subEinheiten[i].name == nameSubEinheit)
                         anzahl = anzahl + 1;
 
             return anzahl;

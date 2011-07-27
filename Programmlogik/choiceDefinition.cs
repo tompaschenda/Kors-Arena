@@ -428,7 +428,7 @@ namespace WarhammerGUI
 
 
 
-
+    // TODO: Hierfür ein vernünftiges Konzept überlegen!
     public class transportfahrzeugWahl : ChoiceDefinitionForSelection
     {
         public override object Clone()
@@ -445,8 +445,6 @@ namespace WarhammerGUI
 
         public override int getChoiceCost()
         {
-            // Mat: TODO! Wie komme ich an die Kosten für die Auswahl heran?
-            // Sie ist eigentlich im Pulldown-Menü als "kosten" hinterlegt.
             Debug.Assert(false);
             return -1;
         }
