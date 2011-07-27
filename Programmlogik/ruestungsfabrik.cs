@@ -64,6 +64,7 @@ namespace WarhammerGUI
             alleExistierendenRuestungen.Add(createMeisterhafteRuestung());
             alleExistierendenRuestungen.Add(createTerminatorruestung());
             alleExistierendenRuestungen.Add(createAntilochus());
+            alleExistierendenRuestungen.Add(createKeineRuestung());
         }
 
         private Ruestung createServoruestung()
@@ -71,7 +72,7 @@ namespace WarhammerGUI
             var ruest = new Ruestung(){};
             ruest.name = alleRuestungen.ServoRuestung;
             ruest.ruestungswert = 3;
-            ruest.rettungswurf = -1;
+            ruest.rettungswurf = 99;
             return ruest;
         }
 
@@ -80,7 +81,7 @@ namespace WarhammerGUI
             var ruest = new Ruestung() { };
             ruest.name = alleRuestungen.Scoutruestung;
             ruest.ruestungswert = 4;
-            ruest.rettungswurf = -1;
+            ruest.rettungswurf = 99;
             return ruest;
         }
 
@@ -89,7 +90,7 @@ namespace WarhammerGUI
             var ruest = new Ruestung() { };
             ruest.name = alleRuestungen.MeisterhafteRuestung;
             ruest.ruestungswert = 2;
-            ruest.rettungswurf = -1;
+            ruest.rettungswurf = 99;
             return ruest;
         }
 
@@ -112,6 +113,15 @@ namespace WarhammerGUI
             return ruest;
         }
 
+        private Ruestung createKeineRuestung()
+        {
+            var ruest = new Ruestung() { };
+            ruest.name = alleRuestungen.keine;
+            ruest.ruestungswert = 99;
+            ruest.rettungswurf = 99;
+            return ruest;
+        }
+
     }
 
     /// <summary>
@@ -120,7 +130,9 @@ namespace WarhammerGUI
     public class Ruestung
     {
         public Ruestung()
-        { 
+        {
+            ruestungswert = 99;
+            rettungswurf = 99;
             ausruestung = new List<alleAusruestung>(){};
         }
 

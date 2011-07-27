@@ -239,8 +239,6 @@ namespace WarhammerGUI
             spaceMarine.ini = 4;
             spaceMarine.at = 1;
             spaceMarine.mw = 8;
-            spaceMarine.rw = 3;
-            spaceMarine.ret = 0;
 
             spaceMarine.einheitentyp = Einheitstyp.Infanterie;
 
@@ -272,8 +270,6 @@ namespace WarhammerGUI
             spaceMarineSergeant.ini = 4;
             spaceMarineSergeant.at = 2;
             spaceMarineSergeant.mw = 9;
-            spaceMarineSergeant.rw = 3;
-            spaceMarineSergeant.ret = 0;
             spaceMarineSergeant.einheitentyp = Einheitstyp.Infanterie;
 
             return spaceMarineSergeant;
@@ -309,8 +305,6 @@ namespace WarhammerGUI
             terminator.lp = 1;
             terminator.at = 2;
             terminator.mw = 9;
-            terminator.rw = 2;
-            terminator.ret = 5;
 
             terminator.einheitentyp = Einheitstyp.Infanterie;
 
@@ -358,7 +352,6 @@ namespace WarhammerGUI
             var gardist = createSpaceMarine();
             gardist.name = alleSubeinheitenNamen.Ehrengardist;
             gardist.mw = 10;
-            gardist.rw = 2;
             gardist.at = 2;
             gardist.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.MeisterhafteRuestung);
             gardist.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Energieschwert));
@@ -526,7 +519,6 @@ namespace WarhammerGUI
             trike.ini = 4;
             trike.at = 2;
             trike.mw = 8;
-            trike.rw = 3;
 
             return trike;
         }
@@ -555,7 +547,6 @@ namespace WarhammerGUI
             bike.ini = 4;
             bike.at = 1;
             bike.mw = 8;
-            bike.rw = 3;
 
             return bike;
         }
@@ -585,8 +576,6 @@ namespace WarhammerGUI
             scoutBiker.ini = 4;
             scoutBiker.at = 1;
             scoutBiker.mw = 8;
-            scoutBiker.rw = 4;
-            scoutBiker.ret = 0;
 
             scoutBiker.einheitentyp = Einheitstyp.Bike;
 
@@ -1956,8 +1945,6 @@ namespace WarhammerGUI
             sarge.lp = 1;
             sarge.at = 2;
             sarge.mw = 9;
-            sarge.rw = 3;
-            sarge.ret = 0;
 
             sarge.einheitentyp = Einheitstyp.Infanterie;
 
@@ -2037,8 +2024,6 @@ namespace WarhammerGUI
             sarge.lp = 1;
             sarge.at = 2;
             sarge.mw = 9;
-            sarge.rw = 4;
-            sarge.ret = 0;
 
             sarge.einheitentyp = Einheitstyp.Infanterie;
 
@@ -2133,8 +2118,6 @@ namespace WarhammerGUI
             calgar.ini = 5;
             calgar.at = 4;
             calgar.mw = 10;
-            calgar.rw = 3;
-            calgar.ret = 4;
             calgar.einheitentyp = Einheitstyp.Infanterie;
 
             subEinheiten = new List<subEinheit>() { };
@@ -2210,8 +2193,6 @@ namespace WarhammerGUI
             cap.lp = 3;
             cap.at = 3;
             cap.mw = 10;
-            cap.rw = 2;
-            cap.ret = 4;
 
             cap.einheitentyp = Einheitstyp.Infanterie;
 
@@ -2291,8 +2272,6 @@ namespace WarhammerGUI
             tigurius.lp = 2;
             tigurius.at = 2;
             tigurius.mw = 10;
-            tigurius.rw = 3;
-            tigurius.ret = 0;
 
             tigurius.einheitentyp = Einheitstyp.Infanterie;
 
@@ -2362,8 +2341,6 @@ namespace WarhammerGUI
             cassius.lp = 2;
             cassius.at = 2;
             cassius.mw = 10;
-            cassius.rw = 3;
-            cassius.ret = 4;
 
             cassius.einheitentyp = Einheitstyp.Infanterie;
 
@@ -2432,8 +2409,6 @@ namespace WarhammerGUI
             cassius.lp = 3;
             cassius.at = 3;
             cassius.mw = 10;
-            cassius.rw = 3;
-            cassius.ret = 4;
 
             cassius.einheitentyp = Einheitstyp.Infanterie;
 
@@ -2500,8 +2475,6 @@ namespace WarhammerGUI
             lys.lp = 4;
             lys.at = 3;
             lys.mw = 10;
-            lys.rw = 2;
-            lys.ret = 5;
 
             lys.einheitentyp = Einheitstyp.Infanterie;
 
@@ -2568,8 +2541,6 @@ namespace WarhammerGUI
             shrike.lp = 3;
             shrike.at = 3;
             shrike.mw = 10;
-            shrike.rw = 3;
-            shrike.ret = 4;
 
             shrike.einheitentyp = Einheitstyp.Sprungtruppen;
 
@@ -2638,8 +2609,6 @@ namespace WarhammerGUI
             vulkan.ini = 5;
             vulkan.at = 3;
             vulkan.mw = 10;
-            vulkan.rw = 2;
-            vulkan.ret = 0;
 
             vulkan.einheitentyp = Einheitstyp.Infanterie;
 
@@ -2732,8 +2701,6 @@ namespace WarhammerGUI
             khan.ini = 5;
             khan.at = 3;
             khan.mw = 10;
-            khan.rw = 3;
-            khan.ret = 4;
 
            
             subEinheiten = new List<subEinheit>() { };
@@ -2802,8 +2769,6 @@ namespace WarhammerGUI
             techmarine.ini = 4;
             techmarine.at = 1;
             techmarine.mw = 8;
-            techmarine.rw = 2;
-            techmarine.ret = 0;
             techmarine.einheitentyp = Einheitstyp.Infanterie;
 
 
@@ -2824,8 +2789,6 @@ namespace WarhammerGUI
             savle.ini = 0;
             savle.at = 0;
             savle.mw = 0;
-            savle.rw = 0;
-            savle.ret = 0;
             savle.einheitentyp = Einheitstyp.Artillerie;
             subEinheiten.Add(savle);
 
@@ -3537,9 +3500,6 @@ namespace WarhammerGUI
                 spaceMarineSergeant.ausruestung.Add((alleAusruestung)pulldownSargeAusruestung[i].auswahl);
                 einheitKostenGesamt = einheitKostenGesamt + pulldownSargeAusruestung[i].kosten * 1;
             }
-
-            if(hatParierschild)
-                spaceMarineSergeant.ret = 5;
 
 
             if (hatSprungmodule)
@@ -4760,15 +4720,6 @@ namespace WarhammerGUI
                 cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(pulldownCapAusruestung[i].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
             }
-
-            if (!hasMeisterhafteRuestung)
-                cap.rw = 3;
-            else
-                cap.rw = 2;
-            cap.ret = 4;
-            if (hasSturmschild)
-                cap.ret = 3;
-
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cap);
 
@@ -5040,14 +4991,6 @@ namespace WarhammerGUI
                 cap.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(pulldownCapAusruestung[i].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + pulldownCapAusruestung[i].kosten * 1;
             }
-
-            if (!hasMeisterhafteRuestung)
-                cap.rw = 3;
-            else
-                cap.rw = 2;
-            cap.ret = 4;
-            if (hasSturmschild)
-                cap.ret = 3;
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(cap);
@@ -6038,8 +5981,6 @@ namespace WarhammerGUI
                 servitor.ini = 3;
                 servitor.at = 8;
                 servitor.mw = 10;
-                servitor.rw = 4;
-                servitor.ret = 0;
 
                 servitor.einheitentyp = Einheitstyp.Infanterie;
 
@@ -6154,8 +6095,6 @@ namespace WarhammerGUI
             techmar.ini = 4;
             techmar.at = 1;
             techmar.mw = 8;
-            techmar.rw = 2;
-            techmar.ret = 0;
 
             subEinheiten.Add(techmar);
 
@@ -6314,9 +6253,6 @@ namespace WarhammerGUI
                 scriptor.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
 
-                scriptor.rw = 3;
-                scriptor.ret = 0;
-
                 // Wahl für Sprungmodul oder Bike!
                 var auswahlSprung = new List<pulldownAuswahl>() { };
                 auswahlSprung.Add(new pulldownAuswahl() { auswahl = "kein Upgrade", kosten = 0 });
@@ -6380,9 +6316,6 @@ namespace WarhammerGUI
                     scriptor.ausruestung.Add(alleAusruestung.Sturmschild);              
                 }
                 einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
-
-                scriptor.rw = 2;
-                scriptor.ret = 5;
             }
 
 
@@ -6476,8 +6409,6 @@ namespace WarhammerGUI
             else
             {
                 ordenspriester.ruestung = ruestungsfabrik.getInstance().gibMirFolgendeRuestung(alleRuestungen.TerminatorRuestung);
-                ordenspriester.rw = 2;
-                ordenspriester.ret = 5;
 
                 if (wahlIndex == 1)
                 {
@@ -6530,9 +6461,6 @@ namespace WarhammerGUI
                 // Auswahl nutzen und Kosten aktualisieren:
                 ordenspriester.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(auswahlKonstrukt[wahlIndex].auswahl));
                 einheitKostenGesamt = einheitKostenGesamt + auswahlKonstrukt[wahlIndex].kosten * 1;
-
-                ordenspriester.rw = 3;
-                ordenspriester.ret = 0;
 
                 // Wahl für Sprungmodul oder Bike!
                 var auswahlSprung = new List<pulldownAuswahl>() { };

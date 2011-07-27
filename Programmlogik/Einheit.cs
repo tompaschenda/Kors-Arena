@@ -320,6 +320,7 @@ namespace WarhammerGUI
             throw new ArgumentOutOfRangeException("Die angegebene Auswahl existiert nicht in der Auswahlliste der Einheit!");
         }
 
+
         /// <summary>
         /// Gibt zurück, wie häufig der vorgegebene Subeinheitenname in dieser Einheit vorhanden ist!
         /// </summary>
@@ -467,8 +468,6 @@ namespace WarhammerGUI
             lp = -1;
             at = -1;
             mw = -1;
-            rw = -1;
-            ret = -1;
             front = -1;
             seit = -1;
             heck = -1;
@@ -530,8 +529,6 @@ namespace WarhammerGUI
         public int lp;
         public int at;
         public int mw;
-        public int rw;
-        public int ret;
 
         /// <summary>
         /// Für den Fall, dass es sich um ein Fahrzeug handelt:

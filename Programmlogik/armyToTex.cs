@@ -592,10 +592,21 @@ namespace WarhammerGUI
 
                 int anzahlVorkommnisse = aktEinheit.getNumberOfSubunitsOfType(liste[i]);
 
+                // Bei dem Rettungswurf müssen wir ein wenig aufpassen!
+                // Es kann sein, dass die Subeinheit eine Ausrüstung hat, die keinen RS gibt.
+                string rs = "-";
+                if ( (aktSubUnit.ruestung.name != alleRuestungen.keine) && (aktSubUnit.ruestung.ruestungswert != 99))
+                    rs = aktSubUnit.ruestung.ruestungswert.ToString();
+
+                // Der Rettungswurf sieht ähnlich aus:
+                string ret = "-";
+                if ((aktSubUnit.ruestung.name != alleRuestungen.keine) && (aktSubUnit.ruestung.rettungswurf != 99) && aktSubUnit.ruestung.rettungswurf >= 2)
+                    ret = aktSubUnit.ruestung.rettungswurf.ToString();
+
                 // Und los geht's:
                 entriesString += EnumExtensions.getEnumDescription(typeof(alleSubeinheitenNamen), aktSubUnit.name) + " (" + anzahlVorkommnisse.ToString() +"x)" + " & " ;
                 entriesString += aktSubUnit.kg + " & " + aktSubUnit.bf + " & " + aktSubUnit.st + " & " + aktSubUnit.wid + " & " + aktSubUnit.lp + " & ";
-                entriesString += aktSubUnit.ini + " & " + aktSubUnit.at + " & " + aktSubUnit.mw + " & " + aktSubUnit.rw + " & " + aktSubUnit.ret + "\\\\\\hline\n";
+                entriesString += aktSubUnit.ini + " & " + aktSubUnit.at + " & " + aktSubUnit.mw + " & " + rs + " & " + ret + "\\\\\\hline\n";
             }
 
             // Und wir müssen die Tabelle noch beenden!
