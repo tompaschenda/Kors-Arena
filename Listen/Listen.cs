@@ -793,7 +793,7 @@ namespace Listen
         [Description("Ordensbanner")]
         Ordensbanner,
         [Description("Parierschild")]
-        Parierschield,
+        Parierschild,
         [Description("Peilsender")]
         Peilsender,
         [Description("Psimatrix")]
