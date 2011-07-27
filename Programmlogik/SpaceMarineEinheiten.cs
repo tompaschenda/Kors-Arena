@@ -3131,9 +3131,35 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = +0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = +10 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = +15 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = +35 });
+                waffenChoice01.labelString = "Auswahl der Hauptwaffe: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
+            }
+
+            Auswahlen = auswahlen;
+        }
+
+        public override void updateChoiceDependencies()
+        {
+        }
+
+        public override void createSubunitsAndEvalChoices()
+        {
+            base.createSubunitsAndEvalChoices();
+
             var storm = new subEinheit() { };
             storm.name = alleSubeinheitenNamen.LandspeederStorm;
             storm.ausruestung = new List<alleAusruestung>() { };
@@ -3145,24 +3171,7 @@ namespace WarhammerGUI
             // Die folgende Bewaffnung gibt es immer:
             storm.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.CerberusWerfer));
 
-
-            // Der Spieler darf sich zwischen einer der folgenden Auswahlen entscheiden:
-            var crusaderZusatzWaffen = new List<pulldownAuswahl>() { };
-            crusaderZusatzWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererBolter, kosten = +0 });
-            crusaderZusatzWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SchwererFlammer, kosten = +10 });
-            crusaderZusatzWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Multimelter, kosten = +15 });
-            crusaderZusatzWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmkanone, kosten = +35 });
-
-            Auswahl1AusN wahlCrusaderZusatzwaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", crusaderZusatzWaffen);
-            if (!wahlCrusaderZusatzwaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var myIndex = wahlCrusaderZusatzwaffen.gewaehlterIndexAusN;
-            storm.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(crusaderZusatzWaffen[myIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + crusaderZusatzWaffen[myIndex].kosten * 1;
-
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, storm);
 
             storm.einheitentyp = Einheitstyp.FahrzeugSAO;
 
@@ -3175,7 +3184,10 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(storm);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {                        
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
