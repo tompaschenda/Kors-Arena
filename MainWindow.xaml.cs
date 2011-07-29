@@ -17,6 +17,8 @@ using System.IO;
 using Listen;
 using System.Diagnostics;
 using Common;
+using WarhammerGUI.Infrastructure;
+using System.Configuration;
 
 namespace WarhammerGUI
 {
@@ -30,6 +32,8 @@ namespace WarhammerGUI
 
         public MainWindow()
         {
+            Settings.Test();
+            
             //this.PreviewKeyDown += new KeyEventHandler(this.frmBase_KeyDown);
             InitializeComponent();
             updateArmeeListenBox();

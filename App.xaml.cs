@@ -4,7 +4,8 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
-using System.Configuration;
+using WarhammerGUI.Infrastructure;
+using System.Diagnostics;
 
 namespace GUI
 {
@@ -15,10 +16,7 @@ namespace GUI
     {
         public App() 
         {
-            string section = "Settings";
-            System.Configuration.Configuration roamingConfig =
-       ConfigurationManager.OpenExeConfiguration(
-        ConfigurationUserLevel.PerUserRoaming);
+            
 
         }
     }
