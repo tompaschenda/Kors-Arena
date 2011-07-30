@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -85,6 +86,7 @@
     <Compile Include="Gui\AuswahlMAusN.xaml.cs">
       <DependentUpon>AuswahlMAusN.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\RecentFileList.cs" />
     <Compile Include="Gui\UnitRename.xaml.cs">
       <DependentUpon>UnitRename.xaml</DependentUpon>
     </Compile>
@@ -153,6 +155,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\ArmyBenchConfigurationSection.cs" />
+    <Compile Include="Infrastructure\MRU.cs" />
+    <Compile Include="Infrastructure\MRUCollection.cs" />
+    <Compile Include="Infrastructure\Settings.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -191,6 +197,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

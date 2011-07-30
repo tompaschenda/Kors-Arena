@@ -38,7 +38,7 @@
                 <MenuItem Header="Streitmacht Exportieren" Click="klickStreitmachtExportieren"></MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Neue Auswahlregel"></MenuItem>
-                <Separator></Separator>
+                <local:RecentFileList x:Name="RecentFileList" />
                 <MenuItem Header="Beenden" Click="klickQuitMenu"></MenuItem>
             </MenuItem>
             <MenuItem Header="Bearbeiten">
