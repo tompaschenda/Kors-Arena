@@ -75,7 +75,7 @@ namespace WarhammerGUI.Infrastructure
 
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return (element as MRU).Name;
+            return (element as MRU).Path;
         }
         #endregion
 

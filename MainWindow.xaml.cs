@@ -32,17 +32,14 @@ namespace WarhammerGUI
 
         public MainWindow()
         {
-            Settings.Test();
+            Settings.LoadSettings();
             
             //this.PreviewKeyDown += new KeyEventHandler(this.frmBase_KeyDown);
             InitializeComponent();
             updateArmeeListenBox();
 
-
-            // hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
-            //hook.RegisterHotKey(ModifierBeys.Control, Keys.C);
-            //hook.RegisterHotKey(ModifierBeys.Control, Keys.N);
-
+            //Die RecentFileList anbinden, damit beim Klick auf eine Datei auch die entsprechende Armeeliste geladen wird
+            RecentFileList.MenuClick += (s, e) => klickStreitmachtAusRecentFilesOeffnen(e.Filepath);
         }
         
         private void klickNeueStreitmacht(object sender, RoutedEventArgs e)
@@ -233,6 +230,9 @@ namespace WarhammerGUI
                 FileStream str = new FileStream(@savePath, FileMode.Create);
                 ser.Serialize(str, spielerArmeeListe.getInstance());
                 str.Close();
+
+                //Dann fügen wir die Datei der RecentFileList hinzu
+                RecentFileList.InsertFile(savePath);
             }
         }
 
@@ -328,7 +328,41 @@ namespace WarhammerGUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void klickStreitmachtlisteOeffnen(object sender, RoutedEventArgs e)
+        /// 
+        private void streitmachtlisteOeffnen(string filepath)
+        {
+            try
+            {
+                XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeListe));
+                StreamReader sr = new StreamReader(filepath);
+                var zuImportierendeListe = (spielerArmeeListe)ser.Deserialize(sr);
+                sr.Close();
+
+                // Jetzt müssen wir von Hand das Singleton aktualisieren!
+                spielerArmeeListe.getInstance().eraseMeTotally();
+                spielerArmeeListe.getInstance().armeeSammlung = zuImportierendeListe.armeeSammlung;
+
+                // Wir möchten uns außerdem merken, von WO diese Datei geladen wurde!
+                spielerArmeeListe.getInstance().saveString = filepath;
+
+                // Außerdem wollen wir, dass die Anzeige-Box des Hauptfensters aktualisiert wird!
+                updateArmeeListenBox();
+
+                // Und wir selektieren den ersten Index!
+                if (spielerArmeeListe.getInstance().armeeSammlung.Count != 0)
+                    ListBoxArmeeListe.SelectedIndex = 0;
+
+                //Dann fügen wir die Datei der RecentFileList hinzu
+                RecentFileList.InsertFile(filepath);
+            }
+            catch (Exception ex)
+            {
+                RecentFileList.RemoveFile(filepath);
+                System.Windows.MessageBox.Show("Fehler: Konnte die Armee nicht einlesen! Fehlermeldung: " + ex.Message);
+            }
+        }
+
+        private bool frageNutzerVorDateiOeffnen()
         {
             bool wirklichOeffnen = true;
             // Falls es bereits eine nicht leere Armeeliste gibt, müssen wir den User fragen, ob er
@@ -346,54 +380,37 @@ namespace WarhammerGUI
                 else
                     wirklichOeffnen = false;
             }
+            return wirklichOeffnen;
+        }
+
+        private void klickStreitmachtlisteOeffnen(object sender, RoutedEventArgs e)
+        {
+            bool wirklichOeffnen = frageNutzerVorDateiOeffnen();
 
             // Wenn der Nutzer das nicht möchte, machen wir natürlich nichts!
             if (wirklichOeffnen)
             {
                 // Okay, welche soll denn importiert werden?
                 // Lassen wir den Spieler zunächst auswählen, wo er die Armee hat:
-                Stream myStream = null;
                 System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 
                 openFileDialog1.Filter = "Armylist-Datei (*.armylist)|*.armylist";
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    try
-                    {
-                        if ((myStream = openFileDialog1.OpenFile()) != null)
-                        {
-                            using (myStream)
-                            {
-                                XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeListe));
-                                StreamReader sr = new StreamReader(myStream);
-                                var zuImportierendeListe = (spielerArmeeListe)ser.Deserialize(sr);
-                                sr.Close();
-
-                                // Jetzt müssen wir von Hand das Singleton aktualisieren!
-                                spielerArmeeListe.getInstance().eraseMeTotally();
-                                spielerArmeeListe.getInstance().saveString = myStream.ToString();
-                                spielerArmeeListe.getInstance().armeeSammlung = zuImportierendeListe.armeeSammlung;
-
-                                // Wir möchten uns außerdem merken, von WO diese Datei geladen wurde!
-                                spielerArmeeListe.getInstance().saveString = openFileDialog1.FileName;
-
-                                // Außerdem wollen wir, dass die Anzeige-Box des Hauptfensters aktualisiert wird!
-                                updateArmeeListenBox();
-
-                                // Und wir selektieren den ersten Index!
-                                if (spielerArmeeListe.getInstance().armeeSammlung.Count != 0)
-                                    ListBoxArmeeListe.SelectedIndex = 0;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Windows.MessageBox.Show("Fehler: Konnte die Armee nicht einlesen! Fehlermeldung: " + ex.Message);
-                    }
+                    streitmachtlisteOeffnen(openFileDialog1.FileName);
                 }
             }
 
             updateGUI();
+        }
+
+        private void klickStreitmachtAusRecentFilesOeffnen(string filepath)
+        {
+            bool wirklichOeffnen = frageNutzerVorDateiOeffnen();
+            if (wirklichOeffnen)
+            {
+                streitmachtlisteOeffnen(filepath);
+            }
         }
 
         /// <summary>
@@ -687,6 +704,8 @@ namespace WarhammerGUI
 
             if (result == System.Windows.Forms.DialogResult.No)
                 e.Cancel = true;
+
+            Settings.SaveSettings();
         }
 
         private void KlickInfo(object sender, RoutedEventArgs e)

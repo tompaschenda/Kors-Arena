@@ -86,6 +86,7 @@
     <Compile Include="Gui\AuswahlMAusN.xaml.cs">
       <DependentUpon>AuswahlMAusN.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\RecentFileList.cs" />
     <Compile Include="Gui\UnitRename.xaml.cs">
       <DependentUpon>UnitRename.xaml</DependentUpon>
     </Compile>

@@ -34,6 +34,15 @@ namespace WarhammerGUI.Infrastructure
         }
         #endregion
 
+        public MRU()
+        {
+        }
+
+        public MRU(string path)
+        {
+            Path = path;
+        }
+
         #region Static Fields
         private static ConfigurationProperty s_propName;
 
@@ -46,7 +55,7 @@ namespace WarhammerGUI.Infrastructure
         /// Gets the path setting.
         /// </summary>
         [ConfigurationProperty("path", IsRequired=true)]
-        public string Name
+        public string Path
         {
             get { return (string)base[s_propName]; }
             set { base[s_propName] = value; }
