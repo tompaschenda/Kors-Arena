@@ -4954,9 +4954,51 @@ namespace WarhammerGUI
             base.createUnitBase();
         }
 
-        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        public override void declareChoices()
         {
-            // Hier muss ich der Spieler nur noch überlegen, wass er für die Subeinheit an Optionen haben möchte:
+            base.declareChoices();
+
+            var auswahlen = new List<choiceDefinition>() { };
+
+            {
+                var waffenChoice01 = new waffenAuswahl() { };
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Maschinenkanone, kosten = 0 });
+                waffenChoice01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = 45 });
+                waffenChoice01.labelString = "Auswahl der Hauptwaffe: ";
+                waffenChoice01.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe01;
+                waffenChoice01.AuswahlOptionen[0].IstGewaehlt = true;
+                auswahlen.Add(waffenChoice01);
+            }
+            {
+                var waffenChoice02 = new optWaffenAuswahl() { };
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = 10 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = "Zwei schwere Bolter", kosten = 25 });
+                waffenChoice02.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = "Zwei Laserkanonen", kosten = 60 });
+                waffenChoice02.labelString = "Auswahl zusätzlicher Waffen: ";
+                waffenChoice02.auswahlIdentifier = ChoiceAuswahlIdentifier.Waffe02;
+                auswahlen.Add(waffenChoice02);
+            }
+            {
+                var ausruest01 = new ausruestungsAuswahl() { };
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
+                ausruest01.AuswahlOptionen.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
+                ausruest01.auswahlIdentifier = ChoiceAuswahlIdentifier.Ausruest01;
+                ausruest01.labelString = "Ausrüstungsauswahl: ";
+                auswahlen.Add(ausruest01);
+            }
+            Auswahlen = auswahlen;
+            wurst Abhängigkeit!
+        }
+
+        public override void updateChoiceDependencies()
+        {
+        }
+
+        public override void createSubunitsAndEvalChoices()
+        {
+            base.createSubunitsAndEvalChoices();
+
             var myPredator = new subEinheit() { };
             myPredator.name = alleSubeinheitenNamen.Predator;
             myPredator.ausruestung = new List<alleAusruestung>() { };
@@ -4964,85 +5006,30 @@ namespace WarhammerGUI
             myPredator.ausruestung.Add(alleAusruestung.Suchscheinwerfer);
 
             myPredator.waffen = new List<waffe>() { };
-            myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Maschinenkanone));
 
+            ChoiceExecuter.execChoice((waffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe01), this, myPredator);
+            ChoiceExecuter.execChoice((ausruestungsAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Ausruest01), this, myPredator);
 
-            // Ich darf die Maschinenkanone auch ersetzen durch eine andere Auswahl!
-            var predatorHauptWaffen = new List<pulldownAuswahl>() { };
-            predatorHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Maschinenkanone, kosten = 0 });
-            predatorHauptWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.SyncLaserKanone, kosten = 45 });
-
-            Auswahl1AusN wahlPredatorHauptwaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", predatorHauptWaffen);
-            if (!wahlPredatorHauptwaffen.allesOkay)
+            // Die Subwaffen müssen wir von Hand auswerten!
+            var dieWahl = (optWaffenAuswahl)getSpecificChoice(ChoiceAuswahlIdentifier.Waffe02);
+            if (dieWahl.AuswahlOptionen[0].IstGewaehlt)
             {
-                erschaffungOkay = false;
-                return;
+                myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Sturmbolter));
+                einheitKostenGesamt += 10;
             }
-            var wahlIndex = wahlPredatorHauptwaffen.gewaehlterIndexAusN;
-            myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(predatorHauptWaffen[wahlIndex].auswahl));
-            einheitKostenGesamt = einheitKostenGesamt + predatorHauptWaffen[wahlIndex].kosten * 1;
 
-            var predatorNebenWaffen = new List<pulldownAuswahl>() { };
-            predatorNebenWaffen.Add(new pulldownAuswahl() { auswahl = "Zwei Seitenkuppeln mit schwerem Bolter", kosten = +25 });
-            predatorNebenWaffen.Add(new pulldownAuswahl() { auswahl = "Zwei Seitenkuppeln mit Laserkanonen", kosten = +60 });
-            Auswahl1AusN wahlPredatorNabenwaffen = new Auswahl1AusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Eine der folgenden Waffen muss gewählt werden:", predatorNebenWaffen);
-            if (!wahlPredatorNabenwaffen.allesOkay)
+            if (dieWahl.AuswahlOptionen[1].IstGewaehlt)
             {
-                erschaffungOkay = false;
-                return;
+                myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe( alleWaffenNamen.SyncSchwererBolter));
+                myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SyncSchwererBolter));
+                einheitKostenGesamt += 25;
             }
-            wahlIndex = wahlPredatorNabenwaffen.gewaehlterIndexAusN;
-            if (wahlIndex == 0)
-            {
-                myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SchwererBolter));
-                myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.SchwererBolter));
-            }
-            else
+            if (dieWahl.AuswahlOptionen[2].IstGewaehlt)
             {
                 myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Laserkanone));
                 myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(alleWaffenNamen.Laserkanone));
+                einheitKostenGesamt += 60;
             }
-            einheitKostenGesamt = einheitKostenGesamt + predatorNebenWaffen[wahlIndex].kosten * 1;
-
-
-
-            var predatorAusruestung = new List<pulldownAuswahl>() { };
-            predatorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Bulldozerschaufel, kosten = +5 });
-            predatorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.Radarsuchkopfrakete, kosten = +10 });
-            predatorAusruestung.Add(new pulldownAuswahl() { auswahl = alleAusruestung.ZusaetzlichePanzerung, kosten = +15 });
-
-            AuswahlMAusN wahlPredatorAusruestung = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Optionen dürfen gewählt werden:", predatorAusruestung);
-            if (!wahlPredatorAusruestung.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            var wahlVektor = wahlPredatorAusruestung.wahlIndexVektor;
-            foreach (int i in wahlVektor)
-            {
-                myPredator.ausruestung.Add((alleAusruestung)predatorAusruestung[i].auswahl);
-                einheitKostenGesamt = einheitKostenGesamt + predatorAusruestung[i].kosten * 1;
-            }
-
-
-
-            var predatorWaffen = new List<pulldownAuswahl>() { };
-            predatorWaffen.Add(new pulldownAuswahl() { auswahl = alleWaffenNamen.Sturmbolter, kosten = +10 });
-
-            AuswahlMAusN wahlPredatorWaffen = new AuswahlMAusN(this, gesamtArmeePunkteKosten, einheitKostenGesamt, 1, "Die folgenden Waffen dürfen gewählt werden:", predatorWaffen);
-            if (!wahlPredatorWaffen.allesOkay)
-            {
-                erschaffungOkay = false;
-                return;
-            }
-            wahlVektor = wahlPredatorWaffen.wahlIndexVektor;
-
-            foreach (int i in wahlVektor)
-            {
-                myPredator.waffen.Add(waffenfabrik.getInstance().gibMirFolgendeWaffe(predatorWaffen[i].auswahl));
-                einheitKostenGesamt = einheitKostenGesamt + predatorWaffen[i].kosten * 1;
-            }
-
 
             myPredator.einheitentyp = Einheitstyp.FahrzeugPanzer;
 
@@ -5055,7 +5042,10 @@ namespace WarhammerGUI
 
             subEinheiten = new List<subEinheit>() { };
             subEinheiten.Add(myPredator);
+        }
 
+        public override void createUnitInteraktion(int gesamtArmeePunkteKosten)
+        {
             // Nur jetzt hat die Erschaffung wirklich funktioniert!
             erschaffungOkay = true;
         }
