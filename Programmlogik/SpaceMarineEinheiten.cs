@@ -4988,7 +4988,7 @@ namespace WarhammerGUI
                 auswahlen.Add(ausruest01);
             }
             Auswahlen = auswahlen;
-            wurst Abhängigkeit!
+            //TODO Mat: wurst Abhängigkeit!
         }
 
         public override void updateChoiceDependencies()
