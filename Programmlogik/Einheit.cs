@@ -5,14 +5,10 @@ using System.Text;
 using Listen;
 using Common;
 using System.ComponentModel;
+using WarhammerGUI.Utility;
 
 namespace WarhammerGUI
 {
-    public class foo
-    {
-
-    }
-
     /// <summary>
     /// Enthält alles, was nötig ist, um eine Einheit eindeutig zu identifizieren und einordnen zu können.
     /// Das sind:
@@ -35,7 +31,7 @@ namespace WarhammerGUI
         public EinheitenAuswahl einheitAuswahl;
     }
 
-    public abstract class Einheit : IComparable<Einheit>, INotifyPropertyChanged
+    public abstract class Einheit : ValueCompare, IComparable<Einheit>, INotifyPropertyChanged
     {
         /// <summary>
         /// Konstruktor:
@@ -456,7 +452,7 @@ namespace WarhammerGUI
     ///     Subeinheit: Space Marine
     ///     Subeinheit: Sergeant
     /// </summary>
-    public class subEinheit : ICloneable
+    public class subEinheit : ValueCompare, ICloneable
     {
         // Default-Konstruktor:
         public subEinheit() 
@@ -495,8 +491,7 @@ namespace WarhammerGUI
             {
                 copy.waffen.Add((waffe) this.waffen[i].Clone());
             }
-            copy.ruestung = new Ruestung() { };
-            copy.ruestung = this.ruestung.Clone();
+            copy.ruestung = (Ruestung) this.ruestung.Clone();
 
             copy.psikraefte = new List<Psikraefte>(this.psikraefte);
 

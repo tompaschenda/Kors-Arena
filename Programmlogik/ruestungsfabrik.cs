@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Listen;
 using Common;
+using WarhammerGUI.Utility;
 
 namespace WarhammerGUI
 {
@@ -127,7 +128,7 @@ namespace WarhammerGUI
     /// <summary>
     /// Hier wird alles nachgehalten, was mit einer Rüstung zu tun hat!
     /// </summary>
-    public class Ruestung
+    public class Ruestung : ValueCompare, ICloneable
     {
         public Ruestung()
         {
@@ -145,7 +146,7 @@ namespace WarhammerGUI
         /// </summary>
         public List<alleAusruestung> ausruestung;
 
-        public Ruestung Clone()
+        public object Clone()
         {
             var copy = (Ruestung)this.MemberwiseClone();
             copy.ausruestung = new List<alleAusruestung>() { };

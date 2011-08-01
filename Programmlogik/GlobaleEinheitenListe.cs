@@ -53,6 +53,14 @@ namespace WarhammerGUI
             einheitenKonsistenzcheck();
         }
 
+        /// <summary>
+        /// Liste aller Einheiten
+        /// </summary>
+        public List<Einheit> AlleEinheiten
+        {
+            get { return m_globalUnitList; }
+        }
+
 
         /// <summary>
         /// Nimmt aus dem globalen Baum mit allen Einheiten die gewünschte heraus und liefert sie

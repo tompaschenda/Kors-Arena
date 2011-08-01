@@ -61,17 +61,6 @@ namespace WarhammerGUI
         /// </summary>
         public List<Einheit> armeeEinheiten;
 
-        /// <summary>
-        /// Stellt fest, ob zwei Armeen den gleichen Inhalt haben
-        /// Näheres siehe ValueCompare.cs
-        /// </summary>
-        /// <returns></returns>
-        protected override bool EqualValuesImpl(Object o)
-        {
-            return EqualValuesGeneric(o);
-        }
-
-
         // Prüft, ob alle Units dieser Armee auch einen einzigartigen Namen haben!       
         public bool checkUnitNameUniqueness()
         {
@@ -131,17 +120,6 @@ namespace WarhammerGUI
             // der Armee-Sammlung
             this.armeeSammlung = new List<spielerArmeeKlasse>() { };
             this.saveString = "";
-        }
-
-        /// <summary>
-        /// Stellt fest, ob zwei Armeelisten den gleichen Inhalt haben
-        /// Näheres siehe ValueCompare.cs
-        /// </summary>
-        /// <returns></returns>
-        protected override bool EqualValuesImpl(Object o)
-        {
-            //return armeeSammlung.EqualValues(armeeSammlung);
-            return EqualValuesGeneric(o);
         }
 
         /// <summary>

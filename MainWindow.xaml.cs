@@ -19,6 +19,7 @@ using System.Diagnostics;
 using Common;
 using WarhammerGUI.Infrastructure;
 using System.Configuration;
+using WarhammerGUI.Programmlogik;
 
 namespace WarhammerGUI
 {
@@ -226,11 +227,14 @@ namespace WarhammerGUI
             {
                 // Außerdem wollen wir uns merken, wo die Armeeliste gespeichert wurde!
                 spielerArmeeListe.getInstance().saveString = savePath;
+                SerializationHelper.SaveToXmlAndIncludeTypes(spielerArmeeListe.getInstance(), savePath);
+                /*
                 XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeListe));
                 FileStream str = new FileStream(@savePath, FileMode.Create);
                 spielerArmeeListe armeeListe = spielerArmeeListe.getInstance();
                 ser.Serialize(str, armeeListe);
                 str.Close();
+                 */
 
                 //Dann fügen wir die Datei der RecentFileList hinzu
                 RecentFileList.InsertFile(savePath);
@@ -257,10 +261,12 @@ namespace WarhammerGUI
                 saveFileDialog1.ShowDialog();
                 var savePath = saveFileDialog1.FileName;
 
-                XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeKlasse));
-                FileStream str = new FileStream(@savePath, FileMode.Create);
-                ser.Serialize(str, spielerArmeeListe.getInstance().armeeSammlung[selectionIndex]);
-                str.Close();
+                SerializationHelper.SaveToXmlAndIncludeTypes(spielerArmeeListe.getInstance().armeeSammlung[selectionIndex], savePath);
+
+                //XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeKlasse));
+                //FileStream str = new FileStream(@savePath, FileMode.Create);
+                //ser.Serialize(str, spielerArmeeListe.getInstance());
+                //str.Close();
             }
         }
 
@@ -272,7 +278,6 @@ namespace WarhammerGUI
         private void klickStreitmachtImportieren(object sender, RoutedEventArgs e)
         {
             // Lassen wir den Spieler zunächst auswählen, wo er die Armee hat:
-            Stream myStream = null;
             System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 
             openFileDialog1.Filter = "Army-Datei (*.army)|*.army";
@@ -280,40 +285,30 @@ namespace WarhammerGUI
             {
                 try
                 {
-                    if ((myStream = openFileDialog1.OpenFile()) != null)
-                    {
-                        using (myStream)
+                    spielerArmeeKlasse zuImportierendeKlasse = SerializationHelper.LoadFromXmlAndIncludeTypes<spielerArmeeKlasse>(openFileDialog1.FileName);
+                    // Bevor wir die Armee intragen können, müssen wir sicherstellen, dass der Name nicht
+                    // bereits vergeben ist!
+                    var allesOkay = true;
+                    var nameDerZuImportierendenArmee = zuImportierendeKlasse.armeeName;
+                    for (int i = 0; i < spielerArmeeListe.getInstance().armeeSammlung.Count; ++i)
+                        if (spielerArmeeListe.getInstance().armeeSammlung[i].armeeName == nameDerZuImportierendenArmee)
                         {
-                            XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeKlasse));
-                            StreamReader sr = new StreamReader(myStream);
-                            spielerArmeeKlasse zuImportierendeKlasse = (spielerArmeeKlasse)ser.Deserialize(sr);
-                            sr.Close();
-                            // Bevor wir die Armee intragen können, müssen wir sicherstellen, dass der Name nicht
-                            // bereits vergeben ist!
-                            var allesOkay = true;
-                            var nameDerZuImportierendenArmee = zuImportierendeKlasse.armeeName;
-                            for (int i = 0; i < spielerArmeeListe.getInstance().armeeSammlung.Count; ++i)
-                                if (spielerArmeeListe.getInstance().armeeSammlung[i].armeeName == nameDerZuImportierendenArmee)
-                                {
-                                    System.Windows.MessageBox.Show("Es ist bereits eine Armee mit diesem Namen vorhanden!", "Kann Armee nicht importieren!", MessageBoxButton.OK, MessageBoxImage.Error);
-                                    allesOkay = false;
-                                }
-
-                            if (allesOkay)
-                            {
-                                // Jetzt trage ich die Armee auch in die Liste ein:
-                                var alteArmeeAnzahl = spielerArmeeListe.getInstance().armeeSammlung.Count;
-                                // Und natürlich schreiben wir diese auch gleich in unsere globale Armee-Liste!
-                                spielerArmeeListe.getInstance().armeeSammlung.Add(zuImportierendeKlasse);
-
-                                // Außerdem wollen wir, dass die Anzeige-Box des Hauptfensters aktualisiert wird!
-                                updateArmeeListenBox();
-
-                                // Und wir möchten gerne die neu erstelle Armee ausgewählt haben!
-                                ListBoxArmeeListe.SelectedIndex = alteArmeeAnzahl;
-                            }
-                            // Wenn der Name nicht eindeutig war, passiert nichts!
+                            System.Windows.MessageBox.Show("Es ist bereits eine Armee mit diesem Namen vorhanden!", "Kann Armee nicht importieren!", MessageBoxButton.OK, MessageBoxImage.Error);
+                            allesOkay = false;
                         }
+
+                    if (allesOkay)
+                    {
+                        // Jetzt trage ich die Armee auch in die Liste ein:
+                        var alteArmeeAnzahl = spielerArmeeListe.getInstance().armeeSammlung.Count;
+                        // Und natürlich schreiben wir diese auch gleich in unsere globale Armee-Liste!
+                        spielerArmeeListe.getInstance().armeeSammlung.Add(zuImportierendeKlasse);
+
+                        // Außerdem wollen wir, dass die Anzeige-Box des Hauptfensters aktualisiert wird!
+                        updateArmeeListenBox();
+
+                        // Und wir möchten gerne die neu erstelle Armee ausgewählt haben!
+                        ListBoxArmeeListe.SelectedIndex = alteArmeeAnzahl;
                     }
                 }
                 catch (Exception ex)
@@ -334,10 +329,7 @@ namespace WarhammerGUI
         {
             try
             {
-                XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeListe));
-                StreamReader sr = new StreamReader(filepath);
-                var zuImportierendeListe = (spielerArmeeListe)ser.Deserialize(sr);
-                sr.Close();
+                var zuImportierendeListe = SerializationHelper.LoadFromXmlAndIncludeTypes<spielerArmeeListe>(filepath);
 
                 // Jetzt müssen wir von Hand das Singleton aktualisieren!
                 spielerArmeeListe.getInstance().eraseMeTotally();

@@ -32,48 +32,7 @@ namespace WarhammerGUI.Utility
             return EqualValuesImpl(o);
         }
 
-        /// <summary>
-        /// IsSubclassOf f. Generics
-        /// http://stackoverflow.com/questions/457676/c-reflection-check-if-a-class-is-derived-from-a-generic-class
-        /// </summary>
-        private static bool IsSubclassOfRawGeneric(Type generic, Type toCheck)
-        {
-            while (toCheck != typeof(object))
-            {
-                var cur = toCheck.IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
-                if (generic == cur)
-                {
-                    return true;
-                }
-                toCheck = toCheck.BaseType;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Get all fields of a type 
-        /// http://stackoverflow.com/questions/1155529/c-gettype-getfields-problem
-        /// </summary>
-        public static IEnumerable<FieldInfo> GetAllFields(Type t)
-        {
-            if (t == null)
-                return Enumerable.Empty<FieldInfo>();
-
-            BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly;
-            return t.GetFields(flags).Union(GetAllFields(t.BaseType));
-        }
-
-        /// <summary>
-        /// Get all properties of a type 
-        /// </summary>
-        public static IEnumerable<PropertyInfo> GetAllProperties(Type t)
-        {
-            if (t == null)
-                return Enumerable.Empty<PropertyInfo>();
-
-            BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly;
-            return t.GetProperties(flags).Union(GetAllProperties(t.BaseType));
-        }
+        
 
         public static bool EqualValuesList<T>(List<T> obj, List<T> other)
         {
@@ -97,7 +56,7 @@ namespace WarhammerGUI.Utility
                 //Ein value type wird per ==/!= verglichen (int, string etc.)
                 if (!a.Equals(b)) return false;
             }
-            else if (IsSubclassOfRawGeneric(typeof(List<>), type))
+            else if (ReflectionUtils.IsSubclassOfRawGeneric(typeof(List<>), type))
             {
                 //Für Listen haben wir eine eigene Methode
                 var innerType = type.GetGenericArguments()[0];
@@ -121,18 +80,18 @@ namespace WarhammerGUI.Utility
             return true;
         }
 
-        public bool EqualValuesGeneric(Object o)
+        protected bool EqualValuesGeneric(Object o)
         {
             if (GetType() != o.GetType()) return false;
 
-            var fi = GetAllFields(this.GetType());
+            var fi = ReflectionUtils.GetAllFields(this.GetType());
             foreach (FieldInfo f in fi)
             {
                 if (!EqualValuesGenericForMember(f.FieldType, f.GetValue(this), f.GetValue(o)))
                     return false;
             }
 
-            var pi = GetAllProperties(this.GetType());
+            var pi = ReflectionUtils.GetAllProperties(this.GetType());
             foreach (PropertyInfo p in pi)
             {
                 if (!EqualValuesGenericForMember(p.PropertyType, p.GetValue(this, null), p.GetValue(o, null)))

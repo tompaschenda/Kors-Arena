@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Common;
+using WarhammerGUI.Utility;
 
 namespace WarhammerGUI
 {
@@ -10,7 +11,7 @@ namespace WarhammerGUI
     /// <summary>
     /// Eine Auswahloption für ein Pulldownmenü
     /// </summary>
-    public class pulldownAuswahl : ICloneable
+    public class pulldownAuswahl : ValueCompare, ICloneable
     {
         public pulldownAuswahl()
         {

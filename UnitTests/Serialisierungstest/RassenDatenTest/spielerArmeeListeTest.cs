@@ -4,35 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using NUnit.Framework;
-using Datenmodell;
 using System.IO;
 using WarhammerGUI;
+using WarhammerGUI.Utility;
+using WarhammerGUI.Programmlogik;
 
-namespace Serialisierungstest
+namespace ArmyBenchTest
 {
     [TestFixture]
     class spielerArmeeListeTest
     {
-        //[Test]
+        [Test]
         public void SpeichernUndLaden()
         {
-            var filename = "TestArmee.xml";
+            var filename = "TestArmeeListe.xml";
             //Create
             var armee = spielerArmeeListe.getInstance();
-            
             //Save
-            XmlSerializer serializer = new XmlSerializer(typeof(spielerArmeeListe));
-            TextWriter textWriter = new StreamWriter(filename);
-            serializer.Serialize(textWriter, armee);
-            textWriter.Close();
+            SerializationHelper.SaveToXmlAndIncludeTypes(armee, filename);
             //Load
-            XmlSerializer deserializer = new XmlSerializer(typeof(spielerArmeeListe));
-            TextReader textReader = new StreamReader(filename);
-            spielerArmeeListe armeeGeladen;
-            armeeGeladen = (spielerArmeeListe)deserializer.Deserialize(textReader);
-            textReader.Close();
+            var armeeGeladen = SerializationHelper.LoadFromXmlAndIncludeTypes<spielerArmeeListe>(filename);
             //verify
-            //Assert.AreEqual(armee, armeeGeladen);
+            Assert.IsTrue(armee.EqualValues(armeeGeladen));
         }
 
         [Test]
@@ -47,7 +40,6 @@ namespace Serialisierungstest
             var a2 = new spielerArmeeListe();
 
             Assert.IsTrue(a.EqualValues(a2));
-
             Assert.AreSame(a, aAlias);
             Assert.AreNotEqual(a, a2);
             Assert.AreNotSame(a, a2);

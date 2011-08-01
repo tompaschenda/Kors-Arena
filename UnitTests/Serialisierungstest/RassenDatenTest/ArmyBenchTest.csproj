@@ -8,11 +8,26 @@
     <ProjectGuid>{0B3D0D13-593F-4584-9DFC-5CAE0C8596D4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Project1</RootNamespace>
-    <AssemblyName>RassenDatenTest</AssemblyName>
+    <RootNamespace>ArmyBenchTest</RootNamespace>
+    <AssemblyName>ArmyBenchTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -34,19 +49,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DatenmodellTest.NUnitConsoleRunner</StartupObject>
+    <StartupObject>ArmyBenchTest.NUnitConsoleRunner</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="EinheitTest.cs" />
     <Compile Include="NUnitConsoleRunner.cs" />
     <Compile Include="spielerArmeeListeTest.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="spielerArmeeTest.cs" />
     <Compile Include="ValueCompareTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Datenmodell">
-      <HintPath>..\..\..\Datenmodell\bin\Debug\Datenmodell.dll</HintPath>
-    </Reference>
     <Reference Include="nunit-console-runner">
       <HintPath>..\..\..\..\..\..\..\..\Programme\NUnit 2.5.7\bin\net-2.0\lib\nunit-console-runner.dll</HintPath>
     </Reference>
@@ -55,10 +69,36 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Listen\Listen.csproj">
+      <Project>{5386AF15-D15A-4FAA-9561-46C460676383}</Project>
+      <Name>Listen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\WarhammerGUI.csproj">
       <Project>{3D7385F2-C1A8-455F-98A2-6B4267390F2C}</Project>
       <Name>WarhammerGUI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

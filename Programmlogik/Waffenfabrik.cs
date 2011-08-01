@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Listen;
+using WarhammerGUI.Utility;
 
 namespace WarhammerGUI
 {
@@ -1407,7 +1408,7 @@ namespace WarhammerGUI
     /// <summary>
     /// Definition einer Waffe:
     /// </summary>
-    public class waffe : ICloneable
+    public class waffe : ValueCompare, ICloneable
     {
         /// <summary>
         /// Konstruktor einer Waffe:
@@ -1455,7 +1456,7 @@ namespace WarhammerGUI
         public List<waffenAuspraegung> auspraegungen;
     }
 
-    public struct waffenAuspraegung : ICloneable
+    public class waffenAuspraegung : ValueCompare, ICloneable
     {
         public object Clone()
         {

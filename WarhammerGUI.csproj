@@ -99,7 +99,10 @@
     <Compile Include="Gui\StreitmachtCreate.xaml.cs">
       <DependentUpon>StreitmachtCreate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Programmlogik\SerializationHelper.cs" />
     <Compile Include="Utility\Globals.cs" />
+    <Compile Include="Utility\ReflectionUtils.cs" />
+    <Compile Include="Utility\SerializationUtils.cs" />
     <Compile Include="Utility\ValueCompare.cs" />
     <Page Include="Gui\ArmyBenchStyles.xaml">
       <SubType>Designer</SubType>

@@ -6,6 +6,7 @@ using Listen;
 using Common;
 using System.ComponentModel;
 using System.Diagnostics;
+using WarhammerGUI.Utility;
 
 namespace WarhammerGUI
 {
@@ -118,7 +119,7 @@ namespace WarhammerGUI
 
     }
 
-    public abstract class choiceDefinition : ICloneable, INotifyPropertyChanged
+    public abstract class choiceDefinition : ValueCompare, ICloneable, INotifyPropertyChanged
     {
         /// <summary>
         /// Den folgenden Event brauchen wir, um der GUI Bescheid zu sagen.
