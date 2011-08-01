@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Listen;
+using WarhammerGUI.Utility;
 
 namespace WarhammerGUI
 {
-    public class spielerArmeeKlasse
+    public class spielerArmeeKlasse : ValueCompare
     {
         /// <summary>
         /// Konstruktor:
@@ -60,6 +61,16 @@ namespace WarhammerGUI
         /// </summary>
         public List<Einheit> armeeEinheiten;
 
+        /// <summary>
+        /// Stellt fest, ob zwei Armeen den gleichen Inhalt haben
+        /// Näheres siehe ValueCompare.cs
+        /// </summary>
+        /// <returns></returns>
+        protected override bool EqualValuesImpl(Object o)
+        {
+            return EqualValuesGeneric(o);
+        }
+
 
         // Prüft, ob alle Units dieser Armee auch einen einzigartigen Namen haben!       
         public bool checkUnitNameUniqueness()
@@ -92,12 +103,11 @@ namespace WarhammerGUI
             }
             return anzahl;
         }
-
     }
 
     // Enthält beliebig viele Spieler-Armeen und ist immer ein Singleton.
     // Es kann und darf lediglich eine einzige Armeen-Liste geben!
-    public class spielerArmeeListe
+    public class spielerArmeeListe : ValueCompare
     {
         private static spielerArmeeListe m_Instance;
 
@@ -113,13 +123,25 @@ namespace WarhammerGUI
         /// <summary>
         /// Konstruktor: Muss privat bleiben, da wir
         /// ein Singleton haben wollen!
+        /// Tom: Ich hätte den gern Public, damit man die ArmeeList auch per Unit Test prüfen kann
         /// </summary>
-        private spielerArmeeListe() 
+        public spielerArmeeListe() 
         {
             // Beim Konstruktor passiert zunächst erst einmal nichts außer der Initialisierung
             // der Armee-Sammlung
             this.armeeSammlung = new List<spielerArmeeKlasse>() { };
             this.saveString = "";
+        }
+
+        /// <summary>
+        /// Stellt fest, ob zwei Armeelisten den gleichen Inhalt haben
+        /// Näheres siehe ValueCompare.cs
+        /// </summary>
+        /// <returns></returns>
+        protected override bool EqualValuesImpl(Object o)
+        {
+            //return armeeSammlung.EqualValues(armeeSammlung);
+            return EqualValuesGeneric(o);
         }
 
         /// <summary>

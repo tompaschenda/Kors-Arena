@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="U:\GitWorking\Kors-Arena\UnitTests\Serialisierungstest\RassenDatenTest\Serialisierungstest.csproj" total="5" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-08-01" time="23:06:06">
+  <environment nunit-version="2.5.7.10213" clr-version="4.0.30319.235" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="U:\GitWorking\Kors-Arena\UnitTests\Serialisierungstest\RassenDatenTest" machine-name="CE03524" user="tpaschen" user-domain="CORP" />
+  <culture-info current-culture="de-DE" current-uiculture="en-US" />
+  <test-suite type="Project" name="U:\GitWorking\Kors-Arena\UnitTests\Serialisierungstest\RassenDatenTest\Serialisierungstest.csproj" executed="True" result="Success" success="True" time="0.137" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="U:\GitWorking\Kors-Arena\UnitTests\Serialisierungstest\RassenDatenTest\bin\Debug\RassenDatenTest.exe" executed="True" result="Success" success="True" time="0.130" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Serialisierungstest" executed="True" result="Success" success="True" time="0.124" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="spielerArmeeListeTest" executed="True" result="Success" success="True" time="0.121" asserts="0">
+                <results>
+                  <test-case name="Serialisierungstest.spielerArmeeListeTest.Equality" executed="True" result="Success" success="True" time="0.113" asserts="4" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="Namespace" name="UtilityTest" executed="True" result="Success" success="True" time="0.003" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="ValueCompareTest" executed="True" result="Success" success="True" time="0.003" asserts="0">
+                <results>
+                  <test-case name="UtilityTest.ValueCompareTest.ListClassCompare" executed="True" result="Success" success="True" time="0.001" asserts="3" />
+                  <test-case name="UtilityTest.ValueCompareTest.ListCompare" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                  <test-case name="UtilityTest.ValueCompareTest.UsualClassCompare" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="UtilityTest.ValueCompareTest.ValueTypeCompare" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

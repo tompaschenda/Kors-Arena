@@ -228,7 +228,8 @@ namespace WarhammerGUI
                 spielerArmeeListe.getInstance().saveString = savePath;
                 XmlSerializer ser = new XmlSerializer(typeof(spielerArmeeListe));
                 FileStream str = new FileStream(@savePath, FileMode.Create);
-                ser.Serialize(str, spielerArmeeListe.getInstance());
+                spielerArmeeListe armeeListe = spielerArmeeListe.getInstance();
+                ser.Serialize(str, armeeListe);
                 str.Close();
 
                 //Dann fügen wir die Datei der RecentFileList hinzu
